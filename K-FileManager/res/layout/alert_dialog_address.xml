@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#00000000"
+    android:orientation="vertical" >
+
+    <!-- android:background="@drawable/pannel_bg" -->
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dip"
+        android:layout_marginLeft="20dip"
+        android:layout_marginRight="20dip"
+        android:layout_marginTop="10dip"
+        android:background="#00000000"
+        android:gravity="left|center" >
+
+        <Button
+            android:id="@+id/btFavorite"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/tab2_left_select"
+            android:text="收藏夹"
+            android:textColor="#337ddc"
+            android:textSize="18dip" />
+        <Button
+            android:id="@+id/btHistory"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/tab2_right_unselect"
+            android:text="历史记录"
+            android:textColor="#337ddc"
+            android:textSize="18dip" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/lvList"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:background="@color/list_bg"
+        android:cacheColorHint="#00000000"
+        android:divider="@drawable/list_line"
+        android:dividerHeight="2px" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/list_bg"
+        >
+
+        <Button
+            android:id="@+id/btDeleteData"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/btn_wificonfig_select"
+            android:text="删除" />
+
+        <Button
+            android:id="@+id/btClearData"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/btn_wificonfig_select"
+            android:text="清空" />
+    </LinearLayout>
+
+</LinearLayout>

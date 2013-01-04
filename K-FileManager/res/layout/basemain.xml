@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/lvMain"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/mCurrentPath"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:textColor="@color/white"
+        android:background="#00000000"
+        android:textSize="20sp" >
+    </TextView>
+
+    <include
+        android:id="@+id/inmain_tools"
+        layout="@layout/main_tools" />
+
+    <ListView
+        android:id="@+id/lvLocallist"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:cacheColorHint="#00000000"
+               android:divider="@drawable/list_line"
+        android:dividerHeight="2px" 
+        android:background="#00000000"
+        />
+
+</LinearLayout>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/CreateFile_BG"
+    android:orientation="vertical" >
+
+    <EditText
+        android:id="@+id/etSearchFileName"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_createfile"
+        android:singleLine="true" >
+    </EditText>
+
+    <CheckBox
+        android:id="@+id/cbSearchSubdirectory"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/SearchSubdirectory"
+        android:textColor="@color/CreateFile_RadioTextColor" />
+
+    <CheckBox
+        android:id="@+id/cbSearchCaseSensitive"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/SearchCaseSensitive"
+        android:textColor="@color/CreateFile_RadioTextColor" />
+    <CheckBox
+        android:id="@+id/cbSearchHide"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/SearchHide"
+        android:textColor="@color/CreateFile_RadioTextColor" />
+</LinearLayout>

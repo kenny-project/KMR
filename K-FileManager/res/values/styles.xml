@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright 2009 David Revell
+
+This file is part of SwiFTP.
+
+SwiFTP is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+SwiFTP is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with SwiFTP.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<resources>
+    <style name="kmain_tab_item">
+        <item name="android:layout_width">48dip</item>
+        <item name="android:layout_height">48dip</item>
+    </style>
+
+    <style name="ActionButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">@style/TextAppearance.ActionButton</item>
+    </style>
+
+    <style name="TextAppearance" parent="android:TextAppearance"></style>
+
+    <style name="TextAppearance.ActionButton">
+        <item name="android:textStyle">italic</item>
+    </style>
+
+    <style name="main_tools_tab_style_normal">
+        <item name="android:textSize">14.0sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#ff000000</item>
+        <item name="android:background">@drawable/tab_normal</item>
+    </style>
+
+    <style name="main_tools_tab_style_selected">
+        <item name="android:textSize">14.0sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#ff000000</item>
+        <item name="android:background">@drawable/tab_normal</item>
+    </style>
+
+    <style name="KsNormalEditText" parent="@android:style/Widget.EditText">
+        <item name="android:textSize">17dip</item>
+        <item name="android:textColorHighlight">#c6e0ff</item>
+        <item name="android:textColorHint">#ffcbd4d9</item>
+        <item name="android:background">@drawable/search_bg</item>
+    </style>
+
+</resources>

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/lvMain"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#00000000"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/lyTools"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:id="@+id/lyTools2"
+        android:layout_width="fill_parent"
+        android:layout_height="40dip"
+        android:layout_below="@id/lyTools"
+        android:background="@drawable/tab2_bg" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lyTools"
+            android:gravity="center" >
+
+            <Button
+                android:id="@+id/btUserApp"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="8dip"
+                android:layout_weight="1"
+                android:background="@drawable/tab2_left_select"
+                android:text="@string/btUserAppTitle"
+                android:textColor="#337ddc"
+                android:textSize="18dip" />
+
+            <Button
+                android:id="@+id/btSystemApp"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_marginRight="8dip"
+                android:layout_weight="1"
+                android:background="@drawable/tab2_right_unselect"
+                android:text="@string/btSystemAppTitle"
+                android:textColor="#337ddc"
+                android:textSize="18dip" />
+        </LinearLayout>
+    </RelativeLayout>
+<!-- android:background="@color/list_bg" -->
+    <ListView
+        android:id="@+id/lvLocallist"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/lyTools2"
+        android:background="@color/list_bg"
+        android:longClickable="true"
+        android:cacheColorHint="#00000000"
+        android:divider="@drawable/list_line"
+        android:dividerHeight="2dp"
+        android:fastScrollEnabled="true" />
+
+    <GridView
+        android:id="@+id/gvLocallist"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/lyTools2"
+        android:background="@color/list_bg"
+        android:cacheColorHint="#00000000"
+        android:numColumns="3"
+        android:visibility="gone" >
+    </GridView>
+
+    <LinearLayout
+        android:id="@+id/lyBTools"
+        android:layout_width="fill_parent"
+        android:layout_height="75dip"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/toolbar_backgroud"
+        android:gravity="fill"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btSelectAll"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            android:layout_marginRight="3dip"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:drawableTop="@drawable/menu_selall"
+            android:text="全选"
+            android:textColor="@color/ContentTitleText"
+            android:textSize="13dip"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btSelectVisible"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            android:layout_marginRight="3dip"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:drawableTop="@drawable/menu_selall"
+            android:text="选择"
+            android:textColor="@color/ContentTitleText"
+            android:textSize="13dip"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btRefresh"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:drawableTop="@drawable/common_icon_titlebar_updates_on"
+            android:text="@string/btRefreshTitle"
+            android:textColor="@color/ContentTitleText"
+            android:textSize="13dip" />
+
+        <Button
+            android:id="@+id/btKillProc"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:drawableTop="@drawable/menu_dlt"
+            android:text="结束"
+            android:textColor="@color/ContentTitleText"
+            android:textSize="13dip"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btAllKillProc"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:drawableTop="@drawable/menu_dlt"
+            android:text="@string/btAllKillProc"
+            android:textColor="@color/ContentTitleText"
+            android:textSize="13dip" />
+
+        <Button
+            android:id="@+id/btBackUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="3dip"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:drawableTop="@drawable/menu_backup"
+            android:text="备份"
+            android:textColor="@color/ContentTitleText"
+            android:textSize="13dip"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btUnInstall"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            android:layout_marginLeft="3dip"
+            android:layout_marginRight="3dip"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:drawableTop="@drawable/menu_uninstall"
+            android:text="卸载"
+            android:textColor="@color/ContentTitleText"
+            android:textSize="13dip"
+            android:visibility="gone" />
+    </LinearLayout>
+
+</RelativeLayout>

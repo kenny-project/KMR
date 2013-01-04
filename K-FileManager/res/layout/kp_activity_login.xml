@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/color_background" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/kp_login_title"
+                android:layout_width="250dip"
+                android:layout_height="48dip"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/kp_login_title_register"
+                android:background="@drawable/kp_login_title" />
+
+            <Button
+                android:id="@+id/kp_login_title_register"
+                android:layout_width="80px"
+                android:layout_height="48dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/kp_register_button"
+                android:textSize="20.0sp"
+                android:gravity="center"
+                android:text="@string/register"
+                android:textColor="@android:color/white" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dip"
+            android:layout_marginLeft="15dip"
+            android:layout_marginRight="15dip"
+            android:layout_marginTop="10dip"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/activity_login_register_id_title"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dip"
+                android:text="@string/register_only_email"
+                android:textColor="#ff666666"
+                android:textSize="15.0sp" />
+
+            <LinearLayout
+                android:id="@+id/relativelayout_username"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center" >
+
+                <AutoCompleteTextView
+                    android:id="@+id/edittext_username"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/kp_selector_edittext_background"
+                    android:completionThreshold="1"
+                    android:dropDownHeight="120.0dip"
+                    android:hint="@string/textview_username"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:padding="10dip"
+                    android:textColor="#ff333333"
+                    android:textSize="20.0sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/relativelayout_password"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:gravity="center" >
+
+                <EditText
+                    android:id="@+id/edittext_password"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/kp_selector_edittext_background"
+                    android:hint="@string/textview_password"
+                    android:inputType="textPassword"
+                    android:maxLength="64"
+                    android:padding="10dip"
+                    android:singleLine="true"
+                    android:textColor="#ff333333"
+                    android:textSize="20.0sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/relativelayout_verCode"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:gravity="center" >
+
+                <EditText
+                    android:id="@+id/verText"
+                    android:layout_width="122dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.87"
+                    android:background="@drawable/kp_selector_edittext_background"
+                    android:hint="@string/textview_verCode"
+                    android:inputType="text"
+                    android:maxLength="64"
+                    android:padding="10dip"
+                    android:singleLine="true"
+                    android:textColor="#ff333333"
+                    android:textSize="20.0sp" >
+                </EditText>
+
+                <ImageView
+                    android:id="@+id/verImg"
+                    android:layout_width="131dp"
+                    android:layout_height="37dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="15.0dip"
+            android:layout_marginRight="15.0dip"
+            android:layout_marginTop="10.0dip"
+            android:layout_weight="1" >
+
+            <Button
+                android:id="@+id/button_login"
+                android:layout_width="match_parent"
+                android:layout_height="48dip"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/kp_selector_button"
+                android:text="@string/login"
+                android:textColor="@android:color/white"
+                android:textSize="25.0sp" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/activity_login_register_id_legal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15.0dip"
+            android:layout_marginRight="15.0dip"
+            android:paddingTop="5dip"
+            android:text="@string/press_register_agree_legal"
+            android:textColor="#ff666666"
+            android:textSize="15.0sp" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/activity_select_login_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/kp_qq_login_bg_normal" >
+
+        <LinearLayout
+            android:id="@+id/activity_select_login_qqlogin"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="3dip"
+            android:background="@drawable/kp_selector_button_white"
+            android:gravity="right"
+            android:onClick="onClick"
+            android:paddingLeft="10dip"
+            android:paddingRight="10dip" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:paddingRight="10dip"
+                android:scaleType="centerInside"
+                android:src="@drawable/kp_qq_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:autoLink="web"
+                android:gravity="center"
+                android:text="@string/textview_qqlogin"
+                android:textColor="#ff333333"
+                android:textSize="18dip" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:paddingLeft="10dip"
+                android:paddingRight="10dip"
+                android:scaleType="centerInside"
+                android:src="@drawable/kp_extend" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

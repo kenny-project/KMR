@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/lvMain"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#00000000"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/mCurrentPath"
+        android:layout_width="fill_parent"
+        android:layout_height="30dip"
+        android:autoText="false"
+        android:background="@drawable/title_bar"
+        android:editable="false"
+        android:gravity="center_vertical"
+        android:singleLine="true"
+        android:text=""
+        android:textColor="@color/white"
+        android:textSize="17dip"
+        android:visibility="gone" >
+    </TextView>
+
+    <com.kenny.file.commui.KListView
+        android:id="@+id/lvNetlist"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/lyTools"
+        android:background="@color/list_bg"
+        android:cacheColorHint="#00000000"
+        android:divider="@drawable/list_line"
+        android:dividerHeight="2px" />
+
+    <FrameLayout
+        android:id="@+id/flSubview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/lyTools"
+        android:background="@color/list_bg" 
+        android:visibility="gone"
+        />
+
+    <LinearLayout
+        android:id="@+id/lyTools"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/mCurrentPath" />
+
+    <LinearLayout
+        android:id="@+id/lyBTools"
+        android:layout_width="fill_parent"
+        android:layout_height="70dip"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/toolbar_backgroud"
+        android:gravity="fill"
+        android:orientation="horizontal"
+        android:visibility="gone" >
+
+        <Button
+            android:id="@+id/btNetCreate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="1dip"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:drawableTop="@drawable/menu_new_normal"
+            android:text="新建"
+            android:textColor="@color/ContentTitleText"
+            android:textSize="13dip" />
+
+        <Button
+            android:id="@+id/btNetRefresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="1dip"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:drawableTop="@drawable/menu_copy"
+            android:text="刷新"
+            android:textColor="@color/ContentTitleText"
+            android:textSize="13dip" />
+
+        <Button
+            android:id="@+id/btNetDel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="1dip"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:drawableTop="@drawable/menu_copy"
+            android:text="删除"
+            android:textColor="@color/ContentTitleText"
+            android:textSize="13dip" />
+
+        <Button
+            android:id="@+id/btLocalPaste"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="1dip"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:drawableTop="@drawable/menu_paste"
+            android:text="粘贴"
+            android:textColor="@color/ContentTitleText"
+            android:textSize="13dip" />
+    </LinearLayout>
+
+</RelativeLayout>

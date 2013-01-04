@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.kenny.KFileManager"
+    android:installLocation="internalOnly"
+    android:versionCode="52"
+    android:versionName="V1.9.6" >
+    <!-- 22 -->
+    <uses-sdk
+        android:minSdkVersion="5"
+        android:targetSdkVersion="9" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" /> <!-- 创建快捷方式 -->
+    <uses-permission android:name="android.permission.SET_WALLPAPER" /> <!-- 设置背景图片 -->
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+    <uses-permission android:name="android.permission.GET_PACKAGE_SIZE" />
+    <uses-permission android:name="android.permission.RESTART_PACKAGES" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RESTART_PACKAGES" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.DEVICE_POWER" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_BUFFER" />
+    <uses-permission android:name="android.permission.ACCESS_RANDOM" />
+    <uses-permission android:name="android.permission.ACCESS_STREAMING" />
+    <uses-permission android:name="android.permission.ACCESS_UNKNOWN" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.FLAG_ACTIVITY_NEW_TASK" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- write sdcard for storing apk -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:debuggable="true"
+        android:icon="@drawable/logo"
+        android:label="@string/app_name"
+        android:sharedUserId="android.uid.system" >
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="googlemarekt" />
+        <!--
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="qq" />
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="anzhimarekt" />
+
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="androidmarekt" />
+            
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="googlemarekt" />
+        -->
+
+        <service
+            android:name="com.umeng.common.net.DownloadingService"
+            android:exported="true"
+            android:process=":DownloadingService" >
+        </service>
+
+        <activity
+            android:name="com.umeng.fb.ui.SendFeedback"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name="com.umeng.fb.ui.FeedbackConversations" />
+        <activity
+            android:name="com.umeng.fb.ui.FeedbackConversation"
+            android:configChanges="keyboard" />
+        <activity
+            android:name="com.framework.main.Main"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Black.NoTitleBar"
+            android:windowSoftInputMode="stateHidden" >
+
+            <!-- android:windowSoftInputMode="adjustResize" -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.framework.debugreport.BugReportActivity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
+        </activity>
+        <activity
+            android:name="com.kenny.file.Activity.ImageListActivity"
+            android:label="@string/app_name"
+            android:process=":Image"
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
+        </activity>
+        <activity
+            android:name="com.kenny.file.Activity.ZIPFileActivity"
+            android:configChanges="orientation|keyboard"
+            android:label="@string/EditTxtActivity_Name"
+            android:process=":Zip"
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="file" />
+                <data android:mimeType="*/*" />
+                <data android:host="*" />
+                <data android:pathPattern=".*\\.zip" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="content" />
+                <data android:host="*" />
+                <data android:pathPattern=".*\\.zip" />
+            </intent-filter>
+        </activity>
+
+        <!-- android:process="EditTxtActivity" -->
+        <!-- android:process=":EditTxtActivity" -->
+        <activity
+            android:name="com.kenny.file.Activity.EditTxtActivity"
+            android:configChanges="orientation|keyboard"
+            android:label="@string/EditTxtActivity_Name"
+            android:process=":EditTxtActivity"
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="file" />
+                <data android:mimeType="*/*" />
+                <data android:host="*" />
+                <data android:pathPattern=".*\\.txt" />
+                <data android:pathPattern=".*\\.html" />
+                <data android:pathPattern=".*\\.xml" />
+                <data android:pathPattern=".*\\.ini" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="content" />
+                <data android:host="*" />
+                <data android:pathPattern=".*\\.txt" />
+                <data android:pathPattern=".*\\.html" />
+                <data android:pathPattern=".*\\.xml" />
+                <data android:pathPattern=".*\\.ini" />
+            </intent-filter>
+        </activity>
+
+        <!-- android:process="MediaPlayActivity" -->
+        <!-- android:process=":MediaPlayActivity" -->
+        
+        <activity
+            android:configChanges="orientation|keyboard"
+            android:label="@string/EditTxtActivity_Name"
+            android:name="com.kenny.LyricPlayer.xwg.MediaPlayActivity"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
+            <intent-filter >
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="file" />
+                <data android:mimeType="*/*" />
+                <data android:host="*" />
+                <data android:pathPattern=".*\\.mp3" />
+                <data android:pathPattern=".*\\.wav" />
+                <data android:pathPattern=".*\\.amr" />
+                <data android:pathPattern=".*\\.ini" />
+            </intent-filter>
+            <intent-filter >
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="content" />
+                <data android:host="*" />
+                <data android:pathPattern=".*\\.txt" />
+                <data android:pathPattern=".*\\.html" />
+                <data android:pathPattern=".*\\.xml" />
+                <data android:pathPattern=".*\\.ini" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:enabled="true"
+            android:exported="true"
+            
+            android:name="com.kenny.LyricPlayer.xwg.MediaPlayerService"
+             >
+            <intent-filter >
+                <action android:name="LyricPlayer.xwg.musicplaybackservice" />
+                <action android:name="KMediaPlayer.action.PLAY_PAUSE" />
+                <action android:name="KMediaPlayer.action.PAUSE" />
+                <action android:name="KMediaPlayer.action.PREVIOUS" />
+                <action android:name="KMediaPlayer.action.NEXT" />
+                <action android:name="KMediaPlayer.action.PLAY" />
+            </intent-filter>
+        </service>
+
+        <receiver android:name="com.kenny.LyricPlayer.xwg.MediaButtonReceiver" >
+            <intent-filter >
+                <action android:name="android.intent.action.MEDIA_BUTTON" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.kenny.LyricPlayer.xwg.MusicIntentReceiver" >
+            <intent-filter >
+                <action android:name="android.media.AUDIO_BECOMING_NOISY" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.kenny.LyricPlayer.xwg.PhoneStateReceiver" >
+            <intent-filter >
+                <action android:name="android.intent.action.PHONE_STATE" />
+            </intent-filter>
+        </receiver>
+        
+        <!-- MediaPlayActivity end -->
+        <!-- android:process=":GalleryActivity" -->
+        <activity
+            android:name="com.kenny.KImageBrowser.GalleryActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation"
+            android:label="@string/GalleryActivity_Name" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="file" />
+                <data android:mimeType="*/*" />
+                <data android:host="*" />
+                <data android:pathPattern=".*\\.jpg" />
+                <data android:pathPattern=".*\\.gif" />
+                <data android:pathPattern=".*\\.bmp" />
+                <data android:pathPattern=".*\\.png" />
+            </intent-filter>
+        </activity>
+
+        <!--
+        	 SwiFTP
+             An Activity in the application - this is something the user
+             can launch and interact with.  The "name" attribute is the
+             name of the class within your package that implements this
+             activity.
+        -->
+        <activity
+            android:name="com.kenny.swiftp.FtpServer"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Black.NoTitleBar" />
+        <activity android:name="com.kenny.swiftp.FtpConfigure" />
+
+        <service android:name="com.kenny.swiftp.FTPServerService" />
+
+        <!-- add feedback Activity -->
+        <activity
+            android:name="com.feedback.ui.SendFeedback"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name="com.feedback.ui.FeedbackConversations" />
+        <activity
+            android:name="com.feedback.ui.FeedbackConversation"
+            android:configChanges="keyboard" />
+
+        <!-- Widget actions are registered here -->
+        <receiver
+            android:name="com.kenny.swiftp.WidgetProvider"
+            android:label="@string/swiftp_name" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <!-- WidgetProvider will process this broadcast -->
+                <action android:name="org.swiftp.WidgetProvider.ACTION_WIDGET_BUTTON" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_provider" />
+        </receiver>
+        <!-- 注意！！ 这句必须要加，否则接收不到BroadCast -->
+
+        <receiver
+            android:name="com.kenny.file.Receiver.PackageReceiver"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+                <action android:name="android.intent.action.DELETE" />
+
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="4efabba8527015532c000076" />
+
+        <!-- kuaipan start -->
+        <!-- 金山快盘UI,请不要设置成singleTask(除了TAuthView) -->
+        <activity
+            android:name="cn.kuaipan.android.sdk.ui.KPLoginView"
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
+        </activity>
+        <activity
+            android:name="com.tencent.tauth.TAuthView"
+            android:launchMode="singleTask" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="auth" />
+            </intent-filter>
+        </activity>
+        <!-- kuaipan end -->
+    </application>
+
+</manifest>

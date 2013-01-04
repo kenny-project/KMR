@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/lyJokeMain"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/Setting_BG" >
+
+    <ScrollView
+        android:id="@+id/PreferenceScrollView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/SettingsTopBarLayout"
+        android:background="@color/Setting_BG" >
+
+        <LinearLayout
+            android:id="@+id/lyLinearLayout1"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/Setting_BG"
+            android:orientation="vertical"
+            android:padding="1px" >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/setting_group_BG"
+                android:paddingBottom="3dip"
+                android:paddingLeft="10dip"
+                android:paddingTop="3dip"
+                android:text="@string/display_preferences"
+                android:textColor="@color/setting_group_TextColor"
+                android:textSize="16dip" />
+
+            <CheckBox
+                android:id="@+id/cbSetSensor"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dip"
+                android:checked="true"
+                android:paddingBottom="5dip"
+                android:text="@string/display_ScreenRotate"
+                android:textColor="@color/Setting_Button_TextColor" />
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:src="@color/Setting_Button_TextColor" />
+
+            <CheckBox
+                android:id="@+id/cbSetTools"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dip"
+                android:checked="true"
+                android:paddingBottom="5dip"
+                android:paddingTop="5dip"
+                android:text="@string/display_Tools_Title"
+                android:textColor="@color/Setting_Button_TextColor"
+                android:visibility="gone"
+                 />
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:visibility="gone"
+                android:src="@color/Setting_Button_TextColor" />
+
+            <CheckBox
+                android:id="@+id/cbSetTab"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dip"
+                android:checked="true"
+                android:paddingBottom="5dip"
+                android:paddingTop="5dip"
+                android:text="@string/display_Tab_Title"
+                android:textColor="@color/Setting_Button_TextColor" />
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:src="@color/Setting_Button_TextColor" />
+
+            <CheckBox
+                android:id="@+id/cbSetShowHideFile"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dip"
+                android:checked="true"
+                android:paddingBottom="5dip"
+                android:paddingTop="5dip"
+                android:text="@string/display_ShowHideFile_Title"
+                android:textColor="@color/Setting_Button_TextColor" />
+                        <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:src="@color/Setting_Button_TextColor" />
+
+            <CheckBox
+                android:id="@+id/cbSetShowTask"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dip"
+                android:paddingBottom="5dip"
+                android:paddingTop="5dip"
+                android:text="@string/display_Tab_Task_Title"
+                android:textColor="@color/Setting_Button_TextColor" />
+            <!-- View -->
+
+           <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/setting_group_BG"
+                android:paddingBottom="3dip"
+                android:paddingLeft="10dip"
+                android:paddingTop="3dip"
+                android:text="@string/setting_theme_textbox"
+                android:textColor="@color/setting_group_TextColor"
+                android:textSize="16dip" />
+
+            <Button
+                android:id="@+id/btSetThemeButton"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dip"
+                android:background="@drawable/btsetting_selecter"
+                android:checked="true"
+                android:gravity="left"
+                android:paddingTop="5dip"
+                android:paddingLeft="5dip"
+                android:text="@string/setting_theme_button"
+                android:textColor="@color/Setting_Button_TextColor"
+                android:textSize="18dip" />
+             <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:paddingLeft="18dip"
+                android:text="@string/setting_theme_button_desc"
+                android:textColor="@color/Setting_Button_Desc_TextColor"
+                android:textSize="14dip"
+                android:textStyle="bold" />
+             
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/setting_group_BG"
+                android:paddingBottom="3dip"
+                android:paddingLeft="10dip"
+                android:paddingTop="3dip"
+                android:text="@string/view_preferences"
+                android:textColor="@color/setting_group_TextColor"
+                android:textSize="16dip" />
+
+            <Button
+                android:id="@+id/btSetViewButton"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dip"
+                android:background="@drawable/btsetting_selecter"
+                android:checked="true"
+                android:gravity="left"
+                android:paddingTop="5dip"
+                android:paddingLeft="5dip"
+                android:text="@string/view_button"
+                android:textColor="@color/Setting_Button_TextColor"
+                android:textSize="18dip" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:paddingLeft="18dip"
+                android:text="@string/view_button_desc"
+                android:textColor="@color/Setting_Button_Desc_TextColor"
+                android:textSize="14dip"
+                android:textStyle="bold" />
+            <!-- sorrt by -->
+
+            <Button
+                android:id="@+id/btSetSortButton"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dip"
+                android:background="@drawable/btsetting_selecter"
+                android:checked="true"
+                android:gravity="left"
+                android:paddingTop="5dip"
+                android:paddingLeft="5dip"
+                android:text="@string/sort_button"
+                android:textColor="@color/Setting_Button_TextColor"
+                android:textSize="18dip" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:paddingLeft="18dip"
+                android:text="@string/sort_button_desc"
+                android:textColor="@color/Setting_Button_Desc_TextColor"
+                android:textSize="14dip"
+                android:textStyle="bold" />
+            <!-- View end -->
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/setting_group_BG"
+                android:paddingBottom="3dip"
+                android:paddingLeft="10dip"
+                android:paddingTop="3dip"
+                android:text="@string/directory_preferences"
+                android:textColor="@color/setting_group_TextColor"
+                android:textSize="16dip" />
+
+            <Button
+                android:id="@+id/btSetDefaultPath"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dip"
+                android:background="@drawable/btsetting_selecter"
+                android:gravity="left"
+                android:paddingBottom="5dip"
+                android:paddingTop="5dip"
+                android:text="@string/directory_DefaultPath"
+                android:textColor="@color/Setting_Button_TextColor"
+                android:textSize="16dip"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/btSetCurrentPath"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dip"
+                android:background="@drawable/btsetting_selecter"
+                android:checked="true"
+                android:gravity="left"
+                android:text="@string/directory_CurrentPath"
+                android:textColor="@color/Setting_Button_TextColor"
+                android:textSize="16dip" />
+
+            <TextView
+                android:id="@+id/tvSetDefaultPath"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:paddingLeft="18dip"
+                android:text="/sdcard/"
+                android:textColor="@color/Setting_Button_TextColor"
+                android:textSize="14dip"
+                android:textStyle="bold" />
+
+            <CheckBox
+                android:id="@+id/cbLastPath"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dip"
+                android:checked="true"
+                android:paddingBottom="5dip"
+                android:paddingTop="5dip"
+                android:text="@string/directory_LastPath"
+                android:textColor="@color/Setting_Button_TextColor"
+                android:visibility="gone" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/setting_group_BG"
+                android:paddingBottom="3dip"
+                android:paddingLeft="10dip"
+                android:paddingTop="3dip"
+                android:text="@string/replacement_preferences"
+                android:textColor="@color/setting_group_TextColor"
+                android:textSize="16dip" />
+
+            <Button
+                android:id="@+id/btSetResumeFavorite"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dip"
+                android:background="@drawable/btsetting_selecter"
+                android:checked="true"
+                android:gravity="left"
+                android:paddingTop="5dip"
+                android:text="恢复初始化"
+                android:textColor="@color/Setting_Button_TextColor"
+                android:textSize="18dip" />
+
+            <Button
+                android:id="@+id/btSetClearCache"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dip"
+                android:background="@drawable/btsetting_selecter"
+                android:checked="true"
+                android:gravity="left"
+                android:paddingTop="5dip"
+                android:text="清空 缓存"
+                android:textColor="@color/Setting_Button_TextColor"
+                android:textSize="18dip"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tvSetToolsStatus"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:paddingBottom="5dip"
+                android:paddingLeft="18dip"
+                android:text="清空所有缓存,解决软件不能正常使用"
+                android:textColor="@color/Setting_Button_TextColor"
+                android:textSize="14dip"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/setting_group_BG"
+                android:paddingBottom="3dip"
+                android:paddingLeft="10dip"
+                android:paddingTop="3dip"
+                android:text="@string/about_preferences"
+                android:textColor="@color/setting_group_TextColor"
+                android:textSize="16dip" />
+
+            <Button
+                android:id="@+id/btSetCommentScore"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dip"
+                android:background="@drawable/btsetting_selecter"
+                android:checked="true"
+                android:gravity="left"
+                android:padding="5dip"
+                android:paddingBottom="5dip"
+                android:paddingTop="5dip"
+                android:text="@string/about_CommentScore"
+                android:textColor="@color/Setting_Button_TextColor"
+                android:textSize="18dip"
+                android:visibility="gone" />
+            <Button
+                android:id="@+id/btSetFeedback"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dip"
+                android:background="@drawable/btsetting_selecter"
+                android:checked="true"
+                android:gravity="left"
+                android:padding="5dip"
+                android:paddingBottom="5dip"
+                android:paddingTop="5dip"
+                android:text="@string/setting_Feedback_Button"
+                android:textColor="@color/Setting_Button_TextColor"
+                android:textSize="18dip"
+                />
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:src="@color/Setting_Button_TextColor"
+                />
+
+            <Button
+                android:id="@+id/btSetAboutTitle"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dip"
+                android:background="@drawable/btsetting_selecter"
+                android:checked="true"
+                android:gravity="left"
+                android:padding="5dip"
+                android:paddingTop="5dip"
+                android:text="@string/aboutTitle"
+                android:textColor="@color/Setting_Button_TextColor"
+                android:textSize="18dip" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffeeeeee" >
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#ffeeeeee"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/Head"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/search_top_bg"
+            android:orientation="vertical"
+            android:paddingBottom="1dip" >
+
+            <Button
+                android:id="@+id/btBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dip"
+                android:background="@drawable/tab_left_bg"
+                android:textColor="#ffffff"
+                android:textSize="16dip" />
+
+            <TextView
+                style="@style/main_tools_tab_style_normal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="#00000000"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="@string/config_header"
+                android:textColor="@color/headTextColor"
+                android:textSize="20dip" />
+        </RelativeLayout>
+
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="*" >
+
+            <TableRow >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/config_username"
+                    android:textColor="@color/NetStatusTextColor"
+                    android:textSize="16sp" />
+                <EditText
+                    android:id="@+id/config_username"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" />
+            </TableRow>
+
+            <TableRow >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/config_password"
+                    android:textColor="@color/NetStatusTextColor"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/config_password"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:password="false" />
+            </TableRow>
+        </TableLayout>
+        <!-- A horizontal line -->
+
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="*" >
+
+            <TableRow >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/config_portnum"
+                    android:textColor="@color/NetStatusTextColor"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/config_portnum"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" />
+            </TableRow>
+
+            <TableRow >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/stay_within_folder"
+                    android:textColor="@color/NetStatusTextColor"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/config_chroot"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" />
+            </TableRow>
+        </TableLayout>
+
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:background="#666666" />
+
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="*" >
+
+            <TableRow >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/accept_connections_from_wifi"
+                    android:textColor="@color/NetStatusTextColor"
+                    android:textSize="16sp" />
+
+                <CheckBox
+                    android:id="@+id/config_wifi_checkbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true" />
+            </TableRow>
+
+            <TableRow >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/accept_connections_from_net"
+                    android:textColor="@color/NetStatusTextColor"
+                    android:textSize="16sp" />
+
+                <CheckBox
+                    android:id="@+id/config_net_checkbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false" />
+            </TableRow>
+
+            <TableRow >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/stay_awake"
+                    android:textColor="@color/NetStatusTextColor"
+                    android:textSize="16sp" />
+
+                <CheckBox
+                    android:id="@+id/config_awake_checkbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false" />
+            </TableRow>
+        </TableLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="right"
+            android:orientation="horizontal" >
+            <Button
+                android:id="@+id/config_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/save_settings" />
+            <Button
+                android:id="@+id/config_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/cancel" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

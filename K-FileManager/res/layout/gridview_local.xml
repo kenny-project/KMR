@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingBottom="4dip" >
+
+    <RelativeLayout
+        android:id="@+id/flItemImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="#00000000"
+        android:maxHeight="64dip"
+        android:maxWidth="64dip" >
+
+        <ImageView
+            android:id="@+id/image_list_childs"
+            android:layout_width="48dip"
+            android:layout_height="48dip"
+            android:layout_centerInParent="true"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true" />
+
+        <CheckBox
+            android:id="@+id/cbChecked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+                                    android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:button="@drawable/common_checkbox_selector"
+            android:focusable="false"
+            android:focusableInTouchMode="true" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/flItemImage"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:text="111"
+        android:textColor="@color/list_item_TextColer"
+        android:textSize="14dip" >
+    </TextView>
+
+    <TextView
+        android:id="@+id/tvDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:singleLine="true"
+        android:text="fdsafdsa"
+        android:textColor="@color/list_item_TextColer"
+        android:textSize="14sp"
+        android:visibility="gone" >
+    </TextView>
+
+    <TextView
+        android:id="@+id/tvFlags"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:singleLine="true"
+        android:text="fdsafdsa"
+        android:textColor="@color/list_item_TextColer"
+        android:textSize="14sp"
+        android:visibility="gone" >
+    </TextView>
+
+</RelativeLayout>

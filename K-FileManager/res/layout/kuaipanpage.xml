@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#00000000"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/lyTools2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="3dip"
+        android:background="@drawable/tab2_bg" >
+
+        <Button
+            android:id="@+id/btListStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/file_manager_browser_listmode"
+            android:visibility="gone"
+             />
+
+        <Button
+            android:id="@+id/btFavorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/file_manager_browser_listmode"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btTree"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/btn_sort_pressed"
+            android:gravity="center_horizontal"
+            android:padding="5dip"
+            android:text="树"
+            android:textColor="#337ddc"
+            android:textSize="18dip"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/mCurrentPath"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:autoText="false"
+            android:background="@drawable/file_manager_browser_path"
+            android:editable="false"
+            android:ellipsize="start"
+            android:gravity="center_vertical"
+            android:maxEms="10"
+            android:minEms="10"
+            android:singleLine="true"
+            android:textColor="#737373"
+            android:textSize="17dip" />
+
+        <Spinner
+            android:id="@+id/spSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/tab2_btn_bg"
+            android:visibility="gone" />
+
+        <ImageButton
+            android:id="@+id/btContactInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/tab2_btn_bg"
+            android:padding="5dip"
+            android:src="@drawable/bg_tab_contact_select"
+            android:text="Type"
+            android:textColor="#337ddc"
+            android:textSize="18dip"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tvKuaiPanSpace"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dip"
+            android:gravity="center_vertical"
+            android:text="30.5M/4.5G"
+            android:textColor="#737373"
+            android:background="@drawable/file_manager_browser_path"
+            android:textSize="16dip" 
+            />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/lvLocallist"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/lyTools2"
+        android:background="@color/list_bg"
+        android:cacheColorHint="#00000000"
+        android:divider="@drawable/list_line"
+        android:dividerHeight="2dip"
+        android:fastScrollEnabled="true" />
+
+    <ListView
+        android:id="@+id/lvDownLoadlist"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/lyTools2"
+        android:background="@color/list_bg"
+        android:cacheColorHint="#00000000"
+        android:divider="@drawable/list_line"
+        android:dividerHeight="2dip"
+        android:fastScrollEnabled="true" />
+
+    <RelativeLayout
+        android:id="@+id/rlError"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/lyTools2"
+        android:background="@color/list_bg"
+        android:orientation="vertical"
+        android:paddingBottom="1dip"
+        android:paddingTop="20dip"
+        android:visibility="gone" >
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:paddingTop="100dip"
+            android:src="@drawable/list_kuaipan_logo" />
+
+        <TextView
+            android:id="@+id/tvError_msg"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imageView1"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="1.0dip"
+            android:gravity="center_horizontal"
+            android:paddingLeft="6.0dip"
+            android:paddingTop="20dip"
+            android:text=""
+            android:textColor="@color/TLTitleText"
+            android:textSize="16dip" >
+        </TextView>
+
+        <Button
+            android:id="@+id/btError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvError_msg"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="1dip"
+            android:background="@drawable/btn_special_default_select"
+            android:gravity="center_horizontal"
+            android:textSize="16dip" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/lyUpLoadTools"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#00000000"
+        android:gravity="fill"
+        android:orientation="horizontal"
+        android:visibility="gone" >
+
+        <Button
+            android:id="@+id/btUpLoad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:background="@drawable/btn_special_default_select"
+            android:text="@string/btUpLoad"
+            android:textColor="@color/ContentTitleText"
+            android:textSize="16dip" />
+
+        <Button
+            android:id="@+id/btCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:background="@drawable/btn_wificonfig_select"
+            android:text="@string/btCancel"
+            android:textColor="@color/ContentTitleText"
+            android:textSize="16dip" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lyBTools"
+        android:layout_width="fill_parent"
+        android:layout_height="75dip"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/toolbar_backgroud"
+        android:gravity="fill"
+        android:orientation="horizontal"
+        android:visibility="gone" >
+
+        <Button
+            android:id="@+id/btSelectAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:drawableTop="@drawable/menu_selall"
+            android:text="@string/btSelectAll"
+            android:textColor="@color/ContentTitleText"
+            android:textSize="13dip" />
+
+        <Button
+            android:id="@+id/btNew"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:drawableTop="@drawable/menu_new_normal"
+            android:text="@string/btNew"
+            android:textColor="@color/ContentTitleText"
+            android:textSize="13dip"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:drawableTop="@drawable/menu_delete"
+            android:text="@string/btDelete"
+            android:textColor="@color/ContentTitleText"
+            android:textSize="13dip" />
+
+        <Button
+            android:id="@+id/btDownLoad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:drawableTop="@drawable/menu_delete"
+            android:text="@string/btDownLoad"
+            android:textColor="@color/ContentTitleText"
+            android:textSize="13dip"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:drawableTop="@drawable/menu_back"
+            android:text="@string/btBack"
+            android:textColor="@color/ContentTitleText"
+            android:textSize="13dip" />
+    </LinearLayout>
+
+</RelativeLayout>

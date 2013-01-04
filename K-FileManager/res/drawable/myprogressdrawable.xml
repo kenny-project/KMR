@@ -1,0 +1,31 @@
+<rotate xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fromDegrees="0"
+    android:pivotX="50%"
+    android:pivotY="50%"
+    android:toDegrees="360" >
+
+    <shape
+        android:innerRadiusRatio="3"
+        android:shape="ring"
+        android:thicknessRatio="8"
+        android:useLevel="false" >
+
+        <gradient
+            android:centerColor="#ff004400"
+            android:centerY="0.50"
+            android:endColor="#ffff00ff"
+            android:startColor="#ffff0000"
+            android:type="sweep"
+            android:useLevel="false" />
+        <!--
+        <gradient
+            android:centerColor="@color/tv_blue_center_color"
+            android:centerY="0.50"
+            android:endColor="@color/tv_blue_end_color"
+            android:startColor="@color/tv_blue_start_color"
+            android:type="sweep"
+            android:useLevel="false" />
+        -->
+    </shape>
+
+</rotate>

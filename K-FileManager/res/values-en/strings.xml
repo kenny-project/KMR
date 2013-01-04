@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+        <string name="setting_theme_textbox">主题设置</string>
+    <string name="setting_theme_button">主题设置</string>
+    <string name="setting_theme_button_desc">设置不同主题以满足您的风格</string>
+        <string name="radio_currentpath">在当前目录下搜索</string>
+    <string name="radio_wholepath">在整个SD卡下搜索</string>
+    <string name="msg_file_is_not_found">未找到相应文件</string>
+    <string name="msg_themedialog">ThemeSetting</string>
+    <string name="msg_backups">备份</string>
+    <string name="msg_no_backups">不备份</string>
+	<string name="list_sort_Asc_Title">Asc</string>
+	<string name="list_sort_Desc_Title">Desc</string>
+    <string name="can_not_open_file">Can not open file</string>
+    <string name="btAllFileTitle">All File</string>
+    <string name="btFolderTitle">Folder</string>
+    <string name="display_Tab_Task_Title">显示任务管理器标签</string>
+    <string name="btShare">Share</string>
+    <string name="btDownload">Download</string>
+    <string name="msg_upload_refresh">重试</string>
+    <string name="msg_upload_dialog_title">正在上传</string>
+    <string name="msg_upload_file_error">上传文件失败!</string>
+    <string name="msg_upload_file_succeed">上传文件成功!</string>
+    <string name="msg_upload_createfolder_error">创建文件夹失败!</string>
+    <string name="msg_total_documents">共%d个文件</string>
+    <string name="msg_init_CommentScore">Support</string>
+    <string name="msg_init_CommentScore_button2">Continue using</string>
+    <string name="msg_success_copy_file">已成功复制%d个!</string>
+    <string name="msg_success_cut_file">已成功剪切%d个!</string>
+    <string name="msg_please_del_operate_file">请选择需要删除的文件</string>
+    <string name="msg_del_select_item">确定删除已选的选项吗?</string>
+    <string name="msg_please_operate">请选择操作!</string>
+    <string name="msg_dialog_info_title">提示</string>
+    <string name="msg_delselectfile">确定删除已选的文件吗?</string>
+    <string name="KuaiPanLoginPageTitle">金山快盘</string>
+    <string name="KuaiPan_Title">金山快盘</string>
+    <string name="m_ClearCache">清空缓存</string>
+    <string name="directory_LastPath">记录最后访问路径</string>
+    <string name="directory_DefaultPath">设置默认访问目录</string>
+    <string name="m_Logout">注销</string>
+    <string name="ScanTitle">扫描提示</string>
+    <string name="ScanContent">您的列表还没有扫描,立即进行一次全盘扫描</string>
+    <string name="ScanReContent">您确定要重新,进行全盘扫描</string>
+    <string name="KuaiPan_use_Title">金山快盘使用说明</string>
+    <string name="KuaiPan_use_Content">金山快盘使用说明</string>
+    <string name="setting_Feedback_Button">Feedback</string>
+    <string name="view_preferences">View Setting</string>
+    <string name="view_button">View</string>
+    <string name="viewStyle_Title">View</string>
+    <string name="view_button_desc">Grid,List</string>
+    <string name="sort_button">Sort By</string>
+    <string name="sort_button_desc">Name,Type,Size</string>
+    <string name="msg_copy_need_paste">Please copy the files you need to paste</string>
+    <string name="msg_loading_data">Loading...</string>
+    <string name="msg_not_find_file">Not find the file!</string>
+    <string name="msg_sorry_file_permissions">sorry,The file access permissions is not enough!</string>
+    <string name="msg_sorry_file_not_exist_permissions">The folder does not exist or access rights is not enough!</string>
+    <string name="msg_please_enter_file">Please enter the name</string>
+    <string name="msg_you_want_quit">Sure to exit?</string>
+    <string name="dlg_press_again_to_exit_the_program">Press again to exit the program</string>
+    <string name="msg_Please_select_cut_file">Please select the need to cut the file</string>
+    <string name="msg_Please_select_copy_file">Please select the need to copy the file</string>
+    <string name="msg_Please_select_instal_file">Please select the file you need to install</string>
+    <string name="msg_Please_select_backup_program">Please select the backup program</string>
+    <string name="msg_Please_select_uninstall_program">Please select the need to uninstall the program</string>
+    <string name="msg_failed_create">Failed to create</string>
+    <string name="msg_file_already_exists">The file already exists</string>
+    <string name="msg_folder_already_exists">The folder already exists</string>
+    <string name="msg_file_name_no_empty">The file name can not be empty</string>
+    <string name="msg_folder_name_no_empty">The folder name can not be empty!</string>
+    <string name="btApkTitle">Apks</string>
+    <string name="msg_backups_file">Backups</string>
+    <string name="msg_deleted_files">Deleted</string>
+    <string name="btRefreshTitle">Refresh</string>
+    <string name="btAllKillProc">Kill Apps</string>
+    <string name="btUserAppTitle">User</string>
+    <string name="btSystemAppTitle">System</string>
+    <string name="not_delete_file_authority">No Permission To Delete</string>
+    <string name="display_preferences">Display Settings</string>
+    <string name="display_ScreenRotate">Auto-rotate screen</string>
+    <string name="display_Tools_Title">Display the toolbar</string>
+    <string name="display_Tab_Title">Display tabs</string>
+    <string name="display_ShowHideFile_Title">Show hidden files</string>
+    <string name="directory_preferences">Directory settings</string>
+    <string name="directory_CurrentPath">Set Current directory to default directory </string>
+    <string name="replacement_preferences">Restore Settings</string>
+    <string name="about_preferences">About </string>
+    <string name="about_CommentScore">Support</string>
+    <string name="SearchResult_Title">Search Results</string>
+    <string name="SearchFileDialog_Title">Search Files</string>
+    <string name="search">Search</string>
+    <string name="SearchSubdirectory">Search Subfolders</string>
+    <string name="SearchCaseSensitive">Case sensitive</string>
+    <string name="SearchHide">Search Hidden files</string>
+    <string name="aboutContent">\nDeveloper:kenny\nE-mail:68711120@126.com\n\nThank you for using this software！Welcome to give us your precious opinions and constructive suggestions!  If you have any inconvenient to use, please give us feedback.</string>
+    <string name="commentContent">No company background, without teamwork，I finished this software in my spare time. It will continue be improved. Thank you for your support and  feedback. Very glad to see your score. thank you!</string>
+    <string name="set_aboutTitle">About</string>
+    <string name="ok">OK</string>
+    <string name="done">Done</string>
+    <string name="msg_can_not_operated">The document can not be operated.</string>
+    <string name="msg_Scan_Finish">Scan finish!</string>
+    <string name="msg_Send">Send</string>
+    <string name="lable_music">Music:</string>
+    <string name="lable_document">Document:</string>
+    <string name="lable_video">Video:</string>
+    <string name="lable_webpage">Html:</string>
+    <string name="lable_zip">Zip:</string>
+    <string name="lable_apk">App:</string>
+    <string name="lable_pic">Pic:</string>
+    <string name="lable_External">SDCard:</string>
+    <string name="lable_Available">Available:</string>
+    <string name="lable_Internal">Memory:</string>
+    <string name="error_lable">Error:</string>
+    <string name="palseFileEvent_Title">Palseing</string>
+    <string name="deleteFileEvent_Title">Deleteing</string>
+    <string name="installFileEvent_Title">Install</string>
+
+    <!-- menu -->
+    <string name="aboutTitle">About</string>
+    <string name="m_New">New</string>
+    <string name="m_About">About</string>
+    <string name="m_List">List</string>
+    <string name="m_Grid">Grid</string>
+    <string name="m_Feedback">Feedback</string>
+    <string name="m_Search">Search</string>
+    <string name="m_Setting">Setting</string>
+    <string name="m_Exit">Exit</string>
+    <!-- menu end -->
+    <!-- bottom tools button title -->
+
+    <string name="btDownLoad">DownLoad</string>
+    <string name="btSelectVisible">Select</string>
+    <string name="btSelect">Select</string>
+    <string name="btSelectAll">Select All</string>
+    <string name="btNew">New</string>
+    <string name="btCopy">Copy</string>
+    <string name="btCut">Cut</string>
+    <string name="btPaste">Paste</string>
+    <string name="btDelete">Delete</string>
+    <string name="btBack">Back</string>
+    <string name="btRefresh">Refresh</string>
+    <string name="btScan">Scan</string>
+    <string name="btBackUp">BackUp</string>
+    <string name="btUnInstall">UnInstall</string>
+    <string name="btInstall">Install</string>
+    <string name="btSend">Send</string>
+    <string name="btCancel">Cancel</string>
+    <string name="btUpLoad">UpLoad</string>
+    <string name="btExit">Exit</string>
+    <!-- audio start -->
+    <string name="audio_playing_title">Playing</string>
+    <!-- audio end -->
+    <!-- main_tools bt_title -->
+    <string name="Main_LocalPage_Title">Local</string>
+    <string name="Main_NetWorkPage_Title">Net</string>
+    <string name="Main_FavoritePage_Title">Favor</string>
+    <string name="Main_AppsPage_Title">App</string>
+    <string name="Main_TaskPage_Title">Task</string>
+    <!-- main_tools bt_title end -->
+    <!-- bottom tools button  end -->
+
+    <string name="back_previous">Back</string>
+    <string name="app_name">K-FileManager</string>
+    <string name="create_file">TextFile</string>
+    <string name="create_folder">Folder</string>
+    <string name="edit_search_hint">Please enter the search keyword</string>
+    <string name="CreateFileDialog_title">Create</string>
+    <string name="hint_createfile">Please enter the file name</string>
+    <string name="hint_createfolder">Please enter the Folder name</string>
+    <string name="lable_title">Title</string>
+    <string name="lable_detail">Content</string>
+    <string name="button_encode">Encode</string>
+    <string name="button_edit">Edit</string>
+    <string name="button_refer">Save</string>
+    <string name="button_back">Back</string>
+    <!-- details dialog start -->
+    <string name="DetailsDialog_Title">Details</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
+    <string name="file">File</string>
+    <string name="foler">Folder</string>
+    <string name="fileName">Name:</string>
+    <string name="fileType">Type:</string>
+    <string name="fileModified">Modified:</string>
+    <string name="fileSize">Size:</string>
+    <string name="fileCount">Count:</string>
+    <string name="fileTotalSpace">TotalSpace:</string>
+    <string name="fileFreeSpace">FreeSpace:</string>
+    <string name="filePath">Path:</string>
+    <string name="fileReadable">Readable:</string>
+    <string name="fileWriteable">Writeable:</string>
+    <string name="fileHidden">Hidden:</string>
+    <!-- details dialog end -->
+    <!-- Title -->
+    <string name="NetWorkPage_Title">Network-related operations</string>
+    <string name="AppsPage_Title">The installed software</string>
+    <string name="TaskPage_Title">The running software</string>
+    <string name="FavoritePage_Title">The contents of the file Classification</string>
+    <!-- EditTxtReader 编辑器 -->
+    <string name="ZipDialog_Title">Create Zip file</string>
+    <string name="RenameDialog_Title">Rename</string>
+    <string name="EditTxtActivity_Name">K-TextEditor</string>
+    <string name="GalleryActivity_Name">K-PictureViewer</string>
+    <string name="FavoriteType">FavoriteType.xml</string>
+    <string name="NetConfig">NetConfig.kf</string>
+    <string name="FTPClientConfig">NetClientConfig.kf</string>
+    <string name="webside">		http://joke.km530.com/m/KM530.aspx</string>
+    <string name="websidedata">		http://joke.km530.com/</string>
+    <string name="labeUserName">User:</string>
+    <string name="labePassWord">PassWord:</string>
+    <string name="labeShareFolder">ShareFolder:</string>
+
+    <!-- 错误反馈 窗体 -->
+
+    <string name="submit">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="add_user">AddUser</string>
+    <string name="manage_users">Manage Users</string>
+    <string name="swiftp_name">FTP Server</string>
+    <string name="server_options">Server Options</string>
+    <string name="start_server"><b>Start Server</b></string>
+    <string name="stop_server"><b>Stop Server</b></string>
+    <string name="config_wifi"><b>Config WIFI</b></string>
+    <string name="server_status">Server Status:</string>
+    <string name="my_url_is">Server URL:</string>
+    <string name="cannot_start_until_wifi">No WIFI</string>
+    <string name="wifi_waiting">WIFI waiting</string>
+    <string name="last_error">Error msg:</string>
+    <string name="cant_get_url">unknown</string>
+    <string name="running">Running</string>
+    <string name="stopped">Stoped</string>
+    <string name="unknown">unknown</string>
+    <string name="session_monitor">Session monitor enabled:</string>
+    <string name="server_log">Server log enabled:</string>
+    <string name="submit_bug_reports">"Submit bug reports: "</string>
+    <string name="instructions_label">Instructions</string>
+    <string name="config_ftp">Configuration</string>
+    <string name="save_settings">Save</string>
+    <string name="config_username">UserName:</string>
+    <string name="config_password">PassWord:</string>
+    <string name="config_portnum">PortNum:</string>
+    <string name="wifi_addr">IP Address:</string>
+    <string name="wifi_SSID">SSID:</string>
+    <string name="wifi_status">Wifi Status:</string>
+    <string name="wifi_mac">MAC Address:</string>
+    <string name="wifi_enabled">Enabled</string>
+    <string name="wifi_disabled">Disabled</string>
+    <string name="username_validation_error">User Name:Contains at least one character</string>
+    <string name="password_validation_error">User Password: at least contain one character.</string>
+    <string name="port_validation_error">FTP port must be between 1-65535. Recommend the use of 8000 after the port to avoid conflict and other services.</string>
+    <string name="wifi_state_receiver_label">WifiStateReceiver</string>
+    <string name="enabled">Enabled</string>
+    <string name="disabled">Disabled</string>
+    <string name="waiting">waiting</string>
+    <string name="error_dialog_label">SwiFTP error</string>
+    <string name="the_error_was">The error was:</string>
+    <string name="stay_within_folder">Sharing the root folder:</string>
+    <string name="accept_connections_from_net">Network proxy connection</string>
+    <string name="accept_connections_from_wifi">WIFI connection</string>
+    <string name="stay_awake">Keep the wake-up state</string>
+    <string name="at_least_one_listener">Please check either the wifi or net checkbox</string>
+    <string name="chrootDir_validation_error">The folder to stay within is either invalid \or nonexistent.</string>
+    <string name="violates_chroot">550 Server settings prevent leaving directory\r\n</string>
+    <string name="must_config">Before SwiFTP can run, a username and password must be set up.</string>
+    <string name="notif_server_starting">Start the FTP server</string>
+    <string name="notif_title">Start the FTP server</string>
+    <string name="notif_text">The accessible IP address:</string>
+    <string name="proxy_experimental">Experimental global proxy</string>
+    <string name="proxy_status">Proxy status:</string>
+    <string name="proxy_transferred">Used:</string>
+    <string name="proxy_url">URL:</string>
+    <!-- pst_xx are proxy states -->
+    <string name="pst_initial">none yet</string>
+    <string name="pst_connecting">Connecting</string>
+    <string name="pst_connected">Connected</string>
+    <string name="pst_failed">failed</string>
+    <string name="pst_unreachable">unreachable</string>
+    <string name="pst_disconnected">disconnected</string>
+    <string name="proxy_news">News:</string>
+    <string name="storage_warning">Warning: SD memory card is not available. Memory card files can not be accessed!</string>
+    <string name="config_header">Config Settings</string>
+
+    <!-- Wifi未连接 -->
+    <string name="status_unwifi">Not found the WIFI network available</string>
+    <string name="status_desc_unwifi">Please check WIFI is available</string>
+    <!-- 未找到SD卡 -->
+    <string name="status_unSDCard">SD card is not to find</string>
+    <string name="status_desc_unSDCard">Not find the SD card, SD card inside the content will not be able to access</string>
+    <!-- 未启动 -->
+    <string name="status_server_off">Service is not started</string>
+    <string name="status_desc_server_off">Can remotely manage files on your phone after the start</string>
+    <!-- 已经启动 -->
+    <string name="status_server_on">Running</string>
+    <string name="status_desc_server_on">Enter the following link in the address bar</string>
+
+    <!-- mp3 -->
+    <string name="local_service_connected">local_service_connected</string>
+    <string name="local_service_disconnected">local_service_disconnected</string>
+    <string name="local_service_started">local_service_started</string>
+    <!-- mp3 end -->
+
+</resources>

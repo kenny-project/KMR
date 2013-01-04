@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/CreateFile_BG"
+    android:orientation="vertical" >
+
+    <TableLayout
+        android:id="@+id/tableLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="@string/fileName"
+                android:textColor="@color/NetStatusTextColor"
+                android:textSize="16sp" />
+            <!-- A small spacer between the columns -->
+
+            <FrameLayout
+                android:layout_width="3sp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tvfileName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/unknown"
+                android:textColor="@color/NetStatusTextColor"
+                android:textSize="16sp" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="@string/fileType"
+                android:textColor="@color/NetStatusTextColor"
+                android:textSize="16sp" />
+            <!-- A small spacer between the columns -->
+
+            <FrameLayout
+                android:layout_width="3sp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tvFileType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/unknown"
+                android:textColor="@color/NetStatusTextColor"
+                android:textSize="16sp" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="@string/filePath"
+                android:textColor="@color/NetStatusTextColor"
+                android:textSize="16sp" />
+            <!-- A small spacer between the columns -->
+
+            <FrameLayout
+                android:layout_width="3sp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tvfilePath"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/unknown"
+                android:textColor="@color/NetStatusTextColor"
+                android:textSize="16sp" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="@string/fileModified"
+                android:textColor="@color/NetStatusTextColor"
+                android:textSize="16sp" />
+            <!-- A small spacer between the columns -->
+
+            <FrameLayout
+                android:layout_width="3sp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tvFileModified"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/unknown"
+                android:textColor="@color/NetStatusTextColor"
+                android:textSize="16sp" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="@string/fileSize"
+                android:textColor="@color/NetStatusTextColor"
+                android:textSize="16sp" />
+            <!-- A small spacer between the columns -->
+
+            <FrameLayout
+                android:layout_width="3sp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tvFileSize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/unknown"
+                android:textColor="@color/NetStatusTextColor"
+                android:textSize="16sp" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="@string/fileCount"
+                android:textColor="@color/NetStatusTextColor"
+                android:textSize="16sp" />
+
+            <FrameLayout
+                android:layout_width="3sp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tvFileCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/unknown"
+                android:textColor="@color/NetStatusTextColor"
+                android:textSize="16sp" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="@string/fileTotalSpace"
+                android:textColor="@color/NetStatusTextColor"
+                android:textSize="16sp" />
+            <!-- A small spacer between the columns -->
+
+            <FrameLayout
+                android:layout_width="3sp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tvFileTotalSpace"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/unknown"
+                android:textColor="@color/NetStatusTextColor"
+                android:textSize="16sp" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="@string/fileFreeSpace"
+                android:textColor="@color/NetStatusTextColor"
+                android:textSize="16sp" />
+            <!-- A small spacer between the columns -->
+
+            <FrameLayout
+                android:layout_width="3sp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tvFileFreeSpace"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/unknown"
+                android:textColor="@color/NetStatusTextColor"
+                android:textSize="16sp" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="@string/fileReadable"
+                android:textColor="@color/NetStatusTextColor"
+                android:textSize="16sp" />
+            <!-- A small spacer between the columns -->
+
+            <FrameLayout
+                android:layout_width="3sp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tvFileReadable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/unknown"
+                android:textColor="@color/NetStatusTextColor"
+                android:textSize="16sp"
+                />
+
+            <CheckBox
+                android:id="@+id/cbFileReadable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CheckBox" 
+                android:visibility="gone" 
+                />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="@string/fileWriteable"
+                android:textColor="@color/NetStatusTextColor"
+                android:textSize="16sp" />
+            <!-- A small spacer between the columns -->
+
+            <FrameLayout
+                android:layout_width="3sp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tvFileWriteable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/unknown"
+                android:textColor="@color/NetStatusTextColor"
+                android:textSize="16sp"
+                />
+
+            <CheckBox
+                android:id="@+id/cbFileWriteable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CheckBox" 
+                android:visibility="gone" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="@string/fileHidden"
+                android:textColor="@color/NetStatusTextColor"
+                android:textSize="16sp" />
+            <!-- A small spacer between the columns -->
+
+            <FrameLayout
+                android:layout_width="3sp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tvFileHidden"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/unknown"
+                android:textColor="@color/NetStatusTextColor"
+                android:textSize="16sp"
+                />
+
+            <CheckBox
+                android:id="@+id/cbFileHidden"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CheckBox" 
+                android:visibility="gone" 
+                />
+        </TableRow>
+    </TableLayout>
+
+</LinearLayout>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items>
+
+    <item
+        ends="mp3|mid|xmf|wav|ogg|wma|wav"
+        img="f_audio.png"/>
+
+    <item
+        ends="jpg|gif|png|bmp|jpeg|ico"
+        img="f_image.png"/>
+
+    <item
+        ends="3gp|mp4|rmvb|avi|rm|flv"
+        img="f_video.png"/>
+
+    <item
+        ends="txt|pdf|ini|log"
+        img="f_txt.png"/>
+
+    <item
+        ends="html|htm|mht|asp|jsp|xml"
+        img="f_web.png"/>
+
+    <item
+        ends="zip|rar|7z|gz"
+        img="f_zip.png"/>
+
+    <item
+        ends="apk|exe"
+        img="f_app.png"/>
+    <item
+        ends="vcf"
+        img="f_vcf.png"/>
+    <item
+        ends="pdf"
+        img="f_pdf.png"/>
+    <item
+        ends="docx"
+        img="f_doc.png"/>
+    <item
+        ends="doc"
+        img="f_doc.png"/>
+
+        <item
+        ends="psd"
+        img="f_psd.png"/>
+    <item
+        ends="xls"
+        img="f_xls.png"/>
+
+</items>
