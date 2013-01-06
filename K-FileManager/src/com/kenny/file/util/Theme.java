@@ -67,7 +67,10 @@ public class Theme
    {
       return nStyleType;
    }
-   
+ /**
+  * 
+  * 1:Grid: 2:List
+  */
    public static void setStyleMode(int styleType)
    {
       nStyleType = styleType;
@@ -140,7 +143,7 @@ public class Theme
       TextFontSize = SaveData.Read(inActivity, "HCFontSize", 21);
       setThemeMode(SaveData.Read(inActivity, "ThemeMode", 0));// 显示主题
       setStyleMode(SaveData.Read(inActivity, StyleType, 0));
-      setSortMode(SaveData.Read(inActivity, "sortMode", 0));
+      setSortMode(SaveData.Read(inActivity, "sortMode", 10));
       setTaskVisible(SaveData.Read(inActivity, "TaskVisible", false));
       setToolsVisible(SaveData.Read(inActivity, Const.strToolsVisible, true));
       setTabsVisible(SaveData.Read(inActivity, Const.strTabVisible, true));

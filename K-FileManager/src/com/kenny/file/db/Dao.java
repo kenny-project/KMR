@@ -7,7 +7,6 @@ import java.util.List;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteStatement;
 import android.util.Log;
 
 import com.framework.log.P;
@@ -150,26 +149,6 @@ public class Dao extends DBHelper
       }
    }
    
-   /**
-    * 保存 下载的具体信息
-    */
-   public void InsertHistory(int flags, String path, long size)
-   {
-      synchronized (_readLock)
-      {
-         SQLiteDatabase database = this.getWritableDatabase();
-         database.delete(DBHelper.hisTable, favFilds[1] + "=? and "
-	     + favFilds[2] + "=?", new String[]
-         { String.valueOf(flags), path });
-         String sql = "";
-         sql = "insert into " + DBHelper.hisTable + "(" + DBHelper.favFilds[1]
-	     + "," + DBHelper.favFilds[2] + "," + DBHelper.favFilds[3]
-	     + ") values (?,?,?)";
-         Object[] bindArgs =
-         { flags, path, size };
-         database.execSQL(sql, bindArgs);
-      }
-   }
    
    /**
     * 保存 下载的具体信息
@@ -219,61 +198,7 @@ public class Dao extends DBHelper
       }
    }
    
-   /**
-    * 获取用户收藏的所有数据 0:收藏 1:历史记录
-    */
-   public List<FavorFileBean> getHistoryInfos(String flags)
-   {
-      synchronized (_readLock)
-      {
-         List<FavorFileBean> list = new ArrayList<FavorFileBean>();
-         SQLiteDatabase database = this.getReadableDatabase();
-         String sql = "";
-         Cursor cursor = null;
-         if (flags.equals("0"))
-         {
-	  sql = "select " + DBHelper.favFilds[0] + ", "
-	        + DBHelper.favFilds[1] + ", " + DBHelper.favFilds[2]
-	        + " from " + DBHelper.hisTable + " where "
-	        + DBHelper.favFilds[1] + "=?";
-         }
-         else
-         {
-	  sql = "select " + DBHelper.favFilds[0] + ", "
-	        + DBHelper.favFilds[1] + ", " + DBHelper.favFilds[2]
-	        + " from " + DBHelper.hisTable + " where "
-	        + DBHelper.favFilds[1] + "=?" + " ORDER BY " + favFilds[0]
-	        + " desc ";
-         }
-         cursor = database.rawQuery(sql, new String[]
-         { flags });
-         
-         while (cursor.moveToNext())
-         {
-	  File mCurrentFile = new File(cursor.getString(2));
-	  
-	  FavorFileBean bean = new FavorFileBean(mCurrentFile,
-	        mCurrentFile.getName(), mCurrentFile.getPath(), false);
-	  bean.setId(cursor.getInt(0));
-	  bean.setFlag(cursor.getInt(1));
-	  bean.setDirectory(mCurrentFile.isDirectory());
-	  // bean.setItemCount(cursor.getInt(1));
-	  if (mCurrentFile.isDirectory())
-	  {
-	     String[] temp = mCurrentFile.list();
-	     if (temp != null)
-	     {
-	        bean.setItemCount(temp.length);
-	     }
-	  }
-	  bean.setLength(mCurrentFile.length());
-	  mCurrentFile.canWrite();
-	  list.add(bean);
-         }
-         cursor.close();
-         return list;
-      }
-   }
+
    
    /**
     * 得到相应分类的全部信息 bFlag:true:记录总的文件数及文件大小,boolean bFlag
@@ -747,7 +672,7 @@ public class Dao extends DBHelper
    }
    
    /**
-    * 下载完成后删除数据库中的数据
+    *清空APP列表数据
     */
    public void deleteAppAll()
    {
@@ -760,7 +685,7 @@ public class Dao extends DBHelper
    }
    
    /**
-    * 下载完成后删除数据库中的数据
+    * 清空收藏列表中的数据
     */
    public void deleteFavoritesAll()
    {
@@ -775,9 +700,70 @@ public class Dao extends DBHelper
    }
    
    /**
-    * 下载完成后删除数据库中的数据
+    * 历史记录相关处理函数
     */
-   public int deleteFavorite(int id)
+   /**
+    * 查看数据库中是否有数据
+    * nFlage:0:收藏夹 1:历史
+    * return :true:有数据 False:没数据
+    */
+   public boolean isHasHistory(int flags,String path)
+   {
+      synchronized (_readLock)
+      {
+         SQLiteDatabase database = this.getReadableDatabase();
+         String sql = "select count(*)  from "+DBHelper.hisTable+" where flags=? and "+DBHelper.favFilds[2]+"=?";
+         Cursor cursor = database.rawQuery(sql, new String[]
+         { String.valueOf(flags),path });
+         cursor.moveToFirst();
+         int count = cursor.getInt(0);
+         cursor.close();
+         return count>0;
+      }
+   }
+   /**
+    * 删除指定ID的历史及收藏记录
+    * nFlage:0:收藏 1:历史
+    */
+   public int deleteHistory(int flags,String path)
+   {
+      synchronized (_readLock)
+      {
+         SQLiteDatabase database = this.getWritableDatabase();
+         int result = database.delete(DBHelper.hisTable,"flags=? and "+DBHelper.favFilds[2]+"=?", new String[]
+	             { String.valueOf(flags),path });
+         database.close();
+         return result;
+      }
+   }
+   /**
+    * 添加历史记录
+    * nFlage:0:收藏 1:历史
+    * path:路径
+    * size:文件大小
+    */
+   public void InsertHistory(int flags, String path, long size)
+   {
+      synchronized (_readLock)
+      {
+         SQLiteDatabase database = this.getWritableDatabase();
+         database.delete(DBHelper.hisTable, favFilds[1] + "=? and "
+	     + favFilds[2] + "=?", new String[]
+         { String.valueOf(flags), path });
+         String sql = "";
+         sql = "insert into " + DBHelper.hisTable + "(" + DBHelper.favFilds[1]
+	     + "," + DBHelper.favFilds[2] + "," + DBHelper.favFilds[3]
+	     + ") values (?,?,?)";
+         Object[] bindArgs =
+         { flags, path, size };
+         database.execSQL(sql, bindArgs);
+      }
+   }
+   /**
+    * 删除指定ID的历史及收藏记录
+    * nFlage:0:收藏 1:历史
+    */
+   public int deleteHistory(int id)
    {
       synchronized (_readLock)
       {
@@ -791,7 +777,8 @@ public class Dao extends DBHelper
    }
    
    /**
-    * 下载完成后删除数据库中的数据 0:收藏 1:历史
+    * 下载完成后删除数据库中的数据 
+    * nFlage:0:收藏 1:历史
     */
    public void ClearHistory(int nFlage)
    {
@@ -802,6 +789,63 @@ public class Dao extends DBHelper
 	     new String[]
 	     { String.valueOf(nFlage) });
          database.close();
+      }
+   }
+   
+   /**
+    * 获取用户收藏的所有数据 
+    * nFlage:0:收藏 1:历史
+    */
+   public List<FavorFileBean> getHistoryInfos(String flags)
+   {
+      synchronized (_readLock)
+      {
+         List<FavorFileBean> list = new ArrayList<FavorFileBean>();
+         SQLiteDatabase database = this.getReadableDatabase();
+         String sql = "";
+         Cursor cursor = null;
+         if (flags.equals("0"))
+         {
+	  sql = "select " + DBHelper.favFilds[0] + ", "
+	        + DBHelper.favFilds[1] + ", " + DBHelper.favFilds[2]
+	        + " from " + DBHelper.hisTable + " where "
+	        + DBHelper.favFilds[1] + "=?";
+         }
+         else
+         {
+	  sql = "select " + DBHelper.favFilds[0] + ", "
+	        + DBHelper.favFilds[1] + ", " + DBHelper.favFilds[2]
+	        + " from " + DBHelper.hisTable + " where "
+	        + DBHelper.favFilds[1] + "=?" + " ORDER BY " + favFilds[0]
+	        + " desc ";
+         }
+         cursor = database.rawQuery(sql, new String[]
+         { flags });
+         
+         while (cursor.moveToNext())
+         {
+	  File mCurrentFile = new File(cursor.getString(2));
+	  
+	  FavorFileBean bean = new FavorFileBean(mCurrentFile,
+	        mCurrentFile.getName(), mCurrentFile.getPath(), false);
+	  bean.setId(cursor.getInt(0));
+	  bean.setFlag(cursor.getInt(1));
+	  bean.setDirectory(mCurrentFile.isDirectory());
+	  // bean.setItemCount(cursor.getInt(1));
+	  if (mCurrentFile.isDirectory())
+	  {
+	     String[] temp = mCurrentFile.list();
+	     if (temp != null)
+	     {
+	        bean.setItemCount(temp.length);
+	     }
+	  }
+	  bean.setLength(mCurrentFile.length());
+	  mCurrentFile.canWrite();
+	  list.add(bean);
+         }
+         cursor.close();
+         return list;
       }
    }
 }

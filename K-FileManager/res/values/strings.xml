@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     
+    <string name="btMenuFavorites_Title">收藏夹</string>
+    <string name="btMenuListMode_Grid">图标模式</string>
+    <string name="btMenuListMode_List">列表模式</string>
+    <string name="btMenuShowOrHide_False">不显示隐藏文件</string>
+    <string name="btMenuShowOrHide_True">显示隐藏文件</string>
     <string name="setting_theme_textbox">主题设置</string>
     <string name="setting_theme_button">主题设置</string>
     <string name="setting_theme_button_desc">设置不同主题以满足您的风格</string>

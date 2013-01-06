@@ -176,20 +176,6 @@
         android:orientation="horizontal"
         android:visibility="gone"
          >
-
-        <Button
-            android:id="@+id/btSelectVisible"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginRight="1dip"
-            android:layout_weight="1"
-            android:background="#00000000"
-            android:drawableTop="@drawable/menu_selall"
-            android:text="@string/btSelectVisible"
-            android:textColor="@color/ContentTitleText"
-            android:textSize="13dip" />
-
         <Button
             android:id="@+id/btSelectAll"
             android:layout_width="wrap_content"
@@ -292,10 +278,9 @@
         android:layout_below="@id/lyTools2"
         android:clickable="true"
         android:visibility="gone" >
-
         <include
             android:id="@+id/main_menu"
             android:layout_marginRight="10dip"
-            layout="@layout/calendar_setting_pannal" />
+            layout="@layout/menu_local_pannal" />
     </RelativeLayout>
 </RelativeLayout>

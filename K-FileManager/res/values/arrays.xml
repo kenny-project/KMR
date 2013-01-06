@@ -22,8 +22,8 @@
     </string-array>
     
     <string-array name="viewSort">
-        <item>默认</item>
-        <item>名称</item>
+        <item>默认排序</item>
+        <item>文件名称</item>
         <item>文件大小</item>
         <item>访问时间</item>
     </string-array>
