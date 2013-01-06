@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+  
+    android:layout_centerVertical="true" >
+
+    <LinearLayout
+        android:layout_width="150dip"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/rl_voice"
+            android:layout_width="fill_parent"
+            android:layout_height="40dip">
+
+            <Button
+                android:id="@+id/btMenuListSort"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dip"
+                android:background="@drawable/pannal_btn_bg"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dip"
+                android:text="@string/viewStyle_Title"
+                android:textColor="#ffffff"
+                android:textSize="13sp" />
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dip"
+            android:scaleType="fitXY"
+            android:src="@drawable/setting_line" />
+
+        <RelativeLayout
+            android:id="@+id/rl_auto"
+            android:layout_width="fill_parent"
+            android:layout_height="40dip"
+            android:gravity="left" >
+
+            <Button
+                android:id="@+id/btMenuListMode"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dip"
+                android:background="@drawable/pannal_btn_bg"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dip"
+                android:text="@string/viewStyle_Title"
+                android:textColor="#ffffff"
+                android:textSize="13sp" />
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dip"
+            android:scaleType="fitXY"
+            android:src="@drawable/setting_line" />
+
+            <Button
+                android:id="@+id/btMenuShowOrHide"
+                android:layout_width="fill_parent"
+                android:layout_height="40dip"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dip"
+                android:background="@drawable/pannal_btn_bg"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dip"
+                android:text="显示隐藏文件"
+                android:textColor="#ffffff"
+                android:textSize="13sp" />
+          <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dip"
+            android:scaleType="fitXY"
+            android:src="@drawable/setting_line" />
+
+          <Button
+                android:id="@+id/btMenuFavorites"
+                android:layout_width="fill_parent"
+                android:layout_height="40dip"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dip"
+                android:background="@drawable/pannal_btn_bg"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dip"
+                android:text="@string/btMenuFavorites_Title"
+                android:textColor="#ffffff"
+                android:textSize="13sp" />
+    </LinearLayout>
+
+</RelativeLayout>
