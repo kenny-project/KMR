@@ -12,6 +12,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Rect;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -28,14 +29,11 @@ import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
-import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -58,7 +56,6 @@ import com.kenny.file.bean.TreeElement;
 import com.kenny.file.commui.ListHeaderView;
 import com.kenny.file.dialog.CreateFileDialog;
 import com.kenny.file.dialog.FavoritesDialog;
-import com.kenny.file.dialog.KDialog;
 import com.kenny.file.dialog.LocalAddressDialog;
 import com.kenny.file.dialog.PopLocalMenu;
 import com.kenny.file.dialog.SearchFileDialog;
@@ -84,7 +81,7 @@ public class LocalFilePage extends MultiItemPage implements
 	private HashMap<String, Integer> mScrollList = new HashMap<String, Integer>();
 	private View m_lvMain;// 主页面
 	private TextView mPath;
-	private ListView m_locallist, m_TreeLocallist;
+	private ListView m_locallist, m_TreeLocallist, lvAddressList;
 	private GridView m_localGrid;
 	private FileAdapter fileAdapter;
 	private TreeViewAdapter treeViewAdapter;// 树结构
@@ -92,13 +89,12 @@ public class LocalFilePage extends MultiItemPage implements
 	// private int ListPos;
 	private int nStyle = 0, nSortMode = 0; // false:listView
 	// true:gridView
-	private Button btToolsMemu;
-	
-	private Button btMenuListSort,btMenuListMode,btMenuShowOrHide,btMenuFavorites;//菜单项
+
+	private Button btMenuListSort, btMenuListMode, btMenuShowOrHide,
+			btMenuFavorites;// 菜单项
 	private Button btFileType, btListStyle, btFavorite;
 	private View lyBTools;
 	private ArrayList<TreeElement> mPdfOutlinesCount = new ArrayList<TreeElement>();
-	private int mFileType = 0;// 显示类型
 	private SearchResultPage mSearchPage;
 
 	public LocalFilePage(Activity context) {
@@ -139,6 +135,8 @@ public class LocalFilePage extends MultiItemPage implements
 		}
 	};
 
+	
+
 	public void onCreate() {
 		setContentView(R.layout.localpage);
 		super.onCreate();
@@ -148,6 +146,10 @@ public class LocalFilePage extends MultiItemPage implements
 		m_lvMain = findViewById(R.id.lvMain);
 		m_TreeLocallist = (ListView) findViewById(R.id.lvTreeLocallist);
 		m_TreeLocallist.setOnItemClickListener(mItemClickListenter);
+
+		lvAddressList = (ListView) findViewById(R.id.lvAddressList);
+		lvAddressList.setOnItemClickListener(mAddressItemClickListenter);
+
 		m_locallist = (ListView) findViewById(R.id.lvLocallist);
 		AnimationSet set = new AnimationSet(true);
 
@@ -162,16 +164,13 @@ public class LocalFilePage extends MultiItemPage implements
 		set.addAnimation(animation);
 		LayoutAnimationController controller = new LayoutAnimationController(
 				set, 0.5f);
-		// m_locallist.setLayoutAnimation(controller);
 
 		m_locallist.setOnScrollListener(m_localOnScrollListener);
 		m_locallist.setOnItemLongClickListener(this);
-		// m_locallist.setOnLongClickListener(this);
 		m_locallist.setOnItemClickListener(this);
 
 		m_localGrid = (GridView) findViewById(R.id.gvLocallist);
 		m_localGrid.setOnItemClickListener(this);
-		// m_localGrid.setOnLongClickListener(this);
 		m_localGrid.setOnItemLongClickListener(this);
 		m_localGrid.setOnScrollListener(m_localOnScrollListener);
 		mPath = (TextView) findViewById(R.id.mCurrentPath);
@@ -179,27 +178,19 @@ public class LocalFilePage extends MultiItemPage implements
 
 			public void onClick(View v) {
 				MobclickAgent.onEvent(m_act, "localEvent", "LocalAddress");
-				LocalAddressDialog.ShowDialog(m_act,localManage.getCurrentPath());
-			}
-		});
-		Spinner spinner = (Spinner) findViewById(R.id.spSpinner);
-		spinner.setPrompt("类型");
-
-		String[] items = m_act.getResources().getStringArray(R.array.fileType);
-		ArrayAdapter<String> array_adapter = new ArrayAdapter<String>(m_act,
-				android.R.layout.simple_spinner_item, items);
-		array_adapter
-				.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		spinner.setAdapter(array_adapter);
-		spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
-
-			public void onItemSelected(AdapterView<?> parent, View view,
-					int position, long id) {
-				mFileType = position;
-				localManage.Refresh();
-			}
-
-			public void onNothingSelected(AdapterView<?> parent) {
+				Rect rect = new Rect();
+				findViewById(R.id.lyTools2).getGlobalVisibleRect(rect);
+				LocalAddressDialog.ShowDialog(m_act,localManage.getCurrentPath(),rect.bottom);
+//				if (lvAddressList.getVisibility() == View.GONE) {
+//					List<FileBean> mFileList = AddressList(localManage
+//							.getCurrentPath());
+//					AddressAdapter tempAdapter = new AddressAdapter(m_act,
+//							1, mFileList,R.layout.listitem_address_item);
+//					lvAddressList.setAdapter(tempAdapter);
+//					lvAddressList.setVisibility(View.VISIBLE);
+//				} else {
+//					lvAddressList.setVisibility(View.GONE);
+//				}
 			}
 		});
 		mFileList = localManage.getFileList();
@@ -215,12 +206,12 @@ public class LocalFilePage extends MultiItemPage implements
 		// m_locallist.setDivider(m_act.getResources().getDrawable(
 		// R.drawable.listview_line));
 		localManage.setNotifyData(this);
-		m_locallist.setOnTouchListener(new OnTouchListener() {
-
-			public boolean onTouch(View v, MotionEvent event) {
-				return false;
-			}
-		});
+//		m_locallist.setOnTouchListener(new OnTouchListener() {
+//
+//			public boolean onTouch(View v, MotionEvent event) {
+//				return false;
+//			}
+//		});
 		lyBTools = (View) findViewById(R.id.lyBTools);
 		btFileType = (Button) findViewById(R.id.btFileType);
 		btFileType.setOnClickListener(this);
@@ -262,18 +253,16 @@ public class LocalFilePage extends MultiItemPage implements
 
 		btButton = (Button) findViewById(R.id.btSelectAll);
 		btButton.setOnClickListener(this);
-		
+
 		SwitchStyle(Theme.getStyleMode());
 		onCreateMenu();
 	}
-	public void onCreateMenu()
-	{
+
+	public void onCreateMenu() {
 		final RelativeLayout rlMenu = (RelativeLayout) findViewById(R.id.ip_menu);
-		rlMenu.setOnTouchListener(new OnTouchListener()
-		{
+		rlMenu.setOnTouchListener(new OnTouchListener() {
 			@Override
-			public boolean onTouch(View v, MotionEvent event)
-			{
+			public boolean onTouch(View v, MotionEvent event) {
 				rlMenu.setVisibility(View.GONE);
 				return false;
 			}
@@ -281,52 +270,44 @@ public class LocalFilePage extends MultiItemPage implements
 		final MGoneAinm goneAnim = new MGoneAinm(m_act, rlMenu,
 				findViewById(R.id.main_menu));
 		Button btToolsMemu = (Button) findViewById(R.id.btToolsMemu);
-		btToolsMemu.setOnClickListener(new OnClickListener()
-		{
+		btToolsMemu.setOnClickListener(new OnClickListener() {
 
 			@Override
-			public void onClick(View v)
-			{
+			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				if (rlMenu.getVisibility() == View.VISIBLE)
-				{
+				if (rlMenu.getVisibility() == View.VISIBLE) {
 					goneAnim.ShowAnim();
-				}
-				else
+				} else 
 				{
-					if(Theme.getShowHideFile())
+					if(lvAddressList.getVisibility()==View.VISIBLE)
 					{
-						btMenuShowOrHide.setText(R.string.btMenuShowOrHide_False);
+						lvAddressList.setVisibility(View.GONE);
 					}
-					else
-					{
-						
-						btMenuShowOrHide.setText(R.string.btMenuShowOrHide_True);
+					if (Theme.getShowHideFile()) {
+						btMenuShowOrHide
+								.setText(R.string.btMenuShowOrHide_False);
+					} else {
+
+						btMenuShowOrHide
+								.setText(R.string.btMenuShowOrHide_True);
 					}
-					if(	Theme.getStyleMode()==1)
-					{
+					if (Theme.getStyleMode() == 1) {
 						btMenuListMode.setText(R.string.btMenuListMode_List);
-					}
-					else
-					{
+					} else {
 						btMenuListMode.setText(R.string.btMenuListMode_Grid);
 					}
-					new MVisibleAinm(m_act, rlMenu, findViewById(R.id.main_menu))
-							.ShowAnim();
+					new MVisibleAinm(m_act, rlMenu,
+							findViewById(R.id.main_menu)).ShowAnim();
 
 				}
 			}
 		});
-		OnClickListener menuListener=new OnClickListener()
-		{
+		OnClickListener menuListener = new OnClickListener() {
 
 			@Override
-			public void onClick(View v)
-			{
-				// TODO Auto-generated method stub
+			public void onClick(View v) {
 				goneAnim.ShowAnim();
-				switch(v.getId())
-				{
+				switch (v.getId()) {
 				case R.id.btMenuListSort:
 					new ViewSortDialog().ShowDialog(m_act, LocalFilePage.this);
 					break;
@@ -338,13 +319,15 @@ public class LocalFilePage extends MultiItemPage implements
 					}
 					break;
 				case R.id.btMenuShowOrHide:
-				      Theme.setShowHideFile(!Theme.getShowHideFile());
-				      Theme.Save(m_act);
-						localManage.setFilePath(localManage.getCurrentPath(),
-								Const.cmd_Local_List_Go);
+					Theme.setShowHideFile(!Theme.getShowHideFile());
+					Theme.Save(m_act);
+					localManage.setFilePath(localManage.getCurrentPath(),
+							Const.cmd_Local_List_Go);
 					break;
 				case R.id.btMenuFavorites:
-					FavoritesDialog.ShowDialog(m_act);
+					Rect rect = new Rect();
+					findViewById(R.id.btToolsMemu).getGlobalVisibleRect(rect);
+					FavoritesDialog.ShowDialog(m_act, rect.bottom);
 					break;
 				}
 			}
@@ -357,12 +340,11 @@ public class LocalFilePage extends MultiItemPage implements
 		btMenuShowOrHide.setOnClickListener(menuListener);
 		btMenuFavorites = (Button) findViewById(R.id.btMenuFavorites);
 		btMenuFavorites.setOnClickListener(menuListener);
-		
+
 	}
-	
+
 	public void onResume() {
 		P.v("Log.DEBUG", "onResume");
-		//
 		IntentFilter sdCardFilter = new IntentFilter(
 				Intent.ACTION_MEDIA_MOUNTED);
 		sdCardFilter.addAction(Intent.ACTION_MEDIA_UNMOUNTED);
@@ -432,7 +414,12 @@ public class LocalFilePage extends MultiItemPage implements
 					findViewById(R.id.main_menu)).ShowAnim();
 			return;
 		}
-
+		if(lvAddressList.getVisibility()==View.VISIBLE)
+		{
+			lvAddressList.setVisibility(View.GONE);
+			return;
+		}
+		
 		String currentPath = localManage.getCurrentPath();
 		if (mScrollList.containsKey(currentPath)) {
 			mScrollList.remove(currentPath);
@@ -518,15 +505,6 @@ public class LocalFilePage extends MultiItemPage implements
 		}
 	}
 
-	DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
-
-		public void onClick(DialogInterface dialog, int which) {
-			mFileType = which;
-			// localManage.setFileType(mFileType);
-			localManage.Refresh();
-		}
-	};
-
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.btToolsMemu:
@@ -534,8 +512,7 @@ public class LocalFilePage extends MultiItemPage implements
 		case R.id.btFavorite:
 			break;
 		case R.id.btFileType:
-			KDialog.ShowFileTypeArray(m_act, "类别", mFileType, listener);
-			// MobclickAgent.onEvent(m_act, "localEvent","Type");
+			//KDialog.ShowFileTypeArray(m_act, "类别", mFileType, listener);
 			break;
 		case R.id.btListSort:// 排序
 			new ViewSortDialog().ShowDialog(m_act, this);
@@ -666,16 +643,16 @@ public class LocalFilePage extends MultiItemPage implements
 			m_locallist.setAdapter(fileAdapter);
 			m_localGrid.setVisibility(View.GONE);
 			m_locallist.setVisibility(View.VISIBLE);
-			
+
 			btListStyle
 					.setBackgroundResource(R.drawable.file_manager_browser_listmode);
 		}
 		treeViewAdapter = new TreeViewAdapter(m_act, R.layout.outline,
 				mPdfOutlinesCount);
 		TreeElement element1 = new TreeElement("SD卡", Const.Root);
-		TreeElement element2 = new TreeElement("手机", Const.SDCard);
+		// TreeElement element2 = new TreeElement("手机", Const.SDCard);
 		mPdfOutlinesCount.add(element1);
-		mPdfOutlinesCount.add(element2);
+		// mPdfOutlinesCount.add(element2);
 		m_TreeLocallist.setAdapter(treeViewAdapter);
 		this.nStyle = nStyle;
 	}
@@ -787,20 +764,9 @@ public class LocalFilePage extends MultiItemPage implements
 			mPath.setText(localManage.getCurrentPath());
 			fileAdapter.Clear();
 			fileAdapter.notifyDataSetChanged();
-			switch (mFileType) {
-			case 0:
-				btFileType.setText("全部");
-				break;
-			case 1:
-				btFileType.setText("文件夹");
-				break;
-			case 2:
-				btFileType.setText("文件");
-				break;
-			}
 			Integer y = mScrollList.get(localManage.getCurrentPath());
-			if (y != null) {
-				P.v("mScrollList=" + y);
+			if (y != null) 
+			{
 				m_locallist.setSelection(y);
 			} else {
 				m_locallist.setSelection(0);
@@ -867,6 +833,17 @@ public class LocalFilePage extends MultiItemPage implements
 		}
 	}
 
+	/**
+	 * 处理路径的点击安装
+	 */
+	private OnItemClickListener mAddressItemClickListenter = new OnItemClickListener() {
+		public void onItemClick(AdapterView<?> parent, View v, int pos, long id) {
+
+			FileBean bean=(FileBean)parent.getAdapter().getItem(pos);
+			localManage.setFilePath(bean.getFilePath());
+			lvAddressList.setVisibility(View.GONE);
+		}
+	};
 	/**
 	 * 双击事件(赛事明细,事件)
 	 */

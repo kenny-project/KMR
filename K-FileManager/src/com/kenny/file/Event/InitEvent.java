@@ -71,7 +71,7 @@ public class InitEvent extends AbsEvent
 	     "CommentScorePos", 0); // 评分
          nCommentScore++;
          //nCommentScore=11;//test by wmh
-         if (nCommentScore > 10)
+         if (nCommentScore > 30)
          {
 	  if (KCommand.isNetConnectNoMsg(ctx))
 	  {

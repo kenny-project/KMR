@@ -19,6 +19,12 @@ import com.kenny.file.util.Theme;
 /** 自定义Adapter内部 */
 public class FavorFileAdapter extends OFileAdapter
 {
+   private int layoutID=R.layout.listitem_favor_item;
+   public FavorFileAdapter(Context context, int nFlag, List<FileBean> mFileList,int layoutID)
+   {
+	   this(context, nFlag, mFileList);
+	   this.layoutID=layoutID;
+   }
    public FavorFileAdapter(Context context, int nFlag, List<FileBean> mFileList)
    {
       super(context, nFlag, mFileList);
@@ -38,13 +44,12 @@ public class FavorFileAdapter extends OFileAdapter
          LayoutInflater mLI = (LayoutInflater) mContext
 	     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
          
-         convertView = mLI.inflate(R.layout.listitem_favor_item, null);
+         convertView = mLI.inflate(layoutID, null);
          viewHolder.mIV = (ImageView) convertView
 	     .findViewById(R.id.image_list_childs);
          viewHolder.mTV = (TextView) convertView.findViewById(R.id.tvTitle);
          viewHolder.mTD = (TextView) convertView.findViewById(R.id.tvDesc);
          viewHolder.mPath = (TextView) convertView.findViewById(R.id.tvPath);
-         
          convertView.setTag(viewHolder);
          viewHolder.mCB = (CheckBox) convertView.findViewById(R.id.cbChecked);
          

@@ -19,6 +19,9 @@ along with SwiFTP.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
 <resources>
+    <style name="NobackDialog" parent="@android:style/Theme.Dialog">
+   <item name="android:windowBackground">@color/no_back</item>
+  </style>
     <style name="kmain_tab_item">
         <item name="android:layout_width">48dip</item>
         <item name="android:layout_height">48dip</item>
@@ -56,5 +59,10 @@ along with SwiFTP.  If not, see <http://www.gnu.org/licenses/>.
         <item name="android:textColorHint">#ffcbd4d9</item>
         <item name="android:background">@drawable/search_bg</item>
     </style>
-
+    
+    <style name="DialogTitle">
+        <item name="android:textSize">14.0sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#ff000000</item>
+    </style>
 </resources>

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    
+    <string name="AddressDialog_Title_Latebrowse">最近浏览</string>
+    <string name="AddressDialog_Title_Address">访问地址</string>
+    <string name="FavoritesDialog_Title">收藏夹</string>
     <string name="btMenuFavorites_Title">收藏夹</string>
     <string name="btMenuListMode_Grid">图标模式</string>
     <string name="btMenuListMode_List">列表模式</string>

@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.kenny.KFileManager"
     android:installLocation="internalOnly"
-    android:versionCode="52"
-    android:versionName="V1.9.6" >
+    android:versionCode="58"
+    android:versionName="V1.9.8" >
     <!-- 22 -->
     <uses-sdk
         android:minSdkVersion="5"
@@ -19,7 +19,6 @@
     <uses-permission android:name="android.permission.RESTART_PACKAGES" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.DEVICE_POWER" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />

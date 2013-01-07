@@ -2,6 +2,7 @@ package com.kenny.file.dialog;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -17,34 +18,38 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.framework.syseng.SysEng;
 import com.kenny.KFileManager.R;
+import com.kenny.file.Adapter.AddressAdapter;
 import com.kenny.file.Adapter.FavorFileAdapter;
 import com.kenny.file.Event.openDefFileEvent;
-import com.kenny.file.bean.FavorFileBean;
 import com.kenny.file.bean.FileBean;
 import com.kenny.file.db.Dao;
-import com.kenny.file.tools.SaveData;
 import com.kenny.file.util.FileManager;
 
 public class LocalAddressDialog extends Dialog implements OnClickListener,
 		android.view.View.OnClickListener, OnItemClickListener {
 	private ListView lvList;
-	private FavorFileAdapter mFileAdapter;;
 	private ArrayList<FileBean> mFileList = new ArrayList<FileBean>();
-	private Button btFavorite, btHistory, btClearData, btDeleteData;
-	private int nFlag;
+	private Button btHistory, btClearData;
 	private Activity context;
+	private TextView tvTitle;
 	private String path;//当前路径地址
-	public LocalAddressDialog(Activity context) {
-		super(context);
+	public LocalAddressDialog(Activity context,int id) {
+		super(context,id);
 		this.context = context;
 	}
 
-	public static void ShowDialog(Activity context,String path) {
-		LocalAddressDialog alertDialog = new LocalAddressDialog(context);
+	public static void ShowDialog(Activity context,String path,int y) {
+		LocalAddressDialog alertDialog = new LocalAddressDialog(context,R.style.NobackDialog);
 		alertDialog.path=path;
+//		Window win = alertDialog.getWindow();
+//		LayoutParams params = new LayoutParams();
+//		params.y = y;//设置y坐标
+//		win.setAttributes(params);
+		alertDialog.setCanceledOnTouchOutside(true);//设置点击Dialog外部任意区域关闭Dialog
 		alertDialog.show();
 	}
 
@@ -57,56 +62,46 @@ public class LocalAddressDialog extends Dialog implements OnClickListener,
 		Display d = m.getDefaultDisplay(); // 为获取屏幕宽、高
 		LayoutParams p = getWindow().getAttributes(); // 获取对话框当前的参数值
 
-		p.height = (int) (d.getHeight() * 0.8); // 高度设置为屏幕的0.8
+		p.height = (int) (d.getHeight() * 0.6); // 高度设置为屏幕的0.8
 
 		p.width = (int) (d.getWidth() * 0.95); // 宽度设置为屏幕的0.95
 		getWindow().setAttributes(p); // 设置生效
 
 		btHistory = (Button) findViewById(R.id.btHistory);
 		btHistory.setOnClickListener(this);
-		btFavorite = (Button) findViewById(R.id.btFavorite);
-		btFavorite.setOnClickListener(this);
-
 		btClearData = (Button) findViewById(R.id.btClearData);
+		
 		btClearData.setOnClickListener(this);
-		btDeleteData = (Button) findViewById(R.id.btDeleteData);
-		btDeleteData.setOnClickListener(this);
-
+		tvTitle = (TextView) findViewById(R.id.tvTitle);
+		
 		lvList = (ListView) findViewById(R.id.lvList);
-		mFileAdapter = new FavorFileAdapter(getContext(), 1, mFileList);
-		lvList.setAdapter(mFileAdapter);
 		lvList.setOnItemClickListener(this);
-		nFlag = SaveData.Read(getContext(), "LocalAddressDialog_flag", 0);
-		this.setOnCancelListener(new OnCancelListener() {
-
-			public void onCancel(DialogInterface dialog) {
-				SaveData.Write(getContext(), "LocalAddressDialog_flag", nFlag);
-			}
-		});
-		FavoriteInit(nFlag);
+		FavoriteInit(0);
 	}
 
-	private void FavoriteInit(int flag) {
-		nFlag = flag;
+	private void FavoriteInit(int nFlag) {
 		Dao dao = Dao.getInstance(getContext());
 		mFileList.clear();
 		mFileList.addAll(dao.getHistoryInfos(String.valueOf(nFlag)));
 		dao.closeDb();
 
-		if (nFlag == 1) {
-			btFavorite.setBackgroundResource(R.drawable.tab2_left_unselect);
-			btHistory.setBackgroundResource(R.drawable.tab2_right_select);
-			btDeleteData.setVisibility(View.GONE);
+		if (nFlag == 1) 
+		{
+			tvTitle.setText(R.string.AddressDialog_Title_Latebrowse);
 			btClearData.setVisibility(View.VISIBLE);
-		} else if (nFlag == 0) {
-			btFavorite.setBackgroundResource(R.drawable.tab2_left_select);
-			btHistory.setBackgroundResource(R.drawable.tab2_right_unselect);
-			btDeleteData.setVisibility(View.VISIBLE);
-			btClearData.setVisibility(View.GONE);
+			btHistory.setVisibility(View.GONE);
+			AddressAdapter mFileAdapter = new AddressAdapter(getContext(), 1, mFileList);
+			lvList.setAdapter(mFileAdapter);
 		}
-
-		if (mFileAdapter != null) {
-			mFileAdapter.notifyDataSetChanged();
+		else if (nFlag == 0) 
+		{
+			tvTitle.setText(R.string.AddressDialog_Title_Address);
+			btClearData.setVisibility(View.GONE);
+			List<FileBean> mFileList = AddressList(path);
+			AddressAdapter tempAdapter = new AddressAdapter(getContext(),
+					1, mFileList,R.layout.listitem_address_item);
+			lvList.setAdapter(tempAdapter);
+			lvList.setVisibility(View.VISIBLE);
 		}
 	}
 
@@ -115,46 +110,27 @@ public class LocalAddressDialog extends Dialog implements OnClickListener,
 	}
 
 	public void onClick(View v) {
-		switch (v.getId()) {
-		case R.id.btFavorite:
-			FavoriteInit(0);
-			break;
+		switch (v.getId()) 
+		{
 		case R.id.btHistory:
 			FavoriteInit(1);
 			break;
 		case R.id.btClearData:
 			ClearData();
 			break;
-		case R.id.btDeleteData:
-			DeleteData();
-			break;
 		}
-	}
-
-	public void DeleteData() {
-		Dao dao = Dao.getInstance(getContext());
-		for (int i = 0; i < mFileList.size(); i++) {
-			FavorFileBean tmpInfo = (FavorFileBean) mFileList.get(i);
-			if (tmpInfo.isChecked()) {
-				mFileList.remove(i);
-				dao.deleteHistory(tmpInfo.getId());
-			}
-		}
-		dao.closeDb();
-		mFileAdapter.notifyDataSetChanged();
-		return;
 	}
 
 	public void ClearData() {
 		Dao dao = Dao.getInstance(getContext());
-		dao.ClearHistory(nFlag);
+		dao.ClearHistory(1);
 		dao.closeDb();
-		FavoriteInit(nFlag);
+		FavoriteInit(1);
 	}
 
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
-		FileBean temp = mFileList.get(position);
+		FileBean temp=(FileBean)parent.getAdapter().getItem(position);
 		final File mFile = temp.getFile();
 		if (!mFile.isDirectory()) {
 			SysEng.getInstance().addHandlerEvent(
@@ -162,7 +138,32 @@ public class LocalAddressDialog extends Dialog implements OnClickListener,
 		} else {
 			FileManager.GetHandler().setFilePath(mFile.getPath());
 		}
-		SaveData.Write(getContext(), "LocalAddressDialog_flag", nFlag);
 		dismiss();
+	}
+	/**
+	 * 返回该路径对应的选择列表
+	 * 
+	 * @param path
+	 *            路径
+	 * @return
+	 */
+	public List<FileBean> AddressList(String path) {
+		ArrayList<FileBean> list = new ArrayList<FileBean>();
+		File file = new File(path);;
+		do {
+			FileBean bean = new FileBean(file, file.getName(),
+					file.getPath(), false);
+			bean.setDirectory(file.isDirectory());
+			if (file.isDirectory()) {
+				String[] temp = file.list();
+				if (temp != null) {
+					bean.setItemCount(temp.length);
+				}
+			}
+			bean.setLength(file.length());
+			list.add(bean);
+			file=file.getParentFile();
+		} while (file!=null);
+		return list;
 	}
 }
