@@ -403,10 +403,10 @@ com.kenny.file.Adapter.FGroupAdapter:
 com.kenny.file.Adapter.FGroupAdapter$KImageCallback
 com.kenny.file.Adapter.FGroupAdapter$NotifyPackageSize
 com.kenny.file.Adapter.FGroupAdapter$OnKCheckedChangeListener
+com.kenny.file.Adapter.FavorFileAdapter:
+    25:27:public FavorFileAdapter(android.content.Context,int,java.util.List,int)
 com.kenny.file.Adapter.FileAdapter:
-    70:70:public boolean isShowLogo()
-com.kenny.file.Adapter.FolderAdapter
-com.kenny.file.Adapter.FolderAdapter$ViewHolder
+    71:71:public boolean isShowLogo()
 com.kenny.file.Adapter.HistoryAdapter
 com.kenny.file.Adapter.HistoryAdapter$ViewHolder
 com.kenny.file.Adapter.KuaiPanFileAdapter$KImageCallback
@@ -422,6 +422,13 @@ com.kenny.file.Adapter.NetAdapter:
     private android.graphics.Bitmap mWeb
     private com.kenny.file.Image.ImageLoader mLogoImage
 com.kenny.file.Adapter.NetAdapter$KImageCallback
+com.kenny.file.Adapter.OFileAdapter:
+    53:53:public boolean isSelectVisible()
+    66:68:public void Clear()
+    76:76:public boolean isSelected()
+    80:80:public boolean isShowLogo()
+    92:93:public void setSelected(boolean)
+    340:349:public void setChecked(com.kenny.file.bean.FileBean)
 com.kenny.file.Adapter.TaskAdapter:
     private com.kenny.file.tools.ProcessMemoryUtil processMemoryUtil
     53:53:public boolean isSelected()
@@ -432,7 +439,7 @@ com.kenny.file.Adapter.ZipFileAdapter:
     36:36:public boolean isSelected()
     41:42:public void setSelected(boolean)
 com.kenny.file.Event.FavoriteFileEvent:
-    28:34:public FavoriteFileEvent(android.content.Context,java.util.ArrayList)
+    27:32:public FavoriteFileEvent(android.content.Context,java.util.ArrayList)
 com.kenny.file.Event.InstallEvent:
     40:45:public InstallEvent(android.content.Context,java.util.List)
     47:53:public InstallEvent(android.content.Context,com.kenny.file.bean.FileBean)
@@ -500,6 +507,7 @@ com.kenny.file.bean.FGroupInfo:
     71:72:public void setDesc(java.lang.String)
 com.kenny.file.bean.FavorFileBean:
     18:18:public int getFlag()
+    28:28:public int getId()
 com.kenny.file.bean.FileBean:
     110:110:public int getIntLength()
 com.kenny.file.bean.FileEnd:
@@ -556,15 +564,16 @@ com.kenny.file.db.DBHelper:
 com.kenny.file.db.Dao:
     private static final java.lang.String mDBName
     private static final int mDBVersion
-    49:49:public int FavoritesCount(java.lang.String)
-    68:68:public java.lang.Long FavoritesSize(java.lang.String)
-    87:87:public boolean isHasInfors(java.lang.String)
-    105:129:public void saveInfos(java.util.List)
-    179:190:public void InsertFavorites(int,java.lang.String,long)
-    508:508:public java.util.List getFavoritesInfos(java.lang.String,java.lang.String)
-    568:568:public com.kenny.file.bean.AppBean getAppInfo(java.lang.String)
-    625:625:public java.util.List getAppInfos(java.util.List)
-    695:704:public void updataInfos(com.kenny.file.bean.AppBean)
+    48:48:public int FavoritesCount(java.lang.String)
+    67:67:public java.lang.Long FavoritesSize(java.lang.String)
+    86:86:public boolean isHasInfors(java.lang.String)
+    104:128:public void saveInfos(java.util.List)
+    158:169:public void InsertFavorites(int,java.lang.String,long)
+    433:433:public java.util.List getFavoritesInfos(java.lang.String,java.lang.String)
+    493:493:public com.kenny.file.bean.AppBean getAppInfo(java.lang.String)
+    550:550:public java.util.List getAppInfos(java.util.List)
+    620:629:public void updataInfos(com.kenny.file.bean.AppBean)
+    768:768:public int deleteHistory(int)
 com.kenny.file.dialog.CreateFileDialog:
     17:17:public CreateFileDialog()
 com.kenny.file.dialog.CreateKuaiPanFileDialog:
@@ -574,16 +583,17 @@ com.kenny.file.dialog.EditDialog$1
 com.kenny.file.dialog.EditKuaiPanDialog
 com.kenny.file.dialog.EditKuaiPanDialog$1
 com.kenny.file.dialog.EditKuaiPanDialog$2
-com.kenny.file.dialog.FolderListDialog
+com.kenny.file.dialog.FolderListDialog:
+    public static final int Finish
 com.kenny.file.dialog.FontSizeDialog
 com.kenny.file.dialog.FontSizeDialog$1
 com.kenny.file.dialog.FontSizeDialog$2
 com.kenny.file.dialog.HistoryAlertDialog
 com.kenny.file.dialog.KDialog:
     22:22:public KDialog()
+    49:67:public static void ShowFileTypeArray(android.content.Context,java.lang.String,int,android.content.DialogInterface$OnClickListener)
+com.kenny.file.dialog.KDialog$1
 com.kenny.file.dialog.KMessageDialog
-com.kenny.file.dialog.LocalAddressDialog:
-    private android.view.View alertView
 com.kenny.file.dialog.MessageBoxDialog
 com.kenny.file.dialog.MessageBoxDialog$1
 com.kenny.file.dialog.MessageBoxDialog$2
@@ -633,7 +643,7 @@ com.kenny.file.page.FavoritePage:
     private static final int FLAG_GROUP
     private static final int FLAG_FILE
     private static final int FLAG_Folder
-    816:817:public void onStart()
+    716:717:public void onStart()
 com.kenny.file.page.FeedBackPage
 com.kenny.file.page.FeedBackPage$1
 com.kenny.file.page.FeedBackPage$2
@@ -792,6 +802,8 @@ com.kenny.file.util.Const:
     public static final int cmd_Local_ListSort_Finish
     public static final int cmd_Local_List_Refresh
     public static final int cmd_Local_List_Go
+    public static final int cmd_Local_List_Selected
+    public static final int cmd_Local_List_UnSelected
     public static final java.lang.String AppName
     5:5:public Const()
 com.kenny.file.util.FT:
@@ -813,11 +825,8 @@ com.kenny.file.util.FTPClientManager$HttpGroupThread:
     289:293:public void setLock(boolean)
     297:297:public com.kenny.file.util.FTPClientManager$NetStatus getLive()
 com.kenny.file.util.FileIntent
-com.kenny.file.util.FileManager:
-    236:237:public void SetCut(boolean)
-    292:295:public void Clear()
-    340:347:public void Copy(java.util.List)
-com.kenny.file.util.FolderManager
+com.kenny.file.util.FolderManager:
+    65:66:public void Refresh()
 com.kenny.file.util.KCommand:
     public static final boolean bDefToolsVisible
     26:26:public KCommand()
@@ -864,9 +873,9 @@ com.kenny.file.util.StorageUtil:
     12:12:public StorageUtil()
 com.kenny.file.util.Theme:
     8:8:public Theme()
-    78:78:public static int getTextFontSize()
-    83:84:public static void setTextFontSize(int)
-    112:112:public static int getThemeMode()
+    81:81:public static int getTextFontSize()
+    86:87:public static void setTextFontSize(int)
+    115:115:public static int getThemeMode()
 com.kenny.ftp.client.ContinueFTP
 com.kenny.ftp.client.ContinueFTP$DownloadStatus
 com.kenny.ftp.client.ContinueFTP$UploadStatus

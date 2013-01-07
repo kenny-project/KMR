@@ -2657,11 +2657,13 @@ com.framework.page.AbsPage: AbsPage(android.content.Context,android.util.Attribu
 com.framework.page.AbsPage$LoadType: com.framework.page.AbsPage$LoadType[] values()
 com.framework.page.AbsPage$LoadType: com.framework.page.AbsPage$LoadType valueOf(java.lang.String)
 com.kenny.KFileManager.R$anim
+com.kenny.KFileManager.R$anim: int down_in
 com.kenny.KFileManager.R$anim: int left_in
 com.kenny.KFileManager.R$anim: int left_out
 com.kenny.KFileManager.R$anim: int right_in
 com.kenny.KFileManager.R$anim: int right_out
 com.kenny.KFileManager.R$anim: int scale
+com.kenny.KFileManager.R$anim: int up_out
 com.kenny.KFileManager.R$anim: int zoom_enter
 com.kenny.KFileManager.R$array
 com.kenny.KFileManager.R$array: int Extension
@@ -2719,6 +2721,7 @@ com.kenny.KFileManager.R$color: int headTextColor
 com.kenny.KFileManager.R$color: int list_bg
 com.kenny.KFileManager.R$color: int list_ctrl_bg
 com.kenny.KFileManager.R$color: int list_item_TextColer
+com.kenny.KFileManager.R$color: int no_back
 com.kenny.KFileManager.R$color: int red
 com.kenny.KFileManager.R$color: int setting_group_BG
 com.kenny.KFileManager.R$color: int setting_group_TextColor
@@ -2760,6 +2763,9 @@ com.kenny.KFileManager.R$drawable: int bg_tab_contact_normal
 com.kenny.KFileManager.R$drawable: int bg_tab_contact_pressed
 com.kenny.KFileManager.R$drawable: int bg_tab_contact_select
 com.kenny.KFileManager.R$drawable: int blue_bg
+com.kenny.KFileManager.R$drawable: int btn_default_nor
+com.kenny.KFileManager.R$drawable: int btn_default_pressed
+com.kenny.KFileManager.R$drawable: int btn_default_select
 com.kenny.KFileManager.R$drawable: int btn_sort_normal
 com.kenny.KFileManager.R$drawable: int btn_sort_pressed
 com.kenny.KFileManager.R$drawable: int btn_special_default
@@ -2778,6 +2784,11 @@ com.kenny.KFileManager.R$drawable: int common_checkbox_selector
 com.kenny.KFileManager.R$drawable: int common_delete_off
 com.kenny.KFileManager.R$drawable: int common_delete_off_selected
 com.kenny.KFileManager.R$drawable: int common_delete_off_selector
+com.kenny.KFileManager.R$drawable: int common_favor_off
+com.kenny.KFileManager.R$drawable: int common_favor_off_selected
+com.kenny.KFileManager.R$drawable: int common_favor_on
+com.kenny.KFileManager.R$drawable: int common_favor_on_selected
+com.kenny.KFileManager.R$drawable: int common_favor_selector
 com.kenny.KFileManager.R$drawable: int common_ic_menu_exit
 com.kenny.KFileManager.R$drawable: int common_ic_menu_feedback
 com.kenny.KFileManager.R$drawable: int common_ic_menu_feedback1
@@ -2816,6 +2827,7 @@ com.kenny.KFileManager.R$drawable: int file_manager_browser_path
 com.kenny.KFileManager.R$drawable: int file_manager_browser_path_normal
 com.kenny.KFileManager.R$drawable: int file_manager_browser_path_pressed
 com.kenny.KFileManager.R$drawable: int ftplogo
+com.kenny.KFileManager.R$drawable: int grid_item_bg
 com.kenny.KFileManager.R$drawable: int header_bg
 com.kenny.KFileManager.R$drawable: int header_btn_bg_default
 com.kenny.KFileManager.R$drawable: int header_icon_back
@@ -2907,11 +2919,17 @@ com.kenny.KFileManager.R$drawable: int normal
 com.kenny.KFileManager.R$drawable: int notification
 com.kenny.KFileManager.R$drawable: int outline_list_collapse
 com.kenny.KFileManager.R$drawable: int outline_list_expand
+com.kenny.KFileManager.R$drawable: int pannal_btn_bg
+com.kenny.KFileManager.R$drawable: int pannal_btn_nor
+com.kenny.KFileManager.R$drawable: int pannal_btn_press
 com.kenny.KFileManager.R$drawable: int pannel_bg
 com.kenny.KFileManager.R$drawable: int path_pane
 com.kenny.KFileManager.R$drawable: int path_pane_pressed
 com.kenny.KFileManager.R$drawable: int phone_icon
 com.kenny.KFileManager.R$drawable: int picture_frame
+com.kenny.KFileManager.R$drawable: int popup_bottom
+com.kenny.KFileManager.R$drawable: int popup_center
+com.kenny.KFileManager.R$drawable: int popup_top
 com.kenny.KFileManager.R$drawable: int progressbar_style
 com.kenny.KFileManager.R$drawable: int sd_card_icon
 com.kenny.KFileManager.R$drawable: int search_bg
@@ -2929,6 +2947,7 @@ com.kenny.KFileManager.R$drawable: int selection_share
 com.kenny.KFileManager.R$drawable: int selection_share_active
 com.kenny.KFileManager.R$drawable: int selection_share_default
 com.kenny.KFileManager.R$drawable: int semi_black
+com.kenny.KFileManager.R$drawable: int setting_line
 com.kenny.KFileManager.R$drawable: int tab2_bg
 com.kenny.KFileManager.R$drawable: int tab2_btn_bg
 com.kenny.KFileManager.R$drawable: int tab2_btn_bg_normal
@@ -3045,7 +3064,6 @@ com.kenny.KFileManager.R$id: int btContent
 com.kenny.KFileManager.R$id: int btCopy
 com.kenny.KFileManager.R$id: int btCut
 com.kenny.KFileManager.R$id: int btDelete
-com.kenny.KFileManager.R$id: int btDeleteData
 com.kenny.KFileManager.R$id: int btDownLoad
 com.kenny.KFileManager.R$id: int btDownload
 com.kenny.KFileManager.R$id: int btError
@@ -3061,6 +3079,10 @@ com.kenny.KFileManager.R$id: int btLoading_cancel
 com.kenny.KFileManager.R$id: int btLocal
 com.kenny.KFileManager.R$id: int btLocalPaste
 com.kenny.KFileManager.R$id: int btLog
+com.kenny.KFileManager.R$id: int btMenuFavorites
+com.kenny.KFileManager.R$id: int btMenuListMode
+com.kenny.KFileManager.R$id: int btMenuListSort
+com.kenny.KFileManager.R$id: int btMenuShowOrHide
 com.kenny.KFileManager.R$id: int btNetCreate
 com.kenny.KFileManager.R$id: int btNetDel
 com.kenny.KFileManager.R$id: int btNetRefresh
@@ -3096,6 +3118,7 @@ com.kenny.KFileManager.R$id: int btShuffle
 com.kenny.KFileManager.R$id: int btSubmit
 com.kenny.KFileManager.R$id: int btSystemApp
 com.kenny.KFileManager.R$id: int btTools2BackUp
+com.kenny.KFileManager.R$id: int btToolsMemu
 com.kenny.KFileManager.R$id: int btTree
 com.kenny.KFileManager.R$id: int btUnInstall
 com.kenny.KFileManager.R$id: int btUpLoad
@@ -3161,6 +3184,7 @@ com.kenny.KFileManager.R$id: int image_list_exists
 com.kenny.KFileManager.R$id: int inmain_tools
 com.kenny.KFileManager.R$id: int instructions
 com.kenny.KFileManager.R$id: int ip_address
+com.kenny.KFileManager.R$id: int ip_menu
 com.kenny.KFileManager.R$id: int itemLogo
 com.kenny.KFileManager.R$id: int itemSDLogo
 com.kenny.KFileManager.R$id: int item_image
@@ -3172,6 +3196,7 @@ com.kenny.KFileManager.R$id: int last_error
 com.kenny.KFileManager.R$id: int last_error_label
 com.kenny.KFileManager.R$id: int loadingLayout
 com.kenny.KFileManager.R$id: int loading_msg
+com.kenny.KFileManager.R$id: int lvAddressList
 com.kenny.KFileManager.R$id: int lvDownLoadlist
 com.kenny.KFileManager.R$id: int lvFolderlist
 com.kenny.KFileManager.R$id: int lvHistorylist
@@ -3207,6 +3232,7 @@ com.kenny.KFileManager.R$id: int lyTools21
 com.kenny.KFileManager.R$id: int lyUpLoadTools
 com.kenny.KFileManager.R$id: int mCurrentPath
 com.kenny.KFileManager.R$id: int mSearchValue
+com.kenny.KFileManager.R$id: int main_menu
 com.kenny.KFileManager.R$id: int mainflip
 com.kenny.KFileManager.R$id: int mainlayout
 com.kenny.KFileManager.R$id: int muAboutDialog
@@ -3245,6 +3271,8 @@ com.kenny.KFileManager.R$id: int rlGallery
 com.kenny.KFileManager.R$id: int rlImage
 com.kenny.KFileManager.R$id: int rlLayout
 com.kenny.KFileManager.R$id: int rlNoNetwork
+com.kenny.KFileManager.R$id: int rl_auto
+com.kenny.KFileManager.R$id: int rl_voice
 com.kenny.KFileManager.R$id: int sbPlayProgress
 com.kenny.KFileManager.R$id: int scrollView1
 com.kenny.KFileManager.R$id: int send_report
@@ -3314,7 +3342,6 @@ com.kenny.KFileManager.R$id: int tvTab_local
 com.kenny.KFileManager.R$id: int tvTitle
 com.kenny.KFileManager.R$id: int tvUserName
 com.kenny.KFileManager.R$id: int tvVideo
-com.kenny.KFileManager.R$id: int tvWebPage
 com.kenny.KFileManager.R$id: int tvZip
 com.kenny.KFileManager.R$id: int tvfileName
 com.kenny.KFileManager.R$id: int tvfilePath
@@ -3384,6 +3411,7 @@ com.kenny.KFileManager.R$id: int zoomControls
 com.kenny.KFileManager.R$layout
 com.kenny.KFileManager.R$layout: int alert_dialog_address
 com.kenny.KFileManager.R$layout: int alert_dialog_create
+com.kenny.KFileManager.R$layout: int alert_dialog_favorites
 com.kenny.KFileManager.R$layout: int alert_dialog_folder_list
 com.kenny.KFileManager.R$layout: int alert_dialog_fontsize
 com.kenny.KFileManager.R$layout: int alert_dialog_history
@@ -3419,7 +3447,9 @@ com.kenny.KFileManager.R$layout: int kuaipanloginpage
 com.kenny.KFileManager.R$layout: int kuaipanpage
 com.kenny.KFileManager.R$layout: int listgroup_item
 com.kenny.KFileManager.R$layout: int listitem_add_cloud
+com.kenny.KFileManager.R$layout: int listitem_address_item
 com.kenny.KFileManager.R$layout: int listitem_app
+com.kenny.KFileManager.R$layout: int listitem_favor_dialog_item
 com.kenny.KFileManager.R$layout: int listitem_favor_item
 com.kenny.KFileManager.R$layout: int listitem_favorite
 com.kenny.KFileManager.R$layout: int listitem_history
@@ -3434,6 +3464,7 @@ com.kenny.KFileManager.R$layout: int listitem_task
 com.kenny.KFileManager.R$layout: int localpage
 com.kenny.KFileManager.R$layout: int main_tools
 com.kenny.KFileManager.R$layout: int mediaplayactivity
+com.kenny.KFileManager.R$layout: int menu_local_pannal
 com.kenny.KFileManager.R$layout: int mygridview
 com.kenny.KFileManager.R$layout: int networkpage
 com.kenny.KFileManager.R$layout: int outline
@@ -3464,6 +3495,8 @@ com.kenny.KFileManager.R$menu: int localpagemenu
 com.kenny.KFileManager.R$menu: int networkpagemenu
 com.kenny.KFileManager.R$menu: int taskpagemenu
 com.kenny.KFileManager.R$string
+com.kenny.KFileManager.R$string: int AddressDialog_Title_Address
+com.kenny.KFileManager.R$string: int AddressDialog_Title_Latebrowse
 com.kenny.KFileManager.R$string: int AppsPage_Title
 com.kenny.KFileManager.R$string: int CreateFileDialog_title
 com.kenny.KFileManager.R$string: int DetailsDialog_Title
@@ -3471,6 +3504,7 @@ com.kenny.KFileManager.R$string: int EditTxtActivity_Name
 com.kenny.KFileManager.R$string: int FTPClientConfig
 com.kenny.KFileManager.R$string: int FavoritePage_Title
 com.kenny.KFileManager.R$string: int FavoriteType
+com.kenny.KFileManager.R$string: int FavoritesDialog_Title
 com.kenny.KFileManager.R$string: int GalleryActivity_Name
 com.kenny.KFileManager.R$string: int KuaiPanLoginPageTitle
 com.kenny.KFileManager.R$string: int KuaiPan_Title
@@ -3556,6 +3590,11 @@ com.kenny.KFileManager.R$string: int btDownload
 com.kenny.KFileManager.R$string: int btExit
 com.kenny.KFileManager.R$string: int btFolderTitle
 com.kenny.KFileManager.R$string: int btInstall
+com.kenny.KFileManager.R$string: int btMenuFavorites_Title
+com.kenny.KFileManager.R$string: int btMenuListMode_Grid
+com.kenny.KFileManager.R$string: int btMenuListMode_List
+com.kenny.KFileManager.R$string: int btMenuShowOrHide_False
+com.kenny.KFileManager.R$string: int btMenuShowOrHide_True
 com.kenny.KFileManager.R$string: int btNew
 com.kenny.KFileManager.R$string: int btPaste
 com.kenny.KFileManager.R$string: int btRefresh
@@ -3787,7 +3826,9 @@ com.kenny.KFileManager.R$string: int wifi_waiting
 com.kenny.KFileManager.R$string: int yes
 com.kenny.KFileManager.R$style
 com.kenny.KFileManager.R$style: int ActionButton
+com.kenny.KFileManager.R$style: int DialogTitle
 com.kenny.KFileManager.R$style: int KsNormalEditText
+com.kenny.KFileManager.R$style: int NobackDialog
 com.kenny.KFileManager.R$style: int TextAppearance
 com.kenny.KFileManager.R$style: int TextAppearance_ActionButton
 com.kenny.KFileManager.R$style: int kmain_tab_item
@@ -3835,9 +3876,11 @@ com.kenny.file.Adapter.AppAdapter$OnKCheckedChangeListener: void onClick(android
 com.kenny.file.Adapter.AppFileAdapter$OnKCheckedChangeListener: void onClick(android.view.View)
 com.kenny.file.Adapter.FGroupAdapter: void onClick(android.view.View)
 com.kenny.file.Adapter.FGroupAdapter$OnKCheckedChangeListener: void onClick(android.view.View)
+com.kenny.file.Adapter.FavorDialogAdapter$OnFavoritesCheckedChangeListener: void onClick(android.view.View)
 com.kenny.file.Adapter.FileAdapter$OnKCheckedChangeListener: void onClick(android.view.View)
 com.kenny.file.Adapter.KuaiPanFileAdapter$OnKCheckedChangeListener: void onClick(android.view.View)
 com.kenny.file.Adapter.NetAdapter$OnKCheckedChangeListener: void onClick(android.view.View)
+com.kenny.file.Adapter.OFileAdapter$OnKCheckedChangeListener: void onClick(android.view.View)
 com.kenny.file.Adapter.TaskAdapter$OnKCheckedChangeListener: void onClick(android.view.View)
 com.kenny.file.Adapter.TaskAdapter$OnKillProcChangeListener: void onClick(android.view.View)
 com.kenny.file.Event.ExitEvent$1: void onClick(android.content.DialogInterface,int)
@@ -3886,7 +3929,8 @@ com.kenny.file.dialog.EditDialog$1: void onClick(android.content.DialogInterface
 com.kenny.file.dialog.EditKuaiPanDialog$1: void onClick(android.content.DialogInterface,int)
 com.kenny.file.dialog.EditKuaiPanDialog$2: void onClick(android.content.DialogInterface,int)
 com.kenny.file.dialog.FTPClientDialog: void onClick(android.view.View)
-com.kenny.file.dialog.FolderListDialog: void onClick(android.content.DialogInterface,int)
+com.kenny.file.dialog.FavoritesDialog: void onClick(android.content.DialogInterface,int)
+com.kenny.file.dialog.FavoritesDialog: void onClick(android.view.View)
 com.kenny.file.dialog.FolderListDialog: void onClick(android.view.View)
 com.kenny.file.dialog.FontSizeDialog: void onClick(android.content.DialogInterface,int)
 com.kenny.file.dialog.FontSizeDialog$2: void onClick(android.content.DialogInterface,int)
@@ -3894,6 +3938,8 @@ com.kenny.file.dialog.HistoryAlertDialog: void onClick(android.content.DialogInt
 com.kenny.file.dialog.HistoryAlertDialog: void onClick(android.view.View)
 com.kenny.file.dialog.KDialog$1: void onClick(android.content.DialogInterface,int)
 com.kenny.file.dialog.KDialog$2: void onClick(android.content.DialogInterface,int)
+com.kenny.file.dialog.LocalAddressDialog: void onClick(android.content.DialogInterface,int)
+com.kenny.file.dialog.LocalAddressDialog: void onClick(android.view.View)
 com.kenny.file.dialog.MessageBoxDialog$1: void onClick(android.content.DialogInterface,int)
 com.kenny.file.dialog.MessageBoxDialog$2: void onClick(android.content.DialogInterface,int)
 com.kenny.file.dialog.PopAppDialog$1: void onClick(android.content.DialogInterface,int)
@@ -3905,8 +3951,6 @@ com.kenny.file.dialog.RenameDialog$2: void onClick(android.content.DialogInterfa
 com.kenny.file.dialog.ResumeFavoriteDialog$1: void onClick(android.content.DialogInterface,int)
 com.kenny.file.dialog.ResumeFavoriteDialog$2: void onClick(android.content.DialogInterface,int)
 com.kenny.file.dialog.SearchFileDialog$1: void onClick(android.content.DialogInterface,int)
-com.kenny.file.dialog.SharePost: void onClick(android.content.DialogInterface,int)
-com.kenny.file.dialog.SharePost: void onClick(android.view.View)
 com.kenny.file.dialog.SimpleArrayDialog$1: void onClick(android.content.DialogInterface,int)
 com.kenny.file.dialog.TextDialog$1: void onClick(android.content.DialogInterface,int)
 com.kenny.file.dialog.TextEncodeDialog$1: void onClick(android.content.DialogInterface,int)
@@ -3933,9 +3977,10 @@ com.kenny.file.page.KuaiPanPage$5: void onClick(android.content.DialogInterface,
 com.kenny.file.page.KuaiPanPage$6: void onClick(android.content.DialogInterface,int)
 com.kenny.file.page.KuaiPanPage$7: void onClick(android.content.DialogInterface,int)
 com.kenny.file.page.LocalFilePage: void onClick(android.view.View)
-com.kenny.file.page.LocalFilePage$3: void onClick(android.content.DialogInterface,int)
 com.kenny.file.page.LocalFilePage$5: void onClick(android.view.View)
-com.kenny.file.page.LocalFilePage$8: void onClick(android.content.DialogInterface,int)
+com.kenny.file.page.LocalFilePage$7: void onClick(android.view.View)
+com.kenny.file.page.LocalFilePage$8: void onClick(android.view.View)
+com.kenny.file.page.LocalFilePage$9: void onClick(android.content.DialogInterface,int)
 com.kenny.file.page.NetworkPage: void onClick(android.view.View)
 com.kenny.file.page.NetworkPage$1: void onClick(android.view.View)
 com.kenny.file.page.NetworkPage$2: void onClick(android.view.View)

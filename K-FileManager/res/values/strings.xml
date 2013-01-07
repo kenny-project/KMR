@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="msg_file_is_not_found">未找到相应文件</string>
     <string name="AddressDialog_Title_Latebrowse">最近浏览</string>
     <string name="AddressDialog_Title_Address">访问地址</string>
     <string name="FavoritesDialog_Title">收藏夹</string>
