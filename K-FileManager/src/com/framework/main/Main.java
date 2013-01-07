@@ -10,6 +10,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ViewFlipper;
 
+import com.baidu.mobstat.SendStrategyEnum;
+import com.baidu.mobstat.StatService;
 import com.framework.event.NextPageEvent;
 import com.framework.interfaces.IPageManage;
 import com.framework.log.P;
@@ -38,11 +40,29 @@ public class Main extends Activity
    private IPageManage pageManage;
    public void Init()
    {
+	   BaiduInit();
       //Resources resources = getResources();//获得res资源对象
       //Configuration config = resources.getConfiguration();//获得设置对象
       //DisplayMetrics dm = resources .getDisplayMetrics();//获得屏幕参数：主要是分辨率，像素等。
       //config.locale = Locale.SIMPLIFIED_CHINESE; //简体中文
       //resources.updateConfiguration(config, dm);
+   }
+   private void BaiduInit()
+   {
+//		//设置AppKey与AppChannel
+//		StatService.setAppKey("abc1234");
+//		StatService.setAppChannel("Baidu Market");
+//		
+//		//进行错误分析
+//		//setOn函数与manifest.xml中的配置BaiduMobAd_EXCEPTION_LOG是等效的，推荐使用配置文件。
+//		StatService.setOn(this,StatService.EXCEPTION_LOG);
+//
+//		//设置发送延迟
+//		StatService.setLogSenderDelayed(10);
+//		
+//		//设置发送策略
+//		//setSendLogStrategy函数与配置文件中的BaiduMobAd_SEND_STRATEGY等是等效的，推荐使用配置文件。
+//		StatService.setSendLogStrategy(this,SendStrategyEnum.APP_START, 1,false);
    }
    @Override
    public void onCreate(Bundle savedInstanceState)
@@ -144,6 +164,10 @@ public class Main extends Activity
    {
       super.onResume();
       MobclickAgent.onResume(this);
+		/**
+		 * 此处调用基本统计代码
+		 */
+		StatService.onResume(this);
       if (pageManage != null) pageManage.onResume();
    }
    
@@ -152,6 +176,10 @@ public class Main extends Activity
    {
       super.onPause();
       MobclickAgent.onPause(this);
+		/**
+		 * 此处调用基本统计代码
+		 */
+		StatService.onPause(this);
       if (pageManage != null) pageManage.onPause();
       
    }

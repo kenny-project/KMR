@@ -218,6 +218,32 @@ cn.kuaipan.client.util.JSONUtility:
     28:31:public static void main(java.lang.String[])
 cn.kuaipan.client.util.StringUtil:
     11:11:public StringUtil()
+com.baidu.mobstat.StatService:
+    public static final int EXCEPTION_LOG
+    private static boolean a()
+    private static void b()
+    public static void setOn(android.content.Context,int)
+    public static void setSendLogStrategy(android.content.Context,com.baidu.mobstat.SendStrategyEnum,int,boolean)
+    public static void setSendLogStrategy(android.content.Context,com.baidu.mobstat.SendStrategyEnum,int)
+    private static void a(android.content.Context)
+    public static void onEvent(android.content.Context,java.lang.String,java.lang.String,int)
+    public static void onEvent(android.content.Context,java.lang.String,java.lang.String)
+    public static void setAppKey(java.lang.String)
+    public static void setAppChannel(java.lang.String)
+    public static void setLogSenderDelayed(int)
+com.baidu.mobstat.b:
+    public void a(java.lang.String)
+    public void b(java.lang.String)
+com.baidu.mobstat.c:
+    public static com.baidu.mobstat.c a()
+    public void a(android.content.Context,java.lang.String,java.lang.String,int)
+com.baidu.mobstat.d:
+    final synthetic com.baidu.mobstat.c e
+    d(com.baidu.mobstat.c,java.lang.String,java.lang.String,int,android.content.Context)
+com.baidu.mobstat.g:
+    public void a(int)
+    public void a(android.content.Context,com.baidu.mobstat.SendStrategyEnum,int,boolean)
+    public void a(boolean,android.content.Context)
 com.framework.debugreport.BugReportActivity:
     static final java.lang.String STACKTRACE
 com.framework.debugreport.UncaughtExceptionHandler

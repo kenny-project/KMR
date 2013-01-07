@@ -2709,6 +2709,222 @@ cn.kuaipan.client.util.StringUtil -> cn.kuaipan.a.e.d:
     java.lang.String getStringFromJson(java.lang.String,java.lang.String) -> a
     java.lang.Object getObjectFromJson$2ec446a2(java.lang.String,java.lang.String) -> b
     java.lang.String getStringFromStream(java.io.InputStream) -> a
+com.baidu.mobstat.SendStrategyEnum -> com.baidu.mobstat.SendStrategyEnum:
+    com.baidu.mobstat.SendStrategyEnum APP_START -> a
+    com.baidu.mobstat.SendStrategyEnum ONCE_A_DAY -> b
+    com.baidu.mobstat.SendStrategyEnum SET_TIME_INTERVAL -> c
+    com.baidu.mobstat.SendStrategyEnum[] a -> d
+    com.baidu.mobstat.SendStrategyEnum[] values() -> values
+    com.baidu.mobstat.SendStrategyEnum valueOf(java.lang.String) -> valueOf
+com.baidu.mobstat.StatActivity -> com.baidu.mobstat.StatActivity:
+    void onResume() -> onResume
+    void onPause() -> onPause
+com.baidu.mobstat.StatService -> com.baidu.mobstat.StatService:
+    boolean a -> a
+    boolean a(java.lang.Class,java.lang.String) -> a
+    void onResume(android.content.Context) -> a
+    void onPause(android.content.Context) -> b
+    boolean a(android.content.Context,java.lang.String) -> a
+com.baidu.mobstat.a -> com.baidu.mobstat.a:
+    com.baidu.mobstat.a a -> a
+    java.lang.Thread$UncaughtExceptionHandler b -> b
+    android.content.Context c -> c
+    com.baidu.mobstat.a a() -> a
+    void a(android.content.Context) -> a
+    void uncaughtException(java.lang.Thread,java.lang.Throwable) -> uncaughtException
+    org.json.JSONArray b(android.content.Context) -> b
+com.baidu.mobstat.a.a -> com.baidu.mobstat.a.a:
+    java.net.Proxy a -> a
+    java.net.Proxy b -> b
+    java.lang.String a$9e52333(android.content.Context,java.lang.String) -> a
+    void a$31d7acc9(android.content.Context,java.lang.String,java.lang.String) -> a
+    java.lang.String a(android.content.Context,java.lang.String) -> f
+    byte[] b(android.content.Context,java.lang.String) -> g
+    boolean c(android.content.Context,java.lang.String) -> b
+    boolean a(java.lang.String) -> a
+    java.net.HttpURLConnection a$16486542(android.content.Context,java.lang.String) -> c
+    void d(android.content.Context,java.lang.String) -> d
+    boolean e(android.content.Context,java.lang.String) -> e
+com.baidu.mobstat.a.b -> com.baidu.mobstat.a.b:
+    java.text.SimpleDateFormat a -> a
+    void b$16da05f7() -> a
+    boolean a(int) -> a
+    int a(java.lang.String) -> a
+    int a(java.lang.Throwable) -> a
+    int a(java.lang.Object[]) -> a
+    int a(java.lang.String,java.lang.String) -> a
+    int a(java.lang.String,java.lang.Throwable) -> a
+    java.lang.String c(java.lang.Object[]) -> c
+    int b(java.lang.Object[]) -> b
+    int b(java.lang.String) -> b
+com.baidu.mobstat.b -> com.baidu.mobstat.b:
+    java.lang.String a -> a
+    java.lang.String b -> b
+    java.lang.String c -> c
+    int d -> d
+    java.lang.String e -> e
+    java.lang.String f -> f
+    int g -> g
+    int h -> h
+    java.lang.String i -> i
+    java.lang.String j -> j
+    java.lang.String k -> k
+    java.lang.String l -> l
+    java.lang.String m -> m
+    java.lang.String n -> n
+    java.lang.String o -> o
+    int p -> p
+    org.json.JSONObject q -> q
+    org.json.JSONArray r -> r
+    org.json.JSONArray s -> s
+    org.json.JSONArray t -> t
+    org.json.JSONArray u -> u
+    boolean v -> v
+    com.baidu.mobstat.b w -> w
+    com.baidu.mobstat.b a() -> a
+    void a(org.json.JSONObject,boolean) -> a
+    void c(java.lang.String) -> a
+    void b(org.json.JSONObject,boolean) -> b
+    void a(java.lang.String,java.lang.String,int,long) -> a
+    void c(org.json.JSONObject,boolean) -> c
+    void a(long,java.lang.String) -> a
+    void a(android.content.Context) -> a
+    void b() -> b
+    void b(android.content.Context) -> b
+    void c(android.content.Context) -> c
+    void d(android.content.Context) -> d
+    void a(android.content.Context,boolean) -> a
+    boolean c() -> c
+com.baidu.mobstat.c -> com.baidu.mobstat.c:
+    android.os.HandlerThread a -> a
+    android.os.Handler b -> b
+    com.baidu.mobstat.c c -> c
+com.baidu.mobstat.d -> com.baidu.mobstat.d:
+    java.lang.String a -> a
+    java.lang.String b -> b
+    int c -> c
+    android.content.Context d -> d
+    void run() -> run
+com.baidu.mobstat.e -> com.baidu.mobstat.e:
+    com.baidu.mobstat.e a -> a
+    boolean b -> b
+    com.baidu.mobstat.e a() -> a
+    void a(android.content.Context) -> a
+    void b(android.content.Context) -> b
+com.baidu.mobstat.f -> com.baidu.mobstat.f:
+    com.baidu.mobstat.f a -> a
+    android.content.Context b -> b
+    boolean c -> c
+    boolean d -> d
+    com.baidu.mobstat.f a() -> a
+    void a(android.content.Context) -> a
+    boolean b() -> b
+    void e() -> d
+    boolean c() -> c
+    void run() -> run
+com.baidu.mobstat.g -> com.baidu.mobstat.g:
+    android.os.HandlerThread a -> a
+    boolean b -> b
+    com.baidu.mobstat.SendStrategyEnum c -> c
+    int d -> d
+    java.util.Timer e -> e
+    int f -> f
+    boolean g -> g
+    android.os.Handler h -> h
+    com.baidu.mobstat.g i -> i
+    android.content.SharedPreferences a(android.content.Context) -> a
+    com.baidu.mobstat.g a() -> a
+    void b(android.content.Context) -> b
+    void c(android.content.Context) -> c
+    void d(android.content.Context) -> d
+    void e(android.content.Context) -> e
+    boolean a(com.baidu.mobstat.g,boolean) -> a
+    boolean a(com.baidu.mobstat.g) -> a
+    java.util.Timer b(com.baidu.mobstat.g) -> b
+    java.util.Timer a$484a62da(com.baidu.mobstat.g) -> c
+    com.baidu.mobstat.SendStrategyEnum a(com.baidu.mobstat.g,com.baidu.mobstat.SendStrategyEnum) -> a
+    int a(com.baidu.mobstat.g,int) -> a
+    boolean b(com.baidu.mobstat.g,boolean) -> b
+    com.baidu.mobstat.SendStrategyEnum c(com.baidu.mobstat.g) -> d
+    boolean d(com.baidu.mobstat.g) -> e
+    int e(com.baidu.mobstat.g) -> f
+    android.os.Handler b() -> b
+com.baidu.mobstat.h -> com.baidu.mobstat.h:
+    android.content.Context a -> a
+    com.baidu.mobstat.g b -> b
+    void run() -> run
+com.baidu.mobstat.i -> com.baidu.mobstat.i:
+    com.baidu.mobstat.h a -> a
+    void run() -> run
+com.baidu.mobstat.j -> com.baidu.mobstat.j:
+    android.content.Context a -> a
+    com.baidu.mobstat.g b -> b
+    void run() -> run
+com.baidu.mobstat.k -> com.baidu.mobstat.k:
+    long b -> b
+    long c -> c
+    int d -> d
+    java.util.List a -> a
+    void a(java.lang.String,long) -> a
+    long a() -> a
+    void b(long) -> a
+    void b() -> b
+    org.json.JSONObject c() -> c
+    void a(int) -> a
+    int d() -> d
+com.baidu.mobstat.l -> com.baidu.mobstat.l:
+    java.lang.String b -> b
+    long c -> c
+    com.baidu.mobstat.k a -> a
+    java.lang.String a() -> a
+    long b() -> b
+com.baidu.mobstat.m -> com.baidu.mobstat.m:
+    android.os.HandlerThread a -> a
+    android.os.Handler b -> b
+    long c -> c
+    long d -> d
+    java.lang.ref.WeakReference e -> e
+    com.baidu.mobstat.k f -> f
+    com.baidu.mobstat.m g -> g
+    boolean h -> h
+    boolean i -> i
+    com.baidu.mobstat.m a() -> a
+    void a(android.content.Context,long) -> a
+    void b(android.content.Context,long) -> b
+    void b() -> b
+    long c() -> c
+    com.baidu.mobstat.k a(com.baidu.mobstat.m) -> a
+    void a$35d3b8b4(android.content.Context) -> a
+    void a(com.baidu.mobstat.m,android.content.Context,long) -> a
+com.baidu.mobstat.n -> com.baidu.mobstat.n:
+    com.baidu.mobstat.m a -> a
+    void run() -> run
+com.baidu.mobstat.o -> com.baidu.mobstat.o:
+    long b -> b
+    java.lang.ref.WeakReference c -> c
+    long d -> d
+    java.lang.ref.WeakReference e -> e
+    com.baidu.mobstat.m a -> a
+    void run() -> run
+com.baidu.mobstat.p -> com.baidu.mobstat.p:
+    long b -> b
+    long c -> c
+    java.lang.ref.WeakReference d -> d
+    com.baidu.mobstat.m a -> a
+    void run() -> run
+com.baidu.mobstat.q -> com.baidu.mobstat.q:
+    java.lang.String a(android.content.Context,java.lang.String) -> a
+    int a(android.content.Context) -> a
+    int b(android.content.Context) -> b
+    int c(android.content.Context) -> c
+    java.lang.String d(android.content.Context) -> d
+    java.lang.String a$54b88759(android.content.Context,java.lang.String,java.lang.String) -> a
+    java.lang.String e(android.content.Context) -> e
+    java.lang.String f(android.content.Context) -> f
+    java.lang.String g(android.content.Context) -> g
+    java.lang.String h(android.content.Context) -> h
+    java.lang.String i(android.content.Context) -> i
+    android.util.DisplayMetrics j(android.content.Context) -> j
 com.framework.callback.EventCallBack -> com.framework.a.a:
 com.framework.debugreport.BugReportActivity -> com.framework.debugreport.BugReportActivity:
     java.lang.String getVersionName() -> a

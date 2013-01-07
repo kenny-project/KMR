@@ -2644,6 +2644,28 @@ cn.kuaipan.client.KuaipanAPI$HttpMethod: cn.kuaipan.client.KuaipanAPI$HttpMethod
 cn.kuaipan.client.KuaipanAPI$HttpMethod: cn.kuaipan.client.KuaipanAPI$HttpMethod valueOf(java.lang.String)
 cn.kuaipan.client.session.Session$Root: cn.kuaipan.client.session.Session$Root[] values()
 cn.kuaipan.client.session.Session$Root: cn.kuaipan.client.session.Session$Root valueOf(java.lang.String)
+com.baidu.mobstat.SendStrategyEnum
+com.baidu.mobstat.SendStrategyEnum: com.baidu.mobstat.SendStrategyEnum[] values()
+com.baidu.mobstat.SendStrategyEnum: com.baidu.mobstat.SendStrategyEnum valueOf(java.lang.String)
+com.baidu.mobstat.StatActivity
+com.baidu.mobstat.StatService
+com.baidu.mobstat.a
+com.baidu.mobstat.b
+com.baidu.mobstat.c
+com.baidu.mobstat.d
+com.baidu.mobstat.e
+com.baidu.mobstat.f
+com.baidu.mobstat.g
+com.baidu.mobstat.h
+com.baidu.mobstat.i
+com.baidu.mobstat.j
+com.baidu.mobstat.k
+com.baidu.mobstat.l
+com.baidu.mobstat.m
+com.baidu.mobstat.n
+com.baidu.mobstat.o
+com.baidu.mobstat.p
+com.baidu.mobstat.q
 com.framework.debugreport.BugReportActivity
 com.framework.debugreport.BugReportActivity: BugReportActivity()
 com.framework.debugreport.BugReportActivity$1: void onClick(android.view.View)
