@@ -490,7 +490,7 @@ com.kenny.file.Event.contentFTPEvent$1
 com.kenny.file.Event.delFileEvent:
     69:75:public delFileEvent(android.content.Context,com.kenny.file.bean.FileBean,boolean)
     168:173:private void Delete(java.util.List)
-    178:245:private void deleteFolder(java.io.File)
+    178:243:private void deleteFolder(java.io.File)
 com.kenny.file.Event.delFileEvent$4
 com.kenny.file.Event.delFileEvent$5
 com.kenny.file.Event.delNetClientEvent:
@@ -535,7 +535,7 @@ com.kenny.file.bean.FavorFileBean:
     18:18:public int getFlag()
     28:28:public int getId()
 com.kenny.file.bean.FileBean:
-    110:110:public int getIntLength()
+    93:93:public int getIntLength()
 com.kenny.file.bean.FileEnd:
     5:10:public FileEnd(java.lang.String,int,int)
 com.kenny.file.bean.FileTypeBean:
@@ -617,15 +617,27 @@ com.kenny.file.dialog.FontSizeDialog$2
 com.kenny.file.dialog.HistoryAlertDialog
 com.kenny.file.dialog.KDialog:
     22:22:public KDialog()
-    49:67:public static void ShowFileTypeArray(android.content.Context,java.lang.String,int,android.content.DialogInterface$OnClickListener)
+    51:69:public static void ShowFileTypeArray(android.content.Context,java.lang.String,int,android.content.DialogInterface$OnClickListener)
 com.kenny.file.dialog.KDialog$1
 com.kenny.file.dialog.KMessageDialog
 com.kenny.file.dialog.MessageBoxDialog
 com.kenny.file.dialog.MessageBoxDialog$1
 com.kenny.file.dialog.MessageBoxDialog$2
-com.kenny.file.dialog.PopAppDialog:
-    28:28:public PopAppDialog()
-com.kenny.file.dialog.PopMenu:
+com.kenny.file.dialog.PropertiesDialog
+com.kenny.file.dialog.RenameDialog:
+    16:16:public RenameDialog()
+com.kenny.file.dialog.ResumeFavoriteDialog:
+    15:15:public ResumeFavoriteDialog()
+com.kenny.file.dialog.TextDialog
+com.kenny.file.dialog.TextDialog$1
+com.kenny.file.dialog.ZipDialog:
+    80:85:private void Palse(java.io.File)
+    94:103:private void PalseFolder(java.io.File)
+    113:114:private void PalseFile(java.io.File)
+com.kenny.file.interfaces.CopyOfKActivityStatus
+com.kenny.file.menu.PopAppDialog:
+    30:30:public PopAppDialog()
+com.kenny.file.menu.PopMenu:
     public static final int open
     public static final int copy
     public static final int rename
@@ -639,18 +651,6 @@ com.kenny.file.dialog.PopMenu:
     public static final int setdesk
     public static final int uploadcloud
     public static final int cut
-com.kenny.file.dialog.PropertiesDialog
-com.kenny.file.dialog.RenameDialog:
-    16:16:public RenameDialog()
-com.kenny.file.dialog.ResumeFavoriteDialog:
-    15:15:public ResumeFavoriteDialog()
-com.kenny.file.dialog.TextDialog
-com.kenny.file.dialog.TextDialog$1
-com.kenny.file.dialog.ZipDialog:
-    80:85:private void Palse(java.io.File)
-    94:103:private void PalseFolder(java.io.File)
-    113:114:private void PalseFile(java.io.File)
-com.kenny.file.interfaces.CopyOfKActivityStatus
 com.kenny.file.net.DownloadManagerAsync
 com.kenny.file.net.DownloadManagerAsync$1
 com.kenny.file.net.DownloadManagerAsync$2
@@ -682,13 +682,13 @@ com.kenny.file.page.KMainPage:
     370:434:public void RCreate(android.content.res.Configuration)
 com.kenny.file.page.KMainPage$3
 com.kenny.file.page.KuaiPanPage:
-    223:241:private void getShares(java.lang.String)
+    221:239:private void getShares(java.lang.String)
 com.kenny.file.page.KuaiPanPage$3
-com.kenny.file.page.LocalFilePage:
+com.kenny.file.page.LocalPage:
     android.widget.EditText mET
 com.kenny.file.page.NetworkPage:
     private static final int KuaiPanPage
-    226:228:public void onStart()
+    211:213:public void onStart()
 com.kenny.file.page.ObjectMenuPage
 com.kenny.file.page.TaskPage:
     531:532:public void onStart()
@@ -761,36 +761,36 @@ com.kenny.file.tools.SaveData:
     7:7:public SaveData()
 com.kenny.file.tools.T:
     78:78:public T()
-    89:99:public static void PowerStart(android.content.Context)
-    107:109:public static java.lang.String NowTimeString()
-    118:120:public static void PowerClose()
-    128:130:public static void FullScreen(android.app.Activity)
-    161:170:public static java.lang.String GetVersionName(android.content.Context)
-    176:184:public static java.lang.String GetIMEI(android.content.Context)
-    193:195:public java.lang.String getLocaleLanguage(android.content.Context)
-    242:268:public static void shortcut(android.content.Context)
-    279:282:public static void hideSoftInput(android.content.Context,android.os.IBinder)
-    332:349:public static void setMyRingtone(android.content.Context,java.lang.String)
-    534:535:public static void SendShare(android.content.Context,java.lang.String,java.lang.String)
-    541:577:public static void SendShare(android.content.Context,java.lang.String,java.lang.String,java.lang.String)
-    601:602:public static int dip2px(android.content.Context,float)
-    614:616:public static java.lang.String getString(android.content.Context,int)
-    622:629:public static boolean checkSDCard()
-    641:652:public static int GetAppVerCode(android.content.Context)
-    659:664:public static java.lang.String getTimes(int)
-    676:682:public static boolean CheckFileExists(java.lang.String)
-    695:697:public byte[] Bitmap2Bytes(android.graphics.Bitmap)
-    710:721:public static android.graphics.Bitmap getGrayBitmap(android.graphics.Bitmap)
-    727:729:public static android.graphics.drawable.Drawable getRoundImage(android.graphics.drawable.BitmapDrawable,int)
-    738:755:public static android.graphics.Bitmap getRoundImage(android.graphics.Bitmap,int)
-    767:773:public static android.graphics.Bitmap Bytes2Bimap(byte[])
-    962:969:public static android.graphics.drawable.Drawable bitmap2drawable(android.graphics.Bitmap)
-    974:980:public static android.graphics.Bitmap drawable2bitmap(android.graphics.drawable.Drawable)
-    986:1006:public static byte[] copy(java.io.InputStream)
-    1015:1030:public static android.graphics.Bitmap zoomBitmap(android.graphics.Bitmap,int,int)
-    1040:1044:public static java.lang.String getVersionName(android.content.Context)
-    1057:1104:private static void Unzip(java.lang.String,java.lang.String)
-    1111:1114:public boolean getInputPadStatus(android.app.Activity)
+    90:100:public static void PowerStart(android.content.Context)
+    109:111:public static java.lang.String NowTimeString()
+    121:123:public static void PowerClose()
+    133:136:public static void FullScreen(android.app.Activity)
+    167:175:public static java.lang.String GetVersionName(android.content.Context)
+    182:190:public static java.lang.String GetIMEI(android.content.Context)
+    200:203:public java.lang.String getLocaleLanguage(android.content.Context)
+    249:275:public static void shortcut(android.content.Context)
+    286:289:public static void hideSoftInput(android.content.Context,android.os.IBinder)
+    338:355:public static void setMyRingtone(android.content.Context,java.lang.String)
+    543:544:public static void SendShare(android.content.Context,java.lang.String,java.lang.String)
+    550:585:public static void SendShare(android.content.Context,java.lang.String,java.lang.String,java.lang.String)
+    609:610:public static int dip2px(android.content.Context,float)
+    622:624:public static java.lang.String getString(android.content.Context,int)
+    630:636:public static boolean checkSDCard()
+    648:658:public static int GetAppVerCode(android.content.Context)
+    665:670:public static java.lang.String getTimes(int)
+    682:687:public static boolean CheckFileExists(java.lang.String)
+    700:702:public byte[] Bitmap2Bytes(android.graphics.Bitmap)
+    715:726:public static android.graphics.Bitmap getGrayBitmap(android.graphics.Bitmap)
+    732:734:public static android.graphics.drawable.Drawable getRoundImage(android.graphics.drawable.BitmapDrawable,int)
+    743:760:public static android.graphics.Bitmap getRoundImage(android.graphics.Bitmap,int)
+    772:777:public static android.graphics.Bitmap Bytes2Bimap(byte[])
+    958:964:public static android.graphics.drawable.Drawable bitmap2drawable(android.graphics.Bitmap)
+    969:975:public static android.graphics.Bitmap drawable2bitmap(android.graphics.drawable.Drawable)
+    981:1000:public static byte[] copy(java.io.InputStream)
+    1009:1024:public static android.graphics.Bitmap zoomBitmap(android.graphics.Bitmap,int,int)
+    1034:1038:public static java.lang.String getVersionName(android.content.Context)
+    1051:1097:private static void Unzip(java.lang.String,java.lang.String)
+    1104:1110:public boolean getInputPadStatus(android.app.Activity)
 com.kenny.file.tools.ZIP:
     private static final int BUFF_SIZE
     35:35:public ZIP()
@@ -852,7 +852,7 @@ com.kenny.file.util.FTPClientManager$HttpGroupThread:
     297:297:public com.kenny.file.util.FTPClientManager$NetStatus getLive()
 com.kenny.file.util.FileIntent
 com.kenny.file.util.FolderManager:
-    65:66:public void Refresh()
+    67:68:public void Refresh()
 com.kenny.file.util.KCommand:
     public static final boolean bDefToolsVisible
     26:26:public KCommand()
@@ -1050,10 +1050,10 @@ com.kenny.swiftp.FtpServer:
     public static final java.lang.String ACCEPT_WIFI
     public static final java.lang.String ACCEPT_NET
     public static final java.lang.String STAY_AWAKE
-    316:361:private void updateProxyUi()
-    464:536:private void updateErrorUi()
-    680:701:private void checkNetworkInfo()
-    845:852:android.content.SharedPreferences getSettings()
+    315:361:private void updateProxyUi()
+    460:529:private void updateErrorUi()
+    673:695:private void checkNetworkInfo()
+    839:845:android.content.SharedPreferences getSettings()
 com.kenny.swiftp.Globals:
     26:26:public Globals()
     57:57:public static java.lang.String getLastError()
@@ -1113,14 +1113,14 @@ com.kuaipan.client.KuaipanAPI:
     private static final java.lang.String TAG
     26:26:public KuaipanAPI()
     38:38:public static com.kuaipan.client.session.Session getSession()
-    50:72:public static java.lang.String requestToken()
-    78:93:public static java.util.Map accessToken()
-    125:145:public static com.kuaipan.client.model.KuaipanPublicLink shares(java.lang.String,java.lang.String,java.lang.String)
-    214:229:public static com.kuaipan.client.model.KuaipanFile move(java.lang.String,java.lang.String)
-    236:251:public static com.kuaipan.client.model.KuaipanFile copy(java.lang.String,java.lang.String)
-    278:278:public static com.kuaipan.client.model.KuaipanHTTPResponse thumbnail(java.lang.String,java.io.OutputStream,com.kuaipan.client.ProgressListener)
-    286:289:public static com.kuaipan.client.model.KuaipanHTTPResponse thumbnail(int,int,java.lang.String,java.io.OutputStream,com.kuaipan.client.ProgressListener)
-    298:301:public static com.kuaipan.client.model.KuaipanHTTPResponse documentView(com.kuaipan.client.KuaipanAPI$ConvType,com.kuaipan.client.KuaipanAPI$ConvView,java.lang.String,java.io.OutputStream,com.kuaipan.client.ProgressListener)
+    50:67:public static java.lang.String requestToken()
+    73:88:public static java.util.Map accessToken()
+    120:140:public static com.kuaipan.client.model.KuaipanPublicLink shares(java.lang.String,java.lang.String,java.lang.String)
+    209:224:public static com.kuaipan.client.model.KuaipanFile move(java.lang.String,java.lang.String)
+    231:246:public static com.kuaipan.client.model.KuaipanFile copy(java.lang.String,java.lang.String)
+    273:273:public static com.kuaipan.client.model.KuaipanHTTPResponse thumbnail(java.lang.String,java.io.OutputStream,com.kuaipan.client.ProgressListener)
+    281:284:public static com.kuaipan.client.model.KuaipanHTTPResponse thumbnail(int,int,java.lang.String,java.io.OutputStream,com.kuaipan.client.ProgressListener)
+    293:296:public static com.kuaipan.client.model.KuaipanHTTPResponse documentView(com.kuaipan.client.KuaipanAPI$ConvType,com.kuaipan.client.KuaipanAPI$ConvView,java.lang.String,java.io.OutputStream,com.kuaipan.client.ProgressListener)
 com.kuaipan.client.KuaipanAPI$ConvType
 com.kuaipan.client.KuaipanAPI$ConvView
 com.kuaipan.client.KuaipanAPI$HttpMethod
@@ -1189,12 +1189,12 @@ com.kuaipan.demo.KPTestUtility
 com.kuaipan.demo.KuaiPanLoginPage
 com.kuaipan.demo.KuaiPanLoginPage$1
 com.kuaipan.demo.SimpleCommandConsole:
-    68:79:public boolean execute(java.lang.String,java.lang.String)
-    87:87:public java.util.List do_ls()
-    130:144:public void do_cat(java.lang.String)
-    167:168:private void println(java.lang.String)
-    172:173:private void print(java.lang.String)
-    180:184:private void openBrowser(android.app.Activity,java.lang.String)
+    69:85:public boolean execute(java.lang.String,java.lang.String)
+    93:93:public java.util.List do_ls()
+    136:149:public void do_cat(java.lang.String)
+    172:173:private void println(java.lang.String)
+    177:178:private void print(java.lang.String)
+    185:189:private void openBrowser(android.app.Activity,java.lang.String)
 com.tencent.tauth.TAuthView:
     private static final java.lang.String TAG
     public static final java.lang.String AUTH_BROADCAST

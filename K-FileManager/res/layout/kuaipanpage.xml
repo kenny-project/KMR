@@ -10,36 +10,19 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:padding="3dip"
-        android:background="@drawable/tab2_bg" >
-
-        <Button
-            android:id="@+id/btListStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/file_manager_browser_listmode"
-            android:visibility="gone"
-             />
-
-        <Button
-            android:id="@+id/btFavorite"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/file_manager_browser_listmode"
-            android:visibility="gone" />
-
-        <Button
-            android:id="@+id/btTree"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        android:background="#FFe0e2e6"
+         >
+        <ImageView
+            android:id="@+id/btContactInfo"
+            android:layout_width="48dip"
+            android:layout_height="48dip"
             android:layout_gravity="center_horizontal"
-            android:background="@drawable/btn_sort_pressed"
-            android:gravity="center_horizontal"
-            android:padding="5dip"
-            android:text="树"
-            android:textColor="#337ddc"
-            android:textSize="18dip"
-            android:visibility="gone" />
-
+            android:padding="2dip"
+            android:background="#00000000"
+            android:src="@drawable/list_kuaipan_logo"
+            android:visibility="gone"
+            />
+        
         <TextView
             android:id="@+id/mCurrentPath"
             android:layout_width="fill_parent"
@@ -56,25 +39,6 @@
             android:textColor="#737373"
             android:textSize="17dip" />
 
-        <Spinner
-            android:id="@+id/spSpinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/tab2_btn_bg"
-            android:visibility="gone" />
-
-        <ImageButton
-            android:id="@+id/btContactInfo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:background="@drawable/tab2_btn_bg"
-            android:padding="5dip"
-            android:src="@drawable/bg_tab_contact_select"
-            android:text="Type"
-            android:textColor="#337ddc"
-            android:textSize="18dip"
-            android:visibility="gone" />
 
         <TextView
             android:id="@+id/tvKuaiPanSpace"
@@ -155,42 +119,53 @@
             android:layout_marginTop="1dip"
             android:background="@drawable/btn_special_default_select"
             android:gravity="center_horizontal"
-            android:textSize="16dip" />
+            android:textSize="16dp" />
     </RelativeLayout>
 
-    <LinearLayout
+     <RelativeLayout
         android:id="@+id/lyUpLoadTools"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_alignParentBottom="true"
-        android:background="#00000000"
-        android:gravity="fill"
-        android:orientation="horizontal"
-        android:visibility="gone" >
+        android:background="@drawable/kp_qq_login_bg_normal" >
 
-        <Button
+        <LinearLayout
+            android:id="@+id/activity_select_login_qqlogin"
+            android:layout_width="fill_parent"
+            android:layout_height="48dp"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="3dip"
+            android:background="@drawable/kp_selector_button_white"
+            android:gravity="right"
+            android:onClick="onClick"
+            android:paddingLeft="10dip"
+            android:paddingRight="10dip" >
+            
+                    <Button
             android:id="@+id/btUpLoad"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_weight="1"
             android:background="@drawable/btn_special_default_select"
             android:text="@string/btUpLoad"
             android:textColor="@color/ContentTitleText"
-            android:textSize="16dip" />
+            android:textSize="16dp" />
 
         <Button
             android:id="@+id/btCancel"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="5dp"
             android:layout_weight="1"
             android:background="@drawable/btn_wificonfig_select"
             android:text="@string/btCancel"
             android:textColor="@color/ContentTitleText"
             android:textSize="16dip" />
-    </LinearLayout>
 
+        </LinearLayout>
+    </RelativeLayout>
     <LinearLayout
         android:id="@+id/lyBTools"
         android:layout_width="fill_parent"

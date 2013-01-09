@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.kenny.KFileManager"
     android:installLocation="internalOnly"
-    android:versionCode="58"
-    android:versionName="V1.9.8" >
+    android:versionCode="59"
+    android:versionName="V1.9.9" >
     <!-- 22 -->
     <uses-sdk
         android:minSdkVersion="5"

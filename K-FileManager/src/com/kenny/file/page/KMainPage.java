@@ -31,7 +31,7 @@ import com.kenny.file.util.Theme;
  */
 public class KMainPage extends AbsPage implements OnConfigurationChangedAble
 {
-   private LocalFilePage m_localPage = null;
+   private LocalPage m_localPage = null;
    private NetworkPage m_RemotePage = null;
    private AppsPage m_AppsPage = null;
    private TaskPage m_TaskPage = null;
@@ -212,7 +212,7 @@ public class KMainPage extends AbsPage implements OnConfigurationChangedAble
       bttask.setOnClickListener(toolsOnClickListener);
       myViewPager = (ViewPager) findViewById(R.id.viewpagerLayout);
       
-      m_localPage = new LocalFilePage(m_act);
+      m_localPage = new LocalPage(m_act);
       m_RemotePage = new NetworkPage(m_act);
       m_FavoritePage = new FavoritePage(m_act);
       m_AppsPage = new AppsPage(m_act);

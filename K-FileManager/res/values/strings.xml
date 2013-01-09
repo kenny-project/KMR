@@ -51,6 +51,7 @@
     <string name="msg_total_documents">共%d个文件</string>
     <string name="msg_copy_need_paste">请先复制需要粘贴的文件</string>
     <string name="msg_sorry_file_not_exist_permissions">该文件夹不存在或访问权限不够!</string>
+    <string name="msg_sorry_not_move_file">不能将文件移动到该目录，这样产生死锁操作！</string>
     <string name="msg_sorry_file_permissions">对不起，文件访问权限不够!</string>
     <string name="msg_not_find_file">未找到该文件!</string>
     <string name="msg_loading_data">正在加载数据...</string>
@@ -165,7 +166,7 @@
     <string name="btCut">剪切</string>
     <string name="btPaste">粘贴</string>
     <string name="btDelete">删除</string>
-        <string name="btUpLoad">UpLoad</string>
+        <string name="btUpLoad">上传</string>
     <string name="btBack">返回</string>
     <string name="btRefresh">刷新</string>
     <string name="btInstall">安装</string>

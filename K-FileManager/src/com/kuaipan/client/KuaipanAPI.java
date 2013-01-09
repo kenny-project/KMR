@@ -63,11 +63,6 @@ public class KuaipanAPI
       {
          throw new KuaipanIOException(resp.toString());
       }
-      else
-      {
-         
-      }
-      
       session.setTempToken(key, secret);
       return KuaipanHTTPUtility.AUTH_URL + key;
    }

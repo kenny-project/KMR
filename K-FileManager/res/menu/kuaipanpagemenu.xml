@@ -17,8 +17,4 @@
         android:id="@+id/muLogout"
         android:icon="@drawable/common_icon_setas_on"
         android:title="@string/m_Logout"/>
-    <item
-        android:id="@+id/muExit"
-        android:icon="@drawable/common_ic_menu_exit"
-        android:title="@string/m_Exit"/>
 </menu>

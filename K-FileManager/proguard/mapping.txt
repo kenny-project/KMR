@@ -3322,6 +3322,7 @@ com.kenny.KFileManager.R$drawable -> com.kenny.KFileManager.R$drawable:
     int kp_selector_button -> kp_selector_button
     int kp_selector_button_white -> kp_selector_button_white
     int kp_selector_edittext_background -> kp_selector_edittext_background
+    int kp_tools_logo -> kp_tools_logo
     int list_icon_optimization -> list_icon_optimization
     int list_icon_risk -> list_icon_risk
     int list_icon_security -> list_icon_security
@@ -3747,7 +3748,6 @@ com.kenny.KFileManager.R$id -> com.kenny.KFileManager.R$id:
     int session_monitor_checkbox -> session_monitor_checkbox
     int sp -> sp
     int spEncode -> spEncode
-    int spSpinner -> spSpinner
     int start_stop_button -> start_stop_button
     int tab_Favorite -> tab_Favorite
     int tab_apps -> tab_apps
@@ -4190,6 +4190,7 @@ com.kenny.KFileManager.R$string -> com.kenny.KFileManager.R$string:
     int msg_please_operate -> msg_please_operate
     int msg_sorry_file_not_exist_permissions -> msg_sorry_file_not_exist_permissions
     int msg_sorry_file_permissions -> msg_sorry_file_permissions
+    int msg_sorry_not_move_file -> msg_sorry_not_move_file
     int msg_success_copy_file -> msg_success_copy_file
     int msg_success_cut_file -> msg_success_cut_file
     int msg_themedialog -> msg_themedialog
@@ -5855,7 +5856,8 @@ com.kenny.file.dialog.FolderListDialog -> com.kenny.file.g.p:
     com.kenny.file.Adapter.FolderAdapter mFolderAdapter -> f
     com.kenny.file.struct.INotifyDataSetChanged notify -> g
     android.widget.TextView mCurrentPath -> h
-    void ShowDialog(android.content.Context,java.lang.String,com.kenny.file.struct.INotifyDataSetChanged) -> a
+    java.util.List mFileList -> i
+    void ShowDialog(android.content.Context,java.lang.String,java.util.List,com.kenny.file.struct.INotifyDataSetChanged) -> a
     void onClick(android.view.View) -> onClick
     void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
 com.kenny.file.dialog.KDialog -> com.kenny.file.g.q:
@@ -5882,66 +5884,27 @@ com.kenny.file.dialog.LocalAddressDialog -> com.kenny.file.g.t:
     void onClick(android.content.DialogInterface,int) -> onClick
     void onClick(android.view.View) -> onClick
     void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
-com.kenny.file.dialog.PopAppDialog -> com.kenny.file.g.u:
-    void ShowApp(android.app.Activity,com.kenny.file.bean.AppBean) -> a
-    void ShowFile(android.app.Activity,com.kenny.file.bean.AppBean,com.kenny.file.struct.INotifyDataSetChanged) -> a
-com.kenny.file.dialog.PopAppDialog$1 -> com.kenny.file.g.v:
-    com.kenny.file.bean.AppBean val$mAppInfo -> a
-    android.app.Activity val$context -> b
-    void onClick(android.content.DialogInterface,int) -> onClick
-com.kenny.file.dialog.PopAppDialog$2 -> com.kenny.file.g.w:
-    com.kenny.file.bean.AppBean val$mAppInfo -> a
-    android.app.Activity val$context -> b
-    com.kenny.file.struct.INotifyDataSetChanged val$iNotify -> c
-    void onClick(android.content.DialogInterface,int) -> onClick
-com.kenny.file.dialog.PopLocalMenu -> com.kenny.file.g.x:
-    int nFlag -> b
-    android.content.Context context -> c
-    com.kenny.file.bean.FileBean file -> d
-    void ShowFile$3cbfee77(android.content.Context,com.kenny.file.bean.FileBean) -> a
-    void OnItemClickListener$4e6abfef(com.kenny.file.commui.KString) -> a
-com.kenny.file.dialog.PopLocalMenu$1 -> com.kenny.file.g.y:
-    com.kenny.file.dialog.PopLocalMenu this$0 -> a
-    android.content.Context val$context -> b
-    com.kenny.file.bean.FileBean val$file -> c
-    void onClick(android.content.DialogInterface,int) -> onClick
-com.kenny.file.dialog.PopMenu -> com.kenny.file.g.z:
-    com.kenny.file.commui.KString[] mMenu -> b
-    android.content.DialogInterface$OnClickListener listener -> a
-    java.util.List mAllMenu -> c
-    java.util.List mFolderMenu -> d
-    java.util.List mOtherFileMenu -> e
-    java.util.List mFavorMenu -> f
-    java.util.List mPictureFileMenu -> g
-    java.util.List mMusicFileMenu -> h
-    void ShowFile(android.content.Context,int,java.lang.String) -> a
-    void OnItemClickListener$4e6abfef(com.kenny.file.commui.KString) -> a
-    void InitMenu() -> a
-    com.kenny.file.commui.KString[] CreateOtherMenu() -> b
-    com.kenny.file.commui.KString[] access$0(com.kenny.file.dialog.PopMenu) -> a
-com.kenny.file.dialog.PopMenu$1 -> com.kenny.file.g.aa:
-    com.kenny.file.dialog.PopMenu this$0 -> a
-    void onClick(android.content.DialogInterface,int) -> onClick
-com.kenny.file.dialog.RenameDialog -> com.kenny.file.g.ab:
-com.kenny.file.dialog.RenameDialog$1 -> com.kenny.file.g.ac:
+com.kenny.file.dialog.RenameDialog -> com.kenny.file.g.u:
+    void Show(android.content.Context,java.io.File) -> a
+com.kenny.file.dialog.RenameDialog$1 -> com.kenny.file.g.v:
     android.widget.EditText val$mET -> a
     java.io.File val$file -> b
     android.content.Context val$context -> c
     void onClick(android.content.DialogInterface,int) -> onClick
-com.kenny.file.dialog.RenameDialog$2 -> com.kenny.file.g.ad:
+com.kenny.file.dialog.RenameDialog$2 -> com.kenny.file.g.w:
     void onClick(android.content.DialogInterface,int) -> onClick
-com.kenny.file.dialog.ResumeFavoriteDialog -> com.kenny.file.g.ae:
+com.kenny.file.dialog.ResumeFavoriteDialog -> com.kenny.file.g.x:
     void showdialog(android.app.Activity,java.lang.String) -> a
     int deleteFolder(java.io.File) -> b
     int access$0(java.io.File) -> a
-com.kenny.file.dialog.ResumeFavoriteDialog$1 -> com.kenny.file.g.af:
+com.kenny.file.dialog.ResumeFavoriteDialog$1 -> com.kenny.file.g.y:
     android.app.Activity val$activity -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-com.kenny.file.dialog.ResumeFavoriteDialog$2 -> com.kenny.file.g.ag:
+com.kenny.file.dialog.ResumeFavoriteDialog$2 -> com.kenny.file.g.z:
     void onClick(android.content.DialogInterface,int) -> onClick
-com.kenny.file.dialog.SearchFileDialog -> com.kenny.file.g.ah:
+com.kenny.file.dialog.SearchFileDialog -> com.kenny.file.g.aa:
     void Show(android.app.Activity,java.lang.String,com.kenny.file.bean.ScarchParam,com.kenny.file.struct.INotifyDataSetChanged) -> a
-com.kenny.file.dialog.SearchFileDialog$1 -> com.kenny.file.g.ai:
+com.kenny.file.dialog.SearchFileDialog$1 -> com.kenny.file.g.ab:
     com.kenny.file.dialog.SearchFileDialog this$0 -> a
     android.widget.EditText val$meditText -> b
     com.kenny.file.bean.ScarchParam val$param -> c
@@ -5952,21 +5915,21 @@ com.kenny.file.dialog.SearchFileDialog$1 -> com.kenny.file.g.ai:
     android.app.Activity val$context -> h
     com.kenny.file.struct.INotifyDataSetChanged val$notifyDataSetChanged -> i
     void onClick(android.content.DialogInterface,int) -> onClick
-com.kenny.file.dialog.SimpleArrayDialog -> com.kenny.file.g.aj:
+com.kenny.file.dialog.SimpleArrayDialog -> com.kenny.file.g.ac:
     void ShowDialog$70d398d5(android.content.Context,java.lang.String,java.lang.CharSequence[],java.lang.CharSequence,com.kenny.file.struct.INotifyDataSetChanged) -> a
-com.kenny.file.dialog.SimpleArrayDialog$1 -> com.kenny.file.g.ak:
+com.kenny.file.dialog.SimpleArrayDialog$1 -> com.kenny.file.g.ad:
     com.kenny.file.dialog.SimpleArrayDialog this$0 -> a
     com.kenny.file.struct.INotifyDataSetChanged val$result -> b
     java.lang.CharSequence[] val$items -> c
     void onClick(android.content.DialogInterface,int) -> onClick
-com.kenny.file.dialog.TextEncodeDialog -> com.kenny.file.g.al:
+com.kenny.file.dialog.TextEncodeDialog -> com.kenny.file.g.ae:
     void ShowDialog$7ad9f004(android.app.Activity,com.kenny.file.struct.INotifyDataSetChanged) -> a
-com.kenny.file.dialog.TextEncodeDialog$1 -> com.kenny.file.g.am:
+com.kenny.file.dialog.TextEncodeDialog$1 -> com.kenny.file.g.af:
     com.kenny.file.dialog.TextEncodeDialog this$0 -> a
     com.kenny.file.struct.INotifyDataSetChanged val$result -> b
     java.lang.String[] val$item -> c
     void onClick(android.content.DialogInterface,int) -> onClick
-com.kenny.file.dialog.ThemeDialog -> com.kenny.file.g.an:
+com.kenny.file.dialog.ThemeDialog -> com.kenny.file.g.ag:
     android.app.Activity m_context -> a
     int SelectItemPos -> b
     int ThemeModeDef -> c
@@ -5974,11 +5937,11 @@ com.kenny.file.dialog.ThemeDialog -> com.kenny.file.g.an:
     void access$0(com.kenny.file.dialog.ThemeDialog,int) -> a
     android.app.Activity access$1(com.kenny.file.dialog.ThemeDialog) -> a
     int access$2(com.kenny.file.dialog.ThemeDialog) -> b
-com.kenny.file.dialog.ThemeDialog$1 -> com.kenny.file.g.ao:
+com.kenny.file.dialog.ThemeDialog$1 -> com.kenny.file.g.ah:
     com.kenny.file.dialog.ThemeDialog this$0 -> a
     com.kenny.file.interfaces.KActivityStatus val$result -> b
     void onClick(android.content.DialogInterface,int) -> onClick
-com.kenny.file.dialog.UnInstallDialog -> com.kenny.file.g.ap:
+com.kenny.file.dialog.UnInstallDialog -> com.kenny.file.g.ai:
     android.app.Activity m_context -> c
     android.app.ProgressDialog mProgressDialog -> d
     boolean mProgress -> e
@@ -5995,61 +5958,61 @@ com.kenny.file.dialog.UnInstallDialog -> com.kenny.file.g.ap:
     void access$3$2cb85be0(com.kenny.file.dialog.UnInstallDialog) -> d
     void access$4(com.kenny.file.dialog.UnInstallDialog,boolean) -> a
     void access$5(com.kenny.file.dialog.UnInstallDialog,boolean) -> b
-com.kenny.file.dialog.UnInstallDialog$1 -> com.kenny.file.g.aq:
+com.kenny.file.dialog.UnInstallDialog$1 -> com.kenny.file.g.aj:
     com.kenny.file.dialog.UnInstallDialog this$0 -> a
     void handleMessage(android.os.Message) -> handleMessage
-com.kenny.file.dialog.UnInstallDialog$2 -> com.kenny.file.g.ar:
+com.kenny.file.dialog.UnInstallDialog$2 -> com.kenny.file.g.ak:
     com.kenny.file.dialog.UnInstallDialog this$0 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-com.kenny.file.dialog.UnInstallDialog$3 -> com.kenny.file.g.as:
+com.kenny.file.dialog.UnInstallDialog$3 -> com.kenny.file.g.al:
     com.kenny.file.dialog.UnInstallDialog this$0 -> b
     com.kenny.file.bean.AppBean val$tmpInfo -> c
     void ok() -> a
     com.kenny.file.dialog.UnInstallDialog access$0(com.kenny.file.dialog.UnInstallDialog$3) -> a
-com.kenny.file.dialog.UnInstallDialog$3$1 -> com.kenny.file.g.at:
+com.kenny.file.dialog.UnInstallDialog$3$1 -> com.kenny.file.g.am:
     com.kenny.file.dialog.UnInstallDialog$3 this$1 -> a
     void onCheckedChanged(android.widget.CompoundButton,boolean) -> onCheckedChanged
-com.kenny.file.dialog.UnInstallDialog$3$2 -> com.kenny.file.g.au:
+com.kenny.file.dialog.UnInstallDialog$3$2 -> com.kenny.file.g.an:
     com.kenny.file.dialog.UnInstallDialog$3 this$1 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-com.kenny.file.dialog.UnInstallDialog$3$3 -> com.kenny.file.g.av:
+com.kenny.file.dialog.UnInstallDialog$3$3 -> com.kenny.file.g.ao:
     com.kenny.file.dialog.UnInstallDialog$3 this$1 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-com.kenny.file.dialog.ViewSortDialog -> com.kenny.file.g.aw:
+com.kenny.file.dialog.ViewSortDialog -> com.kenny.file.g.ap:
     android.app.Activity m_context -> a
     int nSortMode -> b
     void ShowDialog(android.app.Activity,com.kenny.file.struct.INotifyDataSetChanged) -> a
     void access$0(com.kenny.file.dialog.ViewSortDialog,int) -> a
     int access$1(com.kenny.file.dialog.ViewSortDialog) -> a
     android.app.Activity access$2(com.kenny.file.dialog.ViewSortDialog) -> b
-com.kenny.file.dialog.ViewSortDialog$1 -> com.kenny.file.g.ax:
+com.kenny.file.dialog.ViewSortDialog$1 -> com.kenny.file.g.aq:
     com.kenny.file.dialog.ViewSortDialog this$0 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-com.kenny.file.dialog.ViewSortDialog$2 -> com.kenny.file.g.ay:
+com.kenny.file.dialog.ViewSortDialog$2 -> com.kenny.file.g.ar:
     com.kenny.file.dialog.ViewSortDialog this$0 -> a
     com.kenny.file.struct.INotifyDataSetChanged val$result -> b
     void onClick(android.content.DialogInterface,int) -> onClick
-com.kenny.file.dialog.ViewSortDialog$3 -> com.kenny.file.g.az:
+com.kenny.file.dialog.ViewSortDialog$3 -> com.kenny.file.g.as:
     com.kenny.file.dialog.ViewSortDialog this$0 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-com.kenny.file.dialog.ViewStyleDialog -> com.kenny.file.g.ba:
+com.kenny.file.dialog.ViewStyleDialog -> com.kenny.file.g.at:
     android.app.Activity m_context -> a
     void ShowDialog$190c7132(android.app.Activity) -> a
     android.app.Activity access$0(com.kenny.file.dialog.ViewStyleDialog) -> a
-com.kenny.file.dialog.ViewStyleDialog$1 -> com.kenny.file.g.bb:
+com.kenny.file.dialog.ViewStyleDialog$1 -> com.kenny.file.g.au:
     com.kenny.file.dialog.ViewStyleDialog this$0 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-com.kenny.file.dialog.ZipDialog -> com.kenny.file.g.bc:
+com.kenny.file.dialog.ZipDialog -> com.kenny.file.g.av:
     java.lang.String TAG -> a
     java.util.Collection resFileList -> b
     void Show(android.content.Context,java.io.File) -> a
-com.kenny.file.dialog.ZipDialog$1 -> com.kenny.file.g.bd:
+com.kenny.file.dialog.ZipDialog$1 -> com.kenny.file.g.aw:
     com.kenny.file.dialog.ZipDialog this$0 -> a
     android.widget.EditText val$mET -> b
     java.io.File val$file -> c
     android.content.Context val$context -> d
     void onClick(android.content.DialogInterface,int) -> onClick
-com.kenny.file.dialog.ZipDialog$2 -> com.kenny.file.g.be:
+com.kenny.file.dialog.ZipDialog$2 -> com.kenny.file.g.ax:
     com.kenny.file.dialog.ZipDialog this$0 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
 com.kenny.file.interfaces.KActivityStatus -> com.kenny.file.h.a:
@@ -6077,6 +6040,46 @@ com.kenny.file.menu.MVisibleAinm$1 -> com.kenny.file.i.d:
     void onAnimationStart(android.view.animation.Animation) -> onAnimationStart
     void onAnimationRepeat(android.view.animation.Animation) -> onAnimationRepeat
     void onAnimationEnd(android.view.animation.Animation) -> onAnimationEnd
+com.kenny.file.menu.PopAppDialog -> com.kenny.file.i.e:
+    void ShowApp(android.app.Activity,com.kenny.file.bean.AppBean) -> a
+    void ShowFile(android.app.Activity,com.kenny.file.bean.AppBean,com.kenny.file.struct.INotifyDataSetChanged) -> a
+com.kenny.file.menu.PopAppDialog$1 -> com.kenny.file.i.f:
+    com.kenny.file.bean.AppBean val$mAppInfo -> a
+    android.app.Activity val$context -> b
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.kenny.file.menu.PopAppDialog$2 -> com.kenny.file.i.g:
+    com.kenny.file.bean.AppBean val$mAppInfo -> a
+    android.app.Activity val$context -> b
+    com.kenny.file.struct.INotifyDataSetChanged val$iNotify -> c
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.kenny.file.menu.PopLocalMenu -> com.kenny.file.i.h:
+    int nFlag -> b
+    android.content.Context context -> c
+    com.kenny.file.bean.FileBean file -> d
+    void ShowFile$3cbfee77(android.content.Context,com.kenny.file.bean.FileBean) -> a
+    void OnItemClickListener$4e6abfef(com.kenny.file.commui.KString) -> a
+com.kenny.file.menu.PopLocalMenu$1 -> com.kenny.file.i.i:
+    com.kenny.file.menu.PopLocalMenu this$0 -> a
+    android.content.Context val$context -> b
+    com.kenny.file.bean.FileBean val$file -> c
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.kenny.file.menu.PopMenu -> com.kenny.file.i.j:
+    com.kenny.file.commui.KString[] mMenu -> b
+    android.content.DialogInterface$OnClickListener listener -> a
+    java.util.List mAllMenu -> c
+    java.util.List mFolderMenu -> d
+    java.util.List mOtherFileMenu -> e
+    java.util.List mFavorMenu -> f
+    java.util.List mPictureFileMenu -> g
+    java.util.List mMusicFileMenu -> h
+    void ShowFile(android.content.Context,int,java.lang.String) -> a
+    void OnItemClickListener$4e6abfef(com.kenny.file.commui.KString) -> a
+    void InitMenu() -> a
+    com.kenny.file.commui.KString[] CreateOtherMenu() -> b
+    com.kenny.file.commui.KString[] access$0(com.kenny.file.menu.PopMenu) -> a
+com.kenny.file.menu.PopMenu$1 -> com.kenny.file.i.k:
+    com.kenny.file.menu.PopMenu this$0 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
 com.kenny.file.page.AppsPage -> com.kenny.file.j.a:
     android.widget.ListView m_Appslist -> i
     android.view.View lyBTools -> j
@@ -6267,7 +6270,7 @@ com.kenny.file.page.FavoritePage$6 -> com.kenny.file.j.m:
     android.content.Context val$context -> c
     void onClick(android.content.DialogInterface,int) -> onClick
 com.kenny.file.page.KMainPage -> com.kenny.file.j.n:
-    com.kenny.file.page.LocalFilePage m_localPage -> j
+    com.kenny.file.page.LocalPage m_localPage -> j
     com.kenny.file.page.NetworkPage m_RemotePage -> k
     com.kenny.file.page.AppsPage m_AppsPage -> l
     com.kenny.file.page.TaskPage m_TaskPage -> m
@@ -6333,8 +6336,8 @@ com.kenny.file.page.KuaiPanPage -> com.kenny.file.j.r:
     android.widget.TextView tvError_msg -> q
     android.widget.TextView tvKuaiPanSpace -> r
     int nCommCode -> s
-    android.widget.LinearLayout lyUpLoadTools -> t
-    android.widget.LinearLayout lyBTools -> u
+    android.view.View lyUpLoadTools -> t
+    android.view.View lyBTools -> u
     java.util.List mFilelist -> v
     java.lang.String oauth_token -> w
     java.lang.String oauth_secret -> x
@@ -6370,9 +6373,9 @@ com.kenny.file.page.KuaiPanPage -> com.kenny.file.j.r:
     com.kuaipan.demo.SimpleCommandConsole access$5(com.kenny.file.page.KuaiPanPage) -> d
     void access$6(com.kenny.file.page.KuaiPanPage) -> e
     com.kenny.file.Adapter.KuaiPanFileAdapter access$7(com.kenny.file.page.KuaiPanPage) -> f
-    java.util.List access$8(com.kenny.file.page.KuaiPanPage) -> g
-    android.widget.LinearLayout access$9(com.kenny.file.page.KuaiPanPage) -> h
-    android.widget.LinearLayout access$10(com.kenny.file.page.KuaiPanPage) -> i
+    android.view.View access$8(com.kenny.file.page.KuaiPanPage) -> g
+    java.util.List access$9(com.kenny.file.page.KuaiPanPage) -> h
+    android.view.View access$10(com.kenny.file.page.KuaiPanPage) -> i
     void access$11(com.kenny.file.page.KuaiPanPage) -> j
     android.widget.TextView access$12(com.kenny.file.page.KuaiPanPage) -> k
     void access$13$7483880e(com.kenny.file.page.KuaiPanPage) -> l
@@ -6406,7 +6409,7 @@ com.kenny.file.page.KuaiPanPage$7 -> com.kenny.file.j.x:
     com.kuaipan.client.model.KuaipanFile val$mAppInfo -> b
     android.app.Activity val$context -> c
     void onClick(android.content.DialogInterface,int) -> onClick
-com.kenny.file.page.LocalFilePage -> com.kenny.file.j.y:
+com.kenny.file.page.LocalPage -> com.kenny.file.j.y:
     java.util.List mFileList -> i
     java.util.HashMap mScrollList -> j
     android.view.View m_lvMain -> k
@@ -6457,51 +6460,51 @@ com.kenny.file.page.LocalFilePage -> com.kenny.file.j.y:
     boolean onTouchEvent(android.view.MotionEvent) -> onTouchEvent
     void NotifyDataSetChanged(int,java.lang.Object) -> a
     void OnItemClickListener$17e13fe2(int) -> c
-    com.kenny.file.Adapter.FileAdapter access$0(com.kenny.file.page.LocalFilePage) -> a
-    com.kenny.file.util.FileManager access$1(com.kenny.file.page.LocalFilePage) -> b
-    android.widget.ListView access$2(com.kenny.file.page.LocalFilePage) -> c
-    java.util.ArrayList access$3(com.kenny.file.page.LocalFilePage) -> d
-    com.kenny.file.bean.TreeElement access$4(com.kenny.file.page.LocalFilePage) -> e
-    java.lang.Long access$5(com.kenny.file.page.LocalFilePage) -> f
-    void access$6(com.kenny.file.page.LocalFilePage,com.kenny.file.bean.TreeElement) -> a
-    void access$7(com.kenny.file.page.LocalFilePage,java.lang.Long) -> a
-    void access$8$26e490c(com.kenny.file.page.LocalFilePage,int) -> a
-    android.app.Activity access$9(com.kenny.file.page.LocalFilePage) -> g
-    android.widget.Button access$10(com.kenny.file.page.LocalFilePage) -> h
-    android.widget.Button access$11(com.kenny.file.page.LocalFilePage) -> i
-    int access$12(com.kenny.file.page.LocalFilePage) -> j
-    void access$13(com.kenny.file.page.LocalFilePage,int) -> b
-com.kenny.file.page.LocalFilePage$1 -> com.kenny.file.j.z:
-    com.kenny.file.page.LocalFilePage this$0 -> a
+    com.kenny.file.Adapter.FileAdapter access$0(com.kenny.file.page.LocalPage) -> a
+    com.kenny.file.util.FileManager access$1(com.kenny.file.page.LocalPage) -> b
+    android.widget.ListView access$2(com.kenny.file.page.LocalPage) -> c
+    java.util.ArrayList access$3(com.kenny.file.page.LocalPage) -> d
+    com.kenny.file.bean.TreeElement access$4(com.kenny.file.page.LocalPage) -> e
+    java.lang.Long access$5(com.kenny.file.page.LocalPage) -> f
+    void access$6(com.kenny.file.page.LocalPage,com.kenny.file.bean.TreeElement) -> a
+    void access$7(com.kenny.file.page.LocalPage,java.lang.Long) -> a
+    void access$8$6267ee90(com.kenny.file.page.LocalPage,int) -> a
+    android.app.Activity access$9(com.kenny.file.page.LocalPage) -> g
+    android.widget.Button access$10(com.kenny.file.page.LocalPage) -> h
+    android.widget.Button access$11(com.kenny.file.page.LocalPage) -> i
+    int access$12(com.kenny.file.page.LocalPage) -> j
+    void access$13(com.kenny.file.page.LocalPage,int) -> b
+com.kenny.file.page.LocalPage$1 -> com.kenny.file.j.z:
+    com.kenny.file.page.LocalPage this$0 -> a
     void onScrollStateChanged(android.widget.AbsListView,int) -> onScrollStateChanged
     void onScroll(android.widget.AbsListView,int,int,int) -> onScroll
-com.kenny.file.page.LocalFilePage$2 -> com.kenny.file.j.aa:
-    com.kenny.file.page.LocalFilePage this$0 -> a
+com.kenny.file.page.LocalPage$2 -> com.kenny.file.j.aa:
+    com.kenny.file.page.LocalPage this$0 -> a
     void onReceive(android.content.Context,android.content.Intent) -> onReceive
-com.kenny.file.page.LocalFilePage$3 -> com.kenny.file.j.ab:
-    com.kenny.file.page.LocalFilePage this$0 -> a
+com.kenny.file.page.LocalPage$3 -> com.kenny.file.j.ab:
+    com.kenny.file.page.LocalPage this$0 -> a
     void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
-com.kenny.file.page.LocalFilePage$4 -> com.kenny.file.j.ac:
-    com.kenny.file.page.LocalFilePage this$0 -> a
+com.kenny.file.page.LocalPage$4 -> com.kenny.file.j.ac:
+    com.kenny.file.page.LocalPage this$0 -> a
     void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
-com.kenny.file.page.LocalFilePage$5 -> com.kenny.file.j.ad:
-    com.kenny.file.page.LocalFilePage this$0 -> a
+com.kenny.file.page.LocalPage$5 -> com.kenny.file.j.ad:
+    com.kenny.file.page.LocalPage this$0 -> a
     void onClick(android.view.View) -> onClick
-com.kenny.file.page.LocalFilePage$6 -> com.kenny.file.j.ae:
-    com.kenny.file.page.LocalFilePage this$0 -> a
+com.kenny.file.page.LocalPage$6 -> com.kenny.file.j.ae:
+    com.kenny.file.page.LocalPage this$0 -> a
     android.widget.RelativeLayout val$rlMenu -> b
     boolean onTouch(android.view.View,android.view.MotionEvent) -> onTouch
-com.kenny.file.page.LocalFilePage$7 -> com.kenny.file.j.af:
-    com.kenny.file.page.LocalFilePage this$0 -> a
+com.kenny.file.page.LocalPage$7 -> com.kenny.file.j.af:
+    com.kenny.file.page.LocalPage this$0 -> a
     android.widget.RelativeLayout val$rlMenu -> b
     com.kenny.file.menu.MGoneAinm val$goneAnim -> c
     void onClick(android.view.View) -> onClick
-com.kenny.file.page.LocalFilePage$8 -> com.kenny.file.j.ag:
-    com.kenny.file.page.LocalFilePage this$0 -> a
+com.kenny.file.page.LocalPage$8 -> com.kenny.file.j.ag:
+    com.kenny.file.page.LocalPage this$0 -> a
     com.kenny.file.menu.MGoneAinm val$goneAnim -> b
     void onClick(android.view.View) -> onClick
-com.kenny.file.page.LocalFilePage$9 -> com.kenny.file.j.ah:
-    com.kenny.file.page.LocalFilePage this$0 -> a
+com.kenny.file.page.LocalPage$9 -> com.kenny.file.j.ah:
+    com.kenny.file.page.LocalPage this$0 -> a
     java.util.ArrayList val$mDelFiles -> b
     void onClick(android.content.DialogInterface,int) -> onClick
 com.kenny.file.page.NetworkPage -> com.kenny.file.j.ai:

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-        <string name="AddressDialog_Title_Latebrowse">最近浏览</string>
+    <string name="msg_sorry_not_move_file">不能将文件移动到该目录，这样产生死锁操作！</string>
+    <string name="AddressDialog_Title_Latebrowse">最近浏览</string>
     <string name="AddressDialog_Title_Address">访问地址</string>
     <string name="FavoritesDialog_Title">收藏夹</string>
     <string name="btMenuFavorites_Title">收藏夹</string>

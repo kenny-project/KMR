@@ -41,7 +41,7 @@ import com.kenny.file.bean.AppBean;
 import com.kenny.file.bean.TaskBean;
 import com.kenny.file.commui.ListHeaderView;
 import com.kenny.file.dialog.AppBackUpDialog;
-import com.kenny.file.dialog.PopAppDialog;
+import com.kenny.file.menu.PopAppDialog;
 import com.kenny.file.tools.ApkTools;
 import com.kenny.file.tools.PackageUtil;
 import com.kenny.file.tools.T;

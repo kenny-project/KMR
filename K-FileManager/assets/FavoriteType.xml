@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <items>
-	<item id="1" title="音乐" icon="Favorite/file_manager_category_audio.png" count="0" minsize="40000" ends="mp3|mid|wav|ogg|wma"/>
+	<item id="1" title="音乐" icon="Favorite/file_manager_category_audio.png" count="0" minsize="40000" ends="mp3|mid|wav|ogg|wma|amr"/>
 	<item id="2" title="图片" icon="Favorite/file_manager_category_photo.png" count="0"  minsize="10000" ends="jpg|gif|png|bmp|jpeg|ico"/>
 	<item id="3" title="视频" icon="Favorite/file_manager_category_video.png" count="0"  minsize="190000" ends="3gp|mp4|rmvb|avi|rm|flv"/>
 	<item id="4" title="文档" icon="Favorite/file_manager_category_document.png"  count="0" minsize="0" ends="txt|pdf|ini|log|doc|docx|ppt|xls"/>

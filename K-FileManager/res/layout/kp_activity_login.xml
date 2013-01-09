@@ -161,6 +161,7 @@
         android:layout_width="fill_parent"
         android:layout_height="48dp"
         android:layout_alignParentBottom="true"
+        android:visibility="gone"
         android:background="@drawable/kp_qq_login_bg_normal" >
 
         <LinearLayout

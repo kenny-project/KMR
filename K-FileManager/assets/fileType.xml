@@ -2,10 +2,9 @@
 <items>
 
     <item
-        ends="mp3|mid|xmf|wav|ogg|wma|wav"
+        ends="mp3|mid|xmf|wav|ogg|wma|wav|amr"
         img="f_audio.png"/>
-
-    <item
+    <item
         ends="jpg|gif|png|bmp|jpeg|ico"
         img="f_image.png"/>
 
@@ -14,7 +13,7 @@
         img="f_video.png"/>
 
     <item
-        ends="txt|pdf|ini|log"
+        ends="txt|ini|log"
         img="f_txt.png"/>
 
     <item
@@ -28,22 +27,27 @@
     <item
         ends="apk|exe"
         img="f_app.png"/>
+
     <item
         ends="vcf"
         img="f_vcf.png"/>
+
     <item
         ends="pdf"
         img="f_pdf.png"/>
+
     <item
-        ends="docx"
-        img="f_doc.png"/>
-    <item
-        ends="doc"
+        ends="docx|doc"
         img="f_doc.png"/>
 
-        <item
+    <item
+        ends="ppt"
+        img="f_doc.png"/>
+
+    <item
         ends="psd"
         img="f_psd.png"/>
+
     <item
         ends="xls"
         img="f_xls.png"/>

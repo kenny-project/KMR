@@ -14,7 +14,7 @@ import android.view.View;
 public class WinMainPage extends MultiListPage
 {
 	protected View tools;
-	private LocalFilePage m_localPage = null;
+	private LocalPage m_localPage = null;
 	private NetworkPage m_RemotePage = null;
 	private AppsPage m_AppsPage = null;
 	private TaskPage m_TaskPage = null;
@@ -32,7 +32,7 @@ public class WinMainPage extends MultiListPage
 	public WinMainPage(Activity context)
 	{
 		super(context);
-		m_localPage = new LocalFilePage(context);
+		m_localPage = new LocalPage(context);
 	}
 
 	

@@ -2881,6 +2881,7 @@ com.kenny.KFileManager.R$drawable: int kp_register_button
 com.kenny.KFileManager.R$drawable: int kp_selector_button
 com.kenny.KFileManager.R$drawable: int kp_selector_button_white
 com.kenny.KFileManager.R$drawable: int kp_selector_edittext_background
+com.kenny.KFileManager.R$drawable: int kp_tools_logo
 com.kenny.KFileManager.R$drawable: int list_icon_optimization
 com.kenny.KFileManager.R$drawable: int list_icon_risk
 com.kenny.KFileManager.R$drawable: int list_icon_security
@@ -3306,7 +3307,6 @@ com.kenny.KFileManager.R$id: int session_monitor
 com.kenny.KFileManager.R$id: int session_monitor_checkbox
 com.kenny.KFileManager.R$id: int sp
 com.kenny.KFileManager.R$id: int spEncode
-com.kenny.KFileManager.R$id: int spSpinner
 com.kenny.KFileManager.R$id: int start_stop_button
 com.kenny.KFileManager.R$id: int tab_Favorite
 com.kenny.KFileManager.R$id: int tab_apps
@@ -3749,6 +3749,7 @@ com.kenny.KFileManager.R$string: int msg_please_enter_file
 com.kenny.KFileManager.R$string: int msg_please_operate
 com.kenny.KFileManager.R$string: int msg_sorry_file_not_exist_permissions
 com.kenny.KFileManager.R$string: int msg_sorry_file_permissions
+com.kenny.KFileManager.R$string: int msg_sorry_not_move_file
 com.kenny.KFileManager.R$string: int msg_success_copy_file
 com.kenny.KFileManager.R$string: int msg_success_cut_file
 com.kenny.KFileManager.R$string: int msg_themedialog
@@ -3964,10 +3965,6 @@ com.kenny.file.dialog.LocalAddressDialog: void onClick(android.content.DialogInt
 com.kenny.file.dialog.LocalAddressDialog: void onClick(android.view.View)
 com.kenny.file.dialog.MessageBoxDialog$1: void onClick(android.content.DialogInterface,int)
 com.kenny.file.dialog.MessageBoxDialog$2: void onClick(android.content.DialogInterface,int)
-com.kenny.file.dialog.PopAppDialog$1: void onClick(android.content.DialogInterface,int)
-com.kenny.file.dialog.PopAppDialog$2: void onClick(android.content.DialogInterface,int)
-com.kenny.file.dialog.PopLocalMenu$1: void onClick(android.content.DialogInterface,int)
-com.kenny.file.dialog.PopMenu$1: void onClick(android.content.DialogInterface,int)
 com.kenny.file.dialog.RenameDialog$1: void onClick(android.content.DialogInterface,int)
 com.kenny.file.dialog.RenameDialog$2: void onClick(android.content.DialogInterface,int)
 com.kenny.file.dialog.ResumeFavoriteDialog$1: void onClick(android.content.DialogInterface,int)
@@ -3986,6 +3983,10 @@ com.kenny.file.dialog.ViewSortDialog$3: void onClick(android.content.DialogInter
 com.kenny.file.dialog.ViewStyleDialog$1: void onClick(android.content.DialogInterface,int)
 com.kenny.file.dialog.ZipDialog$1: void onClick(android.content.DialogInterface,int)
 com.kenny.file.dialog.ZipDialog$2: void onClick(android.content.DialogInterface,int)
+com.kenny.file.menu.PopAppDialog$1: void onClick(android.content.DialogInterface,int)
+com.kenny.file.menu.PopAppDialog$2: void onClick(android.content.DialogInterface,int)
+com.kenny.file.menu.PopLocalMenu$1: void onClick(android.content.DialogInterface,int)
+com.kenny.file.menu.PopMenu$1: void onClick(android.content.DialogInterface,int)
 com.kenny.file.page.AppsPage: void onClick(android.view.View)
 com.kenny.file.page.AppsPage$5: void onClick(android.content.DialogInterface,int)
 com.kenny.file.page.FavoritePage: void onClick(android.view.View)
@@ -3998,11 +3999,11 @@ com.kenny.file.page.KuaiPanPage: void onClick(android.view.View)
 com.kenny.file.page.KuaiPanPage$5: void onClick(android.content.DialogInterface,int)
 com.kenny.file.page.KuaiPanPage$6: void onClick(android.content.DialogInterface,int)
 com.kenny.file.page.KuaiPanPage$7: void onClick(android.content.DialogInterface,int)
-com.kenny.file.page.LocalFilePage: void onClick(android.view.View)
-com.kenny.file.page.LocalFilePage$5: void onClick(android.view.View)
-com.kenny.file.page.LocalFilePage$7: void onClick(android.view.View)
-com.kenny.file.page.LocalFilePage$8: void onClick(android.view.View)
-com.kenny.file.page.LocalFilePage$9: void onClick(android.content.DialogInterface,int)
+com.kenny.file.page.LocalPage: void onClick(android.view.View)
+com.kenny.file.page.LocalPage$5: void onClick(android.view.View)
+com.kenny.file.page.LocalPage$7: void onClick(android.view.View)
+com.kenny.file.page.LocalPage$8: void onClick(android.view.View)
+com.kenny.file.page.LocalPage$9: void onClick(android.content.DialogInterface,int)
 com.kenny.file.page.NetworkPage: void onClick(android.view.View)
 com.kenny.file.page.NetworkPage$1: void onClick(android.view.View)
 com.kenny.file.page.NetworkPage$2: void onClick(android.view.View)
