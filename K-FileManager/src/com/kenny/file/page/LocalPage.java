@@ -22,7 +22,6 @@ import android.view.View.OnClickListener;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
-import android.view.animation.LayoutAnimationController;
 import android.view.animation.TranslateAnimation;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
@@ -46,7 +45,6 @@ import com.kenny.KFileManager.R;
 import com.kenny.KFileManager.R.color;
 import com.kenny.file.Adapter.FileAdapter;
 import com.kenny.file.Adapter.TreeViewAdapter;
-import com.kenny.file.Event.FavoriteFileEvent;
 import com.kenny.file.Event.copyFileEvent;
 import com.kenny.file.Event.cutFileEvent;
 import com.kenny.file.Event.delFileEvent;
@@ -875,7 +873,6 @@ public class LocalPage extends MultiItemPage implements
 			 * i.putExtra("PageNumber", pageNumber); setResult(RESULT_OK, i);
 			 * finish();
 			 */
-
 			return;
 		}
 

@@ -20,7 +20,8 @@ import com.kenny.file.sort.FileSort;
 import com.kenny.file.struct.INotifyDataSetChanged;
 import com.kenny.file.tools.SaveData;
 
-public class FileManager {
+public class FileManager
+{
 	private String mCurrentPath = ""; // 当前目录路径信息
 	private List<FileBean> mFileList = null;
 	private static FileManager m_LocalManage = new FileManager();
@@ -31,23 +32,29 @@ public class FileManager {
 
 	// private int mFileType = 0;// 显示类型
 
-	public void setNotifyData(INotifyDataSetChanged m_notifyData) {
+	public void setNotifyData(INotifyDataSetChanged m_notifyData)
+	{
 		this.m_notifyData = m_notifyData;
 	}
 
-	public void setContext(Context context) {
+	public void setContext(Context context)
+	{
 		this.context = context;
 	}
 
-	public String getCurrentPath() {
-		if (mCurrentPath.length() == 0) {
+	public String getCurrentPath()
+	{
+		if (mCurrentPath.length() == 0)
+		{
 			return SaveData.Read(context, Const.strDefaultPath, Const.SDCard);
-		} else {
+		} else
+		{
 			return mCurrentPath;
 		}
 	}
 
-	private FileManager() {
+	private FileManager()
+	{
 
 		mFileList = new ArrayList<FileBean>();
 	}
@@ -57,26 +64,32 @@ public class FileManager {
 	 * 
 	 * @return
 	 */
-	public static FileManager GetHandler() {
+	public static FileManager GetHandler()
+	{
 		return m_LocalManage;
 	}
 
 	/**
 	 * 退回上一层
 	 */
-	public void Back() {
-		if (!mCurrentPath.equals(Const.Root)) {
+	public void Back()
+	{
+		if (!mCurrentPath.equals(Const.Root))
+		{
 			String temp = new File(mCurrentPath).getParent();
 			setFilePath(temp, Const.cmd_Local_List_Go);
 			bRoot = false;
-		} else {
-			if (!bRoot) {
+		} else
+		{
+			if (!bRoot)
+			{
 				bRoot = true;
 				Toast.makeText(
 						context,
 						context.getString(R.string.dlg_press_again_to_exit_the_program),
 						Toast.LENGTH_SHORT).show();
-			} else {
+			} else
+			{
 				SysEng.getInstance().addEvent(
 						new ExitEvent((Activity) context, false));
 			}
@@ -86,7 +99,8 @@ public class FileManager {
 	/**
 	 * 刷新列表
 	 */
-	public void Refresh() {
+	public void Refresh()
+	{
 		setFilePath(mCurrentPath, Const.cmd_Local_List_Refresh);
 	}
 
@@ -95,16 +109,15 @@ public class FileManager {
 	 * 
 	 * @param bHidden
 	 */
-	// public void setbHidden(boolean bHidden)
-	// {
-	// this.bHidden = bHidden;
-	// }
-	public void setFilePath(String mCurrentPath) {
+	public void setFilePath(String mCurrentPath)
+	{
 		setFilePath(mCurrentPath, Const.cmd_Local_List_Go);
 	}
 
-	public void setFilePath(String mCurrentPath, int type) {
-		if (mCurrentPath.length() <= 0) {
+	public void setFilePath(String mCurrentPath, int type)
+	{
+		if (mCurrentPath.length() <= 0)
+		{
 			setFilePath(Const.SDCard, type);
 			return;
 		}
@@ -113,9 +126,11 @@ public class FileManager {
 		File mFile = new File(mCurrentPath);
 		File[] mFiles = mFile.listFiles();// 遍历出该文件夹路径下的所有文件/文件夹
 		boolean bHidden = Theme.getShowHideFile();
-		if (mFiles != null) {
+		if (mFiles != null)
+		{
 			/* 将所有文件信息添加到集合中 */
-			for (File mCurrentFile : mFiles) {
+			for (File mCurrentFile : mFiles)
+			{
 				// if (!mCurrentFile.isDirectory() && mFileType == 1)
 				// {
 				// continue;
@@ -124,24 +139,29 @@ public class FileManager {
 				// {
 				// continue;
 				// }
-				if (mCurrentFile.isHidden() && !bHidden) {
+				if (mCurrentFile.isHidden() && !bHidden)
+				{
 					continue;
 				}
 				FileBean bean = new FileBean(mCurrentFile,
 						mCurrentFile.getName(), mCurrentFile.getPath());
 				bean.setDirectory(mCurrentFile.isDirectory());
-				if (mCurrentFile.isDirectory()) {
+				if (mCurrentFile.isDirectory())
+				{
 					String[] temp = mCurrentFile.list();
-					if (temp != null) {
+					if (temp != null)
+					{
 						bean.setItemCount(temp.length);
 					}
-				} else {
+				} else
+				{
 					bean.setLength(mCurrentFile.length());
 				}
 				mCurrentFile.canWrite();
 				mFileList.add(bean);
 			}
-			switch (Theme.getSortMode() % 10) {
+			switch (Theme.getSortMode() % 10)
+			{
 			case 0:
 				Collections.sort(mFileList, new FileSort());
 				break;
@@ -155,23 +175,25 @@ public class FileManager {
 				Collections.sort(mFileList, new FileModifiedSort());
 				break;
 			}
-			 if(Theme.getSortMode()<10)
-			 {//倒序
-			 ArrayList<FileBean> TempFileList =new ArrayList<FileBean>();
-			 for (FileBean fileBean : mFileList)
-			 {
-			 TempFileList.add(0, fileBean);
-			 }
-			 mFileList.clear();
-			 mFileList.addAll(TempFileList);
-			 }
+			if (Theme.getSortMode() < 10)
+			{// 倒序
+				ArrayList<FileBean> TempFileList = new ArrayList<FileBean>();
+				for (FileBean fileBean : mFileList)
+				{
+					TempFileList.add(0, fileBean);
+				}
+				mFileList.clear();
+				mFileList.addAll(TempFileList);
+			}
 		}
-		if (!mCurrentPath.equals(Const.Root)) {
+		if (!mCurrentPath.equals(Const.Root))
+		{
 			String back = mFile.getParent();
 			File temp = new File(back);
 			mFileList.add(0, new FileBean(temp, "..", back, true));
 		}
-		if (m_notifyData != null) {
+		if (m_notifyData != null)
+		{
 			m_notifyData.NotifyDataSetChanged(type, this);
 		}
 	}
@@ -181,7 +203,8 @@ public class FileManager {
 	 * 
 	 * @return
 	 */
-	public List<FileBean> getFileList() {
+	public List<FileBean> getFileList()
+	{
 		return mFileList;
 	}
 
@@ -193,9 +216,12 @@ public class FileManager {
 	 * @param Extension
 	 * @return
 	 */
-	public int CreateFile(String path, String filenName, String Extension) {
-		try {
-			if (filenName == null || filenName.length() <= 0) {
+	public int CreateFile(String path, String filenName, String Extension)
+	{
+		try
+		{
+			if (filenName == null || filenName.length() <= 0)
+			{
 				Toast.makeText(context,
 						context.getString(R.string.msg_file_name_no_empty),
 						Toast.LENGTH_SHORT).show();
@@ -203,7 +229,8 @@ public class FileManager {
 			}
 			File mCreateFile = new File(path + java.io.File.separator
 					+ filenName.trim() + "." + Extension);
-			if (mCreateFile.exists()) {
+			if (mCreateFile.exists())
+			{
 				Toast.makeText(
 						context,
 						context.getString(R.string.msg_file_already_exists)
@@ -214,7 +241,8 @@ public class FileManager {
 			Refresh();
 			return 1;
 			// initFileListInfo(mCurrentFilePath);wmh更新
-		} catch (Exception e) {
+		} catch (Exception e)
+		{
 			String msg = context.getString(R.string.msg_failed_create)
 					+ "!error:" + e.getMessage();
 			Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
@@ -230,8 +258,10 @@ public class FileManager {
 	 * @param Extension
 	 * @return
 	 */
-	public int CreateFolder(String path, String folerName) {
-		if (folerName == null || folerName.length() <= 0) {
+	public int CreateFolder(String path, String folerName)
+	{
+		if (folerName == null || folerName.length() <= 0)
+		{
 			Toast.makeText(context,
 					context.getString(R.string.msg_folder_name_no_empty),
 					Toast.LENGTH_SHORT).show();
@@ -240,17 +270,20 @@ public class FileManager {
 		File mCreateFile = new File(path + java.io.File.separator
 				+ folerName.trim());
 
-		if (mCreateFile.exists()) {
+		if (mCreateFile.exists())
+		{
 			Toast.makeText(
 					context,
 					context.getString(R.string.msg_folder_already_exists) + "!",
 					Toast.LENGTH_SHORT).show();
 			return 2;
 		}
-		if (mCreateFile.mkdirs()) {
+		if (mCreateFile.mkdirs())
+		{
 			Refresh();
 			return 1;
-		} else {
+		} else
+		{
 			Toast.makeText(context,
 					context.getString(R.string.msg_failed_create) + "!",
 					Toast.LENGTH_SHORT).show();
