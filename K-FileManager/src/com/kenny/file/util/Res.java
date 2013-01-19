@@ -80,7 +80,6 @@ public class Res
 		int nIndex = 0;
 		int nStart = 0;
 		int nEnd = strList.size() - 1;
-
 		while (nStart <= nEnd)
 		{
 			nIndex = (nStart + nEnd) / 2;
@@ -89,29 +88,53 @@ public class Res
 			{ // 等于
 				return strList.get(nIndex).mFileTypeBean;
 
-			} else if (nCompare < 0)
-			{// 大于
+			}  else if (nCompare < 0)
+			{
 				nEnd = nIndex - 1;
 			} else if (nCompare > 0)
-			{// 小于
-				nStart = nIndex + 1;
-			}
-			if (nEnd - nStart < 3)
 			{
-				for (; nStart <= nEnd; nStart++)
-				{
-					nIndex = nStart;
-					nCompare = strWord.compareTo(strList.get(nIndex).key);
-					if (nCompare == 0)
-					{// 等于
-						return strList.get(nIndex).mFileTypeBean;
-					}
-				}
-				break;
+				nStart = nIndex + 1;
 			}
 		}
 		return null;
 	}
+//	private FileTypeBean BinarySearch(List<FileEnd> strList, String strWord)
+//	{
+//		int nIndex = 0;
+//		int nStart = 0;
+//		int nEnd = strList.size() - 1;
+//
+//		while (nStart <= nEnd)
+//		{
+//			nIndex = (nStart + nEnd) / 2;
+//			int nCompare = strWord.compareTo(strList.get(nIndex).key);
+//			if (nCompare == 0)
+//			{ // 等于
+//				return strList.get(nIndex).mFileTypeBean;
+//
+//			} else if (nCompare < 0)
+//			{// 大于
+//				nEnd = nIndex - 1;
+//			} else if (nCompare > 0)
+//			{// 小于
+//				nStart = nIndex + 1;
+//			}
+//			if (nEnd - nStart < 3)
+//			{
+//				for (; nStart <= nEnd; nStart++)
+//				{
+//					nIndex = nStart;
+//					nCompare = strWord.compareTo(strList.get(nIndex).key);
+//					if (nCompare == 0)
+//					{// 等于
+//						return strList.get(nIndex).mFileTypeBean;
+//					}
+//				}
+//				break;
+//			}
+//		}
+//		return null;
+//	}
 
 	public Drawable getBackUp()
 	{

@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="msg_favor_audio">音乐</string>
+    <string name="msg_favor_video">视频</string>
+    <string name="msg_favor_doc">文档</string>
+    <string name="msg_favor_apk">安装包</string>
+    <string name="msg_favor_zip">压缩包</string>
+    <string name="msg_favor_photo">图片</string>
     <string name="msg_file_is_not_found">未找到相应文件</string>
     <string name="AddressDialog_Title_Latebrowse">最近浏览</string>
     <string name="AddressDialog_Title_Address">访问地址</string>

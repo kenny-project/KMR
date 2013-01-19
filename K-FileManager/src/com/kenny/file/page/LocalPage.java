@@ -168,13 +168,12 @@ public class LocalPage extends MultiItemPage implements
 				-1.0f, Animation.RELATIVE_TO_SELF, 0.0f);
 		animation.setDuration(100);
 		set.addAnimation(animation);
-		LayoutAnimationController controller = new LayoutAnimationController(
-				set, 0.5f);
+//		LayoutAnimationController controller = new LayoutAnimationController(
+//				set, 0.5f);
 
 		m_locallist.setOnScrollListener(m_localOnScrollListener);
 		m_locallist.setOnItemLongClickListener(this);
 		m_locallist.setOnItemClickListener(this);
-
 		m_localGrid = (GridView) findViewById(R.id.gvLocallist);
 		m_localGrid.setOnItemClickListener(this);
 		m_localGrid.setOnItemLongClickListener(this);
@@ -190,16 +189,6 @@ public class LocalPage extends MultiItemPage implements
 				findViewById(R.id.lyTools2).getGlobalVisibleRect(rect);
 				LocalAddressDialog.ShowDialog(m_act,
 						localManage.getCurrentPath(), rect.bottom);
-				// if (lvAddressList.getVisibility() == View.GONE) {
-				// List<FileBean> mFileList = AddressList(localManage
-				// .getCurrentPath());
-				// AddressAdapter tempAdapter = new AddressAdapter(m_act,
-				// 1, mFileList,R.layout.listitem_address_item);
-				// lvAddressList.setAdapter(tempAdapter);
-				// lvAddressList.setVisibility(View.VISIBLE);
-				// } else {
-				// lvAddressList.setVisibility(View.GONE);
-				// }
 			}
 		});
 		mFileList = localManage.getFileList();
@@ -610,7 +599,7 @@ public class LocalPage extends MultiItemPage implements
 			// MobclickAgent.onEvent(m_act, "localEvent","del");
 			deletefiles();
 			break;
-		case R.id.btPaste:
+		//case R.id.btPaste:
 			// MobclickAgent.onEvent(m_act, "localEvent","paste");
 			// by wmh 这段代码以后用不到了
 			// List<FileBean> copyList = localManage.getCopyFiles();
@@ -626,7 +615,7 @@ public class LocalPage extends MultiItemPage implements
 			// m_act.getString(R.string.msg_copy_need_paste),
 			// Toast.LENGTH_SHORT).show();
 			// }
-			break;
+			//break;
 		case R.id.btSelectAll:
 			MobclickAgent.onEvent(m_act, "localEvent", "selAll");
 			SelectAll();

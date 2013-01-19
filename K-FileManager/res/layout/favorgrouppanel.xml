@@ -1,0 +1,916 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_weight="1"
+    android:background="@color/list_bg" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/list_bg"
+        android:fastScrollEnabled="true" >
+
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/list_bg"
+            android:fastScrollEnabled="true" >
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <RelativeLayout
+                    android:id="@+id/btAudioGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingBottom="4dip" >
+
+                    <RelativeLayout
+                        android:id="@+id/flItemImage"
+                        android:layout_width="64dip"
+                        android:layout_height="64dip"
+                        android:layout_centerHorizontal="true"
+                        android:background="#00000000" >
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerInParent="true"
+                            android:adjustViewBounds="true"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/file_manager_category_audio" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/flItemImage"
+                        android:layout_centerHorizontal="true" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                            android:text="@string/msg_favor_audio"
+                            android:textColor="@color/list_item_TextColer"
+                            android:textSize="14sp" >
+                        </TextView>
+
+                        <TextView
+                            android:id="@+id/tvMusicDesc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="marquee"
+                            android:marqueeRepeatLimit="marquee_forever"
+                            android:singleLine="true"
+                            android:text="(122)"
+                            android:textColor="@color/list_item_TextColer"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/btVideoGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingBottom="4dip" >
+
+                    <RelativeLayout
+                        android:id="@+id/flItemImage"
+                        android:layout_width="64dip"
+                        android:layout_height="64dip"
+                        android:layout_centerHorizontal="true"
+                        android:background="#00000000" >
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerInParent="true"
+                            android:adjustViewBounds="true"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/file_manager_category_video" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/flItemImage"
+                        android:layout_centerHorizontal="true" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                            android:text="@string/msg_favor_video"
+                            android:textColor="@color/list_item_TextColer"
+                            android:textSize="14sp" >
+                        </TextView>
+
+                        <TextView
+                            android:id="@+id/tvVideoDesc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="marquee"
+                            android:marqueeRepeatLimit="marquee_forever"
+                            android:singleLine="true"
+                            android:text="(122)"
+                            android:textColor="@color/list_item_TextColer"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/btPhotoGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingBottom="4dip" >
+
+                    <RelativeLayout
+                        android:id="@+id/flItemImage"
+                        android:layout_width="64dip"
+                        android:layout_height="64dip"
+                        android:layout_centerHorizontal="true"
+                        android:background="#00000000" >
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerInParent="true"
+                            android:adjustViewBounds="true"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/file_manager_category_photo" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/flItemImage"
+                        android:layout_centerHorizontal="true" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                            android:text="@string/msg_favor_photo"
+                            android:textColor="@color/list_item_TextColer"
+                            android:textSize="14sp" >
+                        </TextView>
+
+                        <TextView
+                            android:id="@+id/tvPhotoDesc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="marquee"
+                            android:marqueeRepeatLimit="marquee_forever"
+                            android:singleLine="true"
+                            android:text="(122)"
+                            android:textColor="@color/list_item_TextColer"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <RelativeLayout
+                    android:id="@+id/btDocumentGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingBottom="4dip" >
+
+                    <RelativeLayout
+                        android:id="@+id/flItemImage"
+                        android:layout_width="64dip"
+                        android:layout_height="64dip"
+                        android:layout_centerHorizontal="true"
+                        android:background="#00000000" >
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerInParent="true"
+                            android:adjustViewBounds="true"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/file_manager_category_document" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/flItemImage"
+                        android:layout_centerHorizontal="true" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                            android:text="@string/msg_favor_doc"
+                            android:textColor="@color/list_item_TextColer"
+                            android:textSize="14sp" >
+                        </TextView>
+
+                        <TextView
+                            android:id="@+id/tvDocDesc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="marquee"
+                            android:marqueeRepeatLimit="marquee_forever"
+                            android:singleLine="true"
+                            android:text="(122)"
+                            android:textColor="@color/list_item_TextColer"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/btApkGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingBottom="4dip" >
+
+                    <RelativeLayout
+                        android:id="@+id/flItemImage"
+                        android:layout_width="64dip"
+                        android:layout_height="64dip"
+                        android:layout_centerHorizontal="true"
+                        android:background="#00000000" >
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerInParent="true"
+                            android:adjustViewBounds="true"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/file_manager_category_apk" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/flItemImage"
+                        android:layout_centerHorizontal="true" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                            android:text="@string/msg_favor_apk"
+                            android:textColor="@color/list_item_TextColer"
+                            android:textSize="14sp" >
+                        </TextView>
+
+                        <TextView
+                            android:id="@+id/tvApkDesc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="marquee"
+                            android:marqueeRepeatLimit="marquee_forever"
+                            android:singleLine="true"
+                            android:text="(122)"
+                            android:textColor="@color/list_item_TextColer"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/btZipGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingBottom="4dip" >
+
+                    <RelativeLayout
+                        android:id="@+id/flItemImage"
+                        android:layout_width="64dip"
+                        android:layout_height="64dip"
+                        android:layout_centerHorizontal="true"
+                        android:background="#00000000" >
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerInParent="true"
+                            android:adjustViewBounds="true"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/file_manager_category_zip" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/flItemImage"
+                        android:layout_centerHorizontal="true" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                            android:text="@string/msg_favor_zip"
+                            android:textColor="@color/list_item_TextColer"
+                            android:textSize="14sp" >
+                        </TextView>
+
+                        <TextView
+                            android:id="@+id/tvZipDesc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="marquee"
+                            android:marqueeRepeatLimit="marquee_forever"
+                            android:singleLine="true"
+                            android:text="(122)"
+                            android:textColor="@color/list_item_TextColer"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+                <RelativeLayout
+                    android:id="@+id/btfavoriteGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingBottom="4dip"
+                    android:visibility="invisible"
+                     >
+
+                    <RelativeLayout
+                        android:id="@+id/flItemImage"
+                        android:layout_width="64dip"
+                        android:layout_height="64dip"
+                        android:layout_centerHorizontal="true"
+                        android:background="#00000000" >
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerInParent="true"
+                            android:adjustViewBounds="true"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/file_manager_category_favorite" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/flItemImage"
+                        android:layout_centerHorizontal="true" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                            android:text="@string/msg_favor_doc"
+                            android:textColor="@color/list_item_TextColer"
+                            android:textSize="14sp" >
+                        </TextView>
+
+                        <TextView
+                            android:id="@+id/tvDocDesc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="marquee"
+                            android:marqueeRepeatLimit="marquee_forever"
+                            android:singleLine="true"
+                            android:text="(122)"
+                            android:textColor="@color/list_item_TextColer"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/btfavoriteGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingBottom="4dip"
+                    android:visibility="invisible" >
+
+                    <RelativeLayout
+                        android:id="@+id/flItemImage"
+                        android:layout_width="64dip"
+                        android:layout_height="64dip"
+                        android:layout_centerHorizontal="true"
+                        android:background="#00000000" >
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerInParent="true"
+                            android:adjustViewBounds="true"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/file_manager_category_favorite" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/flItemImage"
+                        android:layout_centerHorizontal="true" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                            android:text="@string/msg_favor_doc"
+                            android:textColor="@color/list_item_TextColer"
+                            android:textSize="14sp" >
+                        </TextView>
+
+                        <TextView
+                            android:id="@+id/tvDocDesc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="marquee"
+                            android:marqueeRepeatLimit="marquee_forever"
+                            android:singleLine="true"
+                            android:text="(122)"
+                            android:textColor="@color/list_item_TextColer"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/btfavoriteGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingBottom="4dip"
+                    android:visibility="invisible" >
+
+                    <RelativeLayout
+                        android:id="@+id/flItemImage"
+                        android:layout_width="64dip"
+                        android:layout_height="64dip"
+                        android:layout_centerHorizontal="true"
+                        android:background="#00000000" >
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerInParent="true"
+                            android:adjustViewBounds="true"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/file_manager_category_favorite" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/flItemImage"
+                        android:layout_centerHorizontal="true" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                            android:text="@string/msg_favor_doc"
+                            android:textColor="@color/list_item_TextColer"
+                            android:textSize="14sp" >
+                        </TextView>
+
+                        <TextView
+                            android:id="@+id/tvDocDesc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="marquee"
+                            android:marqueeRepeatLimit="marquee_forever"
+                            android:singleLine="true"
+                            android:text="(122)"
+                            android:textColor="@color/list_item_TextColer"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </TableRow>
+        </TableLayout>
+
+        <LinearLayout
+            android:id="@+id/lyFavoriteStatus"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/toolbar_backgroud"
+            android:orientation="vertical"
+            android:paddingLeft="10dip"
+            android:paddingRight="10dip"
+            android:paddingTop="15dip" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:id="@+id/lyLocalStatus"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dip"
+                        android:layout_marginTop="2dip"
+                        android:background="#00000000"
+                        android:orientation="horizontal" >
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginRight="2dip"
+                            android:scaleType="center"
+                            android:src="@drawable/sd_card_icon" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/lable_External"
+                            android:textColor="@color/favorpage_status_textColor"
+                            android:textSize="12dip" >
+                        </TextView>
+
+                        <TextView
+                            android:id="@+id/tvExternalSize"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                            android:text="3096M"
+                            android:textColor="@color/favorpage_status_textColor"
+                            android:textSize="12dip" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dip"
+                            android:text="@string/lable_Available"
+                            android:textColor="@color/favorpage_status_textColor"
+                            android:textSize="12dip" />
+
+                        <TextView
+                            android:id="@+id/tvExternalAvailable"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:singleLine="true"
+                            android:text="3096M"
+                            android:textColor="@color/favorpage_status_textColor"
+                            android:textSize="12dip" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dip"
+                        android:background="#00000000"
+                        android:orientation="horizontal" >
+
+                        <ProgressBar
+                            android:id="@+id/pbExternalStatus"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="fill_parent"
+                            android:layout_height="4dip"
+                            android:progressDrawable="@drawable/progressbar_style" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dip"
+                        android:background="#00000000"
+                        android:orientation="horizontal" >
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="5dip"
+                            android:layout_marginRight="2dip"
+                            android:scaleType="center"
+                            android:src="@drawable/phone_icon" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                            android:text="@string/lable_Internal"
+                            android:textColor="@color/favorpage_status_textColor"
+                            android:textSize="12dip" >
+                        </TextView>
+
+                        <TextView
+                            android:id="@+id/tvInternalSize"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                            android:text="396.5M"
+                            android:textColor="@color/favorpage_status_textColor"
+                            android:textSize="12dip" >
+                        </TextView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dip"
+                            android:text="@string/lable_Available"
+                            android:textColor="@color/favorpage_status_textColor"
+                            android:textSize="12dip" >
+                        </TextView>
+
+                        <TextView
+                            android:id="@+id/tvInternalAvailable"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                            android:text="3096M"
+                            android:textColor="@color/favorpage_status_textColor"
+                            android:textSize="12dip" >
+                        </TextView>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="2dip"
+                        android:layout_marginTop="4dip"
+                        android:background="#00000000"
+                        android:orientation="horizontal" >
+
+                        <ProgressBar
+                            android:id="@+id/pbInternalStatus"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="fill_parent"
+                            android:layout_height="4dip"
+                            android:progressDrawable="@drawable/progressbar_style" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btRefresh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:background="@drawable/btn_special_default"
+                    android:text="@string/btRefresh"
+                    android:textColor="@color/ContentTitleText"
+                    android:textSize="20sp"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <TableLayout
+                android:id="@+id/tlStatus"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dip"
+                android:background="#00000000" >
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:scaleType="center"
+                        android:src="@drawable/fav_pic_icon" />
+
+                    <TextView
+                        android:id="@+id/tvPic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:background="#00000000"
+                        android:gravity="center_vertical"
+                        android:text="@string/msg_favor_photo"
+                        android:textColor="@color/favorpage_status_textColor" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:scaleType="center"
+                        android:src="@drawable/fav_music_icon" />
+
+                    <TextView
+                        android:id="@+id/tvMusic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:background="#00000000"
+                        android:gravity="center_vertical"
+                        android:text="@string/msg_favor_audio"
+                        android:textColor="@color/favorpage_status_textColor" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:scaleType="center"
+                        android:src="@drawable/fav_video_icon" />
+
+                    <TextView
+                        android:id="@+id/tvVideo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:background="#00000000"
+                        android:gravity="center_vertical"
+                        android:text="@string/msg_favor_video"
+                        android:textColor="@color/favorpage_status_textColor" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dip" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:scaleType="center"
+                        android:src="@drawable/fav_document_icon" />
+
+                    <TextView
+                        android:id="@+id/tvDocument"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:background="#00000000"
+                        android:gravity="center_vertical"
+                        android:text="@string/msg_favor_doc"
+                        android:textColor="@color/favorpage_status_textColor"
+                        android:textSize="12dip" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:scaleType="center"
+                        android:src="@drawable/fav_apk_icon" />
+
+                    <TextView
+                        android:id="@+id/tvApp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:background="#00000000"
+                        android:gravity="center_vertical"
+                        android:text="@string/msg_favor_apk"
+                        android:textColor="@color/favorpage_status_textColor"
+                        android:textSize="12dip" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:scaleType="center"
+                        android:src="@drawable/fav_zip_icon" />
+
+                    <TextView
+                        android:id="@+id/tvZip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:background="#00000000"
+                        android:gravity="center_vertical"
+                        android:text="@string/msg_favor_zip"
+                        android:textColor="@color/favorpage_status_textColor"
+                        android:textSize="12dip" />
+                </TableRow>
+            </TableLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/pbLoading"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#f03d3d3d"
+        android:padding="20dip"
+        android:visibility="gone" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:background="#00000000"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tvSDFileStatus"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:maxLines="3"
+                android:singleLine="false"
+                android:text=""
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <ProgressBar
+                android:id="@+id/pbSDFileStatus"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="12dip"
+                android:progressDrawable="@drawable/progressbar_style"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/lyLoading_msg_pannel"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="#00000000"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/tvMessage"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center"
+                    android:maxLines="5"
+                    android:singleLine="false"
+                    android:text=""
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/list_bg"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone" >
+
+                <ProgressBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:visibility="gone" />
+
+                <ProgressBar
+                    style="?android:attr/progressBarStyleSmallTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical" />
+
+                <TextView
+                    android:id="@+id/tvSearchState"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="start"
+                    android:maxLines="2"
+                    android:minLines="2"
+                    android:text=""
+                    android:textColor="@color/favorpage_status_textColor"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btLoading_cancel"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/lyLoading_msg_pannel"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="30dip"
+                android:layout_marginRight="30dip"
+                android:paddingLeft="45dip"
+                android:paddingRight="45dip"
+                android:text="@string/cancel"
+                android:textColor="@color/favorpage_status_textColor"
+                android:textSize="18dip" >
+            </Button>
+        </LinearLayout>
+    </RelativeLayout>
+</FrameLayout>

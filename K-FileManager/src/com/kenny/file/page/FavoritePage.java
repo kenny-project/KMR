@@ -8,8 +8,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -23,10 +21,10 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,6 +45,7 @@ import com.kenny.file.Event.openDefFileEvent;
 import com.kenny.file.Event.openFileEvent;
 import com.kenny.file.Parser.FavoriteGroupParser;
 import com.kenny.file.bean.FGroupInfo;
+import com.kenny.file.bean.FavorFileBean;
 import com.kenny.file.bean.FileBean;
 import com.kenny.file.commui.ListHeaderView;
 import com.kenny.file.db.Dao;
@@ -63,8 +62,10 @@ import com.umeng.analytics.MobclickAgent;
 
 public class FavoritePage extends MultiItemPage implements MenuAble,
 		INotifyDataSetChanged, OnItemClickListener, OnClickListener,
-		OnItemLongClickListener {
-	public FavoritePage(Activity context) {
+		OnItemLongClickListener
+{
+	public FavoritePage(Activity context)
+	{
 		super(context);
 	}
 
@@ -73,15 +74,14 @@ public class FavoritePage extends MultiItemPage implements MenuAble,
 	 * ：起始目录“/” (用java.io.File.separator获取) mSDCard ： SD卡根目录 mPath
 	 * ：显示当前路径的TextView文本组件
 	 */
-	private TextView mPath;
 	private TextView tvPic, tvMusic, tvVideo, tvDocument, tvApp, tvZip,
 			tvMessage, tvSDFileStatus;// tvWebPage
 	private ListView mListView;
 	private GridView mGridView;
-	private Button btRefresh, btListStyle;
+	private Button btRefresh;
 	private Button btAllFile, btFolder;
 	private Button btBack;
-	private Button btDelete, btSelectAll, btSelectVisible;
+	private Button btDelete, btSelectAll;
 
 	private FGroupAdapter mGroupAdapter;
 	private TextView tvExternalSize, tvInternalSize;
@@ -93,11 +93,10 @@ public class FavoritePage extends MultiItemPage implements MenuAble,
 	private ArrayList<FileBean> mTempList = new ArrayList<FileBean>();
 	private FGroupInfo mNowGItem; // 当前正在浏览的分组
 	private ProgressBar pbExternalStatus, pbInternalStatus, pbSDFileStatus;
-	private View lyBTools, lyTools2, lyFavoriteStatus;
+	private View lyTools2, lyBTools;
+	private View icGroupPannel, icItemPannel;
 	private View pbLoading;
-	private EditText mSearchValue;
-	private Button btSearch, btLoading_cancel;
-	// private LoadSDFileEvent mLoadSDFileEvent;
+	private Button btLoading_cancel;
 	private LoadSDFolderEvent mLoadSDFileEvent;
 	/**
 	 * 0:Group 1:Folder 2:Item
@@ -107,7 +106,8 @@ public class FavoritePage extends MultiItemPage implements MenuAble,
 	private final static int FLAG_Folder = 2;
 	private int bFlag = FLAG_GROUP;
 
-	private View FooterView() {
+	private View FooterView()
+	{
 		TextView tview = new TextView(m_act);
 		tview.setHeight(100);
 		tview.setWidth(-1);
@@ -119,30 +119,20 @@ public class FavoritePage extends MultiItemPage implements MenuAble,
 	/**
 	 * 切换窗体视图 false:ListView true:GridView
 	 */
-	private void SwitchStyle(int bFlag) {
-		if (bFlag == FLAG_GROUP) {
-			mSearchValue.setText("");
-			mPath.setText(m_act.getString(R.string.FavoritePage_Title));
-			lyBTools.setVisibility(View.GONE);
-			lyTools2.setVisibility(View.GONE);
-			lyFavoriteStatus.setVisibility(View.VISIBLE);
+	private void SwitchStyle(int bFlag)
+	{
+		if (bFlag == FLAG_GROUP)
+		{
+			icGroupPannel.setVisibility(View.VISIBLE);
+			icItemPannel.setVisibility(View.GONE);
 			mGroupAdapter = new FGroupAdapter(m_act, 1, mGroupList);
 			mListView.setAdapter(mGroupAdapter);
 			mGridView.setVisibility(View.GONE);
 			mListView.setVisibility(View.VISIBLE);
-			btListStyle
-					.setBackgroundResource(R.drawable.file_manager_browser_listmode);
-			if (Theme.getToolsVisible()) {
-				lyFavoriteStatus.setVisibility(View.VISIBLE);
-			} else {
-				lyFavoriteStatus.setVisibility(View.GONE);
-			}
-		} else if (bFlag == FLAG_FILE) {
-			lyTools2.setVisibility(View.VISIBLE);
-			if (mNowGItem != null) {
-				mPath.setText(mNowGItem.getTitle());
-			}
-			lyFavoriteStatus.setVisibility(View.GONE);
+		} else if (bFlag == FLAG_FILE)
+		{
+			icItemPannel.setVisibility(View.VISIBLE);
+			icGroupPannel.setVisibility(View.GONE);
 
 			btAllFile.setBackgroundResource(R.drawable.tab2_left_select);
 			btFolder.setBackgroundResource(R.drawable.tab2_right_unselect);
@@ -150,36 +140,25 @@ public class FavoritePage extends MultiItemPage implements MenuAble,
 					R.color.tab_TextColor_selected));
 			btAllFile.setTextColor(m_act.getResources().getColor(
 					R.color.tab_TextColor_normal));
-
 			mFileAdapter = new FavorFileAdapter(m_act, 1, mAllFileList);
 			mListView.setAdapter(mFileAdapter);
 			mGridView.setVisibility(View.GONE);
 			mListView.setVisibility(View.VISIBLE);
 			btSelectAll.setVisibility(View.VISIBLE);
-			btSelectVisible.setVisibility(View.GONE);
-			btListStyle
-					.setBackgroundResource(R.drawable.file_manager_browser_listmode);
-
-			if (Theme.getToolsVisible()) {
+			if (Theme.getToolsVisible())
+			{
 				lyBTools.setVisibility(View.VISIBLE);
-			} else {
+			} else
+			{
 				lyBTools.setVisibility(View.GONE);
 			}
-		} else if (bFlag == FLAG_Folder) {
+		} else if (bFlag == FLAG_Folder)
+		{
 			lyTools2.setVisibility(View.VISIBLE);
-			if (mNowGItem != null) {
-				mPath.setText(mNowGItem.getTitle());
-			}
-			lyFavoriteStatus.setVisibility(View.GONE);
 			mFolderAdapter = new FavorFileAdapter(m_act, 1, mTempList);
 			mListView.setAdapter(mFolderAdapter);
 			mGridView.setVisibility(View.GONE);
 			mListView.setVisibility(View.VISIBLE);
-			btSelectAll.setVisibility(View.VISIBLE);
-			btSelectVisible.setVisibility(View.GONE);
-			btListStyle
-					.setBackgroundResource(R.drawable.file_manager_browser_listmode);
-
 			btAllFile.setBackgroundResource(R.drawable.tab2_left_unselect);
 			btFolder.setBackgroundResource(R.drawable.tab2_right_select);
 			btAllFile.setTextColor(m_act.getResources().getColor(
@@ -187,18 +166,22 @@ public class FavoritePage extends MultiItemPage implements MenuAble,
 			btFolder.setTextColor(m_act.getResources().getColor(
 					R.color.tab_TextColor_normal));
 
-			if (Theme.getToolsVisible()) {
+			if (Theme.getToolsVisible())
+			{
 				lyBTools.setVisibility(View.VISIBLE);
-			} else {
+			} else
+			{
 				lyBTools.setVisibility(View.GONE);
 			}
 		}
 		this.bFlag = bFlag;
 	}
 
-	DialogInterface.OnClickListener clPositive = new DialogInterface.OnClickListener() {
+	DialogInterface.OnClickListener clPositive = new DialogInterface.OnClickListener()
+	{
 
-		public void onClick(DialogInterface dialog, int which) {
+		public void onClick(DialogInterface dialog, int which)
+		{
 			mLoadSDFileEvent = new LoadSDFolderEvent(m_act, false, mGroupList,
 					FavoritePage.this);
 			SysEng.getInstance().addEvent(mLoadSDFileEvent);
@@ -206,10 +189,13 @@ public class FavoritePage extends MultiItemPage implements MenuAble,
 		}
 	};
 
-	private OnScrollListener m_localOnScrollListener = new OnScrollListener() {
+	private OnScrollListener m_localOnScrollListener = new OnScrollListener()
+	{
 
-		public void onScrollStateChanged(AbsListView view, int scrollState) {
-			switch (scrollState) {
+		public void onScrollStateChanged(AbsListView view, int scrollState)
+		{
+			switch (scrollState)
+			{
 			case AbsListView.OnScrollListener.SCROLL_STATE_FLING:
 				P.debug("SCROLL_STATE_FLING");
 				if (mFileAdapter != null)
@@ -217,7 +203,8 @@ public class FavoritePage extends MultiItemPage implements MenuAble,
 				break;
 			case AbsListView.OnScrollListener.SCROLL_STATE_IDLE:
 				P.debug("SCROLL_STATE_IDLE");
-				if (mFileAdapter != null) {
+				if (mFileAdapter != null)
+				{
 					mFileAdapter.setShowLogo(true);
 					mFileAdapter.notifyDataSetChanged();
 				}
@@ -233,20 +220,24 @@ public class FavoritePage extends MultiItemPage implements MenuAble,
 		}
 
 		public void onScroll(AbsListView view, int firstVisibleItem,
-				int visibleItemCount, int totalItemCount) {
+				int visibleItemCount, int totalItemCount)
+		{
 		}
 	};
 
-	public void onCreate() {
+	public void onCreate()
+	{
 		setContentView(R.layout.favoritepage);
 		super.onCreate();
 		pbLoading = findViewById(R.id.pbLoading);
+		icGroupPannel = findViewById(R.id.icGroupPannel);
+		icItemPannel = findViewById(R.id.icItemPannel);
+		;
 		pbSDFileStatus = (ProgressBar) findViewById(R.id.pbSDFileStatus);
 		pbExternalStatus = (ProgressBar) findViewById(R.id.pbExternalStatus);
 		pbInternalStatus = (ProgressBar) findViewById(R.id.pbInternalStatus);
 		tvExternalSize = (TextView) findViewById(R.id.tvExternalSize);
 		lyBTools = findViewById(R.id.lyBTools);
-		lyFavoriteStatus = findViewById(R.id.lyFavoriteStatus);
 		tvInternalSize = (TextView) findViewById(R.id.tvInternalSize);
 		mListView = (ListView) findViewById(R.id.lvLocallist);
 		mListView.setOnItemClickListener(this);
@@ -261,30 +252,6 @@ public class FavoritePage extends MultiItemPage implements MenuAble,
 		mGridView.setOnScrollListener(m_localOnScrollListener);
 		mGridView.setOnItemLongClickListener(this);
 
-		mSearchValue = (EditText) findViewById(R.id.mSearchValue);
-		mSearchValue.addTextChangedListener(new TextWatcher() {
-
-			public void beforeTextChanged(CharSequence s, int start, int count,
-					int after) {
-
-			}
-
-			public void onTextChanged(CharSequence s, int start, int before,
-					int count) {
-
-			}
-
-			public void afterTextChanged(Editable s) {
-				if (bFlag == FLAG_FILE) {
-					String value = mSearchValue.getText().toString().trim();
-					if (value.length() == 0) {
-						FavoriteItemInit("");
-					} else {
-						FavoriteItemInit(value);
-					}
-				}
-			}
-		});
 		btAllFile = (Button) findViewById(R.id.btAllFile);
 		btAllFile.setOnClickListener(this);
 		btFolder = (Button) findViewById(R.id.btFolder);
@@ -292,20 +259,12 @@ public class FavoritePage extends MultiItemPage implements MenuAble,
 		btLoading_cancel = (Button) findViewById(R.id.btLoading_cancel);
 		btLoading_cancel.setOnClickListener(this);
 
-		btSearch = (Button) findViewById(R.id.btSearch);
-		btSearch.setOnClickListener(this);
-
 		btRefresh = (Button) findViewById(R.id.btRefresh);
 		btRefresh.setOnClickListener(this);
 
 		btBack = (Button) findViewById(R.id.btBack);
 		btBack.setOnClickListener(this);
 
-		btSelectVisible = (Button) findViewById(R.id.btSelectVisible);
-		btSelectVisible.setOnClickListener(this);
-
-		btListStyle = (Button) findViewById(R.id.btListStyle);
-		btListStyle.setOnClickListener(this);
 		lyTools2 = findViewById(R.id.lyTools2);
 		btDelete = (Button) findViewById(R.id.btDelete);
 		btDelete.setOnClickListener(this);
@@ -319,53 +278,71 @@ public class FavoritePage extends MultiItemPage implements MenuAble,
 		tvDocument = (TextView) findViewById(R.id.tvDocument);
 		tvApp = (TextView) findViewById(R.id.tvApp);
 		tvZip = (TextView) findViewById(R.id.tvZip);
-		// tvWebPage = (TextView) findViewById(R.id.tvWebPage);
 		tvMessage = (TextView) findViewById(R.id.tvMessage);
 		tvSDFileStatus = (TextView) findViewById(R.id.tvSDFileStatus);
-		mPath = (TextView) findViewById(R.id.mCurrentPath);
 
-		mPath.setText(m_act.getString(R.string.FavoritePage_Title));
-		// SwitchStyle(bFlag,Theme.getStyleMode());
+		((RelativeLayout) findViewById(R.id.btPhotoGroup))
+				.setOnClickListener(this);
+		((RelativeLayout) findViewById(R.id.btAudioGroup))
+				.setOnClickListener(this);
+		((RelativeLayout) findViewById(R.id.btVideoGroup))
+				.setOnClickListener(this);
+		((RelativeLayout) findViewById(R.id.btDocumentGroup))
+				.setOnClickListener(this);
+		((RelativeLayout) findViewById(R.id.btApkGroup))
+				.setOnClickListener(this);
+		((RelativeLayout) findViewById(R.id.btZipGroup))
+				.setOnClickListener(this);
 		boolean bFavoriteInit = SaveData.Read(m_act, "FavoriteInit", false);
-		if (!bFavoriteInit) {
+		if (!bFavoriteInit)
+		{
 			mLoadSDFileEvent = new LoadSDFolderEvent(m_act, false, mGroupList,
 					FavoritePage.this);
 			SysEng.getInstance().addThreadEvent(mLoadSDFileEvent);
 		}
 	}
 
-	public void onLoad() {
+	public void onLoad()
+	{
 		Refresh(bFlag);
 		SwitchStyle(bFlag);
 	}
 
-	public void onReload() {
+	public void onReload()
+	{
 
 	}
 
-	public void onExit() {
+	public void onExit()
+	{
 	}
 
-	public boolean onKeyDown(int keyCode, KeyEvent msg) {
+	public boolean onKeyDown(int keyCode, KeyEvent msg)
+	{
 		// 弹出退出对话框
-		if (keyCode == KeyEvent.KEYCODE_BACK) {
+		if (keyCode == KeyEvent.KEYCODE_BACK)
+		{
 			if (bFlag == FLAG_FILE)// 1
 			{
 				Refresh(FLAG_GROUP);
 				SwitchStyle(FLAG_GROUP);
 			} else if (bFlag == FLAG_Folder)// 1
 			{
-				if (nFolderType == 1) {
+				if (nFolderType == 1)
+				{
 					nFolderType = 0;
 					mTempList.clear();
 					mTempList.addAll(mFolderList);
-					if (mFolderAdapter != null) {
+					if (mFolderAdapter != null)
+					{
 						mFolderAdapter.notifyDataSetChanged();
 					}
-				} else {
+				} else
+				{
 					SwitchStyle(FLAG_GROUP);
 				}
-			} else {
+			} else
+			{
 				SysEng.getInstance()
 						.addHandlerEvent(new ExitEvent(m_act, true));
 			}
@@ -374,40 +351,44 @@ public class FavoritePage extends MultiItemPage implements MenuAble,
 		return super.onKeyDown(keyCode, msg);
 	}
 
-	public void onPause() {
+	public void onPause()
+	{
 
 	}
 
-	public void onResume() {
-		// Refresh(bFlag);
-		if (bFlag == FLAG_GROUP) {
-			if (Theme.getToolsVisible()) {
-				lyFavoriteStatus.setVisibility(View.VISIBLE);
-			} else {
-				lyFavoriteStatus.setVisibility(View.GONE);
-			}
-		} else {
-			if (Theme.getToolsVisible()) {
+	public void onResume()
+	{
+		if (bFlag != FLAG_GROUP)
+		{
+			if (Theme.getToolsVisible())
+			{
 				lyBTools.setVisibility(View.VISIBLE);
-			} else {
+			} else
+			{
 				lyBTools.setVisibility(View.GONE);
 			}
 		}
 	}
 
-	protected void Refresh(int bFlag) {
+	protected void Refresh(int bFlag)
+	{
 		this.bFlag = bFlag;
-		if (bFlag == FLAG_GROUP) {
+		if (bFlag == FLAG_GROUP)
+		{
 			FavoriteGroupInit();
-		} else if (bFlag == FLAG_FILE) {
-			FavoriteItemInit(mSearchValue.getText().toString());
-		} else if (bFlag == FLAG_Folder) {
+		} else if (bFlag == FLAG_FILE)
+		{
+			FavoriteItemInit();
+		} else if (bFlag == FLAG_Folder)
+		{
 			FavoriteFolderInit();
 		}
 	}
 
-	private void FavoriteFolderInit() {
-		if (mNowGItem != null) {
+	private void FavoriteFolderInit()
+	{
+		if (mNowGItem != null)
+		{
 			Dao dao = Dao.getInstance(m_act);
 			mFolderList.clear();
 			mFolderList.addAll(dao.getFavoritesFolderInfos(mNowGItem));
@@ -416,7 +397,8 @@ public class FavoritePage extends MultiItemPage implements MenuAble,
 			mFolderList.add(0, new FileBean(null, "..", "back", true));
 			mTempList.clear();
 			mTempList.addAll(mFolderList);
-			if (mFolderAdapter != null) {
+			if (mFolderAdapter != null)
+			{
 				mFolderAdapter.notifyDataSetChanged();
 			}
 		}
@@ -427,33 +409,40 @@ public class FavoritePage extends MultiItemPage implements MenuAble,
 	 * 
 	 * @param info
 	 */
-	private void FavoriteFolderItem(FGroupInfo info, String path) {
-		if (info != null) {
+	private void FavoriteFolderItem(FGroupInfo info, String path)
+	{
+		if (info != null)
+		{
 			Dao dao = Dao.getInstance(m_act);
 			mTempList.clear();
 			mTempList.addAll(dao.getFolderItem(path, info));
 			dao.closeDb();
 			Collections.sort(mTempList, new FileSort());
 			mTempList.add(0, new FileBean(null, "..", "back", true));
-			if (mFolderAdapter != null) {
+			if (mFolderAdapter != null)
+			{
 				mFolderAdapter.notifyDataSetChanged();
 			}
 		}
 	}
 
-	private void FavoriteItemInit(String search) {
-		FavoriteItemInit(search, false);
+	private void FavoriteItemInit()
+	{
+		FavoriteItemInit(false);
 	}
 
-	private void FavoriteItemInit(String search, boolean bSaveSize) {
-		if (mNowGItem != null) {
+	private void FavoriteItemInit(boolean bSaveSize)
+	{
+		if (mNowGItem != null)
+		{
 			mNowGItem.length = 0l;
 			Dao dao = Dao.getInstance(m_act);
 			mAllFileList.clear();
-			mAllFileList.addAll(dao.getFavoritesInfos(search, mNowGItem));
+			mAllFileList.addAll(dao.getFavoritesInfos(mNowGItem));
 			dao.closeDb();
 			mNowGItem.setCount(mAllFileList.size());
-			if (bSaveSize) {
+			if (bSaveSize)
+			{
 				SaveData.Write(m_act, "FavGroupSize_" + mNowGItem.getId(),
 						mNowGItem.length);
 			}
@@ -465,13 +454,15 @@ public class FavoritePage extends MultiItemPage implements MenuAble,
 			mTempList.clear();
 			mTempList.addAll(mAllFileList);
 			// Collections.sort(mAllFileList, new FileSort());
-			if (mFileAdapter != null) {
+			if (mFileAdapter != null)
+			{
 				mFileAdapter.notifyDataSetChanged();
 			}
 		}
 	}
 
-	public void FavoriteSize() {
+	public void FavoriteSize()
+	{
 		Log.v("wmh", "FavoriteSize");
 		Long lTotalInternalSize = StorageUtil.getTotalInternalMemorySize();
 		Long lFreeInternalSize = StorageUtil.getAvailableInternalMemorySize();
@@ -487,7 +478,8 @@ public class FavoritePage extends MultiItemPage implements MenuAble,
 		/**
 		 * SD卡空间
 		 */
-		if (StorageUtil.externalMemoryAvailable()) {
+		if (StorageUtil.externalMemoryAvailable())
+		{
 			Long lTotalSpace = StorageUtil.getTotalExternalMemorySize();
 			Long lFreeSpace = StorageUtil.getAvailableExternalMemorySize();
 			tvExternalSize.setText(T.FileSizeToString(lTotalSpace));
@@ -496,7 +488,8 @@ public class FavoritePage extends MultiItemPage implements MenuAble,
 			pbExternalStatus.setMax((int) (lTotalSpace / 1024));
 			pbExternalStatus.setProgress((int) (lTotalSpace / 1024)
 					- (int) (lFreeSpace / 1024));
-		} else {
+		} else
+		{
 			tvExternalSize.setText(m_act.getString(R.string.unknown));
 			((TextView) findViewById(R.id.tvExternalAvailable)).setText(m_act
 					.getString(R.string.unknown));
@@ -505,18 +498,20 @@ public class FavoritePage extends MultiItemPage implements MenuAble,
 		}
 	}
 
-	private void FavoriteGroupInit() {
-		mSearchValue.setText("");
+	private void FavoriteGroupInit()
+	{
 		String Data;
 		String FileName = m_act.getString(R.string.FavoriteType);
-		try {
+		try
+		{
 			Data = new String(T.ReadResourceAssetsFile(m_act, FileName));
 			FavoriteGroupParser mFavoriteParser = new FavoriteGroupParser();
 			mGroupList.clear();
 			ArrayList<FGroupInfo> result = mFavoriteParser.parseJokeByData(
 					m_act, Data);
 			mGroupList.addAll(result);
-			for (int i = 0; i < result.size(); i++) {
+			for (int i = 0; i < result.size(); i++)
+			{
 				FGroupInfo temp = result.get(i);
 				long size = SaveData.Read(m_act,
 						"FavGroupSize_" + temp.getId(), 0l);
@@ -524,22 +519,32 @@ public class FavoritePage extends MultiItemPage implements MenuAble,
 						"FavGroupCount_" + temp.getId(), temp.getCount());
 				temp.setCount(count);
 				temp.setSize(size);
-				switch (temp.getId()) {
+				switch (temp.getId())
+				{
 				case 1:
 					tvMusic.setText(m_act.getString(R.string.lable_music)
 							+ T.FileSizeToString(temp.getSize()));
+					
+					((TextView) findViewById(R.id.tvMusicDesc)).setText("("
+							+ temp.getCount()+")");
 					break;
 				case 2:
 					tvPic.setText(m_act.getString(R.string.lable_pic)
 							+ T.FileSizeToString(temp.getSize()));
+					((TextView) findViewById(R.id.tvPhotoDesc)).setText("("
+							+ temp.getCount()+")");
 					break;
 				case 3:
 					tvVideo.setText(m_act.getString(R.string.lable_video)
 							+ T.FileSizeToString(temp.getSize()));
+					((TextView) findViewById(R.id.tvVideoDesc)).setText("("
+							+ temp.getCount()+")");
 					break;
 				case 4:
 					tvDocument.setText(m_act.getString(R.string.lable_document)
 							+ T.FileSizeToString(temp.getSize()));
+					((TextView) findViewById(R.id.tvDocDesc)).setText("("
+							+ temp.getCount()+")");
 					break;
 				case 5:
 					// tvWebPage.setText(m_act.getString(R.string.lable_webpage)
@@ -548,31 +553,39 @@ public class FavoritePage extends MultiItemPage implements MenuAble,
 				case 6:
 					tvZip.setText(m_act.getString(R.string.lable_zip)
 							+ T.FileSizeToString(temp.getSize()));
+					((TextView) findViewById(R.id.tvZipDesc)).setText("("
+							+ temp.getCount()+")");
 					break;
 				case 7:
 					tvApp.setText(m_act.getString(R.string.lable_apk)
 							+ T.FileSizeToString(temp.getSize()));
+					((TextView) findViewById(R.id.tvApkDesc)).setText("("
+							+ temp.getCount()+")");
 					break;
 				}
 			}
-			if (mGroupAdapter != null) {
+			if (mGroupAdapter != null)
+			{
 				mGroupAdapter.notifyDataSetChanged();
 			}
 			FavoriteSize();
-		} catch (Exception e) {
+		} catch (Exception e)
+		{
 			e.printStackTrace();
 		}
 	}
 
-	public void onClick(View v) {
-		switch (v.getId()) {
+	public void onClick(View v)
+	{
+		switch (v.getId())
+		{
 		case R.id.btLoading_cancel:
 			if (mLoadSDFileEvent != null)
 				mLoadSDFileEvent.Cancel();
 			MobclickAgent.onEvent(m_act, "FavoriteEvent", "Loading_cancel");
 			break;
 		case R.id.btSearch:
-			FavoriteItemInit(mSearchValue.getText().toString());
+			FavoriteItemInit();
 			// MobclickAgent.onEvent(m_act, "FavoriteEvent","Search");
 			break;
 		case R.id.btAllFile:
@@ -581,6 +594,24 @@ public class FavoritePage extends MultiItemPage implements MenuAble,
 		case R.id.btFolder:
 			SwitchStyle(FLAG_Folder);
 			Refresh(FLAG_Folder);
+			break;
+		case R.id.btAudioGroup:
+			SwitchGroup(0);
+			break;
+		case R.id.btVideoGroup:
+			SwitchGroup(2);
+			break;
+		case R.id.btPhotoGroup:
+			SwitchGroup(1);
+			break;
+		case R.id.btDocumentGroup:
+			SwitchGroup(3);
+			break;
+		case R.id.btApkGroup:
+			SwitchGroup(5);
+			break;
+		case R.id.btZipGroup:
+			SwitchGroup(4);
 			break;
 		case R.id.btListStyle:
 			// MobclickAgent.onEvent(m_act, "FavoriteEvent","ListStyle");
@@ -619,23 +650,28 @@ public class FavoritePage extends MultiItemPage implements MenuAble,
 		}
 	}
 
-	private void SelectAll() {
-		if (mTempList.size() > 2) {
+	private void SelectAll()
+	{
+		if (mTempList.size() > 2)
+		{
 			boolean check = !mTempList.get(1).isChecked();
-			for (int i = 1; i < mTempList.size(); i++) {
+			for (int i = 1; i < mTempList.size(); i++)
+			{
 				FileBean tmpInfo = mTempList.get(i);
 				tmpInfo.setChecked(check);
 			}
-			if (bFlag == FLAG_FILE) {
+			if (bFlag == FLAG_FILE)
+			{
 				mFileAdapter.notifyDataSetChanged();
-			}
-			if (bFlag == FLAG_Folder) {
+			} else if (bFlag == FLAG_Folder)
+			{
 				mFolderAdapter.notifyDataSetChanged();
 			}
 		}
 	}
 
-	public void DeleteFile(FileBean file) {
+	public void DeleteFile(FileBean file)
+	{
 		SysEng.getInstance().addEvent(
 				new delFileEvent(m_act, file, FavoritePage.this));
 		// if (bFlag == FLAG_FILE)
@@ -650,22 +686,40 @@ public class FavoritePage extends MultiItemPage implements MenuAble,
 		// }
 	}
 
-	private void deletefiles() {
+	private void deletefiles()
+	{
 		final ArrayList<FileBean> mDelFiles = new ArrayList<FileBean>();
-		for (int i = 0; i < mTempList.size(); i++) {
+		for (int i = 0; i < mTempList.size(); i++)
+		{
 			FileBean tmpInfo = mTempList.get(i);
-			if (tmpInfo.isChecked()) {
+			
+			if (tmpInfo.isChecked())
+			{
 				mDelFiles.add(tmpInfo);
 			}
 		}
-		if (mDelFiles.size() > 0) {
+		if (mDelFiles.size() > 0)
+		{
 			new AlertDialog.Builder(m_act)
 					.setTitle("提示!")
 					.setMessage("确定删除已选的文件吗?")
 					.setPositiveButton(m_act.getString(R.string.ok),
-							new DialogInterface.OnClickListener() {
+							new DialogInterface.OnClickListener()
+							{
 								public void onClick(DialogInterface dialog,
-										int which) {
+										int which)
+								{
+									Dao dao = Dao.getInstance(m_act);
+									for (FileBean fileBean : mDelFiles)
+									{
+										if (fileBean.isDirectory())
+										{
+											FavorFileBean bean1=(FavorFileBean) fileBean;
+											dao.deleteFavorites(bean1.getId());
+											mDelFiles.remove(fileBean);
+										}
+									}
+									dao.closeDb();
 									mNowGItem.setCount(mNowGItem.getCount()
 											- mDelFiles.size());
 									SaveData.Write(m_act, "FavGroupCount_"
@@ -679,13 +733,16 @@ public class FavoritePage extends MultiItemPage implements MenuAble,
 					.setNegativeButton(m_act.getString(R.string.cancel), null)
 					.show();
 			return;
-		} else {
+		} else
+		{
 			Toast.makeText(m_act, "请选择需要删除的文件!", Toast.LENGTH_SHORT).show();
 		}
 	}
 
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
+	public boolean onOptionsItemSelected(MenuItem item)
+	{
+		switch (item.getItemId())
+		{
 		// case R.id.muListView:
 		// SwitchStyle(bFlag, !nStyle);
 		// break;
@@ -700,50 +757,60 @@ public class FavoritePage extends MultiItemPage implements MenuAble,
 		return false;
 	}
 
-	public boolean onCreateOptionsMenu(Menu menu) {
+	public boolean onCreateOptionsMenu(Menu menu)
+	{
 		P.debug("onCreateOptionsMenu");
 		return super.onCreateOptionsMenu(menu, R.menu.favoritepagemenu);
 	}
 
-	public boolean onPrepareOptionsMenu(Menu menu) {
+	public boolean onPrepareOptionsMenu(Menu menu)
+	{
 		// return super.onCreateOptionsMenu(menu, R.menu.favoritepagemenu);
 		super.onPrepareOptionsMenu(menu);
 		P.debug("onPrepareOptionsMenu");
 		return true;
 	}
 
-	public void onStart() {
+	public void onStart()
+	{
 		P.v("NullPointError", "onStart");
 	}
 
 	/** 注销广播 */
 
-	public void onDestroy() {
+	public void onDestroy()
+	{
 
 	}
 
-	public void clear() {
-		// TODO Auto-generated method stub
+	public void clear()
+	{
 
 	}
 
-	public boolean onTouchEvent(MotionEvent event) {
-		// TODO Auto-generated method stub
+	public boolean onTouchEvent(MotionEvent event)
+	{
 		return false;
 	}
 
+	public void SwitchGroup(int pos)
+	{
+		mNowGItem = mGroupList.get(pos);
+		this.bFlag = FLAG_FILE;
+		FavoriteItemInit(true);
+		SwitchStyle(FLAG_FILE);
+	}
+
 	public void onItemClick(AdapterView<?> parent, View view, int position,
-			long id) {
-		if (bFlag == FLAG_GROUP) { // group分类列表
-			mNowGItem = mGroupList.get(position);
-			// Refresh(FLAG_FILE);
-			// bFlag:true:记录总的文件数及文件大小,boolean bFlag
-			this.bFlag = FLAG_FILE;
-			mSearchValue.setText("");
-			FavoriteItemInit(mSearchValue.getText().toString(), true);
-			SwitchStyle(FLAG_FILE);
-		} else if (bFlag == FLAG_FILE) {
-			if (position == 0) {// 返回到上一层
+			long id)
+	{
+		if (bFlag == FLAG_GROUP)
+		{ // group分类列表
+			SwitchGroup(position);
+		} else if (bFlag == FLAG_FILE)
+		{
+			if (position == 0)
+			{// 返回到上一层
 				// MobclickAgent.onEvent(m_act, "FavoriteEvent","Back");
 				// SwitchStyle(FLAG_Folder);
 				Refresh(FLAG_GROUP);
@@ -752,34 +819,43 @@ public class FavoritePage extends MultiItemPage implements MenuAble,
 			}
 			FileBean temp = mAllFileList.get(position);
 			final File mFile = temp.getFile();
-			if (!mFile.isDirectory()) {
+			if (!mFile.isDirectory())
+			{
 				SysEng.getInstance().addHandlerEvent(
 						new openDefFileEvent(m_act, mFile.getPath()));
-			} else {
+			} else
+			{
 				FileManager.GetHandler().setFilePath(mFile.getPath());
 				KMainPage.mKMainPage.ChangePage(KMainPage.Local, null);
 			}
-		} else if (bFlag == FLAG_Folder) {
-			if (position == 0) {// 返回到上一层
+		} else if (bFlag == FLAG_Folder)
+		{
+			if (position == 0)
+			{// 返回到上一层
 				// MobclickAgent.onEvent(m_act, "FavoriteEvent","Back");
-				if (nFolderType == 1) {
+				if (nFolderType == 1)
+				{
 					nFolderType = 0;
 					mTempList.clear();
 					mTempList.addAll(mFolderList);
-					if (mFolderAdapter != null) {
+					if (mFolderAdapter != null)
+					{
 						mFolderAdapter.notifyDataSetChanged();
 					}
-				} else {
+				} else
+				{
 					SwitchStyle(FLAG_GROUP);
 				}
 				return;
 			}
 			FileBean temp = mTempList.get(position);
 			final File mFile = temp.getFile();
-			if (!mFile.isDirectory()) {
+			if (!mFile.isDirectory())
+			{
 				SysEng.getInstance().addHandlerEvent(
 						new openDefFileEvent(m_act, mFile.getPath()));
-			} else {
+			} else
+			{
 				mFolderPath = mFile.getPath();
 				FavoriteFolderItem(mNowGItem, mFolderPath);
 				nFolderType = 1;
@@ -790,21 +866,26 @@ public class FavoritePage extends MultiItemPage implements MenuAble,
 	private String mFolderPath;
 	private int nFolderType = 0;// 0:文件夹 1:文件
 
-	public void NotifyDataSetChanged(final int cmd, Object value) {
+	public void NotifyDataSetChanged(final int cmd, Object value)
+	{
 		mNotifyData.setKey(cmd);
 		mNotifyData.setValue(value);
 		SysEng.getInstance().addHandlerEvent(mNotifyData);
 	}
 
-	private ParamEvent mNotifyData = new ParamEvent() {
+	private ParamEvent mNotifyData = new ParamEvent()
+	{
 
-		public void ok() {
-			P.v("Favorite getKey()=" + getKey());
-			switch (getKey()) {
+		public void ok()
+		{
+			switch (getKey())
+			{
 			case Const.cmd_DelFileEvent_Finish:
-				if (bFlag == FLAG_Folder && 1 == nFolderType) {
+				if (bFlag == FLAG_Folder && 1 == nFolderType)
+				{
 					FavoriteFolderItem(mNowGItem, mFolderPath);
-				} else {
+				} else
+				{
 					Refresh(bFlag);
 				}
 				break;
@@ -815,21 +896,17 @@ public class FavoritePage extends MultiItemPage implements MenuAble,
 				Long value = (Long) getValue();
 				pbSDFileStatus.setMax(value.intValue());
 				pbSDFileStatus.setProgress(0);
-				// tvMessage.setText("正在遍历文件...");
 				tvSDFileStatus.setText("");
 				tvMessage.setText("");
 				break;
 			case Const.cmd_LoadSDFile_Start:
 				pbLoading.setVisibility(View.VISIBLE);
-				// tvMessage.setText("正在获取文件数,请耐心等待!\n根据SD卡空间大小的不同遍历时间不等");
 				mListView.setVisibility(View.GONE);
 				mGridView.setVisibility(View.GONE);
 				btRefresh.setVisibility(View.GONE);
 				break;
 			case Const.cmd_LoadSDFile_State:
 				LoadSDFolderEvent.LoadSDFile_State staValue = (LoadSDFolderEvent.LoadSDFile_State) getValue();
-				// pbSDFileStatus.setProgress(staValue.Progress);
-				// pbSDFileStatus.setMax(staValue.count);
 				tvSDFileStatus.setText("正在遍历SD卡,请耐心等待!\n已遍历:"
 						+ staValue.Progress + "文件");
 				tvMessage.setText(staValue.strPath);
@@ -847,19 +924,25 @@ public class FavoritePage extends MultiItemPage implements MenuAble,
 	};
 
 	public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int arg2,
-			long arg3) {
+			long arg3)
+	{
 		// MobclickAgent.onEvent(m_act, "FavoriteEvent","ItemLongClick");
 		FileBean temp = null;
-		if (bFlag == FLAG_FILE) {
+		if (bFlag == FLAG_FILE)
+		{
 			temp = mFileAdapter.getItem(arg2);
 		}
-		if (bFlag == FLAG_Folder) {
+		if (bFlag == FLAG_Folder)
+		{
 			temp = mFolderAdapter.getItem(arg2);
 		}
-		if (temp != null && !temp.isBackUp()) {
-			if (temp.getFile().isDirectory()) {
+		if (temp != null && !temp.isBackUp())
+		{
+			if (temp.getFile().isDirectory())
+			{
 				ShowFavorDialog(m_act, temp);
-			} else {
+			} else
+			{
 				ShowFavorDialog(m_act, temp);
 			}
 		}
@@ -867,16 +950,22 @@ public class FavoritePage extends MultiItemPage implements MenuAble,
 	}
 
 	/** 长按文件或文件夹时弹出的带ListView效果的功能菜单 */
-	public void ShowFavorDialog(final Context context, final FileBean file) {
-		DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int item) {
+	public void ShowFavorDialog(final Context context, final FileBean file)
+	{
+		DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener()
+		{
+			public void onClick(DialogInterface dialog, int item)
+			{
 				dialog.cancel();
-				switch (item) {
+				switch (item)
+				{
 				case 0: // 打开
-					if (file.getFile().canRead()) {
+					if (file.getFile().canRead())
+					{
 						SysEng.getInstance().addHandlerEvent(
 								new openFileEvent(context, file.getFilePath()));
-					} else {
+					} else
+					{
 						Toast.makeText(
 								context,
 								context.getString(R.string.msg_can_not_operated),
@@ -909,7 +998,8 @@ public class FavoritePage extends MultiItemPage implements MenuAble,
 				}
 			}
 		};
-		String[] mMenu = { "打开", "打开所在文件夹", "删除", "发送", "收藏", "属性" };
+		String[] mMenu =
+		{ "打开", "打开所在文件夹", "删除", "发送", "收藏", "属性" };
 		new AlertDialog.Builder(context)
 				.setTitle(context.getString(R.string.msg_please_operate))
 				.setItems(mMenu, listener)

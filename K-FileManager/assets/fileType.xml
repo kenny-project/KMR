@@ -21,7 +21,7 @@
         img="f_web.png"/>
 
     <item
-        ends="zip|rar|7z|gz"
+        ends="zip|rar|7z|gz|iso"
         img="f_zip.png"/>
 
     <item

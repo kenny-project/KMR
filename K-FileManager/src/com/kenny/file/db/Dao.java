@@ -321,14 +321,13 @@ public class Dao extends DBHelper
    /**
     * 得到相应分类的全部信息 bFlag:true:记录总的文件数及文件大小,boolean bFlag
     */
-   public List<FileBean> getFavoritesInfos(String searchValue,
+   public List<FileBean> getFavoritesInfos(
          FGroupInfo groupInfo)
    {
       synchronized (_readLock)
       {
          List<FileBean> list = new ArrayList<FileBean>();
          SQLiteDatabase database = this.getReadableDatabase();
-         searchValue = searchValue.toLowerCase();
          String sql = "";
          Cursor cursor = null;
          sql = "select " + DBHelper.favFilds[0] + ", " + DBHelper.favFilds[1]
@@ -346,21 +345,14 @@ public class Dao extends DBHelper
 	     {
 	        if (!file.isDirectory())
 	        {
-		 if (searchValue.length() == 0
-		       || compare(file.getName(), searchValue))
-		 {
+
 		    BuildFavorFile(file, groupInfo, list);
-		 }
 	        }
 	     }
 	  }
 	  else
 	  {
-	     if (searchValue == null
-		 || compare(mCurrent.getName(), searchValue))
-	     {
 	        BuildFavorFile(mCurrent, groupInfo, list);
-	     }
 	  }
          }
          cursor.close();
@@ -698,7 +690,21 @@ public class Dao extends DBHelper
          database.close();
       }
    }
-   
+   /**
+    * 删除收藏列表中的数据
+    */
+   public int deleteFavorites(int id)
+   {
+      synchronized (_readLock)
+      {
+         SQLiteDatabase database = this.getWritableDatabase();
+         int result=database.delete(DBHelper.favTable, DBHelper.favFilds[0] + "==?",
+	     new String[]
+	     { String.valueOf(id)});
+         database.close();
+         return result;
+      }
+   }
    /**
     * 历史记录相关处理函数
     */

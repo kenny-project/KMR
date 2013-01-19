@@ -178,7 +178,7 @@
         android:gravity="fill"
         android:orientation="horizontal"
         android:visibility="gone"
-         >
+        >
         <Button
             android:id="@+id/btSelectAll"
             android:layout_width="wrap_content"
@@ -204,7 +204,8 @@
             android:text="@string/btNew"
             android:textColor="@color/ContentTitleText"
             android:textSize="13dip"
-            android:visibility="gone" />
+            android:visibility="gone"
+            />
 
         <Button
             android:id="@+id/btCopy"

@@ -5,7 +5,7 @@
 	<item id="3" title="视频" icon="Favorite/file_manager_category_video.png" count="0"  minsize="190000" ends="3gp|mp4|rmvb|avi|rm|flv"/>
 	<item id="4" title="文档" icon="Favorite/file_manager_category_document.png"  count="0" minsize="0" ends="txt|pdf|ini|log|doc|docx|ppt|xls"/>
 	<!--<item id="5" title="网页" icon="Favorite/file_manager_icon_html.png" count="0"  minsize="0" ends="html|htm|mht|asp|jsp|xml"/>-->
-	<item id="6" title="压缩包" icon="Favorite/file_manager_category_zip.png" count="0"  minsize="0" ends="zip|rar|7z"/>
+	<item id="6" title="压缩包" icon="Favorite/file_manager_category_zip.png" count="0"  minsize="0" ends="zip|rar|7z|iso"/>
 	<item id="7" title="安装包" icon="Favorite/file_manager_category_apk.png"  count="0" minsize="0" ends="apk"/>
 </items>
 <!-- <item id="0" title="收藏夹" icon="Favorite/file_manager_category_favorite.png" count="0" ends=""/> -->
