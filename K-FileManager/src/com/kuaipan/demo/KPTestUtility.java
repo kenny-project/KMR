@@ -104,6 +104,7 @@ public class KPTestUtility
       }
       catch (IOException e)
       {
+    	  e.printStackTrace();
       }
       return upload_content;
    }
