@@ -2848,6 +2848,15 @@ com.kenny.KFileManager.R$drawable: int file_manager_browser_listmode_pressed
 com.kenny.KFileManager.R$drawable: int file_manager_browser_path
 com.kenny.KFileManager.R$drawable: int file_manager_browser_path_normal
 com.kenny.KFileManager.R$drawable: int file_manager_browser_path_pressed
+com.kenny.KFileManager.R$drawable: int file_manager_category_apk
+com.kenny.KFileManager.R$drawable: int file_manager_category_audio
+com.kenny.KFileManager.R$drawable: int file_manager_category_document
+com.kenny.KFileManager.R$drawable: int file_manager_category_favorite
+com.kenny.KFileManager.R$drawable: int file_manager_category_image
+com.kenny.KFileManager.R$drawable: int file_manager_category_photo
+com.kenny.KFileManager.R$drawable: int file_manager_category_video
+com.kenny.KFileManager.R$drawable: int file_manager_category_zip
+com.kenny.KFileManager.R$drawable: int file_manager_icon_html
 com.kenny.KFileManager.R$drawable: int ftplogo
 com.kenny.KFileManager.R$drawable: int grid_item_bg
 com.kenny.KFileManager.R$drawable: int header_bg
@@ -3076,6 +3085,8 @@ com.kenny.KFileManager.R$id: int activity_select_login_qqlogin
 com.kenny.KFileManager.R$id: int alert_sbDisplayLuminosity
 com.kenny.KFileManager.R$id: int btAllFile
 com.kenny.KFileManager.R$id: int btAllKillProc
+com.kenny.KFileManager.R$id: int btApkGroup
+com.kenny.KFileManager.R$id: int btAudioGroup
 com.kenny.KFileManager.R$id: int btBack
 com.kenny.KFileManager.R$id: int btBackUp
 com.kenny.KFileManager.R$id: int btCancel
@@ -3087,6 +3098,7 @@ com.kenny.KFileManager.R$id: int btContent
 com.kenny.KFileManager.R$id: int btCopy
 com.kenny.KFileManager.R$id: int btCut
 com.kenny.KFileManager.R$id: int btDelete
+com.kenny.KFileManager.R$id: int btDocumentGroup
 com.kenny.KFileManager.R$id: int btDownLoad
 com.kenny.KFileManager.R$id: int btDownload
 com.kenny.KFileManager.R$id: int btError
@@ -3112,9 +3124,9 @@ com.kenny.KFileManager.R$id: int btNetRefresh
 com.kenny.KFileManager.R$id: int btNetWork
 com.kenny.KFileManager.R$id: int btNew
 com.kenny.KFileManager.R$id: int btNext
-com.kenny.KFileManager.R$id: int btNoNetwork
 com.kenny.KFileManager.R$id: int btOK
 com.kenny.KFileManager.R$id: int btPaste
+com.kenny.KFileManager.R$id: int btPhotoGroup
 com.kenny.KFileManager.R$id: int btPlay
 com.kenny.KFileManager.R$id: int btPrev
 com.kenny.KFileManager.R$id: int btRefresh
@@ -3147,6 +3159,9 @@ com.kenny.KFileManager.R$id: int btUnInstall
 com.kenny.KFileManager.R$id: int btUpLoad
 com.kenny.KFileManager.R$id: int btUploading
 com.kenny.KFileManager.R$id: int btUserApp
+com.kenny.KFileManager.R$id: int btVideoGroup
+com.kenny.KFileManager.R$id: int btZipGroup
+com.kenny.KFileManager.R$id: int btfavoriteGroup
 com.kenny.KFileManager.R$id: int btn_cancel
 com.kenny.KFileManager.R$id: int btn_search
 com.kenny.KFileManager.R$id: int button_login
@@ -3192,6 +3207,7 @@ com.kenny.KFileManager.R$id: int feedback_name
 com.kenny.KFileManager.R$id: int feedback_phone
 com.kenny.KFileManager.R$id: int feedback_qq
 com.kenny.KFileManager.R$id: int flItemImage
+com.kenny.KFileManager.R$id: int flMain
 com.kenny.KFileManager.R$id: int flSubview
 com.kenny.KFileManager.R$id: int flayout
 com.kenny.KFileManager.R$id: int frameLayout1
@@ -3199,6 +3215,8 @@ com.kenny.KFileManager.R$id: int ga
 com.kenny.KFileManager.R$id: int gvImageList
 com.kenny.KFileManager.R$id: int gvLocallist
 com.kenny.KFileManager.R$id: int hsclayout
+com.kenny.KFileManager.R$id: int icGroupPannel
+com.kenny.KFileManager.R$id: int icItemPannel
 com.kenny.KFileManager.R$id: int icon
 com.kenny.KFileManager.R$id: int imageView1
 com.kenny.KFileManager.R$id: int image_icon
@@ -3218,7 +3236,6 @@ com.kenny.KFileManager.R$id: int kp_login_title_register
 com.kenny.KFileManager.R$id: int last_error
 com.kenny.KFileManager.R$id: int last_error_label
 com.kenny.KFileManager.R$id: int loadingLayout
-com.kenny.KFileManager.R$id: int loading_msg
 com.kenny.KFileManager.R$id: int lvAddressList
 com.kenny.KFileManager.R$id: int lvDownLoadlist
 com.kenny.KFileManager.R$id: int lvFolderlist
@@ -3240,21 +3257,17 @@ com.kenny.KFileManager.R$id: int lyAudioCtrlUp
 com.kenny.KFileManager.R$id: int lyAudioHead
 com.kenny.KFileManager.R$id: int lyBTools
 com.kenny.KFileManager.R$id: int lyBottom
-com.kenny.KFileManager.R$id: int lyError
 com.kenny.KFileManager.R$id: int lyFavoriteStatus
 com.kenny.KFileManager.R$id: int lyGalleryTop
 com.kenny.KFileManager.R$id: int lyImage
 com.kenny.KFileManager.R$id: int lyJokeMain
 com.kenny.KFileManager.R$id: int lyLinearLayout1
-com.kenny.KFileManager.R$id: int lyLoading
 com.kenny.KFileManager.R$id: int lyLoading_msg_pannel
 com.kenny.KFileManager.R$id: int lyLocalStatus
 com.kenny.KFileManager.R$id: int lyTools
 com.kenny.KFileManager.R$id: int lyTools2
-com.kenny.KFileManager.R$id: int lyTools21
 com.kenny.KFileManager.R$id: int lyUpLoadTools
 com.kenny.KFileManager.R$id: int mCurrentPath
-com.kenny.KFileManager.R$id: int mSearchValue
 com.kenny.KFileManager.R$id: int main_menu
 com.kenny.KFileManager.R$id: int mainflip
 com.kenny.KFileManager.R$id: int mainlayout
@@ -3275,7 +3288,6 @@ com.kenny.KFileManager.R$id: int pbInternalStatus
 com.kenny.KFileManager.R$id: int pbLoading
 com.kenny.KFileManager.R$id: int pbSDFileStatus
 com.kenny.KFileManager.R$id: int progressBar
-com.kenny.KFileManager.R$id: int progress_small_title
 com.kenny.KFileManager.R$id: int proxy_header
 com.kenny.KFileManager.R$id: int proxy_news
 com.kenny.KFileManager.R$id: int proxy_news_label
@@ -3293,7 +3305,6 @@ com.kenny.KFileManager.R$id: int rlError
 com.kenny.KFileManager.R$id: int rlGallery
 com.kenny.KFileManager.R$id: int rlImage
 com.kenny.KFileManager.R$id: int rlLayout
-com.kenny.KFileManager.R$id: int rlNoNetwork
 com.kenny.KFileManager.R$id: int rl_auto
 com.kenny.KFileManager.R$id: int rl_voice
 com.kenny.KFileManager.R$id: int sbPlayProgress
@@ -3325,9 +3336,11 @@ com.kenny.KFileManager.R$id: int text_size
 com.kenny.KFileManager.R$id: int title
 com.kenny.KFileManager.R$id: int tlStatus
 com.kenny.KFileManager.R$id: int toolBar
+com.kenny.KFileManager.R$id: int tvApkDesc
 com.kenny.KFileManager.R$id: int tvApp
 com.kenny.KFileManager.R$id: int tvDemo
 com.kenny.KFileManager.R$id: int tvDesc
+com.kenny.KFileManager.R$id: int tvDocDesc
 com.kenny.KFileManager.R$id: int tvDocument
 com.kenny.KFileManager.R$id: int tvEndStatus
 com.kenny.KFileManager.R$id: int tvError_msg
@@ -3351,8 +3364,10 @@ com.kenny.KFileManager.R$id: int tvKuaiPanSpace
 com.kenny.KFileManager.R$id: int tvLog
 com.kenny.KFileManager.R$id: int tvMessage
 com.kenny.KFileManager.R$id: int tvMusic
+com.kenny.KFileManager.R$id: int tvMusicDesc
 com.kenny.KFileManager.R$id: int tvPassWord
 com.kenny.KFileManager.R$id: int tvPath
+com.kenny.KFileManager.R$id: int tvPhotoDesc
 com.kenny.KFileManager.R$id: int tvPic
 com.kenny.KFileManager.R$id: int tvSDFileStatus
 com.kenny.KFileManager.R$id: int tvSearchState
@@ -3364,7 +3379,9 @@ com.kenny.KFileManager.R$id: int tvTab_local
 com.kenny.KFileManager.R$id: int tvTitle
 com.kenny.KFileManager.R$id: int tvUserName
 com.kenny.KFileManager.R$id: int tvVideo
+com.kenny.KFileManager.R$id: int tvVideoDesc
 com.kenny.KFileManager.R$id: int tvZip
+com.kenny.KFileManager.R$id: int tvZipDesc
 com.kenny.KFileManager.R$id: int tvfileName
 com.kenny.KFileManager.R$id: int tvfilePath
 com.kenny.KFileManager.R$id: int umeng_analytics_app
@@ -3428,7 +3445,6 @@ com.kenny.KFileManager.R$id: int wifi_addr
 com.kenny.KFileManager.R$id: int wifi_button
 com.kenny.KFileManager.R$id: int wifi_mac
 com.kenny.KFileManager.R$id: int wifi_status
-com.kenny.KFileManager.R$id: int wvWebSide
 com.kenny.KFileManager.R$id: int zoomControls
 com.kenny.KFileManager.R$layout
 com.kenny.KFileManager.R$layout: int alert_dialog_address
@@ -3449,6 +3465,8 @@ com.kenny.KFileManager.R$layout: int bug_report_view
 com.kenny.KFileManager.R$layout: int details_dialog
 com.kenny.KFileManager.R$layout: int edit_txt
 com.kenny.KFileManager.R$layout: int empty
+com.kenny.KFileManager.R$layout: int favorgrouppanel
+com.kenny.KFileManager.R$layout: int favoritempanel
 com.kenny.KFileManager.R$layout: int favoritepage
 com.kenny.KFileManager.R$layout: int framework_main
 com.kenny.KFileManager.R$layout: int ftp_client_dialog
@@ -3465,7 +3483,6 @@ com.kenny.KFileManager.R$layout: int kmain
 com.kenny.KFileManager.R$layout: int kmain_land
 com.kenny.KFileManager.R$layout: int kp_activity_login
 com.kenny.KFileManager.R$layout: int kp_dropdown_item_1line
-com.kenny.KFileManager.R$layout: int kuaipanloginpage
 com.kenny.KFileManager.R$layout: int kuaipanpage
 com.kenny.KFileManager.R$layout: int listgroup_item
 com.kenny.KFileManager.R$layout: int listitem_add_cloud
@@ -3734,6 +3751,12 @@ com.kenny.KFileManager.R$string: int msg_deleted_files
 com.kenny.KFileManager.R$string: int msg_delselectfile
 com.kenny.KFileManager.R$string: int msg_dialog_info_title
 com.kenny.KFileManager.R$string: int msg_failed_create
+com.kenny.KFileManager.R$string: int msg_favor_apk
+com.kenny.KFileManager.R$string: int msg_favor_audio
+com.kenny.KFileManager.R$string: int msg_favor_doc
+com.kenny.KFileManager.R$string: int msg_favor_photo
+com.kenny.KFileManager.R$string: int msg_favor_video
+com.kenny.KFileManager.R$string: int msg_favor_zip
 com.kenny.KFileManager.R$string: int msg_file_already_exists
 com.kenny.KFileManager.R$string: int msg_file_is_not_found
 com.kenny.KFileManager.R$string: int msg_file_name_no_empty
@@ -3991,8 +4014,8 @@ com.kenny.file.page.AppsPage: void onClick(android.view.View)
 com.kenny.file.page.AppsPage$5: void onClick(android.content.DialogInterface,int)
 com.kenny.file.page.FavoritePage: void onClick(android.view.View)
 com.kenny.file.page.FavoritePage$1: void onClick(android.content.DialogInterface,int)
+com.kenny.file.page.FavoritePage$4: void onClick(android.content.DialogInterface,int)
 com.kenny.file.page.FavoritePage$5: void onClick(android.content.DialogInterface,int)
-com.kenny.file.page.FavoritePage$6: void onClick(android.content.DialogInterface,int)
 com.kenny.file.page.FeedBackPage$2: void onClick(android.view.View)
 com.kenny.file.page.KMainPage$1: void onClick(android.view.View)
 com.kenny.file.page.KuaiPanPage: void onClick(android.view.View)
@@ -4058,7 +4081,6 @@ com.kuaipan.client.KuaipanAPI$HttpMethod: com.kuaipan.client.KuaipanAPI$HttpMeth
 com.kuaipan.client.KuaipanAPI$HttpMethod: com.kuaipan.client.KuaipanAPI$HttpMethod valueOf(java.lang.String)
 com.kuaipan.client.session.Session$Root: com.kuaipan.client.session.Session$Root[] values()
 com.kuaipan.client.session.Session$Root: com.kuaipan.client.session.Session$Root valueOf(java.lang.String)
-com.kuaipan.demo.KuaiPanLoginPage$1: void onClick(android.view.View)
 com.tencent.tauth.TAuthView
 com.tencent.tauth.TAuthView: TAuthView()
 com.tencent.tauth.TAuthView$2: void onClick(android.view.View)

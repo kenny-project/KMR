@@ -3289,6 +3289,15 @@ com.kenny.KFileManager.R$drawable -> com.kenny.KFileManager.R$drawable:
     int file_manager_browser_path -> file_manager_browser_path
     int file_manager_browser_path_normal -> file_manager_browser_path_normal
     int file_manager_browser_path_pressed -> file_manager_browser_path_pressed
+    int file_manager_category_apk -> file_manager_category_apk
+    int file_manager_category_audio -> file_manager_category_audio
+    int file_manager_category_document -> file_manager_category_document
+    int file_manager_category_favorite -> file_manager_category_favorite
+    int file_manager_category_image -> file_manager_category_image
+    int file_manager_category_photo -> file_manager_category_photo
+    int file_manager_category_video -> file_manager_category_video
+    int file_manager_category_zip -> file_manager_category_zip
+    int file_manager_icon_html -> file_manager_icon_html
     int ftplogo -> ftplogo
     int grid_item_bg -> grid_item_bg
     int header_bg -> header_bg
@@ -3517,6 +3526,8 @@ com.kenny.KFileManager.R$id -> com.kenny.KFileManager.R$id:
     int alert_sbDisplayLuminosity -> alert_sbDisplayLuminosity
     int btAllFile -> btAllFile
     int btAllKillProc -> btAllKillProc
+    int btApkGroup -> btApkGroup
+    int btAudioGroup -> btAudioGroup
     int btBack -> btBack
     int btBackUp -> btBackUp
     int btCancel -> btCancel
@@ -3528,6 +3539,7 @@ com.kenny.KFileManager.R$id -> com.kenny.KFileManager.R$id:
     int btCopy -> btCopy
     int btCut -> btCut
     int btDelete -> btDelete
+    int btDocumentGroup -> btDocumentGroup
     int btDownLoad -> btDownLoad
     int btDownload -> btDownload
     int btError -> btError
@@ -3553,9 +3565,9 @@ com.kenny.KFileManager.R$id -> com.kenny.KFileManager.R$id:
     int btNetWork -> btNetWork
     int btNew -> btNew
     int btNext -> btNext
-    int btNoNetwork -> btNoNetwork
     int btOK -> btOK
     int btPaste -> btPaste
+    int btPhotoGroup -> btPhotoGroup
     int btPlay -> btPlay
     int btPrev -> btPrev
     int btRefresh -> btRefresh
@@ -3588,6 +3600,9 @@ com.kenny.KFileManager.R$id -> com.kenny.KFileManager.R$id:
     int btUpLoad -> btUpLoad
     int btUploading -> btUploading
     int btUserApp -> btUserApp
+    int btVideoGroup -> btVideoGroup
+    int btZipGroup -> btZipGroup
+    int btfavoriteGroup -> btfavoriteGroup
     int btn_cancel -> btn_cancel
     int btn_search -> btn_search
     int button_login -> button_login
@@ -3633,6 +3648,7 @@ com.kenny.KFileManager.R$id -> com.kenny.KFileManager.R$id:
     int feedback_phone -> feedback_phone
     int feedback_qq -> feedback_qq
     int flItemImage -> flItemImage
+    int flMain -> flMain
     int flSubview -> flSubview
     int flayout -> flayout
     int frameLayout1 -> frameLayout1
@@ -3640,6 +3656,8 @@ com.kenny.KFileManager.R$id -> com.kenny.KFileManager.R$id:
     int gvImageList -> gvImageList
     int gvLocallist -> gvLocallist
     int hsclayout -> hsclayout
+    int icGroupPannel -> icGroupPannel
+    int icItemPannel -> icItemPannel
     int icon -> icon
     int imageView1 -> imageView1
     int image_icon -> image_icon
@@ -3659,7 +3677,6 @@ com.kenny.KFileManager.R$id -> com.kenny.KFileManager.R$id:
     int last_error -> last_error
     int last_error_label -> last_error_label
     int loadingLayout -> loadingLayout
-    int loading_msg -> loading_msg
     int lvAddressList -> lvAddressList
     int lvDownLoadlist -> lvDownLoadlist
     int lvFolderlist -> lvFolderlist
@@ -3681,21 +3698,17 @@ com.kenny.KFileManager.R$id -> com.kenny.KFileManager.R$id:
     int lyAudioHead -> lyAudioHead
     int lyBTools -> lyBTools
     int lyBottom -> lyBottom
-    int lyError -> lyError
     int lyFavoriteStatus -> lyFavoriteStatus
     int lyGalleryTop -> lyGalleryTop
     int lyImage -> lyImage
     int lyJokeMain -> lyJokeMain
     int lyLinearLayout1 -> lyLinearLayout1
-    int lyLoading -> lyLoading
     int lyLoading_msg_pannel -> lyLoading_msg_pannel
     int lyLocalStatus -> lyLocalStatus
     int lyTools -> lyTools
     int lyTools2 -> lyTools2
-    int lyTools21 -> lyTools21
     int lyUpLoadTools -> lyUpLoadTools
     int mCurrentPath -> mCurrentPath
-    int mSearchValue -> mSearchValue
     int main_menu -> main_menu
     int mainflip -> mainflip
     int mainlayout -> mainlayout
@@ -3716,7 +3729,6 @@ com.kenny.KFileManager.R$id -> com.kenny.KFileManager.R$id:
     int pbLoading -> pbLoading
     int pbSDFileStatus -> pbSDFileStatus
     int progressBar -> progressBar
-    int progress_small_title -> progress_small_title
     int proxy_header -> proxy_header
     int proxy_news -> proxy_news
     int proxy_news_label -> proxy_news_label
@@ -3734,7 +3746,6 @@ com.kenny.KFileManager.R$id -> com.kenny.KFileManager.R$id:
     int rlGallery -> rlGallery
     int rlImage -> rlImage
     int rlLayout -> rlLayout
-    int rlNoNetwork -> rlNoNetwork
     int rl_auto -> rl_auto
     int rl_voice -> rl_voice
     int sbPlayProgress -> sbPlayProgress
@@ -3766,9 +3777,11 @@ com.kenny.KFileManager.R$id -> com.kenny.KFileManager.R$id:
     int title -> title
     int tlStatus -> tlStatus
     int toolBar -> toolBar
+    int tvApkDesc -> tvApkDesc
     int tvApp -> tvApp
     int tvDemo -> tvDemo
     int tvDesc -> tvDesc
+    int tvDocDesc -> tvDocDesc
     int tvDocument -> tvDocument
     int tvEndStatus -> tvEndStatus
     int tvError_msg -> tvError_msg
@@ -3792,8 +3805,10 @@ com.kenny.KFileManager.R$id -> com.kenny.KFileManager.R$id:
     int tvLog -> tvLog
     int tvMessage -> tvMessage
     int tvMusic -> tvMusic
+    int tvMusicDesc -> tvMusicDesc
     int tvPassWord -> tvPassWord
     int tvPath -> tvPath
+    int tvPhotoDesc -> tvPhotoDesc
     int tvPic -> tvPic
     int tvSDFileStatus -> tvSDFileStatus
     int tvSearchState -> tvSearchState
@@ -3805,7 +3820,9 @@ com.kenny.KFileManager.R$id -> com.kenny.KFileManager.R$id:
     int tvTitle -> tvTitle
     int tvUserName -> tvUserName
     int tvVideo -> tvVideo
+    int tvVideoDesc -> tvVideoDesc
     int tvZip -> tvZip
+    int tvZipDesc -> tvZipDesc
     int tvfileName -> tvfileName
     int tvfilePath -> tvfilePath
     int umeng_analytics_app -> umeng_analytics_app
@@ -3869,7 +3886,6 @@ com.kenny.KFileManager.R$id -> com.kenny.KFileManager.R$id:
     int wifi_button -> wifi_button
     int wifi_mac -> wifi_mac
     int wifi_status -> wifi_status
-    int wvWebSide -> wvWebSide
     int zoomControls -> zoomControls
 com.kenny.KFileManager.R$layout -> com.kenny.KFileManager.R$layout:
     int alert_dialog_address -> alert_dialog_address
@@ -3890,6 +3906,8 @@ com.kenny.KFileManager.R$layout -> com.kenny.KFileManager.R$layout:
     int details_dialog -> details_dialog
     int edit_txt -> edit_txt
     int empty -> empty
+    int favorgrouppanel -> favorgrouppanel
+    int favoritempanel -> favoritempanel
     int favoritepage -> favoritepage
     int framework_main -> framework_main
     int ftp_client_dialog -> ftp_client_dialog
@@ -3906,7 +3924,6 @@ com.kenny.KFileManager.R$layout -> com.kenny.KFileManager.R$layout:
     int kmain_land -> kmain_land
     int kp_activity_login -> kp_activity_login
     int kp_dropdown_item_1line -> kp_dropdown_item_1line
-    int kuaipanloginpage -> kuaipanloginpage
     int kuaipanpage -> kuaipanpage
     int listgroup_item -> listgroup_item
     int listitem_add_cloud -> listitem_add_cloud
@@ -4175,6 +4192,12 @@ com.kenny.KFileManager.R$string -> com.kenny.KFileManager.R$string:
     int msg_delselectfile -> msg_delselectfile
     int msg_dialog_info_title -> msg_dialog_info_title
     int msg_failed_create -> msg_failed_create
+    int msg_favor_apk -> msg_favor_apk
+    int msg_favor_audio -> msg_favor_audio
+    int msg_favor_doc -> msg_favor_doc
+    int msg_favor_photo -> msg_favor_photo
+    int msg_favor_video -> msg_favor_video
+    int msg_favor_zip -> msg_favor_zip
     int msg_file_already_exists -> msg_file_already_exists
     int msg_file_is_not_found -> msg_file_is_not_found
     int msg_file_name_no_empty -> msg_file_name_no_empty
@@ -5153,20 +5176,21 @@ com.kenny.file.Event.LoadAppsDBEvent -> com.kenny.file.b.q:
     java.lang.String TAG -> b
     android.app.Activity m_act -> c
     com.kenny.file.struct.INotifyDataSetChanged m_INotify -> d
-    android.app.ProgressDialog myDialog -> e
-    boolean bShowDialog -> f
-    int ItemCount -> g
-    int nFlag -> h
-    java.util.ArrayList beans -> i
+    android.widget.ProgressBar myDialog -> e
+    int ItemCount -> f
+    int nFlag -> g
+    java.util.ArrayList beans -> h
+    android.view.View mView -> i
     void ok() -> a
     java.util.ArrayList InsertApp(com.kenny.file.db.Dao,java.util.List) -> a
-    android.app.Activity access$0(com.kenny.file.Event.LoadAppsDBEvent) -> a
-    void access$1(com.kenny.file.Event.LoadAppsDBEvent,android.app.ProgressDialog) -> a
-    android.app.ProgressDialog access$2(com.kenny.file.Event.LoadAppsDBEvent) -> b
+    android.view.View access$0(com.kenny.file.Event.LoadAppsDBEvent) -> a
+    void access$1(com.kenny.file.Event.LoadAppsDBEvent,android.widget.ProgressBar) -> a
+    android.widget.ProgressBar access$2(com.kenny.file.Event.LoadAppsDBEvent) -> b
     com.kenny.file.struct.INotifyDataSetChanged access$3(com.kenny.file.Event.LoadAppsDBEvent) -> c
     java.util.ArrayList access$4(com.kenny.file.Event.LoadAppsDBEvent) -> d
 com.kenny.file.Event.LoadAppsDBEvent$1 -> com.kenny.file.b.r:
     com.kenny.file.Event.LoadAppsDBEvent this$0 -> b
+    java.util.List val$packages -> c
     void ok() -> a
 com.kenny.file.Event.LoadAppsDBEvent$2 -> com.kenny.file.b.s:
     com.kenny.file.Event.LoadAppsDBEvent this$0 -> b
@@ -5527,6 +5551,7 @@ com.kenny.file.bean.FavorFileBean -> com.kenny.file.e.e:
     int flag -> a
     int id -> f
     void setFlag(int) -> a
+    int getId() -> a
     void setId(int) -> b
 com.kenny.file.bean.FileBean -> com.kenny.file.e.f:
     java.text.DecimalFormat myformat -> a
@@ -5749,8 +5774,7 @@ com.kenny.file.db.Dao -> com.kenny.file.f.b:
     java.util.List getFolderItem(java.lang.String,com.kenny.file.bean.FGroupInfo) -> a
     boolean BuildFavorFolderFile(java.io.File,com.kenny.file.bean.FGroupInfo,java.util.List) -> a
     int getFavorFileSize(java.io.File,com.kenny.file.bean.FGroupInfo) -> a
-    java.util.List getFavoritesInfos(java.lang.String,com.kenny.file.bean.FGroupInfo) -> b
-    boolean compare(java.lang.String,java.lang.String) -> a
+    java.util.List getFavoritesInfos(com.kenny.file.bean.FGroupInfo) -> b
     boolean BuildFavorFile(java.io.File,com.kenny.file.bean.FGroupInfo,java.util.List) -> b
     int AppInfoCount() -> a
     java.util.List getAppInfos(java.lang.String) -> a
@@ -5759,6 +5783,7 @@ com.kenny.file.db.Dao -> com.kenny.file.f.b:
     int delete(java.lang.String) -> b
     void deleteAppAll() -> c
     void deleteFavoritesAll() -> d
+    int deleteFavorites(int) -> a
     boolean isHasHistory$4f70807c(java.lang.String) -> c
     int deleteHistory$4f70806b(java.lang.String) -> d
     void InsertHistory(int,java.lang.String,long) -> a
@@ -6156,52 +6181,48 @@ com.kenny.file.page.AppsPage$5 -> com.kenny.file.j.f:
     java.util.ArrayList val$mDelFiles -> b
     void onClick(android.content.DialogInterface,int) -> onClick
 com.kenny.file.page.FavoritePage -> com.kenny.file.j.g:
-    android.widget.TextView mPath -> i
-    android.widget.TextView tvPic -> j
-    android.widget.TextView tvMusic -> k
-    android.widget.TextView tvVideo -> l
-    android.widget.TextView tvDocument -> m
-    android.widget.TextView tvApp -> n
-    android.widget.TextView tvZip -> o
-    android.widget.TextView tvMessage -> p
-    android.widget.TextView tvSDFileStatus -> q
-    android.widget.ListView mListView -> r
-    android.widget.GridView mGridView -> s
-    android.widget.Button btRefresh -> t
-    android.widget.Button btListStyle -> u
-    android.widget.Button btAllFile -> v
-    android.widget.Button btFolder -> w
-    android.widget.Button btBack -> x
-    android.widget.Button btDelete -> y
-    android.widget.Button btSelectAll -> z
-    android.widget.Button btSelectVisible -> A
-    com.kenny.file.Adapter.FGroupAdapter mGroupAdapter -> B
-    android.widget.TextView tvExternalSize -> C
-    android.widget.TextView tvInternalSize -> D
-    com.kenny.file.Adapter.FavorFileAdapter mFileAdapter -> E
-    com.kenny.file.Adapter.FavorFileAdapter mFolderAdapter -> F
-    java.util.ArrayList mGroupList -> G
-    java.util.ArrayList mAllFileList -> H
-    java.util.ArrayList mFolderList -> I
-    java.util.ArrayList mTempList -> J
-    com.kenny.file.bean.FGroupInfo mNowGItem -> K
-    android.widget.ProgressBar pbExternalStatus -> L
-    android.widget.ProgressBar pbInternalStatus -> M
-    android.widget.ProgressBar pbSDFileStatus -> N
-    android.view.View lyBTools -> O
-    android.view.View lyTools2 -> P
-    android.view.View lyFavoriteStatus -> Q
-    android.view.View pbLoading -> R
-    android.widget.EditText mSearchValue -> S
-    android.widget.Button btSearch -> T
-    android.widget.Button btLoading_cancel -> U
-    com.kenny.file.Event.LoadSDFolderEvent mLoadSDFileEvent -> V
-    int bFlag -> W
+    android.widget.TextView tvPic -> i
+    android.widget.TextView tvMusic -> j
+    android.widget.TextView tvVideo -> k
+    android.widget.TextView tvDocument -> l
+    android.widget.TextView tvApp -> m
+    android.widget.TextView tvZip -> n
+    android.widget.TextView tvMessage -> o
+    android.widget.TextView tvSDFileStatus -> p
+    android.widget.ListView mListView -> q
+    android.widget.GridView mGridView -> r
+    android.widget.Button btRefresh -> s
+    android.widget.Button btAllFile -> t
+    android.widget.Button btFolder -> u
+    android.widget.Button btBack -> v
+    android.widget.Button btDelete -> w
+    android.widget.Button btSelectAll -> x
+    com.kenny.file.Adapter.FGroupAdapter mGroupAdapter -> y
+    android.widget.TextView tvExternalSize -> z
+    android.widget.TextView tvInternalSize -> A
+    com.kenny.file.Adapter.FavorFileAdapter mFileAdapter -> B
+    com.kenny.file.Adapter.FavorFileAdapter mFolderAdapter -> C
+    java.util.ArrayList mGroupList -> D
+    java.util.ArrayList mAllFileList -> E
+    java.util.ArrayList mFolderList -> F
+    java.util.ArrayList mTempList -> G
+    com.kenny.file.bean.FGroupInfo mNowGItem -> H
+    android.widget.ProgressBar pbExternalStatus -> I
+    android.widget.ProgressBar pbInternalStatus -> J
+    android.widget.ProgressBar pbSDFileStatus -> K
+    android.view.View lyTools2 -> L
+    android.view.View lyBTools -> M
+    android.view.View icGroupPannel -> N
+    android.view.View icItemPannel -> O
+    android.view.View pbLoading -> P
+    android.widget.Button btLoading_cancel -> Q
+    com.kenny.file.Event.LoadSDFolderEvent mLoadSDFileEvent -> R
+    int bFlag -> S
     android.content.DialogInterface$OnClickListener clPositive -> h
-    android.widget.AbsListView$OnScrollListener m_localOnScrollListener -> X
-    java.lang.String mFolderPath -> Y
-    int nFolderType -> Z
-    com.framework.event.ParamEvent mNotifyData -> aa
+    android.widget.AbsListView$OnScrollListener m_localOnScrollListener -> T
+    java.lang.String mFolderPath -> U
+    int nFolderType -> V
+    com.framework.event.ParamEvent mNotifyData -> W
     void SwitchStyle(int) -> d
     void onCreate() -> h
     void onLoad() -> j
@@ -6212,7 +6233,7 @@ com.kenny.file.page.FavoritePage -> com.kenny.file.j.g:
     void onResume() -> c
     void Refresh(int) -> c
     void FavoriteFolderItem(com.kenny.file.bean.FGroupInfo,java.lang.String) -> a
-    void FavoriteItemInit(java.lang.String,boolean) -> a
+    void FavoriteItemInit(boolean) -> a
     void onClick(android.view.View) -> onClick
     void SelectAll() -> m
     void DeleteFile(com.kenny.file.bean.FileBean) -> a
@@ -6222,6 +6243,7 @@ com.kenny.file.page.FavoritePage -> com.kenny.file.j.g:
     void onDestroy() -> a
     void clear() -> e
     boolean onTouchEvent(android.view.MotionEvent) -> onTouchEvent
+    void SwitchGroup(int) -> e
     void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
     void NotifyDataSetChanged(int,java.lang.Object) -> a
     boolean onItemLongClick(android.widget.AdapterView,android.view.View,int,long) -> onItemLongClick
@@ -6243,8 +6265,6 @@ com.kenny.file.page.FavoritePage -> com.kenny.file.j.g:
     android.widget.GridView access$15(com.kenny.file.page.FavoritePage) -> n
     android.widget.Button access$16(com.kenny.file.page.FavoritePage) -> o
     void access$17(com.kenny.file.page.FavoritePage,int) -> a
-    android.widget.EditText access$18(com.kenny.file.page.FavoritePage) -> p
-    void access$19(com.kenny.file.page.FavoritePage,java.lang.String) -> a
 com.kenny.file.page.FavoritePage$1 -> com.kenny.file.j.h:
     com.kenny.file.page.FavoritePage this$0 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
@@ -6257,19 +6277,14 @@ com.kenny.file.page.FavoritePage$3 -> com.kenny.file.j.j:
     void ok() -> a
 com.kenny.file.page.FavoritePage$4 -> com.kenny.file.j.k:
     com.kenny.file.page.FavoritePage this$0 -> a
-    void beforeTextChanged(java.lang.CharSequence,int,int,int) -> beforeTextChanged
-    void onTextChanged(java.lang.CharSequence,int,int,int) -> onTextChanged
-    void afterTextChanged(android.text.Editable) -> afterTextChanged
-com.kenny.file.page.FavoritePage$5 -> com.kenny.file.j.l:
-    com.kenny.file.page.FavoritePage this$0 -> a
     java.util.ArrayList val$mDelFiles -> b
     void onClick(android.content.DialogInterface,int) -> onClick
-com.kenny.file.page.FavoritePage$6 -> com.kenny.file.j.m:
+com.kenny.file.page.FavoritePage$5 -> com.kenny.file.j.l:
     com.kenny.file.page.FavoritePage this$0 -> a
     com.kenny.file.bean.FileBean val$file -> b
     android.content.Context val$context -> c
     void onClick(android.content.DialogInterface,int) -> onClick
-com.kenny.file.page.KMainPage -> com.kenny.file.j.n:
+com.kenny.file.page.KMainPage -> com.kenny.file.j.m:
     com.kenny.file.page.LocalPage m_localPage -> j
     com.kenny.file.page.NetworkPage m_RemotePage -> k
     com.kenny.file.page.AppsPage m_AppsPage -> l
@@ -6305,15 +6320,15 @@ com.kenny.file.page.KMainPage -> com.kenny.file.j.n:
     void onDestroy() -> a
     android.support.v4.view.ViewPager access$0(com.kenny.file.page.KMainPage) -> a
     java.util.ArrayList access$1(com.kenny.file.page.KMainPage) -> b
-com.kenny.file.page.KMainPage$1 -> com.kenny.file.j.o:
+com.kenny.file.page.KMainPage$1 -> com.kenny.file.j.n:
     com.kenny.file.page.KMainPage this$0 -> a
     void onClick(android.view.View) -> onClick
-com.kenny.file.page.KMainPage$2 -> com.kenny.file.j.p:
+com.kenny.file.page.KMainPage$2 -> com.kenny.file.j.o:
     com.kenny.file.page.KMainPage this$0 -> a
     void onPageSelected(int) -> onPageSelected
     void onPageScrolled(int,float,int) -> onPageScrolled
     void onPageScrollStateChanged(int) -> onPageScrollStateChanged
-com.kenny.file.page.KMainPage$MyPagerAdapter -> com.kenny.file.j.q:
+com.kenny.file.page.KMainPage$MyPagerAdapter -> com.kenny.file.j.p:
     com.kenny.file.page.KMainPage this$0 -> a
     void destroyItem(android.view.View,int,java.lang.Object) -> destroyItem
     void finishUpdate(android.view.View) -> finishUpdate
@@ -6323,7 +6338,7 @@ com.kenny.file.page.KMainPage$MyPagerAdapter -> com.kenny.file.j.q:
     void restoreState(android.os.Parcelable,java.lang.ClassLoader) -> restoreState
     android.os.Parcelable saveState() -> saveState
     void startUpdate(android.view.View) -> startUpdate
-com.kenny.file.page.KuaiPanPage -> com.kenny.file.j.r:
+com.kenny.file.page.KuaiPanPage -> com.kenny.file.j.q:
     android.widget.Button btError -> h
     android.widget.ListView m_locallist -> i
     android.widget.ListView m_DownLoadlist -> j
@@ -6388,28 +6403,28 @@ com.kenny.file.page.KuaiPanPage -> com.kenny.file.j.r:
     android.widget.ListView access$20(com.kenny.file.page.KuaiPanPage) -> s
     void access$21(com.kenny.file.page.KuaiPanPage,int) -> a
     void access$22(com.kenny.file.page.KuaiPanPage,com.kuaipan.client.model.KuaipanFile) -> a
-com.kenny.file.page.KuaiPanPage$1 -> com.kenny.file.j.s:
+com.kenny.file.page.KuaiPanPage$1 -> com.kenny.file.j.r:
     com.kenny.file.page.KuaiPanPage this$0 -> a
     void onReceive(android.content.Context,android.content.Intent) -> onReceive
-com.kenny.file.page.KuaiPanPage$2 -> com.kenny.file.j.t:
+com.kenny.file.page.KuaiPanPage$2 -> com.kenny.file.j.s:
     com.kenny.file.page.KuaiPanPage this$0 -> d
     void ok() -> a
-com.kenny.file.page.KuaiPanPage$4 -> com.kenny.file.j.u:
+com.kenny.file.page.KuaiPanPage$4 -> com.kenny.file.j.t:
     com.kenny.file.page.KuaiPanPage this$0 -> b
     void ok() -> a
-com.kenny.file.page.KuaiPanPage$5 -> com.kenny.file.j.v:
+com.kenny.file.page.KuaiPanPage$5 -> com.kenny.file.j.u:
     com.kenny.file.page.KuaiPanPage this$0 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-com.kenny.file.page.KuaiPanPage$6 -> com.kenny.file.j.w:
+com.kenny.file.page.KuaiPanPage$6 -> com.kenny.file.j.v:
     com.kenny.file.page.KuaiPanPage this$0 -> a
     java.util.ArrayList val$mDelFiles -> b
     void onClick(android.content.DialogInterface,int) -> onClick
-com.kenny.file.page.KuaiPanPage$7 -> com.kenny.file.j.x:
+com.kenny.file.page.KuaiPanPage$7 -> com.kenny.file.j.w:
     com.kenny.file.page.KuaiPanPage this$0 -> a
     com.kuaipan.client.model.KuaipanFile val$mAppInfo -> b
     android.app.Activity val$context -> c
     void onClick(android.content.DialogInterface,int) -> onClick
-com.kenny.file.page.LocalPage -> com.kenny.file.j.y:
+com.kenny.file.page.LocalPage -> com.kenny.file.j.x:
     java.util.List mFileList -> i
     java.util.HashMap mScrollList -> j
     android.view.View m_lvMain -> k
@@ -6474,40 +6489,40 @@ com.kenny.file.page.LocalPage -> com.kenny.file.j.y:
     android.widget.Button access$11(com.kenny.file.page.LocalPage) -> i
     int access$12(com.kenny.file.page.LocalPage) -> j
     void access$13(com.kenny.file.page.LocalPage,int) -> b
-com.kenny.file.page.LocalPage$1 -> com.kenny.file.j.z:
+com.kenny.file.page.LocalPage$1 -> com.kenny.file.j.y:
     com.kenny.file.page.LocalPage this$0 -> a
     void onScrollStateChanged(android.widget.AbsListView,int) -> onScrollStateChanged
     void onScroll(android.widget.AbsListView,int,int,int) -> onScroll
-com.kenny.file.page.LocalPage$2 -> com.kenny.file.j.aa:
+com.kenny.file.page.LocalPage$2 -> com.kenny.file.j.z:
     com.kenny.file.page.LocalPage this$0 -> a
     void onReceive(android.content.Context,android.content.Intent) -> onReceive
-com.kenny.file.page.LocalPage$3 -> com.kenny.file.j.ab:
+com.kenny.file.page.LocalPage$3 -> com.kenny.file.j.aa:
     com.kenny.file.page.LocalPage this$0 -> a
     void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
-com.kenny.file.page.LocalPage$4 -> com.kenny.file.j.ac:
+com.kenny.file.page.LocalPage$4 -> com.kenny.file.j.ab:
     com.kenny.file.page.LocalPage this$0 -> a
     void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
-com.kenny.file.page.LocalPage$5 -> com.kenny.file.j.ad:
+com.kenny.file.page.LocalPage$5 -> com.kenny.file.j.ac:
     com.kenny.file.page.LocalPage this$0 -> a
     void onClick(android.view.View) -> onClick
-com.kenny.file.page.LocalPage$6 -> com.kenny.file.j.ae:
+com.kenny.file.page.LocalPage$6 -> com.kenny.file.j.ad:
     com.kenny.file.page.LocalPage this$0 -> a
     android.widget.RelativeLayout val$rlMenu -> b
     boolean onTouch(android.view.View,android.view.MotionEvent) -> onTouch
-com.kenny.file.page.LocalPage$7 -> com.kenny.file.j.af:
+com.kenny.file.page.LocalPage$7 -> com.kenny.file.j.ae:
     com.kenny.file.page.LocalPage this$0 -> a
     android.widget.RelativeLayout val$rlMenu -> b
     com.kenny.file.menu.MGoneAinm val$goneAnim -> c
     void onClick(android.view.View) -> onClick
-com.kenny.file.page.LocalPage$8 -> com.kenny.file.j.ag:
+com.kenny.file.page.LocalPage$8 -> com.kenny.file.j.af:
     com.kenny.file.page.LocalPage this$0 -> a
     com.kenny.file.menu.MGoneAinm val$goneAnim -> b
     void onClick(android.view.View) -> onClick
-com.kenny.file.page.LocalPage$9 -> com.kenny.file.j.ah:
+com.kenny.file.page.LocalPage$9 -> com.kenny.file.j.ag:
     com.kenny.file.page.LocalPage this$0 -> a
     java.util.ArrayList val$mDelFiles -> b
     void onClick(android.content.DialogInterface,int) -> onClick
-com.kenny.file.page.NetworkPage -> com.kenny.file.j.ai:
+com.kenny.file.page.NetworkPage -> com.kenny.file.j.ah:
     java.util.List mNetClientList -> h
     android.widget.LinearLayout lyTools -> i
     android.widget.FrameLayout flSubview -> j
@@ -6536,17 +6551,17 @@ com.kenny.file.page.NetworkPage -> com.kenny.file.j.ai:
     void onExit() -> l
     android.app.Activity access$0(com.kenny.file.page.NetworkPage) -> a
     void access$1$16654889(com.kenny.file.page.NetworkPage) -> b
-com.kenny.file.page.NetworkPage$1 -> com.kenny.file.j.aj:
+com.kenny.file.page.NetworkPage$1 -> com.kenny.file.j.ai:
     com.kenny.file.page.NetworkPage this$0 -> a
     void onClick(android.view.View) -> onClick
-com.kenny.file.page.NetworkPage$2 -> com.kenny.file.j.ak:
+com.kenny.file.page.NetworkPage$2 -> com.kenny.file.j.aj:
     com.kenny.file.page.NetworkPage this$0 -> a
     void onClick(android.view.View) -> onClick
-com.kenny.file.page.NetworkPage$3 -> com.kenny.file.j.al:
+com.kenny.file.page.NetworkPage$3 -> com.kenny.file.j.ak:
     com.kenny.file.page.NetworkPage this$0 -> a
     java.util.ArrayList val$mDelFiles -> b
     void onClick(android.content.DialogInterface,int) -> onClick
-com.kenny.file.page.SearchResultPage -> com.kenny.file.j.am:
+com.kenny.file.page.SearchResultPage -> com.kenny.file.j.al:
     android.widget.Button btnBack -> h
     android.widget.Button btSearch -> i
     android.widget.ListView m_locallist -> j
@@ -6569,20 +6584,20 @@ com.kenny.file.page.SearchResultPage -> com.kenny.file.j.am:
     com.kenny.file.Adapter.FavorFileAdapter access$0(com.kenny.file.page.SearchResultPage) -> a
     android.app.Activity access$1(com.kenny.file.page.SearchResultPage) -> b
     com.kenny.file.bean.ScarchParam access$2(com.kenny.file.page.SearchResultPage) -> c
-com.kenny.file.page.SearchResultPage$1 -> com.kenny.file.j.an:
+com.kenny.file.page.SearchResultPage$1 -> com.kenny.file.j.am:
     com.kenny.file.page.SearchResultPage this$0 -> a
     void onScrollStateChanged(android.widget.AbsListView,int) -> onScrollStateChanged
     void onScroll(android.widget.AbsListView,int,int,int) -> onScroll
-com.kenny.file.page.SearchResultPage$2 -> com.kenny.file.j.ao:
+com.kenny.file.page.SearchResultPage$2 -> com.kenny.file.j.an:
     com.kenny.file.page.SearchResultPage this$0 -> d
     void ok() -> a
-com.kenny.file.page.SearchResultPage$3 -> com.kenny.file.j.ap:
+com.kenny.file.page.SearchResultPage$3 -> com.kenny.file.j.ao:
     com.kenny.file.page.SearchResultPage this$0 -> a
     void onClick(android.view.View) -> onClick
-com.kenny.file.page.SearchResultPage$4 -> com.kenny.file.j.aq:
+com.kenny.file.page.SearchResultPage$4 -> com.kenny.file.j.ap:
     com.kenny.file.page.SearchResultPage this$0 -> a
     void onClick(android.view.View) -> onClick
-com.kenny.file.page.SettingPage -> com.kenny.file.j.ar:
+com.kenny.file.page.SettingPage -> com.kenny.file.j.aq:
     android.widget.TextView tvSetDefaultPath -> h
     android.widget.CheckBox cbSetSensor -> i
     android.widget.CheckBox cbSetTools -> j
@@ -6603,10 +6618,10 @@ com.kenny.file.page.SettingPage -> com.kenny.file.j.ar:
     boolean onTouchEvent(android.view.MotionEvent) -> onTouchEvent
     void onDestroy() -> a
     android.app.Activity access$0(com.kenny.file.page.SettingPage) -> a
-com.kenny.file.page.SettingPage$1 -> com.kenny.file.j.as:
+com.kenny.file.page.SettingPage$1 -> com.kenny.file.j.ar:
     com.kenny.file.page.SettingPage this$0 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-com.kenny.file.page.TaskPage -> com.kenny.file.j.at:
+com.kenny.file.page.TaskPage -> com.kenny.file.j.as:
     android.widget.ListView m_Appslist -> i
     android.widget.GridView m_AppsGrid -> j
     android.widget.Button btKillProc -> k
@@ -6658,17 +6673,17 @@ com.kenny.file.page.TaskPage -> com.kenny.file.j.at:
     int access$10(com.kenny.file.page.TaskPage) -> i
     void access$11$541b6c0a(com.kenny.file.page.TaskPage,int) -> c
     void access$12(com.kenny.file.page.TaskPage) -> j
-com.kenny.file.page.TaskPage$1 -> com.kenny.file.j.au:
+com.kenny.file.page.TaskPage$1 -> com.kenny.file.j.at:
     com.kenny.file.page.TaskPage this$0 -> b
     int val$type -> c
     boolean val$bShowDialog -> d
     void ok() -> a
-com.kenny.file.page.TaskPage$1$1 -> com.kenny.file.j.av:
+com.kenny.file.page.TaskPage$1$1 -> com.kenny.file.j.au:
     com.kenny.file.page.TaskPage$1 this$1 -> b
     java.util.ArrayList val$Apps -> c
     boolean val$bShowDialog -> d
     void ok() -> a
-com.kenny.file.page.TaskPage$2 -> com.kenny.file.j.aw:
+com.kenny.file.page.TaskPage$2 -> com.kenny.file.j.av:
     com.kenny.file.page.TaskPage this$0 -> a
     android.app.Activity val$context -> b
     com.kenny.file.bean.AppBean val$mAppInfo -> c

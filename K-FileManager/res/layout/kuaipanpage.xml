@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="#00000000"
@@ -9,20 +9,19 @@
         android:id="@+id/lyTools2"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:padding="3dip"
         android:background="#FFe0e2e6"
-         >
+        android:padding="3dip" >
+
         <ImageView
             android:id="@+id/btContactInfo"
             android:layout_width="48dip"
             android:layout_height="48dip"
             android:layout_gravity="center_horizontal"
-            android:padding="2dip"
             android:background="#00000000"
+            android:padding="2dip"
             android:src="@drawable/list_kuaipan_logo"
-            android:visibility="gone"
-            />
-        
+            android:visibility="gone" />
+
         <TextView
             android:id="@+id/mCurrentPath"
             android:layout_width="fill_parent"
@@ -39,19 +38,18 @@
             android:textColor="#737373"
             android:textSize="17dip" />
 
-
         <TextView
             android:id="@+id/tvKuaiPanSpace"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dip"
+            android:background="@drawable/file_manager_browser_path"
             android:gravity="center_vertical"
             android:text="30.5M/4.5G"
             android:textColor="#737373"
-            android:background="@drawable/file_manager_browser_path"
-            android:textSize="16dip" 
-            />
+            android:textSize="16dp" />
     </LinearLayout>
+
 
     <ListView
         android:id="@+id/lvLocallist"
@@ -62,6 +60,7 @@
         android:cacheColorHint="#00000000"
         android:divider="@drawable/list_line"
         android:dividerHeight="2dip"
+        android:layout_weight="1"
         android:fastScrollEnabled="true" />
 
     <ListView
@@ -70,6 +69,7 @@
         android:layout_height="fill_parent"
         android:layout_below="@id/lyTools2"
         android:background="@color/list_bg"
+        android:layout_weight="1"
         android:cacheColorHint="#00000000"
         android:divider="@drawable/list_line"
         android:dividerHeight="2dip"
@@ -122,7 +122,44 @@
             android:textSize="16dp" />
     </RelativeLayout>
 
-     <RelativeLayout
+    <LinearLayout
+        android:id="@+id/pbLoading"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lyTools2"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="@color/list_bg"
+        
+        android:orientation="horizontal" >
+
+        <ProgressBar
+            android:id="@+id/pbSDFileStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:progressDrawable="@drawable/progressbar_style" />
+
+        <LinearLayout
+            android:id="@+id/lyLoading_msg_pannel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#00000000"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/tvMessage"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="正在获取列表..."
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </LinearLayout>
+    <RelativeLayout
         android:id="@+id/lyUpLoadTools"
         android:layout_width="fill_parent"
         android:layout_height="48dp"
@@ -140,32 +177,32 @@
             android:onClick="onClick"
             android:paddingLeft="10dip"
             android:paddingRight="10dip" >
-            
-                    <Button
-            android:id="@+id/btUpLoad"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1"
-            android:background="@drawable/btn_special_default_select"
-            android:text="@string/btUpLoad"
-            android:textColor="@color/ContentTitleText"
-            android:textSize="16dp" />
 
-        <Button
-            android:id="@+id/btCancel"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="5dp"
-            android:layout_weight="1"
-            android:background="@drawable/btn_wificonfig_select"
-            android:text="@string/btCancel"
-            android:textColor="@color/ContentTitleText"
-            android:textSize="16dip" />
+            <Button
+                android:id="@+id/btUpLoad"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:background="@drawable/btn_special_default_select"
+                android:text="@string/btUpLoad"
+                android:textColor="@color/ContentTitleText"
+                android:textSize="16dp" />
 
+            <Button
+                android:id="@+id/btCancel"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_wificonfig_select"
+                android:text="@string/btCancel"
+                android:textColor="@color/ContentTitleText"
+                android:textSize="16dip" />
         </LinearLayout>
     </RelativeLayout>
+
     <LinearLayout
         android:id="@+id/lyBTools"
         android:layout_width="fill_parent"
@@ -174,7 +211,7 @@
         android:background="@drawable/toolbar_backgroud"
         android:gravity="fill"
         android:orientation="horizontal"
-        android:visibility="gone" >
+        >
 
         <Button
             android:id="@+id/btSelectAll"
@@ -198,20 +235,9 @@
             android:drawableTop="@drawable/menu_new_normal"
             android:text="@string/btNew"
             android:textColor="@color/ContentTitleText"
-            android:textSize="13dip"
-            android:visibility="gone" />
+            android:textSize="13dp"
+            />
 
-        <Button
-            android:id="@+id/btDelete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1"
-            android:background="#00000000"
-            android:drawableTop="@drawable/menu_delete"
-            android:text="@string/btDelete"
-            android:textColor="@color/ContentTitleText"
-            android:textSize="13dip" />
 
         <Button
             android:id="@+id/btDownLoad"
@@ -223,10 +249,21 @@
             android:drawableTop="@drawable/menu_delete"
             android:text="@string/btDownLoad"
             android:textColor="@color/ContentTitleText"
-            android:textSize="13dip"
-            android:visibility="gone" />
-
-        <Button
+            android:textSize="13dp"
+             />
+                <Button
+            android:id="@+id/btDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:drawableTop="@drawable/menu_delete"
+            android:text="@string/btDelete"
+            android:textColor="@color/ContentTitleText"
+            android:textSize="13dip" />
+        
+       <Button
             android:id="@+id/btBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -236,7 +273,8 @@
             android:drawableTop="@drawable/menu_back"
             android:text="@string/btBack"
             android:textColor="@color/ContentTitleText"
-            android:textSize="13dip" />
+            android:textSize="13dp" 
+            android:visibility="gone"
+            />
     </LinearLayout>
-
-</RelativeLayout>
+</LinearLayout>

@@ -23,7 +23,6 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,14 +41,14 @@ import com.kenny.KFileManager.R;
 import com.kenny.KFileManager.R.color;
 import com.kenny.file.Adapter.KuaiPanFileAdapter;
 import com.kenny.file.Event.ExitEvent;
-import com.kenny.file.Event.LoadKuaiPanEvent;
+import com.kenny.file.Event.KuaiPanFileListEvent;
 import com.kenny.file.Event.delFileEvent;
 import com.kenny.file.Event.openDefFileEvent;
 import com.kenny.file.Event.uploadKPFileEvent;
 import com.kenny.file.bean.FileBean;
 import com.kenny.file.commui.ListHeaderView;
 import com.kenny.file.dialog.AboutDialog;
-import com.kenny.file.dialog.CreateKuaiPanFileDialog;
+import com.kenny.file.dialog.CreateKPFileDialog;
 import com.kenny.file.interfaces.KActivityStatus;
 import com.kenny.file.struct.INotifyDataSetChanged;
 import com.kenny.file.tools.SaveData;
@@ -73,7 +72,7 @@ public class KuaiPanPage extends AbsPage implements OnItemClickListener,
 
 	private ArrayList<KuaipanFile> mFileList = new ArrayList<KuaipanFile>();
 	private ArrayList<KuaipanFile> mDownLoadList = new ArrayList<KuaipanFile>();
-	private View rlError;
+	private View rlError,pbLoading;
 	private TextView mCurrentPath;
 	private TextView tvError_msg, tvKuaiPanSpace;// 空间
 	private int nCommCode = 0;// 0:没有错误
@@ -112,6 +111,8 @@ public class KuaiPanPage extends AbsPage implements OnItemClickListener,
 		m_DownLoadlist.setAdapter(fileAdapter);
 		m_DownLoadlist.setVisibility(View.GONE);
 		rlError = findViewById(R.id.rlError);
+		pbLoading = findViewById(R.id.pbLoading);
+		
 		tvError_msg = (TextView) findViewById(R.id.tvError_msg);
 		mCurrentPath = (TextView) findViewById(R.id.mCurrentPath);
 		tvKuaiPanSpace = (TextView) findViewById(R.id.tvKuaiPanSpace);
@@ -155,10 +156,6 @@ public class KuaiPanPage extends AbsPage implements OnItemClickListener,
 		{
 			try
 			{
-				// String auth_url = KuaipanAPI.requestToken();
-				// SysEng.getInstance().addHandlerEvent(
-				// new NextPageEvent(m_act,
-				// new KuaiPanLoginPage(m_act, auth_url), 1, null));
 				NotifyDataSetChanged(Const.cmd_KuaiPan_OAuth_Error, null);
 				KPManager.init(Const.consumer_key, Const.consumer_secret);
 				Intent intent = new Intent(m_act, KPLoginView.class);
@@ -182,9 +179,6 @@ public class KuaiPanPage extends AbsPage implements OnItemClickListener,
 		@Override
 		public void onReceive(Context context, Intent intent)
 		{
-			// new TextDialog().showDialog(m_act,
-			// m_act.getString(R.string.KuaiPan_use_Title),
-			// m_act.getString(R.string.KuaiPan_use_Content));
 			oauth_token = intent.getStringExtra(KPConstants.KP_BROADCAST_TOKEN);
 			oauth_secret = intent
 					.getStringExtra(KPConstants.KP_BROADCAST_SECRET);
@@ -338,8 +332,8 @@ public class KuaiPanPage extends AbsPage implements OnItemClickListener,
 		{
 			SysEng.getInstance()
 					.addEvent(
-							new LoadKuaiPanEvent(m_act, cli.getPath(), cli,
-									true, this));
+							new KuaiPanFileListEvent(m_act, cli.getPath(), cli,
+									pbLoading, this));
 		}
 	}
 
@@ -369,13 +363,12 @@ public class KuaiPanPage extends AbsPage implements OnItemClickListener,
 		if (!tempPath.equals(cli.getPath()))
 		{
 			SysEng.getInstance().addEvent(
-					new LoadKuaiPanEvent(m_act, tempPath, cli, true, this));
+					new KuaiPanFileListEvent(m_act, tempPath, cli, pbLoading, this));
 			return true;
 		} else
 		{
 			return false;
 		}
-
 	}
 
 	private void CDFile(String dir)
@@ -385,7 +378,7 @@ public class KuaiPanPage extends AbsPage implements OnItemClickListener,
 		if (!tempPath.equals(cli.getPath()))
 		{
 			SysEng.getInstance().addEvent(
-					new LoadKuaiPanEvent(m_act, tempPath, cli, true, this));
+					new KuaiPanFileListEvent(m_act, tempPath, cli, pbLoading, this));
 		} else
 		{
 			Toast.makeText(m_act, "已经到达根目录!", Toast.LENGTH_SHORT).show();
@@ -524,7 +517,7 @@ public class KuaiPanPage extends AbsPage implements OnItemClickListener,
 			Refresh();
 			break;
 		case R.id.btNew:
-			CreateKuaiPanFileDialog.Show(m_act, cli, this);
+			CreateKPFileDialog.Show(m_act, cli, this);
 			break;
 		case R.id.btDelete:
 			deletefiles();
@@ -589,7 +582,7 @@ public class KuaiPanPage extends AbsPage implements OnItemClickListener,
 		switch (item.getItemId())
 		{
 		case R.id.muCreate:
-			CreateKuaiPanFileDialog.Show(m_act, cli, this);
+			CreateKPFileDialog.Show(m_act, cli, this);
 			break;
 		case R.id.muLogout:
 			oauth_token = "";

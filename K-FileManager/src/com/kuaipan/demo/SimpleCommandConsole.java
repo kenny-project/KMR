@@ -177,17 +177,6 @@ public class SimpleCommandConsole
 		P.debug(str);
 	}
 
-	private void openBrowser(Activity context, String strUrl)
-	{
-		// Uri uri = Uri.parse(strUrl);
-		// Intent it = new Intent(Intent.ACTION_VIEW, uri);
-		// context.startActivity(it);
-		SysEng.getInstance().addHandlerEvent(
-				new NextPageEvent(context,
-						new KuaiPanLoginPage(context, strUrl), 1, null));
-
-	}
-
 	private String stringJoin(String[] seq, char c, int start, int end)
 	{
 		if (start >= end)

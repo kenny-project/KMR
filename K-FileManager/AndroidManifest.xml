@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.kenny.KFileManager"
     android:installLocation="internalOnly"
-    android:versionCode="59"
-    android:versionName="V1.9.9" >
+    android:versionCode="60"
+    android:versionName="V2.0.0" >
     <!-- 22 -->
     <uses-sdk
         android:minSdkVersion="5"
@@ -55,7 +55,7 @@
         android:sharedUserId="android.uid.system" >
         
         <meta-data android:name="BaiduMobAd_CHANNEL" android:value="baidu Market" />
-		<!-- 您从百度网站获取的APP KEY -->
+		<!-- 您从百度网站获取的APP KEY-->
 		<meta-data android:name="BaiduMobAd_STAT_ID" android:value="d76832ba61" />
 		<!-- 是否开启错误日志统计，默认为false -->
 		<meta-data android:name="BaiduMobAd_EXCEPTION_LOG" android:value="false" />
@@ -113,18 +113,20 @@
         </activity>
         <activity
             android:name="com.framework.debugreport.BugReportActivity"
+            android:configChanges="orientation|keyboardHidden"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Black.NoTitleBar" >
         </activity>
         <activity
             android:name="com.kenny.file.Activity.ImageListActivity"
+            android:configChanges="orientation|keyboardHidden"
             android:label="@string/app_name"
             android:process=":Image"
             android:theme="@android:style/Theme.Black.NoTitleBar" >
         </activity>
         <activity
             android:name="com.kenny.file.Activity.ZIPFileActivity"
-            android:configChanges="orientation|keyboard"
+            android:configChanges="orientation|keyboardHidden"
             android:label="@string/EditTxtActivity_Name"
             android:process=":Zip"
             android:theme="@android:style/Theme.Black.NoTitleBar" >
@@ -153,7 +155,7 @@
         <!-- android:process=":EditTxtActivity" -->
         <activity
             android:name="com.kenny.file.Activity.EditTxtActivity"
-            android:configChanges="orientation|keyboard"
+            android:configChanges="orientation|keyboardHidden"
             android:label="@string/EditTxtActivity_Name"
             android:process=":EditTxtActivity"
             android:theme="@android:style/Theme.Black.NoTitleBar" >
@@ -190,7 +192,7 @@
         <!-- android:process=":MediaPlayActivity" -->
         
         <activity
-            android:configChanges="orientation|keyboard"
+            android:configChanges="orientation|keyboardHidden"
             android:label="@string/EditTxtActivity_Name"
             android:name="com.kenny.LyricPlayer.xwg.MediaPlayActivity"
             android:launchMode="singleTask"
@@ -225,7 +227,6 @@
         <service
             android:enabled="true"
             android:exported="true"
-            
             android:name="com.kenny.LyricPlayer.xwg.MediaPlayerService"
              >
             <intent-filter >
@@ -262,10 +263,8 @@
             android:label="@string/GalleryActivity_Name" >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
-
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-
                 <data android:scheme="file" />
                 <data android:mimeType="*/*" />
                 <data android:host="*" />

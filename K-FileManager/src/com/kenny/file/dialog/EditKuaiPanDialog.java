@@ -10,13 +10,9 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.framework.event.NextPageEvent;
-import com.framework.syseng.SysEng;
 import com.kenny.KFileManager.R;
 import com.kenny.file.tools.SaveData;
 import com.kenny.file.util.Const;
-import com.kuaipan.demo.KuaiPanLoginPage;
-import com.kuaipan.demo.SimpleCommandConsole;
 
 public class EditKuaiPanDialog
 {

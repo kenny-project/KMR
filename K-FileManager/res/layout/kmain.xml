@@ -9,13 +9,14 @@
     <LinearLayout
         android:id="@+id/lvTabs"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="75dip"
         android:layout_marginBottom="1dip" >
+
         <!-- 80 -->
         <LinearLayout
             android:id="@+id/tab_local"
             android:layout_width="wrap_content"
-            android:layout_height="80dip"
+            android:layout_height="75dip"
             android:layout_weight="1.0"
             android:background="@drawable/tab_select"
             android:orientation="vertical" >
@@ -39,7 +40,7 @@
         <LinearLayout
             android:id="@+id/tab_network"
             android:layout_width="wrap_content"
-            android:layout_height="80dip"
+            android:layout_height="75dip"
             android:layout_weight="1.0"
             android:background="@drawable/tab_normal"
             android:orientation="vertical" >
@@ -62,7 +63,7 @@
         <LinearLayout
             android:id="@+id/tab_Favorite"
             android:layout_width="wrap_content"
-            android:layout_height="80dip"
+            android:layout_height="75dip"
             android:layout_weight="1.0"
             android:background="@drawable/tab_normal"
             android:orientation="vertical" >
@@ -85,7 +86,7 @@
         <LinearLayout
             android:id="@+id/tab_apps"
             android:layout_width="wrap_content"
-            android:layout_height="80dip"
+            android:layout_height="75dip"
             android:layout_weight="1.0"
             android:background="@drawable/tab_normal"
             android:orientation="vertical" >
@@ -104,10 +105,11 @@
                 android:textColor="@color/tab_TextColor_normal"
                 android:textSize="14.0sp" />
         </LinearLayout>
-    <LinearLayout
+
+        <LinearLayout
             android:id="@+id/tab_task"
             android:layout_width="wrap_content"
-            android:layout_height="80dip"
+            android:layout_height="75dip"
             android:layout_weight="1.0"
             android:background="@drawable/tab_normal"
             android:orientation="vertical" >

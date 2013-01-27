@@ -533,7 +533,6 @@ com.kenny.file.bean.FGroupInfo:
     71:72:public void setDesc(java.lang.String)
 com.kenny.file.bean.FavorFileBean:
     18:18:public int getFlag()
-    28:28:public int getId()
 com.kenny.file.bean.FileBean:
     93:93:public int getIntLength()
 com.kenny.file.bean.FileEnd:
@@ -595,11 +594,12 @@ com.kenny.file.db.Dao:
     86:86:public boolean isHasInfors(java.lang.String)
     104:128:public void saveInfos(java.util.List)
     158:169:public void InsertFavorites(int,java.lang.String,long)
-    433:433:public java.util.List getFavoritesInfos(java.lang.String,java.lang.String)
-    493:493:public com.kenny.file.bean.AppBean getAppInfo(java.lang.String)
-    550:550:public java.util.List getAppInfos(java.util.List)
-    620:629:public void updataInfos(com.kenny.file.bean.AppBean)
-    768:768:public int deleteHistory(int)
+    372:386:public boolean compare(java.lang.String,java.lang.String)
+    425:425:public java.util.List getFavoritesInfos(java.lang.String,java.lang.String)
+    485:485:public com.kenny.file.bean.AppBean getAppInfo(java.lang.String)
+    542:542:public java.util.List getAppInfos(java.util.List)
+    612:621:public void updataInfos(com.kenny.file.bean.AppBean)
+    774:774:public int deleteHistory(int)
 com.kenny.file.dialog.CreateFileDialog:
     17:17:public CreateFileDialog()
 com.kenny.file.dialog.CreateKuaiPanFileDialog:
@@ -669,7 +669,7 @@ com.kenny.file.page.FavoritePage:
     private static final int FLAG_GROUP
     private static final int FLAG_FILE
     private static final int FLAG_Folder
-    716:717:public void onStart()
+    776:777:public void onStart()
 com.kenny.file.page.FeedBackPage
 com.kenny.file.page.FeedBackPage$1
 com.kenny.file.page.FeedBackPage$2
@@ -682,7 +682,7 @@ com.kenny.file.page.KMainPage:
     370:434:public void RCreate(android.content.res.Configuration)
 com.kenny.file.page.KMainPage$3
 com.kenny.file.page.KuaiPanPage:
-    221:239:private void getShares(java.lang.String)
+    214:232:private void getShares(java.lang.String)
 com.kenny.file.page.KuaiPanPage$3
 com.kenny.file.page.LocalPage:
     android.widget.EditText mET
@@ -879,21 +879,21 @@ com.kenny.file.util.PkgSizeObserver:
     68:96:public android.content.pm.PackageStats Start(com.kenny.file.bean.AppBean,com.kenny.file.struct.INotifyDataSetChanged)
 com.kenny.file.util.SDFile:
     18:18:public SDFile()
-    43:60:public static boolean CheckSDFile(java.lang.String)
-    155:179:public static int BackUpFile(java.lang.String,java.lang.String)
-    325:342:public static boolean WriteSDFile(java.lang.String,byte[],java.lang.String)
-    349:349:public static boolean WriteSDFile(java.lang.String,java.lang.String,java.lang.String)
-    358:373:public static boolean WriteRAMFile(android.content.Context,java.lang.String,java.lang.String)
-    413:425:public static java.lang.String ReadRAMFile(android.content.Context,java.lang.String,int)
-    439:452:public static java.lang.String ReadRAMFile(android.content.Context,java.lang.String)
-    465:485:public static java.lang.String ReadSDFile(java.lang.String)
-    509:529:public static android.graphics.drawable.Drawable ReadImageFile(java.lang.String)
-    535:565:public static boolean WriteImageFile(java.lang.String,android.graphics.Bitmap)
-    571:573:private static java.lang.String URL2FileName(java.lang.String)
-    583:591:public static android.graphics.drawable.Drawable ReadImageFileToDrawable(android.content.Context,java.lang.String)
-    690:715:public static boolean WriteSDLogoFile(android.content.Context,java.lang.String,android.graphics.Bitmap)
-    722:738:public static android.graphics.drawable.Drawable ReadRAMImageFile(android.content.Context,java.lang.String)
-    745:765:public static boolean WriteRAMImageFile(android.content.Context,java.lang.String,android.graphics.Bitmap)
+    45:61:public static boolean CheckSDFile(java.lang.String)
+    158:182:public static int BackUpFile(java.lang.String,java.lang.String)
+    322:339:public static boolean WriteSDFile(java.lang.String,byte[],java.lang.String)
+    346:346:public static boolean WriteSDFile(java.lang.String,java.lang.String,java.lang.String)
+    355:369:public static boolean WriteRAMFile(android.content.Context,java.lang.String,java.lang.String)
+    408:420:public static java.lang.String ReadRAMFile(android.content.Context,java.lang.String,int)
+    434:447:public static java.lang.String ReadRAMFile(android.content.Context,java.lang.String)
+    460:480:public static java.lang.String ReadSDFile(java.lang.String)
+    504:527:public static android.graphics.drawable.Drawable ReadImageFile(java.lang.String)
+    533:563:public static boolean WriteImageFile(java.lang.String,android.graphics.Bitmap)
+    569:571:private static java.lang.String URL2FileName(java.lang.String)
+    581:591:public static android.graphics.drawable.Drawable ReadImageFileToDrawable(android.content.Context,java.lang.String)
+    684:709:public static boolean WriteSDLogoFile(android.content.Context,java.lang.String,android.graphics.Bitmap)
+    716:734:public static android.graphics.drawable.Drawable ReadRAMImageFile(android.content.Context,java.lang.String)
+    741:760:public static boolean WriteRAMImageFile(android.content.Context,java.lang.String,android.graphics.Bitmap)
 com.kenny.file.util.StorageUtil:
     private static final int ERROR
     12:12:public StorageUtil()
@@ -1186,15 +1186,12 @@ com.kuaipan.client.session.Session:
 com.kuaipan.demo.DBHelper
 com.kuaipan.demo.Dao
 com.kuaipan.demo.KPTestUtility
-com.kuaipan.demo.KuaiPanLoginPage
-com.kuaipan.demo.KuaiPanLoginPage$1
 com.kuaipan.demo.SimpleCommandConsole:
     69:85:public boolean execute(java.lang.String,java.lang.String)
     93:93:public java.util.List do_ls()
     136:149:public void do_cat(java.lang.String)
     172:173:private void println(java.lang.String)
     177:178:private void print(java.lang.String)
-    185:189:private void openBrowser(android.app.Activity,java.lang.String)
 com.tencent.tauth.TAuthView:
     private static final java.lang.String TAG
     public static final java.lang.String AUTH_BROADCAST
