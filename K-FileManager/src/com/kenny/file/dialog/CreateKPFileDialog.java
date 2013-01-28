@@ -41,7 +41,7 @@ public class CreateKPFileDialog
 				.findViewById(R.id.new_filename);
 
 		Builder mBuilder = new AlertDialog.Builder(context)
-				.setTitle(R.string.CreateFileDialog_title)
+				.setTitle(R.string.CreateKPFileDialog_title)
 				.setView(mLL)
 				.setPositiveButton(R.string.m_New,
 						new DialogInterface.OnClickListener()

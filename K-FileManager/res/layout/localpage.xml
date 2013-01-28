@@ -74,18 +74,6 @@
             android:singleLine="true"
             android:textColor="#737373"
             android:textSize="17dip"/>       -->
-
-        <Button
-            android:id="@+id/btFileType"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:background="@drawable/ic_menu_overflow"
-            android:padding="5dip"
-            android:text="Type"
-            android:textColor="#337ddc"
-            android:textSize="18dip"
-            android:visibility="gone" />
         <!-- android:background="@drawable/tab2_btn_bg" -->
 
         <Button

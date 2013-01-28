@@ -38,7 +38,6 @@ import com.kenny.file.commui.ListHeaderView;
 import com.kenny.file.dialog.FTPClientDialog;
 import com.kenny.file.struct.INotifyDataSetChanged;
 import com.kenny.file.util.FTPClientManager;
-import com.kenny.file.util.Theme;
 import com.kenny.ftp.client.FTPClient;
 import com.kenny.swiftp.FtpServer;
 import com.umeng.analytics.MobclickAgent;

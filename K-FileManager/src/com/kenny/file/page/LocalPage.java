@@ -91,7 +91,7 @@ public class LocalPage extends MultiItemPage implements
 
 	private Button btMenuListSort, btMenuListMode, btMenuShowOrHide,
 			btMenuFavorites;// 菜单项
-	private Button btFileType, btListStyle, btFavorite;
+	private Button btFavorite;
 	private View lyBTools;
 	private ArrayList<TreeElement> mPdfOutlinesCount = new ArrayList<TreeElement>();
 	private SearchResultPage mSearchPage;
@@ -209,14 +209,10 @@ public class LocalPage extends MultiItemPage implements
 		// }
 		// });
 		lyBTools = (View) findViewById(R.id.lyBTools);
-		btFileType = (Button) findViewById(R.id.btFileType);
-		btFileType.setOnClickListener(this);
 
 		btFavorite = (Button) findViewById(R.id.btFavorite);
 		btFavorite.setOnClickListener(this);
 
-		btListStyle = (Button) findViewById(R.id.btListStyle);
-		btListStyle.setOnClickListener(this);
 
 		Button btButton = (Button) findViewById(R.id.btNew);
 		btButton.setOnClickListener(this);
@@ -554,9 +550,7 @@ public class LocalPage extends MultiItemPage implements
 			break;
 		case R.id.btFavorite:
 			break;
-		case R.id.btFileType:
 			// KDialog.ShowFileTypeArray(m_act, "类别", mFileType, listener);
-			break;
 		case R.id.btListSort:// 排序
 			new ViewSortDialog().ShowDialog(m_act, this);
 			break;
@@ -696,24 +690,17 @@ public class LocalPage extends MultiItemPage implements
 			m_localGrid.setAdapter(fileAdapter);
 			m_locallist.setVisibility(View.GONE);
 			m_localGrid.setVisibility(View.VISIBLE);
-			btListStyle
-					.setBackgroundResource(R.drawable.file_manager_browser_gridmode);
 		} else
 		{
 			fileAdapter = new FileAdapter(m_act, 1, mFileList, this);
 			m_locallist.setAdapter(fileAdapter);
 			m_localGrid.setVisibility(View.GONE);
 			m_locallist.setVisibility(View.VISIBLE);
-
-			btListStyle
-					.setBackgroundResource(R.drawable.file_manager_browser_listmode);
 		}
 		treeViewAdapter = new TreeViewAdapter(m_act, R.layout.outline,
 				mPdfOutlinesCount);
 		TreeElement element1 = new TreeElement("SD卡", Const.Root);
-		// TreeElement element2 = new TreeElement("手机", Const.SDCard);
 		mPdfOutlinesCount.add(element1);
-		// mPdfOutlinesCount.add(element2);
 		m_TreeLocallist.setAdapter(treeViewAdapter);
 		this.nStyle = nStyle;
 	}

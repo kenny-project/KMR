@@ -223,7 +223,9 @@
             android:drawableTop="@drawable/menu_selall"
             android:text="@string/btSelectAll"
             android:textColor="@color/ContentTitleText"
-            android:textSize="13dip" />
+            android:textSize="13dip"
+            android:visibility="gone"
+             />
 
         <Button
             android:id="@+id/btNew"
@@ -237,7 +239,18 @@
             android:textColor="@color/ContentTitleText"
             android:textSize="13dp"
             />
-
+        <Button
+            android:id="@+id/btUpDownLoad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:drawableTop="@drawable/menu_delete"
+            android:text="@string/KuaiPanPage_btUpDownLoad"
+            android:textColor="@color/ContentTitleText"
+            android:textSize="13dp"
+            />
 
         <Button
             android:id="@+id/btDownLoad"
@@ -246,12 +259,12 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:background="#00000000"
-            android:drawableTop="@drawable/menu_delete"
+            android:drawableTop="@drawable/menu_download"
             android:text="@string/btDownLoad"
             android:textColor="@color/ContentTitleText"
             android:textSize="13dp"
-             />
-                <Button
+            />
+       <Button
             android:id="@+id/btDelete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -262,6 +275,19 @@
             android:text="@string/btDelete"
             android:textColor="@color/ContentTitleText"
             android:textSize="13dip" />
+        
+        <Button
+            android:id="@+id/btTransfer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:drawableTop="@drawable/menu_back"
+            android:text="@string/KuaiPanPage_btTransfer"
+            android:textColor="@color/ContentTitleText"
+            android:textSize="13dp" 
+            />
         
        <Button
             android:id="@+id/btBack"

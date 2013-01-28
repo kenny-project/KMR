@@ -348,7 +348,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:paddingBottom="4dip"
-                    android:visibility="invisible"
+                    android:visibility="visible"
                      >
 
                     <RelativeLayout
@@ -378,7 +378,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:singleLine="true"
-                            android:text="@string/msg_favor_doc"
+                            android:text="@string/msg_favor_favor"
                             android:textColor="@color/list_item_TextColer"
                             android:textSize="14sp" >
                         </TextView>
@@ -390,14 +390,13 @@
                             android:ellipsize="marquee"
                             android:marqueeRepeatLimit="marquee_forever"
                             android:singleLine="true"
-                            android:text="(122)"
                             android:textColor="@color/list_item_TextColer"
                             android:textSize="12sp" />
                     </LinearLayout>
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/btfavoriteGroup"
+                    android:id="@+id/btfavoriteGroup1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -450,7 +449,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/btfavoriteGroup"
+                    android:id="@+id/btfavoriteGroup2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

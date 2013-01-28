@@ -77,7 +77,6 @@ public class FavoritePage extends MultiItemPage implements MenuAble,
 	private TextView tvPic, tvMusic, tvVideo, tvDocument, tvApp, tvZip,
 			tvMessage, tvSDFileStatus;// tvWebPage
 	private ListView mListView;
-	private GridView mGridView;
 	private Button btRefresh;
 	private Button btAllFile, btFolder;
 	private Button btBack;
@@ -127,13 +126,10 @@ public class FavoritePage extends MultiItemPage implements MenuAble,
 			icItemPannel.setVisibility(View.GONE);
 			mGroupAdapter = new FGroupAdapter(m_act, 1, mGroupList);
 			mListView.setAdapter(mGroupAdapter);
-			mGridView.setVisibility(View.GONE);
-			mListView.setVisibility(View.VISIBLE);
 		} else if (bFlag == FLAG_FILE)
 		{
 			icItemPannel.setVisibility(View.VISIBLE);
 			icGroupPannel.setVisibility(View.GONE);
-
 			btAllFile.setBackgroundResource(R.drawable.tab2_left_select);
 			btFolder.setBackgroundResource(R.drawable.tab2_right_unselect);
 			btFolder.setTextColor(m_act.getResources().getColor(
@@ -142,37 +138,19 @@ public class FavoritePage extends MultiItemPage implements MenuAble,
 					R.color.tab_TextColor_normal));
 			mFileAdapter = new FavorFileAdapter(m_act, 1, mAllFileList);
 			mListView.setAdapter(mFileAdapter);
-			mGridView.setVisibility(View.GONE);
-			mListView.setVisibility(View.VISIBLE);
-			btSelectAll.setVisibility(View.VISIBLE);
-			if (Theme.getToolsVisible())
-			{
-				lyBTools.setVisibility(View.VISIBLE);
-			} else
-			{
-				lyBTools.setVisibility(View.GONE);
-			}
-		} else if (bFlag == FLAG_Folder)
+		} 
+		else if (bFlag == FLAG_Folder)
 		{
-			lyTools2.setVisibility(View.VISIBLE);
+			icItemPannel.setVisibility(View.VISIBLE);
+			icGroupPannel.setVisibility(View.GONE);
 			mFolderAdapter = new FavorFileAdapter(m_act, 1, mTempList);
 			mListView.setAdapter(mFolderAdapter);
-			mGridView.setVisibility(View.GONE);
-			mListView.setVisibility(View.VISIBLE);
 			btAllFile.setBackgroundResource(R.drawable.tab2_left_unselect);
 			btFolder.setBackgroundResource(R.drawable.tab2_right_select);
 			btAllFile.setTextColor(m_act.getResources().getColor(
 					R.color.tab_TextColor_selected));
 			btFolder.setTextColor(m_act.getResources().getColor(
 					R.color.tab_TextColor_normal));
-
-			if (Theme.getToolsVisible())
-			{
-				lyBTools.setVisibility(View.VISIBLE);
-			} else
-			{
-				lyBTools.setVisibility(View.GONE);
-			}
 		}
 		this.bFlag = bFlag;
 	}
@@ -222,6 +200,7 @@ public class FavoritePage extends MultiItemPage implements MenuAble,
 		public void onScroll(AbsListView view, int firstVisibleItem,
 				int visibleItemCount, int totalItemCount)
 		{
+			
 		}
 	};
 
@@ -245,12 +224,6 @@ public class FavoritePage extends MultiItemPage implements MenuAble,
 		mListView.setOnItemLongClickListener(this);
 		// mListView.setOnLongClickListener(this);
 		mListView.addFooterView(FooterView(), null, false);
-
-		mGridView = (GridView) findViewById(R.id.gvLocallist);
-		mGridView.setOnItemClickListener(this);
-		// mGridView.setOnLongClickListener(this);
-		mGridView.setOnScrollListener(m_localOnScrollListener);
-		mGridView.setOnItemLongClickListener(this);
 
 		btAllFile = (Button) findViewById(R.id.btAllFile);
 		btAllFile.setOnClickListener(this);
@@ -293,6 +266,9 @@ public class FavoritePage extends MultiItemPage implements MenuAble,
 				.setOnClickListener(this);
 		((RelativeLayout) findViewById(R.id.btZipGroup))
 				.setOnClickListener(this);
+		((RelativeLayout) findViewById(R.id.btfavoriteGroup))
+		.setOnClickListener(this);		
+		
 		boolean bFavoriteInit = SaveData.Read(m_act, "FavoriteInit", false);
 		if (!bFavoriteInit)
 		{
@@ -613,6 +589,9 @@ public class FavoritePage extends MultiItemPage implements MenuAble,
 		case R.id.btZipGroup:
 			SwitchGroup(4);
 			break;
+		case R.id.btfavoriteGroup://收藏
+			//1
+			break;
 		case R.id.btListStyle:
 			// MobclickAgent.onEvent(m_act, "FavoriteEvent","ListStyle");
 			// if (nStyle == 0)
@@ -804,15 +783,10 @@ public class FavoritePage extends MultiItemPage implements MenuAble,
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id)
 	{
-		if (bFlag == FLAG_GROUP)
-		{ // group分类列表
-			SwitchGroup(position);
-		} else if (bFlag == FLAG_FILE)
+		if (bFlag == FLAG_FILE)
 		{
 			if (position == 0)
-			{// 返回到上一层
-				// MobclickAgent.onEvent(m_act, "FavoriteEvent","Back");
-				// SwitchStyle(FLAG_Folder);
+			{	// 返回到上一层
 				Refresh(FLAG_GROUP);
 				SwitchStyle(FLAG_GROUP);
 				return;
@@ -832,7 +806,6 @@ public class FavoritePage extends MultiItemPage implements MenuAble,
 		{
 			if (position == 0)
 			{// 返回到上一层
-				// MobclickAgent.onEvent(m_act, "FavoriteEvent","Back");
 				if (nFolderType == 1)
 				{
 					nFolderType = 0;
@@ -902,7 +875,6 @@ public class FavoritePage extends MultiItemPage implements MenuAble,
 			case Const.cmd_LoadSDFile_Start:
 				pbLoading.setVisibility(View.VISIBLE);
 				mListView.setVisibility(View.GONE);
-				mGridView.setVisibility(View.GONE);
 				btRefresh.setVisibility(View.GONE);
 				break;
 			case Const.cmd_LoadSDFile_State:

@@ -63,15 +63,6 @@
                 android:dividerHeight="2dp"
                 android:fastScrollEnabled="true" />
 
-            <com.kenny.file.commui.KGridView
-                android:id="@+id/gvLocallist"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:background="@color/list_bg"
-                android:cacheColorHint="#00000000"
-                android:fastScrollEnabled="true"
-                android:numColumns="3" >
-            </com.kenny.file.commui.KGridView>
         </FrameLayout>
 
         <LinearLayout
