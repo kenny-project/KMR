@@ -76,7 +76,7 @@ public class KuaiPanPage extends AbsPage implements OnItemClickListener,
 	private TextView mCurrentPath;
 	private TextView tvError_msg, tvKuaiPanSpace;// 空间
 	private int nCommCode = 0;// 0:没有错误
-	private View lyUpLoadTools, lyBTools;
+	private View lyUpLoadTools, lyBTools,lyTools2;
 	private List<FileBean> mFilelist;
 	private String oauth_token = "";
 	private String oauth_secret = "";
@@ -91,6 +91,7 @@ public class KuaiPanPage extends AbsPage implements OnItemClickListener,
 	{
 		setContentView(R.layout.kuaipanpage);
 		lyBTools =  findViewById(R.id.lyBTools);
+		lyTools2 =  findViewById(R.id.lyTools2);
 		lyUpLoadTools = findViewById(R.id.lyUpLoadTools);
 		m_locallist = (ListView) findViewById(R.id.lvLocallist);
 		m_DownLoadlist = (ListView) findViewById(R.id.lvDownLoadlist);
@@ -223,10 +224,6 @@ public class KuaiPanPage extends AbsPage implements OnItemClickListener,
 				if (mKuaiPanUser != null)
 				{
 					T.SendShare(m_act, "共享链接", "分享:" + mKuaiPanUser.url);
-					// String
-					// AccountInfo=T.FileSizeToString(mKuaiPanUser.quota_used)+"/"+T.FileSizeToString(mKuaiPanUser.quota_total);
-					// NotifyDataSetChanged(Const.cmd_KuaiPan_AccountInfo,
-					// AccountInfo);
 				}
 			}
 		});
@@ -287,7 +284,6 @@ public class KuaiPanPage extends AbsPage implements OnItemClickListener,
 				lyBTools.setVisibility(View.VISIBLE);
 			}
 		}
-
 	}
 
 	public void onReload()
@@ -472,6 +468,7 @@ public class KuaiPanPage extends AbsPage implements OnItemClickListener,
 					m_locallist.setVisibility(View.GONE);
 					lyUpLoadTools.setVisibility(View.GONE);
 					lyBTools.setVisibility(View.GONE);
+					lyTools2.setVisibility(View.GONE);
 				}
 				break;
 			case Const.cmd_KuaiPan_LS_Error:
@@ -482,6 +479,7 @@ public class KuaiPanPage extends AbsPage implements OnItemClickListener,
 				m_DownLoadlist.setVisibility(View.GONE);
 				lyUpLoadTools.setVisibility(View.GONE);
 				lyBTools.setVisibility(View.GONE);
+				lyTools2.setVisibility(View.GONE);
 				break;
 			case Const.cmd_KuaiPan_LS_Error_NoNetWork:
 				tvError_msg.setText("获取文件列表失败,未找到网络!,请稍候在试");
@@ -489,6 +487,7 @@ public class KuaiPanPage extends AbsPage implements OnItemClickListener,
 				rlError.setVisibility(View.VISIBLE);
 				lyUpLoadTools.setVisibility(View.GONE);
 				lyBTools.setVisibility(View.GONE);
+				lyTools2.setVisibility(View.GONE);
 				m_locallist.setVisibility(View.GONE);
 				m_DownLoadlist.setVisibility(View.GONE);
 				break;
@@ -498,6 +497,7 @@ public class KuaiPanPage extends AbsPage implements OnItemClickListener,
 				m_DownLoadlist.setVisibility(View.GONE);
 				lyUpLoadTools.setVisibility(View.GONE);
 				lyBTools.setVisibility(View.GONE);
+				lyTools2.setVisibility(View.GONE);
 				tvError_msg.setText("未登录或登录失败,请重新登录");
 				btError.setText("登录");
 			}
@@ -581,9 +581,6 @@ public class KuaiPanPage extends AbsPage implements OnItemClickListener,
 	{
 		switch (item.getItemId())
 		{
-		case R.id.muCreate:
-			CreateKPFileDialog.Show(m_act, cli, this);
-			break;
 		case R.id.muLogout:
 			oauth_token = "";
 			oauth_secret = "";

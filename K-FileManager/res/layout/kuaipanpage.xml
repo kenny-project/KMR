@@ -37,7 +37,12 @@
             android:singleLine="true"
             android:textColor="#737373"
             android:textSize="17dip" />
-
+        <Button
+            android:id="@+id/btNew"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dip"
+            android:background="@drawable/directory_create_select" />
         <TextView
             android:id="@+id/tvKuaiPanSpace"
             android:layout_width="wrap_content"
@@ -51,11 +56,11 @@
     </LinearLayout>
 
 
+    <!-- android:layout_below="@id/lyTools2" -->
     <ListView
         android:id="@+id/lvLocallist"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_below="@id/lyTools2"
         android:background="@color/list_bg"
         android:cacheColorHint="#00000000"
         android:divider="@drawable/list_line"
@@ -63,6 +68,7 @@
         android:layout_weight="1"
         android:fastScrollEnabled="true" />
 
+    <!-- android:layout_below="@id/lyTools2" -->
     <ListView
         android:id="@+id/lvDownLoadlist"
         android:layout_width="fill_parent"
@@ -130,7 +136,6 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:background="@color/list_bg"
-        
         android:orientation="horizontal" >
 
         <ProgressBar
@@ -226,19 +231,6 @@
             android:textSize="13dip"
             android:visibility="gone"
              />
-
-        <Button
-            android:id="@+id/btNew"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1"
-            android:background="#00000000"
-            android:drawableTop="@drawable/menu_new_normal"
-            android:text="@string/btNew"
-            android:textColor="@color/ContentTitleText"
-            android:textSize="13dp"
-            />
         <Button
             android:id="@+id/btUpDownLoad"
             android:layout_width="wrap_content"

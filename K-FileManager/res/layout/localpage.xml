@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/lyTools"
         android:background="#FFe0e2e6"
-        android:padding="3dip" >
+        android:padding="2dip" >
 
         <Button
             android:id="@+id/btTree"
@@ -34,18 +34,18 @@
             android:visibility="gone" />
 
         <Button
-            android:id="@+id/btFavorite"
+            android:id="@+id/btFileSearch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:background="@drawable/file_manager_browser_listmode"
-            android:visibility="gone" />
+            android:layout_marginLeft="2dip"
+            android:background="@drawable/file_search_select"
+            />
 
         <TextView
             android:id="@+id/mCurrentPath"
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="2dip"
             android:layout_weight="1.0"
             android:autoText="false"
             android:background="@drawable/file_manager_browser_path"
@@ -57,23 +57,16 @@
             android:singleLine="true"
             android:textColor="#737373"
             android:textSize="17dip" />
-        <!--
-        android:background="@drawable/addressbar_bg"
-        <EditText
-            android:id="@+id/mCurrentPath"
-            android:layout_width="fill_parent"
+
+        <Button
+            android:id="@+id/btFileCreate"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1.0"
-            android:background="@drawable/search_bg"
-            android:ellipsize="start"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:gravity="center_vertical"
-            android:hint="请输入访问路径"
-            android:singleLine="true"
-            android:textColor="#737373"
-            android:textSize="17dip"/>       -->
+            android:layout_marginLeft="2dip"
+            android:background="@drawable/directory_create_select" />
+<!--         android:background="@drawable/addressbar_bg" -->
+
+
         <!-- android:background="@drawable/tab2_btn_bg" -->
 
         <Button
@@ -81,20 +74,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:gravity="center_vertical"
             android:layout_marginLeft="5dip"
             android:background="@drawable/file_manager_browser_listmode"
-            android:visibility="gone"
-             />
+            android:gravity="center_vertical"
+            android:visibility="gone" />
+
         <Button
             android:id="@+id/btToolsMemu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:gravity="center_vertical"
             android:layout_marginLeft="5dip"
             android:background="@drawable/file_manager_browser_listmode"
-             />
+            android:gravity="center_vertical" />
+
         <Button
             android:id="@+id/btListSort"
             android:layout_width="wrap_content"
@@ -105,8 +98,44 @@
             android:gravity="center_vertical"
             android:text="排序"
             android:textColor="#737373"
-            android:textSize="16dip" 
-            android:visibility="gone"
+            android:textSize="16dip"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lyTools3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lyTools"
+        android:background="#FFe0e2e6"
+        android:visibility="gone"
+        android:padding="2dip" >
+
+        <EditText
+            android:id="@+id/etSearchFileName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/inside_search"
+            android:ellipsize="start"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center_vertical"
+            android:hint="请输入访问路径"
+            android:singleLine="true"
+            android:textColor="#737373"
+            android:textSize="17dp" />
+         <Button
+            android:id="@+id/btListSort"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="5dip"
+            android:background="@drawable/file_manager_browser_path"
+            android:gravity="center_vertical"
+            android:text="取消"
+            android:textColor="#737373"
+            android:textSize="16dip"
             />
     </LinearLayout>
 
@@ -145,18 +174,19 @@
         android:dividerHeight="2dp"
         android:fastScrollEnabled="true"
         android:visibility="gone" />
+
     <ListView
         android:id="@+id/lvAddressList"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-    	android:layout_below="@id/lyTools2"        
+        android:layout_below="@id/lyTools2"
         android:background="@drawable/popup_center"
         android:cacheColorHint="#00000000"
         android:divider="@drawable/list_line"
         android:dividerHeight="2dp"
         android:fastScrollEnabled="true"
-        android:visibility="gone"
-         />
+        android:visibility="gone" />
+
     <LinearLayout
         android:id="@+id/lyBTools"
         android:layout_width="fill_parent"
@@ -165,8 +195,8 @@
         android:background="@drawable/toolbar_backgroud"
         android:gravity="fill"
         android:orientation="horizontal"
-        android:visibility="gone"
-        >
+        android:visibility="gone" >
+
         <Button
             android:id="@+id/btSelectAll"
             android:layout_width="wrap_content"
@@ -192,8 +222,7 @@
             android:text="@string/btNew"
             android:textColor="@color/ContentTitleText"
             android:textSize="13dip"
-            android:visibility="gone"
-            />
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/btCopy"
@@ -233,8 +262,7 @@
             android:text="@string/btPaste"
             android:textColor="@color/ContentTitleText"
             android:textSize="13dip"
-            android:visibility="gone"
-             />
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/btDelete"
@@ -263,16 +291,19 @@
             android:textSize="13dip"
             android:visibility="gone" />
     </LinearLayout>
-  <RelativeLayout
+
+    <RelativeLayout
         android:id="@+id/ip_menu"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_below="@id/lyTools2"
         android:clickable="true"
         android:visibility="gone" >
+
         <include
             android:id="@+id/main_menu"
             android:layout_marginRight="10dip"
             layout="@layout/menu_local_pannal" />
     </RelativeLayout>
+
 </RelativeLayout>

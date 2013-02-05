@@ -36,14 +36,16 @@ public class KMainPage extends AbsPage implements OnConfigurationChangedAble
    private AppsPage m_AppsPage = null;
    private TaskPage m_TaskPage = null;
    private FavoritePage m_FavoritePage = null;
+   private SearchResultPage m_SearchPage=null;
    /**
     * 本地
     */
-   public static final int Local = 0;
-   public static final int NetWork = 1;
-   public static final int Favorite = 2;
-   public static final int apps = 3;
-   public static final int task = 4;
+   public static final int Search = 0;
+   public static final int Local = 1;
+   public static final int NetWork = 2;
+   public static final int Favorite = 3;
+   public static final int apps = 4;
+   public static final int task = 5;
    // private static Workspace mWorkspace;
    private ArrayList<AbsPage> mListViews;
    private View lvTabs;
@@ -140,6 +142,10 @@ public class KMainPage extends AbsPage implements OnConfigurationChangedAble
       View btTemp = rbLocal;
       switch (key)
       {
+      case Search:
+    	  tempPage = m_SearchPage;
+    	  btTemp=null;
+    	  break;
       case Local:
          btTemp = rbLocal;
          // MobclickAgent.onEvent(m_act,"KMainPage","localPage");
@@ -166,6 +172,7 @@ public class KMainPage extends AbsPage implements OnConfigurationChangedAble
          // MobclickAgent.onEvent(m_act,"KMainPage","taskPage");
          break;
       }
+      if(btTemp!=null)
       btTemp.setBackgroundResource(R.drawable.tab_select);
       // btTemp.setTextColor(m_act.getResources().getColor(
       // R.color.tab_TextColor_selected));
@@ -178,8 +185,8 @@ public class KMainPage extends AbsPage implements OnConfigurationChangedAble
       {
          if (!tempPage.isCreate())
          {
-	  tempPage.onCreate();
-	  tempPage.onLoad();
+        	 tempPage.onCreate();
+        	 tempPage.onLoad();
          }
          m_curPage = tempPage;
          tempPage.onResume();
@@ -217,32 +224,15 @@ public class KMainPage extends AbsPage implements OnConfigurationChangedAble
       m_FavoritePage = new FavoritePage(m_act);
       m_AppsPage = new AppsPage(m_act);
       m_TaskPage = new TaskPage(m_act);
+      m_SearchPage = new SearchResultPage(m_act);
       
-      // m_localPage.setObj(this);
-      // m_RemotePage.setObj(this);
-      // m_FavoritePage.setObj(this);
-      // m_AppsPage.setObj(this);
-      // m_TaskPage.setObj(this);
-      // m_localPage.onCreate();
-      // m_localPage.onLoad();
-      // m_RemotePage.onCreate();
-      // m_RemotePage.onLoad();
-      // m_AppsPage.onCreate();
-      // m_AppsPage.onLoad();
-      // m_FavoritePage.onCreate();
-      // m_FavoritePage.onLoad();
-      // m_TaskPage.onCreate();
-      // m_TaskPage.onLoad();
       
-      // TextView tview = new TextView(m_act);
-      // tview.setHeight(150);
-      // tview.setWidth(-1);
-      // tview.setVisibility(View.VISIBLE);
-      // tview.setBackgroundColor(color.green);
       
       myViewPager.setAdapter(mAbsPageAdapter);
       mListViews = new ArrayList<AbsPage>();
       
+      
+      mListViews.add(m_SearchPage);
       mListViews.add(m_localPage);
       mListViews.add(m_RemotePage);
       mListViews.add(m_FavoritePage);

@@ -7,6 +7,7 @@
 
         <RelativeLayout 
 		android:id="@+id/lyTools"
+		android:visibility="gone"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:background="@drawable/top_bg"
@@ -35,14 +36,58 @@
 		    android:layout_alignParentLeft="true"
 		    android:background="@drawable/tab_left_bg"/>
     </RelativeLayout>
+       <LinearLayout
+        android:id="@+id/lyTools3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lyTools"
+        android:background="@drawable/inside_search_bg"
+        android:padding="5dip" >
+        <Button 
+		    android:id="@+id/btSearchMode"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:textSize="16dip"
+		    android:text="图片"
+		    android:textColor="#737373"
+		    android:layout_alignParentRight="true"
+		    android:background="@drawable/file_manager_browser_path"/>
+
+        <EditText
+            android:id="@+id/etSearchFileName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dip"
+            android:layout_weight="0.79"
+            android:background="@drawable/inside_search"
+            android:ellipsize="start"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center_vertical"
+            android:hint="请输入要查询的文件"
+            android:singleLine="true"
+            android:textColor="#737373"
+            android:textSize="17dp" />
+        <Button 
+		    android:id="@+id/btSearch"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_marginLeft="5dip"
+		    android:textSize="16dip"
+		    android:text="搜索"
+		    android:textColor="#737373"
+		    android:layout_alignParentRight="true"
+		    android:background="@drawable/file_manager_browser_path"/>
+    </LinearLayout>
+        
      <ListView
         android:id="@+id/lvLocallist"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_below="@id/lyTools"
+        android:layout_below="@id/lyTools3"
         android:background="@color/list_bg"
         android:cacheColorHint="#00000000"
         android:divider="@drawable/list_line"
-        android:dividerHeight="2px"
+        android:dividerHeight="2px" 
         android:fastScrollEnabled="true" />
 </RelativeLayout>

@@ -91,7 +91,7 @@ public class LocalPage extends MultiItemPage implements
 
 	private Button btMenuListSort, btMenuListMode, btMenuShowOrHide,
 			btMenuFavorites;// 菜单项
-	private Button btFavorite;
+	private Button btFileSearch,btFileCreate;
 	private View lyBTools;
 	private ArrayList<TreeElement> mPdfOutlinesCount = new ArrayList<TreeElement>();
 	private SearchResultPage mSearchPage;
@@ -210,8 +210,11 @@ public class LocalPage extends MultiItemPage implements
 		// });
 		lyBTools = (View) findViewById(R.id.lyBTools);
 
-		btFavorite = (Button) findViewById(R.id.btFavorite);
-		btFavorite.setOnClickListener(this);
+		btFileSearch = (Button) findViewById(R.id.btFileSearch);
+		btFileSearch.setOnClickListener(this);
+		
+		btFileCreate = (Button) findViewById(R.id.btFileCreate);
+		btFileCreate.setOnClickListener(this);
 
 
 		Button btButton = (Button) findViewById(R.id.btNew);
@@ -548,8 +551,12 @@ public class LocalPage extends MultiItemPage implements
 		{
 		case R.id.btToolsMemu:
 			break;
-		case R.id.btFavorite:
+		case R.id.btFileSearch:
+			KMainPage.mKMainPage.ChangePage(KMainPage.Search, null);
 			break;
+		case R.id.btFileCreate:
+			CreateFileDialog.Show(m_act, localManage.getCurrentPath());
+		break;
 			// KDialog.ShowFileTypeArray(m_act, "类别", mFileType, listener);
 		case R.id.btListSort:// 排序
 			new ViewSortDialog().ShowDialog(m_act, this);
@@ -742,9 +749,9 @@ public class LocalPage extends MultiItemPage implements
 	{
 		switch (item.getItemId())
 		{
-		case R.id.muCreate:
-			CreateFileDialog.Show(m_act, localManage.getCurrentPath());
-			break;
+//		case R.id.muCreate:
+//			CreateFileDialog.Show(m_act, localManage.getCurrentPath());
+//			break;
 		case R.id.muSearch:
 			if (mSearchPage == null)
 			{
