@@ -17,7 +17,6 @@
 	<!-- 可选的权限 -->
 	<!-- 启用错误分析功能，须添加该权限 -->
 	<uses-permission android:name="android.permission.READ_LOGS"></uses-permission>
-	
 	<!-- 可选的权限 -->
 	<!-- 使用GPS获取用户精确定位信息 -->
 	<!-- <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>-->
@@ -104,7 +103,8 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Black.NoTitleBar"
-            android:windowSoftInputMode="stateHidden" >
+
+            android:windowSoftInputMode="stateHidden|adjustResize" >
             <!-- android:windowSoftInputMode="adjustResize" -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -13,6 +13,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Rect;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -44,13 +46,11 @@ import com.framework.syseng.SysEng;
 import com.kenny.KFileManager.R;
 import com.kenny.KFileManager.R.color;
 import com.kenny.file.Adapter.FileAdapter;
-import com.kenny.file.Adapter.TreeViewAdapter;
 import com.kenny.file.Event.copyFileEvent;
 import com.kenny.file.Event.cutFileEvent;
 import com.kenny.file.Event.delFileEvent;
 import com.kenny.file.Event.openDefFileEvent;
 import com.kenny.file.bean.FileBean;
-import com.kenny.file.bean.TreeElement;
 import com.kenny.file.commui.ListHeaderView;
 import com.kenny.file.dialog.CreateFileDialog;
 import com.kenny.file.dialog.FavoritesDialog;
@@ -80,20 +80,19 @@ public class LocalPage extends MultiItemPage implements
 	private HashMap<String, Integer> mScrollList = new HashMap<String, Integer>();
 	private View m_lvMain;// 主页面
 	private TextView mPath;
-	private ListView m_locallist, m_TreeLocallist, lvAddressList;
+	private ListView m_locallist;
 	private GridView m_localGrid;
 	private FileAdapter fileAdapter;
-	private TreeViewAdapter treeViewAdapter;// 树结构
 	private FileManager localManage;
+	private EditText etSearchFileName;
 	// private int ListPos;
 	private int nStyle = 0, nSortMode = 0; // false:listView
 	// true:gridView
 
 	private Button btMenuListSort, btMenuListMode, btMenuShowOrHide,
 			btMenuFavorites;// 菜单项
-	private Button btFileSearch,btFileCreate;
+	private Button btSearchDialog, btFileCreate;
 	private View lyBTools;
-	private ArrayList<TreeElement> mPdfOutlinesCount = new ArrayList<TreeElement>();
 	private SearchResultPage mSearchPage;
 
 	public LocalPage(Activity context)
@@ -105,7 +104,6 @@ public class LocalPage extends MultiItemPage implements
 
 	private OnScrollListener m_localOnScrollListener = new OnScrollListener()
 	{
-
 		public void onScrollStateChanged(AbsListView view, int scrollState)
 		{
 			switch (scrollState)
@@ -148,11 +146,6 @@ public class LocalPage extends MultiItemPage implements
 		// cmd.RootCommand(apkRoot);
 		localManage.setContext(m_act);
 		m_lvMain = findViewById(R.id.lvMain);
-		m_TreeLocallist = (ListView) findViewById(R.id.lvTreeLocallist);
-		m_TreeLocallist.setOnItemClickListener(mItemClickListenter);
-
-		lvAddressList = (ListView) findViewById(R.id.lvAddressList);
-		lvAddressList.setOnItemClickListener(mAddressItemClickListenter);
 
 		m_locallist = (ListView) findViewById(R.id.lvLocallist);
 		AnimationSet set = new AnimationSet(true);
@@ -166,8 +159,8 @@ public class LocalPage extends MultiItemPage implements
 				-1.0f, Animation.RELATIVE_TO_SELF, 0.0f);
 		animation.setDuration(100);
 		set.addAnimation(animation);
-//		LayoutAnimationController controller = new LayoutAnimationController(
-//				set, 0.5f);
+		// LayoutAnimationController controller = new LayoutAnimationController(
+		// set, 0.5f);
 
 		m_locallist.setOnScrollListener(m_localOnScrollListener);
 		m_locallist.setOnItemLongClickListener(this);
@@ -179,7 +172,6 @@ public class LocalPage extends MultiItemPage implements
 		mPath = (TextView) findViewById(R.id.mCurrentPath);
 		mPath.setOnClickListener(new OnClickListener()
 		{
-
 			public void onClick(View v)
 			{
 				MobclickAgent.onEvent(m_act, "localEvent", "LocalAddress");
@@ -196,26 +188,19 @@ public class LocalPage extends MultiItemPage implements
 		tview.setVisibility(View.VISIBLE);
 		tview.setBackgroundColor(color.green);
 		ListHeaderView headerView = new ListHeaderView(m_act, tview);
-		// m_locallist.addHeaderView(headerView);
-		// headerView.setEnabled(false);
 		m_locallist.addFooterView(headerView, null, false);
-		// m_locallist.setDivider(m_act.getResources().getDrawable(
-		// R.drawable.listview_line));
 		localManage.setNotifyData(this);
-		// m_locallist.setOnTouchListener(new OnTouchListener() {
-		//
-		// public boolean onTouch(View v, MotionEvent event) {
-		// return false;
-		// }
-		// });
+
 		lyBTools = (View) findViewById(R.id.lyBTools);
 
-		btFileSearch = (Button) findViewById(R.id.btFileSearch);
-		btFileSearch.setOnClickListener(this);
-		
+		btSearchDialog = (Button) findViewById(R.id.btSearchDialog);
+		btSearchDialog.setOnClickListener(this);
+
 		btFileCreate = (Button) findViewById(R.id.btFileCreate);
 		btFileCreate.setOnClickListener(this);
 
+		etSearchFileName = (EditText) findViewById(R.id.etSearchFileName);
+		etSearchFileName.addTextChangedListener(mSearchWatcher);
 
 		Button btButton = (Button) findViewById(R.id.btNew);
 		btButton.setOnClickListener(this);
@@ -225,14 +210,8 @@ public class LocalPage extends MultiItemPage implements
 		btButton = (Button) findViewById(R.id.btBack);
 		btButton.setOnClickListener(this);
 
-		btButton = (Button) findViewById(R.id.btTree);
-		btButton.setOnClickListener(this);
-
 		btButton = (Button) findViewById(R.id.btListSort);
 		btButton.setOnClickListener(this);
-
-		// btButton = (Button) findViewById(R.id.btEnter);
-		// btButton.setOnClickListener(this);
 
 		btButton = (Button) findViewById(R.id.btCopy);
 		btButton.setOnClickListener(this);
@@ -249,13 +228,63 @@ public class LocalPage extends MultiItemPage implements
 		btButton = (Button) findViewById(R.id.btSelectAll);
 		btButton.setOnClickListener(this);
 
+		// ///////////
+
+		btButton = (Button) findViewById(R.id.btToolsNew);
+		btButton.setOnClickListener(this);
+		btButton = (Button) findViewById(R.id.btToolsOrganize);
+		btButton.setOnClickListener(this);
+		btButton = (Button) findViewById(R.id.btToolsFilter);
+		btButton.setOnClickListener(this);
+		btButton = (Button) findViewById(R.id.btToolsShowMode);
+		btButton.setOnClickListener(this);
+		btButton = (Button) findViewById(R.id.btToolsMenu);
+		btButton.setOnClickListener(this);
+
 		SwitchStyle(Theme.getStyleMode());
 		onCreateMenu();
 	}
 
-	public void onCreateMenu()
+	/**
+	 * 创建主菜单
+	 */
+	public void OnCreateMainMenu()
 	{
-		final RelativeLayout rlMenu = (RelativeLayout) findViewById(R.id.ip_menu);
+		final RelativeLayout rlMenu = (RelativeLayout) findViewById(R.id.menu_main);
+		rlMenu.setOnTouchListener(new OnTouchListener()
+		{
+			@Override
+			public boolean onTouch(View v, MotionEvent event)
+			{
+				rlMenu.setVisibility(View.GONE);
+				return false;
+			}
+		});
+	}
+
+	/**
+	 * 创建文件夹菜单
+	 */
+	public void OnShowCreateMenu()
+	{
+		final RelativeLayout rlMenu = (RelativeLayout) findViewById(R.id.menu_show);
+		rlMenu.setOnTouchListener(new OnTouchListener()
+		{
+			@Override
+			public boolean onTouch(View v, MotionEvent event)
+			{
+				rlMenu.setVisibility(View.GONE);
+				return false;
+			}
+		});
+	}
+
+	/**
+	 * 创建文件夹菜单
+	 */
+	public void OnLocalCreateMenu()
+	{
+		final RelativeLayout rlMenu = (RelativeLayout) findViewById(R.id.menu_new);
 		rlMenu.setOnTouchListener(new OnTouchListener()
 		{
 			@Override
@@ -274,23 +303,17 @@ public class LocalPage extends MultiItemPage implements
 			@Override
 			public void onClick(View v)
 			{
-				// TODO Auto-generated method stub
 				if (rlMenu.getVisibility() == View.VISIBLE)
 				{
 					goneAnim.ShowAnim();
 				} else
 				{
-					if (lvAddressList.getVisibility() == View.VISIBLE)
-					{
-						lvAddressList.setVisibility(View.GONE);
-					}
 					if (Theme.getShowHideFile())
 					{
 						btMenuShowOrHide
 								.setText(R.string.btMenuShowOrHide_False);
 					} else
 					{
-
 						btMenuShowOrHide
 								.setText(R.string.btMenuShowOrHide_True);
 					}
@@ -304,6 +327,101 @@ public class LocalPage extends MultiItemPage implements
 					new MVisibleAinm(m_act, rlMenu,
 							findViewById(R.id.main_menu)).ShowAnim();
 
+				}
+			}
+		});
+		OnClickListener menuListener = new OnClickListener()
+		{
+
+			@Override
+			public void onClick(View v)
+			{
+				goneAnim.ShowAnim();
+				switch (v.getId())
+				{
+				case R.id.btMenuListSort:
+					new ViewSortDialog().ShowDialog(m_act, LocalPage.this);
+					break;
+				case R.id.btMenuListMode:
+					if (nStyle == 1)
+					{
+						SwitchStyle(0);
+					} else
+					{
+						SwitchStyle(1);
+					}
+					break;
+				case R.id.btMenuShowOrHide:
+					Theme.setShowHideFile(!Theme.getShowHideFile());
+					Theme.Save(m_act);
+					localManage.setFilePath(localManage.getCurrentPath(),
+							Const.cmd_Local_List_Go);
+					break;
+				case R.id.btMenuFavorites:
+					Rect rect = new Rect();
+					findViewById(R.id.btToolsMemu).getGlobalVisibleRect(rect);
+					FavoritesDialog.ShowDialog(m_act, rect.bottom);
+					break;
+				}
+			}
+		};
+		btMenuListSort = (Button) findViewById(R.id.btMenuListSort);
+		btMenuListSort.setOnClickListener(menuListener);
+		btMenuListMode = (Button) findViewById(R.id.btMenuListMode);
+		btMenuListMode.setOnClickListener(menuListener);
+		btMenuShowOrHide = (Button) findViewById(R.id.btMenuShowOrHide);
+		btMenuShowOrHide.setOnClickListener(menuListener);
+		btMenuFavorites = (Button) findViewById(R.id.btMenuFavorites);
+		btMenuFavorites.setOnClickListener(menuListener);
+	}
+
+	public void onCreateMenu()
+	{
+		OnLocalCreateMenu();
+		OnShowCreateMenu();
+		OnCreateMainMenu();
+		final RelativeLayout rlMenu = (RelativeLayout) findViewById(R.id.ip_menu);
+		rlMenu.setOnTouchListener(new OnTouchListener()
+		{
+			@Override
+			public boolean onTouch(View v, MotionEvent event)
+			{
+				rlMenu.setVisibility(View.GONE);
+				return false;
+			}
+		});
+		final MGoneAinm goneAnim = new MGoneAinm(m_act, rlMenu,
+				findViewById(R.id.main_menu));
+		Button btToolsMemu = (Button) findViewById(R.id.btToolsMemu);
+		btToolsMemu.setOnClickListener(new OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
+			{
+				// TODO Auto-generated method stub
+				if (rlMenu.getVisibility() == View.VISIBLE)
+				{
+					goneAnim.ShowAnim();
+				} else
+				{
+					if (Theme.getShowHideFile())
+					{
+						btMenuShowOrHide
+								.setText(R.string.btMenuShowOrHide_False);
+					} else
+					{
+						btMenuShowOrHide
+								.setText(R.string.btMenuShowOrHide_True);
+					}
+					if (Theme.getStyleMode() == 1)
+					{
+						btMenuListMode.setText(R.string.btMenuListMode_List);
+					} else
+					{
+						btMenuListMode.setText(R.string.btMenuListMode_Grid);
+					}
+					new MVisibleAinm(m_act, rlMenu,
+							findViewById(R.id.main_menu)).ShowAnim();
 				}
 			}
 		});
@@ -393,7 +511,6 @@ public class LocalPage extends MultiItemPage implements
 	{
 		public void onReceive(Context ctx, Intent intent)
 		{
-			// P.v("Log.DEBUG", "SDCard status broadcast received");
 			localManage.setFilePath(localManage.getCurrentPath(),
 					Const.cmd_Local_List_Go);
 		}
@@ -439,12 +556,6 @@ public class LocalPage extends MultiItemPage implements
 					findViewById(R.id.main_menu)).ShowAnim();
 			return;
 		}
-		if (lvAddressList.getVisibility() == View.VISIBLE)
-		{
-			lvAddressList.setVisibility(View.GONE);
-			return;
-		}
-
 		String currentPath = localManage.getCurrentPath();
 		if (mScrollList.containsKey(currentPath))
 		{
@@ -545,19 +656,90 @@ public class LocalPage extends MultiItemPage implements
 		}
 	}
 
+	public void ShowMenu(int id)
+	{
+		// findViewById(R.id.new_menu).setVisibility(View.GONE);
+		// findViewById(R.id.lySearchPanel).setVisibility(View.GONE);
+		// findViewById(R.id.show_menu).setVisibility(View.GONE);
+		// lyBTools.setVisibility(View.GONE);
+		switch (id)
+		{
+		case 0:
+			if (findViewById(R.id.menu_new).getVisibility() == View.VISIBLE)
+			{
+				findViewById(R.id.menu_new).setVisibility(View.GONE);
+			} else
+			{
+				findViewById(R.id.menu_new).setVisibility(View.VISIBLE);
+			}
+			break;
+		case 1:
+			if (lyBTools.getVisibility() == View.VISIBLE)
+			{
+				lyBTools.setVisibility(View.GONE);
+			} else
+			{
+				lyBTools.setVisibility(View.VISIBLE);
+			}
+			break;
+		case 2:
+			if (findViewById(R.id.lySearchPanel).getVisibility() == View.VISIBLE)
+			{
+				findViewById(R.id.lySearchPanel).setVisibility(View.GONE);
+				etSearchFileName.setText("");
+			} else
+			{
+				findViewById(R.id.lySearchPanel).setVisibility(View.VISIBLE);
+				etSearchFileName.setText("");
+			}
+			break;
+		case 3:
+			if (findViewById(R.id.menu_show).getVisibility() == View.VISIBLE)
+			{
+				findViewById(R.id.menu_show).setVisibility(View.GONE);
+			} else
+			{
+				findViewById(R.id.menu_show).setVisibility(View.VISIBLE);
+			}
+			break;
+		case 4:
+			if (findViewById(R.id.menu_main).getVisibility() == View.VISIBLE)
+			{
+				findViewById(R.id.menu_main).setVisibility(View.GONE);
+			} else
+			{
+				findViewById(R.id.menu_main).setVisibility(View.VISIBLE);
+			}
+			break;
+		}
+	}
+
 	public void onClick(View v)
 	{
 		switch (v.getId())
 		{
-		case R.id.btToolsMemu:
+		case R.id.btToolsNew:
+			ShowMenu(0);
 			break;
-		case R.id.btFileSearch:
+		case R.id.btToolsOrganize:
+			ShowMenu(1);
+			break;
+		case R.id.btToolsFilter:
+			ShowMenu(2);
+			break;
+		case R.id.btToolsShowMode:
+			ShowMenu(3);
+			break;
+		case R.id.btToolsMenu:
+			ShowMenu(4);
+			break;
+		case R.id.btSearchDialog:
 			KMainPage.mKMainPage.ChangePage(KMainPage.Search, null);
 			break;
 		case R.id.btFileCreate:
 			CreateFileDialog.Show(m_act, localManage.getCurrentPath());
-		break;
-			// KDialog.ShowFileTypeArray(m_act, "类别", mFileType, listener);
+			break;
+		// KDialog.ShowFileTypeArray(m_act, "类别", mFileType, listener);
 		case R.id.btListSort:// 排序
 			new ViewSortDialog().ShowDialog(m_act, this);
 			break;
@@ -569,15 +751,6 @@ public class LocalPage extends MultiItemPage implements
 			} else
 			{
 				SwitchStyle(0);
-			}
-			break;
-		case R.id.btTree:
-			if (m_TreeLocallist.getVisibility() == View.GONE)
-			{
-				m_TreeLocallist.setVisibility(View.VISIBLE);
-			} else
-			{
-				m_TreeLocallist.setVisibility(View.GONE);
 			}
 			break;
 		case R.id.btNew:
@@ -598,23 +771,23 @@ public class LocalPage extends MultiItemPage implements
 			// MobclickAgent.onEvent(m_act, "localEvent","del");
 			deletefiles();
 			break;
-		//case R.id.btPaste:
-			// MobclickAgent.onEvent(m_act, "localEvent","paste");
-			// by wmh 这段代码以后用不到了
-			// List<FileBean> copyList = localManage.getCopyFiles();
-			// if (localManage.isCopy())
-			// {
-			// SysEng.getInstance().addEvent(
-			// new palseFileEvent(m_act, localManage.getCurrentPath(),
-			// copyList, localManage.isCut()));
-			// }
-			// else
-			// {
-			// Toast.makeText(m_act,
-			// m_act.getString(R.string.msg_copy_need_paste),
-			// Toast.LENGTH_SHORT).show();
-			// }
-			//break;
+		// case R.id.btPaste:
+		// MobclickAgent.onEvent(m_act, "localEvent","paste");
+		// by wmh 这段代码以后用不到了
+		// List<FileBean> copyList = localManage.getCopyFiles();
+		// if (localManage.isCopy())
+		// {
+		// SysEng.getInstance().addEvent(
+		// new palseFileEvent(m_act, localManage.getCurrentPath(),
+		// copyList, localManage.isCut()));
+		// }
+		// else
+		// {
+		// Toast.makeText(m_act,
+		// m_act.getString(R.string.msg_copy_need_paste),
+		// Toast.LENGTH_SHORT).show();
+		// }
+		// break;
 		case R.id.btSelectAll:
 			MobclickAgent.onEvent(m_act, "localEvent", "selAll");
 			SelectAll();
@@ -704,11 +877,6 @@ public class LocalPage extends MultiItemPage implements
 			m_localGrid.setVisibility(View.GONE);
 			m_locallist.setVisibility(View.VISIBLE);
 		}
-		treeViewAdapter = new TreeViewAdapter(m_act, R.layout.outline,
-				mPdfOutlinesCount);
-		TreeElement element1 = new TreeElement("SD卡", Const.Root);
-		mPdfOutlinesCount.add(element1);
-		m_TreeLocallist.setAdapter(treeViewAdapter);
 		this.nStyle = nStyle;
 	}
 
@@ -749,9 +917,9 @@ public class LocalPage extends MultiItemPage implements
 	{
 		switch (item.getItemId())
 		{
-//		case R.id.muCreate:
-//			CreateFileDialog.Show(m_act, localManage.getCurrentPath());
-//			break;
+		// case R.id.muCreate:
+		// CreateFileDialog.Show(m_act, localManage.getCurrentPath());
+		// break;
 		case R.id.muSearch:
 			if (mSearchPage == null)
 			{
@@ -849,117 +1017,36 @@ public class LocalPage extends MultiItemPage implements
 		}
 	}
 
-	public void OnItemClickListener(View view, int position, long id)
+	private TextWatcher mSearchWatcher = new TextWatcher()
 	{
-		System.out.println("position:" + position);
-		TreeElement treeElement = mPdfOutlinesCount.get(position);
-		if (!treeElement.isDirectory())
-		{
-			Toast.makeText(m_act, treeElement.getFileName(), 2000).show();
-			/*
-			 * int pageNumber; Intent i = getIntent(); element element =
-			 * mPdfOutlinesCount .get(position); pageNumber =
-			 * element.getOutlineElement().pageNumber; if (pageNumber <= 0) {
-			 * String name = element.getOutlineElement().destName; pageNumber =
-			 * idocviewer.getPageNumberForNameForOutline(name);
-			 * element.getOutlineElement().pageNumber = pageNumber;
-			 * element.getOutlineElement().destName = null; }
-			 * i.putExtra("PageNumber", pageNumber); setResult(RESULT_OK, i);
-			 * finish();
-			 */
-			return;
-		}
 
-		if (treeElement.isExpanded())
+		@Override
+		public void onTextChanged(CharSequence s, int start, int before,
+				int count)
 		{
-			treeElement.setExpanded(false);
-			TreeElement element = treeElement;
-			ArrayList<TreeElement> temp = new ArrayList<TreeElement>();
-
-			for (int i = position + 1; i < mPdfOutlinesCount.size(); i++)
+			if (etSearchFileName.length() > 0)
 			{
-				if (element.getLevel() >= mPdfOutlinesCount.get(i).getLevel())
-				{
-					break;
-				}
-				temp.add(mPdfOutlinesCount.get(i));
-			}
-
-			mPdfOutlinesCount.removeAll(temp);
-
-			treeViewAdapter.notifyDataSetChanged();
-			/*
-			 * fileExploreAdapter = new TreeViewAdapter(this, R.layout.outline,
-			 * mPdfOutlinesCount);
-			 */
-
-			// setListAdapter(fileExploreAdapter);
-
-		} else
-		{
-			TreeElement obj = treeElement;
-			obj.setExpanded(true);
-			int level = obj.getLevel();
-			int nextLevel = level + 1;
-
-			for (TreeElement element : obj.getChildList())
-			{
-				element.setLevel(nextLevel);
-				element.setExpanded(false);
-				mPdfOutlinesCount.add(position + 1, element);
-
-			}
-			treeViewAdapter.notifyDataSetChanged();
-		}
-	}
-
-	/**
-	 * 处理路径的点击安装
-	 */
-	private OnItemClickListener mAddressItemClickListenter = new OnItemClickListener()
-	{
-		public void onItemClick(AdapterView<?> parent, View v, int pos, long id)
-		{
-
-			FileBean bean = (FileBean) parent.getAdapter().getItem(pos);
-			localManage.setFilePath(bean.getFilePath());
-			lvAddressList.setVisibility(View.GONE);
-		}
-	};
-	/**
-	 * 双击事件(赛事明细,事件)
-	 */
-	private TreeElement lastClickId;
-	private Long lastClickTime;
-	private OnItemClickListener mItemClickListenter = new OnItemClickListener()
-	{
-		public void onItemClick(AdapterView<?> parent, View v, int pos, long id)
-		{
-			TreeElement mv = mPdfOutlinesCount.get(pos);
-			// MatchVO mv = (MatchVO) ((ListView)
-			// parent).getAdapter().getItem(pos);
-			// 如果是双击,1秒内连续点击判断为双击
-			if (mv == lastClickId
-					&& (Math.abs(lastClickTime - System.currentTimeMillis()) < 1500))
-			{
-				lastClickId = null;
-				lastClickTime = 0l;
-				OnDoubleClickListener(parent, v, pos, id);
+				localManage.setFilePath(localManage.getCurrentPath(),
+						etSearchFileName.getText().toString());
 			} else
 			{
-				lastClickId = mv;
-				lastClickTime = System.currentTimeMillis();
-				OnItemClickListener(v, pos, id);
+				localManage.Refresh();
 			}
 		}
-	};
 
-	private void OnDoubleClickListener(AdapterView<?> parent, View v, int pos,
-			long id)
-	{
-		TreeElement mv = mPdfOutlinesCount.get(pos);
-		localManage.setFilePath(mv.getFilePath(), Const.cmd_Local_List_Go);
-		Toast.makeText(m_act, mv.getFileName(), Toast.LENGTH_SHORT).show();
-		m_TreeLocallist.setVisibility(View.GONE);
-	}
+		@Override
+		public void beforeTextChanged(CharSequence s, int start, int count,
+				int after)
+		{
+			// TODO Auto-generated method stub
+
+		}
+
+		@Override
+		public void afterTextChanged(Editable s)
+		{
+			// TODO Auto-generated method stub
+
+		}
+	};
 }

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    
+
+    <string name="btMenu">菜单</string>
+    <string name="btShowMode">显示</string>
+    <string name="btFilter">筛选</string>
+    <string name="btOrganize">操作</string>
     <string name="KuaiPanPage_btTransfer">传输</string>
     <string name="KuaiPanPage_btUpDownLoad">上传</string>
     <string name="msg_favor_audio">音乐</string>
@@ -25,26 +29,25 @@
     <string name="radio_currentpath">在当前目录下搜索</string>
     <string name="radio_wholepath">在整个SD卡下搜索</string>
     <string name="msg_themedialog">主题设置</string>
-        <string name="msg_backups">备份</string>
+    <string name="msg_backups">备份</string>
     <string name="msg_no_backups">不备份</string>
-    	<string name="list_sort_Asc_Title">正序</string>
-	<string name="list_sort_Desc_Title">倒序</string>
+    <string name="list_sort_Asc_Title">正序</string>
+    <string name="list_sort_Desc_Title">倒序</string>
     <string name="can_not_open_file">未找到要打开的文件</string>
-            <string name="btAllFileTitle">全部</string>
+    <string name="btAllFileTitle">全部</string>
     <string name="btFolderTitle">文件夹</string>
-        <string name="KuaiPan_use_Title">金山快盘使用说明</string>
+    <string name="KuaiPan_use_Title">金山快盘使用说明</string>
     <string name="KuaiPan_use_Content">金山快盘使用说明</string>
     <string name="btShare">分享链接</string>
     <string name="btDownload">下载</string>
-     <string name="setting_Feedback_Button">意见反馈</string>
+    <string name="setting_Feedback_Button">意见反馈</string>
     <string name="view_preferences">显示列表设置</string>
     <string name="view_button">样式</string>
     <string name="viewStyle_Title">文件排序</string>
     <string name="view_button_desc">图标,列表</string>
     <string name="sort_button">排序</string>
     <string name="sort_button_desc">名字,时间,文件大小</string>
-    
-        <string name="msg_upload_refresh">重试</string>
+    <string name="msg_upload_refresh">重试</string>
     <string name="msg_upload_dialog_title">正在上传</string>
     <string name="msg_upload_file_error">上传文件失败!</string>
     <string name="msg_upload_file_succeed">上传文件成功!</string>
@@ -176,7 +179,7 @@
     <string name="btCut">剪切</string>
     <string name="btPaste">粘贴</string>
     <string name="btDelete">删除</string>
-        <string name="btUpLoad">上传</string>
+    <string name="btUpLoad">上传</string>
     <string name="btBack">返回</string>
     <string name="btRefresh">刷新</string>
     <string name="btInstall">安装</string>
@@ -185,8 +188,7 @@
     <string name="btUnInstall">卸载</string>
     <string name="btExit">退出</string>
     <!-- bottom tools button title end -->
-    <string name="app_name">文件管理器</string>
-
+    <string name="app_name">EK文件管理</string>
     <string name="create_file">文本文件</string>
     <string name="create_folder">文件夹</string>
     <string name="back_previous">返回上一层</string>

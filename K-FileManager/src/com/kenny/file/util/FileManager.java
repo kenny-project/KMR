@@ -77,7 +77,7 @@ public class FileManager
 		if (!mCurrentPath.equals(Const.Root))
 		{
 			String temp = new File(mCurrentPath).getParent();
-			setFilePath(temp, Const.cmd_Local_List_Go);
+			setFilePath(temp,null, Const.cmd_Local_List_Go);
 			bRoot = false;
 		} else
 		{
@@ -101,7 +101,7 @@ public class FileManager
 	 */
 	public void Refresh()
 	{
-		setFilePath(mCurrentPath, Const.cmd_Local_List_Refresh);
+		setFilePath(mCurrentPath,null, Const.cmd_Local_List_Refresh);
 	}
 
 	/**
@@ -109,16 +109,23 @@ public class FileManager
 	 * 
 	 * @param bHidden
 	 */
-	public void setFilePath(String mCurrentPath)
+	public void setFilePath(String mPath)
 	{
-		setFilePath(mCurrentPath, Const.cmd_Local_List_Go);
+		setFilePath(mPath,Const.cmd_Local_List_Go);
 	}
-
-	public void setFilePath(String mCurrentPath, int type)
+	public void setFilePath(String mPath,int type)
+	{
+		setFilePath(mPath,null,type);
+	}
+	public void setFilePath(String mCurrentPath,String SearchValue)
+	{
+		setFilePath(mCurrentPath,SearchValue,Const.cmd_Local_List_Go);
+	}
+	public void setFilePath(String mCurrentPath,String SearchValue, int type)
 	{
 		if (mCurrentPath.length() <= 0)
 		{
-			setFilePath(Const.SDCard, type);
+			setFilePath(Const.SDCard,SearchValue, type);
 			return;
 		}
 		this.mCurrentPath = mCurrentPath;
@@ -131,17 +138,16 @@ public class FileManager
 			/* 将所有文件信息添加到集合中 */
 			for (File mCurrentFile : mFiles)
 			{
-				// if (!mCurrentFile.isDirectory() && mFileType == 1)
-				// {
-				// continue;
-				// }
-				// else if (mCurrentFile.isDirectory() && mFileType == 2)
-				// {
-				// continue;
-				// }
 				if (mCurrentFile.isHidden() && !bHidden)
 				{
 					continue;
+				}
+				if(SearchValue!=null && SearchValue.length()>0)
+				{
+					if (mCurrentFile.getName().indexOf(SearchValue)==-1)
+					{
+						continue;	
+					}
 				}
 				FileBean bean = new FileBean(mCurrentFile,
 						mCurrentFile.getName(), mCurrentFile.getPath());
@@ -176,7 +182,7 @@ public class FileManager
 				break;
 			}
 			if (Theme.getSortMode() < 10)
-			{// 倒序
+			{	// 倒序
 				ArrayList<FileBean> TempFileList = new ArrayList<FileBean>();
 				for (FileBean fileBean : mFileList)
 				{
