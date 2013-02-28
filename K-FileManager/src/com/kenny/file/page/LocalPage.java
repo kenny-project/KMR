@@ -79,7 +79,7 @@ public class LocalPage extends MultiItemPage implements
 	private List<FileBean> mFileList = null;
 	private HashMap<String, Integer> mScrollList = new HashMap<String, Integer>();
 	private View m_lvMain;// 主页面
-	private TextView mPath;
+	private TextView mPath,tvFileStatus,tvSpaceStatus;//文件路径文件信息。及空间信息
 	private ListView m_locallist;
 	private GridView m_localGrid;
 	private FileAdapter fileAdapter;
@@ -94,7 +94,7 @@ public class LocalPage extends MultiItemPage implements
 	private Button btSearchDialog, btFileCreate;
 	private View lyBTools;
 	private SearchResultPage mSearchPage;
-
+	
 	public LocalPage(Activity context)
 	{
 		super(context);
@@ -169,6 +169,8 @@ public class LocalPage extends MultiItemPage implements
 		m_localGrid.setOnItemClickListener(this);
 		m_localGrid.setOnItemLongClickListener(this);
 		m_localGrid.setOnScrollListener(m_localOnScrollListener);
+		tvFileStatus = (TextView) findViewById(R.id.tvFileStatus);
+		tvSpaceStatus = (TextView) findViewById(R.id.tvSpaceStatus);
 		mPath = (TextView) findViewById(R.id.mCurrentPath);
 		mPath.setOnClickListener(new OnClickListener()
 		{
@@ -999,9 +1001,13 @@ public class LocalPage extends MultiItemPage implements
 			fileAdapter.notifyDataSetChanged();
 			fileAdapter.Clear();
 			lyBTools.setVisibility(View.GONE);
+			tvFileStatus.setText(localManage.getFileStatus());
+			tvSpaceStatus.setText(localManage.getSpaceStatus());
 			break;
 		case Const.cmd_Local_List_Go: // 新数据
 			mPath.setText(localManage.getCurrentPath());
+			tvFileStatus.setText(localManage.getFileStatus());
+			tvSpaceStatus.setText(localManage.getSpaceStatus());
 			fileAdapter.Clear();
 			lyBTools.setVisibility(View.GONE);
 			fileAdapter.notifyDataSetChanged();

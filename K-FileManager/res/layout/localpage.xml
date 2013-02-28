@@ -47,6 +47,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="2dip"
+                android:visibility="gone"
                 android:background="@drawable/directory_create_select" />
 
             <Button
@@ -192,13 +193,13 @@
             android:orientation="horizontal" >
 
             <TextView
-                android:id="@+id/textView1"
+                android:id="@+id/tvFileStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="21文件夹,3个文件" />
 
             <TextView
-                android:id="@+id/textView1"
+                android:id="@+id/tvSpaceStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"

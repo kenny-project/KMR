@@ -19,6 +19,7 @@ import com.kenny.file.sort.FileSizeSort;
 import com.kenny.file.sort.FileSort;
 import com.kenny.file.struct.INotifyDataSetChanged;
 import com.kenny.file.tools.SaveData;
+import com.kenny.file.tools.T;
 
 public class FileManager
 {
@@ -77,7 +78,7 @@ public class FileManager
 		if (!mCurrentPath.equals(Const.Root))
 		{
 			String temp = new File(mCurrentPath).getParent();
-			setFilePath(temp,null, Const.cmd_Local_List_Go);
+			setFilePath(temp, null, Const.cmd_Local_List_Go);
 			bRoot = false;
 		} else
 		{
@@ -101,7 +102,7 @@ public class FileManager
 	 */
 	public void Refresh()
 	{
-		setFilePath(mCurrentPath,null, Const.cmd_Local_List_Refresh);
+		setFilePath(mCurrentPath, null, Const.cmd_Local_List_Refresh);
 	}
 
 	/**
@@ -111,90 +112,126 @@ public class FileManager
 	 */
 	public void setFilePath(String mPath)
 	{
-		setFilePath(mPath,Const.cmd_Local_List_Go);
+		setFilePath(mPath, Const.cmd_Local_List_Go);
 	}
-	public void setFilePath(String mPath,int type)
+
+	public void setFilePath(String mPath, int type)
 	{
-		setFilePath(mPath,null,type);
+		setFilePath(mPath, null, type);
 	}
-	public void setFilePath(String mCurrentPath,String SearchValue)
+
+	public void setFilePath(String mCurrentPath, String SearchValue)
 	{
-		setFilePath(mCurrentPath,SearchValue,Const.cmd_Local_List_Go);
+		setFilePath(mCurrentPath, SearchValue, Const.cmd_Local_List_Go);
 	}
-	public void setFilePath(String mCurrentPath,String SearchValue, int type)
+
+	File mCurrentFile;
+	int mFolderCount,mFileCount;
+	public File getCurrentFile()
+	{
+		return mCurrentFile;
+	}
+	public String getFileStatus()
+	{
+		return String.valueOf(getFolderCount())+"个文件夹,"+String.valueOf(getFileCount())+"个文件";
+	}
+	public String getSpaceStatus()
+	{
+		return String.valueOf(T.FileSizeToString(mCurrentFile.getTotalSpace()-mCurrentFile.getFreeSpace()))+"/"+String.valueOf(T.FileSizeToString(mCurrentFile.getTotalSpace()));
+	}
+	/**
+	 * 获取文件夹个数
+	 * @return
+	 */
+	public int getFolderCount()
+	{
+		return mFolderCount;
+	}
+	/**
+	 * 获取文件个数
+	 * @return
+	 */
+	public int getFileCount()
+	{
+		return mFileCount;
+	}
+	public void setFilePath(String mCurrentPath, String SearchValue, int type)
 	{
 		if (mCurrentPath.length() <= 0)
 		{
-			setFilePath(Const.SDCard,SearchValue, type);
+			setFilePath(Const.SDCard, SearchValue, type);
 			return;
 		}
+		mFolderCount=0;
+		mFileCount=0;
 		this.mCurrentPath = mCurrentPath;
 		mFileList.clear();
-		File mFile = new File(mCurrentPath);
-		File[] mFiles = mFile.listFiles();// 遍历出该文件夹路径下的所有文件/文件夹
+		mCurrentFile = new File(mCurrentPath);
+		File[] mFiles = mCurrentFile.listFiles();// 遍历出该文件夹路径下的所有文件/文件夹
 		boolean bHidden = Theme.getShowHideFile();
-		if (mFiles != null)
+		/* 将所有文件信息添加到集合中 */
+		for (File mCurrentFile : mFiles)
 		{
-			/* 将所有文件信息添加到集合中 */
-			for (File mCurrentFile : mFiles)
+			if (mCurrentFile.isHidden() && !bHidden)
 			{
-				if (mCurrentFile.isHidden() && !bHidden)
+				continue;
+			}
+			if (SearchValue != null && SearchValue.length() > 0)
+			{
+				if (mCurrentFile.getName().indexOf(SearchValue) == -1)
 				{
 					continue;
 				}
-				if(SearchValue!=null && SearchValue.length()>0)
-				{
-					if (mCurrentFile.getName().indexOf(SearchValue)==-1)
-					{
-						continue;	
-					}
-				}
-				FileBean bean = new FileBean(mCurrentFile,
-						mCurrentFile.getName(), mCurrentFile.getPath());
-				bean.setDirectory(mCurrentFile.isDirectory());
-				if (mCurrentFile.isDirectory())
-				{
-					String[] temp = mCurrentFile.list();
-					if (temp != null)
-					{
-						bean.setItemCount(temp.length);
-					}
-				} else
-				{
-					bean.setLength(mCurrentFile.length());
-				}
-				mCurrentFile.canWrite();
-				mFileList.add(bean);
 			}
-			switch (Theme.getSortMode() % 10)
+			FileBean bean = new FileBean(mCurrentFile, mCurrentFile.getName(),
+					mCurrentFile.getPath());
+			bean.setDirectory(mCurrentFile.isDirectory());
+			if (mCurrentFile.isDirectory())
 			{
-			case 0:
-				Collections.sort(mFileList, new FileSort());
-				break;
-			case 1:
-				Collections.sort(mFileList, new FileNameSort());
-				break;
-			case 2:
-				Collections.sort(mFileList, new FileSizeSort());
-				break;
-			case 3:
-				Collections.sort(mFileList, new FileModifiedSort());
-				break;
-			}
-			if (Theme.getSortMode() < 10)
-			{	// 倒序
-				ArrayList<FileBean> TempFileList = new ArrayList<FileBean>();
-				for (FileBean fileBean : mFileList)
+				String[] temp = mCurrentFile.list();
+				if (temp != null)
 				{
-					TempFileList.add(0, fileBean);
+					bean.setItemCount(temp.length);
 				}
-				mFileList.clear();
-				mFileList.addAll(TempFileList);
+				mFolderCount++;
+			} else
+			{
+
+				mFileCount++;
+				bean.setLength(mCurrentFile.length());
 			}
+			mCurrentFile.canWrite();
+			mFileList.add(bean);
 		}
+		switch (Theme.getSortMode() % 10)
+		{
+		case 0:
+			Collections.sort(mFileList, new FileSort());
+			break;
+		case 1:
+			Collections.sort(mFileList, new FileNameSort());
+			break;
+		case 2:
+			Collections.sort(mFileList, new FileSizeSort());
+			break;
+		case 3:
+			Collections.sort(mFileList, new FileModifiedSort());
+			break;
+		}
+		if (Theme.getSortMode() < 10)
+		{ // 倒序
+			ArrayList<FileBean> TempFileList = new ArrayList<FileBean>();
+			for (FileBean fileBean : mFileList)
+			{
+				TempFileList.add(0, fileBean);
+			}
+			mFileList.clear();
+			mFileList.addAll(TempFileList);
+		}
+
 		if (!mCurrentPath.equals(Const.Root))
 		{
-			String back = mFile.getParent();
+			String back = mCurrentFile.getParent();
 			File temp = new File(back);
 			mFileList.add(0, new FileBean(temp, "..", back, true));
 		}

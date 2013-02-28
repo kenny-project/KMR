@@ -3,7 +3,7 @@
     package="com.kenny.KFileManager"
     android:installLocation="internalOnly"
     android:versionCode="60"
-    android:versionName="V2.0.0" >
+    android:versionName="V3.0.0" >
     <!-- 22 -->
     <uses-sdk
         android:minSdkVersion="5"
