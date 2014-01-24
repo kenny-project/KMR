@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="use_kuaipan_first_time">第一次使用快盘</string>
+    <string name="i_am_kuaipan_user">我是快盘用户</string>
+    <string name="textview_qqlogin">QQ账号登录</string>
+    <string name="register_only_email">注册账号仅支持电子邮箱</string>
+    <string name="textview_username">快盘账号</string>
+    <string name="textview_password">快盘密码</string>
+    <string name="textview_verCode">验证码</string>
+    <string name="login">登录</string>
+    <string name="register">注册</string>
+    <string name="press_register_agree_legal">点击“注册”代表您同意&lt;a href="http://www.wps.cn/privacy/">《快盘用户协议》&lt;/a></string>
+	<string name="title_select_login">金山快盘安全登录</string>
+	<string name="title_login">登录金山快盘</string>
+	<string name="title_register">注册金山快盘</string>
+</resources>

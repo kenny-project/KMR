@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="80dip" >
+
+    <Button
+        android:id="@+id/tab_local"
+        style="@style/main_tools_tab_style_normal"
+        android:layout_width="wrap_content"
+        android:layout_height="80dip"
+        android:layout_weight="1.0"
+        android:drawableTop="@drawable/tab_local_ico"
+        android:text="@string/Main_LocalPage_Title"
+        android:textColor="@color/tab_TextColor_normal" />
+
+    <Button
+        android:id="@+id/tab_network"
+        style="@style/main_tools_tab_style_normal"
+        android:layout_width="wrap_content"
+        android:layout_height="80dip"
+        android:layout_weight="1.0"
+        android:drawableTop="@drawable/tab_network_ico"
+        android:text="@string/Main_NetWorkPage_Title"
+        android:textColor="@color/tab_TextColor_normal" />
+
+    <Button
+        android:id="@+id/tab_Favorite"
+        style="@style/main_tools_tab_style_normal"
+        android:layout_width="wrap_content"
+        android:layout_height="80dip"
+        android:layout_weight="1.0"
+        android:drawableTop="@drawable/tab_favorites_ico"
+        android:text="@string/Main_FavoritePage_Title"
+        android:textColor="@color/tab_TextColor_normal" />
+    <Button
+        
+        android:id="@+id/tab_apps"
+        style="@style/main_tools_tab_style_normal"
+        android:layout_width="wrap_content"
+        android:layout_height="80dip"
+        android:layout_weight="1.0"
+        android:drawableTop="@drawable/tab_apps_ico"
+        android:text="@string/Main_AppsPage_Title"
+        android:textColor="@color/tab_TextColor_normal" />
+
+
+
+    <Button
+        android:id="@+id/tab_task"
+        style="@style/main_tools_tab_style_normal"
+        android:layout_width="wrap_content"
+        android:layout_height="80dip"
+        android:layout_weight="1.0"
+        android:drawableTop="@drawable/tab_task_normal"
+        android:text="@string/Main_TaskPage_Title"
+        android:textColor="@color/tab_TextColor_normal" />
+
+    <Button
+        android:id="@+id/tab_log"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="#00000000"
+        android:drawableTop="@drawable/tab_local_ico"
+        android:text="日志"
+        android:textColor="@color/tab_TextColor_normal"
+        android:visibility="gone" />
+
+</LinearLayout>

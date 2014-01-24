@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/CreateFile_BG"
+    android:orientation="vertical" >
+
+    <RadioGroup
+        android:id="@+id/radiogroup_create"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <RadioButton
+            android:id="@+id/create_file"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/create_file"
+            android:textColor="@color/CreateFile_RadioTextColor" >
+        </RadioButton>
+
+        <RadioButton
+            android:id="@+id/create_folder"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/create_folder"
+            android:textColor="@color/CreateFile_RadioTextColor" >
+        </RadioButton>
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/new_filename"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_createfile"
+        android:singleLine="true" >
+    </EditText>
+
+    <Spinner
+        android:id="@+id/sp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+</LinearLayout>

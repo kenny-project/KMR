@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffeeeeee"
+    android:orientation="vertical" >
+
+    <!-- android:background="@drawable/header_bg" -->
+
+    <RelativeLayout
+        android:id="@+id/Head"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/search_top_bg"
+        android:orientation="vertical"
+        android:paddingBottom="1dip" >
+
+        <Button
+            android:id="@+id/btBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dip"
+            android:background="@drawable/tab_left_bg"
+            android:textColor="#ffffff"
+            android:textSize="16dip" />
+
+        <ImageButton
+            android:id="@+id/ibFilter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/top_right_button_bg"
+            android:src="@drawable/ic_filter" />
+
+        <TextView
+            style="@style/main_tools_tab_style_normal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/ibFilter"
+            android:layout_toRightOf="@id/btBack"
+            android:background="#00000000"
+            android:gravity="center_vertical|center_horizontal|center"
+            android:singleLine="true"
+            android:text="@string/apk_manager_title"
+            android:textColor="@color/headTextColor"
+            android:textSize="20dip" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffeeeeee"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/tvScan"
+            style="@style/main_tools_tab_style_normal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:text="正在扫描:/sdcard/"
+            android:singleLine="true"
+            android:textColor="@color/Setting_BG"
+            android:textSize="14dip" />
+
+        <CheckBox
+            android:id="@+id/cbAllChecked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:button="@drawable/common_checkbox_selector"
+            android:focusable="false"
+            android:focusableInTouchMode="true" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/lvList"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:background="#00000000"
+        android:cacheColorHint="#00000000"
+        android:divider="@drawable/list_line"
+        android:dividerHeight="1dip"
+        android:fastScrollEnabled="true"
+        android:listSelector="@drawable/high_select_bg" />
+
+    <LinearLayout
+        android:id="@+id/toolBar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dip"
+        android:layout_marginRight="5dip"
+        android:layout_marginTop="5dip"
+        android:background="#00000000" >
+
+        <Button
+            android:id="@+id/btScan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/btn_special_default_select"
+            android:text="扫描" />
+
+        <Button
+            android:id="@+id/btInstall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/btn_special_default_select"
+            android:text="安装" />
+
+        <Button
+            android:id="@+id/btClear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/btn_wificonfig_select"
+            android:text="清理" />
+
+        <Button
+            android:id="@+id/btArrange"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/btn_wificonfig_select"
+            android:text="整理" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lyBTools"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/toolbar_backgroud"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btCancelScan"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="5dip"
+            android:layout_marginLeft="30dip"
+            android:layout_marginRight="30dip"
+            android:layout_marginTop="5dip"
+            android:background="@drawable/btn_white"
+            android:text="取消" />
+    </LinearLayout>
+    <!-- A horizontal line -->
+    <!-- 公共层数据 -->
+
+</LinearLayout>

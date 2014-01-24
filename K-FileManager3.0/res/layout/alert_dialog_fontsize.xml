@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="wrap_content"
+	android:orientation="vertical">
+	<TextView android:id="@+id/tvDemo" android:layout_width="fill_parent"
+		android:gravity="center" android:textColor="@color/ContentTitleText"
+		android:text="示例字体" android:layout_height="50dip" />
+
+	<SeekBar android:layout_height="wrap_content"
+		android:layout_width="fill_parent" android:id="@+id/alert_sbDisplayLuminosity" />
+			<TextView android:id="@+id/tvFontSize" android:layout_width="fill_parent"
+		android:textColor="@color/ContentTitleText" android:text="字体大小为24像素"
+		android:layout_height="20dip" android:gravity="right" />
+</LinearLayout>

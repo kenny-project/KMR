@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="38dip"
+    android:gravity="left|center" >
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dip"
+        android:layout_marginLeft="15dip"
+        android:layout_marginRight="3dip"
+        android:layout_marginTop="2dip" >
+
+        <ImageView
+            android:id="@+id/image_list_childs"
+            android:layout_width="48dip"
+            android:layout_height="48dip"
+            android:scaleType="fitCenter" >
+        </ImageView>
+
+        <ImageView
+            android:id="@+id/itemSDLogo"
+            android:layout_width="48dip"
+            android:layout_height="48dip"
+            android:adjustViewBounds="true"
+            android:src="@drawable/item_add" />
+    </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="left|center"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:textColor="@color/list_item_TextColer"
+                android:textSize="16sp" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/tvDesc"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:singleLine="false"
+                android:text="fdsafdsa"
+                android:textColor="@color/list_item_TextColer"
+                android:textSize="14sp" >
+            </TextView>
+        </LinearLayout>
+
+    <CheckBox
+        android:id="@+id/cbChecked"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:button="@drawable/common_checkbox_selector"
+        android:focusable="false"
+        android:focusableInTouchMode="true" />
+</LinearLayout>

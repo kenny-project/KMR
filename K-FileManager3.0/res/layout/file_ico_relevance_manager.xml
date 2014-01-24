@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffeeeeee"
+    android:orientation="vertical" >
+
+    <!-- android:background="@drawable/header_bg" -->
+
+    <RelativeLayout
+        android:id="@+id/Head"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/search_top_bg"
+        android:orientation="vertical"
+        android:paddingBottom="1dip" >
+
+        <Button
+            android:id="@+id/btBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dip"
+            android:background="@drawable/tab_left_bg"
+            android:textColor="#ffffff"
+            android:textSize="16dip" />
+
+        <ImageButton
+            android:id="@+id/ibFilter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/top_right_button_bg"
+            android:src="@drawable/ic_filter" />
+
+        <TextView
+            style="@style/main_tools_tab_style_normal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/ibFilter"
+            android:layout_toRightOf="@id/btBack"
+            android:background="#00000000"
+            android:gravity="center_vertical|center_horizontal|center"
+            android:singleLine="true"
+            android:text="@string/file_ico_relevance_manager_title"
+            android:textColor="@color/headTextColor"
+            android:textSize="20dip" />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/lvList"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:background="#00000000"
+        android:cacheColorHint="#00000000"
+        android:divider="@drawable/list_line"
+        android:dividerHeight="1dip"
+        android:fastScrollEnabled="true"
+        android:listSelector="@drawable/high_select_bg" />
+
+</LinearLayout>

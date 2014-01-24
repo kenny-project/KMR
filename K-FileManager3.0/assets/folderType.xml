@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items>
+
+    <item
+        path=".360explorer"
+        title="360文件管理器"/>
+
+    <item
+        path=".ads"
+        title="广告"/>
+
+    <item
+        path=".deviceidinfo"
+        title="淘宝软件"/>
+
+    <item
+        path=".dict.cn"
+        title="海词词典"/>
+
+    <item
+        path=".dxadcache"
+        title="广告"/>
+
+    <item
+        path=".estrongs"
+        title="ES文件浏览器"/>
+
+    <item
+        path=".FileExpert"
+        title="文件大师"/>
+
+    <item
+        path=".ktv"
+        title="唱吧"/>
+
+    <item
+        path=".mymoney"
+        title="随手记"/>
+
+    <item
+        path=".QQLive"
+        title="腾讯视频"/>
+
+    <item
+        path=".tmfs"
+        title="腾讯手机管家"/>
+
+    <item
+        path=".UTSystemConfig"
+        title="淘宝软件"/>
+
+    <item
+        path=".wochachaChche"
+        title="我查查"/>
+
+    <item
+        path=".zdclock"
+        title="正点闹钟"/>
+
+    <item
+        path=".zdworks"
+        title="ZDbox"/>
+
+    <item
+        path="GoTaskManagerEX"
+        title="Go任务管理器"/>
+
+    <item
+        path="hexin"
+        title="同花顺"/>
+
+    <item
+        path="91 Wireless"
+        title="91助手"/>
+
+    <item
+        path=".sys"
+        title="系统数据"/>
+
+    <item
+        path=".system"
+        title="系统数据"/>
+
+    <item
+        path=".android"
+        title="系统数据"/>
+
+    <item
+        path="Android"
+        title="系统数据"/>
+
+    <item
+        path="AndroidOptimizer"
+        title="安卓优化大师"/>
+
+    <item
+        path="backups"
+        title="备份"/>
+
+    <item
+        path="baicizhan"
+        title="百词斩"/>
+
+    <item
+        path="MIUI"
+        title="小米"/>
+
+    <item
+        path="external_sd"
+        title="拓展SD卡"/>
+
+    <item
+        path="Baidu_music"
+        title="百度音乐"/>
+
+    <item
+        path="baidu"
+        title="百度"/>
+
+    <item
+        path="BaiduMap"
+        title="百度地图"/>
+
+    <item
+        path="BaiduMapSDK"
+        title="百度地图"/>
+
+    <item
+        path="BaiduMapTranslate"
+        title="百度翻译"/>
+
+    <item
+        path="bao"
+        title="应用宝"/>
+
+    <item
+        path="DCIM"
+        title="相册"/>
+
+    <item
+        path="documents"
+        title="文档"/>
+
+    <item
+        path="Download"
+        title="下载目录"/>
+
+    <item
+        path="fetion"
+        title="飞信"/>
+
+    <item
+        path="FetionConnect"
+        title="飞信"/>
+
+    <item
+        path="gomarket"
+        title="安智市场"/>
+
+    <item
+        path="hiapk_market"
+        title="安卓市场"/>
+
+    <item
+        path="HJApp"
+        title="沪江"/>
+
+    <item
+        path="immomo"
+        title="陌陌"/>
+
+    <item
+        path="jingdong"
+        title="京东商场"/>
+
+    <item
+        path="jingdongpad"
+        title="京东PAD版"/>
+
+    <item
+        path="kingsoft"
+        title="金山词霸"/>
+
+    <item
+        path="powerword"
+        title="金山词霸"/>
+
+    <item
+        path="KingsoftOffice"
+        title="WPS办公软件"/>
+
+    <item
+        path="KTV"
+        title="唱吧"/>
+
+    <item
+        path="kuaipai"
+        title="快拍二维码"/>
+
+    <item
+        path="kugou"
+        title="酷狗音乐"/>
+
+    <item
+        path="KuwoMusic"
+        title="酷我音乐"/>
+
+    <item
+        path="MobiSage"
+        title="广告"/>
+
+    <item
+        path="mosecurity"
+        title="金山手机卫士"/>
+
+    <item
+        path="Music"
+        title="音乐"/>
+
+    <item
+        path="ndcommplatform"
+        title="91手机助手"/>
+
+    <item
+        img="f_xls.png"
+        path=".zdclock"
+        title="正点闹钟"/>
+
+    <item
+        path="Notifications"
+        title="系统通知"/>
+
+    <item
+        path="openfeint"
+        title="水果忍者"/>
+
+    <item
+        path="PicStore"
+        title="人人"/>
+
+    <item
+        path="Pictures"
+        title="照片"/>
+
+    <item
+        path="tmp"
+        title="临时文件夹"/>
+
+    <item
+        path="zapya"
+        title="快牙"/>
+
+    <item
+        path="Youdao"
+        title="有道词典"/>
+
+    <item
+        path=".91 wireless"
+        title="91助手"/>
+
+    <item
+        path=".wochachaCache"
+        title="我查查"/>
+
+    <item
+        path="wochacha"
+        title="我查查"/>
+
+    <item
+        path="wandoujia"
+        title="豌豆夹"/>
+
+    <item
+        path="UCDownloads"
+        title="UC浏览器"/>
+
+    <item
+        path="tuan800"
+        title="团800"/>
+
+    <item
+        path="towords"
+        title="拓词"/>
+
+    <item
+        path="tieba"
+        title="百度贴吧"/>
+
+    <item
+        path="TianQiTong"
+        title="天气通"/>
+
+    <item
+        path="wochacha"
+        title="我查查"/>
+
+    <item
+        path="Tencent"
+        title="腾讯"/>
+
+    <item
+        path="taobao"
+        title="淘宝"/>
+
+    <item
+        path="sogou"
+        title="搜狗输入法"/>
+
+    <item
+        path="cache"
+        title="缓存"/>
+
+    <item
+        path="snda"
+        title="盛大"/>
+
+    <item
+        path="BaiduTranslate"
+        title="百度翻译"/>
+
+    <item
+        path="sina"
+        title="新浪"/>
+
+    <item
+        path="Ringtones"
+        title="铃声"/>
+
+    <item
+        path="RecevicedFiles"
+        title="File Expert"/>
+
+    <item
+        path="QQBroweser"
+        title="QQ浏览器"/>
+
+    <item
+        path="QQLive"
+        title="QQ视频"/>
+
+    <item
+        path="QQReader"
+        title="QQ阅读"/>
+
+</items>

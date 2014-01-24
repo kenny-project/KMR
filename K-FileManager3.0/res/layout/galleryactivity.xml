@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center"
+    android:orientation="horizontal" >
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#000000" >
+
+        <LinearLayout
+            android:id="@+id/rlGallery"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="#000000"
+            android:orientation="vertical"
+            android:padding="2dip" >
+
+            <LinearLayout
+                android:id="@+id/lyGalleryTop"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="#00000000"
+                android:gravity="fill"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                >
+
+                <TextView
+                    android:id="@+id/tvGAStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="SDCARD(1/20)" />
+
+                <Button
+                    android:id="@+id/btDelete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="1dip"
+                    android:layout_weight="1"
+                    android:background="#00000000"
+                    android:drawableTop="@drawable/ic_delete"
+                    android:textColor="@color/ContentTitleText"
+                    android:textSize="13dip" />
+            </LinearLayout>
+
+            <com.kenny.KImageBrowser.GalleryExt
+                android:id="@+id/ga"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:spacing="16dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/rlImage"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="#000000"
+            android:orientation="vertical"
+            android:paddingTop="2dip"
+            android:visibility="gone" >
+
+            <ImageView
+                android:id="@+id/ivImage"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:scaleType="matrix" />
+
+            <LinearLayout
+                android:id="@+id/lyBTools"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="#00000000"
+                android:gravity="fill"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/btShare"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="1dip"
+                    android:layout_weight="1"
+                    android:background="#00000000"
+                    android:drawableTop="@drawable/selection_share"
+                    android:text="分享"
+                    android:textColor="@color/ContentTitleText"
+                    android:textSize="13dip" />
+
+                <Button
+                    android:id="@+id/btRotate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="1dip"
+                    android:layout_weight="1"
+                    android:background="#00000000"
+                    android:drawableTop="@drawable/menu_copy"
+                    android:text="旋转"
+                    android:textColor="@color/ContentTitleText"
+                    android:textSize="13dip"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/btDelete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="1dip"
+                    android:layout_weight="1"
+                    android:background="#00000000"
+                    android:drawableTop="@drawable/menu_uninstall"
+                    android:text="删除"
+                    android:textColor="@color/ContentTitleText"
+                    android:textSize="13dip"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+
+</LinearLayout>

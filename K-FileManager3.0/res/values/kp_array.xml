@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="array_suppotedmail">
+        <item>qq.com</item>
+        <item>163.com</item>
+        <item>126.com</item>
+        <item>sina.com</item>
+        <item>gmail.com</item>
+        <item>hotmail.com</item>
+        <item>yahoo.com.cn</item>
+        <item>sohu.com</item>
+        <item>139.com</item>
+        <item>yahoo.cn</item>
+        <item>kingsoft.com</item>
+    </string-array>
+</resources>
