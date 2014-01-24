@@ -39,10 +39,6 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.SET_WALLPAPER" />
     <uses-permission android:name="android.permission.GET_TASKS" />
-
-    <uses-feature android:name="android.hardware.camera.autofocus" />
-    <uses-feature android:name="android.hardware.camera.flash" />
-
     <uses-permission android:name="com.sonyericsson.permission.CAMERA_EXTENDED" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
@@ -54,7 +50,7 @@
         android:smallScreens="true" />
     <application
         android:name="com.kenny.Application.KApp"
-        android:debuggable="true"
+        android:debuggable="false"
         android:icon="@drawable/icon"
         android:label="@string/app_name"
         android:theme="@android:style/Theme.Light.NoTitleBar" >
@@ -236,19 +232,6 @@
         <meta-data
             android:name="91SMARTUPDATE_CHANNEL"
             android:value="101" />
-        <activity
-            android:name="com.tencent.tauth.AuthActivity"
-            android:launchMode="singleTask"
-            android:noHistory="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data android:scheme="tencent100499220" />
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>
