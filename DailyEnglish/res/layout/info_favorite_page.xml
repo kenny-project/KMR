@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/Head"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        
+        android:background="@drawable/top_bg" >
+
+        <TextView
+            android:id="@+id/Title"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="@string/info_VOAfavorite_title"
+            android:textColor="#ffffff"
+                        android:paddingBottom="10dip"
+            android:paddingTop="10dip"
+            android:textSize="22dip" />
+
+        <ImageButton
+            android:id="@+id/btBack"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            	                    android:src="@drawable/tab_left_bg"
+            android:background="#0587a8"
+            android:textSize="16dip" />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/lvList"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/Head"
+        android:background="#f5f5f5"
+        android:cacheColorHint="#00000000"
+        android:divider="@null"
+        android:dividerHeight="0px"
+        android:fadingEdge="none"
+        android:groupIndicator="@null"
+        android:listSelector="@drawable/v6notelist_selector"
+        style="@style/scrollstyle"
+         />
+
+    <TextView
+        android:id="@+id/tvEmpty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Head"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="1.0dip"
+        android:gravity="center_vertical|center_horizontal"
+        android:paddingLeft="6.0dip"
+        android:paddingTop="20dip"
+        android:text="@string/info_favorite_empty"
+        android:textColor="#949494"
+        android:visibility="gone"
+        android:textSize="16dip" />
+    <!--
+       <ExpandableListView
+        android:id="@+id/lvList"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/Head"
+        android:cacheColorHint="#00000000"
+        android:fadingEdge="none"
+        android:groupIndicator="@null" />
+    
+      <ExpandableListView
+        android:id="@+id/lvList"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/Head"
+        android:background="#f5f5f5"
+        android:cacheColorHint="#00000000"
+        android:divider="@null"
+        android:dividerHeight="0px"
+        android:fadingEdge="none"
+        android:groupIndicator="@null"
+        android:listSelector="@drawable/high_select_bg"
+        android:visibility="invisible" />-->
+	<!--  <include layout="@layout/search_page"/>-->
+</RelativeLayout>

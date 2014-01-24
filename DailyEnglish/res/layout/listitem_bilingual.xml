@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical"
+    android:paddingTop="5dip" >
+
+    <LinearLayout
+        android:id="@+id/RelativeLayout01"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="10dip"
+    	android:paddingRight="10dip"
+         >
+
+        <LinearLayout
+            android:id="@+id/LinearLayout01"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dip"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingTop="1dip" >
+
+            <TextView
+                android:id="@+id/ItemTitle"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="4dip"
+                android:layout_marginTop="2dip"
+                android:singleLine="true"
+                android:text="Title"
+                android:textColor="#2e2e2e"
+                android:textSize="18dip" />
+
+            <TextView
+                android:id="@+id/ItemDesc"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="2dip"
+                android:lineSpacingMultiplier="1"
+                android:maxLines="2"
+                android:paddingTop="3dip"
+                android:text="Desc"
+                android:textColor="#949494"
+                android:textSize="16dip" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:orientation="horizontal"
+                android:paddingTop="3dip" >
+
+                <TextView
+                    android:id="@+id/ItemDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingMultiplier="1"
+                    android:paddingTop="0.5dip"
+                    android:paddingRight="20dip"
+                    android:singleLine="true"
+                    android:text="date"
+                    android:textColor="#2e2e2e"
+                    android:textSize="13dip" />
+<!-- android:layout_weight="1" -->
+                <TextView
+                    android:id="@+id/ItemViews"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    
+                    android:lineSpacingMultiplier="1"
+                    android:paddingTop="0.5dip"
+                    android:singleLine="true"
+                    android:text="Views"
+                    android:textColor="#2e2e2e"
+                    android:textSize="13dip" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <com.kenny.comui.CircleImageButton
+            android:id="@+id/ItemImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_marginRight="3dp"
+            android:background="#00000000"
+            android:clickable="false"
+            android:descendantFocusability="blocksDescendants"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:src="@drawable/v6white_left_arrow" />
+
+        <!--
+        com.kingsoft.comui.CircleImageButton
+        android:focusableInTouchMode="true"
+              <ImageView
+            android:id="@+id/ItemImage"
+            android:layout_width="120dip"
+            android:layout_height="85dip"
+            android:paddingBottom="5dip"
+            android:paddingLeft="1dip"
+            android:paddingRight="5dip"
+            android:paddingTop="1dip"
+            android:scaleType="fitXY" />
+        -->
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/item_line"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dip"
+        android:background="@drawable/item_line" />
+
+</LinearLayout>

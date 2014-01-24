@@ -1,0 +1,142 @@
+*, html, body{font:16px/25px Helvetica;margin:0;padding:0;color:#000;background:#F2F2F2;}
+img {border:0;}
+
+a{font-size:16px;line-height:25px;color:#336699;text-decoration:none; font-weight:normal; }
+a:hover{font-size:16px;line-height:25px;color:#336699;text-decoration:none; font-weight:normal;}
+
+.qblock {margin:7px 17px 7px 17px;}
+.dictblocktitle {margin:0px 0px 0px 0px;background: url("images/dict_block_title_line.png") repeat-x bottom;}
+.dicfill{margin:7px 17px 0px 17px;}
+.dictblocktitleopen {margin:7px 17px 0px 17px;background: url("images/dict_block_title_open.png") no-repeat right;}
+.dictblocktitleclose {margin:7px 17px 0px 17px;background: url("images/dict_block_title_close.png") no-repeat right;}
+.dictblocktitletext {text-indent:8px;color:#ffffff;font-size:13px;vertical-align:middle;background:url("images/dict_block_title_bgd.png") no-repeat bottom left;}
+.dictblock {margin:0px 17px 7px 17px;}
+.dictblock ol {margin-left:21px;}
+.dictblock ol li {list-style-type:disc;font-size:10px;line-height:25px;margin-bottom:4px;}
+.newwordc {position:relative;min-height:50px}
+.newword {float:right;position:absolute;bottom:0px;right:0px;}
+.newwordbutton {background: url("images/newword.png") no-repeat left;width:34px;height:34px;display:block;}
+.baidubutton {position:absolute;right:44px;background: url("images/baidu_search.png") no-repeat left;width:34px;height:34px;display:block;}
+.baidubutton2 {background: url("images/baidu_search.png") no-repeat left;width:34px;height:34px;display:block;}
+.q {width:100%;font-size:25px;line-height:35px;color:#000;font-weight:bold;word-wrap:break;word-break:break-all;}
+.qshuffle {width:100%;font-size:25px;line-height:35px;color:#000;font-weight:bold;text-align:center;word-wrap:break;word-break:break-all;}
+
+.qcizu {font-size:16px;line-height:25px;color:#000;font-weight:bold;word-wrap:break;word-break:keep-all;}
+.phonetic {width:70%;font-size:18px;line-height:25px;color:#000;}
+
+.phoneticshuffle {width:100%;font-size:18px;line-height:25px;color:#000;text-align:center;}
+
+.phonetic a{font-size:18px;line-height:25px;color:#000;display:block;width:auto;}
+.phonetic a:hover{font-size:18px;line-height:25px;color:#000;display:block;width:auto;}
+.part1 {font-size:16px;line-height:25px;color:#608D00;}
+.part1 span {font-size:16px;line-height:25px;color:#608D00;font-style: italic;}
+.part2,  .part2 p, .part2 .hdwiki_tmml {font-size:16px;line-height:25x;color:#000;word-wrap:break;word-break:keep-all;}
+.part2 .keyword{font-size:16px;line-height:25x;color:#608D00;}
+.part31 {font-size:16px;line-height:25px;color:#666;}
+.part32 {font-size:16px;line-height:25px;color:#666;}
+.part4 {font-size:16px;line-height:25px;color:#01254a;}
+
+.displayParaphrase {margin:80px 17px 7px 17px;}
+.displayParaphraseButton{background:no-repeat center; background-size: 167px 66px; width:167px;height:66px;display:block;margin:7 auto;}
+#displayParaphraseButton
+{background-image: url("images/btn_display_interpretation.png");}
+
+
+
+
+.part41 {font-size:16px;line-height:25px;color:#336699;margin-left:21px;}
+.searchonlineblock {margin:15px 17px 7px 17px;}
+.searchonlinebutton {background-repeat: no-repeat;background-size: 142px 40px;width:142px;height:40px;display:block;margin:7 auto;}
+.searchfullbutton {background-repeat: no-repeat;background-size: 142px 40px;width:142px;height:40px;display:block;margin:7 auto;margin-top:15px;}
+
+
+
+#searchonlinebutton
+{background-image: url("images/search_online.png")}
+
+#searchfullbutton
+{background-image: url("images/search_full.png")}
+
+.errormsg {font-size:16px;line-height:25px;color:#666;text-align:center;}
+.errormsg2 {font-size:16px;line-height:25px;color:#000;text-align:center;}
+.baikepart2,  .baikepart2 p, .baikepart2 .hdwiki_tmml {font-size:16px;line-height:25x;color:#000;word-wrap:break;word-break:keep-all;}
+
+.comment {text-align:right;font-size:12px;line-height:25px;color:#666; }
+.comment a{font-size:16px;line-height:25px;color:#336699;}
+.comment a:hover{font-size:16px;line-height:25px;color:#336699;}
+
+.sa {font-size:16px;line-height:25px;color:#336699;}
+.sa a{font-size:16px;line-height:25px;color:#336699;}
+.sa a:hover{font-size:16px;line-height:25px;color:#336699;}
+
+.qnetsearch {font-size:16px;line-height:25px;color:#000;font-weight:bold;word-wrap:break;word-break:keep-all;margin-bottom:0px;}
+.part2netsearch {font-size:16px;line-height:25x;color:#000;margin-bottom:4px;}
+
+.notfoundword {font-size:16px;line-height:25x;color:#000;word-wrap:break;word-break:keep-all;}
+.notfoundwords{font-size:16px;line-height:25px;color:#000;}
+.notfoundwords a{display:block;width:auto;font-size:16px;line-height:40px;color:#336699;text-decoration:none; font-weight:normal;}
+.notfoundwords a:hover{font-size:16px;line-height:40px;color:#336699;text-decoration:none; font-weight:normal;}
+.helpbutton {background: url("images/help.png") no-repeat left;width:217px;height:40px;display:block;margin:15 auto 7 auto;}
+.googlesearchbutton {background: url("images/googlesearch.png") no-repeat left;width:217px;height:40px;display:block;margin:7 auto;}
+.feedbackbutton {background: url("images/feedback.png") no-repeat left;width:217px;height:40px;display:block;margin:7 auto;}
+
+.newsblock {margin:14px 17px 8px 17px;}
+.newsdc {position:relative;}
+.newsfav {float:right;position:absolute;bottom:0px;right:0px;}
+.newsfavbutton {background: url("images/addNewsFavorite.png") no-repeat left;width:34px;height:34px;display:block;}
+.newstitle {font-size:20px;line-height:25px;color:#000;width:95%}
+.newstime {font-size:14px;line-height:19px;color:#666;margin-top:7px;}
+.newsbody {font-size:16px;line-height:25px;color:#000;margin:10px 17px 10px 17px;}
+.newsnext {font-size:16px;line-height:25px;color:#666;margin:10px 17px 10px 17px;}
+.newsnext a{display:block;width:auto;font-size:16px;line-height:25px;color:#336699;text-decoration:none; font-weight:normal;}
+.newsnext a:hover{font-size:16px;line-height:25px;color:#336699;text-decoration:none; font-weight:normal;}
+.newsnext .newsnext1 {font-size:16px;line-height:40px;color:#666;}
+.newsnext .newsnext2 {font-size:16px;line-height:40px;color:#336699;}
+
+.line1 {width:auto;height:1px;background:#DCDCDC;margin:0 17px;}
+.line2 {width:auto;height:1px;background:#FFF;margin:0 17px;}
+
+.conversationblock {margin:7px 7px 7px 7px;}
+.conversationcategory a{display:block;width:auto;font-size:16px;line-height:40px;color:#336699;text-decoration:none; font-weight:normal;}
+.conversationcategory a:hover{font-size:16px;line-height:40px;color:#336699;text-decoration:none; font-weight:normal;}
+.conversationcategory .numtitles{font-size:16px;line-height:40px;color:#336699;float:right;}
+.conversationcategorypage {height:40px;}
+.conversationcategorypage a{font-size:16px;line-height:40px;color:#336699;text-decoration:none; font-weight:normal;}
+.conversationcategorypage a:hover{font-size:16px;line-height:40px;color:#336699;text-decoration:none; font-weight:normal;}
+.conversationcategorypage .pagenotavailable {font-size:16px;line-height:40px;color:#666;}
+.conversationcategorypage .pagenumber  {font-size:16px;line-height:40px;color:#666;}
+.conversationperson {font-size:16px;line-height:25px;color:#336699;margin-top:4px;}
+.conversationtalken {margin-left:15px;font-size:16px;line-height:25px;color:#000;}
+.conversationtalkcn {margin-left:15px;font-size:16px;line-height:25px;color:#666;}
+.conversationsearch a{display:block;width:auto;font-size:16px;line-height:40px;color:#336699;text-decoration:none; font-weight:normal;}
+.conversationsearch a:hover{font-size:16px;line-height:40px;color:#336699;text-decoration:none; font-weight:normal;}
+.conversationsearch .title {font-size:16px;line-height:40px;color:#336699;}
+.conversationsearch .item {font-size:16px;line-height:40px;color:#000;}
+.conversationsearch .keyword {font-size:16px;line-height:40px;color:red;}
+.tab .on {font-size:16px;line-height:36px;color:#000;background: url('images/btn_current_part_center.png') repeat;}
+.tab .on a {font-size:16px;line-height:36px;color:#000;background:transparent;display:block;width:auto;}
+.tab .on a:hover {font-size:16px;line-height:36px;color:#000;background:transparent;display:block;width:auto;}
+.tab .off {font-size:16px;line-height:36px;color:#FFF;background: url('images/btn_normal_part_center.png') repeat;}
+.tab .off a {font-size:16px;line-height:36px;color:#FFF;background:transparent;display:block;width:auto;}
+.tab .off a:hover {font-size:16px;line-height:36px;color:#FFF;background:transparent;display:block;width:auto;}
+
+.line21 {width:100%;height:1px;background:#DCDCDC;margin:0 auto;}
+.line22 {width:100%;height:1px;background:#FFF;margin:0 auto;}
+
+.line31 {float:left;width:1px;height:16px;background:#DCDCDC;margin:0;}
+.line32 {float:left;width:1px;height:16px;background:#FFF;margin:0;}
+
+.homepageblock {margin:15px 15px 15px 15px;}
+.homepagetitle {margin:7px 0px 0px 0px;background: url("images/dict_block_title_line.png") repeat-x bottom;}
+.homepagetitletext {text-indent:8px;color:#ffffff;font-size:13px;vertical-align:middle;background:url("images/dict_block_title_bgd.png") no-repeat bottom left;}
+.homepagehotword {margin:0px 0px 15px 0px;line-height:normal;}
+.homepagehotword a{line-height:normal;}
+.homepagehotword a:hover{line-height:normal};
+.homepagesentence {margin:15px 0px 0px 0px;}
+.homepagesentence a{display:block;width:auto;font-size:16px;line-height:40px;color:#336699;text-decoration:none; font-weight:normal;white-space:nowrap;overflow:hidden;}
+.homepagesentence a:hover{display:block;font-size:16px;line-height:40px;color:#336699;text-decoration:none; font-weight:normal;white-space:nowrap;overflow:hidden;}
+.homepagesentence .date{font-size:16px;line-height:40px;color:#336699;float:right; display:none;}
+.homepagenews {margin:15px 0px 0px 0px;}
+.homepagenews a{display:block;width:auto;font-size:16px;line-height:40px;color:#336699;text-decoration:none; font-weight:normal;white-space:nowrap;overflow:hidden;}
+.homepagenews a:hover{display:block;font-size:16px;line-height:40px;color:#336699;text-decoration:none; font-weight:normal;white-space:nowrap;overflow:hidden;}
+.homepagenews .date{font-size:16px;line-height:40px;color:#336699;float:right;}

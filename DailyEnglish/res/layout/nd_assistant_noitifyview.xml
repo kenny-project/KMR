@@ -1,0 +1,20 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dip">
+    <TextView android:id="@+id/nd_assistant_textview"
+        android:drawableLeft="@drawable/nd_ico_notify"
+        android:drawablePadding="3dip"
+        android:layout_width="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_height="wrap_content"/>
+    <ProgressBar
+        android:id="@+id/nd_assistant_progress"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dip"
+        android:max="100"
+        style="?android:attr/progressBarStyleHorizontal" />
+</LinearLayout>

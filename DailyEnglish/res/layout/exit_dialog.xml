@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content">
+  <LinearLayout
+      android:orientation="horizontal"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:background="#00000000"
+      android:padding="10dip">
+	  <ImageView android:layout_width="40dip"
+	             android:layout_height="40dip"
+	             android:paddingRight="10dip"
+	             android:src="@drawable/ic_dialog_menu_generic"/>
+	  <TextView android:id="@+id/title"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="@string/isexit"
+	            android:textSize="23dip"
+	            android:textColor="#ffffff">
+	            
+	  </TextView>
+  </LinearLayout>
+  <LinearLayout
+      android:orientation="horizontal"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:gravity="center"
+      android:background="#b5b5b5"
+      android:paddingBottom="1dip"
+      android:paddingTop="5dip"
+      android:paddingLeft="3dip"
+      android:paddingRight="3dip">
+      <Button  android:layout_width="fill_parent"
+	      android:layout_height="wrap_content"
+	      android:layout_weight="1"
+	      android:id="@+id/exit_yes"
+	      android:gravity="center"
+	      android:text="@string/ok"/>
+      <Button  android:layout_width="fill_parent"
+	      android:layout_height="wrap_content"
+	      android:gravity="center"
+	      android:id="@+id/exit_no"
+	      android:layout_weight="1"
+	      android:text="@string/no"/>
+  </LinearLayout>
+</LinearLayout>

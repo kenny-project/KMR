@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#00000000"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/top"
+        android:layout_width="fill_parent"
+        android:layout_height="5dip"
+        android:background="#00000000" >
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dip" >
+
+        <LinearLayout
+            android:id="@+id/ll_v_line"
+            android:layout_width="1dip"
+            android:layout_height="50dip"
+            android:layout_toLeftOf="@+id/ll_word_num"
+            android:background="#232323" >
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dip"
+            android:layout_toLeftOf="@id/ll_v_line"
+            android:background="#f0f0f0"
+            android:gravity="center_vertical"
+            android:padding="10dip" >
+
+            <CheckBox
+                android:id="@+id/nbi_is_delete"
+                android:layout_width="30dip"
+                android:layout_height="30dip"
+                android:button="@drawable/v6_item_checkbox_bg"
+                android:visibility="gone" />
+            <!-- android:button="@drawable/checkbox_bg" -->
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/v6wordbook_icon" />
+
+            <TextView
+                android:id="@+id/nbi_book_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="30dip"
+                android:text="默认生词本"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:textColor="#3d3d3d"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_wordbook_item_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dip"
+            android:visibility="gone" >
+
+            <Button
+                android:id="@+id/btn_item_word_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/v6btn_editword_bg"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/btn_item_word_import"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dip"
+                android:layout_marginRight="10dip"
+                android:background="@drawable/v6btn_importword_bg" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_word_num"
+            android:layout_width="60dip"
+            android:layout_height="fill_parent"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/top"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dip"
+            android:background="#f0f0f0"
+            android:gravity="center_vertical"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="5dip"
+                android:text="单词"
+                android:textColor="#000000"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_wordbook_item_wordnum"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="2010"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_o_line"
+        android:layout_width="fill_parent"
+        android:layout_height="2dip"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="5dip"
+        android:layout_marginRight="5dip"
+        android:background="#232323" >
+    </LinearLayout>
+
+</LinearLayout>

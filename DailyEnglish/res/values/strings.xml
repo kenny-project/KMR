@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- new add -->
+    <string name="subcribepage_msg_googleplay_pay_error">購読失敗</string>
+    <string name="subcribepage_msg_googleplay_pay_notsupport">あなたのアカウントは決済機能を開きません</string>
+    <string name="msg_Network_not_found">読込失敗、ネットワーク接続状況をご確認ください。</string>
+    <!-- new add end-->
+    
+    
+    <string name="subcribepage_msg_pay_success">購読成功:</string>
+    <string name="subcribepage_msg_pay_fail">購読失敗：</string>
+    <string name="app_name">每日英语</string>
+    <string name="alarm_message">根気よく努力すれば、物事はかならず達成できるというたとえ。愚公という老人が、周囲の人の嘲笑にもめげずに</string>
+    <string name="setting_data_clear_button">ネットワークキャッシュをクリア</string>
+    <string name="setting_feedback_title">質問と意見</string>
+    <string name="setting_feedback_button">質問と意見</string>
+    <string name="setting_encouragement_title">その他</string>
+    <string name="setting_encouragement_button">よかったら評価してね</string>
+    <string name="setting_clear_cache_title">キャッシュをクリア</string>
+    <string name="setting_recovery_buy">購読回復</string>
+    <string name="setting_buy">購読</string>
+    <string name="setting_remindtime_title">アラーム時間</string>
+    <string name="setting_dailystudy_title">学習のアラーム設定</string>
+    <string name="setting_switch_title">スイッチ</string>
+    <string name="info_home_dailysentence_title">毎日一言</string>
+    <string name="info_home_bilingualinfo_title">双语资讯</string>
+    <string name="info_home_voa_title">スローリスニング</string>
+    <string name="info_home_conversation_title">情景会话</string>
+    <string name="info_favorite_empty">お気に入りの登録はありません</string>
+    <string name="Dailysentence_title">毎日一言</string>
+    <string name="VOA_title">スローリスニング</string>
+    <string name="Setting_title">設定</string>
+    <string name="dialog_data_clear_content">キャッシュを空にしますか？</string>
+    <!-- v6 chenjg add -->
+    <string name="pingfen">よかったら評価してね</string>
+    <string name="subcribepage_title">購読</string>
+    <string name="feedbackpage_title">質問と意見</string>
+      <string name="sa_ciba_desc_text">生きた米語を自分の速度で</string>
+    <string name="shuowanle">確定</string>
+    <string name="cidian_xiazai">词典下载</string>
+    <string name="your_email">電子メールを入力してください</string>
+    <string name="input_email">電子メールを入力してください</string>
+    <string name="input_feedback">質問と意見を入力して下さい。</string>
+    <string name="Subscribe_button_Text">今から購読する300円/月</string>
+    <string name="Subscribe_btRecoverybuy_Text">購読回復</string>
+    <string name="Subscribe_note">フルバージョンの購読には、次の機能を楽しむことができる：\n\n\nVOA倍速英語聴力と英語短文を毎日更新、最新流行の動向がキャッチできる\n英語の和訳文はオーディオと同期機能で、テキストと音声が同時にディスプレイできる\n再生の速度調節で各単語の発音を把握できる\n随時、再生場所の調整機能で、何度も複雑な文章を聞くことができる\nお気に入りの記事を追加機能で、好きな文書をいつでも読める\nリマインド機能を使えば、毎日の学習時間を忘れることはない</string>
+    <string name="Subscribe_head">【VOA（Voice of America）ボイス·オブ·アメリカはアメリカ合衆国国営営ラジオ放送の純正なアメリカ英語最新ニュースです。英語学習者のために、最適化されスローリスニングですので、あなたの英語リスニングとスピーキング練習に最適です！】</string>
+    <string name="ok">確定</string>
+    <string name="sync">同步</string>
+    <string name="cancel">キャンセル</string>
+    <string name="yes">OK</string>
+    <string name="no">キャンセル</string>
+    <string name="clear_cache_success">削除成功</string>
+    <string name="about">APPについて</string>
+    <string name="sa_ciba_name">VOAで英語脳</string>
+    <string name="sa_ciba_version_text">Version </string>
+    <string name="sa_ciba_version">Version 1.0</string>
+    <string name="sa_ciba_net_address">Http://www.iciba.com</string>
+    <string name="sa_show_help">查看帮助</string>
+    <string name="sa_disclaimer">隐私声明</string>
+    <string name="sa_copyright">Copyright c2009-2013 Kingsoft\n AllRights Reserved.</string>
+    <string name="infohomepage_lookmore">查看更多请点击这里</string>
+    <string name="help">帮助</string>
+    <string name="info_download">もっと見る...</string>
+    <string name="info_loading">ダウンロード中...</string>
+    <string name="info_VOAfavorite_title">お気に入りリスト</string>
+    <string name="info_Dailyfavorite_title">お気に入りリスト</string>
+    <string name="info_home_title">资讯</string>
+    <string name="info_voa_title">スローリスニング</string>
+    <string name="info_bilingual_error">ネットワーク接続エラー、こちらのボタンをクリックして再度読込んでください</string>
+    <string name="info_download_error">読込失敗、ネットワーク接続状況をご確認ください</string>
+    <string name="information">资讯</string>
+    <string name="setting">設定</string>
+    <string name="msg_Recovery_buy_Success">購読機能を回復する</string>
+    <string name="msg_Recovery_buy_Failure">購読回復失敗</string>
+    <string name="msg_Loading_Please_retry">正在下载，请稍候再试.</string>
+    <string name="msg_not_network_please_check_network">読込失敗、ネットワーク接続状況をご確認ください</string>
+    <string name="msg_not_network">読込失敗、ネットワーク接続状況をご確認ください</string>
+    <string name="msg_mp3url_invalid">不明なエラー</string>
+    
+    <string name="download_error">読込失敗、ネットワーク接続状況をご確認ください</string>
+    <string name="voice_net_unconnection">音声の読込失敗、ネットワーク接続状況をご確認ください</string>
+    <string name="voice_net_connection">取得中...</string>
+    <string name="toast_msg_delete_success">削除しました!</string>
+    <string name="toast_msg_add_success">お気に入りに入れました!</string>
+    <string name="toast_msg_operate_fail">不明なエラー</string>
+    <string name="Net_WebbyFile_Run">ダウンロード中...</string>
+    <string name="Net_WebbyFile_Error">読込失敗、ネットワーク接続状況をご確認ください</string>
+    <string name="feedback_content_empty">メールボックスは意見内容を確認してください</string>
+    <string name="feedback_email_error">メールボックス形式を確認してください</string>
+    <string name="feedback_submit_sucess">提出成功しました!</string>
+	<string name="exitdialog_app_title">リマインド</string>
+	<string name="exitdialog_app_content">アプリケーションを終了しますか？</string>
+	<string name="voa_adapter_browse">訪問回数</string>
+	
+</resources>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView android:textSize="20.0px" android:textColor="#ffffffff"
+	android:gravity="center" android:id="@+id/channel_title"
+	android:layout_width="fill_parent" android:layout_height="wrap_content"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:text="@+string/mainpage_title" style="@+style/OrangeStatusBarStyle" />

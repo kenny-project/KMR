@@ -1,0 +1,32 @@
+@charset "utf-8";
+/* CSS Document */
+html,body,h1,h2,h3,h4,h5,p{margin:0;padding:0;}
+body{background:#f5f5f5;}
+.cl{zoom:1;}
+.cl:after{content:"";display:block;height:0;clear:both;}
+.h{height:auto;overflow:hidden;zoom:1;}
+.fr{float:right;}
+h1{font-size:22px;text-align:center;line-height:30px;margin:15px auto 10px;font-weight:100;}
+.time{margin:0 auto;font-size:16px;line-height:20px;color:#939393; text-align:center}
+.time span{display:inline-block;}
+.time span.fr{float:none;margin-left:20px;}
+.line{height:2px;background:url(../images/line.png) repeat-x;overflow:hidden;margin:18px 10px 15px;}
+.line2{height:2px;background:url(../images/line.png) repeat-x;overflow:hidden;}
+.line3{height:2px;background:url(../images/line.png) repeat-x;overflow:hidden;margin:0 15px;}
+.cont{margin:0 10px; text-align:center;}
+.cont p{margin:10px 0;text-align:left;}
+.img{border-bottom:1px solid #fcfcfc;margin-left:5px;width:138px;float:right}
+p.e{color:#626262;font-size:16px;line-height:25px;}
+p.c{color:#313131;font-size:18px;line-height:28px;text-indent:36px}
+a.cont2{padding:15px;display:block;border:none;text-decoration:none;}
+a.cont2 img{width:116px;height:86px;border:none;margin-right:20px;float:left}
+a.cont2 h3{font-size:22px;color:#f00;font-weight:100;padding-left:15px;height:30px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+a.cont2 p{color:#a6a6a6;font-size:22px;line-height:24px;padding:5px 0 0 15px;height:48px;overflow:hidden;text-overflow:ellipsis;}
+a.cont2:hover{background:#85c1ff;}
+a.cont2:visited h3{color:#7b7b7b;}
+a.more{font-size:22px;color:#414141;padding:20px 0; text-decoration:none;display:block;text-align:center;width:100%;}
+
+h2{margin:0 15px; background:url(../images/l3.gif) repeat-x bottom left;font-size:20px;color:#a55e2a;font-weight:100;line-height:50px;padding-left:5px;}
+a.cont3{margin:0 15px;padding:15px 5px;}
+
+a.laba {background: url("../images/laba.png") no-repeat scroll left top transparent;display: inline-block;height: 17px;margin-left: 10px;overflow: hidden;width: 30px;}

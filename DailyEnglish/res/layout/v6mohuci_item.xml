@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:descendantFocusability="blocksDescendants" 
+    android:padding="5dp" >
+
+    <com.kenny.comui.CircleImageButton
+        android:id="@+id/mi_arrow_image"
+        android:layout_width="35dip"
+        android:layout_height="35dip"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:background="#00000000"
+        android:clickable="false"
+        android:descendantFocusability="blocksDescendants"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:src="@drawable/v6white_left_arrow" />
+
+    <TextView
+        android:id="@+id/mi_word"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@id/mi_arrow_image"
+        android:ellipsize="end"
+        android:paddingRight="10dip"
+        android:singleLine="true"
+        android:text="123123123123123123123123123123123123123123123123123123123123"
+        android:textSize="16sp" />
+
+</RelativeLayout>

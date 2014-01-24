@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:background="#696969"
+    android:gravity="center_vertical" >
+
+    <Button
+        android:id="@+id/mb_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="home" />
+
+    <Button
+        android:id="@+id/mb_back" 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="back" />
+
+    <Button
+        android:id="@+id/mb_go_forward"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="go f" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/mb_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="menu" />
+        <Button
+            android:id="@+id/mb_menu2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/mb_menu"
+            android:visibility="invisible"
+            android:text="menu2" />
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffffff"
+    android:orientation="vertical" >
+    <!-- 顶部 -->
+    <RelativeLayout
+        android:id="@+id/Head"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip" >
+
+        <ImageButton
+            android:id="@+id/sa_back"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_centerVertical="true"
+            android:background="#0587a8"
+            android:src="@drawable/tab_left_bg"
+            android:textColor="@color/layout_bg" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:paddingBottom="10dip"
+            android:paddingTop="10dip"
+            android:text="@string/about"
+            android:textColor="#ffffff"
+            android:textSize="22dip" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/default_load"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Head"
+        android:layout_marginTop="60dip"
+        android:background="#00000000" >
+
+        <ImageView
+            android:id="@+id/lp_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/about_logo" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/default_load"
+        android:orientation="vertical" >
+
+        <!-- 中间部分 -->
+        <!--
+        <ScrollView
+            style="@style/scrollstyle"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="#f5f5f5" >
+        -->
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginTop="10dip"
+            android:background="#00000000"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="10dip" >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingBottom="5dip"
+                android:paddingTop="5dip"
+                android:text="@string/sa_ciba_name"
+                android:textColor="#07c2f1"
+                android:textSize="38dp" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/sa_desc"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingBottom="5dip"
+                    android:paddingTop="5dip"
+                    android:text="@string/sa_ciba_desc_text"
+                    android:textColor="#898989"
+                    android:textSize="20dip" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/sa_version"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingBottom="5dip"
+                android:paddingTop="5dip"
+                android:text="@string/sa_ciba_version_text"
+                android:textColor="#898989"
+                android:textSize="18dip" />
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="1px"
+                android:background="#b7bcc4" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingBottom="5dip"
+                android:paddingTop="5dip"
+                android:textColor="#898989"
+                android:text="@string/sa_copyright"
+                android:textSize="18dip" />
+        </LinearLayout>
+        <!-- </ScrollView> -->
+    </LinearLayout>
+    <!-- 中间部分结束 -->
+
+</RelativeLayout>

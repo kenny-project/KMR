@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/ItemTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dip"
+        android:singleLine="true"
+        android:text="Title"
+        android:textColor="#2e2e2e"
+        android:textSize="19dip" />
+
+    <TextView
+        android:id="@+id/ItemDesc"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dip"
+        android:layout_marginRight="2dip"
+        android:lineSpacingMultiplier="1"
+        android:maxLines="2"
+        android:paddingTop="3dip"
+        android:text="Desc"
+        android:textColor="#949494"
+        android:textSize="16dip" />
+
+    <ImageView
+        android:id="@+id/item_line"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/item_line" />
+
+</LinearLayout>

@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#00000000"
+        android:orientation="vertical" >
+
+        <ScrollView
+            style="@style/scrollstyle"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="#00ff0000"
+            android:fadingEdge="none" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="#00000000"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="@drawable/dibider_top" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#ffe5e5e5"
+                    android:paddingBottom="5dip"
+                    android:paddingLeft="10dip"
+                    android:paddingTop="30dip"
+                    android:text="@string/setting_dailystudy_title"
+                    android:textColor="#ff898989"
+                    android:textSize="16sp" >
+                </TextView>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="@drawable/dibider_top" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content" >
+
+                        <Button
+                            android:id="@+id/btLearningRemindSwitchBackground"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:background="@drawable/v6setting_button_bg"
+                            android:clickable="false"
+                            android:gravity="center_vertical|left"
+                            android:paddingLeft="10dip"
+                            android:text="@string/setting_switch_title"
+                            android:textColor="@color/black"
+                            android:textSize="18sp" />
+
+                        <CheckBox
+                            android:id="@+id/cbLearningRemindSwitch"
+                            android:layout_width="90dip"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="5dip"
+                            android:button="@drawable/v6checkbox_bg"
+                            android:checked="true" >
+                        </CheckBox>
+                    </RelativeLayout>
+
+                    <ImageView
+                        android:layout_width="fill_parent"
+                        android:layout_height="1dp"
+                        android:background="@drawable/dibider_mid" />
+
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content" >
+
+                        <Button
+                            android:id="@+id/btLearningRemindTimeBackground"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:background="@drawable/v6setting_button_bg"
+                            android:clickable="false"
+                            android:gravity="center_vertical|left"
+                            android:paddingLeft="10dip"
+                            android:text="@string/setting_remindtime_title"
+                            android:textColor="@color/black"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/btLearningRemindTime"
+                            android:layout_width="50dip"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:button="@drawable/v6checkbox_bg"
+                            android:checked="true"
+                            android:text="9:00"
+                            android:textSize="18sp" >
+                        </TextView>
+                    </RelativeLayout>
+
+                    <ImageView
+                        android:layout_width="fill_parent"
+                        android:layout_height="2dp"
+                        android:background="@drawable/dibider_top" />
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#ffe5e5e5"
+                        android:paddingBottom="5dip"
+                        android:paddingLeft="10dip"
+                        android:paddingTop="30dip"
+                        android:text="@string/setting_clear_cache_title"
+                        android:textColor="#ff898989"
+                        android:textSize="16sp" />
+
+                    <ImageView
+                        android:layout_width="fill_parent"
+                        android:layout_height="1dp"
+                        android:background="@drawable/dibider_top" />
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" >
+
+                        <RelativeLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content" >
+
+                            <Button
+                                android:id="@+id/btnClearCache"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:background="@drawable/v6setting_button_bg"
+                                android:gravity="center_vertical|left"
+                                android:paddingLeft="10dip"
+                                android:textColor="@color/black"
+                                android:textSize="16sp"
+                                android:visibility="visible" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:paddingLeft="10dip"
+                                android:paddingRight="10dip"
+                                android:text="@string/setting_data_clear_button"
+                                android:textColor="@color/black"
+                                android:textSize="18sp" />
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="fill_parent"
+                        android:layout_height="1dp"
+                        android:background="@drawable/dibider_top" />
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone" >
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#ffe5e5e5"
+                            android:paddingBottom="5dip"
+                            android:paddingLeft="10dip"
+                            android:paddingTop="30dip"
+                            android:text="@string/setting_feedback_title"
+                            android:textColor="#ff898989"
+                            android:textSize="16sp" />
+
+                        <ImageView
+                            android:layout_width="fill_parent"
+                            android:layout_height="1dp"
+                            android:background="@drawable/dibider_top" />
+
+                        <Button
+                            android:id="@+id/sp_feedback"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/v6setting_button_bg"
+                            android:gravity="center_vertical|left"
+                            android:paddingLeft="10dip"
+                            android:text="@string/setting_feedback_button"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:visibility="visible" >
+                        </Button>
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="fill_parent"
+                        android:layout_height="1dp"
+                        android:background="@drawable/dibider_top" />
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#ffe5e5e5"
+                        android:paddingBottom="5dip"
+                        android:paddingLeft="10dip"
+                        android:paddingTop="30dip"
+                        android:text="@string/setting_encouragement_title"
+                        android:textColor="#ff898989"
+                        android:textSize="16sp" />
+
+                    <ImageView
+                        android:layout_width="fill_parent"
+                        android:layout_height="1dp"
+                        android:background="@drawable/dibider_top" />
+
+                    <Button
+                        android:id="@+id/btEncouragement"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/v6setting_button_bg"
+                        android:gravity="center_vertical|left"
+                        android:paddingLeft="10dip"
+                        android:text="@string/setting_encouragement_button"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:visibility="visible" >
+                    </Button>
+
+                    <ImageView
+                        android:layout_width="fill_parent"
+                        android:layout_height="1dp"
+                        android:background="@drawable/dibider_mid"
+                        android:visibility="gone" />
+
+                    <Button
+                        android:id="@+id/sp_help"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/v6setting_button_bg"
+                        android:gravity="center_vertical|left"
+                        android:paddingLeft="10dip"
+                        android:text="@string/help"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:visibility="gone" >
+                    </Button>
+
+                    <ImageView
+                        android:layout_width="fill_parent"
+                        android:layout_height="1dp"
+                        android:background="@drawable/dibider_mid"
+                        android:visibility="visible" />
+
+                    <Button
+                        android:id="@+id/sp_about"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/v6setting_button_bg"
+                        android:gravity="center_vertical|left"
+                        android:paddingLeft="10dip"
+                        android:text="@string/about"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:visibility="visible" >
+                    </Button>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+</RelativeLayout>

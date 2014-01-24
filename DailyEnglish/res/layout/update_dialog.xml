@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:id="@+id/top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#00000000"
+            android:orientation="horizontal"
+            android:padding="10dip" >
+
+            <ImageView
+                android:layout_width="40dip"
+                android:layout_height="40dip"
+                android:paddingRight="10dip"
+                android:src="@drawable/icon" />
+
+            <ScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="111111111111111111111111111111111111111111"
+                    android:textColor="#ffffff"
+                    android:textSize="20dip" />
+            </ScrollView>
+        </LinearLayout>
+
+        <CheckBox
+            android:id="@+id/next_show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/top"
+            android:layout_marginLeft="50dip"
+            android:text="下次不再提示" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/next_show"
+            android:background="#b5b5b5"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:padding="3dip" >
+
+            <Button
+                android:id="@+id/zhineng_91"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="91智能升级" />
+
+            <Button
+                android:id="@+id/exit_yes"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/ok" />
+
+            <Button
+                android:id="@+id/exit_no"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/no" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</ScrollView>

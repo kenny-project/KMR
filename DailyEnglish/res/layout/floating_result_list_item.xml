@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" 
+    android:padding="10dip">
+	<TextView
+	    android:id="@+id/lrli_word"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:textSize="20dip"
+	    android:textStyle="bold"
+	    android:textColor="#000000"
+	    android:text="Word"/>
+	<TextView
+	    android:id="@+id/lrli_mean"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:textColor="#5c5c5c"
+	    android:singleLine="true"
+	    android:paddingLeft="5dip"
+	    android:textSize="18dip"
+		android:ellipsize="end"
+	    android:text="Mean"/>
+</LinearLayout>

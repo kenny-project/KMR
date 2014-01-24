@@ -1,0 +1,137 @@
+@charset "utf-8";
+/* CSS Document by zhangwei9@kingsoft.com for ciba mobile phone in 2013.04.15*/
+@font-face{font-family:'方正细等线简体';src:url('fzxdxjt.ttf') format('truetype')}
+@font-face{font-family:'Myriad Pro Light';src:url('MyriadPro-Light.otf') format('opentype')}
+*{margin:0;padding:0;font-family:'Myriad Pro Light','方正细等线简体';line-height:100%;}
+body,div,ul,li,ol,h1,h2,h3,h4,h5,h6,p,form,input,label,table,thead,tbody,th,tr,td,dl,dt,dd{margin:0;padding:0}h1,h2,h3,h4,h5,h6,b,em{font-size:inherit;font-style:normal;font-weight:100;}ul,li,ol{list-style:none;}img{border:0}.fl{float:left}.fr{float:right}.cl:after{content:"";display:block;height:0;clear:both;}.cl{zoom:1}
+a{outline:none;blr:expression(this.onFocus=this.blur());-webkit-touch-callout:none;text-decoration:none}
+*{filter:grayscale(1);}
+body{background:#f0f0f0;}
+nav,.h{border-bottom-width:1dp;border-bottom-style:solid;}
+nav{width:100%;}
+nav a{border-bottom-width:0;border-bottom-style:solid;display:inline-block;font-size:24px;width:25%;text-align:center;font-weight:700;text-decoration:none;padding:10px 0}
+nav a.navh{border-bottom-width:3px}
+.y{font-size:26px;color:#333;margin-bottom:17px;}
+.s{padding:11px 15px 4px;border-top-width:1dp;border-top-style:solid;margin-top:-1px}
+.s p{padding-left:21px;padding-bottom:6px;color:#333;font-size:26px;line-height:36px}
+.s p span{background:rgba(0,0,0,0.2);color:#fff;font-size:22px;border-radius:30px;height:40px;min-width:40px;display:block;float:left;text-align:center;line-height:40px;margin-right:10px;margin-left:-20px;margin-top:-3px}
+.x{padding:11px 15px;border-top-width:1dp;border-top-style:solid}
+.x p{display:inline-block;color:#515151;font-size:22px;line-height:36px;margin-right:22px}
+.c a{text-decoration:none}
+.h{overflow:hidden;padding-top:20px;margin-bottom:15px;position:relative;height:40px}
+.h h3{font-size:22px;color:#fff;padding:3px 15px 0;height:37px;line-height:40px;float:left;overflow:hidden;}
+.h a{display:block;width:100%;height:40px;position:absolute;top:20px;left:0}
+.h a div{display:block;width:40px;height:40px;float:right;cursor:pointer}
+.h a div div{width:23px;height:13px;overflow:hidden;margin:16px auto 0;float:none;background:url(j.png) no-repeat;transition: transform 0.3s ease-in 0s;}
+.hh a div div{transform:rotate(180deg);-webkit-transform:rotate(180deg);-moz-transform:rotate(180deg)}
+
+/*柯林斯重构*/
+.k{padding-bottom:20px}
+.kels{color:#333;font-size:36px;font-weight:bold;margin:30px 15px 25px;}
+.ke_t,.ke2{background:rgba(0,0,0,0.1);color:#646464;font-size:26px;line-height:36px;padding:10px;margin:7px 15px 0;}
+.ke_t h5.kelin,.ke_t dl.phrase{font-size:26px;color:#646464;padding:0;margin:0}
+.ke_t h5 b,.ke b{font-weight:bold}
+.ke{font-size:26px;line-height:36px;color:#505050;padding:20px 15px 0;border-top-width:1dp;border-top-style:solid;margin-top:14px}
+.col div.ke:first-child,.hy div.hy_t:first-child,.lj .lj_e:first-child,.wiki .wi_tl:first-child,.ee .ee_tl:first-child,.hany .hany_t:first-child{border-top:0;margin-top:0}
+.vt,.wi_t,.ee_t,.tf_s,.mei_t{background:rgba(0,0,0,0.2);color:#fff;font-size:24px;border-radius:28px;min-width:12px;display:inline-block;text-align:center;padding:8px 10px 7px;margin-bottom:14px;}
+.vf,.mei_lt{display:block;font-size:30px;line-height:40px;}
+.kelin{position:relative;font-size:30px;line-height:36px;padding-left:60px;margin:20px 15px 0;}
+.laba{position:absolute;left:0;top:0;width:50px;height:50px;background-image:url(laba.png);background-repeat:no-repeat;background-position:11px 11px;border-radius:25px;}
+.phrase{font-size:26px;color:#505050;margin:0 15px;padding-left:60px;line-height:36px}
+.ke2{position:relative;padding:5px 10px 5px 20px;margin:10px 15px}
+.ke2 .d{background:#505050;left:10px;top:22px}
+.ke_b{background:rgba(0,0,0,0.1);padding:1px 0 10px 0;margin:10px;}
+.ke_b_t{margin:10px 10px 0;color:#646464;font-size:24px;line-height:36px}
+.ke_b_t b{font-weight:bold;font-weight:700}
+.ke_b .kelin{margin-top:10px;color:#646464}
+.ket{margin:10px 15px;}
+.ket_t{font-size:30px;line-height:36px;position:relative;}
+.ket p{font-size:26px;line-height:36px;color:#505050}
+.col{padding-bottom:25px;}
+/*维基*/
+.wi_tl,.ee_tl{border-top-style:solid;border-top-width:1dp;padding:10px 15px 0;}
+.wi_l,.ee_l{font-size:30px;line-height:40px;color:#333;margin:0 15px}
+.wi_j,.ee_j{margin:20px 14px;}
+.wi_l_n,.ee_l_n{margin-right:5px}
+.wi_j_e,.ee_j_e{font-size:30px;line-height:36px;margin-top:10px;}
+.wi_j_c{font-size:24px;line-height:36px;color:#505050}
+.col_j_e strong,.ee_j_e strong,.w_yh_e strong,,.w_yh_c strong{font-weight:700}
+.wi_l{padding-left:18px;text-indent:-18px;}
+.wiki .wi_tl:first-child,.ee .ee_tl:first-child{padding-top:0}
+/*英英*/
+.ee_j_t{display:block;width:3px;height:3px;border-radius:4px;float:left;margin-right:5px;margin-top:18px}
+/*行业*/
+.hy_t{position:relative;font-size:36px;color:#333;margin-top:11px;padding:10px 10px 10px 25px;border-top-width:1dp;border-top-style:solid}
+.hy_t .d2{display:block;width:4px;height:4px;overflow:hidden;background:#333;border-radius:5px;position:absolute;top:26px;left:15px}
+.hy_l{padding-left:15px;padding-right:15px;line-height:44px;margin-bottom:4px;font-size:28px;}
+.hy_l span{margin-right:10px;}
+.hy_l em,.yh_e span,.yh_c span{margin-right:5px;font-style:normal}
+/*例句*/
+.lj_e{font-size:30px;line-height:36px;padding:10px 10px 2px 75px;position:relative;border-top-width:1dp;border-top-style:solid;margin-top:10px}
+.lj_e .laba{left:15px;top:10px}
+.lj_c{font-size:26px;line-height:40px;color:#505050;margin:0 10px 0 0;padding-left:75px}
+/*讲解*/
+.jj{padding:10px 0}
+/*同义词 反义词*/
+.tf,.ty,.cz,.cg,.yy,.bk,.hx,.mei{padding:0 15px 11px}
+.tf_j{color:#333;font-size:30px;line-height:40px;}
+.tf_j strong{font-weight:100;margin:0 5px}
+.tf_a{margin:5px 0 20px}
+.tf_a,.tf_a a{font-size:30px;line-height:36px;margin-right:5px}
+.tf_a a{text-decoration:underline;display:inline-block}
+/*同义词辨析*/
+.ty_t,.cz_t,.cg_t,.cg_j,.bk_t,.hx_t{font-size:30px;line-height:40px;position:relative;padding-left:7px;margin-top:11px}
+.ty_t .d2,.cz_t .d2,.cg_t .d2,.cg_j .d2,.bk_t .d2,.hx_t .d2{left:0;top:21px}
+.ty_s,.cz_s{color:#3b3b3b;font-size:24px;line-height:36px}
+.d{display:block;width:3px;height:3px;overflow:hidden;border-radius:5px;position:absolute;top:13px;left:0}
+.ty_l,.cz_e{font-size:24px;line-height:36px;color:#505050;position:relative;padding-left:7px;margin:40px 0 36px}
+.ty_l a{margin-right:5px}
+/*词组搭配*/
+.cz_t{margin-top:30px}
+.cz_e .d,.cg_l .d{background:#505050;top:20px}
+.cz_e{margin:7px 0 0}
+.cz_c{font-size:24px;line-height:36px;color:#505050;padding-left:7px;}
+/*词根词缀*/
+.cg_t_j,.hx_t_j{color:#3b3b3b;line-height:40px;font-size:24px}
+.cg_s{margin-top:40px;color:#3b3b3b;font-size:26px}
+.cg_j{margin-top:20px;margin-bottom:10px}
+.cg_l{color:#3b3b3b;line-height:40px;font-size:24px;position:relative;padding-left:7px}
+.cg_l a{color:#3b3b3b;margin-right:5px;}
+.cg_l span{margin-left:5px}
+.cg_l span a{text-decoration:none;margin-right:0}
+/*语源*/
+.yy{font-size:30px;line-height:40px;color:#3b3b3b}
+/*易混淆词*/
+.hx{}
+/*百科*/
+.bk_c{font-size:24px;line-height:40px;color:#505050}
+.bk img{max-width:100%;margin-top:10px;display:block}
+/*美传统*/
+.mei{padding:}
+.mei_h1{font-size:28px;font-weight:700;}
+.mei_h1 sup{font-size:14px}
+.mei_t{margin-top:14px;margin-bottom:0}
+.mei_l{font-size:30px;line-height:40px;color:#505050;padding-top:10px}
+.mei_lt{padding-bottom:4px}
+.mei_ls i,.mei_c i{font-style:italic}
+.mei_l p{padding-top:4px}
+.mei_j{font-size:24px;line-height:36px;padding-bottom:4px}
+.mei_jc{position:relative;padding:10px 0 5px 10px;}
+.mei_jc .d{background:#505050;top:15px}
+.mei_je{padding-left:10px}
+.mei_c{font-size:20px;line-height:40px;padding-top:4px}
+/*汉语*/
+.hany_t{position:relative;font-size:28px;color:#333;margin-top:11px;padding:10px 10px 10px 20px;border-top-width:1dp;border-top-style:solid}
+.hany_t .d2{display:block;width:4px;height:4px;overflow:hidden;background:#333;border-radius:5px;position:absolute;top:23px;left:10px}
+.hany_l{padding-left:10px;line-height:40px;margin-bottom:30px;margin-top:10px;font-size:26px;}
+.hany_l span{margin-right:10px;}
+.hany_l em{margin-right:5px;font-style:normal}
+
+.cx{margin:50px auto;text-align:center;font-size:22px}
+
+/*本地无发音*/
+.nos,.knos .phrase,.knos .kelin{padding-left:0}
+.lj .nos{padding-left:15px}
+.knos a.laba{display:none}
+
+.d2{display:block;width:4px;height:4px;overflow:hidden;border-radius:5px;position:absolute;}

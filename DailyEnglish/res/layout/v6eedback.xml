@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <!-- 顶部 -->
+
+    <RelativeLayout
+        android:id="@+id/sa_head"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip" >
+
+        <ImageButton
+            android:id="@+id/sf_back"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_centerVertical="true"
+            android:background="#0587a8"
+            android:src="@drawable/tab_left_bg"
+            android:textColor="@color/layout_bg" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:paddingBottom="10dip"
+            android:paddingTop="10dip"
+            android:text="@string/feedbackpage_title"
+            android:textColor="#ffffff"
+            android:textSize="20dip" />
+    </RelativeLayout>
+    <!-- 顶部结束 -->
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/sa_head"
+        android:orientation="vertical" >
+
+        <!-- 中间部分 -->
+
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="#f5f5f5" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/sf_content_text"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dip"
+                    android:layout_marginLeft="8dip"
+                    android:layout_marginRight="8dip"
+                    android:layout_marginTop="8dip"
+                    android:text="@string/input_feedback"
+                    android:textColor="#000000"
+                    android:textSize="18dip"
+                    android:visibility="gone" />
+
+                <EditText
+                    android:id="@+id/sf_content"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dip"
+                    android:layout_marginRight="8dip"
+                    android:layout_marginTop="10dip"
+                    android:gravity="top"
+                    android:lines="10"
+                    android:maxLength="500"
+                    android:maxLines="10" />
+
+                <TextView
+                    android:id="@+id/sf_email_text"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dip"
+                    android:layout_marginLeft="8dip"
+                    android:layout_marginRight="8dip"
+                    android:layout_marginTop="8dip"
+                    android:text="@string/input_email"
+                    android:textColor="#000000"
+                    android:textSize="18dip"
+                    android:visibility="gone" />
+
+                <EditText
+                    android:id="@+id/sf_email"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dip"
+                    android:layout_marginRight="8dip"
+                    android:layout_marginTop="10dip"
+                    android:drawableLeft="@drawable/v6email"
+                    android:drawablePadding="5dip"
+                    android:hint="@string/your_email"
+                    android:inputType="textEmailAddress"
+                    android:lines="1"
+                    android:maxLength="100"
+                    android:maxLines="1" />
+
+                <com.kenny.comui.SquareButton
+                    android:id="@+id/sf_submit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dip"
+                    android:layout_marginRight="8dip"
+                    android:layout_marginTop="20dip"
+                    android:background="#000000"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:gravity="center"
+                    android:paddingBottom="5dip"
+                    android:paddingLeft="20dip"
+                    android:paddingRight="20dip"
+                    android:paddingTop="5dip"
+                    android:text="@string/shuowanle"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+    <!-- 中间部分结束 -->
+
+</RelativeLayout>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <!-- 顶部 -->
+
+    <RelativeLayout
+        android:id="@+id/sa_head"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:background="@drawable/top_bg"
+ 		>
+
+        <Button
+            android:id="@+id/sf_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dip"
+            android:background="@drawable/v6_title_close"
+            android:textColor="@color/layout_bg" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+                        android:paddingBottom="10dip"
+            android:paddingTop="10dip"
+            android:text="@string/subcribepage_title"
+            android:textColor="#ffffff"
+            android:textSize="20sp" />
+    </RelativeLayout>
+    <!-- 顶部结束 -->
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/sa_head"
+        android:background="#ffe5e5e5"
+        android:orientation="vertical" >
+
+        <!-- 中间部分 -->
+
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="#00000000" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="14dip"
+                android:layout_marginRight="14dip"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/sf_content_text"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dip"
+                    android:text="@string/Subscribe_head"
+                    android:textColor="#ff898989"
+                    android:textSize="18dip" />
+
+                <Button
+                    android:id="@+id/btSubscribe"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dip"
+                    android:layout_marginLeft="8dip"
+                    android:layout_marginRight="8dip"
+                    android:layout_marginTop="20dip"
+                    android:background="@drawable/btsubscribe_bg"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:gravity="center"
+                    android:paddingBottom="5dip"
+                    android:paddingLeft="20dip"
+                    android:paddingRight="20dip"
+                    android:paddingTop="5dip"
+                    android:text="@string/Subscribe_button_Text"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+<Button
+                    android:id="@+id/btRecoverybuy"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dip"
+                    android:layout_marginLeft="8dip"
+                    android:layout_marginRight="8dip"
+                    android:background="@drawable/btrecoverybuy_bg"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:gravity="center"
+                    android:paddingBottom="5dip"
+                    android:paddingLeft="20dip"
+                    android:paddingRight="20dip"
+                    android:paddingTop="5dip"
+                    android:text="@string/Subscribe_btRecoverybuy_Text"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dip"
+                    android:text="@string/Subscribe_note"
+                    android:textColor="#ff898989"
+                    android:textSize="18dip" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+</RelativeLayout>

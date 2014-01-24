@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/Head"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:background="@drawable/top_bg" >
+
+        <TextView
+            android:id="@+id/Title"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="@string/info_voa_title"
+            android:textColor="#ffffff"
+            android:textSize="22dip" />
+
+        <ImageButton
+            android:id="@+id/btBack"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:background="#0587a8"
+            android:src="@drawable/tab_left_bg"
+            android:textSize="16dp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/rlBottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="5dip"
+        android:layout_marginLeft="5dip"
+        android:layout_marginRight="5dip"
+        android:orientation="horizontal"
+        android:paddingBottom="1dip" >
+
+        <!-- android:src="@drawable/bt_empty_favorite" -->
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/info_view_btn_bg"
+            android:orientation="horizontal"
+            android:paddingBottom="1dip" >
+
+            <ImageView
+                android:id="@+id/btPlay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingBottom="3dip"
+                android:paddingLeft="5dip"
+                android:paddingRight="2dip"
+                android:paddingTop="3dip"
+                android:scaleType="center"
+                android:src="@drawable/info_voa_play" />
+
+            <SeekBar
+                android:id="@+id/info_voa_mp3progressBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="40dip"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="#00000000"
+                android:max="100"
+                android:maxHeight="20dip"
+                android:minHeight="20dip"
+                android:progress="0"
+                android:progressDrawable="@drawable/voa_progressbar_style"
+                android:thumb="@drawable/seekbar_thumb" />
+            <!-- android:thumb="@drawable/seekbar_thumb" -->
+            <!-- android:thumb="@drawable/seekbar_thumb" -->
+
+            <TextView
+                android:id="@+id/tvStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="6dip"
+                android:paddingBottom="3dip"
+                android:paddingRight="3dip"
+                android:paddingTop="3dip"
+                android:text="00:00" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/btAddFavorite"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            android:background="@drawable/info_view_btn_bg"
+            android:paddingBottom="5dip"
+            android:paddingLeft="15dip"
+            android:paddingRight="15dip"
+            android:paddingTop="5dip"
+            android:scaleType="center"
+            android:src="@drawable/bt_favorite_nor" />
+
+        <ImageView
+            android:id="@+id/btShare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/info_view_btn_bg"
+            android:gravity="center"
+            android:scaleType="center"
+            android:src="@drawable/btshare"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/wvBrower"
+        style="@style/scrollstyle"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/rlBottom"
+        android:layout_below="@id/Head"
+        android:background="#fff5f5f5"
+        android:divider="@null"
+        android:dividerHeight="0px"
+        android:textColor="#ff3b3b3b"
+        android:textSize="18dp" />
+
+    <RelativeLayout
+        android:id="@+id/rlNoNetwork"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/rlBottom"
+        android:layout_below="@id/Head"
+        android:background="#fff5f5f5"
+        android:orientation="vertical"
+        android:paddingBottom="1dip"
+        android:paddingTop="20dip"
+        android:visibility="gone" >
+
+        <LinearLayout
+            android:id="@+id/lyLoading"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="#00000000"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:paddingTop="20dip"
+            android:visibility="gone" >
+
+            <ProgressBar
+                android:id="@+android:id/progress_small_title"
+                style="?android:attr/progressBarStyleSmallTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/loading_msg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1.0dip"
+                android:gravity="center_vertical|center_horizontal"
+                android:paddingLeft="6.0dip"
+                android:paddingTop="2.0dip"
+                android:text="@string/info_loading"
+                android:textColor="@color/TLTitleText"
+                android:textSize="16dip" >
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tvError_msg"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="#fff5f5f5"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingTop="20dip" >
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:paddingTop="100dip"
+                android:src="@drawable/loading_logo" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="1.0dip"
+                android:background="#00000000"
+                android:gravity="center_horizontal"
+                android:paddingLeft="6.0dip"
+                android:paddingTop="10dip"
+                android:text="@string/info_download_error"
+                android:textColor="@color/TLTitleText"
+                android:textSize="16dip" >
+            </TextView>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btNoNetwork"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="1dip"
+            android:layout_weight="1"
+            android:background="@drawable/bt_empty_favorite"
+            android:text="@string/info_home_conversation_title"
+            android:textSize="14dip"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+</RelativeLayout>

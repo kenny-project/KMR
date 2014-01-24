@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#fff5f5f5" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent" >
+
+            <TextView
+                android:id="@+id/daily_date_mouth"
+                android:layout_width="30dip"
+                android:layout_height="35dip"
+                android:layout_marginLeft="3dip"
+                android:layout_marginTop="10dip"
+                android:gravity="center"
+                android:text="MAR\n2013"
+                android:textSize="12dp" />
+
+            <RelativeLayout
+                android:layout_width="35dip"
+                android:layout_height="fill_parent"
+                android:layout_toRightOf="@id/daily_date_mouth" >
+
+                <ImageView
+                    android:layout_width="8dip"
+                    android:layout_height="fill_parent"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginRight="16dp"
+                    android:background="#ffe1e1e1"
+                    android:scaleType="centerCrop" />
+
+                <!-- android:layout_alignRight="@+id/daily_date_day" -->
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/daily_date_day"
+                android:layout_width="35dip"
+                android:layout_height="35dip"
+                android:layout_marginTop="10dip"
+                android:layout_toRightOf="@id/daily_date_mouth"
+                android:gravity="center"
+                android:text="23"
+                android:textColor="#FFFFFFFF"
+                android:textSize="23dp"
+                android:textStyle="normal" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:layout_weight="1"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
+
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content" >
+
+                        <ImageView
+                            android:id="@+id/daily_image"
+                            android:layout_width="235dip"
+                            android:layout_height="140dip"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginLeft="5dip"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/info_all_bg" />
+
+
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dip"
+                    android:layout_marginRight="10dip"
+                    android:layout_marginTop="1dip"
+                    android:orientation="vertical" >
+
+                    <com.kenny.comui.CircleImageButton
+                        android:id="@+id/info_btn_share"
+                        android:layout_width="35dip"
+                        android:layout_height="35dip"
+                        android:background="#00000000"
+                        android:focusable="false"
+                        android:src="@drawable/info_share_nor" />
+
+                    <com.kenny.comui.CircleImageButton
+                        android:id="@+id/info_btn_add"
+                        android:layout_width="35dip"
+                        android:layout_height="35dip"
+                        android:layout_marginTop="15dip"
+                        android:background="#00000000"
+                        android:focusable="false"
+                        android:src="@drawable/info_add_nor" />
+                    <com.kenny.comui.CircleImageButton
+                        android:id="@+id/info_voice"
+                        android:layout_width="35dip"
+                        android:layout_height="35dip"
+                        android:layout_marginTop="15dip"
+                        android:background="#00000000"
+                        android:focusable="false"
+                        android:src="@drawable/info_voice_nor" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- android:layout_marginTop="2dip" -->
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dip"
+                android:paddingTop="8dip" 
+                 >
+
+                <TextView
+                    android:id="@+id/daily_content"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="11dip"
+                    
+                    android:text="Penny 11111"
+                    android:textColor="#232323"
+                    android:textSize="20dip" />
+                <!-- android:lineSpacingMultiplier="1.2" -->
+
+                <TextView
+                    android:id="@+id/daily_note"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/daily_content"
+                    android:layout_marginRight="11dip"
+                    android:layout_marginTop="1dip"
+                    android:lineSpacingMultiplier="1.2"
+                    android:text="1111111"
+                    android:textColor="#232323"
+                    android:textSize="15dip" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/daily_translation"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dip"
+                android:layout_marginRight="12dip"
+                android:layout_marginTop="10dip"
+                android:lineSpacingMultiplier="1.2"
+                android:text="词霸小编"
+                android:textColor="#888888"
+                android:textSize="13dip" />
+
+            <ImageView
+                android:id="@+id/item_line"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dip"
+                android:layout_marginTop="5dip"
+                android:background="@drawable/item_line" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>
