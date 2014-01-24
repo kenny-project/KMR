@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/list_bg"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left|center" >
+
+        <Button
+            android:id="@+id/btRoot"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="手机" />
+
+        <Button
+            android:id="@+id/btSDCard"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="SD卡" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btClearHistory"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="清空历史" />
+
+    <ListView
+        android:id="@+id/lvHistorylist"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/list_bg"
+        android:cacheColorHint="#00000000"
+        android:divider="@drawable/list_line"
+        android:dividerHeight="2px" />
+
+</LinearLayout>

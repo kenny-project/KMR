@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/ContentTitleBG" >
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="25dip"
+        android:paddingRight="10dip"
+        android:paddingTop="10dip"
+        android:paddingBottom="10dip"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:singleLine="true"
+        android:text="title"
+        android:textColor="@color/black"
+        android:textSize="23sp" >
+    </TextView>
+
+</RelativeLayout>

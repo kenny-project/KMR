@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <TextView
+        android:id="@+id/TextViewTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="30dip"
+        android:background="@drawable/title_bar"
+        android:singleLine="true"
+        android:textSize="20sp" />
+
+    <LinearLayout
+        android:id="@+id/lyTools"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" >
+
+        <Button
+            android:id="@+id/ButtonEncode"
+            android:layout_width="100dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/button_encode" />
+
+        <Button
+            android:id="@+id/ButtonEdit"
+            android:layout_width="100dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/button_edit" />
+
+        <Button
+            android:id="@+id/ButtonRefer"
+            android:layout_width="100dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/button_refer"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/ButtonExit"
+            android:layout_width="100dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/btBack" >
+        </Button>
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/frameLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@id/lyTools"
+        android:layout_below="@id/TextViewTitle" >
+
+        <ScrollView
+            android:id="@+id/scrollView1"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+
+            <TextView
+                android:id="@+id/TextViewDetail"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:gravity="top"
+                android:textSize="20sp" >
+            </TextView>
+        </ScrollView>
+
+        <WebView
+            android:id="@+id/webViewDetail"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="top"
+            android:textSize="20sp"
+            android:visibility="gone" />
+    </FrameLayout>
+
+    <EditText
+        android:id="@+id/EditTextDetail"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@id/lyTools"
+        android:layout_below="@id/TextViewTitle"
+        android:gravity="top"
+        android:textSize="20sp"
+        android:visibility="gone" >
+    </EditText>
+
+</RelativeLayout>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items>
+
+    <item
+        ends="mp3|mid|xmf|wav|ogg|wma|wav|amr"
+        title="音乐"
+        path=""
+        img="f_audio.png"/>
+    <item
+        ends="jpg|gif|png|bmp|jpeg|ico"
+        title="图片"
+        path=""
+        img="f_image.png"/>
+
+    <item
+        ends="3gp|mp4|rmvb|avi|rm|flv|mkv"
+        title="视频"
+        path=""
+        img="f_video.png"/>
+
+    <item
+        ends="txt|ini|log"
+        title="文本文件"
+        path=""
+        img="f_txt.png"/>
+
+    <item
+        ends="html|htm|mht|asp|jsp|xml"
+        title="网页"
+        path=""
+        img="f_web.png"/>
+
+    <item
+        ends="zip|rar|7z|gz|iso"
+        title="压缩文件"
+        path=""
+        img="f_zip.png"/>
+
+    <item
+        ends="apk|exe"
+        title="安装包"
+        path=""
+        img="f_app.png"/>
+
+    <item
+        ends="vcf"
+        title="名片"
+        path=""
+        img="f_vcf.png"/>
+
+    <item
+        ends="pdf"
+        title="PDF电子书"
+        path=""
+        img="f_pdf.png"/>
+
+    <item
+        ends="docx|doc"
+        title="Word文档"
+        path=""
+        img="f_doc.png"/>
+
+    <item
+        ends="ppt"
+        title="PPT文档"
+        path=""
+        img="f_doc.png"/>
+
+    <item
+        ends="psd"
+        title="Photoshop文档"
+        path=""
+        img="f_psd.png"/>
+
+    <item
+        ends="xls"
+        title="Excel文档"
+        path=""
+        img="f_xls.png"/>
+
+</items>

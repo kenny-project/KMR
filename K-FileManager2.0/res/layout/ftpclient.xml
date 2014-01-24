@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#00000000" >
+
+    <TextView
+        android:id="@+id/mCurrentPath"
+        android:layout_width="fill_parent"
+        android:layout_height="30dip"
+        android:background="@drawable/title_bar"
+        android:singleLine="true"
+        android:textColor="@color/white"
+        android:textSize="20dip" >
+    </TextView>
+
+    <LinearLayout
+        android:id="@+id/TopTable"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/mCurrentPath" >
+
+        <Button
+            android:id="@+id/btLocal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/tab_normal"
+            android:drawableTop="@drawable/tab_local_normal"
+            android:text="本地"
+            android:textColor="@color/tab_TextColor_normal" />
+
+        <Button
+            android:id="@+id/btNetWork"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/tab_normal"
+            android:drawableTop="@drawable/tab_network_normal"
+            android:text="网络"
+            android:textColor="@color/tab_TextColor_normal" />
+
+        <Button
+            android:id="@+id/btLog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/tab_normal"
+            android:drawableTop="@drawable/tab_apps_normal"
+            android:text="列表"
+            android:textColor="@color/tab_TextColor_normal" />
+
+        <Button
+            android:id="@+id/btSetting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/tab_normal"
+            android:drawableTop="@drawable/tab_task_normal"
+            android:text="设置"
+            android:textColor="@color/tab_TextColor_normal"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/TopTable" >
+
+        <RelativeLayout
+            android:id="@+id/Remotepannal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+
+            <ListView
+                android:id="@+id/lvremotelist"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@color/list_bg"
+                android:cacheColorHint="#00000000" >
+            </ListView>
+
+            <ScrollView
+                android:id="@+id/scrollView1"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_above="@id/lyBTools"
+                android:visibility="gone"
+                 >
+                <TextView
+                    android:id="@+id/tvLog"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@color/HomeItemBG"
+                    android:text="ffdsafdsafdsafdsafdsafdasfdsafdsafdsafdsafdsafdsa"
+                    android:textSize="14px" />
+            </ScrollView>
+
+            <LinearLayout
+                android:id="@+id/lyBTools"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/toolbar_backgroud"
+                android:gravity="fill"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/btContent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="1dip"
+                    android:layout_weight="1"
+                    android:background="#00000000"
+                    android:drawableTop="@drawable/menu_selall"
+                    android:text="连接"
+                    android:textColor="@color/ContentTitleText"
+                    android:textSize="13dip" />
+
+                <Button
+                    android:id="@+id/btDownLoad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="1dip"
+                    android:layout_weight="1"
+                    android:background="#00000000"
+                    android:drawableTop="@drawable/menu_selall"
+                    android:text="下载"
+                    android:textColor="@color/ContentTitleText"
+                    android:textSize="13dip" />
+
+                <Button
+                    android:id="@+id/btClose"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="1dip"
+                    android:layout_weight="1"
+                    android:background="#00000000"
+                    android:drawableTop="@drawable/menu_selall"
+                    android:text="断开"
+                    android:textColor="@color/ContentTitleText"
+                    android:textSize="13dip" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/Localpannal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:visibility="gone" >
+
+            <ListView
+                android:id="@+id/lvLocalList"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@color/list_bg"
+                android:cacheColorHint="#00000000" />
+
+            <LinearLayout
+                android:id="@+id/lyBTools"
+                android:layout_width="fill_parent"
+                android:layout_height="70dip"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/toolbar_backgroud"
+                android:gravity="fill"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/btUploading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="1dip"
+                    android:layout_weight="1"
+                    android:background="#00000000"
+                    android:drawableTop="@drawable/menu_selall"
+                    android:text="上传"
+                    android:textColor="@color/ContentTitleText"
+                    android:textSize="13dip" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/Logpannal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/Settingpannal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:visibility="gone" >
+
+            <ScrollView
+                android:id="@+id/PreferenceScrollView"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_above="@id/lyBottom"
+                android:background="@color/Setting_BG" >
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@color/Setting_BG"
+                    android:orientation="vertical" >
+
+                    <ImageView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:src="@color/Setting_Button_TextColor" />
+
+                    <TextView
+                        android:id="@+id/DictionarySettingsTextView"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#00000000"
+                        android:text="名称"
+                        android:textColor="@color/Setting_Button_TextColor"
+                        android:textSize="16px"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/etTitle"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:hint="例如:小王的电脑"
+                        android:phoneNumber="false"
+                        android:singleLine="true"
+                        android:text="aa" />
+
+                    <ImageView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:src="@color/Setting_Button_TextColor" />
+
+                    <TextView
+                        android:id="@+id/DictionarySettingsTextView"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/Setting_BG"
+                        android:text="FTP地址:"
+                        android:textColor="@color/Setting_Button_TextColor"
+                        android:textSize="16px"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/etFTPAddr"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:hint="例如:192.168.19.1"
+                        android:saveEnabled="false"
+                        android:singleLine="true"
+                        android:text="www.km530.com" />
+
+                    <LinearLayout
+                        android:id="@+id/lyAnonymous"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#00000000"
+                        android:orientation="vertical" >
+
+                        <ImageView
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:src="@color/Setting_Button_TextColor" />
+
+                        <TextView
+                            android:id="@+id/DictionarySettingsTextView"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/Setting_BG"
+                            android:text="用户名:"
+                            android:textColor="@color/Setting_Button_TextColor"
+                            android:textSize="16px"
+                            android:textStyle="bold" />
+
+                        <EditText
+                            android:id="@+id/etUserName"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
+                            android:hint="例如:Admin"
+                            android:saveEnabled="false"
+                            android:singleLine="true"
+                            android:text="kenny" />
+
+                        <ImageView
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:src="@color/Setting_Button_TextColor" />
+
+                        <TextView
+                            android:id="@+id/DictionarySettingsTextView"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#00000000"
+                            android:text="密码:"
+                            android:textColor="@color/Setting_Button_TextColor"
+                            android:textSize="16px"
+                            android:textStyle="bold" />
+
+                        <EditText
+                            android:id="@+id/etPassWord"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
+                            android:hint=""
+                            android:phoneNumber="false"
+                            android:singleLine="true"
+                            android:text="woaiwo" />
+
+                        <ImageView
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:src="@color/Setting_Button_TextColor" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#00000000"
+                            android:text="端口:"
+                            android:textColor="@color/Setting_Button_TextColor"
+                            android:textSize="16px"
+                            android:textStyle="bold" />
+
+                        <EditText
+                            android:id="@+id/etPort"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:digits="1234567890"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
+                            android:numeric="integer"
+                            android:phoneNumber="false"
+                            android:singleLine="true"
+                            android:text="21" />
+
+                        <ImageView
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:src="@color/Setting_Button_TextColor" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="#00000000"
+                            android:text="编码:"
+                            android:textColor="@color/Setting_Button_TextColor"
+                            android:textSize="16px"
+                            android:textStyle="bold" />
+
+                        <Spinner
+                            android:id="@+id/spEncode"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <CheckBox
+                            android:id="@+id/cbAnonymousSetting"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:checked="false"
+                            android:paddingBottom="5dip"
+                            android:paddingTop="5dip"
+                            android:text="匿名访问"
+                            android:textColor="@color/Setting_Button_TextColor" />
+
+                        <CheckBox
+                            android:id="@+id/cbAdvancedSetting"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:checked="false"
+                            android:paddingBottom="5dip"
+                            android:paddingTop="5dip"
+                            android:text="高级设置"
+                            android:textColor="@color/Setting_Button_TextColor"
+                            android:visibility="gone" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/lyAdvanced"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#00000000"
+                        android:orientation="vertical" >
+                    </LinearLayout>
+                </LinearLayout>
+            </ScrollView>
+        </RelativeLayout>
+    </FrameLayout>
+
+</RelativeLayout>

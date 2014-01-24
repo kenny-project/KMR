@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#00000000"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/lyTools"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/top_bg"
+        android:visibility="gone" >
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="@string/SearchResult_Title"
+            android:textColor="#ffffff"
+            android:textSize="22dip" />
+
+        <Button
+            android:id="@+id/btSearch1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/tab_search_bg"
+            android:textSize="16dip" />
+
+        <Button
+            android:id="@+id/btBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/tab_left_bg"
+            android:textSize="16dip" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/lyTools3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lyTools"
+        android:background="@drawable/inside_search_bg"
+        android:padding="5dip" >
+
+        <Button
+            android:id="@+id/btSearchMode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/file_manager_browser_path"
+            android:text="全部"
+            android:textColor="#737373"
+            android:textSize="16dip" />
+
+        <EditText
+            android:id="@+id/etSearchFileName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dip"
+            android:layout_weight="0.79"
+            android:background="@drawable/inside_search"
+            android:ellipsize="start"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center_vertical"
+            android:hint="请输入要查询的文件"
+            android:singleLine="true"
+            android:textColor="#737373"
+            android:textSize="17dp" />
+
+        <Button
+            android:id="@+id/btSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="5dip"
+            android:background="@drawable/file_manager_browser_path"
+            android:text="搜索"
+            android:textColor="#737373"
+            android:textSize="16dip" />
+
+        <Button
+            android:id="@+id/btOptions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="5dip"
+            android:background="@drawable/file_manager_browser_path"
+            android:text="高级"
+            android:textColor="#737373"
+            android:textSize="16dip" />
+    </LinearLayout>
+<TextView 
+            android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lyTools3"
+        android:id="@+id/tvSearchNotify"
+        android:background="@color/ContentTitleBG"
+        android:textColor="@color/ContentTitleText"
+        android:text="搜索路径:/mnt/sdcard/"
+        android:singleLine="true"
+        />
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/tvSearchNotify"
+        android:background="@color/white" >
+
+        <ListView
+            android:id="@+id/lvLocallist"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/list_bg"
+            android:cacheColorHint="#00000000"
+            android:divider="@drawable/list_line"
+            android:dividerHeight="2px"
+            android:fastScrollEnabled="true" />
+    <LinearLayout
+        android:id="@+id/lySearchMode"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:visibility="gone"
+        >
+        <ListView
+            android:id="@+id/lvSearchMode"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#00000000"
+            android:cacheColorHint="#00000000"
+            android:divider="@drawable/list_line"
+            android:dividerHeight="2px"
+            android:fastScrollEnabled="true" 
+            />
+        </LinearLayout>
+    </FrameLayout>
+    <LinearLayout
+        android:id="@+id/lyBTools"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/toolbar_backgroud"
+        android:gravity="fill"
+        android:orientation="horizontal"
+        >
+
+        <Button
+            android:id="@+id/btSelectAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="1dip"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:drawableTop="@drawable/menu_selall"
+            android:text="@string/btSelectAll"
+            android:textColor="@color/ContentTitleText"
+            android:textSize="13dip" />
+
+        <Button
+            android:id="@+id/btCopy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="1dip"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:drawableTop="@drawable/menu_copy"
+            android:text="@string/btCopy"
+            android:textColor="@color/ContentTitleText"
+            android:textSize="13dip" />
+
+        <Button
+            android:id="@+id/btCut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="1dip"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:drawableTop="@drawable/menu_cut"
+            android:text="@string/btCut"
+            android:textColor="@color/ContentTitleText"
+            android:textSize="13dip" />
+
+        <Button
+            android:id="@+id/btPaste"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="1dip"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:drawableTop="@drawable/menu_paste"
+            android:text="@string/btPaste"
+            android:textColor="@color/ContentTitleText"
+            android:textSize="13dip"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="1dip"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:drawableTop="@drawable/menu_delete"
+            android:text="@string/btDelete"
+            android:textColor="@color/ContentTitleText"
+            android:textSize="13dip" />
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+       <item
+        android:id="@+id/muAboutDialog"
+        android:icon="@drawable/common_icon_menu_info"
+        android:title="@string/m_About"/>
+
+    <item
+        android:id="@+id/muSetting"
+        android:icon="@drawable/common_ic_menu_setting"
+        android:title="@string/m_Setting"/>
+    <item
+        android:id="@+id/muExit"
+        android:icon="@drawable/common_ic_menu_exit"
+        android:title="@string/m_Exit"/>
+</menu>

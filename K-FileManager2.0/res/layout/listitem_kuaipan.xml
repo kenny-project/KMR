@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#00000000" >
+
+    <RelativeLayout
+        android:id="@+id/rlLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#00000000" >
+
+        <RelativeLayout
+            android:id="@+id/flayout"
+            android:layout_width="48dip"
+            android:layout_height="48dip"
+            android:layout_marginBottom="2dip"
+            android:layout_marginLeft="15dip"
+            android:layout_marginRight="3dip"
+            android:layout_marginTop="2dip" >
+
+            <ImageView
+                android:id="@+id/image_list_childs"
+                android:layout_width="48dip"
+                android:layout_height="48dip"
+                android:scaleType="fitCenter" >
+            </ImageView>
+
+            <ImageView
+                android:id="@+id/image_list_exists"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:adjustViewBounds="true"
+                android:src="@drawable/list_icon_security" />
+        </RelativeLayout>
+
+        <CheckBox
+            android:id="@+id/cbChecked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:button="@drawable/common_checkbox_selector"
+            android:focusable="false"
+            android:focusableInTouchMode="true" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="2dip"
+            android:layout_toLeftOf="@id/cbChecked"
+            android:layout_toRightOf="@id/flayout"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="marquee"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:singleLine="true"
+                android:textColor="@color/list_item_TextColer"
+                android:textSize="20sp" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/tvDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="marquee"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:singleLine="true"
+                android:text=""
+                android:textColor="@color/list_item_TextColer"
+                android:textSize="14sp" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/tvFlags"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="marquee"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:singleLine="true"
+                android:text=""
+                android:textColor="@color/list_item_TextColer"
+                android:textSize="14sp"
+                android:visibility="gone" >
+            </TextView>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/lyTools"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rlLayout" 
+        android:visibility="gone"
+        >
+        <Button
+            android:id="@+id/btShare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="1dip"
+            android:layout_weight="1"
+            android:background="@color/list_ctrl_bg"
+            android:drawableTop="@drawable/icon_action_share_link_normal"
+            android:text="@string/btShare"
+            android:textColor="@color/list_item_TextColer"
+            android:textSize="13dip" />
+        
+        <Button
+            android:id="@+id/btDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="1dip"
+            android:layout_weight="1"
+            android:background="@color/list_ctrl_bg"
+            android:drawableTop="@drawable/icon_action_delete_normal"
+            android:text="@string/btDelete"
+            android:textColor="@color/list_item_TextColer"
+            android:textSize="13dip" />
+
+        <Button
+            android:id="@+id/btDownload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="1dip"
+            android:layout_weight="1"
+            android:background="@color/list_ctrl_bg"
+            android:drawableTop="@drawable/icon_action_download"
+            android:text="@string/btDownload"
+            android:textColor="@color/list_item_TextColer"
+            android:textSize="13dip" />
+    </LinearLayout>
+
+</RelativeLayout>

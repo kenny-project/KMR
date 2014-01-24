@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#00000000"
+    android:orientation="vertical" >
+
+    <!-- android:background="@drawable/pannel_bg" -->
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/popup_top" >
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvTitle"
+            android:text="@string/FavoritesDialog_Title" 
+            android:textColor="@color/white"
+            android:textSize="16.0sp"
+            android:layout_marginLeft="5dp"
+            />
+    </LinearLayout>
+   
+
+    <ListView
+        android:id="@+id/lvList"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:background="@drawable/popup_center"
+        android:cacheColorHint="#00000000"
+        android:divider="@drawable/list_line"
+        android:dividerHeight="2dp" />
+     <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/popup_center"
+        android:gravity="left|center"
+        android:visibility="gone"
+         >
+                <Button
+            android:id="@+id/btClearData"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/btn_wificonfig_select"
+            android:text="清空"
+        android:layout_marginLeft="40dip"
+        android:layout_marginRight="40dip"
+        android:layout_marginTop="5dip"
+             />
+        <Button
+            android:id="@+id/btHistory"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/btn_default_select"
+            android:text="历史记录"
+            android:textColor="#337ddc"
+            android:textSize="18dp"
+        android:layout_marginLeft="40dip"
+        android:layout_marginRight="40dip"
+        android:layout_marginTop="5dip"
+             />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/popup_bottom" >
+    </LinearLayout>
+</LinearLayout>

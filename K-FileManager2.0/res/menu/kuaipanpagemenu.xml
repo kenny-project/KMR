@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item
+        android:id="@+id/muClearCache"
+        android:icon="@drawable/common_icon_clean"
+        android:title="@string/m_ClearCache"/>
+<!--      <item
+        android:id="@+id/muSetting"
+        android:icon="@drawable/common_ic_menu_setting"
+        android:title="@string/m_Setting"
+        android:visible="gone"/>
+        -->
+    <item
+        android:id="@+id/muLogout"
+        android:icon="@drawable/common_icon_setas_on"
+        android:title="@string/m_Logout"/>
+</menu>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--  <color name="title">#ff00133E</color>-->
+    <color name="favorpage_status_textColor">#ff00133E</color>
+    <color name="setting_group_BG">#ff191919</color>
+    <color name="setting_group_TextColor">#ffbebebe</color>
+    
+    <color name="no_back">#00000000</color>
+    <color name="title">#ff2e2e2e</color>
+    <color name="desc">#ff949494</color>
+    <color name="ProgressBG">#C8c8c8</color>
+    <color name="Progress">#f8f8f8</color>
+    <color name="Secondary">#ffe7f3f7</color>
+    
+    <color name="AboutBG">#f8f8f8</color>
+    <color name="SideButtonBG">#000000</color>
+    <color name="back_ground">#d7d7d7</color>
+    
+    <color name="MusicFileAdapter_SelectItem">#ff07c2f1</color> <!-- 系统设置栏颜色 -->
+    <color name="MusicFileAdapter_NormalItem">#ffd7d7d7</color> <!-- 系统设置栏颜色 -->
+    
+    <color name="ContentText">#000000</color>
+    <color name="ContentBack">#F8F8F8</color>
+    <color name="ContentToolBG">#3888e0</color>
+    <color name="ContentButtonBG">#386898</color>
+    <color name="ContentTitleBG">#a8d0f0</color>
+    <color name="ContentTitleText">#ffffff</color>
+    <color name="TLStatusText">#000000</color>
+    <!-- <color name="TLStatusText">#b0b0b0</color> -->
+    <color name="TLSeparatorBG">#C8c8c8</color>
+    <color name="test">#C8c8f0</color>
+    <color name="green">#00ff00</color>
+    <color name="red">#ff0000</color>
+
+    <!-- CreateFileDialog -->
+    <color name="CreateFile_RadioTextColor">#ff313439</color>
+    <color name="CreateFile_BG">#ffe7f3f7</color>
+    <!-- CreateFileDialog end -->
+    <!--
+	<color name="TLTitleText">#ffffff</color>
+	  <color name="TypeListBG">#181818</color>
+	  <color name="HomeItemTitle">#ffffff</color>
+    -->
+    <color name="HomeItemTitle">#000000</color> <!-- HOMELIST列表Title字体颜色 -->
+    <color name="HomeItemTitlebg">#7794b4</color> <!-- HOMELIST列表Title字体颜色 -->
+    <color name="HomeItemSelectbg">#4a6518</color> <!-- 选 重背景颜色 HOMELIST列表Title字体颜色 -->
+    <color name="HomeItemShowDescbg">#bdcfe4</color> <!-- 选 重背景颜色 HOMELIST列表Title字体颜色 -->
+    <color name="HomeItemBG">#f0f0f0</color> <!-- HOME listitem 背景 -->
+    <color name="TLTitleText">#000000</color>
+    <color name="TypeListBG">#f0f0f0</color>
+    <color name="HomeItemDesc">#1a2b40</color> <!-- HOMELIST列表字体颜色 -->
+    <color name="tabToolsbg">#1c2e46</color> <!-- 功具条控制背影颜色 -->
+    <color name="tabTools_focusebg">#546b8b</color> <!-- 功具条控制背影颜色 -->
+
+    <color name="tab_TextColor_selected">#000000</color> <!-- 功具条控制背影颜色 -->
+    <color name="tab_TextColor_normal">#FFFFFFFF</color> <!-- 功具条控制背影颜色 -->
+
+	<color name="btSetting_Selecter_Pressed">#ffe7f3f7</color> <!-- 系统配置背景信息 -->
+	<color name="btSetting_Selecter_bg">#f9f9f9</color> <!-- 系统配置背景信息 -->
+
+    <color name="Setting_BG">#f9f9f9</color> <!-- 系统配置背景信息 -->
+    <color name="Setting_Button_TextColor">#000000</color> <!-- 系统配置背景信息 -->
+    <color name="Setting_line_Color">#ffe7f3f7</color> <!-- 系统配置背景信息 -->
+    
+    <color name="Setting_Button_Desc_TextColor">#aaaaaa</color> <!-- 系统配置背景信息 -->
+
+    <color name="btSetting_focusebg">#000000</color> <!-- 系统设置栏颜色 -->
+    <color name="btSetting_state_pressed">#f0f0f0</color> <!-- 系统设置栏颜色 -->
+    <color name="Setting_Desc_BG">#212121</color> <!-- 系统设置栏颜色 -->
+
+    <color name="list_bg">#ffe7f3f7</color>
+    <color name="list_ctrl_bg">#ffcfd8db</color>
+    
+    <color name="list_item_TextColer">#ff313439</color>
+    <color name="white">#ffffffff</color>
+    <color name="black">#ff000000</color>
+    <color name="headTextColor">#ffffffff</color>
+    <color name="NetStatusTextColor">#ff000000</color>
+    <color name="comm_msg_color">#ff000000</color>
+
+    <!-- Retrieved via Resources.getDrawable() and friends. -->
+    <drawable name="semi_black">#80000000</drawable>
+
+</resources>

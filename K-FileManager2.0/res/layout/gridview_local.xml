@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="5dip"
+    android:orientation="vertical"
+    >
+
+    <!-- android:background="@drawable/grid_item_bg" -->
+    <RelativeLayout
+        android:id="@+id/flItemImage1"
+        android:layout_width="75dip"
+        android:layout_height="75dip"
+        android:layout_marginRight="3dip"
+        android:layout_marginLeft="3dip"
+        android:background="@drawable/grid_item_bg"
+        android:layout_centerInParent="true"
+        >
+<ImageView
+        android:id="@+id/rlBackground"
+        android:layout_width="75dip"
+        android:layout_height="75dip" 
+		android:layout_centerVertical="true"
+        android:scaleType="fitXY"
+        android:visibility="gone"
+     />
+        <ImageView
+            android:id="@+id/image_list_childs"
+            android:layout_width="48dip"
+            android:layout_height="48dip"
+            android:layout_centerInParent="true"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true" 
+            />
+        <CheckBox
+            android:id="@+id/cbChecked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:button="@drawable/common_checkbox_selector"
+            android:focusable="false"
+            android:focusableInTouchMode="true" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/flItemImage1"
+        android:gravity="center_horizontal"
+        android:textColor="@color/list_item_TextColer"
+        android:textSize="12dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="3dip"
+        android:layout_marginLeft="3dip"
+        />
+
+    <TextView
+        android:id="@+id/tvDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:singleLine="true"
+        android:textColor="@color/list_item_TextColer"
+        android:textSize="14sp"
+        android:visibility="gone" >
+    </TextView>
+
+    <TextView
+        android:id="@+id/tvFlags"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:singleLine="true"
+        android:textColor="@color/list_item_TextColer"
+        android:textSize="14sp"
+        android:visibility="gone" >
+    </TextView>
+</LinearLayout>

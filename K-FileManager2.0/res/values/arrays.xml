@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2007 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+  
+          http://www.apache.org/licenses/LICENSE-2.0
+  
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<resources>
+    <string-array name="viewStyle" >
+        <item>列表</item>
+        <item>图标</item>
+    </string-array>
+    <string-array name="SearchMode">
+        <item>全部</item>
+        <item>音乐</item>
+        <item>图片</item>
+        <item>视频</item>
+        <item>文档</item>
+        <item>安装包</item>
+        <item>压缩包</item>
+    </string-array>
+    
+        
+    <string-array name="viewSort">
+        <item>默认排序</item>
+        <item>文件名称</item>
+        <item>文件大小</item>
+        <item>访问时间</item>
+    </string-array>
+        
+      <string-array name="select_dialog_FontSize">
+    	<item>特小</item>
+        <item>最小</item>
+        <item>小的</item>
+        <item>正常</item>
+        <item>大的</item>
+        <item>最大</item>
+        <item>特大</item>
+    </string-array>
+            <string-array name="select_dialog_PalseMode">
+        <item>覆盖文件</item>
+        <item>智能命名</item>
+    </string-array>
+    
+
+        
+    <string-array name="select_dialog_ThemeMode">
+    	<item>默认</item>
+        <item>黑夜</item>
+        <item>纸浆色</item>
+        <item>豆沙绿</item>
+        <item>粉红色</item>
+        <item>黄色</item>
+        <item>蓝色</item>
+        <item>米黄色</item>
+    </string-array>
+    <string-array name="fileType">
+        <item>全部</item>
+        <item>目录</item>
+        <item>文件</item>
+    </string-array>
+    <string-array name="TextEncode">
+        <item>US-ASCII</item>
+        <item>UTF-8</item>
+        <item>GBK</item>
+        <item>GB2312</item>
+        <item>ISO-8859-1</item>
+        <item>UTF-16BE</item>
+        <item>UTF-16LE</item>
+        <item>UTF-16</item>
+    </string-array>
+    <string-array name="Extension">
+        <item>.txt</item>
+        <item>.ini</item>
+        <item>.zip</item>
+        <item>.doc</item>
+    </string-array>
+
+    <string-array name="MimeType">
+        <item>文本</item>
+        <item>音乐</item>
+        <item>视频</item>
+        <item>图片</item>
+        <item>其它</item>
+    </string-array>
+</resources>
