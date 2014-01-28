@@ -27,7 +27,7 @@ public class InitEvent extends AbsEvent
 	@Override
 	public void ok()
 	{	
-//		new SubscribeInitEvent(context).run();
+		//new SubscribeInitEvent(context).run();
 		Utils.save(context, "bSubscribe", true);
 //		T.ResourceAssetsFile(main,"css", "news.css");
 //		T.ResourceAssetsFile(main,"css", "iphone.css");

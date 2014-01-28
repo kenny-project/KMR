@@ -196,8 +196,8 @@ public class InfoHomePage extends Activity {
 						MobclickAgent.onEvent(getActivity(), "Click-unfreeVOA");
 					}
 				}
-				if (result) 
-				{
+//				if (result) 
+//				{
 					Intent intent = new Intent(getActivity(),
 							InfoVOAViewPage.class);
 					intent.putExtra("url", temp.getArticleurl());
@@ -207,12 +207,12 @@ public class InfoHomePage extends Activity {
 					intent.putExtra("views", temp.getViews());
 					getActivity().startActivity(intent);
 					MobclickAgent.onEvent(getActivity(), "Click-freeVOA");
-				} else {
-					Intent intent = new Intent(getActivity(),
-							SubscribePage.class);
-					getActivity().startActivity(intent);
-					MobclickAgent.onEvent(getActivity(), "Click-subscribebutton");
-				}
+//				} else {
+//					Intent intent = new Intent(getActivity(),
+//							SubscribePage.class);
+//					getActivity().startActivity(intent);
+//					MobclickAgent.onEvent(getActivity(), "Click-subscribebutton");
+//				}
 			}
 		});
 	}
@@ -264,14 +264,15 @@ public class InfoHomePage extends Activity {
 		lySettingPanel = findViewById(R.id.lySettingPanel);
 
 		btSubscribe = (Button) findViewById(R.id.btSubscribe);
-		btSubscribe.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(getActivity(), SubscribePage.class);
-				getActivity().startActivity(intent);
-				MobclickAgent.onEvent(getActivity(), "Click-subscribebutton");
-			}
-		});
+		btSubscribe.setVisibility(View.GONE);
+//		btSubscribe.setOnClickListener(new OnClickListener() {
+//			@Override
+//			public void onClick(View v) {
+//				Intent intent = new Intent(getActivity(), SubscribePage.class);
+//				getActivity().startActivity(intent);
+//				MobclickAgent.onEvent(getActivity(), "Click-subscribebutton");
+//			}
+//		});
 		btSubscribe.setVisibility(View.INVISIBLE);
 		btFavorite = (Button) findViewById(R.id.btFavorite);
 		btFavorite.setOnClickListener(new OnClickListener() {
