@@ -116,7 +116,7 @@
                 layout="@layout/info_home_nonetwork_pannal" />
         </LinearLayout>
 
-        <com.kenny.activity.V6Setting
+        <com.kenny.activity.Setting
             android:id="@+id/lySettingPanel"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"

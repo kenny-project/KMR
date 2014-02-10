@@ -22,10 +22,9 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.Uri;
 
-import com.kenny.activity.V6LoadPage;
+import com.kenny.activity.LoadPage;
 import com.kenny.dailyenglish.R;
 import com.kenny.util.Const;
-import com.kenny.util.Log;
 import com.kenny.util.Utils;
 
 public class TimerReceiver extends BroadcastReceiver {
@@ -214,7 +213,7 @@ public class TimerReceiver extends BroadcastReceiver {
 							return;
 						}
 
-						Intent acIntent = new Intent(context, V6LoadPage.class);
+						Intent acIntent = new Intent(context, LoadPage.class);
 						acIntent.putExtra("gname", gname);
 						acIntent.putExtra("url", url);
 						acIntent.putExtra("imageUrl", "");

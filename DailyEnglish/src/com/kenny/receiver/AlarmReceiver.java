@@ -11,7 +11,7 @@ import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.kenny.activity.V6LoadPage;
+import com.kenny.activity.LoadPage;
 import com.kenny.dailyenglish.R;
 import com.kenny.util.Const;
 import com.kenny.util.Utils;
@@ -47,7 +47,7 @@ public class AlarmReceiver extends BroadcastReceiver {
 			noti.when = System.currentTimeMillis();
 			noti.tickerText = context.getString(R.string.alarm_message);
 			PendingIntent pIntent = PendingIntent.getActivity(context, 0,
-					new Intent(context, V6LoadPage.class),
+					new Intent(context, LoadPage.class),
 					PendingIntent.FLAG_UPDATE_CURRENT);
 			noti.contentIntent = pIntent;
 			noti.setLatestEventInfo(context,

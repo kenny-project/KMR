@@ -85,7 +85,7 @@ import android.widget.Toast;
 
 import com.kenny.Application.KApp;
 import com.kenny.activity.MainOld;
-import com.kenny.activity.V6Setting;
+import com.kenny.activity.Setting;
 import com.kenny.dailyenglish.R;
 import com.kenny.receiver.AlarmReceiver;
 
@@ -632,7 +632,7 @@ public class Utils {
 		notification.contentView.setTextViewText(R.id.np_app_name,
 				main.getString(R.string.app_name));
 
-		Intent i = new Intent(main, V6Setting.class);
+		Intent i = new Intent(main, Setting.class);
 		notification.contentIntent = PendingIntent.getActivity(
 				main, 0, i, 0);
 
