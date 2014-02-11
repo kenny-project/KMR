@@ -84,14 +84,14 @@ public class openDefFileEvent extends openFileEvent
 		{
 			if (Config.isOpenDefPicFile())
 			{
-//				Intent intent = new Intent(m_act, GalleryActivity.class);
-//				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//				intent.setData(Uri.fromFile(file));
-//				m_act.startActivity(intent);
-				Intent intent = new Intent();
-				intent.setClassName("com.kenny.imgviewer", "com.kenny.Image.ImageGalleryPagerActivity");
+				Intent intent = new Intent(m_act, GalleryActivity.class);
+				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				intent.setData(Uri.fromFile(file));
 				m_act.startActivity(intent);
+//				Intent intent = new Intent();
+//				intent.setClassName("com.kenny.imgviewer", "com.kenny.Image.ImageGalleryPagerActivity");
+//				intent.setData(Uri.fromFile(file));
+//				m_act.startActivity(intent);
 			} else
 			{
 				super.ok();

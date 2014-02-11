@@ -293,14 +293,13 @@ public class KuaiPanPage extends Activity implements OnItemClickListener,
 	{
 		if (oauth_token.length() == 0 || oauth_secret.length() == 0)
 		{
-			finish();
-			return true;
+//			finish();
+			return false;
 		}
-		CmdFile("..");
-		return true;
+		return CmdFile("..");
 	}
 
-	private void CmdFile(String dir)
+	private boolean CmdFile(String dir)
 	{
 		String tempPath = cli.do_cd(dir);
 		P.v("tempPath=" + tempPath);
@@ -309,11 +308,14 @@ public class KuaiPanPage extends Activity implements OnItemClickListener,
 			SysEng.getInstance().addEvent(
 					new KuaiPanFileListEvent(KuaiPanPage.this, tempPath, cli,
 							pbLoading, this));
-		} else
+			return true;
+		}
+		else
 		{
 //			Toast.makeText(KuaiPanPage.this, "已经到达根目录!", Toast.LENGTH_SHORT)
 //					.show();
-			this.finish();
+			//this.finish();
+			return false;
 		}
 	}
 
@@ -494,15 +496,17 @@ public class KuaiPanPage extends Activity implements OnItemClickListener,
 		}
 	}
 	@Override
-	public boolean onKeyDown(int keyCode, KeyEvent msg)
+	public boolean onKeyDown(int keyCode, KeyEvent event)
 	{
 		switch (keyCode)
 		{
 		case KeyEvent.KEYCODE_BACK:
-			return BackFile();
-		default:
-			return false;
+			if(BackFile())
+			{
+				return true;
+			}
 		}
+		return super.onKeyDown(keyCode, event);
 	}
 	private void ErrorOnClick()
 	{

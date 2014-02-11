@@ -31,7 +31,7 @@ public class ExitEvent extends AbsEvent
       }
       else
       {
-         CommLayer.getPMG().onDestroy();
+         //CommLayer.getPMG().onDestroy(); by wmh 
          act.finish();
          System.exit(0);
       }
@@ -48,7 +48,7 @@ public class ExitEvent extends AbsEvent
 	        {
 	           public void onClick(DialogInterface dialog, int id)
 	           {
-	              CommLayer.getPMG().onDestroy();
+//	              CommLayer.getPMG().onDestroy();
 		    activity.finish();
 		    System.exit(0);
 		    // android.os.Process.killProcess(android.os.Process

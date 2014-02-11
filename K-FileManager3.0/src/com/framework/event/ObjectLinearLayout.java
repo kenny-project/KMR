@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 
 /**
- * @author aimery 结构所需的LinearLayout
+ * @author kenny 结构所需的LinearLayout
  * */
 public class ObjectLinearLayout extends LinearLayout
 {

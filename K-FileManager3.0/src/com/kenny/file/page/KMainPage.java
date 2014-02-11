@@ -28,7 +28,7 @@ import com.kenny.file.util.Theme;
  */
 public class KMainPage extends AbsPage 
 {
-	private LocalPage m_localPage = null;
+	private AppsPage m_localPage = null;
 	// private NetworkPage m_RemotePage = null;
 	private AppsPage m_AppsPage = null;
 	//	private TaskPage m_TaskPage = null;
@@ -122,198 +122,199 @@ public class KMainPage extends AbsPage
 
 	public MultiItemPage getPage(int key)
 	{
-		MultiItemPage tempPage = m_localPage;
-		switch (key)
-		{
-		case Search:
-			tempPage = m_SearchPage;
-			break;
-		case Local:
-			tempPage = m_localPage;
-			break;
-		case NetWork:
-			// tempPage = m_RemotePage;
-			break;
-		case Favorite:
-			tempPage = m_FavoritePage;
-			break;
-		case apps:
-			tempPage = m_AppsPage;
-			break;
-//		case task:
-//			tempPage = m_TaskPage;
+//		MultiItemPage tempPage = m_localPage;
+//		switch (key)
+//		{
+//		case Search:
+//			tempPage = m_SearchPage;
 //			break;
-		case tools:
-			tempPage = m_ToolsPage;
-			break;
-		}
-		return tempPage;
+//		case Local:
+//			tempPage = m_localPage;
+//			break;
+//		case NetWork:
+//			// tempPage = m_RemotePage;
+//			break;
+//		case Favorite:
+//			tempPage = m_FavoritePage;
+//			break;
+//		case apps:
+//			tempPage = m_AppsPage;
+//			break;
+////		case task:
+////			tempPage = m_TaskPage;
+////			break;
+//		case tools:
+//			tempPage = m_ToolsPage;
+//			break;
+//		}
+//		return tempPage;
+		return null;
 	}
 
 	public int SwitchPage(final int key, Object obj)
 	{
-		// P.v("SwitchPage(final int key="+key);
-		if (m_curPage != null)
-		{
-			nLastKey = key;
-			m_curPage.onPause();
-			m_curPage.onExit();
-		}
-		if (btOldButton != null)
-		{
-			btOldButton.setBackgroundResource(R.drawable.tab_normal);
-			// btOldButton.setTextColor(m_act.getResources().getColor(
-			// R.color.tab_TextColor_normal));
-		}
-		MultiItemPage tempPage = m_localPage;
-		View btTemp = btLocal;
-		switch (key)
-		{
-		case Search:
-			tempPage = m_SearchPage;
-			btTemp = null;
-			break;
-		case Local:
-			btTemp = btLocal;
-			// MobclickAgent.onEvent(m_act,"KMainPage","localPage");
-			tempPage = m_localPage;
-			break;
-		case NetWork:
-			// btTemp = btRemote;
-			// MobclickAgent.onEvent(m_act,"KMainPage","networkPage");
-			// tempPage = m_RemotePage;
-			break;
-		case Favorite:
-			btTemp = btFavorite;
-			// MobclickAgent.onEvent(m_act,"KMainPage","favoritePage");
-			tempPage = m_FavoritePage;
-			break;
-		case apps:
-			btTemp = btApps;
-			// MobclickAgent.onEvent(m_act,"KMainPage","appPage");
-			tempPage = m_AppsPage;
-			break;
-//		case task:
-//			btTemp = btTask;
-//			tempPage = m_TaskPage;
+//		// P.v("SwitchPage(final int key="+key);
+//		if (m_curPage != null)
+//		{
+//			nLastKey = key;
+//			m_curPage.onPause();
+//			m_curPage.onExit();
+//		}
+//		if (btOldButton != null)
+//		{
+//			btOldButton.setBackgroundResource(R.drawable.tab_normal);
+//			// btOldButton.setTextColor(m_act.getResources().getColor(
+//			// R.color.tab_TextColor_normal));
+//		}
+//		MultiItemPage tempPage = m_localPage;
+//		View btTemp = btLocal;
+//		switch (key)
+//		{
+//		case Search:
+//			tempPage = m_SearchPage;
+//			btTemp = null;
 //			break;
-		case tools:
-			btTemp = btTools;
-			tempPage = m_ToolsPage;
-			break;
-		}
-		if (btTemp != null)
-			btTemp.setBackgroundResource(R.drawable.tab_select);
-		// btTemp.setTextColor(m_act.getResources().getColor(
-		// R.color.tab_TextColor_selected));
-		btOldButton = btTemp;
-		if (obj != null)
-		{
-			tempPage.setObj(obj);
-		}
-		if (tempPage != null)
-		{
-			if (!tempPage.isCreate())
-			{
-				tempPage.onCreate();
-				tempPage.onLoad();
-			}
-			m_curPage = tempPage;
-			tempPage.onResume();
-			tempPage.onReload();
-			// temp.onCreateOptionsMenu(menu);
-			this.postInvalidate();
-			return 1;
-		} else
-		{
-			P.v(key + ":未找到相应的窗体");
-		}
+//		case Local:
+//			btTemp = btLocal;
+//			// MobclickAgent.onEvent(m_act,"KMainPage","localPage");
+//			tempPage = m_localPage;
+//			break;
+//		case NetWork:
+//			// btTemp = btRemote;
+//			// MobclickAgent.onEvent(m_act,"KMainPage","networkPage");
+//			// tempPage = m_RemotePage;
+//			break;
+//		case Favorite:
+//			btTemp = btFavorite;
+//			// MobclickAgent.onEvent(m_act,"KMainPage","favoritePage");
+//			tempPage = m_FavoritePage;
+//			break;
+//		case apps:
+//			btTemp = btApps;
+//			// MobclickAgent.onEvent(m_act,"KMainPage","appPage");
+//			tempPage = m_AppsPage;
+//			break;
+////		case task:
+////			btTemp = btTask;
+////			tempPage = m_TaskPage;
+////			break;
+//		case tools:
+//			btTemp = btTools;
+//			tempPage = m_ToolsPage;
+//			break;
+//		}
+//		if (btTemp != null)
+//			btTemp.setBackgroundResource(R.drawable.tab_select);
+//		// btTemp.setTextColor(m_act.getResources().getColor(
+//		// R.color.tab_TextColor_selected));
+//		btOldButton = btTemp;
+//		if (obj != null)
+//		{
+//			tempPage.setObj(obj);
+//		}
+//		if (tempPage != null)
+//		{
+//			if (!tempPage.isCreate())
+//			{
+//				tempPage.onCreate();
+//				tempPage.onLoad();
+//			}
+//			m_curPage = tempPage;
+//			tempPage.onResume();
+//			tempPage.onReload();
+//			// temp.onCreateOptionsMenu(menu);
+//			this.postInvalidate();
+//			return 1;
+//		} else
+//		{
+//			P.v(key + ":未找到相应的窗体");
+//		}
 		return 0;
 	}
 
 	public void onCreate()
 	{
-		setContentView(R.layout.kmain);
-		lvTabs = (View) findViewById(R.id.lvTabs);
-		btLocal = findViewById(R.id.tab_local);
-		// btRemote = findViewById(R.id.tab_network);
-		btApps = findViewById(R.id.tab_apps);
-		btFavorite = findViewById(R.id.tab_Favorite);
-		// btFavorite.setVisibility(View.GONE);
-		btTask = findViewById(R.id.tab_task);
-		btTask.setVisibility(View.GONE);
-		btTools = findViewById(R.id.tab_tools);
-		btLocal.setOnClickListener(toolsOnClickListener);
-		// btRemote.setOnClickListener(toolsOnClickListener);
-		btFavorite.setOnClickListener(toolsOnClickListener);
-		btApps.setOnClickListener(toolsOnClickListener);
-		btTask.setOnClickListener(toolsOnClickListener);
-		btTools.setOnClickListener(toolsOnClickListener);
-		
-		myViewPager = (ViewPager) findViewById(R.id.viewpagerLayout);
-
-		m_localPage = new LocalPage(m_act);
-		// m_RemotePage = new NetworkPage(m_act);
-		m_FavoritePage = new FavoritePage(m_act);
-		m_AppsPage = new AppsPage(m_act);
-//		m_TaskPage = new TaskPage(m_act);
-		m_ToolsPage= new NetworkPage(m_act);
-		m_SearchPage = new SearchResultPage(m_act);
-
-		myViewPager.setAdapter(mAbsPageAdapter);
-		mListViews = new ArrayList<AbsPage>();
-
-		mListViews.add(m_SearchPage);
-		mListViews.add(m_localPage);
-		// mListViews.add(m_RemotePage);
-		mListViews.add(m_FavoritePage);
-		mListViews.add(m_AppsPage);
-//		mListViews.add(m_TaskPage);
-		mListViews.add(m_ToolsPage);
-		SwitchPage(Local);
-
-		myViewPager.setOnPageChangeListener(new OnPageChangeListener()
-		{
-
-			public void onPageSelected(int arg0)
-			{
-				// P.v("king", "onPageSelected - " + arg0);
-				// activity从1到2滑动，2被加载后掉用此方法
-				// View v = mListViews.get(arg0);
-				SwitchPage(arg0);
-			}
-
-			public void onPageScrolled(int arg0, float arg1, int arg2)
-			{
-				// P.v("king", "onPageScrolled:arg0=" + arg0);//+",arg1=" +
-				// arg1+",arg2=" + arg2);
-				// 从1到2滑动，在1滑动前调用
-			}
-
-			public void onPageScrollStateChanged(int arg0)
-			{
-				// P.v("king", "onPageScrollStateChanged - " + arg0);
-				// 状态有三个0空闲，1是增在滑行中，2目标加载完毕
-				/**
-				 * Indicates that the pager is in an idle, settled state. The
-				 * current page is fully in view and no animation is in
-				 * progress.
-				 */
-				// public static final int SCROLL_STATE_IDLE = 0;
-				/**
-				 * Indicates that the pager is currently being dragged by the
-				 * user.
-				 */
-				// public static final int SCROLL_STATE_DRAGGING = 1;
-				/**
-				 * Indicates that the pager is in the process of settling to a
-				 * final position.
-				 */
-				// public static final int SCROLL_STATE_SETTLING = 2;
-			}
-		});
-		myViewPager.setCurrentItem(Local);
-		T.SetScreenOrientation(m_act, Theme.getScreenOrientation());
+//		setContentView(R.layout.kmain);
+//		lvTabs = (View) findViewById(R.id.lvTabs);
+//		btLocal = findViewById(R.id.tab_local);
+//		// btRemote = findViewById(R.id.tab_network);
+//		btApps = findViewById(R.id.tab_apps);
+//		btFavorite = findViewById(R.id.tab_Favorite);
+//		// btFavorite.setVisibility(View.GONE);
+//		btTask = findViewById(R.id.tab_task);
+//		btTask.setVisibility(View.GONE);
+//		btTools = findViewById(R.id.tab_tools);
+//		btLocal.setOnClickListener(toolsOnClickListener);
+//		// btRemote.setOnClickListener(toolsOnClickListener);
+//		btFavorite.setOnClickListener(toolsOnClickListener);
+//		btApps.setOnClickListener(toolsOnClickListener);
+//		btTask.setOnClickListener(toolsOnClickListener);
+//		btTools.setOnClickListener(toolsOnClickListener);
+//		
+//		myViewPager = (ViewPager) findViewById(R.id.viewpagerLayout);
+//
+//		m_localPage = new AppsPage(m_act);
+//		// m_RemotePage = new NetworkPage(m_act);
+//		m_FavoritePage = new FavoritePage(m_act);
+//		m_AppsPage = new AppsPage(m_act);
+////		m_TaskPage = new TaskPage(m_act);
+//		m_ToolsPage= new NetworkPage(m_act);
+//		m_SearchPage = new SearchResultPage(m_act);
+//
+//		myViewPager.setAdapter(mAbsPageAdapter);
+//		mListViews = new ArrayList<AbsPage>();
+//
+//		mListViews.add(m_SearchPage);
+//		mListViews.add(m_localPage);
+//		// mListViews.add(m_RemotePage);
+//		mListViews.add(m_FavoritePage);
+//		mListViews.add(m_AppsPage);
+////		mListViews.add(m_TaskPage);
+//		mListViews.add(m_ToolsPage);
+//		SwitchPage(Local);
+//
+//		myViewPager.setOnPageChangeListener(new OnPageChangeListener()
+//		{
+//
+//			public void onPageSelected(int arg0)
+//			{
+//				// P.v("king", "onPageSelected - " + arg0);
+//				// activity从1到2滑动，2被加载后掉用此方法
+//				// View v = mListViews.get(arg0);
+//				SwitchPage(arg0);
+//			}
+//
+//			public void onPageScrolled(int arg0, float arg1, int arg2)
+//			{
+//				// P.v("king", "onPageScrolled:arg0=" + arg0);//+",arg1=" +
+//				// arg1+",arg2=" + arg2);
+//				// 从1到2滑动，在1滑动前调用
+//			}
+//
+//			public void onPageScrollStateChanged(int arg0)
+//			{
+//				// P.v("king", "onPageScrollStateChanged - " + arg0);
+//				// 状态有三个0空闲，1是增在滑行中，2目标加载完毕
+//				/**
+//				 * Indicates that the pager is in an idle, settled state. The
+//				 * current page is fully in view and no animation is in
+//				 * progress.
+//				 */
+//				// public static final int SCROLL_STATE_IDLE = 0;
+//				/**
+//				 * Indicates that the pager is currently being dragged by the
+//				 * user.
+//				 */
+//				// public static final int SCROLL_STATE_DRAGGING = 1;
+//				/**
+//				 * Indicates that the pager is in the process of settling to a
+//				 * final position.
+//				 */
+//				// public static final int SCROLL_STATE_SETTLING = 2;
+//			}
+//		});
+//		myViewPager.setCurrentItem(Local);
+//		T.SetScreenOrientation(m_act, Theme.getScreenOrientation());
 	}
 
 	public boolean onKeyDown(int keyCode, KeyEvent msg)

@@ -4,16 +4,17 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
-import android.view.Menu;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
@@ -22,10 +23,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.framework.event.ParamEvent;
-import com.framework.interfaces.MenuAble;
 import com.framework.log.P;
+import com.framework.page.AbsFragmentPage;
 import com.framework.page.AbsPage;
-import com.framework.page.MultiItemPage;
 import com.framework.syseng.SysEng;
 import com.kenny.KFileManager.R;
 import com.kenny.file.Event.ExitEvent;
@@ -45,13 +45,9 @@ import com.kenny.swiftp.gui.SwifFtpMain;
 import com.kuaipan.client.KuaiPanPage;
 import com.umeng.analytics.MobclickAgent;
 
-public class FavoritePage extends MultiItemPage implements MenuAble,
+public class FavoritePage extends AbsFragmentPage implements 
 		INotifyDataSetChanged, OnClickListener
 {
-	public FavoritePage(Activity context)
-	{
-		super(context);
-	}
 
 	private TextView tvPic, tvMusic, tvVideo, tvDocument, tvApp, tvZip,
 			tvMessage, tvSDFileStatus;// tvWebPage
@@ -76,54 +72,54 @@ public class FavoritePage extends MultiItemPage implements MenuAble,
 		}
 	};
 
-	public void onCreate()
+	public void onCreate(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState)
 	{
-		setContentView(R.layout.favorgrouppanel);
-		super.onCreate();
-		pbLoading = findViewById(R.id.pbLoading);
-		flMain = (FrameLayout) findViewById(R.id.flMain);
+		setContentView(R.layout.favorgrouppanel,inflater);
+		pbLoading =mView. findViewById(R.id.pbLoading);
+		flMain = (FrameLayout) mView.findViewById(R.id.flMain);
 		// flMain.setBackgroundColor(Theme.getBackgroundColor());
-		pbSDFileStatus = (ProgressBar) findViewById(R.id.pbSDFileStatus);
-		pbExternalStatus = (ProgressBar) findViewById(R.id.pbExternalStatus);
-		pbInternalStatus = (ProgressBar) findViewById(R.id.pbInternalStatus);
-		tvExternalSize = (TextView) findViewById(R.id.tvExternalSize);
-		tvInternalSize = (TextView) findViewById(R.id.tvInternalSize);
-		tvPhoneStatus = (TextView) findViewById(R.id.tvPhoneStatus);
-		btLoading_cancel = (Button) findViewById(R.id.btLoading_cancel);
+		pbSDFileStatus = (ProgressBar) mView.findViewById(R.id.pbSDFileStatus);
+		pbExternalStatus = (ProgressBar) mView.findViewById(R.id.pbExternalStatus);
+		pbInternalStatus = (ProgressBar) mView.findViewById(R.id.pbInternalStatus);
+		tvExternalSize = (TextView) mView.findViewById(R.id.tvExternalSize);
+		tvInternalSize = (TextView) mView.findViewById(R.id.tvInternalSize);
+		tvPhoneStatus = (TextView) mView.findViewById(R.id.tvPhoneStatus);
+		btLoading_cancel = (Button) mView.findViewById(R.id.btLoading_cancel);
 		btLoading_cancel.setOnClickListener(this);
 
-		tvPic = (TextView) findViewById(R.id.tvPic);
-		tvMusic = (TextView) findViewById(R.id.tvMusic);
-		tvVideo = (TextView) findViewById(R.id.tvVideo);
-		tvDocument = (TextView) findViewById(R.id.tvDocument);
-		tvApp = (TextView) findViewById(R.id.tvApp);
-		tvZip = (TextView) findViewById(R.id.tvZip);
-		tvMessage = (TextView) findViewById(R.id.tvMessage);
-		tvSDFileStatus = (TextView) findViewById(R.id.tvSDFileStatus);
+		tvPic = (TextView) mView.findViewById(R.id.tvPic);
+		tvMusic = (TextView) mView.findViewById(R.id.tvMusic);
+		tvVideo = (TextView) mView.findViewById(R.id.tvVideo);
+		tvDocument = (TextView) mView.findViewById(R.id.tvDocument);
+		tvApp = (TextView) mView.findViewById(R.id.tvApp);
+		tvZip = (TextView) mView.findViewById(R.id.tvZip);
+		tvMessage = (TextView) mView.findViewById(R.id.tvMessage);
+		tvSDFileStatus = (TextView) mView.findViewById(R.id.tvSDFileStatus);
 
-		((RelativeLayout) findViewById(R.id.btPhotoGroup))
+		((RelativeLayout) mView.findViewById(R.id.btPhotoGroup))
 				.setOnClickListener(this);
-		((RelativeLayout) findViewById(R.id.btAudioGroup))
+		((RelativeLayout) mView.findViewById(R.id.btAudioGroup))
 				.setOnClickListener(this);
-		((RelativeLayout) findViewById(R.id.btVideoGroup))
+		((RelativeLayout) mView.findViewById(R.id.btVideoGroup))
 				.setOnClickListener(this);
-		((RelativeLayout) findViewById(R.id.btDocumentGroup))
+		((RelativeLayout) mView.findViewById(R.id.btDocumentGroup))
 				.setOnClickListener(this);
-		((RelativeLayout) findViewById(R.id.btApkGroup))
+		((RelativeLayout) mView.findViewById(R.id.btApkGroup))
 				.setOnClickListener(this);
-		((RelativeLayout) findViewById(R.id.btZipGroup))
+		((RelativeLayout) mView.findViewById(R.id.btZipGroup))
 				.setOnClickListener(this);
-		((RelativeLayout) findViewById(R.id.btfavoriteGroup))
+		((RelativeLayout) mView.findViewById(R.id.btfavoriteGroup))
 				.setOnClickListener(this);
-		((RelativeLayout) findViewById(R.id.btBackupGroup))
+		((RelativeLayout) mView.findViewById(R.id.btBackupGroup))
 				.setOnClickListener(this);
-		((RelativeLayout) findViewById(R.id.btDownloadGroup))
-				.setOnClickListener(this);
-
-		((RelativeLayout) findViewById(R.id.btSwifFtp))
+		((RelativeLayout) mView.findViewById(R.id.btDownloadGroup))
 				.setOnClickListener(this);
 
-		((RelativeLayout) findViewById(R.id.btKuaiPanPage))
+		((RelativeLayout) mView.findViewById(R.id.btSwifFtp))
+				.setOnClickListener(this);
+
+		((RelativeLayout) mView.findViewById(R.id.btKuaiPanPage))
 				.setOnClickListener(this);
 
 		String Data;
@@ -164,15 +160,6 @@ public class FavoritePage extends MultiItemPage implements MenuAble,
 		Log.v("wmh", "onLoad");
 	}
 
-	public void onReload()
-	{
-		Log.v("wmh", "onReload");
-	}
-
-	public void onExit()
-	{
-		Log.v("wmh", "onExit");
-	}
 
 	private AbsPage apOldChildPage = null;
 
@@ -234,12 +221,14 @@ public class FavoritePage extends MultiItemPage implements MenuAble,
 	public void onPause()
 	{
 		Log.v("wmh", "onPause");
+		super.onPause();
 	}
 
 	public void onResume()
 	{
 		Log.v("wmh", "onResume");
 		Refresh();
+		super.onResume();
 		// flMain.setBackgroundColor(Theme.getBackgroundColor());
 	}
 
@@ -254,7 +243,7 @@ public class FavoritePage extends MultiItemPage implements MenuAble,
 		Long lTotalInternalSize = StorageUtil.getTotalInternalMemorySize();
 		Long lFreeInternalSize = StorageUtil.getAvailableInternalMemorySize();
 		tvInternalSize.setText(T.FileSizeToString(lTotalInternalSize));
-		((TextView) findViewById(R.id.tvInternalAvailable)).setText(T
+		((TextView) mView.findViewById(R.id.tvInternalAvailable)).setText(T
 				.FileSizeToString(lFreeInternalSize));
 		pbInternalStatus.setMax((int) (lTotalInternalSize / 1024));
 		pbInternalStatus
@@ -269,7 +258,7 @@ public class FavoritePage extends MultiItemPage implements MenuAble,
 			Long lTotalSpace = StorageUtil.getTotalSpace(Const.getSDCard());
 			Long lFreeSpace = StorageUtil.getFreeSpace(Const.getSDCard());
 			tvExternalSize.setText(T.FileSizeToString(lTotalSpace));
-			((TextView) findViewById(R.id.tvExternalAvailable)).setText(T
+			((TextView) mView.findViewById(R.id.tvExternalAvailable)).setText(T
 					.FileSizeToString(lFreeSpace));
 			pbExternalStatus.setMax((int) (lTotalSpace / 1024));
 			pbExternalStatus.setProgress((int) (lTotalSpace / 1024)
@@ -277,7 +266,7 @@ public class FavoritePage extends MultiItemPage implements MenuAble,
 		} else
 		{
 			tvExternalSize.setText(m_act.getString(R.string.unknown));
-			((TextView) findViewById(R.id.tvExternalAvailable)).setText(m_act
+			((TextView) mView.findViewById(R.id.tvExternalAvailable)).setText(m_act
 					.getString(R.string.unknown));
 			pbExternalStatus.setMax(0);
 			pbExternalStatus.setProgress(0);
@@ -303,25 +292,25 @@ public class FavoritePage extends MultiItemPage implements MenuAble,
 					tvMusic.setText(m_act.getString(R.string.lable_music)
 							+ T.FileSizeToString(temp.getSize()));
 
-					((TextView) findViewById(R.id.tvMusicDesc)).setText("("
+					((TextView) mView.findViewById(R.id.tvMusicDesc)).setText("("
 							+ temp.getCount() + ")");
 					break;
 				case 2:
 					tvPic.setText(m_act.getString(R.string.lable_pic)
 							+ T.FileSizeToString(temp.getSize()));
-					((TextView) findViewById(R.id.tvPhotoDesc)).setText("("
+					((TextView) mView.findViewById(R.id.tvPhotoDesc)).setText("("
 							+ temp.getCount() + ")");
 					break;
 				case 3:
 					tvVideo.setText(m_act.getString(R.string.lable_video)
 							+ T.FileSizeToString(temp.getSize()));
-					((TextView) findViewById(R.id.tvVideoDesc)).setText("("
+					((TextView) mView.findViewById(R.id.tvVideoDesc)).setText("("
 							+ temp.getCount() + ")");
 					break;
 				case 4:
 					tvDocument.setText(m_act.getString(R.string.lable_document)
 							+ T.FileSizeToString(temp.getSize()));
-					((TextView) findViewById(R.id.tvDocDesc)).setText("("
+					((TextView)mView. findViewById(R.id.tvDocDesc)).setText("("
 							+ temp.getCount() + ")");
 					break;
 				case 5:
@@ -331,13 +320,13 @@ public class FavoritePage extends MultiItemPage implements MenuAble,
 				case 6:
 					tvZip.setText(m_act.getString(R.string.lable_zip)
 							+ T.FileSizeToString(temp.getSize()));
-					((TextView) findViewById(R.id.tvZipDesc)).setText("("
+					((TextView) mView.findViewById(R.id.tvZipDesc)).setText("("
 							+ temp.getCount() + ")");
 					break;
 				case 7:
 					tvApp.setText(m_act.getString(R.string.lable_apk)
 							+ T.FileSizeToString(temp.getSize()));
-					((TextView) findViewById(R.id.tvApkDesc)).setText("("
+					((TextView) mView.findViewById(R.id.tvApkDesc)).setText("("
 							+ temp.getCount() + ")");
 					break;
 				}
@@ -422,7 +411,7 @@ public class FavoritePage extends MultiItemPage implements MenuAble,
 	private void onMyFavoriteClick()
 	{
 		ArrayList<FileBean> mFileList = new ArrayList<FileBean>();
-		Dao dao = Dao.getInstance(getContext());
+		Dao dao = Dao.getInstance(getActivity().getApplicationContext());
 		mFileList.clear();
 		mFileList.addAll(dao.getHistoryInfos(String.valueOf(0)));
 		Collections.sort(mFileList, new FileSort());
@@ -448,36 +437,32 @@ public class FavoritePage extends MultiItemPage implements MenuAble,
 		}
 		return false;
 	}
-
-	public boolean onCreateOptionsMenu(Menu menu)
-	{
-		P.debug("onCreateOptionsMenu");
-		return super.onCreateOptionsMenu(menu, R.menu.favoritepagemenu);
-	}
-
-	public boolean onPrepareOptionsMenu(Menu menu)
-	{
-		// return super.onCreateOptionsMenu(menu, R.menu.favoritepagemenu);
-		super.onPrepareOptionsMenu(menu);
-		P.debug("onPrepareOptionsMenu");
-		return true;
-	}
+//
+//	public boolean onCreateOptionsMenu(Menu menu)
+//	{
+//		P.debug("onCreateOptionsMenu");
+//		return super.onCreateOptionsMenu(menu, R.menu.favoritepagemenu);
+//	}
+//
+//	public boolean onPrepareOptionsMenu(Menu menu)
+//	{
+//		// return super.onCreateOptionsMenu(menu, R.menu.favoritepagemenu);
+//		super.onPrepareOptionsMenu(menu);
+//		P.debug("onPrepareOptionsMenu");
+//		return true;
+//	}
 
 	public void onStart()
 	{
 		P.v("NullPointError", "onStart");
+		super.onStart();
 	}
 
 	/** 注销广播 */
 
 	public void onDestroy()
 	{
-
-	}
-
-	public void clear()
-	{
-
+		super.onDestroy();
 	}
 
 	public boolean onTouchEvent(MotionEvent event)
@@ -578,5 +563,4 @@ public class FavoritePage extends MultiItemPage implements MenuAble,
 			}
 		}
 	};
-
 }
