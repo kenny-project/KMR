@@ -20,6 +20,10 @@ along with SwiFTP.  If not, see <http://www.gnu.org/licenses/>.
 
 <resources>
 
+       <style name="navPinnedHeaderTextAppearance">
+        <item name="android:textSize">12.0sp</item>
+        <item name="android:textColor">#ff969696</item>
+    </style>
     <style name="scrollstyle" parent="@android:style/Theme">
         <item name="android:scrollbarThumbVertical">@drawable/scroll_bar</item>
     </style>
@@ -27,7 +31,10 @@ along with SwiFTP.  If not, see <http://www.gnu.org/licenses/>.
     <style name="NobackDialog" parent="@android:style/Theme.Dialog">
         <item name="android:windowBackground">@color/no_back</item>
     </style>
-
+    <style name="navItemTitleTextAppearance">
+        <item name="android:textSize">18.0sp</item>
+        <item name="android:textColor">#ffcccccc</item>
+    </style>
     <style name="kmain_tab_item">
         <item name="android:layout_width">48dip</item>
         <item name="android:layout_height">48dip</item>

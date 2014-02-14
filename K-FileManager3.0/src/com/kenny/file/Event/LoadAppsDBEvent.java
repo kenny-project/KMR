@@ -48,10 +48,6 @@ public class LoadAppsDBEvent extends AbsEvent
 		P.debug(TAG, "LoadAppsEvent start");
 		final List<PackageInfo> packages = m_act.getPackageManager()
 				.getInstalledPackages(PackageManager.GET_UNINSTALLED_PACKAGES);
-		// .getInstalledPackages(PackageManager.GET_ACTIVITIES);
-		// m_act.getPackageManager().get
-		// int ItemCount = SaveData.Read(m_act, "UserAppCount", 0);
-		// SaveData.Write(m_act, "UserAppCount", packages.size());
 		Dao dao = Dao.getInstance(m_act);
 		P.debug(TAG, "dao.AppInfoCount() start");
 		ItemCount = dao.AppInfoCount();

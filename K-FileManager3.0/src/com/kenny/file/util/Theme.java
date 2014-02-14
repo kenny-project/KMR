@@ -1,5 +1,6 @@
 package com.kenny.file.util;
 
+import com.kenny.KFileManager.R;
 import com.kenny.file.tools.SaveData;
 
 import android.app.Activity;
@@ -199,7 +200,9 @@ public class Theme
       case 1:// 黑色
          TextColor = 0xffc6c3c6;
          BackgroundColor = Color.BLACK;
-         nListSelectedBackgroundColor=0xffc6dfc6;
+         
+//         @drawable/abs__item_background_holo_dark
+         //nListSelectedBackgroundColor=R.drawable.abs__item_background_holo_dark;
          break;
       case 2:// 纸浆色
          BackgroundColor = 0xffe7dfce;
@@ -230,6 +233,6 @@ public class Theme
          nListSelectedBackgroundColor=0xffc6dfc6;
          break;
       }
+     // nListSelectedBackgroundColor=R.drawable.abs__item_background_holo_dark;
    }
-   
 }

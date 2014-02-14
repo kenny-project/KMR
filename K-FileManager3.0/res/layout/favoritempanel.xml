@@ -16,15 +16,14 @@
             android:id="@+id/lyTools2"
             android:layout_width="fill_parent"
             android:layout_height="40dip"
-            android:visibility="gone"
             android:layout_below="@id/lyTools"
-            android:background="@drawable/tab2_bg" >
+            android:background="@drawable/tab2_bg"
+            android:visibility="gone" >
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/lyTools"
-                
                 android:gravity="center" >
 
                 <Button
@@ -54,9 +53,9 @@
         <FrameLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
+            android:layout_above="@id/lyBTools"
             android:layout_below="@id/lyTools2"
-                android:background="#00000000"
-             >
+            android:background="#00000000" >
 
             <com.kenny.file.commui.KListView
                 android:id="@+id/lvLocallist"
@@ -66,8 +65,8 @@
                 android:cacheColorHint="#00000000"
                 android:divider="@drawable/list_line"
                 android:dividerHeight="2dp"
-                android:listSelector="@drawable/high_select_bg"
-                android:fastScrollEnabled="true" />
+                android:fastScrollEnabled="true"
+                android:listSelector="@drawable/high_select_bg" />
         </FrameLayout>
 
         <LinearLayout
@@ -105,6 +104,7 @@
                 android:text="@string/btInstall"
                 android:textColor="@color/ContentTitleText"
                 android:textSize="13dip" />
+
             <Button
                 android:id="@+id/btArrange"
                 android:layout_width="wrap_content"
@@ -117,7 +117,7 @@
                 android:text="@string/btArrange"
                 android:textColor="@color/ContentTitleText"
                 android:textSize="13dip" />
-            
+
             <Button
                 android:id="@+id/btDelete"
                 android:layout_width="wrap_content"
@@ -142,7 +142,8 @@
                 android:drawableTop="@drawable/menu_back"
                 android:text="@string/btBack"
                 android:textColor="@color/ContentTitleText"
-                android:textSize="13dip" />
+                android:textSize="13dip" 
+                android:visibility="gone"/>
         </LinearLayout>
     </RelativeLayout>
 

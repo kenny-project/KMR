@@ -34,7 +34,6 @@ import cn.kuaipan.android.sdk.KPManager;
 import cn.kuaipan.android.sdk.ui.KPLoginView;
 
 import com.framework.event.AbsEvent;
-import com.framework.event.NextPageEvent;
 import com.framework.event.ParamEvent;
 import com.framework.log.P;
 import com.framework.syseng.KSysEng;
@@ -78,8 +77,8 @@ public class KuaiPanPage extends Activity implements OnItemClickListener,
 	private TextView mCurrentPath;
 	private TextView tvError_msg, tvKuaiPanSpace;// 空间
 	private int nCommCode = 0;// 0:没有错误
-	private View lyTools2,lyBTools;//lyUpLoadTools, 
-//	private List<FileBean> mFilelist;
+	private View lyTools2, lyBTools;// lyUpLoadTools,
+			// private List<FileBean> mFilelist;
 	private String oauth_token = "";
 	private String oauth_secret = "";
 
@@ -89,10 +88,10 @@ public class KuaiPanPage extends Activity implements OnItemClickListener,
 		super.onCreate(savedInstanceState);
 		cli = SimpleCommandConsole.getHandler(this);
 		setContentView(R.layout.kuaipanpage);
-		
+
 		lyTools2 = findViewById(R.id.lyTools2);
 		lyBTools = findViewById(R.id.lyBTools);
-		
+
 		m_locallist = (ListView) findViewById(R.id.lvLocallist);
 		m_DownLoadlist = (ListView) findViewById(R.id.lvDownLoadlist);
 		fileAdapter = new KuaiPanFileAdapter(this, mFileList);
@@ -118,7 +117,6 @@ public class KuaiPanPage extends Activity implements OnItemClickListener,
 		mCurrentPath = (TextView) findViewById(R.id.mCurrentPath);
 		tvKuaiPanSpace = (TextView) findViewById(R.id.tvKuaiPanSpace);
 
-		
 		findViewById(R.id.btUpDownLoad).setOnClickListener(this);
 		Button btButton = (Button) findViewById(R.id.btNew);
 		btButton.setOnClickListener(this);
@@ -144,7 +142,7 @@ public class KuaiPanPage extends Activity implements OnItemClickListener,
 		btButton = (Button) findViewById(R.id.btBackPage);
 		btButton.setOnClickListener(this);
 		IntentFilter filter = new IntentFilter(KPConstants.ACTION_KP_AUTH);
-		this.registerReceiver(kpReceiver, filter);		
+		this.registerReceiver(kpReceiver, filter);
 		init();
 	}
 
@@ -165,8 +163,7 @@ public class KuaiPanPage extends Activity implements OnItemClickListener,
 			{
 				e.printStackTrace();
 			}
-		}
-		else
+		} else
 		{
 			cli.setAuthToken(oauth_token, oauth_secret);
 			getAccountInfo();
@@ -174,6 +171,7 @@ public class KuaiPanPage extends Activity implements OnItemClickListener,
 		}
 
 	}
+
 	@Override
 	public void onResume()
 	{
@@ -183,13 +181,14 @@ public class KuaiPanPage extends Activity implements OnItemClickListener,
 		}
 		super.onResume();
 	}
+
 	@Override
 	protected void onDestroy()
 	{
 		// TODO Auto-generated method stub
 		this.unregisterReceiver(kpReceiver);
 		super.onDestroy();
-		
+
 	}
 
 	private BroadcastReceiver kpReceiver = new BroadcastReceiver()
@@ -208,12 +207,12 @@ public class KuaiPanPage extends Activity implements OnItemClickListener,
 			{
 				getAccountInfo();
 				SysEng.getInstance().addEvent(
-						new KuaiPanFileListEvent(KuaiPanPage.this, cli.getPath(),
-								cli, pbLoading, KuaiPanPage.this));
-			}
-			else
+						new KuaiPanFileListEvent(KuaiPanPage.this, cli
+								.getPath(), cli, pbLoading, KuaiPanPage.this));
+			} else
 			{
-				Toast.makeText(getApplicationContext(), "登录失败", Toast.LENGTH_SHORT).show();
+				Toast.makeText(getApplicationContext(), "登录失败",
+						Toast.LENGTH_SHORT).show();
 				finish();
 			}
 		}
@@ -268,6 +267,7 @@ public class KuaiPanPage extends Activity implements OnItemClickListener,
 	{
 		return false;
 	}
+
 	private void Refresh()
 	{
 		if (oauth_token.length() == 0 || oauth_secret.length() == 0)
@@ -284,6 +284,7 @@ public class KuaiPanPage extends Activity implements OnItemClickListener,
 							cli, pbLoading, this));
 		}
 	}
+
 	/**
 	 * 返回上一层目录
 	 * 
@@ -293,7 +294,7 @@ public class KuaiPanPage extends Activity implements OnItemClickListener,
 	{
 		if (oauth_token.length() == 0 || oauth_secret.length() == 0)
 		{
-//			finish();
+			// finish();
 			return false;
 		}
 		return CmdFile("..");
@@ -309,12 +310,11 @@ public class KuaiPanPage extends Activity implements OnItemClickListener,
 					new KuaiPanFileListEvent(KuaiPanPage.this, tempPath, cli,
 							pbLoading, this));
 			return true;
-		}
-		else
+		} else
 		{
-//			Toast.makeText(KuaiPanPage.this, "已经到达根目录!", Toast.LENGTH_SHORT)
-//					.show();
-			//this.finish();
+			// Toast.makeText(KuaiPanPage.this, "已经到达根目录!", Toast.LENGTH_SHORT)
+			// .show();
+			// this.finish();
 			return false;
 		}
 	}
@@ -370,9 +370,10 @@ public class KuaiPanPage extends Activity implements OnItemClickListener,
 			switch (getKey())
 			{
 			case openFileSelectDialog.SelectList:
-				List<FileBean> list =(List<FileBean>)getValue();
+				List<FileBean> list = (List<FileBean>) getValue();
 				SysEng.getInstance().addEvent(
-				new uploadKPFileEvent(KuaiPanPage.this, list, KuaiPanPage.this));
+						new uploadKPFileEvent(KuaiPanPage.this, list,
+								KuaiPanPage.this));
 				break;
 			case Const.cmd_KuaiPan_uploadfile_error:
 				break;
@@ -382,13 +383,13 @@ public class KuaiPanPage extends Activity implements OnItemClickListener,
 				String size = (String) getValue();
 				tvKuaiPanSpace.setText(size);
 				break;
-			case Const.cmd_KuaiPan_upload_Finish://上传完成 by wmh
-//				if (mFilelist != null)
-//				{
-//					mFilelist.clear();
-//					mFilelist = null;
-//				}
-//				lyUpLoadTools.setVisibility(View.GONE);
+			case Const.cmd_KuaiPan_upload_Finish:// 上传完成 by wmh
+				// if (mFilelist != null)
+				// {
+				// mFilelist.clear();
+				// mFilelist = null;
+				// }
+				// lyUpLoadTools.setVisibility(View.GONE);
 				lyBTools.setVisibility(View.VISIBLE);
 				Refresh();
 				Toast.makeText(
@@ -414,7 +415,7 @@ public class KuaiPanPage extends Activity implements OnItemClickListener,
 					btError.setText("重试");
 					rlError.setVisibility(View.VISIBLE);
 					m_locallist.setVisibility(View.GONE);
-					//lyUpLoadTools.setVisibility(View.GONE);
+					// lyUpLoadTools.setVisibility(View.GONE);
 					lyBTools.setVisibility(View.GONE);
 					lyTools2.setVisibility(View.GONE);
 				}
@@ -425,7 +426,7 @@ public class KuaiPanPage extends Activity implements OnItemClickListener,
 				rlError.setVisibility(View.VISIBLE);
 				m_locallist.setVisibility(View.GONE);
 				m_DownLoadlist.setVisibility(View.GONE);
-				//lyUpLoadTools.setVisibility(View.GONE);
+				// lyUpLoadTools.setVisibility(View.GONE);
 				lyBTools.setVisibility(View.GONE);
 				lyTools2.setVisibility(View.GONE);
 				break;
@@ -457,8 +458,8 @@ public class KuaiPanPage extends Activity implements OnItemClickListener,
 		switch (v.getId())
 		{
 		case R.id.btUpDownLoad:
-			openFileSelectDialog dialog=new openFileSelectDialog();
-			dialog.ShowDialog(this, Const.getSDCard(),this);
+			openFileSelectDialog dialog = new openFileSelectDialog();
+			dialog.ShowDialog(this, Const.getSDCard(), this);
 			break;
 		case R.id.btBackPage:
 			finish();
@@ -484,30 +485,32 @@ public class KuaiPanPage extends Activity implements OnItemClickListener,
 		case R.id.btError:
 			ErrorOnClick();
 			break;
-//		case R.id.btUpLoad://上传文件
-//			SysEng.getInstance().addEvent(
-//					new uploadKPFileEvent(KuaiPanPage.this, mFilelist, this));
-//			break;
-//		case R.id.btCancel:
-//			mFilelist.clear();
-//			mFilelist = null;
-//			lyUpLoadTools.setVisibility(View.GONE);
-//			break;
+		// case R.id.btUpLoad://上传文件
+		// SysEng.getInstance().addEvent(
+		// new uploadKPFileEvent(KuaiPanPage.this, mFilelist, this));
+		// break;
+		// case R.id.btCancel:
+		// mFilelist.clear();
+		// mFilelist = null;
+		// lyUpLoadTools.setVisibility(View.GONE);
+		// break;
 		}
 	}
+
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event)
 	{
 		switch (keyCode)
 		{
 		case KeyEvent.KEYCODE_BACK:
-			if(BackFile())
+			if (BackFile())
 			{
 				return true;
 			}
 		}
 		return super.onKeyDown(keyCode, event);
 	}
+
 	private void ErrorOnClick()
 	{
 		P.v("ErrorOnClick:nCommCode=" + nCommCode);
@@ -541,7 +544,6 @@ public class KuaiPanPage extends Activity implements OnItemClickListener,
 		inflater.inflate(R.menu.kuaipanpagemenu, menu);
 		super.onCreateContextMenu(menu, v, menuInfo);
 	}
-
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu)
@@ -579,25 +581,6 @@ public class KuaiPanPage extends Activity implements OnItemClickListener,
 			nCommCode = Const.cmd_KuaiPan_OAuth_Error;
 			m_locallist.setVisibility(View.GONE);
 			NotifyDataSetChanged(nCommCode, null);
-			// new AlertDialog.Builder(KuaiPanPage.this)
-			// .setTitle("提示!")
-			// .setMessage("是否要清空缓存吗?")
-			// .setPositiveButton(KuaiPanPage.this.getString(R.string.ok),
-			// new DialogInterface.OnClickListener()
-			// {
-			// public void onClick(DialogInterface dialog, int which)
-			// {
-			// SysEng.getInstance().addEvent(
-			// new delFileEvent(KuaiPanPage.this, new FileBean(new File(
-			// Const.szKuaiPanPath), null)));
-			// SysEng.getInstance().addEvent(
-			// new delFileEvent(KuaiPanPage.this, new FileBean(new File(
-			// Const.szKuaiPanPath), null)));
-			// }
-			// })
-			// .setNegativeButton(KuaiPanPage.this.getString(R.string.cancel),
-			// null)
-			// .show();
 			break;
 		case R.id.muClearCache:
 			new AlertDialog.Builder(KuaiPanPage.this)
@@ -622,16 +605,6 @@ public class KuaiPanPage extends Activity implements OnItemClickListener,
 					.setNegativeButton(
 							KuaiPanPage.this.getString(R.string.cancel), null)
 					.show();
-			break;
-		case R.id.muSetting:
-			SettingPage.actionSettingPage(KuaiPanPage.this);
-			break;
-		case R.id.muAboutDialog:
-			new AboutDialog().showDialog(KuaiPanPage.this);
-			break;
-		case R.id.muExit:
-			SysEng.getInstance().addHandlerEvent(
-					new ExitEvent(KuaiPanPage.this, false));
 			break;
 		}
 		return false;

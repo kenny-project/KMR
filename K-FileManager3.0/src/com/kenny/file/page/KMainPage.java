@@ -6,18 +6,18 @@ import android.app.Activity;
 import android.os.Parcelable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.framework.log.P;
 import com.framework.page.AbsPage;
 import com.framework.page.MultiItemPage;
 import com.kenny.KFileManager.R;
-import com.kenny.file.tools.T;
+import com.kenny.Slidingmenu.Fragment.AppsPage;
+import com.kenny.Slidingmenu.Fragment.FavoritePage;
+import com.kenny.Slidingmenu.Fragment.SearchResultPage;
 import com.kenny.file.util.Theme;
 
 /**

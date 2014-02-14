@@ -146,7 +146,7 @@ public abstract class ObjectMenuPage extends MultiItemPage
       switch (item.getItemId())
       {
       case R.id.muSetting:
-    	  SettingPage.actionSettingPage(m_act);
+    	  SettingPage.actionSettingPage();
          break;
       case R.id.muAboutDialog:
          new AboutDialog().showDialog(m_act);

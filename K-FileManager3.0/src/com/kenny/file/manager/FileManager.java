@@ -5,14 +5,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import android.app.Activity;
 import android.content.Context;
 import android.widget.Toast;
 
 import com.framework.log.P;
-import com.framework.syseng.SysEng;
 import com.kenny.KFileManager.R;
-import com.kenny.file.Event.ExitEvent;
 import com.kenny.file.bean.FileBean;
 import com.kenny.file.interfaces.INotifyDataSetChanged;
 import com.kenny.file.sort.FileModifiedSort;
@@ -29,11 +26,13 @@ public class FileManager implements IManager
 	private List<FileBean> mFileList = null;
 	private static FileManager m_LocalManage = new FileManager();
 	private Context context = null;
-	 
 	private INotifyDataSetChanged m_notifyData = null;
-	private boolean bRoot = false; // 是否到Root根目录
+	private String mRootPath = ""; // 当前根结点
 
-	// private int mFileType = 0;// 显示类型
+	public void setRootPath(String path)
+	{
+		mRootPath=new File(path).getAbsolutePath();
+	}
 
 	public void setNotifyData(INotifyDataSetChanged m_notifyData)
 	{
@@ -49,7 +48,8 @@ public class FileManager implements IManager
 	{
 		if (mCurrentPath.length() == 0)
 		{
-			return SaveData.Read(context, Const.strDefaultPath, Const.getSDCard());
+			return SaveData.Read(context, Const.strDefaultPath,
+					Const.getSDCard());
 		} else
 		{
 			return mCurrentPath;
@@ -75,27 +75,17 @@ public class FileManager implements IManager
 	/**
 	 * 退回上一层
 	 */
-	public void Back()
+	public boolean Back()
 	{
-		if (!mCurrentPath.equals(Const.Root))
+		File mCurrentFile=new File(mCurrentPath);
+		if (!mCurrentFile.getAbsolutePath().equals(mRootPath))
 		{
-			String temp = new File(mCurrentPath).getParent();
+			String temp = mCurrentFile.getParent();
 			setFilePath(temp, Const.cmd_Local_List_Go);
-			bRoot = false;
+			return true;
 		} else
 		{
-			if (!bRoot)
-			{
-				bRoot = true;
-				Toast.makeText(
-						context,
-						context.getString(R.string.dlg_press_again_to_exit_the_program),
-						Toast.LENGTH_SHORT).show();
-			} else
-			{
-				SysEng.getInstance().addEvent(
-						new ExitEvent((Activity) context, false));
-			}
+			return false;
 		}
 	}
 
@@ -144,20 +134,20 @@ public class FileManager implements IManager
 				bean.setDirectory(mCurrentFile.isDirectory());
 				if (mCurrentFile.isDirectory())
 				{
-					File[] tempList = mCurrentFile.listFiles();;
-					
+					File[] tempList = mCurrentFile.listFiles();
+					;
+
 					if (tempList != null)
 					{
-						int FileCount=0,FolderCount=0;
+						int FileCount = 0, FolderCount = 0;
 						for (File file : tempList)
 						{
-							if(file.isDirectory())
+							if (file.isDirectory())
 							{
 								FolderCount++;
-							}
-							else
+							} else
 							{
-								FileCount++;	
+								FileCount++;
 							}
 						}
 						bean.setItemFileCount(FileCount);
@@ -185,16 +175,16 @@ public class FileManager implements IManager
 				Collections.sort(mFileList, new FileModifiedSort());
 				break;
 			}
-//			if (Theme.getSortMode() < 10)
-//			{// 倒序
-//				ArrayList<FileBean> TempFileList = new ArrayList<FileBean>();
-//				for (FileBean fileBean : mFileList)
-//				{
-//					TempFileList.add(0, fileBean);
-//				}
-//				mFileList.clear();
-//				mFileList.addAll(TempFileList);
-//			}
+			// if (Theme.getSortMode() < 10)
+			// {// 倒序
+			// ArrayList<FileBean> TempFileList = new ArrayList<FileBean>();
+			// for (FileBean fileBean : mFileList)
+			// {
+			// TempFileList.add(0, fileBean);
+			// }
+			// mFileList.clear();
+			// mFileList.addAll(TempFileList);
+			// }
 		}
 		if (!mCurrentPath.equals(Const.Root))
 		{

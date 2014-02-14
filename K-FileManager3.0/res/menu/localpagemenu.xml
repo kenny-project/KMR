@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
-    <!-- 
+
+    <!--
     <item
         android:id="@+id/muSearch"
         android:icon="@drawable/common_ic_search_button"
         android:title="@string/m_Search"/>
-     -->
+    -->
+    <item
+        android:id="@+id/muSearch"
+        android:icon="@drawable/abs__ic_search"
+        android:showAsAction="always"
+        android:title="@string/CheckUpdateTitle"
+        android:titleCondensed="@string/CheckUpdateTitle"
+        android:visible="true">
+    </item>
     <item
         android:id="@+id/muAboutDialog"
         android:icon="@drawable/common_icon_menu_info"
         android:title="@string/m_About"/>
-    
     <item
         android:id="@+id/muSetting"
         android:icon="@drawable/common_ic_menu_setting"

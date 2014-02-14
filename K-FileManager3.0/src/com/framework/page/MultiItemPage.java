@@ -44,7 +44,7 @@ public abstract class MultiItemPage extends AbsPage // implements
       switch (item.getItemId())
       {
       case R.id.muSetting:
-         SettingPage.actionSettingPage(m_act);
+         SettingPage.actionSettingPage();
          break;
       case R.id.muAboutDialog:
          new AboutDialog().showDialog(m_act);

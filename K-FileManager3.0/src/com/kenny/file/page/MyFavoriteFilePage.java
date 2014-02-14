@@ -7,12 +7,12 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.os.Bundle;
 import android.view.KeyEvent;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.MotionEvent;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView;
@@ -23,14 +23,15 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.framework.interfaces.MenuAble;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
 import com.framework.log.P;
-import com.framework.page.AbsPage;
 import com.framework.syseng.SysEng;
 import com.kenny.KFileManager.R;
 import com.kenny.KFileManager.R.color;
+import com.kenny.Slidingmenu.Fragment.ContentFragment;
+import com.kenny.Slidingmenu.Fragment.LocalPage;
 import com.kenny.file.Adapter.FavorDialogAdapter;
-import com.kenny.file.Adapter.FavorFileAdapter;
 import com.kenny.file.Event.FavoriteFileEvent;
 import com.kenny.file.Event.InstallEvent;
 import com.kenny.file.Event.delFileEvent;
@@ -49,29 +50,31 @@ import com.kenny.file.tools.T;
 import com.kenny.file.util.Const;
 import com.kenny.file.util.Theme;
 
-public class MyFavoriteFilePage extends AbsPage implements MenuAble,
+public class MyFavoriteFilePage extends ContentFragment implements
 		INotifyDataSetChanged, OnItemClickListener, OnClickListener,
 		OnItemLongClickListener
 {
-	public MyFavoriteFilePage(Activity context,FGroupInfo mNowGItem,ArrayList<FileBean> mAllFileList)
+	public MyFavoriteFilePage(Activity context, FGroupInfo mNowGItem,
+			ArrayList<FileBean> mAllFileList)
 	{
-		super(context);
-		this.mAllFileList=mAllFileList;
-		this.mNowGItem=mNowGItem;
+		this.mAllFileList = mAllFileList;
+		this.mNowGItem = mNowGItem;
 	}
+
 	private View m_lvMain;// 主页面
 	private ListView mListView;
 	private Button btAllFile, btFolder;
-	private Button btBack, btInstall,btArrange;
+	private Button btBack, btInstall, btArrange;
 	private Button btDelete, btSelectAll;
 
 	private FavorDialogAdapter mFileAdapter;
 	private ArrayList<FileBean> mAllFileList = new ArrayList<FileBean>();
 	private FGroupInfo mNowGItem; // 当前正在浏览的分组
+
 	/**
-	 *  1:Folder 2:Item
+	 * 1:Folder 2:Item
 	 */
-	
+
 	private View FooterView()
 	{
 		TextView tview = new TextView(m_act);
@@ -82,7 +85,6 @@ public class MyFavoriteFilePage extends AbsPage implements MenuAble,
 		return headerView;
 	}
 
-
 	private OnScrollListener m_AllFileOnScrollListener = new OnScrollListener()
 	{
 		public void onScrollStateChanged(AbsListView view, int scrollState)
@@ -90,12 +92,12 @@ public class MyFavoriteFilePage extends AbsPage implements MenuAble,
 			switch (scrollState)
 			{
 			case AbsListView.OnScrollListener.SCROLL_STATE_FLING:
-//				P.debug("SCROLL_STATE_FLING");
+				// P.debug("SCROLL_STATE_FLING");
 				if (mFileAdapter != null)
 					mFileAdapter.setShowLogo(false);
 				break;
 			case AbsListView.OnScrollListener.SCROLL_STATE_IDLE:
-//				P.debug("SCROLL_STATE_IDLE");
+				// P.debug("SCROLL_STATE_IDLE");
 				if (mFileAdapter != null)
 				{
 					mFileAdapter.setShowLogo(true);
@@ -103,7 +105,7 @@ public class MyFavoriteFilePage extends AbsPage implements MenuAble,
 				}
 				break;
 			case AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL:
-//				P.debug("SCROLL_STATE_TOUCH_SCROLL");
+				// P.debug("SCROLL_STATE_TOUCH_SCROLL");
 				if (mFileAdapter != null)
 					mFileAdapter.setShowLogo(false);
 				break;
@@ -119,44 +121,44 @@ public class MyFavoriteFilePage extends AbsPage implements MenuAble,
 		}
 	};
 
-	public void onCreate()
+	public void onCreate(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState)
 	{
-		setContentView(R.layout.favoritempanel);
-		
-		m_lvMain = findViewById(R.id.lvMain);
+		setContentView(R.layout.favoritempanel, inflater);
+
+		m_lvMain = mView.findViewById(R.id.lvMain);
 		m_lvMain.setBackgroundColor(Theme.getBackgroundColor());
-		//findViewById(R.id.lyBTools).setVisibility(View.GONE);
-		findViewById(R.id.btSelectAll).setVisibility(View.GONE);
-		findViewById(R.id.btInstall).setVisibility(View.GONE);
-		findViewById(R.id.btDelete).setVisibility(View.GONE);
-		findViewById(R.id.btArrange).setVisibility(View.GONE);
-		
-		findViewById(R.id.lyTools2).setVisibility(View.GONE);
-		mListView = (ListView) findViewById(R.id.lvLocallist);
+		mView.findViewById(R.id.lyBTools).setVisibility(View.GONE);
+		mView.findViewById(R.id.btSelectAll).setVisibility(View.GONE);
+		mView.findViewById(R.id.btInstall).setVisibility(View.GONE);
+		mView.findViewById(R.id.btDelete).setVisibility(View.GONE);
+		mView.findViewById(R.id.btArrange).setVisibility(View.GONE);
+
+		mView.findViewById(R.id.lyTools2).setVisibility(View.GONE);
+		mListView = (ListView) mView.findViewById(R.id.lvLocallist);
 		mListView.setOnItemClickListener(this);
 		mListView.setOnScrollListener(m_AllFileOnScrollListener);
 		mListView.setOnItemLongClickListener(this);
-		mListView.addFooterView(FooterView(), null, false);
+//		mListView.addFooterView(FooterView(), null, false);
 
-		btAllFile = (Button) findViewById(R.id.btAllFile);
+		btAllFile = (Button) mView.findViewById(R.id.btAllFile);
 		btAllFile.setOnClickListener(this);
-		btFolder = (Button) findViewById(R.id.btFolder);
+		btFolder = (Button) mView.findViewById(R.id.btFolder);
 		btFolder.setOnClickListener(this);
 
-		btBack = (Button) findViewById(R.id.btBack);
+		btBack = (Button) mView.findViewById(R.id.btBack);
 		btBack.setOnClickListener(this);
 
-		btInstall = (Button) findViewById(R.id.btInstall);
+		btInstall = (Button) mView.findViewById(R.id.btInstall);
 		btInstall.setOnClickListener(this);
 
-		btDelete = (Button) findViewById(R.id.btDelete);
+		btDelete = (Button) mView.findViewById(R.id.btDelete);
 		btDelete.setOnClickListener(this);
-		
 
-		btArrange = (Button) findViewById(R.id.btArrange);
+		btArrange = (Button) mView.findViewById(R.id.btArrange);
 		btArrange.setOnClickListener(this);
-		
-		btSelectAll = (Button) findViewById(R.id.btSelectAll);
+
+		btSelectAll = (Button) mView.findViewById(R.id.btSelectAll);
 		btSelectAll.setOnClickListener(this);
 
 		btAllFile.setBackgroundResource(R.drawable.tab2_left_select);
@@ -167,38 +169,31 @@ public class MyFavoriteFilePage extends AbsPage implements MenuAble,
 				R.color.tab_TextColor_normal));
 		mFileAdapter = new FavorDialogAdapter(m_act, 1, mAllFileList);
 		mListView.setAdapter(mFileAdapter);
-		
-		//FavoriteItemInit();
-	}
 
-	public boolean onKeyDown(int keyCode, KeyEvent msg)
-	{
-		// 弹出退出对话框
-		return false;
+		// FavoriteItemInit();
 	}
-
 	public void onPause()
 	{
-
+		super.onPause();
 	}
 
 	public void onResume()
 	{
+		super.onResume();
 		m_lvMain.setBackgroundColor(Theme.getBackgroundColor());
 	}
-
 
 	public void onClick(View v)
 	{
 		switch (v.getId())
-		{	
+		{
 		case R.id.btInstall:
 			InstallApp();
 			break;
 		case R.id.btBack:
 			// MobclickAgent.onEvent(m_act, "FavoriteEvent","Back");
-			//SwitchStyle(FLAG_GROUP);
-			m_act.onKeyDown(KeyEvent.KEYCODE_BACK, new KeyEvent(1,1));
+			// SwitchStyle(FLAG_GROUP);
+			m_act.onKeyDown(KeyEvent.KEYCODE_BACK, new KeyEvent(1, 1));
 			break;
 		case R.id.btDelete:
 			// MobclickAgent.onEvent(m_act, "FavoriteEvent","Del");
@@ -226,7 +221,8 @@ public class MyFavoriteFilePage extends AbsPage implements MenuAble,
 		if (mInstallFiles.size() > 0)
 		{
 			SysEng.getInstance().addEvent(
-					new InstallEvent(m_act, mInstallFiles, MyFavoriteFilePage.this));
+					new InstallEvent(m_act, mInstallFiles,
+							MyFavoriteFilePage.this));
 			return;
 		}
 		Toast.makeText(m_act,
@@ -244,7 +240,7 @@ public class MyFavoriteFilePage extends AbsPage implements MenuAble,
 				FileBean tmpInfo = mAllFileList.get(i);
 				tmpInfo.setChecked(check);
 			}
-				mFileAdapter.notifyDataSetChanged();
+			mFileAdapter.notifyDataSetChanged();
 		}
 	}
 
@@ -252,16 +248,6 @@ public class MyFavoriteFilePage extends AbsPage implements MenuAble,
 	{
 		SysEng.getInstance().addEvent(
 				new delFileEvent(m_act, file, MyFavoriteFilePage.this));
-		// if (bFlag == FLAG_FILE)
-		// {
-		// mAllFileList.remove(file);
-		// mFileAdapter.notifyDataSetChanged();
-		// }
-		// if (bFlag == FLAG_Folder)
-		// {
-		// mAllFileList.remove(file);
-		// mFolderAdapter.notifyDataSetChanged();
-		// }
 	}
 
 	private void deletefiles()
@@ -317,60 +303,41 @@ public class MyFavoriteFilePage extends AbsPage implements MenuAble,
 		}
 	}
 
+	@Override
+	public void onDestroy()
+	{
+		super.onDestroy();
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(
+			com.actionbarsherlock.view.MenuInflater inflater, Menu menu)
+	{
+		inflater.inflate(R.menu.favoritepagemenu, menu);
+		return true;
+	}
+
+	@Override
 	public boolean onOptionsItemSelected(MenuItem item)
 	{
 		return super.onOptionsItemSelected(item);
 	}
 
-	public boolean onCreateOptionsMenu(Menu menu)
-	{
-		P.debug("onCreateOptionsMenu");
-		return super.onCreateOptionsMenu(menu, R.menu.favoritepagemenu);
-	}
-
-	public boolean onPrepareOptionsMenu(Menu menu)
-	{
-		// return super.onCreateOptionsMenu(menu, R.menu.favoritepagemenu);
-		super.onPrepareOptionsMenu(menu);
-		P.debug("onPrepareOptionsMenu");
-		return true;
-	}
-
-	public void onStart()
-	{
-		P.v("NullPointError", "onStart");
-	}
-
-	/** 注销广播 */
-
-	public void onDestroy()
-	{
-
-	}
-
-	public void clear()
-	{
-
-	}
-
-	public boolean onTouchEvent(MotionEvent event)
-	{
-		return false;
-	}
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id)
 	{
-			FileBean temp = mAllFileList.get(position);
-			final File mFile = temp.getFile();
-			if (!mFile.isDirectory())
-			{
-				SysEng.getInstance().addHandlerEvent(
-						new openDefFileEvent(m_act, mFile.getPath()));
-			} else
-			{
-				FileManager.getInstance().setFilePath(mFile.getPath());
-				KMainPage.mKMainPage.ChangePage(KMainPage.Local, null);
-			}
+		FileBean temp = mAllFileList.get(position);
+		final File mFile = temp.getFile();
+		if (!mFile.isDirectory())
+		{
+			SysEng.getInstance().addHandlerEvent(
+					new openDefFileEvent(m_act, mFile.getPath()));
+		} else
+		{
+//			FileManager.getInstance().setFilePath(mFile.getPath());
+			switchFragment(new LocalPage(mFile.getPath()));
+//			KMainPage.mKMainPage.ChangePage(KMainPage.Local, null);
+		}
 	}
 
 	public void NotifyDataSetChanged(final int cmd, Object value)
@@ -381,12 +348,11 @@ public class MyFavoriteFilePage extends AbsPage implements MenuAble,
 		}
 	}
 
-
 	public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int arg2,
 			long arg3)
 	{
 		// MobclickAgent.onEvent(m_act, "FavoriteEvent","ItemLongClick");
-		FileBean 	temp = mFileAdapter.getItem(arg2);
+		FileBean temp = mFileAdapter.getItem(arg2);
 		if (temp != null && !temp.isBackUp())
 		{
 			if (temp.getFile().isDirectory())

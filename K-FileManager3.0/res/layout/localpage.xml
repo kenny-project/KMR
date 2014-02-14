@@ -10,8 +10,7 @@
         android:id="@+id/lyTools"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        />
+        android:orientation="vertical" />
 
     <LinearLayout
         android:id="@+id/lyTools2"
@@ -20,27 +19,6 @@
         android:layout_below="@id/lyTools"
         android:background="#FFe0e2e6"
         android:padding="2dip" >
-
-        <Button
-            android:id="@+id/btTree"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:background="@drawable/btn_sort_pressed"
-            android:gravity="center_horizontal"
-            android:padding="5dip"
-            android:text="树"
-            android:textColor="#337ddc"
-            android:textSize="18dip"
-            android:visibility="gone" />
-
-        <Button
-            android:id="@+id/btFileSearch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="2dip"
-            android:background="@drawable/file_search_select"
-            />
 
         <TextView
             android:id="@+id/mCurrentPath"
@@ -64,13 +42,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="2dip"
-            android:background="@drawable/directory_create_select" 
-            android:visibility="gone"
-            />
-<!--         android:background="@drawable/addressbar_bg" -->
-
-
-        <!-- android:background="@drawable/tab2_btn_bg" -->
+            android:background="@drawable/directory_create_select"
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/btListStyle"
@@ -83,13 +56,14 @@
             android:visibility="gone" />
 
         <Button
-            android:id="@+id/btToolsMemu"
+            android:id="@+id/btToolsMemu1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginLeft="5dip"
             android:background="@drawable/file_manager_browser_listmode"
-            android:gravity="center_vertical" />
+            android:gravity="center_vertical"
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/btListSort"
@@ -111,8 +85,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/lyTools"
         android:background="#FFe0e2e6"
-        android:visibility="gone"
-        android:padding="2dip" >
+        android:padding="2dip"
+        android:visibility="gone" >
 
         <EditText
             android:id="@+id/etSearchFileName"
@@ -128,7 +102,8 @@
             android:singleLine="true"
             android:textColor="#737373"
             android:textSize="17dp" />
-         <Button
+
+        <Button
             android:id="@+id/btListSort"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -138,21 +113,21 @@
             android:gravity="center_vertical"
             android:text="取消"
             android:textColor="#737373"
-            android:textSize="16dip"
-            />
+            android:textSize="16dip" />
     </LinearLayout>
 
     <ListView
         android:id="@+id/lvLocallist"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:layout_above="@id/lyBTools"
         android:layout_below="@id/lyTools2"
         android:background="#00000000"
         android:cacheColorHint="#00000000"
         android:divider="@drawable/list_line"
         android:dividerHeight="1dip"
-        android:listSelector="@drawable/high_select_bg"
-        android:fastScrollEnabled="true" />
+        android:fastScrollEnabled="true"
+        android:listSelector="@drawable/high_select_bg" />
 
     <GridView
         android:id="@+id/gvLocallist"
@@ -168,22 +143,10 @@
     </GridView>
 
     <ListView
-        android:id="@+id/lvTreeLocallist"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_above="@id/lyBTools"
-        android:layout_below="@id/lyTools2"
-        android:background="@color/list_bg"
-        android:cacheColorHint="#00000000"
-        android:divider="@drawable/list_line"
-        android:dividerHeight="2dp"
-        android:fastScrollEnabled="true"
-        android:visibility="gone" />
-
-    <ListView
         android:id="@+id/lvAddressList"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@id/lyBTools"
         android:layout_below="@id/lyTools2"
         android:background="@drawable/popup_center"
         android:cacheColorHint="#00000000"
@@ -200,20 +163,8 @@
         android:background="@drawable/toolbar_backgroud"
         android:gravity="fill"
         android:orientation="horizontal"
-        >
-
-        <Button
-            android:id="@+id/btSelectAll"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginRight="1dip"
-            android:layout_weight="1"
-            android:background="#00000000"
-            android:drawableTop="@drawable/menu_selall"
-            android:text="@string/btSelectAll"
-            android:textColor="@color/ContentTitleText"
-            android:textSize="13dip" />
+        android:paddingBottom="2dip"
+        android:paddingTop="5dip" >
 
         <Button
             android:id="@+id/btNew"
@@ -226,8 +177,7 @@
             android:drawableTop="@drawable/menu_new_normal"
             android:text="@string/btNew"
             android:textColor="@color/ContentTitleText"
-            android:textSize="13dip"
-            />
+            android:textSize="13sp" />
 
         <Button
             android:id="@+id/btCopy"
@@ -240,7 +190,7 @@
             android:drawableTop="@drawable/menu_copy"
             android:text="@string/btCopy"
             android:textColor="@color/ContentTitleText"
-            android:textSize="13dip" />
+            android:textSize="13sp" />
 
         <Button
             android:id="@+id/btCut"
@@ -253,7 +203,7 @@
             android:drawableTop="@drawable/menu_cut"
             android:text="@string/btCut"
             android:textColor="@color/ContentTitleText"
-            android:textSize="13dip" />
+            android:textSize="13sp" />
 
         <Button
             android:id="@+id/btPaste"
@@ -266,7 +216,7 @@
             android:drawableTop="@drawable/menu_paste"
             android:text="@string/btPaste"
             android:textColor="@color/ContentTitleText"
-            android:textSize="13dip"
+            android:textSize="13sp"
             android:visibility="gone" />
 
         <Button
@@ -280,7 +230,7 @@
             android:drawableTop="@drawable/menu_delete"
             android:text="@string/btDelete"
             android:textColor="@color/ContentTitleText"
-            android:textSize="13dip" />
+            android:textSize="13sp" />
 
         <Button
             android:id="@+id/btBack"
@@ -293,22 +243,47 @@
             android:drawableTop="@drawable/menu_back"
             android:text="@string/btBack"
             android:textColor="@color/ContentTitleText"
-            android:textSize="13dip"
-             />
+            android:textSize="13sp"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btSelectAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="1dip"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:drawableTop="@drawable/menu_selall"
+            android:text="@string/btSelectAll"
+            android:textColor="@color/ContentTitleText"
+            android:textSize="13sp" />
+
+        <Button
+            android:id="@+id/btMore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="1dip"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:drawableTop="@drawable/menu_more_normal"
+            android:text="@string/btMore"
+            android:textColor="@color/ContentTitleText"
+            android:textSize="13sp" />
     </LinearLayout>
 
     <RelativeLayout
         android:id="@+id/ip_menu"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_below="@id/lyTools2"
+        android:layout_above="@id/lyBTools"
         android:clickable="true"
         android:visibility="gone" >
-
         <include
             android:id="@+id/main_menu"
             android:layout_marginRight="10dip"
+            android:layout_alignParentBottom="true"
             layout="@layout/menu_local_pannal" />
     </RelativeLayout>
-
 </RelativeLayout>

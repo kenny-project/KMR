@@ -11,10 +11,13 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.Bundle;
 import android.view.KeyEvent;
-import android.view.Menu;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -32,12 +35,16 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuInflater;
+import com.actionbarsherlock.view.MenuItem;
 import com.framework.interfaces.MenuAble;
 import com.framework.log.P;
 import com.framework.page.AbsPage;
 import com.framework.syseng.SysEng;
 import com.kenny.KFileManager.R;
 import com.kenny.KFileManager.R.color;
+import com.kenny.Slidingmenu.Fragment.ContentFragment;
 import com.kenny.file.Adapter.FileAdapter;
 import com.kenny.file.Event.InstallEvent;
 import com.kenny.file.Event.copyFileEvent;
@@ -55,8 +62,8 @@ import com.kenny.file.menu.PopLocalMenu;
 import com.kenny.file.util.Const;
 import com.kenny.file.util.Theme;
 
-public class SpecifyLocalFilePage extends AbsPage implements
-		OnItemLongClickListener, MenuAble, INotifyDataSetChanged,
+public class SpecifyLocalFilePage extends ContentFragment implements
+		OnItemLongClickListener,INotifyDataSetChanged,
 		OnClickListener, OnItemClickListener {
 	/*
 	 * 声明成员变量： mFileName ：存放显示的文件列表的名称 mFilePaths ：存放显示的文件列表的相对应的路径 mRootPath
@@ -75,7 +82,6 @@ public class SpecifyLocalFilePage extends AbsPage implements
 	private Button btMenuListSort, btMenuListMode, btMenuShowOrHide;
 
 	public SpecifyLocalFilePage(Activity context, String path) {
-		super(context);
 		P.v("LocalFilePage:LocalFilePage");
 		localManage = new SpecifyManager(path);
 	}
@@ -112,13 +118,16 @@ public class SpecifyLocalFilePage extends AbsPage implements
 		}
 	};
 
-	public void onCreate() {
-		setContentView(R.layout.specifylocalpage);
+	public void onCreate(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState)
+
+	{
+		setContentView(R.layout.specifylocalpage,inflater);
 		// String apkRoot="chmod 777 "+m_act.getPackageCodePath();
 		// cmd.RootCommand(apkRoot);
-		m_lvMain = findViewById(R.id.lvMain);
+		m_lvMain =mView. findViewById(R.id.lvMain);
 		m_lvMain.setBackgroundColor(Theme.getBackgroundColor());
-		m_locallist = (ListView) findViewById(R.id.lvLocallist);
+		m_locallist = (ListView) mView.findViewById(R.id.lvLocallist);
 		AnimationSet set = new AnimationSet(true);
 
 		Animation animation = new AlphaAnimation(0.0f, 1.0f);
@@ -133,11 +142,11 @@ public class SpecifyLocalFilePage extends AbsPage implements
 		m_locallist.setOnScrollListener(m_localOnScrollListener);
 		m_locallist.setOnItemLongClickListener(this);
 		m_locallist.setOnItemClickListener(this);
-		m_localGrid = (GridView) findViewById(R.id.gvLocallist);
+		m_localGrid = (GridView) mView.findViewById(R.id.gvLocallist);
 		m_localGrid.setOnItemClickListener(this);
 		m_localGrid.setOnItemLongClickListener(this);
 		m_localGrid.setOnScrollListener(m_localOnScrollListener);
-		mPath = (TextView) findViewById(R.id.mCurrentPath);
+		mPath = (TextView) mView.findViewById(R.id.mCurrentPath);
 		localManage.Refresh();
 		mPath.setText(localManage.getCurrentPath());
 		mLocalFileList = localManage.getFileList();
@@ -150,36 +159,36 @@ public class SpecifyLocalFilePage extends AbsPage implements
 		m_locallist.addFooterView(headerView, null, false);
 		localManage.setNotifyData(this);
 
-		Button btButton = (Button) findViewById(R.id.btNew);
+		Button btButton = (Button) mView.findViewById(R.id.btNew);
 		btButton.setOnClickListener(this);
 
-		btButton = (Button) findViewById(R.id.btToolsMemu);
+		btButton = (Button) mView.findViewById(R.id.btToolsMemu);
 		btButton.setOnClickListener(this);
-		btButton = (Button) findViewById(R.id.btBack);
-		btButton.setOnClickListener(this);
-
-		btButton = (Button) findViewById(R.id.btInstall);
+		btButton = (Button) mView.findViewById(R.id.btBack);
 		btButton.setOnClickListener(this);
 
-		btButton = (Button) findViewById(R.id.btListSort);
+		btButton = (Button) mView.findViewById(R.id.btInstall);
 		btButton.setOnClickListener(this);
 
-		btButton = (Button) findViewById(R.id.btCopy);
+		btButton = (Button) mView.findViewById(R.id.btListSort);
 		btButton.setOnClickListener(this);
 
-		btButton = (Button) findViewById(R.id.btCut);
+		btButton = (Button) mView.findViewById(R.id.btCopy);
 		btButton.setOnClickListener(this);
 
-		btButton = (Button) findViewById(R.id.btDelete);
+		btButton = (Button) mView.findViewById(R.id.btCut);
 		btButton.setOnClickListener(this);
 
-		btButton = (Button) findViewById(R.id.btPaste);
+		btButton = (Button) mView.findViewById(R.id.btDelete);
 		btButton.setOnClickListener(this);
 
-		btButton = (Button) findViewById(R.id.btSelectAll);
+		btButton = (Button) mView.findViewById(R.id.btPaste);
 		btButton.setOnClickListener(this);
 
-		btButton = (Button) findViewById(R.id.btInstall);
+		btButton = (Button) mView.findViewById(R.id.btSelectAll);
+		btButton.setOnClickListener(this);
+
+		btButton = (Button) mView.findViewById(R.id.btInstall);
 		btButton.setOnClickListener(this);
 
 		SwitchStyle(Theme.getStyleMode());
@@ -187,7 +196,7 @@ public class SpecifyLocalFilePage extends AbsPage implements
 	}
 
 	public void onCreateMenu() {
-		final RelativeLayout rlMenu = (RelativeLayout) findViewById(R.id.ip_menu);
+		final RelativeLayout rlMenu = (RelativeLayout) mView.findViewById(R.id.ip_menu);
 		rlMenu.setOnTouchListener(new OnTouchListener() {
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
@@ -196,8 +205,8 @@ public class SpecifyLocalFilePage extends AbsPage implements
 			}
 		});
 		final MGoneAinm goneAnim = new MGoneAinm(m_act, rlMenu,
-				findViewById(R.id.main_menu));
-		Button btToolsMemu = (Button) findViewById(R.id.btToolsMemu);
+				mView.findViewById(R.id.main_menu));
+		Button btToolsMemu = (Button) mView.findViewById(R.id.btToolsMemu);
 		btToolsMemu.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -218,7 +227,7 @@ public class SpecifyLocalFilePage extends AbsPage implements
 						btMenuListMode.setText(R.string.btMenuListMode_Grid);
 					}
 					new MVisibleAinm(m_act, rlMenu,
-							findViewById(R.id.main_menu)).ShowAnim();
+							mView.findViewById(R.id.main_menu)).ShowAnim();
 
 				}
 			}
@@ -254,16 +263,17 @@ public class SpecifyLocalFilePage extends AbsPage implements
 				}
 			}
 		};
-		btMenuListSort = (Button) findViewById(R.id.btMenuListSort);
+		btMenuListSort = (Button) mView.findViewById(R.id.btMenuListSort);
 		btMenuListSort.setOnClickListener(menuListener);
-		btMenuListMode = (Button) findViewById(R.id.btMenuListMode);
+		btMenuListMode = (Button) mView.findViewById(R.id.btMenuListMode);
 		btMenuListMode.setOnClickListener(menuListener);
-		btMenuShowOrHide = (Button) findViewById(R.id.btMenuShowOrHide);
+		btMenuShowOrHide = (Button) mView.findViewById(R.id.btMenuShowOrHide);
 		btMenuShowOrHide.setOnClickListener(menuListener);
 	}
 	
 	public void onResume() {
 		P.v("Log.DEBUG", "onResume");
+		super.onResume();
 		IntentFilter sdCardFilter = new IntentFilter(
 				Intent.ACTION_MEDIA_MOUNTED);
 		sdCardFilter.addAction(Intent.ACTION_MEDIA_UNMOUNTED);
@@ -285,6 +295,7 @@ public class SpecifyLocalFilePage extends AbsPage implements
 	}
 
 	public void onPause() {
+		super.onPause();
 		try {
 			this.m_act.unregisterReceiver(sdcardReceiver);
 		} catch (Exception e) {
@@ -304,6 +315,7 @@ public class SpecifyLocalFilePage extends AbsPage implements
 
 	public void onDestroy() {
 		mLocalFileList.clear();
+		super.onDestroy();
 	}
 
 	public void onReload() {
@@ -334,19 +346,23 @@ public class SpecifyLocalFilePage extends AbsPage implements
 	}
 
 	private boolean Back() {
-		if (findViewById(R.id.ip_menu).getVisibility() == View.VISIBLE) {
-			new MGoneAinm(m_act, findViewById(R.id.ip_menu),
-					findViewById(R.id.main_menu)).ShowAnim();
+		if (mView.findViewById(R.id.ip_menu).getVisibility() == View.VISIBLE) {
+			new MGoneAinm(m_act, mView.findViewById(R.id.ip_menu),
+					mView.findViewById(R.id.main_menu)).ShowAnim();
 			return true;
 		}
 		return localManage.Back();
 	}
 
-	public boolean onKeyDown(int keyCode, KeyEvent msg) {
-		if (keyCode == KeyEvent.KEYCODE_BACK) {
-			return Back();
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_BACK) 
+		{
+			if(Back())
+			{
+				return true;		
+			}
 		}
-		return false;
+		return super.onKeyDown(keyCode, event);
 	}
 
 	/**
@@ -512,18 +528,6 @@ public class SpecifyLocalFilePage extends AbsPage implements
 		}
 		this.nStyle = nStyle;
 	}
-
-	public boolean onCreateOptionsMenu(Menu menu) {
-		P.debug("onCreateOptionsMenu");
-		return super.onCreateOptionsMenu(menu, R.menu.localpagemenu);
-	}
-
-	public boolean onPrepareOptionsMenu(Menu menu) {
-		super.onPrepareOptionsMenu(menu);
-		P.debug("onPrepareOptionsMenu");
-		return true;
-	}
-
 	/** 长按列表项的事件监听:对长按需要进行一个控制，当列表中包括”返回根目录“和”返回上一级“时，需要对这两列进行屏蔽 */
 
 	public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
@@ -560,10 +564,26 @@ public class SpecifyLocalFilePage extends AbsPage implements
 			break;
 		}
 	}
+	@Override
+	public boolean onCreateOptionsMenu(MenuInflater inflater, Menu menu)
+	{
+		// menu.clear();
+		inflater.inflate(R.menu.localpagemenu, menu);
+		return true;
+	}
 
 	@Override
-	public void clear() {
+	public boolean onOptionsItemSelected(MenuItem item)
+	{
 		// TODO Auto-generated method stub
-
+		switch (item.getItemId())
+		{
+		case R.id.muSearch:
+			//ShowSearchDialog();
+			break;
+		default:
+			return super.onOptionsItemSelected(item);
+		}
+		return true;
 	}
 }

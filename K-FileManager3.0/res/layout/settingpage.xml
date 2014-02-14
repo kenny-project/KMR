@@ -13,7 +13,8 @@
         android:layout_height="wrap_content"
         android:background="@drawable/search_top_bg"
         android:orientation="vertical"
-        android:paddingBottom="1dip" >
+        android:paddingBottom="1dip"
+        android:visibility="gone" >
 
         <Button
             android:id="@+id/btBack"
@@ -100,23 +101,6 @@
                     android:textColor="@color/Setting_Button_TextColor"
                     android:visibility="gone" />
 
-                <ImageView
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:background="#d2d2d2"
-                    android:visibility="gone" />
-
-                <CheckBox
-                    android:id="@+id/cbSetTab"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dip"
-                    android:layout_marginLeft="5dip"
-                    android:layout_marginRight="5dip"
-                    android:checked="true"
-                    android:paddingTop="5dip"
-                    android:text="@string/display_Tab_Title"
-                    android:textColor="@color/Setting_Button_TextColor" />
 
                 <ImageView
                     android:layout_width="fill_parent"
@@ -134,23 +118,6 @@
                     android:layout_marginRight="5dip"
                     android:checked="true"
                     android:text="@string/display_ShowHideFile_Title"
-                    android:textColor="@color/Setting_Button_TextColor" />
-
-                <ImageView
-                    android:layout_width="fill_parent"
-                    android:layout_height="2px"
-                    android:layout_marginLeft="15dip"
-                    android:layout_marginRight="15dip"
-                    android:background="#d2d2d2" />
-
-                <CheckBox
-                    android:id="@+id/cbSetShowTask"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dip"
-                    android:layout_marginLeft="5dip"
-                    android:layout_marginRight="5dip"
-                    android:text="@string/display_Tab_Task_Title"
                     android:textColor="@color/Setting_Button_TextColor" />
             </LinearLayout>
             <!-- 文件关联图标 -->

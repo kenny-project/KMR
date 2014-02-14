@@ -10,14 +10,14 @@
         android:id="@+id/lyTools2"
         android:layout_width="fill_parent"
         android:layout_height="40dip"
-        android:background="@drawable/tab2_bg" 
-        android:visibility="gone">
+        android:background="@drawable/tab2_bg"
+        android:visibility="gone" >
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:gravity="center" 
-            >
+            android:gravity="center" >
+
             <Button
                 android:id="@+id/btUserApp"
                 android:layout_width="wrap_content"
@@ -38,7 +38,6 @@
                 android:text="@string/btSystemAppTitle"
                 android:textColor="#337ddc"
                 android:textSize="18dip" />
-           
         </LinearLayout>
 
         <Button
@@ -51,23 +50,7 @@
             android:visibility="gone" />
     </RelativeLayout>
 
-    <ListView
-        android:id="@+id/elvAppFilelist"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_below="@id/lyTools2"
-        android:background="@color/list_bg"
-        android:cacheColorHint="#00000000"
-        android:divider="@drawable/list_line"
-        android:listSelector="@drawable/list_line"
-        android:dividerHeight="2dp"
-        android:childDivider="@drawable/list_line"
-        android:fadingEdge="none"
-        android:fastScrollEnabled="true"
-        android:groupIndicator="@null"
-         />
-    
-        <com.kenny.file.commui.KListView
+    <com.kenny.file.commui.KListView
         android:id="@+id/lvLocallist"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -76,10 +59,10 @@
         android:background="@color/list_bg"
         android:cacheColorHint="#00000000"
         android:divider="@drawable/list_line"
-        android:dividerHeight="2px"
+        android:dividerHeight="2dp"
         android:fastScrollEnabled="true"
         android:listSelector="@drawable/high_select_bg"
-        android:visibility="gone" />    
+        android:visibility="visible" />
 
     <LinearLayout
         android:id="@+id/lyBTools"
@@ -130,8 +113,6 @@
             android:textColor="@color/ContentTitleText"
             android:textSize="13dip" />
 
-   
-
         <Button
             android:id="@+id/btUnInstall"
             android:layout_width="wrap_content"
@@ -145,11 +126,9 @@
             android:text="@string/btUnInstall"
             android:textColor="@color/ContentTitleText"
             android:textSize="13dp" />
-
     </LinearLayout>
-    
-    
-      <RelativeLayout
+
+    <RelativeLayout
         android:id="@+id/pbLoading"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -170,8 +149,7 @@
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="12dip"
-                android:progressDrawable="@drawable/progressbar_style"
-                 />
+                android:progressDrawable="@drawable/progressbar_style" />
 
             <LinearLayout
                 android:id="@+id/lyLoading_msg_pannel"
@@ -193,4 +171,5 @@
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>
+
 </RelativeLayout>

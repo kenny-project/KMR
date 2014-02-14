@@ -147,8 +147,9 @@
         android:background="@drawable/toolbar_backgroud"
         android:gravity="fill"
         android:orientation="horizontal"
+        android:paddingBottom="2dip"
+        android:paddingTop="5dip" 
         >
-
         <Button
             android:id="@+id/btSelectAll"
             android:layout_width="wrap_content"
@@ -160,7 +161,7 @@
             android:drawableTop="@drawable/menu_selall"
             android:text="@string/btSelectAll"
             android:textColor="@color/ContentTitleText"
-            android:textSize="13dip" />
+            android:textSize="13sp" />
 
         <Button
             android:id="@+id/btCopy"
@@ -173,7 +174,7 @@
             android:drawableTop="@drawable/menu_copy"
             android:text="@string/btCopy"
             android:textColor="@color/ContentTitleText"
-            android:textSize="13dip" />
+            android:textSize="13sp" />
 
         <Button
             android:id="@+id/btCut"
@@ -186,7 +187,7 @@
             android:drawableTop="@drawable/menu_cut"
             android:text="@string/btCut"
             android:textColor="@color/ContentTitleText"
-            android:textSize="13dip" />
+            android:textSize="13sp" />
 
         <Button
             android:id="@+id/btPaste"
@@ -199,7 +200,7 @@
             android:drawableTop="@drawable/menu_paste"
             android:text="@string/btPaste"
             android:textColor="@color/ContentTitleText"
-            android:textSize="13dip"
+            android:textSize="13sp"
             android:visibility="gone" />
 
         <Button
@@ -213,6 +214,6 @@
             android:drawableTop="@drawable/menu_delete"
             android:text="@string/btDelete"
             android:textColor="@color/ContentTitleText"
-            android:textSize="13dip" />
+            android:textSize="13sp" />
     </LinearLayout>
 </RelativeLayout>

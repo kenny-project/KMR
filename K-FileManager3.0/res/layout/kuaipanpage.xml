@@ -298,7 +298,7 @@
                     android:singleLine="true"
                     android:text="正在获取列表..."
                     android:textColor="@color/black"
-                    android:textSize="26sp" />
+                    android:textSize="20sp" />
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>
