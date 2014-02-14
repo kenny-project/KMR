@@ -51,7 +51,129 @@
             android:orientation="vertical"
             android:paddingLeft="10dip"
             android:paddingRight="10dip" >
+<LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dip"
+                    android:paddingBottom="5dp"
+                    android:text="@string/filerelevance_preferences"
+                    android:textColor="#b6b6b6"
+                    android:textSize="12sp" />
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="2px"
+                    android:background="#d2d2d2" />
+
+                <CheckBox
+                    android:id="@+id/btSetDefTxtFileButton"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dip"
+                    android:layout_marginLeft="5dip"
+                    android:layout_marginRight="5dip"
+                    android:checked="true"
+                    android:gravity="center_vertical"
+                    android:text="@string/setting_txtfile_ico_button"
+                    android:textColor="@color/Setting_Button_TextColor"
+                    android:textSize="18dip" />
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="15dip"
+                    android:layout_marginRight="15dip"
+                    android:background="#d2d2d2" />
+
+                <CheckBox
+                    android:id="@+id/btSetDefPicFileButton"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dip"
+                    android:layout_marginLeft="5dip"
+                    android:layout_marginRight="5dip"
+                    android:checked="true"
+                    android:gravity="center_vertical"
+                    android:text="@string/setting_picfile_ico_button"
+                    android:textColor="@color/Setting_Button_TextColor"
+                    android:textSize="18dip" />
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="15dip"
+                    android:layout_marginRight="15dip"
+                    android:background="#d2d2d2" />
+
+                <CheckBox
+                    android:id="@+id/btSetDefAudioFileButton"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dip"
+                    android:layout_marginLeft="5dip"
+                    android:layout_marginRight="5dip"
+                    android:checked="true"
+                    android:gravity="center_vertical"
+                    android:text="@string/setting_audiofile_ico_button"
+                    android:textColor="@color/Setting_Button_TextColor"
+                    android:textSize="18dip" />
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="15dip"
+                    android:layout_marginRight="15dip"
+                    android:background="#d2d2d2" />
+
+                <CheckBox
+                    android:id="@+id/btSetDefZipFileButton"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dip"
+                    android:layout_marginLeft="5dip"
+                    android:layout_marginRight="5dip"
+                    android:checked="true"
+                    android:gravity="center_vertical"
+                    android:text="@string/setting_zipfile_ico_button"
+                    android:textColor="@color/Setting_Button_TextColor"
+                    android:textSize="18dip" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dip"
+                    android:paddingBottom="5dp"
+                    android:text="@string/filerelevance_preferences"
+                    android:textColor="#b6b6b6"
+                    android:textSize="12sp"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#d2d2d2"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/btSetDefFileIcoButton"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dip"
+                    android:background="@drawable/btsetting_selecter"
+                    android:checked="true"
+                    android:gravity="left"
+                    android:paddingLeft="5dip"
+                    android:paddingTop="5dip"
+                    android:text="@string/setting_picfile_ico_button"
+                    android:textColor="@color/Setting_Button_TextColor"
+                    android:textSize="18dip"
+                    android:visibility="gone" />
+            </LinearLayout>
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -298,129 +420,7 @@
                     android:visibility="gone" />
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dip"
-                    android:paddingBottom="5dp"
-                    android:text="@string/filerelevance_preferences"
-                    android:textColor="#b6b6b6"
-                    android:textSize="12sp" />
-
-                <ImageView
-                    android:layout_width="fill_parent"
-                    android:layout_height="2px"
-                    android:background="#d2d2d2" />
-
-                <CheckBox
-                    android:id="@+id/btSetDefTxtFileButton"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dip"
-                    android:layout_marginLeft="5dip"
-                    android:layout_marginRight="5dip"
-                    android:checked="true"
-                    android:gravity="center_vertical"
-                    android:text="@string/setting_txtfile_ico_button"
-                    android:textColor="@color/Setting_Button_TextColor"
-                    android:textSize="18dip" />
-
-                <ImageView
-                    android:layout_width="fill_parent"
-                    android:layout_height="2px"
-                    android:layout_marginLeft="15dip"
-                    android:layout_marginRight="15dip"
-                    android:background="#d2d2d2" />
-
-                <CheckBox
-                    android:id="@+id/btSetDefPicFileButton"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dip"
-                    android:layout_marginLeft="5dip"
-                    android:layout_marginRight="5dip"
-                    android:checked="true"
-                    android:gravity="center_vertical"
-                    android:text="@string/setting_picfile_ico_button"
-                    android:textColor="@color/Setting_Button_TextColor"
-                    android:textSize="18dip" />
-
-                <ImageView
-                    android:layout_width="fill_parent"
-                    android:layout_height="2px"
-                    android:layout_marginLeft="15dip"
-                    android:layout_marginRight="15dip"
-                    android:background="#d2d2d2" />
-
-                <CheckBox
-                    android:id="@+id/btSetDefAudioFileButton"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dip"
-                    android:layout_marginLeft="5dip"
-                    android:layout_marginRight="5dip"
-                    android:checked="true"
-                    android:gravity="center_vertical"
-                    android:text="@string/setting_audiofile_ico_button"
-                    android:textColor="@color/Setting_Button_TextColor"
-                    android:textSize="18dip" />
-
-                <ImageView
-                    android:layout_width="fill_parent"
-                    android:layout_height="2px"
-                    android:layout_marginLeft="15dip"
-                    android:layout_marginRight="15dip"
-                    android:background="#d2d2d2" />
-
-                <CheckBox
-                    android:id="@+id/btSetDefZipFileButton"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dip"
-                    android:layout_marginLeft="5dip"
-                    android:layout_marginRight="5dip"
-                    android:checked="true"
-                    android:gravity="center_vertical"
-                    android:text="@string/setting_zipfile_ico_button"
-                    android:textColor="@color/Setting_Button_TextColor"
-                    android:textSize="18dip" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dip"
-                    android:paddingBottom="5dp"
-                    android:text="@string/filerelevance_preferences"
-                    android:textColor="#b6b6b6"
-                    android:textSize="12sp"
-                    android:visibility="gone" />
-
-                <ImageView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#d2d2d2"
-                    android:visibility="gone" />
-
-                <Button
-                    android:id="@+id/btSetDefFileIcoButton"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dip"
-                    android:background="@drawable/btsetting_selecter"
-                    android:checked="true"
-                    android:gravity="left"
-                    android:paddingLeft="5dip"
-                    android:paddingTop="5dip"
-                    android:text="@string/setting_picfile_ico_button"
-                    android:textColor="@color/Setting_Button_TextColor"
-                    android:textSize="18dip"
-                    android:visibility="gone" />
-            </LinearLayout>
+            
 
             <LinearLayout
                 android:layout_width="fill_parent"
