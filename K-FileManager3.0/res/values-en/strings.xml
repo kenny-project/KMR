@@ -158,6 +158,10 @@
     <string name="installFileEvent_Title">Install</string>
 
     <!-- menu -->
+    <string name="m_FileSort">FileSort</string>
+    <string name="m_FileMode">FileMode</string>
+    <string name="m_CreateFile">CreateFile</string>
+    <string name="m_FileHide">FileHide</string>
     <string name="aboutTitle">About</string>
     <string name="m_New">New</string>
     <string name="m_About">About</string>

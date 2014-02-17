@@ -186,7 +186,7 @@ public class FileManager implements IManager
 			// mFileList.addAll(TempFileList);
 			// }
 		}
-		if (!mCurrentPath.equals(Const.Root))
+		if (!mCurrentPath.equals(mRootPath))
 		{
 			String back = mFile.getParent();
 			File temp = new File(back);

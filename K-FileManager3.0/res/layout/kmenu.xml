@@ -11,12 +11,10 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5.0dip"
+        android:paddingTop="5.0dip"
+        android:paddingBottom="5.0dip"
         android:focusable="true"
-        android:gravity="right"
         android:orientation="horizontal" >
-
-        <!-- nav_list_background -->
 
         <ImageButton
             android:id="@+id/ib_btn_home"
@@ -26,8 +24,16 @@
             android:background="@drawable/nav_list_item_bg"
             android:focusable="true"
             android:scaleType="fitCenter"
-            android:src="@drawable/home" />
+            android:src="@drawable/logo" />
         <!-- navigation_button_size -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:text="@string/app_name"
+            android:textAppearance="@style/navItemTitleTextAppearance" />
 
         <ImageButton
             android:id="@+id/btn_search"
@@ -40,24 +46,7 @@
             android:scaleType="fitCenter"
             android:src="@drawable/search_icon_light" />
     </LinearLayout>
-  <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5.0dip"
-        android:focusable="true"
-        android:gravity="right"
-        android:orientation="horizontal" >
-        <ImageButton
-            android:id="@+id/btn_setting"
-            android:layout_width="@dimen/navigation_button_size"
-            android:layout_height="@dimen/navigation_button_size"
-            android:layout_marginLeft="10.0dip"
-            android:layout_marginRight="20.0dip"
-            android:background="@drawable/nav_list_item_bg"
-            android:focusable="true"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_settings" />
-    </LinearLayout>
+
     <View
         android:layout_width="fill_parent"
         android:layout_height="2.0dip"

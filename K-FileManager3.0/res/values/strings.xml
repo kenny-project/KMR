@@ -10,7 +10,7 @@
     <string name="msg_favor_video">视频</string>
     <string name="msg_favor_doc">文档</string>
     <string name="msg_favor_backup">整理箱</string>
-    <string name="msg_favor_download">我的下载</string>
+    <string name="msg_favor_download">下载</string>
     <string name="msg_favor_apk">安装包</string>
     <string name="msg_favor_zip">压缩包</string>
     <string name="msg_favor_photo">图片</string>
@@ -156,6 +156,10 @@
     <string name="deleteFileEvent_Title">正在删除</string>
 
     <!-- menu -->
+    <string name="m_CreateFile">CreateFile</string>
+    <string name="m_FileSort">文件排序</string>
+    <string name="m_FileMode">列表模式</string>
+    <string name="m_FileHide">显示隐藏文件</string>
     <string name="m_New">新建</string>
     <string name="m_About">关于</string>
     <string name="m_List">列表模式</string>

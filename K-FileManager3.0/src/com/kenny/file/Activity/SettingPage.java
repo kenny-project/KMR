@@ -92,14 +92,14 @@ public class SettingPage extends ContentFragment implements OnClickListener,
 		// temp.setOnClickListener(this);
 		// temp =(Button) findViewById(R.id.btSetSortButton);
 		// temp.setOnClickListener(this);
-		Button btSetResumeFavorite = (Button) mView.findViewById(R.id.btSetResumeFavorite);
-		Button btSetCommentScore = (Button) mView.findViewById(R.id.btSetCommentScore);
-		Button btSetAboutTitle = (Button) mView.findViewById(R.id.btSetAboutTitle);
+		View btSetResumeFavorite = (View) mView.findViewById(R.id.btSetResumeFavorite);
+		View btSetCommentScore = (View) mView.findViewById(R.id.btSetCommentScore);
+		View btSetAboutTitle = (View) mView.findViewById(R.id.btSetAboutTitle);
 		View btSetCurrentPath = mView.findViewById(R.id.btSetCurrentPath);
-		Button btSetFeedback = (Button) mView.findViewById(R.id.btSetFeedback);
-		Button btSetThemeButton = (Button) mView.findViewById(R.id.btSetThemeButton);
-		Button btSetDefFileIcoButton = (Button) mView.findViewById(R.id.btSetDefFileIcoButton);
-		Button btSetCheckUpdate = (Button) mView.findViewById(R.id.btSetCheckUpdate);
+		View btSetFeedback = (View) mView.findViewById(R.id.btSetFeedback);
+		View btSetThemeButton = (View) mView.findViewById(R.id.btSetThemeButton);
+		View btSetDefFileIcoButton = (View) mView.findViewById(R.id.btSetDefFileIcoButton);
+		View btSetCheckUpdate = (View) mView.findViewById(R.id.btSetCheckUpdate);
 		
 		View btSetSDPath = mView.findViewById(R.id.btSetSDPath);
 		btSetSDPath.setOnClickListener(this);

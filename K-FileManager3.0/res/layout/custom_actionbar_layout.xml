@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/title_wrapper"
-    android:layout_width="fill_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content" >
 
     <ImageView
@@ -10,7 +10,8 @@
         android:layout_height="46.0dip"
         android:clickable="true"
         android:padding="4.0dip"
-        android:scaleType="centerInside" />
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_ab_back" />
 
     <ImageView
         android:layout_width="1.0dip"
@@ -33,7 +34,7 @@
         android:singleLine="true"
         android:textColor="#ffffffff"
         android:textStyle="bold"
-        android:visibility="gone" />
+        />
 <!-- 
     <com.lidroid.fileexplorer.widget.BreadcrumbView
         android:id="@+id/breadcrumb_view"

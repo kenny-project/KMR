@@ -6,7 +6,6 @@
         android:id="@+id/muSearch"
         android:icon="@drawable/common_ic_search_button"
         android:title="@string/m_Search"/>
-    -->
     <item
         android:id="@+id/muSearch"
         android:icon="@drawable/abs__ic_search"
@@ -15,6 +14,39 @@
         android:titleCondensed="@string/CheckUpdateTitle"
         android:visible="true">
     </item>
+        <item
+        android:id="@+id/muSearch"
+        android:icon="@drawable/abs__ic_search"
+        android:showAsAction="always"
+        android:title="@string/CheckUpdateTitle"
+        android:titleCondensed="@string/CheckUpdateTitle"
+        android:visible="true">
+    </item>
+    <item
+        android:id="@+id/muFileSort"
+        
+        android:icon="@drawable/common_icon_menu_info"
+        android:title="@string/m_FileSort"/>
+
+    <item
+        android:id="@+id/muFileHide"
+        android:icon="@drawable/common_icon_menu_info"
+        android:showAsAction="always"
+        android:title="@string/m_FileHide"
+        android:visible="true"/>
+    <item
+        android:id="@+id/muFileMode"
+        android:icon="@drawable/common_icon_menu_info"
+		android:showAsAction="always"        
+        android:title="@string/m_FileMode"
+        android:visible="true"/>
+    -->
+        <item
+        android:id="@+id/muCreateFile"
+        android:icon="@drawable/menu_new_normal"
+		android:showAsAction="always"        
+        android:title="@string/m_CreateFile"
+        android:visible="true"/>
     <item
         android:id="@+id/muAboutDialog"
         android:icon="@drawable/common_icon_menu_info"

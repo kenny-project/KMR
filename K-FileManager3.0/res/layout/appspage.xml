@@ -69,9 +69,12 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/toolbar_backgroud"
         android:gravity="fill"
-        android:orientation="horizontal" >
+        android:orientation="horizontal"
+        android:paddingBottom="2dip"
+        android:paddingTop="5dip" 
+        android:background="@drawable/toolbar_backgroud"
+        >
 
         <Button
             android:id="@+id/btSelectAll"

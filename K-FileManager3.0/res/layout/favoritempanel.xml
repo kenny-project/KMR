@@ -76,7 +76,9 @@
             android:layout_alignParentBottom="true"
             android:background="@drawable/toolbar_backgroud"
             android:gravity="fill"
-            android:orientation="horizontal" >
+            android:orientation="horizontal"
+            android:paddingBottom="2dip"
+            android:paddingTop="5dip" >
 
             <Button
                 android:id="@+id/btSelectAll"
@@ -142,8 +144,8 @@
                 android:drawableTop="@drawable/menu_back"
                 android:text="@string/btBack"
                 android:textColor="@color/ContentTitleText"
-                android:textSize="13dip" 
-                android:visibility="gone"/>
+                android:textSize="13dip"
+                android:visibility="gone" />
         </LinearLayout>
     </RelativeLayout>
 

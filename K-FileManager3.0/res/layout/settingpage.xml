@@ -25,7 +25,7 @@
             android:layout_marginRight="5dip"
             android:background="@drawable/tab_left_bg"
             android:textColor="#ffffff"
-            android:textSize="16dip" />
+            android:textSize="16sp" />
 
         <TextView
             style="@style/main_tools_tab_style_normal"
@@ -51,7 +51,8 @@
             android:orientation="vertical"
             android:paddingLeft="10dip"
             android:paddingRight="10dip" >
-<LinearLayout
+
+            <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical" >
@@ -174,6 +175,7 @@
                     android:textSize="18dip"
                     android:visibility="gone" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -223,7 +225,6 @@
                     android:textColor="@color/Setting_Button_TextColor"
                     android:visibility="gone" />
 
-
                 <ImageView
                     android:layout_width="fill_parent"
                     android:layout_height="2px"
@@ -266,31 +267,36 @@
                     android:layout_height="2px"
                     android:background="#d2d2d2" />
 
-                <Button
-                    android:id="@+id/btSetThemeButton"
+                <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dip"
                     android:background="@drawable/btsetting_selecter"
-                    android:checked="true"
-                    android:gravity="left"
-                    android:paddingLeft="5dip"
-                    android:paddingTop="5dip"
-                    android:text="@string/setting_theme_button"
-                    android:textColor="@color/Setting_Button_TextColor"
-                    android:textSize="18dip" />
+                    android:id="@+id/btSetThemeButton"
+                    android:orientation="vertical" >
 
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="left"
-                    android:paddingLeft="18dip"
-                    android:text="@string/setting_theme_button_desc"
-                    android:textColor="@color/Setting_Button_Desc_TextColor"
-                    android:textSize="14dip"
-                    android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dip"
+                        android:checked="true"
+                        android:gravity="left"
+                        android:paddingLeft="5dip"
+                        android:paddingTop="5dip"
+                        android:text="@string/setting_theme_button"
+                        android:textColor="@color/Setting_Button_TextColor"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="left"
+                        android:paddingLeft="18dip"
+                        android:text="@string/setting_theme_button_desc"
+                        android:textColor="@color/Setting_Button_Desc_TextColor"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
             </LinearLayout>
-
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -339,7 +345,7 @@
                         android:paddingTop="5dip"
                         android:text="@string/directory_CurrentPath"
                         android:textColor="@color/Setting_Button_TextColor"
-                        android:textSize="16dip" />
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/tvSetDefaultPath"
@@ -419,8 +425,6 @@
                     android:textColor="@color/Setting_Button_TextColor"
                     android:visibility="gone" />
             </LinearLayout>
-
-            
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -542,8 +546,8 @@
                     android:layout_height="2px"
                     android:layout_marginLeft="15dip"
                     android:layout_marginRight="15dip"
-                    android:visibility="gone"
-                    android:background="#d2d2d2" />
+                    android:background="#d2d2d2"
+                    android:visibility="gone" />
 
                 <Button
                     android:id="@+id/btSetCommentScore"
@@ -556,10 +560,10 @@
                     android:padding="5dip"
                     android:paddingBottom="5dip"
                     android:paddingTop="5dip"
-                    android:visibility="gone"
                     android:text="@string/about_CommentScore"
                     android:textColor="@color/Setting_Button_TextColor"
-                    android:textSize="18dip" />
+                    android:textSize="18dip"
+                    android:visibility="gone" />
 
                 <ImageView
                     android:layout_width="fill_parent"

@@ -16,9 +16,9 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
-import android.view.View.OnClickListener;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
@@ -38,9 +38,7 @@ import android.widget.Toast;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
-import com.framework.interfaces.MenuAble;
 import com.framework.log.P;
-import com.framework.page.AbsPage;
 import com.framework.syseng.SysEng;
 import com.kenny.KFileManager.R;
 import com.kenny.KFileManager.R.color;
@@ -576,14 +574,15 @@ public class SpecifyLocalFilePage extends ContentFragment implements
 	public boolean onOptionsItemSelected(MenuItem item)
 	{
 		// TODO Auto-generated method stub
-		switch (item.getItemId())
-		{
-		case R.id.muSearch:
-			//ShowSearchDialog();
-			break;
-		default:
-			return super.onOptionsItemSelected(item);
-		}
-		return true;
+//		switch (item.getItemId())
+//		{
+//		//case R.id.muSearch:
+//			//ShowSearchDialog();
+//			break;
+//		default:
+//			return super.onOptionsItemSelected(item);
+//		}
+//		return true;
+		return super.onOptionsItemSelected(item);
 	}
 }

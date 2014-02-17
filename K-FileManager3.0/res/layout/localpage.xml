@@ -7,16 +7,9 @@
     android:orientation="vertical" >
 
     <LinearLayout
-        android:id="@+id/lyTools"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" />
-
-    <LinearLayout
         android:id="@+id/lyTools2"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/lyTools"
         android:background="#FFe0e2e6"
         android:padding="2dip" >
 
@@ -35,7 +28,7 @@
             android:minEms="10"
             android:singleLine="true"
             android:textColor="#737373"
-            android:textSize="17dip" />
+            android:textSize="17sp" />
 
         <Button
             android:id="@+id/btFileCreate"
@@ -141,31 +134,30 @@
         android:listSelector="@drawable/high_select_bg"
         android:numColumns="4" >
     </GridView>
-
-    <ListView
-        android:id="@+id/lvAddressList"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/lyBTools"
-        android:layout_below="@id/lyTools2"
-        android:background="@drawable/popup_center"
-        android:cacheColorHint="#00000000"
-        android:divider="@drawable/list_line"
-        android:dividerHeight="2dp"
-        android:fastScrollEnabled="true"
-        android:visibility="gone" />
-
     <LinearLayout
         android:id="@+id/lyBTools"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/toolbar_backgroud"
+        
         android:gravity="fill"
         android:orientation="horizontal"
         android:paddingBottom="2dip"
-        android:paddingTop="5dip" >
-
+        android:paddingTop="5dip" 
+        android:background="@drawable/toolbar_backgroud">
+        <Button
+            android:id="@+id/btSelectAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="1dip"
+            android:layout_weight="1"
+            android:background="#00000000"
+            style="?android:attr/buttonBarButtonStyle"
+            android:drawableTop="@drawable/menu_selall"
+            android:text="@string/btSelectAll"
+            android:textColor="@color/ContentTitleText"
+            android:textSize="13sp" />
         <Button
             android:id="@+id/btNew"
             android:layout_width="wrap_content"
@@ -177,7 +169,8 @@
             android:drawableTop="@drawable/menu_new_normal"
             android:text="@string/btNew"
             android:textColor="@color/ContentTitleText"
-            android:textSize="13sp" />
+            android:textSize="13sp" 
+            android:visibility="gone"/>
 
         <Button
             android:id="@+id/btCopy"
@@ -246,18 +239,7 @@
             android:textSize="13sp"
             android:visibility="gone" />
 
-        <Button
-            android:id="@+id/btSelectAll"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginRight="1dip"
-            android:layout_weight="1"
-            android:background="#00000000"
-            android:drawableTop="@drawable/menu_selall"
-            android:text="@string/btSelectAll"
-            android:textColor="@color/ContentTitleText"
-            android:textSize="13sp" />
+
 
         <Button
             android:id="@+id/btMore"
@@ -270,7 +252,8 @@
             android:drawableTop="@drawable/menu_more_normal"
             android:text="@string/btMore"
             android:textColor="@color/ContentTitleText"
-            android:textSize="13sp" />
+            android:textSize="13sp" 
+            />
     </LinearLayout>
 
     <RelativeLayout
