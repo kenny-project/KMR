@@ -41,8 +41,9 @@
         android:layout_height="1.0dip"
         android:layout_marginLeft="10.0dip"
         android:layout_marginRight="10.0dip"
-        android:background="@color/navmenu_divider" />
-
+         
+        android:background="@drawable/setting_line"/>
+<!-- android:background="@color/navmenu_divider" -->
 </LinearLayout>
 
 <!--

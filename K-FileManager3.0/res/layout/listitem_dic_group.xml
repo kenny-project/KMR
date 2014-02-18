@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:background="@color/navmenu_background"
+    android:background="@color/navmenu_kmenu_background"
     android:gravity="center_vertical"
     android:orientation="vertical" >
 
@@ -28,6 +28,7 @@
         android:layout_width="fill_parent"
         android:layout_height="2.0dip"
         android:background="@drawable/panel_title_divider_background"
-        android:focusable="false" />
+        android:focusable="false" 
+        android:visibility="gone"/>
 
 </LinearLayout>

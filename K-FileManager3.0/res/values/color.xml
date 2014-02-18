@@ -10,6 +10,8 @@
     <color name="setting_group_TextColor">#ffbebebe</color>
     <color name="navmenu_divider">#ff565656</color>
     <color name="navmenu_background">#ff454545</color>
+    <color name="navmenu_kmenu_background">#ff323232</color>
+    
     <color name="no_back">#00000000</color>
     <color name="title">#ff2e2e2e</color>
     <color name="desc">#ff949494</color>

@@ -115,7 +115,7 @@
                 android:layout_marginRight="1dip"
                 android:layout_weight="1"
                 android:background="#00000000"
-                android:drawableTop="@drawable/menu_delete"
+                android:drawableTop="@drawable/menu_arrange"
                 android:text="@string/btArrange"
                 android:textColor="@color/ContentTitleText"
                 android:textSize="13dip" />

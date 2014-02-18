@@ -151,9 +151,9 @@ public class KMenuFragment extends AbsFragmentPage implements
 		groupbean.setTitle("应用");
 		groupbean.setID(appsPage);
 		groupbean.AddDictBean(new KMenuItemBean(1, "用户安装", 0,
-				R.drawable.ic_root_explorer));
+				R.drawable.ic_user_app_explorer));
 		groupbean.AddDictBean(new KMenuItemBean(2, "系统应用", 1,
-				R.drawable.ic_root_explorer));
+				R.drawable.ic_system_app_explorer));
 		mGroupBeans.add(groupbean);
 		groupbean = new KMenuGroupBean();
 		groupbean.setTitle("高级");

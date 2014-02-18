@@ -9,6 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
+        android:background="@drawable/toolbar_backgroud"
         android:orientation="vertical" >
 
         <RelativeLayout
@@ -22,7 +23,7 @@
                 android:layout_height="fill_parent"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="10dip"
-                android:background="@drawable/pannal_btn_bg"
+                android:background="@drawable/toolbar_backgroud"
                 android:gravity="center_vertical"
                 android:paddingLeft="10dip"
                 android:text="@string/viewStyle_Title"
@@ -33,7 +34,8 @@
         <ImageView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="10dip"
+            android:paddingLeft="5dip"
+            android:paddingRight="5dip"
             android:scaleType="fitXY"
             android:src="@drawable/setting_line" />
 
@@ -49,7 +51,7 @@
                 android:layout_height="fill_parent"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="10dip"
-                android:background="@drawable/pannal_btn_bg"
+                android:background="@drawable/toolbar_backgroud"
                 android:gravity="center_vertical"
                 android:paddingLeft="10dip"
                 android:text="@string/viewStyle_Title"
@@ -60,7 +62,8 @@
         <ImageView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="10dip"
+            android:paddingLeft="5dip"
+            android:paddingRight="5dip"
             android:scaleType="fitXY"
             android:src="@drawable/setting_line" />
 
@@ -70,7 +73,7 @@
             android:layout_height="40dip"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dip"
-            android:background="@drawable/pannal_btn_bg"
+            android:background="@drawable/toolbar_backgroud"
             android:gravity="center_vertical"
             android:paddingLeft="10dip"
             android:text="显示隐藏文件"
@@ -96,7 +99,6 @@
                 android:paddingLeft="10dip"
                 android:text="@string/btMenuFavorites_Title"
                 android:textColor="#ffffff"
-                android:textSize="13sp" />
-    -->
+                android:textSize="13sp" />    -->
 
 </RelativeLayout>
