@@ -8,6 +8,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager.OnBackStackChangedListener;
 import android.support.v4.app.FragmentTransaction;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -45,11 +46,13 @@ import com.umeng.update.UmengUpdateAgent;
  * @author wmh
  * 
  */
-public class MainUIActivity extends SlidingFragmentActivity
+public class MainUIActivity extends SlidingFragmentActivity implements
+		OnBackStackChangedListener
 {
 	private Fragment mContent;
 	private KMenuFragment mKMenuFragment;
 	private SlidingMenu sm;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
@@ -80,31 +83,28 @@ public class MainUIActivity extends SlidingFragmentActivity
 				@Override
 				public void onClick(View v)
 				{
-					if(!sm.isMenuShowing())
+					if (!sm.isMenuShowing())
 					{
 						sm.showMenu();
-					}
-					else
+					} else
 					{
 						sm.showContent();
 					}
 				}
 			});
-			
+
 			c = ((TextView) m.findViewById(R.id.ab_title));
 			// b = ((BreadcrumbView)m.findViewById(2131427420));
 			e = ((ActionListView) m.findViewById(R.id.action_list));
 			ActionBar.LayoutParams localLayoutParams = new ActionBar.LayoutParams(
 					-1, -2);
-			getSupportActionBar().setIcon(R.drawable.logo);
-			getSupportActionBar().setLogo(R.drawable.logo);
-			getSupportActionBar().setCustomView(m, localLayoutParams);
-			getSupportActionBar().setDisplayShowHomeEnabled(false);
-			getSupportActionBar().setDisplayShowTitleEnabled(false);
-			getSupportActionBar().setDisplayUseLogoEnabled(false);
-			getSupportActionBar().setDisplayShowCustomEnabled(true);
-			getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-
+			ActionBar bar = getSupportActionBar();
+			bar.setCustomView(m, localLayoutParams);
+			bar.setDisplayShowHomeEnabled(false);
+			bar.setDisplayShowTitleEnabled(false);
+			bar.setDisplayUseLogoEnabled(false);
+			bar.setDisplayShowCustomEnabled(true);
+			bar.setDisplayHomeAsUpEnabled(false);
 			// 注销掉
 			// k();
 		} else
@@ -134,6 +134,17 @@ public class MainUIActivity extends SlidingFragmentActivity
 		// set the Behind View Fragment KMenuFragment
 		getSupportFragmentManager().beginTransaction()
 				.replace(R.id.menu_frame, mKMenuFragment).commit();
+		getSupportFragmentManager().addOnBackStackChangedListener(
+				new OnBackStackChangedListener()
+				{
+					@Override
+					public void onBackStackChanged()
+					{
+						mContent = getSupportFragmentManager()
+								.findFragmentById(R.id.content_frame);
+						mContent.onResume();
+					}
+				});
 		Init();
 	}
 
@@ -233,12 +244,21 @@ public class MainUIActivity extends SlidingFragmentActivity
 	}
 
 	private Handler h = new Handler();
-
 	public void switchContent(final Fragment fragment)
 	{
+		switchContent(null,fragment);
+	}
+	public void switchContent(String key,final Fragment fragment)
+	{
 		mContent = fragment;
-		FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+		FragmentTransaction transaction = getSupportFragmentManager()
+				.beginTransaction();
 		transaction.add(R.id.content_frame, fragment);
+		//transaction.replace(R.id.content_frame, fragment);
+		if(key!=null)
+		{
+			transaction.addToBackStack(key);
+		}
 		transaction.addToBackStack(null);
 		transaction.commit();
 		h.postDelayed(new Runnable()
@@ -249,10 +269,12 @@ public class MainUIActivity extends SlidingFragmentActivity
 			}
 		}, 50);
 	}
+
 	public void backFragment()
 	{
 		getSupportFragmentManager().popBackStack();
 	}
+
 	public void addFragment(Fragment paramFragment)
 	{
 		getSupportFragmentManager().beginTransaction()
@@ -270,12 +292,10 @@ public class MainUIActivity extends SlidingFragmentActivity
 	{
 		// TODO Auto-generated method stub
 		boolean result = false;
-		mContent=getSupportFragmentManager().findFragmentById(R.id.content_frame);
 		if (getSlidingMenu().isMenuShowing())
 		{
 			result = mKMenuFragment.onKeyDown(keyCode, event);
-		}
-		else if (mContent != null && mContent instanceof AbsFragmentPage)
+		} else if (mContent != null && mContent instanceof AbsFragmentPage)
 		{
 			result = ((AbsFragmentPage) mContent).onKeyDown(keyCode, event);
 		}
@@ -691,6 +711,13 @@ public class MainUIActivity extends SlidingFragmentActivity
 		// //setSendLogStrategy函数与配置文件中的BaiduMobAd_SEND_STRATEGY等是等效的，推荐使用配置文件。
 		// StatService.setSendLogStrategy(this,SendStrategyEnum.APP_START,
 		// 1,false);
+	}
+
+	@Override
+	public void onBackStackChanged()
+	{
+		// TODO Auto-generated method stub
+
 	}
 
 }

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!--  <color name="title">#ff00133E</color>-->
+    <!-- 友盟-->
+    <color name="umeng_fb_color_btn_pressed">#1495F7</color>
+    <color name="umeng_fb_color_btn_normal">#333333</color>
+    
     <color name="favorpage_status_textColor">#ff00133E</color>
     <color name="setting_group_BG">#ff191919</color>
     <color name="setting_group_TextColor">#ffbebebe</color>

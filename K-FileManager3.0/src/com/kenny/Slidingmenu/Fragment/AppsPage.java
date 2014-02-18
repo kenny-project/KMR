@@ -298,6 +298,14 @@ public class AppsPage extends ContentFragment implements OnItemClickListener,
 	}
 
 	@Override
+	public void onResume()
+	{
+		// TODO Auto-generated method stub
+		setTitle(getTitle());
+		super.onResume();
+	}
+
+	@Override
 	public boolean onCreateOptionsMenu(MenuInflater inflater, Menu menu)
 	{
 		inflater.inflate(R.menu.apppagemenu, menu);

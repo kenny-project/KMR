@@ -1,11 +1,10 @@
 package com.kenny.Slidingmenu.Fragment;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-
-import com.framework.page.AbsPage;
 
 import android.support.v4.app.Fragment;
+
+import com.framework.page.AbsPage;
 
 public class KPageFragment {
 

@@ -13,6 +13,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -271,6 +272,14 @@ public class LocalPage extends ContentFragment implements
 		btMenuShowOrHide.setOnClickListener(menuListener);
 	}
 
+	@Override
+	public void onDestroyView()
+	{
+		// TODO Auto-generated method stub
+		Log.v("wmh", "onDestroyView()");
+		super.onDestroyView();
+	}
+
 	public void onResume()
 	{
 		super.onResume();
@@ -282,7 +291,7 @@ public class LocalPage extends ContentFragment implements
 		sdCardFilter.addAction(Intent.ACTION_MEDIA_BAD_REMOVAL);
 		sdCardFilter.addDataScheme("file");
 		this.m_act.registerReceiver(sdcardReceiver, sdCardFilter);// 注册监听函数
-
+		setTitle(new File(localManage.getCurrentPath()).getName());
 		m_lvMain.setBackgroundColor(Theme.getBackgroundColor());
 		if (nSortMode != Theme.getSortMode())
 		{
@@ -307,7 +316,6 @@ public class LocalPage extends ContentFragment implements
 		{
 			e.printStackTrace();
 		}
-
 	}
 
 	BroadcastReceiver sdcardReceiver = new BroadcastReceiver()
@@ -383,7 +391,7 @@ public class LocalPage extends ContentFragment implements
 	public void ShowSearchDialog()
 	{
 		// KMainPage.mKMainPage.ChangePage(KMainPage.Search, null);
-		switchFragment(new SearchResultPage());
+		switchFragment(new SearchResultPage(this));
 	}
 
 	/**
@@ -706,9 +714,9 @@ public class LocalPage extends ContentFragment implements
 		case R.id.muCreateFile:
 			CreateFileDialog.Show(m_act, localManage.getCurrentPath());
 			break;
-//		case R.id.muSearch:
-//			ShowSearchDialog();
-//			break;
+		case R.id.muSearch:
+			ShowSearchDialog();
+			break;
 //		case R.id.muFileSort:
 //			new ViewSortDialog().ShowDialog(m_act, LocalPage.this);
 //			break;

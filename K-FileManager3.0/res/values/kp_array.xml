@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string-array name="array_suppotedmail">
+    <string-array name="array_suppotedmail" translatable="false">
         <item>qq.com</item>
         <item>163.com</item>
         <item>126.com</item>

@@ -40,7 +40,7 @@ import com.framework.syseng.KSysEng;
 import com.framework.syseng.SysEng;
 import com.kenny.KFileManager.R;
 import com.kenny.KFileManager.R.color;
-import com.kenny.file.Activity.SettingPage;
+import com.kenny.Slidingmenu.Fragment.SettingPage;
 import com.kenny.file.Adapter.KuaiPanFileAdapter;
 import com.kenny.file.Event.ExitEvent;
 import com.kenny.file.Event.KuaiPanFileListEvent;

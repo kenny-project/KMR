@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.kenny.KFileManager"
     android:installLocation="internalOnly"
-    android:versionCode="86"
-    android:versionName="2.2.1" 
+    android:versionCode="280"
+    android:versionName="3.0 Beta" 
     >
     
     <uses-sdk
@@ -268,7 +268,7 @@
             </intent-filter>
         </activity>
                  <activity
-            android:name="com.kenny.file.Activity.SettingPage"
+            android:name="com.kenny.Slidingmenu.Fragment.SettingPage"
             android:configChanges="keyboard|keyboardHidden|orientation"
             android:theme="@android:style/Theme.Black.NoTitleBar" 
             />

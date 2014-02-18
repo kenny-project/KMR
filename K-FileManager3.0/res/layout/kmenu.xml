@@ -11,10 +11,10 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="5.0dip"
-        android:paddingBottom="5.0dip"
         android:focusable="true"
-        android:orientation="horizontal" >
+        android:orientation="horizontal"
+        android:paddingBottom="5.0dip"
+        android:paddingTop="5.0dip" >
 
         <ImageButton
             android:id="@+id/ib_btn_home"
@@ -44,7 +44,19 @@
             android:background="@drawable/nav_list_item_bg"
             android:focusable="true"
             android:scaleType="fitCenter"
-            android:src="@drawable/search_icon_light" />
+            android:src="@drawable/search_icon_light"
+            android:visibility="gone" />
+
+        <ImageButton
+            android:id="@+id/btn_setting"
+            android:layout_width="22.0dip"
+            android:layout_height="22.0dip"
+            android:layout_marginLeft="10.0dip"
+            android:layout_marginRight="20.0dip"
+            android:background="@drawable/nav_list_item_bg"
+            android:focusable="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_settings" />
     </LinearLayout>
 
     <View

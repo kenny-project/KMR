@@ -194,6 +194,7 @@
     <string name="btCancel">Cancel</string>
     <string name="btUpLoad">UpLoad</string>
     <string name="btExit">Exit</string>
+        <string name="btMore">More</string>
     <string name="directory_CurrentPath_Desc">将当前目录设置为启动的默认目录</string>
     <string name="directory_SDPath">设置为SD卡目录</string>
     <string name="directory_SDPath_Desc">该功能是为因系统定制原因而不能识别SD卡正确目录而开发的，请您可以进入到SD卡的目录后点击设置。就会把当前目录设置为SD卡的根目录</string>

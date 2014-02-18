@@ -16,7 +16,6 @@ import com.framework.page.AbsPage;
 import com.framework.page.MultiItemPage;
 import com.kenny.KFileManager.R;
 import com.kenny.Slidingmenu.Fragment.AppsPage;
-import com.kenny.Slidingmenu.Fragment.FavoritePage;
 import com.kenny.Slidingmenu.Fragment.SearchResultPage;
 import com.kenny.file.util.Theme;
 

@@ -10,11 +10,12 @@
         android:id="@+id/muSetting"
         android:icon="@drawable/common_ic_menu_setting"
         android:title="@string/m_Setting"/>
-
+<!-- 
     <item
         android:id="@+id/muScan"
         android:icon="@drawable/common_ic_menu_update"
         android:title="@string/btScan"/>
+-->
     <item
         android:id="@+id/muExit"
         android:icon="@drawable/common_ic_menu_exit"

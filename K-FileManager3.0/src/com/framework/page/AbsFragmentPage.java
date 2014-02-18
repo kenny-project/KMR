@@ -20,7 +20,7 @@ import com.framework.event.BackViewEvent;
 import com.framework.syseng.SysEng;
 import com.kenny.KFileManager.R;
 import com.kenny.Slidingmenu.MainUIActivity;
-import com.kenny.file.Activity.SettingPage;
+import com.kenny.Slidingmenu.Fragment.SettingPage;
 import com.kenny.file.Event.ExitEvent;
 import com.kenny.file.dialog.AboutDialog;
 import com.slidingmenu.lib.SlidingMenu;

@@ -10,6 +10,7 @@ import java.util.Map;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -63,7 +64,11 @@ public class SearchResultPage extends ContentFragment implements
 	private ScarchParam param = new ScarchParam();
 	private ArrayList<FileBean> mFileListFilter = new ArrayList<FileBean>();
 	private ArrayList<FGroupInfo> mGroupList = new ArrayList<FGroupInfo>(); // 正在运行程序列表
-
+	private Fragment mFragment;
+	public SearchResultPage(Fragment mFragment)
+	{
+		this.mFragment=mFragment;	
+	}
 	@Override
 	public void onCreate(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState)
@@ -534,7 +539,8 @@ public class SearchResultPage extends ContentFragment implements
 		{
 		case KeyEvent.KEYCODE_BACK:
 			// KMainPage.mKMainPage.ChangePage(KMainPage.Local, null);
-			// ShowMenu();
+//			 ShowMenu();
+			//switchFragment(mFragment);
 			backFragment();
 			break;
 		default:

@@ -24,7 +24,6 @@ import android.widget.Toast;
 import com.framework.page.AbsFragmentPage;
 import com.framework.syseng.SysEng;
 import com.kenny.KFileManager.R;
-import com.kenny.file.Activity.SettingPage;
 import com.kenny.file.Adapter.KMenuAdapter;
 import com.kenny.file.Event.ExitEvent;
 import com.kenny.file.Event.LoadSDFolderEvent;
@@ -34,8 +33,6 @@ import com.kenny.file.bean.FileBean;
 import com.kenny.file.bean.KMenuGroupBean;
 import com.kenny.file.bean.KMenuItemBean;
 import com.kenny.file.db.Dao;
-import com.kenny.file.page.FavoriteFilePage;
-import com.kenny.file.page.MyFavoriteFilePage;
 import com.kenny.file.page.SpecifyLocalFilePage;
 import com.kenny.file.sort.FileSort;
 import com.kenny.file.tools.SaveData;
@@ -69,6 +66,7 @@ public class KMenuFragment extends AbsFragmentPage implements
 		Init();
 
 		mView.findViewById(R.id.btn_search).setOnClickListener(this);
+		mView.findViewById(R.id.btn_setting).setOnClickListener(this);
 		lvEList = (ExpandableListView) mView.findViewById(R.id.lvEList);
 		adapter = new KMenuAdapter(getActivity(), mGroupBeans);
 		lvEList.setAdapter(adapter);
@@ -165,12 +163,12 @@ public class KMenuFragment extends AbsFragmentPage implements
 		groupbean.AddDictBean(new KMenuItemBean(2, "金山网盘", 2,
 				R.drawable.ic_cloud_disk));
 		mGroupBeans.add(groupbean);
-		groupbean = new KMenuGroupBean();
-		groupbean.setTitle("设置");
-		groupbean.setID(setting);
-		groupbean.AddDictBean(new KMenuItemBean(1, "设置", 1,
-				R.drawable.ic_settings));
-		mGroupBeans.add(groupbean);
+//		groupbean = new KMenuGroupBean();
+//		groupbean.setTitle("设置");
+//		groupbean.setID(setting);
+//		groupbean.AddDictBean(new KMenuItemBean(1, "设置", 1,
+//				R.drawable.ic_settings));
+//		mGroupBeans.add(groupbean);
 
 	}
 
@@ -213,7 +211,7 @@ public class KMenuFragment extends AbsFragmentPage implements
 			e.printStackTrace();
 		}
 	}
-
+	private HashMap<String, ContentFragment> mHashMap=new HashMap<String, ContentFragment>();
 	@Override
 	public boolean onChildClick(ExpandableListView parent, View v,
 			int groupPosition, int childPosition, long id)
@@ -229,7 +227,7 @@ public class KMenuFragment extends AbsFragmentPage implements
 		case LocalPage:
 			if (bean.getID() == -1)
 			{
-				newContent = new SearchResultPage();
+				newContent = new SearchResultPage(this);
 			} else
 			{
 				newContent = new LocalPage((String) bean.getObj());
@@ -239,13 +237,15 @@ public class KMenuFragment extends AbsFragmentPage implements
 			if (bean.getID() == 0)
 			{
 				newContent = onMyFavoriteClick((FGroupInfo) bean.getObj());
-			} else if (bean.getID() == -1)
+			}
+			else if (bean.getID() == -1)
 			{
 				// newContent = newContent = new LocalPage(
 				// (String)
 				// bean.getObj());onSpecifyLocalFavoriteClick(Const.szAppPath);
 				newContent = new LocalPage((String) bean.getObj());
-			} else
+			}
+			else
 			{
 				newContent = new FavoriteFilePage(getActivity(),
 						(FGroupInfo) bean.getObj());
@@ -346,7 +346,10 @@ public class KMenuFragment extends AbsFragmentPage implements
 		switch (v.getId())
 		{
 		case R.id.btn_search:
-			switchFragment(new SearchResultPage());
+			switchFragment(new SearchResultPage(this));
+			break;
+		case R.id.btn_setting:
+			switchFragment(new SettingPage());
 			break;
 		}
 	}

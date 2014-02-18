@@ -24,10 +24,8 @@ import com.framework.page.AbsFragmentPage;
 import com.framework.syseng.SysEng;
 import com.kenny.KFileManager.R;
 import com.kenny.Slidingmenu.MainUIActivity;
-import com.kenny.file.Activity.SettingPage;
 import com.kenny.file.Event.ExitEvent;
 import com.kenny.file.dialog.AboutDialog;
-import com.slidingmenu.lib.SlidingMenu;
 
 /**
  * 界面基类
@@ -49,6 +47,11 @@ public abstract class ContentFragment extends AbsFragmentPage
 			android.view.MenuInflater inflater)
 	{
 		super.onCreateOptionsMenu(menu, inflater);
+	}
+
+	public String getTitle()
+	{
+		return mTitle;
 	}
 
 	public void setTitle(String mTitle)

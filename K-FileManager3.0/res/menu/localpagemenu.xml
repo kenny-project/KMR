@@ -41,11 +41,18 @@
         android:title="@string/m_FileMode"
         android:visible="true"/>
     -->
-        <item
+    <item
         android:id="@+id/muCreateFile"
         android:icon="@drawable/menu_new_normal"
-		android:showAsAction="always"        
+        android:showAsAction="always"
         android:title="@string/m_CreateFile"
+        android:visible="true"/>
+    <item
+        android:id="@+id/muSearch"
+        android:icon="@drawable/abs__ic_search"
+        android:showAsAction="always"
+        android:title="@string/CheckUpdateTitle"
+        android:titleCondensed="@string/CheckUpdateTitle"
         android:visible="true"/>
     <item
         android:id="@+id/muAboutDialog"
@@ -59,5 +66,4 @@
         android:id="@+id/muExit"
         android:icon="@drawable/common_ic_menu_exit"
         android:title="@string/m_Exit"/>
-
 </menu>
