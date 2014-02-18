@@ -40,7 +40,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginLeft="5dip"
-            android:background="@drawable/file_manager_browser_listmode"
             android:gravity="center_vertical"
             android:visibility="gone" />
 
@@ -50,7 +49,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginLeft="5dip"
-            android:background="@drawable/file_manager_browser_listmode"
             android:gravity="center_vertical" />
 
         <Button

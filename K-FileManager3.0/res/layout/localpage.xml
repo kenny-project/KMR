@@ -35,7 +35,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="2dip"
-            android:background="@drawable/directory_create_select"
             android:visibility="gone" />
 
         <Button
@@ -44,7 +43,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginLeft="5dip"
-            android:background="@drawable/file_manager_browser_listmode"
             android:gravity="center_vertical"
             android:visibility="gone" />
 
@@ -54,7 +52,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginLeft="5dip"
-            android:background="@drawable/file_manager_browser_listmode"
             android:gravity="center_vertical"
             android:visibility="gone" />
 
