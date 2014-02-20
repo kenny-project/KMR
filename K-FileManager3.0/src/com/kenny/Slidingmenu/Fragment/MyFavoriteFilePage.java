@@ -222,12 +222,14 @@ public class MyFavoriteFilePage extends ContentFragment implements
 					}
 					break;
 				case 1:// 打开文件夹
-					FileManager.getInstance().setFilePath(
-							file.getFilePath().substring(
-									0,
-									file.getFilePath().lastIndexOf(
-											File.separator)));
-					KMainPage.mKMainPage.ChangePage(KMainPage.Local, null);
+//					FileManager.getInstance().setFilePath(
+//							);
+					String path=file.getFilePath().substring(
+							0,
+							file.getFilePath().lastIndexOf(
+									File.separator));
+//					KMainPage.mKMainPage.ChangePage(KMainPage.Local, null);
+					LocalFragmentActivity.actionSettingPage(m_act, path);
 					break;
 				case 2:// 删除
 					DeleteFile(file);

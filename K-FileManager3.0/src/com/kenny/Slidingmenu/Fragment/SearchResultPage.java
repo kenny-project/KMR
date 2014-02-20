@@ -334,9 +334,10 @@ public class SearchResultPage extends SlidingFragmentActivity implements
 				{
 					// FileManager.getInstance().setFilePath(mFile.getPath());
 					// KMainPage.mKMainPage.ChangePage(KMainPage.Local, null);
-					if (m_MainUIActivity != null)
-						m_MainUIActivity.switchContent(new LocalPage(
-								(String) mFile.getPath()));
+//					if (m_MainUIActivity != null)
+//						m_MainUIActivity.switchContent(new LocalPage(
+//								(String) mFile.getPath()));
+					LocalFragmentActivity.actionSettingPage(m_act,mFile.getPath());
 				} else
 				{// 如果该文件不可读，我们给出提示不能访问，防止用户操作系统文件造成系统崩溃等
 					Toast.makeText(m_act, "该文件夹不存在或权限不够!", Toast.LENGTH_SHORT)

@@ -56,9 +56,8 @@ public class FileManager implements IManager
 		}
 	}
 
-	private FileManager()
+	public FileManager()
 	{
-
 		mFileList = new ArrayList<FileBean>();
 	}
 

@@ -149,7 +149,13 @@ public class MainUIActivity extends SlidingFragmentActivity implements
 				});
 		
 	}
-
+	@Override
+	public void setTitle(CharSequence title)
+	{
+		// TODO Auto-generated method stub
+		getSupportActionBar().setTitle(title);
+		super.setTitle(title);
+	}
 	@Override
 	protected void onResume()
 	{

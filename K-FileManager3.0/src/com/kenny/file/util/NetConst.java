@@ -13,27 +13,27 @@ public class NetConst
 	private static String webSideDataUrl = "";
 	private static String webUrl = "";
 	private static Context m_ctx = null;
-	
-	public static void SetContext(Context ctx)
-	{
-		m_ctx = ctx;
-		if (webSideDataUrl == "")
-		{
-			if (webSideDataUrl.equals(""))
-			{
-				if (ctx != null) m_ctx = ctx;
-				webSideDataUrl = m_ctx.getString(R.string.websidedata);
-			}
-		}
-		if (webSideUrl != null)
-		{
-			// webSideUrl = SaveData.readPreferencesString(ctx, "webside", "");
-			if (webSideUrl != null && webSideUrl.equals(""))
-			{
-				webSideUrl = m_ctx.getString(R.string.webside);
-			}
-		}
-	}
+//	
+//	public static void SetContext(Context ctx)
+//	{
+//		m_ctx = ctx;
+//		if (webSideDataUrl == "")
+//		{
+//			if (webSideDataUrl.equals(""))
+//			{
+//				if (ctx != null) m_ctx = ctx;
+//				webSideDataUrl = m_ctx.getString(R.string.websidedata);
+//			}
+//		}
+//		if (webSideUrl != null)
+//		{
+//			// webSideUrl = SaveData.readPreferencesString(ctx, "webside", "");
+//			if (webSideUrl != null && webSideUrl.equals(""))
+//			{
+//				webSideUrl = m_ctx.getString(R.string.webside);
+//			}
+//		}
+//	}
 	
 	/**
 	 * 获得网络地址

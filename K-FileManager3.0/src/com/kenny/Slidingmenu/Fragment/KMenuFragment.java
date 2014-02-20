@@ -233,9 +233,9 @@ public class KMenuFragment extends AbsFragmentPage implements
 		// {
 		// newContent = new SearchResultPage(this);
 		// } else
-		{
+//		{
 			newContent = new LocalPage((String) bean.getObj());
-		}
+//		}
 			break;
 		case Favorite:
 			if (bean.getID() == 0)

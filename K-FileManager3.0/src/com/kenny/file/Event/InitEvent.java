@@ -87,7 +87,7 @@ public class InitEvent extends AbsEvent
 			Const.setSDCard(mStrSDRootPath);
 		}
 		P.Init(ctx);
-		NetConst.SetContext(ctx);
+		//NetConst.SetContext(ctx);
 		Theme.Init(ctx);
 		Config.Init(ctx);
 	}

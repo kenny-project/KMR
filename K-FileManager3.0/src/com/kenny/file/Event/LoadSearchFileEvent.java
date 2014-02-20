@@ -38,14 +38,14 @@ public class LoadSearchFileEvent extends AbsEvent implements OnCancelListener
 	private AlertDialog mProgressDialog = null;
 	private TextView tvMessage;
 	private ScarchParam param;
-	private char[] SearchValue;
+	private String SearchValue;
 	//private ArrayList<FileBean> mSearchItems=new ArrayList<FileBean>();
 	public LoadSearchFileEvent(Context act, boolean isShow, ScarchParam param,
 			INotifyDataSetChanged notifyDataSetChanged)
 	{
 		this.act = act;
 		this.param = param;
-		SearchValue = param.getSearchValue().toCharArray();
+		SearchValue = param.getSearchValue();
 		this.isShow = isShow;
 		m_NotifyDataSetChanged = notifyDataSetChanged;
 		mProgress = true;
@@ -168,7 +168,10 @@ public class LoadSearchFileEvent extends AbsEvent implements OnCancelListener
 				{
 					refreshSDCardList(file.getAbsolutePath());
 				}
-				continue;
+				else
+				{
+					continue;
+				}
 			}
 			SendMessage(Const.cmd_LoadSDFile_State, file.getAbsolutePath());
 			if (compare(file.getName()))
@@ -202,32 +205,34 @@ public class LoadSearchFileEvent extends AbsEvent implements OnCancelListener
 
 	public boolean compare(String fileName)
 	{
-		char[] src = SearchValue;
-		char[] des = fileName.toCharArray();
-		int length = des.length;
-		if (src.length > des.length)
-		{
-			return false;
-		}
-		int pos = 0;
-		for (int i = 0; i < length; i++)
-		{
-			if (src[pos] == des[i])
-			{
-				pos++;
-				if (src.length > pos)
-				{
-					continue;
-				} else
-				{
-					return true;
-				}
-			} else
-			{
-				pos = 0;
-			}
-		}
-		return false;
+		return fileName.matches("^.*" + SearchValue + ".*");
+		
+//		char[] src = SearchValue;
+//		char[] des = fileName.toCharArray();
+//		int length = des.length;
+//		if (src.length > des.length)
+//		{
+//			return false;
+//		}
+//		int pos = 0;
+//		for (int i = 0; i < length; i++)
+//		{
+//			if (src[pos] == des[i])
+//			{
+//				pos++;
+//				if (src.length > pos)
+//				{
+//					continue;
+//				} else
+//				{
+//					return true;
+//				}
+//			} else
+//			{
+//				pos = 0;
+//			}
+//		}
+//		return false;
 	}
 
 	public void onCancel(DialogInterface dialog)

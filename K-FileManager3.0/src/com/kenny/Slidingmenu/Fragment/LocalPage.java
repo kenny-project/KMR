@@ -84,6 +84,17 @@ public class LocalPage extends ContentFragment implements
 		mStrPath = new File(path).getAbsolutePath();
 	}
 
+	public FileManager getLocalManage()
+	{
+		return localManage;
+	}
+
+	public void setLocalManage(FileManager localManage)
+	{
+		this.localManage = localManage;
+		1
+	}
+
 	/**
 	 * The Fragment's UI is just a simple text view showing its instance number.
 	 */

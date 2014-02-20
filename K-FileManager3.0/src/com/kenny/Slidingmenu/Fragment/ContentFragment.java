@@ -59,9 +59,9 @@ public abstract class ContentFragment extends AbsFragmentPage
 		this.mTitle = mTitle;
 		if (getActivity() == null)
 			return;
-		if (getActivity() instanceof MainUIActivity)
+		if (getActivity() instanceof Activity)
 		{
-			MainUIActivity ra = (MainUIActivity) getActivity();
+			Activity ra = (Activity) getActivity();
 			ra.setTitle(mTitle);
 		}
 	}
@@ -69,10 +69,10 @@ public abstract class ContentFragment extends AbsFragmentPage
 	public void setTitle(int mTitle)
 	{
 		this.mResTitle = mTitle;
-//		if (getSupportActionBar() != null)
-//		{
-//			getSupportActionBar().setTitle(mResTitle);
-//		}
+		// if (getSupportActionBar() != null)
+		// {
+		// getSupportActionBar().setTitle(mResTitle);
+		// }
 		if (getActivity() == null)
 			return;
 		if (getActivity() instanceof MainUIActivity)
@@ -107,8 +107,11 @@ public abstract class ContentFragment extends AbsFragmentPage
 	{
 		if (keyCode == KeyEvent.KEYCODE_BACK)
 		{
-			ShowMenu();
-			return true;
+			if (getSlidingMenu() != null)
+			{
+				ShowMenu();
+				return true;
+			}
 		}
 		return super.onKeyDown(keyCode, event);
 	}
@@ -139,8 +142,8 @@ public abstract class ContentFragment extends AbsFragmentPage
 		switch (item.getItemId())
 		{
 		case R.id.muSetting:
-//			SettingPage.actionSettingPage();
-//			switchFragment(new SettingPage());
+			// SettingPage.actionSettingPage();
+			// switchFragment(new SettingPage());
 			SettingPage.actionSettingPage(m_act);
 			break;
 		case R.id.muAboutDialog:
@@ -247,7 +250,7 @@ public abstract class ContentFragment extends AbsFragmentPage
 				getSupportActionBar().setTitle(mResTitle);
 			}
 		}
-		if (getActivity() != null&&getActivity() instanceof MainUIActivity)
+		if (getActivity() != null && getActivity() instanceof MainUIActivity)
 		{
 			MainUIActivity ra = (MainUIActivity) getActivity();
 			if (mTitle != null)
@@ -338,6 +341,7 @@ public abstract class ContentFragment extends AbsFragmentPage
 			ra.switchContent(fragment);
 		}
 	}
+
 	protected void backFragment()
 	{
 		if (getActivity() == null)
@@ -348,6 +352,7 @@ public abstract class ContentFragment extends AbsFragmentPage
 			ra.backFragment();
 		}
 	}
+
 	/**
 	 * 创建
 	 */

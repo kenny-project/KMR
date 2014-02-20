@@ -17,7 +17,6 @@ import com.kenny.KFileManager.R;
 import com.kenny.file.Event.LoadSearchFileEvent;
 import com.kenny.file.bean.ScarchParam;
 import com.kenny.file.interfaces.INotifyDataSetChanged;
-import com.kenny.file.page.KMainPage;
 
 public class SearchFileDialog
 {
@@ -62,7 +61,7 @@ public class SearchFileDialog
 								String value = meditText.getText().toString();
 								if (value.length() > 0)
 								{
-									KMainPage.mKMainPage.ChangePage(KMainPage.Search, null);
+//									KMainPage.mKMainPage.ChangePage(KMainPage.Search, null);
 									param.setCaseSensitive(cbSearchCaseSensitive
 											.isChecked());
 									param.setPath(path);
