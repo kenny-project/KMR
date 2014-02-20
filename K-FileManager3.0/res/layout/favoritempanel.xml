@@ -12,44 +12,6 @@
         android:background="#00000000"
         android:fastScrollEnabled="true" >
 
-        <RelativeLayout
-            android:id="@+id/lyTools2"
-            android:layout_width="fill_parent"
-            android:layout_height="40dip"
-            android:layout_below="@id/lyTools"
-            android:background="@drawable/tab2_bg"
-            android:visibility="gone" >
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/lyTools"
-                android:gravity="center" >
-
-                <Button
-                    android:id="@+id/btAllFile"
-                    android:layout_width="wrap_content"
-                    android:layout_height="fill_parent"
-                    android:layout_marginLeft="8dip"
-                    android:layout_weight="1"
-                    android:background="@drawable/tab2_left_select"
-                    android:text="@string/btAllFileTitle"
-                    android:textColor="#337ddc"
-                    android:textSize="18dip" />
-
-                <Button
-                    android:id="@+id/btFolder"
-                    android:layout_width="wrap_content"
-                    android:layout_height="fill_parent"
-                    android:layout_marginRight="8dip"
-                    android:layout_weight="1"
-                    android:background="@drawable/tab2_right_unselect"
-                    android:text="@string/btFolderTitle"
-                    android:textColor="#337ddc"
-                    android:textSize="18dip" />
-            </LinearLayout>
-        </RelativeLayout>
-
         <FrameLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
@@ -148,5 +110,10 @@
                 android:visibility="gone" />
         </LinearLayout>
     </RelativeLayout>
+
+    <include
+        android:id="@+id/icEmptyPannal"
+        layout="@layout/empty_pannal"
+        android:visibility="gone" />
 
 </FrameLayout>

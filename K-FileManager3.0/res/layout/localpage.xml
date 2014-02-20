@@ -266,4 +266,8 @@
             android:layout_alignParentBottom="true"
             layout="@layout/menu_local_pannal" />
     </RelativeLayout>
+        <include
+                android:id="@+id/icEmptyPannal"
+                layout="@layout/empty_pannal" 
+                android:visibility="gone"/>
 </RelativeLayout>

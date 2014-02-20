@@ -14,6 +14,7 @@ import com.kenny.file.Parser.FileTypeParser;
 import com.kenny.file.bean.FileEnd;
 import com.kenny.file.bean.FileTypeBean;
 import com.kenny.file.sort.FileEndSort;
+import com.kenny.file.tools.T;
 
 public class Res
 {
@@ -26,50 +27,59 @@ public class Res
 	private BitmapDrawable mImgError;
 	private ArrayList<FileTypeBean> mFGroupInfo = new ArrayList<FileTypeBean>();
 	private ArrayList<FileEnd> listItem = new ArrayList<FileEnd>();
+
 	public void Clear()
 	{
-		for(FileTypeBean bean: mFGroupInfo)
+		for (FileTypeBean bean : mFGroupInfo)
 		{
 			bean.Clear();
 		}
 	}
+
 	private void Init(Context context)
 	{
 		FileTypeInit(context);
 	}
-	
-	public void setFirstRun(boolean isFirstRun) {
+
+	public void setFirstRun(boolean isFirstRun)
+	{
 		this.isFirstRun = isFirstRun;
 	}
-	public boolean isFirstRun() {
+
+	public boolean isFirstRun()
+	{
 		return isFirstRun;
 	}
+
 	private void FileTypeInit(Context context)
 	{
 		String Data;
-		try {
-			Data = SDFile.ReadRAMFile(context, "fileType.xml");
-		FileTypeParser mFavoriteParser = new FileTypeParser();
-		mFGroupInfo.clear();
-		ArrayList<FileTypeBean> result = mFavoriteParser.parseJokeByData(
-				context, Data);
-		mFGroupInfo.addAll(result);
-		for (int i = 0; i < mFGroupInfo.size(); i++)
+		try
 		{
-			FileTypeBean info = mFGroupInfo.get(i);
-			String[] ends = info.getEnds().split("\\|");
-
-			for (String end : ends)
+			// Data =SDFile.ReadRAMFile(context, "fileType.xml");1
+			Data = T.getAssetStringFile(context, "fileType.xml");
+			FileTypeParser mFavoriteParser = new FileTypeParser();
+			mFGroupInfo.clear();
+			ArrayList<FileTypeBean> result = mFavoriteParser.parseJokeByData(
+					context, Data);
+			mFGroupInfo.addAll(result);
+			for (int i = 0; i < mFGroupInfo.size(); i++)
 			{
-				if (end.length() > 1)
+				FileTypeBean info = mFGroupInfo.get(i);
+				String[] ends = info.getEnds().split("\\|");
+
+				for (String end : ends)
 				{
-					listItem.add(new FileEnd(end.toLowerCase(), info.getId(),
-							info));
+					if (end.length() > 1)
+					{
+						listItem.add(new FileEnd(end.toLowerCase(), info
+								.getId(), info));
+					}
 				}
 			}
-		}
-		Collections.sort(listItem, new FileEndSort());
-		} catch (Exception e) {
+			Collections.sort(listItem, new FileEndSort());
+		} catch (Exception e)
+		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -107,7 +117,7 @@ public class Res
 			{ // 等于
 				return strList.get(nIndex).mFileTypeBean;
 
-			}  else if (nCompare < 0)
+			} else if (nCompare < 0)
 			{
 				nEnd = nIndex - 1;
 			} else if (nCompare > 0)
@@ -117,43 +127,44 @@ public class Res
 		}
 		return null;
 	}
-//	private FileTypeBean BinarySearch(List<FileEnd> strList, String strWord)
-//	{
-//		int nIndex = 0;
-//		int nStart = 0;
-//		int nEnd = strList.size() - 1;
-//
-//		while (nStart <= nEnd)
-//		{
-//			nIndex = (nStart + nEnd) / 2;
-//			int nCompare = strWord.compareTo(strList.get(nIndex).key);
-//			if (nCompare == 0)
-//			{ // 等于
-//				return strList.get(nIndex).mFileTypeBean;
-//
-//			} else if (nCompare < 0)
-//			{// 大于
-//				nEnd = nIndex - 1;
-//			} else if (nCompare > 0)
-//			{// 小于
-//				nStart = nIndex + 1;
-//			}
-//			if (nEnd - nStart < 3)
-//			{
-//				for (; nStart <= nEnd; nStart++)
-//				{
-//					nIndex = nStart;
-//					nCompare = strWord.compareTo(strList.get(nIndex).key);
-//					if (nCompare == 0)
-//					{// 等于
-//						return strList.get(nIndex).mFileTypeBean;
-//					}
-//				}
-//				break;
-//			}
-//		}
-//		return null;
-//	}
+
+	// private FileTypeBean BinarySearch(List<FileEnd> strList, String strWord)
+	// {
+	// int nIndex = 0;
+	// int nStart = 0;
+	// int nEnd = strList.size() - 1;
+	//
+	// while (nStart <= nEnd)
+	// {
+	// nIndex = (nStart + nEnd) / 2;
+	// int nCompare = strWord.compareTo(strList.get(nIndex).key);
+	// if (nCompare == 0)
+	// { // 等于
+	// return strList.get(nIndex).mFileTypeBean;
+	//
+	// } else if (nCompare < 0)
+	// {// 大于
+	// nEnd = nIndex - 1;
+	// } else if (nCompare > 0)
+	// {// 小于
+	// nStart = nIndex + 1;
+	// }
+	// if (nEnd - nStart < 3)
+	// {
+	// for (; nStart <= nEnd; nStart++)
+	// {
+	// nIndex = nStart;
+	// nCompare = strWord.compareTo(strList.get(nIndex).key);
+	// if (nCompare == 0)
+	// {// 等于
+	// return strList.get(nIndex).mFileTypeBean;
+	// }
+	// }
+	// break;
+	// }
+	// }
+	// return null;
+	// }
 
 	public Drawable getBackUp()
 	{

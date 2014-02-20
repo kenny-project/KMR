@@ -12,6 +12,7 @@
     <string name="msg_favor_backup">Backup</string>
     <string name="apk_manager_title">安装包管理</string>
     <string name="msg_favor_download">MyDownload</string>
+    <string name="msg_folder_empty">这里什么都没有</string>
     <string name="KuaiPanPage_btTransfer">传输</string>
     <string name="CheckUpdateTitle">Check Software Update</string>
     <string name="KuaiPanPage_btUpDownLoad">上传</string>

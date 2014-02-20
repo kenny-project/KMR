@@ -76,7 +76,7 @@ public class InitEvent extends AbsEvent
 					Log.d("wmh", mFiles[i].getAbsolutePath());
 				}
 			}
-			if(Roots.size()>1)
+			if(Roots.size()>1&&false)
 			{
 				new SetSDCardRootPathDialog().ShowDialog(ctx, Roots);
 			}

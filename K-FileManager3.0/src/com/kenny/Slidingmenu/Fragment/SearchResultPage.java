@@ -7,16 +7,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnFocusChangeListener;
-import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView;
@@ -28,11 +27,13 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.actionbarsherlock.view.MenuInflater;
+import com.actionbarsherlock.app.ActionBar;
+import com.actionbarsherlock.view.MenuItem;
 import com.framework.event.ParamEvent;
 import com.framework.log.P;
 import com.framework.syseng.SysEng;
 import com.kenny.KFileManager.R;
+import com.kenny.Slidingmenu.MainUIActivity;
 import com.kenny.file.Adapter.FavorFileAdapter;
 import com.kenny.file.Event.FavoriteFileEvent;
 import com.kenny.file.Event.LoadSearchFileEvent;
@@ -52,8 +53,10 @@ import com.kenny.file.manager.IManager;
 import com.kenny.file.sort.FileEndSort;
 import com.kenny.file.tools.T;
 import com.kenny.file.util.Const;
+import com.slidingmenu.lib.SlidingMenu;
+import com.slidingmenu.lib.app.SlidingFragmentActivity;
 
-public class SearchResultPage extends ContentFragment implements
+public class SearchResultPage extends SlidingFragmentActivity implements
 		OnItemClickListener, INotifyDataSetChanged, OnClickListener, IManager
 {
 	private Button btnBack, btSearch, btSearchMode;
@@ -64,22 +67,60 @@ public class SearchResultPage extends ContentFragment implements
 	private ScarchParam param = new ScarchParam();
 	private ArrayList<FileBean> mFileListFilter = new ArrayList<FileBean>();
 	private ArrayList<FGroupInfo> mGroupList = new ArrayList<FGroupInfo>(); // 正在运行程序列表
-	private Fragment mFragment;
-	public SearchResultPage(Fragment mFragment)
+	private Activity m_act;
+	private SlidingMenu sm;
+	private static MainUIActivity m_MainUIActivity;
+
+	public static void actionSettingPage(Activity m_act)
 	{
-		this.mFragment=mFragment;	
+		// SettingPage newContent=new SettingPage();
+		// newContent.setTitle(R.string.setting_Title);
+		// newContent.switchFragment(newContent);
+
+		// public Intent(Context packageContext, Class<?> cls)
+		if (m_act instanceof MainUIActivity)
+		{
+			m_MainUIActivity = (MainUIActivity) m_act;
+		}
+		Intent intent = new Intent(m_act, SearchResultPage.class);
+		m_act.startActivity(intent);
 	}
+
 	@Override
-	public void onCreate(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState)
+	public void onCreate(Bundle savedInstanceState)
 	{
-		setContentView(R.layout.searchresultpage, inflater);
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.searchresultpage);
+		m_act = this;
 		setTitle(R.string.search);
+		if (findViewById(R.id.menu_frame) == null)
+		{
+			setBehindContentView(R.layout.menu_frame);
+			// show home as up so we can toggle
+			sm = getSlidingMenu();
+			sm.setShadowWidthRes(R.dimen.shadow_width);
+			sm.setShadowDrawable(R.drawable.shadow);
+			sm.setBehindOffsetRes(R.dimen.slidingmenu_offset);
+			sm.setFadeDegree(0.35f);
+			sm.setTouchModeAbove(SlidingMenu.TOUCHMODE_NONE);
+			// sm.setSlidingEnabled(true);
+		}
+		ActionBar bar = getSupportActionBar();
+		bar.setDisplayHomeAsUpEnabled(true);// by wmh
+		bar.setDisplayUseLogoEnabled(false);
+		bar.setDisplayShowTitleEnabled(true);
+		bar.setDisplayShowHomeEnabled(false);
+		// 其中setHomeButtonEnabled和setDisplayShowHomeEnabled共同起作用
+		// bar.setHomeButtonEnabled(true);
+		// bar.setDisplayShowHomeEnabled(true);
+		bar.setTitle(R.string.search);
+		setTitle(R.string.search);
+
 		ArrayList<FileBean> mAllFileList = new ArrayList<FileBean>();
 		param.setSearchItems(mAllFileList);
-		final View lySearchMode = mView.findViewById(R.id.lySearchMode);
-		tvSearchNotify = (TextView) mView.findViewById(R.id.tvSearchNotify);
-		etValue = (EditText) mView.findViewById(R.id.etSearchFileName);
+		final View lySearchMode = findViewById(R.id.lySearchMode);
+		tvSearchNotify = (TextView) findViewById(R.id.tvSearchNotify);
+		etValue = (EditText) findViewById(R.id.etSearchFileName);
 		etValue.setOnFocusChangeListener(new OnFocusChangeListener()
 		{
 			@Override
@@ -97,7 +138,7 @@ public class SearchResultPage extends ContentFragment implements
 				return false;
 			}
 		});
-		btSearchMode = (Button) mView.findViewById(R.id.btSearchMode);
+		btSearchMode = (Button) findViewById(R.id.btSearchMode);
 		btSearchMode.setOnClickListener(new OnClickListener()
 		{
 			public void onClick(View v)
@@ -111,7 +152,7 @@ public class SearchResultPage extends ContentFragment implements
 				}
 			}
 		});
-		btSearch = (Button) mView.findViewById(R.id.btSearch);
+		btSearch = (Button) findViewById(R.id.btSearch);
 		btSearch.setOnClickListener(new OnClickListener()
 		{
 			public void onClick(View v)
@@ -138,7 +179,7 @@ public class SearchResultPage extends ContentFragment implements
 			}
 		});
 
-		Button btOptions = (Button) mView.findViewById(R.id.btOptions);
+		Button btOptions = (Button) findViewById(R.id.btOptions);
 		btOptions.setOnClickListener(new OnClickListener()
 		{
 			public void onClick(View v)
@@ -147,17 +188,7 @@ public class SearchResultPage extends ContentFragment implements
 						.getCurrentPath(), param, SearchResultPage.this);
 			}
 		});
-
-		btnBack = (Button) mView.findViewById(R.id.btBack);
-		btnBack.setOnClickListener(new OnClickListener()
-		{
-			public void onClick(View v)
-			{
-				ShowMenu();
-			}
-		});
-
-		lvSearchMode = (ListView) mView.findViewById(R.id.lvSearchMode);
+		lvSearchMode = (ListView) findViewById(R.id.lvSearchMode);
 		ArrayList<Map<String, String>> data = new ArrayList<Map<String, String>>();
 		HashMap<String, String> item;
 
@@ -184,8 +215,8 @@ public class SearchResultPage extends ContentFragment implements
 		item.put("Title", "搜索压缩包");
 		data.add(item);
 
-		final SimpleAdapter modeAdapter = new SimpleAdapter(getActivity(),
-				data, R.layout.listitem_searchmode, new String[]
+		final SimpleAdapter modeAdapter = new SimpleAdapter(m_act, data,
+				R.layout.listitem_searchmode, new String[]
 				{ "Title" }, new int[]
 				{ R.id.tvTitle });
 
@@ -214,7 +245,7 @@ public class SearchResultPage extends ContentFragment implements
 			}
 		});
 
-		m_locallist = (ListView) mView.findViewById(R.id.lvLocallist);
+		m_locallist = (ListView) findViewById(R.id.lvLocallist);
 		fileAdapter = new FavorFileAdapter(m_act, 1, mFileListFilter);
 		m_locallist.setAdapter(fileAdapter);
 		m_locallist.setOnScrollListener(m_localOnScrollListener);
@@ -233,11 +264,11 @@ public class SearchResultPage extends ContentFragment implements
 				Data);
 		mGroupList.addAll(result);
 
-		mView.findViewById(R.id.btCopy).setOnClickListener(this);
-		mView.findViewById(R.id.btCut).setOnClickListener(this);
-		mView.findViewById(R.id.btDelete).setOnClickListener(this);
-		mView.findViewById(R.id.btPaste).setOnClickListener(this);
-		mView.findViewById(R.id.btSelectAll).setOnClickListener(this);
+		findViewById(R.id.btCopy).setOnClickListener(this);
+		findViewById(R.id.btCut).setOnClickListener(this);
+		findViewById(R.id.btDelete).setOnClickListener(this);
+		findViewById(R.id.btPaste).setOnClickListener(this);
+		findViewById(R.id.btSelectAll).setOnClickListener(this);
 		tvSearchNotify.setText("搜索路径:"
 				+ FileManager.getInstance().getCurrentPath());
 	}
@@ -303,8 +334,9 @@ public class SearchResultPage extends ContentFragment implements
 				{
 					// FileManager.getInstance().setFilePath(mFile.getPath());
 					// KMainPage.mKMainPage.ChangePage(KMainPage.Local, null);
-
-					switchFragment(new LocalPage((String) mFile.getPath()));
+					if (m_MainUIActivity != null)
+						m_MainUIActivity.switchContent(new LocalPage(
+								(String) mFile.getPath()));
 				} else
 				{// 如果该文件不可读，我们给出提示不能访问，防止用户操作系统文件造成系统崩溃等
 					Toast.makeText(m_act, "该文件夹不存在或权限不够!", Toast.LENGTH_SHORT)
@@ -336,6 +368,18 @@ public class SearchResultPage extends ContentFragment implements
 		mNotifyData.setKey(cmd);
 		mNotifyData.setValue(value);
 		SysEng.getInstance().addHandlerEvent(mNotifyData);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item)
+	{
+		// TODO Auto-generated method stub
+		if (item.getItemId() == android.R.id.home)
+		{
+			finish();
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
 	}
 
 	private ParamEvent mNotifyData = new ParamEvent()
@@ -533,21 +577,21 @@ public class SearchResultPage extends ContentFragment implements
 		return mFileEndItem;
 	}
 
-	public boolean onKeyDown(int keyCode, KeyEvent msg)
-	{
-		switch (keyCode)
-		{
-		case KeyEvent.KEYCODE_BACK:
-			// KMainPage.mKMainPage.ChangePage(KMainPage.Local, null);
-//			 ShowMenu();
-			//switchFragment(mFragment);
-			backFragment();
-			break;
-		default:
-			return super.onKeyDown(keyCode, msg);
-		}
-		return true;
-	}
+	// public boolean onKeyDown(int keyCode, KeyEvent msg)
+	// {
+	// switch (keyCode)
+	// {
+	// case KeyEvent.KEYCODE_BACK:
+	// // KMainPage.mKMainPage.ChangePage(KMainPage.Local, null);
+	// // ShowMenu();
+	// //switchFragment(mFragment);
+	// backFragment();
+	// break;
+	// default:
+	// return super.onKeyDown(keyCode, msg);
+	// }
+	// return true;
+	// }
 
 	@Override
 	public void onClick(View v)
@@ -633,13 +677,5 @@ public class SearchResultPage extends ContentFragment implements
 	{
 		// TODO Auto-generated method stub
 		fileAdapter.notifyDataSetChanged();
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(MenuInflater inflater,
-			com.actionbarsherlock.view.Menu menu)
-	{
-		// TODO Auto-generated method stub
-		return false;
 	}
 }

@@ -81,7 +81,7 @@ public class LocalPage extends ContentFragment implements
 
 	public LocalPage(String path)
 	{
-		mStrPath=new File(path).getAbsolutePath();
+		mStrPath = new File(path).getAbsolutePath();
 	}
 
 	/**
@@ -92,6 +92,7 @@ public class LocalPage extends ContentFragment implements
 			Bundle savedInstanceState)
 	{
 		setContentView(R.layout.localpage, inflater);
+		mView.findViewById(R.id.icEmptyPannal).setVisibility(View.GONE);
 		// final ActionBar bar =getActivity().getActionBar();
 		// bar.setDisplayHomeAsUpEnabled(true);
 		// bar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);//设置ActionBar为Tab导航模式
@@ -121,7 +122,6 @@ public class LocalPage extends ContentFragment implements
 		// Const.cmd_Local_List_Go);
 		localManage.setRootPath(mStrPath);
 		localManage.setFilePath(mStrPath, Const.cmd_Local_List_Go);
-
 
 		m_locallist = (ListView) mView.findViewById(R.id.lvLocallist);
 		m_locallist.setOnScrollListener(m_localOnScrollListener);
@@ -193,7 +193,7 @@ public class LocalPage extends ContentFragment implements
 		{
 			@Override
 			public boolean onTouch(View v, MotionEvent event)
-			{	//所有的点击全部关闭菜单
+			{ // 所有的点击全部关闭菜单
 				rlMenu.setVisibility(View.GONE);
 				return false;
 			}
@@ -210,7 +210,7 @@ public class LocalPage extends ContentFragment implements
 				if (rlMenu.getVisibility() == View.VISIBLE)
 				{
 					goneAnim.ShowAnim();
-					//rlMenu.setVisibility(View.GONE);
+					// rlMenu.setVisibility(View.GONE);
 				} else
 				{
 					if (Theme.getShowHideFile())
@@ -391,7 +391,8 @@ public class LocalPage extends ContentFragment implements
 	public void ShowSearchDialog()
 	{
 		// KMainPage.mKMainPage.ChangePage(KMainPage.Search, null);
-		switchFragment(new SearchResultPage(this));
+		// switchFragment(new SearchResultPage(this));
+		SearchResultPage.actionSettingPage(m_act);
 	}
 
 	/**
@@ -642,7 +643,7 @@ public class LocalPage extends ContentFragment implements
 		{
 			fileAdapter.notifyDataSetChanged();
 		}
-		return false;
+		return true;
 	}
 
 	public boolean onTouchEvent(MotionEvent event)
@@ -684,6 +685,11 @@ public class LocalPage extends ContentFragment implements
 			fileAdapter.Clear();
 			// lyBTools.setVisibility(View.GONE);
 			fileAdapter.notifyDataSetChanged();
+			if (fileAdapter.getCount() <= 0)
+			{
+				mView.findViewById(R.id.icEmptyPannal).setVisibility(
+						View.VISIBLE);
+			}
 			Integer y = mScrollList.get(localManage.getCurrentPath());
 			if (y != null)
 			{
@@ -695,7 +701,6 @@ public class LocalPage extends ContentFragment implements
 			break;
 		}
 	}
-
 
 	@Override
 	public boolean onCreateOptionsMenu(MenuInflater inflater, Menu menu)
@@ -717,24 +722,24 @@ public class LocalPage extends ContentFragment implements
 		case R.id.muSearch:
 			ShowSearchDialog();
 			break;
-//		case R.id.muFileSort:
-//			new ViewSortDialog().ShowDialog(m_act, LocalPage.this);
-//			break;
-//		case R.id.muFileMode:
-//			if (nStyle == 1)
-//			{
-//				SwitchStyle(0);
-//			} else
-//			{
-//				SwitchStyle(1);
-//			}
-//			break;
-//		case R.id.muFileHide:
-//			Theme.setShowHideFile(!Theme.getShowHideFile());
-//			Theme.Save(m_act);
-//			localManage.setFilePath(localManage.getCurrentPath(),
-//					Const.cmd_Local_List_Go);
-//			break;
+		// case R.id.muFileSort:
+		// new ViewSortDialog().ShowDialog(m_act, LocalPage.this);
+		// break;
+		// case R.id.muFileMode:
+		// if (nStyle == 1)
+		// {
+		// SwitchStyle(0);
+		// } else
+		// {
+		// SwitchStyle(1);
+		// }
+		// break;
+		// case R.id.muFileHide:
+		// Theme.setShowHideFile(!Theme.getShowHideFile());
+		// Theme.Save(m_act);
+		// localManage.setFilePath(localManage.getCurrentPath(),
+		// Const.cmd_Local_List_Go);
+		// break;
 		default:
 			return super.onOptionsItemSelected(item);
 		}

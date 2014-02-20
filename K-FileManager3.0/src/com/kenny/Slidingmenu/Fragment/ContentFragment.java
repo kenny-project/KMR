@@ -140,7 +140,8 @@ public abstract class ContentFragment extends AbsFragmentPage
 		{
 		case R.id.muSetting:
 //			SettingPage.actionSettingPage();
-			switchFragment(new SettingPage());
+//			switchFragment(new SettingPage());
+			SettingPage.actionSettingPage(m_act);
 			break;
 		case R.id.muAboutDialog:
 			new AboutDialog().showDialog(m_act);

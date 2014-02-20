@@ -59,7 +59,7 @@ public class SpecifyFilePage extends AbsPage implements MenuAble,
 	}
 	private String path;
 	private ListView mListView;
-	private Button btAllFile, btFolder;
+//	private Button btAllFile, btFolder;
 	private Button btBack, btInstall;
 	private Button btDelete, btSelectAll;
 
@@ -131,10 +131,10 @@ public class SpecifyFilePage extends AbsPage implements MenuAble,
 		mListView.setOnItemLongClickListener(this);
 		mListView.addFooterView(FooterView(), null, false);
 
-		btAllFile = (Button) findViewById(R.id.btAllFile);
-		btAllFile.setOnClickListener(this);
-		btFolder = (Button) findViewById(R.id.btFolder);
-		btFolder.setOnClickListener(this);
+//		btAllFile = (Button) findViewById(R.id.btAllFile);
+//		btAllFile.setOnClickListener(this);
+//		btFolder = (Button) findViewById(R.id.btFolder);
+//		btFolder.setOnClickListener(this);
 
 		btBack = (Button) findViewById(R.id.btBack);
 		btBack.setOnClickListener(this);
@@ -148,12 +148,12 @@ public class SpecifyFilePage extends AbsPage implements MenuAble,
 		btSelectAll = (Button) findViewById(R.id.btSelectAll);
 		btSelectAll.setOnClickListener(this);
 
-		btAllFile.setBackgroundResource(R.drawable.tab2_left_select);
-		btFolder.setBackgroundResource(R.drawable.tab2_right_unselect);
-		btFolder.setTextColor(m_act.getResources().getColor(
-				R.color.tab_TextColor_selected));
-		btAllFile.setTextColor(m_act.getResources().getColor(
-				R.color.tab_TextColor_normal));
+//		btAllFile.setBackgroundResource(R.drawable.tab2_left_select);
+//		btFolder.setBackgroundResource(R.drawable.tab2_right_unselect);
+//		btFolder.setTextColor(m_act.getResources().getColor(
+//				R.color.tab_TextColor_selected));
+//		btAllFile.setTextColor(m_act.getResources().getColor(
+//				R.color.tab_TextColor_normal));
 		mFileAdapter = new FavorDialogAdapter(m_act, 1, mAllFileList);
 		mListView.setAdapter(mFileAdapter);
 		

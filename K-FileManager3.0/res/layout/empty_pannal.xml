@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffe7f3f7"
+    android:orientation="vertical"
+    android:paddingBottom="1dip" >
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="100dip"
+        android:visibility="gone" 
+        android:src="@drawable/logo" />
+    <LinearLayout
+        android:id="@+id/lyLoading"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageView1"
+        android:layout_centerHorizontal="true"
+        android:background="#00000000"
+        android:paddingTop="20dip"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:visibility="gone" >
+
+        <ProgressBar
+            android:id="@+android:id/progress_small_title"
+            style="?android:attr/progressBarStyleSmallTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/loading_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1.0dip"
+            android:gravity="center_vertical|center_horizontal"
+            android:paddingLeft="6.0dip"
+            android:paddingTop="2.0dip"
+            android:text="@string/error_unknown"
+            android:textColor="@color/TLTitleText"
+            android:textSize="16dip" >
+        </TextView>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvError_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageView1"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="1.0dip"
+        android:layout_centerInParent="true"
+        android:gravity="center_vertical|center_horizontal"
+        android:paddingLeft="6.0dip"
+        android:paddingTop="10.0dip"
+        android:text="@string/msg_folder_empty"
+        android:textColor="@color/TLTitleText"
+        android:textSize="16dip" >
+    </TextView>
+</RelativeLayout>

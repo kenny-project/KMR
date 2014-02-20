@@ -142,8 +142,10 @@ public class KMenuFragment extends AbsFragmentPage implements
 				.get(6), R.drawable.ic_category_zip));
 		groupbean.AddDictBean(new KMenuItemBean(7, "安装包", mFavoriteGroupList
 				.get(7), R.drawable.ic_root_explorer));
-		groupbean.AddDictBean(new KMenuItemBean(-1, "整理箱", Const.szAppPath, R.drawable.ic_category_favorite));
-		groupbean.AddDictBean(new KMenuItemBean(-1, "下载", Const.szDownLoadPath, R.drawable.ic_category_favorite));
+		groupbean.AddDictBean(new KMenuItemBean(-1, "整理箱", Const.szAppPath,
+				R.drawable.ic_category_favorite));
+		groupbean.AddDictBean(new KMenuItemBean(-1, "下载", Const.szDownLoadPath,
+				R.drawable.ic_category_favorite));
 		groupbean.AddDictBean(new KMenuItemBean(0, "收藏夹", mFavoriteGroupList
 				.get(8), R.drawable.ic_category_favorite));
 		mGroupBeans.add(groupbean);
@@ -163,12 +165,12 @@ public class KMenuFragment extends AbsFragmentPage implements
 		groupbean.AddDictBean(new KMenuItemBean(2, "金山网盘", 2,
 				R.drawable.ic_cloud_disk));
 		mGroupBeans.add(groupbean);
-//		groupbean = new KMenuGroupBean();
-//		groupbean.setTitle("设置");
-//		groupbean.setID(setting);
-//		groupbean.AddDictBean(new KMenuItemBean(1, "设置", 1,
-//				R.drawable.ic_settings));
-//		mGroupBeans.add(groupbean);
+		// groupbean = new KMenuGroupBean();
+		// groupbean.setTitle("设置");
+		// groupbean.setID(setting);
+		// groupbean.AddDictBean(new KMenuItemBean(1, "设置", 1,
+		// R.drawable.ic_settings));
+		// mGroupBeans.add(groupbean);
 
 	}
 
@@ -211,7 +213,9 @@ public class KMenuFragment extends AbsFragmentPage implements
 			e.printStackTrace();
 		}
 	}
-	private HashMap<String, ContentFragment> mHashMap=new HashMap<String, ContentFragment>();
+
+	private HashMap<String, ContentFragment> mHashMap = new HashMap<String, ContentFragment>();
+
 	@Override
 	public boolean onChildClick(ExpandableListView parent, View v,
 			int groupPosition, int childPosition, long id)
@@ -225,27 +229,25 @@ public class KMenuFragment extends AbsFragmentPage implements
 		switch (GroupID)
 		{
 		case LocalPage:
-			if (bean.getID() == -1)
-			{
-				newContent = new SearchResultPage(this);
-			} else
-			{
-				newContent = new LocalPage((String) bean.getObj());
-			}
+		// if (bean.getID() == -1)
+		// {
+		// newContent = new SearchResultPage(this);
+		// } else
+		{
+			newContent = new LocalPage((String) bean.getObj());
+		}
 			break;
 		case Favorite:
 			if (bean.getID() == 0)
 			{
 				newContent = onMyFavoriteClick((FGroupInfo) bean.getObj());
-			}
-			else if (bean.getID() == -1)
+			} else if (bean.getID() == -1)
 			{
 				// newContent = newContent = new LocalPage(
 				// (String)
 				// bean.getObj());onSpecifyLocalFavoriteClick(Const.szAppPath);
 				newContent = new LocalPage((String) bean.getObj());
-			}
-			else
+			} else
 			{
 				newContent = new FavoriteFilePage(getActivity(),
 						(FGroupInfo) bean.getObj());
@@ -269,7 +271,7 @@ public class KMenuFragment extends AbsFragmentPage implements
 			}
 			break;
 		case setting:
-			newContent = new SettingPage();
+			SettingPage.actionSettingPage(m_act);
 			break;
 		}
 		if (newContent != null)
@@ -313,7 +315,8 @@ public class KMenuFragment extends AbsFragmentPage implements
 		// setListAdapter(colorAdapter);
 	}
 
-	private Long mOldTimeInMillis=0l;
+	private Long mOldTimeInMillis = 0l;
+
 	public boolean onKeyDown(int keyCode, KeyEvent msg)
 	{
 
@@ -321,14 +324,14 @@ public class KMenuFragment extends AbsFragmentPage implements
 		if (keyCode == KeyEvent.KEYCODE_BACK)
 		{
 			Calendar c = Calendar.getInstance();
-			if (c.getTimeInMillis()-mOldTimeInMillis>3000)
+			if (c.getTimeInMillis() - mOldTimeInMillis > 3000)
 			{
 				Toast.makeText(
 						getActivity(),
 						getActivity().getString(
 								R.string.dlg_press_again_to_exit_the_program),
 						Toast.LENGTH_SHORT).show();
-				mOldTimeInMillis=c.getTimeInMillis();
+				mOldTimeInMillis = c.getTimeInMillis();
 				return true;
 			} else
 			{
@@ -346,10 +349,11 @@ public class KMenuFragment extends AbsFragmentPage implements
 		switch (v.getId())
 		{
 		case R.id.btn_search:
-			switchFragment(new SearchResultPage(this));
+			SearchResultPage.actionSettingPage(m_act);
 			break;
 		case R.id.btn_setting:
-			switchFragment(new SettingPage());
+			// switchFragment(new SettingPage());
+			SettingPage.actionSettingPage(m_act);
 			break;
 		}
 	}

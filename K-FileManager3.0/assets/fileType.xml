@@ -2,7 +2,7 @@
 <items>
 
     <item
-        ends="mp3|mid|xmf|wav|ogg|wma|wav|amr"
+        ends="mp3|mid|xmf|wav|ogg|wma|wav|amr|ape|aal|flac|lpac|tak|tac"
         title="音乐"
         path=""
         img="f_audio.png"/>

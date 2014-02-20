@@ -58,6 +58,7 @@ public class MainUIActivity extends SlidingFragmentActivity implements
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.responsive_content_frame);
+		Init();
 		// check if the content frame contains the menu frame
 		if (findViewById(R.id.menu_frame) == null)
 		{
@@ -107,7 +108,8 @@ public class MainUIActivity extends SlidingFragmentActivity implements
 			bar.setDisplayHomeAsUpEnabled(false);
 			// 注销掉
 			// k();
-		} else
+		} 
+		else
 		{
 			// add a dummy view
 			View v = new View(this);
@@ -145,7 +147,7 @@ public class MainUIActivity extends SlidingFragmentActivity implements
 						mContent.onResume();
 					}
 				});
-		Init();
+		
 	}
 
 	@Override
@@ -244,21 +246,23 @@ public class MainUIActivity extends SlidingFragmentActivity implements
 	}
 
 	private Handler h = new Handler();
+
 	public void switchContent(final Fragment fragment)
 	{
-		switchContent(null,fragment);
+		switchContent(null, fragment);
 	}
-	public void switchContent(String key,final Fragment fragment)
+
+	public void switchContent(String key, final Fragment fragment)
 	{
 		mContent = fragment;
 		FragmentTransaction transaction = getSupportFragmentManager()
 				.beginTransaction();
-		transaction.add(R.id.content_frame, fragment);
-		//transaction.replace(R.id.content_frame, fragment);
-		if(key!=null)
-		{
-			transaction.addToBackStack(key);
-		}
+//		transaction.add(R.id.content_frame, fragment);
+		transaction.replace(R.id.content_frame, fragment);
+//		if (key != null)
+//		{
+//			transaction.addToBackStack(key);
+//		}
 		transaction.addToBackStack(null);
 		transaction.commit();
 		h.postDelayed(new Runnable()
@@ -416,9 +420,10 @@ public class MainUIActivity extends SlidingFragmentActivity implements
 
 	public void Init()
 	{
-		BaiduInit();
+//		BaiduInit();
 		UMInit();
-		SysEng.getInstance().addHandlerEvent(new InitEvent(this));
+		new InitEvent(this).run();
+//		SysEng.getInstance().addHandlerEvent();
 		// Resources resources = getResources();//获得res资源对象
 		// Configuration config = resources.getConfiguration();//获得设置对象
 		// DisplayMetrics dm = resources

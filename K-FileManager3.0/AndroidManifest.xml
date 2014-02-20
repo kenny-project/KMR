@@ -2,12 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.kenny.KFileManager"
     android:installLocation="internalOnly"
-    android:versionCode="280"
-    android:versionName="3.0 Beta" 
+    android:versionCode="281"
+    android:versionName="3.0" 
     >
-    
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="7"
         android:targetSdkVersion="14" />
     <!-- 必须申明的权限 -->
 	<uses-permission android:name="android.permission.INTERNET"></uses-permission>
@@ -56,6 +55,7 @@
         android:name="com.kenny.file.Application.KFileManagerApp"
         android:theme="@style/Theme.Sherlock.Light.DarkActionBar" 
         android:sharedUserId="android.uid.system"
+        android:hardwareAccelerated="true"
          >
         <meta-data android:name="BaiduMobAd_CHANNEL" android:value="baidu Market" />
 		<!-- 您从百度网站获取的APP KEY-->
@@ -90,7 +90,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
         <service
             android:name="com.umeng.common.net.DownloadingService"
             android:exported="true"
@@ -270,7 +269,10 @@
                  <activity
             android:name="com.kenny.Slidingmenu.Fragment.SettingPage"
             android:configChanges="keyboard|keyboardHidden|orientation"
-            android:theme="@android:style/Theme.Black.NoTitleBar" 
+            />
+       <activity
+            android:name="com.kenny.Slidingmenu.Fragment.SearchResultPage"
+            android:configChanges="keyboard|keyboardHidden|orientation"
             />
         <service
             android:enabled="true"
@@ -401,32 +403,5 @@
                 <data android:scheme="auth" />
             </intent-filter>
         </activity>
-        <!-- kuaipan end -->
-        <!-- 酷广SDK -->
-       <!-- <service
-android:name="com.coolguang.sdk.service.DownloadService"
-android:enabled="true"
-android:exported="true" />
-        <receiver android:name="com.coolguang.sdk.service.ApkInstallListener" >
-<intent-filter android:priority="999" >
-<action android:name="android.intent.action.PACKAGE_INSTALL" />
-<action android:name="android.intent.action.PACKAGE_ADDED" />
-<data android:scheme="package" />
-</intent-filter>
-</receiver>
-<receiver android:name="com.coolguang.sdk.service.NetCheckListener" >
-<intent-filter>
-<action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-</intent-filter>
-</receiver>
-<activity
-android:name="com.coolguang.sdk.activity.CoolGuangActivity"
-android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-<intent-filter>
-<action android:name="android.intent.action.CREATE_SHORTCUT" />
-</intent-filter>
-</activity>-->
-        <!-- 酷广SDK -->
     </application>
-
 </manifest>

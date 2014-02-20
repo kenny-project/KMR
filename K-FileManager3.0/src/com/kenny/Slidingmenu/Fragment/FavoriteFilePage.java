@@ -55,7 +55,6 @@ public class FavoriteFilePage extends ContentFragment implements
 {
 
 	private ListView mListView;
-	private Button btAllFile, btFolder;
 	private Button btBack, btInstall, btArrange, btDelete, btSelectAll;
 	private View lyBTools;
 	private View m_lvMain;// 主页面
@@ -123,19 +122,14 @@ public class FavoriteFilePage extends ContentFragment implements
 		setContentView(R.layout.favoritempanel, inflater);
 		lyBTools = mView.findViewById(R.id.lyBTools);
 		m_lvMain = mView.findViewById(R.id.lvMain);
+		mView.findViewById(R.id.icEmptyPannal).setVisibility(View.GONE);
+		
 		m_lvMain.setBackgroundColor(Theme.getBackgroundColor());
 		mListView = (ListView) mView.findViewById(R.id.lvLocallist);
 		mListView.setOnItemClickListener(this);
 		mListView.setOnScrollListener(mListViewOnScrollListener);
 		mListView.setOnItemLongClickListener(this);
-//		mListView.addFooterView(FooterView(), null, false);
-
-		btAllFile = (Button) mView.findViewById(R.id.btAllFile);
-		btAllFile.setOnClickListener(this);
-		btFolder = (Button) mView.findViewById(R.id.btFolder);
-		btFolder.setOnClickListener(this);
-
-		
+		// mListView.addFooterView(FooterView(), null, false);
 		btBack = (Button) mView.findViewById(R.id.btBack);
 		btBack.setOnClickListener(this);
 
@@ -661,6 +655,10 @@ public class FavoriteFilePage extends ContentFragment implements
 			bean.setDirectory(true);
 			mTempList.add(0, bean);
 		}
+		else
+		{
+			mView.findViewById(R.id.icEmptyPannal).setVisibility(View.VISIBLE);
+		}
 		if (mFileAdapter != null)
 		{
 			mFileAdapter.notifyDataSetChanged();
@@ -769,7 +767,7 @@ public class FavoriteFilePage extends ContentFragment implements
 				ShowFavorDialog(m_act, temp);
 			}
 		}
-		return false;
+		return true;
 	}
 
 	/** 长按文件或文件夹时弹出的带ListView效果的功能菜单 */
@@ -796,12 +794,14 @@ public class FavoriteFilePage extends ContentFragment implements
 					}
 					break;
 				case 1:// 打开文件夹
-					FileManager.getInstance().setFilePath(
-							file.getFilePath().substring(
-									0,
-									file.getFilePath().lastIndexOf(
-											File.separator)));
-					KMainPage.mKMainPage.ChangePage(KMainPage.Local, null);
+					String path=file.getFilePath().substring(
+							0,
+							file.getFilePath().lastIndexOf(
+									File.separator));
+//					FileManager.getInstance().setFilePath(
+//							);
+//					KMainPage.mKMainPage.ChangePage(KMainPage.Local, null);
+					switchFragment(new LocalPage(path));
 					break;
 				case 2:// 删除
 					DeleteFile(file);

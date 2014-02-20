@@ -164,7 +164,8 @@ public class PopLocalMenu extends PopMenu
 			if (file.getFile().canRead())
 			{
 				new ZipDialog().Show(context, file.getFile());
-			} else
+			}
+			else
 			{
 				Toast.makeText(context,
 						context.getString(R.string.msg_can_not_operated),

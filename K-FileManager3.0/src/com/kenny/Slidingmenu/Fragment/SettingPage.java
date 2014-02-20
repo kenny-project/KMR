@@ -2,15 +2,14 @@ package com.kenny.Slidingmenu.Fragment;
 
 import java.io.File;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -18,6 +17,8 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.actionbarsherlock.app.ActionBar;
+import com.actionbarsherlock.view.MenuItem;
 import com.framework.syseng.SysEng;
 import com.kenny.KFileManager.R;
 import com.kenny.file.Activity.FileRelevanceManager;
@@ -35,74 +36,96 @@ import com.kenny.file.tools.T;
 import com.kenny.file.util.Config;
 import com.kenny.file.util.Const;
 import com.kenny.file.util.Theme;
+import com.slidingmenu.lib.SlidingMenu;
+import com.slidingmenu.lib.app.SlidingFragmentActivity;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.fb.FeedbackAgent;
 import com.umeng.update.UmengUpdateAgent;
 import com.umeng.update.UmengUpdateListener;
 import com.umeng.update.UpdateResponse;
 
-public class SettingPage extends ContentFragment implements OnClickListener,
+public class SettingPage extends SlidingFragmentActivity implements OnClickListener,
 		OnCheckedChangeListener, KActivityStatus, INotifyDataSetChanged
 {
 	private TextView tvSetDefaultPath, tvSetSDRootPath;
-	private CheckBox cbSetSensor, cbSetTools,  cbLastPath,
-			cbSetShowHideFile;
-			//cbSetShowTask;cbSetTab,
+	private CheckBox cbSetSensor, cbSetTools, cbLastPath, cbSetShowHideFile;
+	// cbSetShowTask;cbSetTab,
 	private String mStrDefaultPath, mStrSDRootPath;
 	private CheckBox btSetDefPicFileButton, btSetDefAudioFileButton,
 			btSetDefTxtFileButton, btSetDefZipFileButton;
-//    public static void actionSelectAccountType(Activity fromActivity, SetupData setupData) {
-//        final Intent i = new ForwardingIntent(fromActivity, SettingPage.class);
-//        i.putExtra(SetupData.EXTRA_SETUP_DATA, setupData);
-//        fromActivity.startActivity(i);
-//    }
-//    public static void actionSettingPage(Activity fromActivity) 
-//    {
-//        final Intent i = new ForwardingIntent(fromActivity, SettingPage.class);
-//        fromActivity.startActivity(i);
-//    }
-  public static void actionSettingPage() 
-  {
-	  SettingPage newContent=new SettingPage();
-	  newContent.setTitle(R.string.setting_Title);
-	  newContent.switchFragment(newContent);
-  }
-	@Override
-	public void onCreate(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState)
+
+	public static void actionSettingPage(Activity m_act)
 	{
-		setContentView(R.layout.settingpage,inflater);
+		// SettingPage newContent=new SettingPage();
+		// newContent.setTitle(R.string.setting_Title);
+		// newContent.switchFragment(newContent);
+		// public Intent(Context packageContext, Class<?> cls)
+		Intent intent = new Intent(m_act, SettingPage.class);
+		m_act.startActivity(intent);
+	}
+
+	private Activity m_act;
+	private SlidingMenu sm;
+
+	@Override
+	public void onCreate(Bundle savedInstanceState)
+	{
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		m_act = this;
+		 if (findViewById(R.id.menu_frame) == null)
+		 {
+		 setBehindContentView(R.layout.menu_frame);
+		 // show home as up so we can toggle
+		 sm = getSlidingMenu();
+		 sm.setShadowWidthRes(R.dimen.shadow_width);
+		 sm.setShadowDrawable(R.drawable.shadow);
+		 sm.setBehindOffsetRes(R.dimen.slidingmenu_offset);
+		 sm.setFadeDegree(0.35f);
+		 sm.setTouchModeAbove(SlidingMenu.TOUCHMODE_NONE);
+		 // sm.setSlidingEnabled(true);
+		 }
+		setContentView(R.layout.settingpage);
+		ActionBar bar = getSupportActionBar();
+		bar.setDisplayHomeAsUpEnabled(true);// by wmh
+		bar.setDisplayUseLogoEnabled(false);
+		bar.setDisplayShowTitleEnabled(true);
+		bar.setDisplayShowHomeEnabled(false);
+		// 其中setHomeButtonEnabled和setDisplayShowHomeEnabled共同起作用
+		// bar.setHomeButtonEnabled(true);
+		// bar.setDisplayShowHomeEnabled(true);
+		bar.setTitle(R.string.setting_Title);
 		setTitle(R.string.setting_Title);
 		MobclickAgent.onEvent(m_act, "KMainPage", "settingPage");
-		mView.findViewById(R.id.btBack).setOnClickListener(this);
-		cbSetSensor = (CheckBox) mView.findViewById(R.id.cbSetSensor);
-		cbSetTools = (CheckBox) mView.findViewById(R.id.cbSetTools);
-//		cbSetTab = (CheckBox) mView.findViewById(R.id.cbSetTab);
-//		cbSetShowTask = (CheckBox) mView.findViewById(R.id.cbSetShowTask);
-		cbSetShowHideFile = (CheckBox) mView.findViewById(R.id.cbSetShowHideFile);
-		Button btSetDefaultPath = (Button) mView.findViewById(R.id.btSetDefaultPath);
-		tvSetDefaultPath = (TextView) mView.findViewById(R.id.tvSetDefaultPath);
-		tvSetSDRootPath = (TextView) mView.findViewById(R.id.tvSetSDRootPath);
-		cbLastPath = (CheckBox) mView.findViewById(R.id.cbLastPath);
+		findViewById(R.id.btBack).setOnClickListener(this);
+		cbSetSensor = (CheckBox) findViewById(R.id.cbSetSensor);
+		cbSetTools = (CheckBox) findViewById(R.id.cbSetTools);
+		// cbSetTab = (CheckBox) findViewById(R.id.cbSetTab);
+		// cbSetShowTask = (CheckBox) findViewById(R.id.cbSetShowTask);
+		cbSetShowHideFile = (CheckBox) findViewById(R.id.cbSetShowHideFile);
+		Button btSetDefaultPath = (Button) findViewById(R.id.btSetDefaultPath);
+		tvSetDefaultPath = (TextView) findViewById(R.id.tvSetDefaultPath);
+		tvSetSDRootPath = (TextView) findViewById(R.id.tvSetSDRootPath);
+		cbLastPath = (CheckBox) findViewById(R.id.cbLastPath);
 
-		btSetDefPicFileButton = (CheckBox) mView.findViewById(R.id.btSetDefPicFileButton);
-		btSetDefAudioFileButton = (CheckBox) mView.findViewById(R.id.btSetDefAudioFileButton);
-		btSetDefTxtFileButton = (CheckBox) mView.findViewById(R.id.btSetDefTxtFileButton);
-		btSetDefZipFileButton = (CheckBox) mView.findViewById(R.id.btSetDefZipFileButton);
+		btSetDefPicFileButton = (CheckBox) findViewById(R.id.btSetDefPicFileButton);
+		btSetDefAudioFileButton = (CheckBox) findViewById(R.id.btSetDefAudioFileButton);
+		btSetDefTxtFileButton = (CheckBox) findViewById(R.id.btSetDefTxtFileButton);
+		btSetDefZipFileButton = (CheckBox) findViewById(R.id.btSetDefZipFileButton);
 		// Button temp =(Button) findViewById(R.id.btSetViewButton);
 		// temp.setOnClickListener(this);
 		// temp =(Button) findViewById(R.id.btSetSortButton);
 		// temp.setOnClickListener(this);
-		View btSetResumeFavorite = (View) mView.findViewById(R.id.btSetResumeFavorite);
-		View btSetCommentScore = (View) mView.findViewById(R.id.btSetCommentScore);
-		View btSetAboutTitle = (View) mView.findViewById(R.id.btSetAboutTitle);
-		View btSetCurrentPath = mView.findViewById(R.id.btSetCurrentPath);
-		View btSetFeedback = (View) mView.findViewById(R.id.btSetFeedback);
-		View btSetThemeButton = (View) mView.findViewById(R.id.btSetThemeButton);
-		View btSetDefFileIcoButton = (View) mView.findViewById(R.id.btSetDefFileIcoButton);
-		View btSetCheckUpdate = (View) mView.findViewById(R.id.btSetCheckUpdate);
-		
-		View btSetSDPath = mView.findViewById(R.id.btSetSDPath);
+		View btSetResumeFavorite = (View) findViewById(R.id.btSetResumeFavorite);
+		View btSetCommentScore = (View) findViewById(R.id.btSetCommentScore);
+		View btSetAboutTitle = (View) findViewById(R.id.btSetAboutTitle);
+		View btSetCurrentPath = findViewById(R.id.btSetCurrentPath);
+		View btSetFeedback = (View) findViewById(R.id.btSetFeedback);
+		View btSetThemeButton = (View) findViewById(R.id.btSetThemeButton);
+		View btSetDefFileIcoButton = (View) findViewById(R.id.btSetDefFileIcoButton);
+		View btSetCheckUpdate = (View) findViewById(R.id.btSetCheckUpdate);
+
+		View btSetSDPath = findViewById(R.id.btSetSDPath);
 		btSetSDPath.setOnClickListener(this);
 		btSetDefFileIcoButton.setOnClickListener(this);
 		btSetDefaultPath.setOnClickListener(this);
@@ -120,10 +143,10 @@ public class SettingPage extends ContentFragment implements OnClickListener,
 		btSetDefZipFileButton.setChecked(Config.isbOpenDefZipFile());
 
 		cbSetShowHideFile.setChecked(Theme.getShowHideFile());
-//		cbSetShowTask.setChecked(Theme.getTaskVisible());
+		// cbSetShowTask.setChecked(Theme.getTaskVisible());
 		cbSetSensor.setChecked(Theme.getScreenOrientation());
 		cbSetTools.setChecked(Theme.getToolsVisible());
-//		cbSetTab.setChecked(Theme.getTabsVisible());
+		// cbSetTab.setChecked(Theme.getTabsVisible());
 
 		// cbSetShowHideFile.setOnCheckedChangeListener(this);
 		// cbSetShowTask.setOnCheckedChangeListener(this);
@@ -139,8 +162,8 @@ public class SettingPage extends ContentFragment implements OnClickListener,
 		T.SetScreenOrientation(m_act, cbSetSensor.isChecked());
 		Theme.setSensorOrientation(cbSetSensor.isChecked());
 		Theme.setToolsVisible(cbSetTools.isChecked());
-//		Theme.setTaskVisible(cbSetShowTask.isChecked());
-//		Theme.setTabsVisible(cbSetTab.isChecked());
+		// Theme.setTaskVisible(cbSetShowTask.isChecked());
+		// Theme.setTabsVisible(cbSetTab.isChecked());
 		Theme.setShowHideFile(cbSetShowHideFile.isChecked());
 		Theme.Save(m_act);
 		Config.setbOpenDefZipFile(btSetDefZipFileButton.isChecked());
@@ -150,7 +173,7 @@ public class SettingPage extends ContentFragment implements OnClickListener,
 		Config.Save(m_act);
 		super.onPause();
 	}
-	
+
 	@Override
 	public void onResume()
 	{
@@ -163,7 +186,7 @@ public class SettingPage extends ContentFragment implements OnClickListener,
 		tvSetSDRootPath.setText(mStrSDRootPath);
 		super.onResume();
 	}
-	
+
 	@Override
 	public void onClick(View v)
 	{
@@ -245,11 +268,14 @@ public class SettingPage extends ContentFragment implements OnClickListener,
 								public void onClick(DialogInterface dialog,
 										int which)
 								{
-									SysEng.getInstance().addEvent(
-											new delFileEvent(m_act,
-													new FileBean(new File(
-															Const.szAppTempPath),
-															null)));
+									SysEng.getInstance()
+											.addEvent(
+													new delFileEvent(
+															m_act,
+															new FileBean(
+																	new File(
+																			Const.szAppTempPath),
+																	null)));
 								}
 							})
 					.setNegativeButton(m_act.getString(R.string.cancel), null)
@@ -278,14 +304,14 @@ public class SettingPage extends ContentFragment implements OnClickListener,
 			// isChecked);// 输入自动化
 			Theme.setToolsVisible(isChecked);
 			break;
-//		case R.id.cbSetShowTask:
-//			Theme.setTaskVisible(isChecked);
-//			break;
-//		case R.id.cbSetTab:
-//			// SaveData
-//			// .Write(m_act, Const.strTabVisible, isChecked);// 输入自动化
-//			Theme.setTabsVisible(isChecked);
-//			break;
+		// case R.id.cbSetShowTask:
+		// Theme.setTaskVisible(isChecked);
+		// break;
+		// case R.id.cbSetTab:
+		// // SaveData
+		// // .Write(m_act, Const.strTabVisible, isChecked);// 输入自动化
+		// Theme.setTabsVisible(isChecked);
+		// break;
 		case R.id.cbSetShowHideFile:
 			Theme.setShowHideFile(isChecked);
 			// SaveData
@@ -295,35 +321,41 @@ public class SettingPage extends ContentFragment implements OnClickListener,
 			break;
 		}
 	}
+
 	private void CheckUpdate()
 	{
 		UmengUpdateAgent.update(m_act);
 		UmengUpdateAgent.setUpdateAutoPopup(false);
 		UmengUpdateAgent.setUpdateOnlyWifi(false);
-		UmengUpdateAgent.setUpdateListener(new UmengUpdateListener() {
-		        @Override
-		        public void onUpdateReturned(int updateStatus,UpdateResponse updateInfo) {
-		            switch (updateStatus) {
-		            case 0: // has update
-		                UmengUpdateAgent.showUpdateDialog(m_act, updateInfo);
-		                break;
-		            case 1: // has no update
-		                Toast.makeText(m_act, "没有更新,当前版本已经是最新的", Toast.LENGTH_SHORT)
-		                        .show();
-		                break;
-		            case 2: // none wifi
-		                Toast.makeText(m_act, "没有wifi连接， 只在wifi下更新", Toast.LENGTH_SHORT)
-		                        .show();
-		                break;
-		            case 3: // time out
-		                Toast.makeText(m_act, "网络连接超时，请确认网络是否连接", Toast.LENGTH_SHORT)
-		                        .show();
-		                break;
-		            }
-		        }
+		UmengUpdateAgent.setUpdateListener(new UmengUpdateListener()
+		{
+			@Override
+			public void onUpdateReturned(int updateStatus,
+					UpdateResponse updateInfo)
+			{
+				switch (updateStatus)
+				{
+				case 0: // has update
+					UmengUpdateAgent.showUpdateDialog(m_act, updateInfo);
+					break;
+				case 1: // has no update
+					Toast.makeText(m_act, "没有更新,当前版本已经是最新的", Toast.LENGTH_SHORT)
+							.show();
+					break;
+				case 2: // none wifi
+					Toast.makeText(m_act, "没有wifi连接， 只在wifi下更新",
+							Toast.LENGTH_SHORT).show();
+					break;
+				case 3: // time out
+					Toast.makeText(m_act, "网络连接超时，请确认网络是否连接",
+							Toast.LENGTH_SHORT).show();
+					break;
+				}
+			}
 		});
 		UmengUpdateAgent.forceUpdate(m_act);
 	}
+
 	@Override
 	public boolean KActivityResult(int cmd, int msg, int arg1, String arg2)
 	{
@@ -331,22 +363,37 @@ public class SettingPage extends ContentFragment implements OnClickListener,
 		onResume();
 		return true;
 	}
+
 	@Override
 	public void onDestroy()
 	{
 		// TODO Auto-generated method stub
 		super.onDestroy();
 	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item)
+	{
+		// TODO Auto-generated method stub
+		if (item.getItemId() == android.R.id.home)
+		{
+			finish();
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event)
 	{
-		if (keyCode == KeyEvent.KEYCODE_BACK)
-		{
-			backFragment();
-			return true;
-		}
+		// if (keyCode == KeyEvent.KEYCODE_BACK)
+		// {
+		// //backFragment();
+		// return true;
+		// }
 		return super.onKeyDown(keyCode, event);
 	}
+
 	@Override
 	public void NotifyDataSetChanged(int cmd, Object value)
 	{

@@ -109,7 +109,7 @@ public abstract class PopMenu
    private void InitMenu()
    {
       String[] mStrMenu =
-      { "打开", "复制", "重命名", "删除", "添加到收藏夹", "压缩", "属性", "发送", "打开所在文件夹", "设置成铃音",
+      { "打开", "复制", "重命名", "删除", "收藏夹", "压缩", "属性", "发送", "打开所在文件夹", "设置成铃音",
 	  "设置成壁纸","上传到网盘","剪切" };
       mAllMenu = new ArrayList<KString>();
       for (int i = 0; i < mStrMenu.length; i++)

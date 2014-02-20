@@ -79,6 +79,7 @@
     <string name="msg_sorry_not_move_file">不能将文件移动到该目录，这样产生死锁操作！</string>
     <string name="msg_sorry_file_permissions">对不起，文件访问权限不够!</string>
     <string name="msg_not_find_file">未找到该文件!</string>
+    <string name="msg_folder_empty">这里什么都没有</string>
     <string name="msg_loading_data">正在加载数据...</string>
     <string name="msg_backups_file">备份</string>
     <string name="msg_deleted_files">已删除</string>
