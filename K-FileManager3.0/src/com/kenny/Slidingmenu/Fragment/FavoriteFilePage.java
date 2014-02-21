@@ -10,6 +10,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +27,7 @@ import android.widget.Toast;
 
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
+import com.framework.event.AbsEvent;
 import com.framework.syseng.SysEng;
 import com.kenny.KFileManager.R;
 import com.kenny.file.Adapter.FavorFileAdapter;
@@ -121,7 +123,7 @@ public class FavoriteFilePage extends ContentFragment implements
 		lyBTools = mView.findViewById(R.id.lyBTools);
 		m_lvMain = mView.findViewById(R.id.lvMain);
 		mView.findViewById(R.id.icEmptyPannal).setVisibility(View.GONE);
-		
+
 		m_lvMain.setBackgroundColor(Theme.getBackgroundColor());
 		mListView = (ListView) mView.findViewById(R.id.lvLocallist);
 		mListView.setOnItemClickListener(this);
@@ -142,10 +144,6 @@ public class FavoriteFilePage extends ContentFragment implements
 
 		btSelectAll = (Button) mView.findViewById(R.id.btSelectAll);
 		btSelectAll.setOnClickListener(this);
-
-		String strPaths = SaveData.Read(m_act,
-				"FavGroupPaths_" + mNowGItem.getId(), "");
-		mStrFolderpaths = strPaths.split("\n");
 
 		ShowFolderList();
 	}
@@ -182,21 +180,44 @@ public class FavoriteFilePage extends ContentFragment implements
 	{
 		if (mNowGItem != null)
 		{
+			Log.v("wmh", "LoadFolderInit:start");
 			mFolderList.clear();
 			mFolderList.addAll(getFavoritesFolderInfos(mNowGItem));
+			Log.v("wmh", "LoadFolderInit:sort");
 			Collections.sort(mFolderList, new FileSort());
-			// mTempList.clear();
-			// mTempList.addAll(mFolderList);
-			// if (mTempList.size() > 0)
-			// {
-			// FavorFileBean bean = new FavorFileBean(null, "ALL", "ALL", true);
-			// bean.setDirectory(true);
-			// mTempList.add(0, bean);
-			// }
-			// if (mFileAdapter != null)
-			// {
-			// mFileAdapter.notifyDataSetChanged();
-			// }
+			Log.v("wmh", "LoadFolderInit:end");
+			new Thread(new Runnable()
+			{
+				@Override
+				public void run()
+				{
+					mNowGItem.setCount(0);
+					mNowGItem.setSize(0);
+					for (int i = 0; i < mFolderList.size(); i++)
+					{
+						FileBean bean=mFolderList.get(i);
+						int count = getFavorFileSize(bean.getFile(), mNowGItem);
+						if (count > 0)
+						{
+							bean.setItemFileCount(count);
+							bean.Clear();
+						}
+					}
+					SaveData.Write(m_act, "FavGroupSize_" + mNowGItem.getId(),
+							mNowGItem.getSize());
+					SaveData.Write(m_act, "FavGroupCount_" + mNowGItem.getId(),
+							mNowGItem.getCount());
+					SysEng.getInstance().addHandlerEvent(new AbsEvent()
+					{
+						@Override
+						public void ok()
+						{
+							mFileAdapter.notifyDataSetChanged();
+						}
+					});
+				}
+
+			}).start();
 		}
 	}
 
@@ -317,18 +338,9 @@ public class FavoriteFilePage extends ContentFragment implements
 				FavorFileBean bean = new FavorFileBean(mCurrent,
 						mCurrent.getName(), mCurrent.getPath(), false);
 				bean.setDirectory(mCurrent.isDirectory());
-				int count = getFavorFileSize(mCurrent, groupInfo);
-				if (count > 0)
-				{
-					bean.setItemFileCount(count);
-					list.add(bean);
-				}
+				list.add(bean);
 			}
 		}
-		SaveData.Write(m_act, "FavGroupSize_" + groupInfo.getId(),
-				groupInfo.getSize());
-		SaveData.Write(m_act, "FavGroupCount_" + groupInfo.getId(),
-				groupInfo.getCount());
 		return list;
 	}
 
@@ -448,7 +460,8 @@ public class FavoriteFilePage extends ContentFragment implements
 		{
 			FileBean tmpInfo = mTempList.get(i);
 
-			if (tmpInfo.isChecked()&&tmpInfo.getFileEnds().equalsIgnoreCase("apk"))
+			if (tmpInfo.isChecked()
+					&& tmpInfo.getFileEnds().equalsIgnoreCase("apk"))
 			{
 				mInstallFiles.add(tmpInfo);
 			}
@@ -631,8 +644,12 @@ public class FavoriteFilePage extends ContentFragment implements
 	{
 		mListType = ListType.FolderList;
 		mTempList.clear();
+
 		if (mFolderList.size() <= 0)
 		{
+			String strPaths = SaveData.Read(m_act,
+					"FavGroupPaths_" + mNowGItem.getId(), "");
+			mStrFolderpaths = strPaths.split("\n");
 			LoadFolderInit();
 		}
 		mTempList.addAll(mFolderList);
@@ -652,8 +669,7 @@ public class FavoriteFilePage extends ContentFragment implements
 			FavorFileBean bean = new FavorFileBean(null, "ALL", "ALL", false);
 			bean.setDirectory(true);
 			mTempList.add(0, bean);
-		}
-		else
+		} else
 		{
 			mView.findViewById(R.id.icEmptyPannal).setVisibility(View.VISIBLE);
 		}
@@ -792,13 +808,11 @@ public class FavoriteFilePage extends ContentFragment implements
 					}
 					break;
 				case 1:// 打开文件夹
-					String path=file.getFilePath().substring(
-							0,
-							file.getFilePath().lastIndexOf(
-									File.separator));
-//					FileManager.getInstance().setFilePath(
-//							);
-//					KMainPage.mKMainPage.ChangePage(KMainPage.Local, null);
+					String path = file.getFilePath().substring(0,
+							file.getFilePath().lastIndexOf(File.separator));
+					// FileManager.getInstance().setFilePath(
+					// );
+					// KMainPage.mKMainPage.ChangePage(KMainPage.Local, null);
 					switchFragment(new LocalPage(path));
 					break;
 				case 2:// 删除

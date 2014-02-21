@@ -276,7 +276,10 @@ public class FileBean {
 		}
 		return mDesc;
 	}
-
+	public void Clear()
+	{
+		mDesc=null;
+	}
 	private Drawable Init(Context mContext) 
 	{
 		Res mRes = Res.getInstance(mContext);
