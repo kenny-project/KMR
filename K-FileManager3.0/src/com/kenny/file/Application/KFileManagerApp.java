@@ -33,12 +33,21 @@ public class KFileManagerApp extends Application {
     private static final String TAG = KFileManagerApp.class.getSimpleName();
     private FolderTypeUtil mFolderType=new FolderTypeUtil();
     private static Context sContext;
-
-    @Override
+    private String mCurrentPath;
+    
+    public String getCurrentPath()
+	{
+		return mCurrentPath;
+	}
+	public void setCurrentPath(String mCurrentPath)
+	{
+		this.mCurrentPath = mCurrentPath;
+	}
+	@Override
     public void onCreate() {
         super.onCreate();
         sContext = getApplicationContext();
-        FtpServerApp.setContext(        sContext);
+        FtpServerApp.setContext(sContext);
         mFolderType.Init(sContext);
     }
     public FolderTypeUtil getFolderType()
@@ -61,7 +70,8 @@ public class KFileManagerApp extends Application {
         try {
             Context context = getAppContext();
             return context.getPackageName().contains("free");
-        } catch (Exception swallow) {
+        } catch (Exception e) {
+        	e.printStackTrace();
         }
         return false;
     }

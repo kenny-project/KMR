@@ -66,10 +66,10 @@ public class FileManager implements IManager
 	 * 
 	 * @return
 	 */
-	public static FileManager getInstance()
-	{
-		return m_LocalManage;
-	}
+//	public static FileManager getInstance()
+//	{
+//		return m_LocalManage;
+//	}
 
 	/**
 	 * 退回上一层

@@ -35,6 +35,7 @@ import com.framework.syseng.SysEng;
 import com.kenny.KFileManager.R;
 import com.kenny.Slidingmenu.MainUIActivity;
 import com.kenny.file.Adapter.FavorFileAdapter;
+import com.kenny.file.Application.KFileManagerApp;
 import com.kenny.file.Event.FavoriteFileEvent;
 import com.kenny.file.Event.LoadSearchFileEvent;
 import com.kenny.file.Event.copyFileEvent;
@@ -164,7 +165,7 @@ public class SearchResultPage extends SlidingFragmentActivity implements
 					btSearch.setEnabled(false);
 					T.hideInputPad(etValue);
 					param.setCaseSensitive(false);
-					param.setPath(FileManager.getInstance().getCurrentPath());
+					param.setPath(((KFileManagerApp)m_act.getApplication()).getCurrentPath());
 					param.setHide(false);
 					param.setSearchValue(etValue.getText().toString());
 					param.setSubdirectory(true);
@@ -185,7 +186,7 @@ public class SearchResultPage extends SlidingFragmentActivity implements
 			public void onClick(View v)
 			{
 				param.setSearchValue(etValue.getText().toString());
-				new SearchFileDialog().Show(m_act, FileManager.getInstance()
+				new SearchFileDialog().Show(m_act, ((KFileManagerApp)m_act.getApplication())
 						.getCurrentPath(), param, SearchResultPage.this);
 			}
 		});
@@ -271,7 +272,7 @@ public class SearchResultPage extends SlidingFragmentActivity implements
 		findViewById(R.id.btPaste).setOnClickListener(this);
 		findViewById(R.id.btSelectAll).setOnClickListener(this);
 		tvSearchNotify.setText("搜索路径:"
-				+ FileManager.getInstance().getCurrentPath());
+				+ ((KFileManagerApp)m_act.getApplication()).getCurrentPath());
 	}
 
 	private OnScrollListener m_localOnScrollListener = new OnScrollListener()
@@ -316,7 +317,7 @@ public class SearchResultPage extends SlidingFragmentActivity implements
 	{
 		super.onResume();
 		tvSearchNotify.setText("搜索路径:"
-				+ FileManager.getInstance().getCurrentPath());
+				+ ((KFileManagerApp)m_act.getApplication()).getCurrentPath());
 	}
 
 	public void onItemClick(AdapterView<?> parent, View view, int position,

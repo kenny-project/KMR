@@ -22,6 +22,7 @@ import com.actionbarsherlock.view.MenuItem;
 import com.framework.syseng.SysEng;
 import com.kenny.KFileManager.R;
 import com.kenny.file.Activity.FileRelevanceManager;
+import com.kenny.file.Application.KFileManagerApp;
 import com.kenny.file.Event.delFileEvent;
 import com.kenny.file.bean.FileBean;
 import com.kenny.file.dialog.AboutDialog;
@@ -205,7 +206,7 @@ public class SettingPage extends SlidingFragmentActivity implements OnClickListe
 			dailog.ShowDialog(m_act, 3, this);
 			break;
 		case R.id.btSetSDPath:
-			mStrSDRootPath = FileManager.getInstance().getCurrentPath();
+			mStrSDRootPath = ((KFileManagerApp)m_act.getApplication()).getCurrentPath();
 			Const.setSDCard(mStrSDRootPath);
 			SaveData.Write(m_act, Const.strSDRootPath, mStrSDRootPath);// 输入自动化
 			tvSetSDRootPath.setText(mStrSDRootPath);
@@ -247,7 +248,7 @@ public class SettingPage extends SlidingFragmentActivity implements OnClickListe
 			// EditDialog.Show(m_act, mStrDefaultPath);
 			break;
 		case R.id.btSetCurrentPath:
-			mStrDefaultPath = FileManager.getInstance().getCurrentPath();
+			mStrDefaultPath = ((KFileManagerApp)m_act.getApplication()).getCurrentPath();
 			SaveData.Write(m_act, Const.strDefaultPath, mStrDefaultPath);// 输入自动化
 			tvSetDefaultPath.setText(mStrDefaultPath);
 			Toast.makeText(m_act, "设置成功", Toast.LENGTH_SHORT).show();

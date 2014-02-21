@@ -67,8 +67,8 @@ public class ZipDialog
 		AlertDialog renameDialog = new AlertDialog.Builder(context).create();
 		renameDialog.setTitle(R.string.ZipDialog_Title);
 		renameDialog.setView(mLL);
-		renameDialog.setButton("确定", listener);
-		renameDialog.setButton2("取消", new DialogInterface.OnClickListener()
+		renameDialog.setButton(context.getResources().getString(R.string.ok), listener);
+		renameDialog.setButton2(context.getResources().getString(R.string.cancel), new DialogInterface.OnClickListener()
 		{
 
 			public void onClick(DialogInterface dialog, int which)
