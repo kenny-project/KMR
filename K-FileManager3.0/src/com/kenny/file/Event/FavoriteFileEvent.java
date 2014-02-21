@@ -52,7 +52,7 @@ public class FavoriteFileEvent extends AbsEvent {
 			{
 				@Override
 				public void ok() {
-					FileManager.getInstance().Refresh();
+//					FileManager.getInstance().Refresh();//by wmh 2013-2-21
 					mProgressDialog.dismiss();
 					Toast.makeText(m_context, "添加收藏成功!", Toast.LENGTH_SHORT)
 							.show();

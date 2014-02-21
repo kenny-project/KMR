@@ -162,10 +162,11 @@ public class copyFileCmdEvent extends AbsEvent
 			if (notif != null)
 			{
 				notif.Refresh();
-			} else
-			{
-				FileManager.getInstance().Refresh();
 			}
+//			else //by wmh2014-2-21
+//			{
+//				FileManager.getInstance().Refresh();
+//			}
 		}
 	};
 	private LinuxFileCommand comm=new LinuxFileCommand();
@@ -198,11 +199,7 @@ public class copyFileCmdEvent extends AbsEvent
 				return -2;
 			}
 
-		} catch (IOException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InterruptedException e)
+		} catch (Exception e)
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();

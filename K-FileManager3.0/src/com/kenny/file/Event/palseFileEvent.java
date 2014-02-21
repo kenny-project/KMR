@@ -21,7 +21,6 @@ import com.framework.log.P;
 import com.framework.syseng.SysEng;
 import com.kenny.KFileManager.R;
 import com.kenny.file.bean.FileBean;
-import com.kenny.file.manager.FileManager;
 import com.kenny.file.manager.IManager;
 import com.kenny.file.tools.FileOperation;
 import com.kenny.file.tools.T;
@@ -187,10 +186,11 @@ public class palseFileEvent extends AbsEvent
 			if (notif != null)
 			{
 				notif.Refresh();
-			} else
-			{
-				FileManager.getInstance().Refresh();
-			}
+			} 
+//			else //by wmh 2013-2-21
+//			{
+//				FileManager.getInstance().Refresh();
+//			}
 		}
 	};
 

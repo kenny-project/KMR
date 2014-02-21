@@ -45,7 +45,7 @@ public class delNetClientEvent extends AbsEvent
 			@Override
 			public void ok()
 			{
-				FileManager.getInstance().Refresh();
+				//FileManager.getInstance().Refresh(); //by wmh 2013-2-21
 				mProgressDialog.dismiss();
 				FTPClientManager.GetHandler().SendNotifyData(1,null);
 			}

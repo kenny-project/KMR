@@ -76,7 +76,7 @@ public class InstallEvent extends AbsEvent
 			@Override
 			public void ok()
 			{
-				FileManager.getInstance().Refresh();
+//				FileManager.getInstance().Refresh(); //by wmh 2013-2-21
 				if (notifySetChanged != null)
 				{
 					notifySetChanged.NotifyDataSetChanged(0, null);

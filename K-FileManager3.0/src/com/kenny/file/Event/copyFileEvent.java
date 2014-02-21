@@ -26,13 +26,26 @@ public class copyFileEvent extends AbsEvent implements INotifyDataSetChanged
 	private Context context;
 	private List<FileBean> mFileList = new ArrayList<FileBean>();
 	private IManager notif=null;
-	public copyFileEvent(Context context, FileBean file)
+	private String CurrentPath;
+	/**
+	 * FileManager.getInstance().getCurrentPath()
+	 * @param context
+	 * @param CurrentPath
+	 * @param file
+	 */
+	public copyFileEvent(Context context,String CurrentPath, FileBean file)
 	{
 		this.context = context;
+		this.CurrentPath=CurrentPath;
 		mFileList.clear();
 		mFileList.add(file);
 	}
-
+	/**
+	 * FileManager.getInstance().getCurrentPath()
+	 * @param context
+	 * @param CurrentPath
+	 * @param file
+	 */
 	public copyFileEvent(Context context, List<FileBean> list, IManager notif)
 	{
 		this.context = context;
@@ -53,8 +66,7 @@ public class copyFileEvent extends AbsEvent implements INotifyDataSetChanged
 	{
 		if (mFileList.size() > 0)
 		{
-			new FolderListDialog().ShowDialog(context, FileManager.getInstance()
-					.getCurrentPath(),mFileList, this);
+			new FolderListDialog().ShowDialog(context, CurrentPath,mFileList, this);
 		}
 		else
 		{
