@@ -33,8 +33,6 @@ import com.kenny.file.bean.FGroupInfo;
 import com.kenny.file.bean.FileBean;
 import com.kenny.file.dialog.KDialog;
 import com.kenny.file.interfaces.INotifyDataSetChanged;
-import com.kenny.file.manager.FileManager;
-import com.kenny.file.page.KMainPage;
 import com.kenny.file.tools.T;
 import com.kenny.file.util.Const;
 import com.kenny.file.util.Theme;
@@ -112,7 +110,10 @@ public class MyFavoriteFilePage extends ContentFragment implements
 		mListView.setOnItemLongClickListener(this);
 		mFileAdapter = new FavorDialogAdapter(m_act, 1, mAllFileList);
 		mListView.setAdapter(mFileAdapter);
-
+		if(mAllFileList.size()<=0)
+		{
+			mView.findViewById(R.id.icEmptyPannal).setVisibility(View.VISIBLE);
+		}
 		// FavoriteItemInit();
 	}
 	public void onPause()

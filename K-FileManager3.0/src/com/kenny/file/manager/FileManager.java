@@ -77,7 +77,7 @@ public class FileManager implements IManager
 	public boolean Back()
 	{
 		File mCurrentFile=new File(mCurrentPath);
-		if (!mCurrentFile.getAbsolutePath().equals(mRootPath))
+		if (!mCurrentFile.getAbsolutePath().equals(mRootPath)&&mCurrentFile.getAbsolutePath().length()>1)
 		{
 			String temp = mCurrentFile.getParent();
 			setFilePath(temp, Const.cmd_Local_List_Go);
@@ -134,8 +134,6 @@ public class FileManager implements IManager
 				if (mCurrentFile.isDirectory())
 				{
 					File[] tempList = mCurrentFile.listFiles();
-					;
-
 					if (tempList != null)
 					{
 						int FileCount = 0, FolderCount = 0;
@@ -188,8 +186,11 @@ public class FileManager implements IManager
 		if (!mCurrentPath.equals(mRootPath))
 		{
 			String back = mFile.getParent();
+			if(back!=null)
+			{
 			File temp = new File(back);
 			mFileList.add(0, new FileBean(temp, "..", back, true));
+			}
 		}
 		if (m_notifyData != null)
 		{

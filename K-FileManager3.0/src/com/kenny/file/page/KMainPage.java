@@ -31,7 +31,7 @@ public class KMainPage extends AbsPage
 	// private NetworkPage m_RemotePage = null;
 	private AppsPage m_AppsPage = null;
 	//	private TaskPage m_TaskPage = null;
-	private NetworkPage m_ToolsPage = null;
+//	private NetworkPage m_ToolsPage = null;
 	private FavoritePage m_FavoritePage = null;
 	private SearchResultPage m_SearchPage = null;
 	/**

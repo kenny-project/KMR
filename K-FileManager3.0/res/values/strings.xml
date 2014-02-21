@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <string name="FavoriteType" translatable="false">FavoriteType.xml</string>
+    <string name="NetConfig" translatable="false">NetConfig.kf</string>
+    <string name="FTPClientConfig" translatable="false">NetClientConfig.kf</string>
     <string name="app_name">文件管家</string>
+    <string name="RARActivity_Name">RAR管理器</string>
+    <string name="ZIPActivity_Name">解压管理器</string>
+    <string name="EditTxtActivity_Name">文本阅读器</string>
+    <string name="GalleryActivity_Name">图片浏览器</string>
     <string name="apk_manager_title">安装包管理</string>
     <string name="file_ico_relevance_manager_title">文件图标关联管理</string>
     <string name="KuaiPanPage_btTransfer">传输</string>
@@ -51,7 +59,6 @@
     <string name="KuaiPan_use_Content">金山快盘使用说明</string>
     <string name="btShare">分享链接</string>
     <string name="btDownload">下载</string>
-    
     <string name="setting_Feedback_Button">意见反馈</string>
     <string name="view_preferences">显示列表设置</string>
     <string name="view_button">样式</string>
@@ -138,7 +145,6 @@
     <string name="msg_Send">发送</string>
     <string name="aboutTitle">关于</string>
     <string name="CheckUpdateTitle">检查更新</string>
-    
     <string name="btSend">发送</string>
     <string name="btCancel">取消</string>
     <string name="audio_playing_title">正在播放</string>
@@ -339,16 +345,5 @@
     <string name="local_service_disconnected">local_service_disconnected</string>
     <string name="local_service_started">local_service_started</string>
     <!-- mp3 end -->
-<string name="RARActivity_Name">RAR管理器</string>
-<string name="ZIPActivity_Name">解压管理器</string>
-    <string name="EditTxtActivity_Name">文本阅读器</string>
-    <string name="GalleryActivity_Name">图片浏览器</string>
-    <string name="FavoriteType">FavoriteType.xml</string>
-    <string name="NetConfig">NetConfig.kf</string>
-    <string name="FTPClientConfig">NetClientConfig.kf</string>
-    <string name="webside">		http://joke.km530.com/m/KM530.aspx</string>
-    <string name="websidedata">		http://joke.km530.com/</string>
-
-    <!-- swiFtP -->
 
 </resources>

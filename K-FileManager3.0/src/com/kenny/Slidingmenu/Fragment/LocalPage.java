@@ -42,6 +42,7 @@ import com.framework.log.P;
 import com.framework.syseng.SysEng;
 import com.kenny.KFileManager.R;
 import com.kenny.file.Adapter.FileAdapter;
+import com.kenny.file.Event.InstallEvent;
 import com.kenny.file.Event.copyFileEvent;
 import com.kenny.file.Event.cutFileEvent;
 import com.kenny.file.Event.delFileEvent;
@@ -72,29 +73,15 @@ public class LocalPage extends ContentFragment implements
 	private FileAdapter fileAdapter;
 	private FileManager localManage;
 	private int nStyle = 0, nSortMode = 0; // false:listView true:gridView
-
 	private Button btMenuListSort, btMenuListMode, btMenuShowOrHide,
 			btMenuSetting;
-	// btMenuFavorites;// 菜单项
-
+	
 	private String mStrPath;
 
 	public LocalPage(String path)
 	{
 		mStrPath = new File(path).getAbsolutePath();
 	}
-
-	public FileManager getLocalManage()
-	{
-		return localManage;
-	}
-
-	public void setLocalManage(FileManager localManage)
-	{
-		this.localManage = localManage;
-		1
-	}
-
 	/**
 	 * The Fragment's UI is just a simple text view showing its instance number.
 	 */
@@ -104,33 +91,11 @@ public class LocalPage extends ContentFragment implements
 	{
 		setContentView(R.layout.localpage, inflater);
 		mView.findViewById(R.id.icEmptyPannal).setVisibility(View.GONE);
-		// final ActionBar bar =getActivity().getActionBar();
-		// bar.setDisplayHomeAsUpEnabled(true);
-		// bar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);//设置ActionBar为Tab导航模式
-		// bar.setDisplayOptions(0, ActionBar.DISPLAY_SHOW_HOME);//设置标题不可见
-		// bar.setTitle(mStrPath);
-		// bar.addTab(bar.newTab()
-		// .setText("首页")
-		// .setTabListener(new TabListener<AppsPage>(
-		// this, "menus", AppsPage.class)));//添加首页标签
-		//
-		// bar.addTab(bar.newTab()
-		// .setText("栈测试")
-		// .setTabListener(new TabListener<FragmentStackFragment>(
-		// this, "stack", FragmentStackFragment.class)));//添加栈测试标签
-		/**
-		 * 如果没有保存过状态，那么就默认切换到第一个标签
-		 */
-		// if (savedInstanceState != null) {
-		// bar.setSelectedNavigationItem(savedInstanceState.getInt("tab", 0));
-		// }
+
 		m_lvMain = (ViewGroup) mView.findViewById(R.id.lvMain);
 
 		localManage = FileManager.getInstance();
 		localManage.setContext(getActivity());
-		// localManage.setFilePath(
-		// SaveData.Read(m_act, Const.strDefaultPath, Const.getSDCard()),
-		// Const.cmd_Local_List_Go);
 		localManage.setRootPath(mStrPath);
 		localManage.setFilePath(mStrPath, Const.cmd_Local_List_Go);
 
@@ -158,36 +123,17 @@ public class LocalPage extends ContentFragment implements
 		mFileList = localManage.getFileList();
 		localManage.setNotifyData(this);
 		mView.findViewById(R.id.btFileCreate).setOnClickListener(this);
-
-		Button btButton = (Button) mView.findViewById(R.id.btNew);
-		btButton.setOnClickListener(this);
-
-		btButton = (Button) mView.findViewById(R.id.btMore);
-		btButton.setOnClickListener(this);
-		btButton = (Button) mView.findViewById(R.id.btBack);
-		btButton.setOnClickListener(this);
-
-		btButton = (Button) mView.findViewById(R.id.btListSort);
-		btButton.setOnClickListener(this);
-
-		// btButton = (Button) findViewById(R.id.btEnter);
-		// btButton.setOnClickListener(this);
-
-		btButton = (Button) mView.findViewById(R.id.btCopy);
-		btButton.setOnClickListener(this);
-
-		btButton = (Button) mView.findViewById(R.id.btCut);
-		btButton.setOnClickListener(this);
-
-		btButton = (Button) mView.findViewById(R.id.btDelete);
-		btButton.setOnClickListener(this);
-
-		btButton = (Button) mView.findViewById(R.id.btPaste);
-		btButton.setOnClickListener(this);
-
-		btButton = (Button) mView.findViewById(R.id.btSelectAll);
-		btButton.setOnClickListener(this);
-
+		mView.findViewById(R.id.btNew).setOnClickListener(this);
+		mView.findViewById(R.id.btMore).setOnClickListener(this);
+		mView.findViewById(R.id.btBack).setOnClickListener(this);
+		mView.findViewById(R.id.btListSort).setOnClickListener(this);
+		mView.findViewById(R.id.btCopy).setOnClickListener(this);
+		mView.findViewById(R.id.btCut).setOnClickListener(this);
+		mView.findViewById(R.id.btDelete).setOnClickListener(this);
+		mView.findViewById(R.id.btPaste).setOnClickListener(this);
+		mView.findViewById(R.id.btSelectAll).setOnClickListener(this);
+		mView.findViewById(R.id.btInstall).setOnClickListener(this);
+		
 		SwitchStyle(Theme.getStyleMode());
 		onCreateMenu();
 		m_lvMain.addView(LoadingView(), new FrameLayout.LayoutParams(
@@ -295,6 +241,8 @@ public class LocalPage extends ContentFragment implements
 	{
 		super.onResume();
 		P.v("Log.DEBUG", "onResume");
+		localManage.setFilePath(mStrPath,
+				Const.cmd_Local_List_Go);
 		IntentFilter sdCardFilter = new IntentFilter(
 				Intent.ACTION_MEDIA_MOUNTED);
 		sdCardFilter.addAction(Intent.ACTION_MEDIA_UNMOUNTED);
@@ -302,12 +250,12 @@ public class LocalPage extends ContentFragment implements
 		sdCardFilter.addAction(Intent.ACTION_MEDIA_BAD_REMOVAL);
 		sdCardFilter.addDataScheme("file");
 		this.m_act.registerReceiver(sdcardReceiver, sdCardFilter);// 注册监听函数
-		setTitle(new File(localManage.getCurrentPath()).getName());
+		setTitle(new File(mStrPath).getName());
 		m_lvMain.setBackgroundColor(Theme.getBackgroundColor());
 		if (nSortMode != Theme.getSortMode())
 		{
 			nSortMode = Theme.getSortMode();
-			localManage.setFilePath(localManage.getCurrentPath(),
+			localManage.setFilePath(mStrPath,
 					Const.cmd_Local_List_Go);
 			SwitchStyle(Theme.getStyleMode());
 		}
@@ -334,7 +282,7 @@ public class LocalPage extends ContentFragment implements
 		public void onReceive(Context ctx, Intent intent)
 		{
 			// P.v("Log.DEBUG", "SDCard status broadcast received");
-			localManage.setFilePath(localManage.getCurrentPath(),
+			localManage.setFilePath(mStrPath,
 					Const.cmd_Local_List_Go);
 		}
 	};
@@ -505,6 +453,9 @@ public class LocalPage extends ContentFragment implements
 				SwitchStyle(0);
 			}
 			break;
+		case R.id.btInstall:
+			InstallApp();
+			break;
 		case R.id.btNew:
 			// MobclickAgent.onEvent(m_act, "localEvent","create");
 			CreateFileDialog.Show(m_act, localManage.getCurrentPath());
@@ -550,7 +501,29 @@ public class LocalPage extends ContentFragment implements
 			break;
 		}
 	}
+	private void InstallApp()
+	{
+		final ArrayList<FileBean> mInstallFiles = new ArrayList<FileBean>();
+		for (int i = 0; i < mFileList.size(); i++)
+		{
+			FileBean tmpInfo = mFileList.get(i);
 
+			if (!tmpInfo.isDirectory()&&tmpInfo.isChecked()&&tmpInfo.getFileEnds().equalsIgnoreCase("apk"))
+			{
+				mInstallFiles.add(tmpInfo);
+			}
+		}
+		if (mInstallFiles.size() > 0)
+		{
+			SysEng.getInstance().addEvent(
+					new InstallEvent(m_act, mInstallFiles,
+							null));
+			return;
+		}
+		Toast.makeText(m_act,
+				m_act.getString(R.string.msg_Please_select_instal_file) + "!",
+				Toast.LENGTH_SHORT).show();
+	}
 	private void deletefiles()
 	{
 		if (mFileList.size() > 0)
@@ -665,13 +638,25 @@ public class LocalPage extends ContentFragment implements
 
 	public void NotifyDataSetChanged(int cmd, Object value)
 	{
+		mStrPath=localManage.getCurrentPath();
 		switch (cmd)
 		{
-		case Const.cmd_Local_List_Selected:
+		case Const.cmd_Local_List_Selected://List选中执行的操作
+			if(value instanceof FileBean)
+			{
+				FileBean tmpInfo=(FileBean)value;
+				if(tmpInfo.getFileEnds().equalsIgnoreCase("apk"))
+				{
+					mView.findViewById(R.id.btInstall).setVisibility(View.VISIBLE);
+					mView.findViewById(R.id.btMore).setVisibility(View.GONE);
+				}
+			}
 			// this.lyBTools.setVisibility(View.VISIBLE);
 			break;
 		case Const.cmd_Local_List_UnSelected:
 			// this.lyBTools.setVisibility(View.GONE);
+			mView.findViewById(R.id.btInstall).setVisibility(View.GONE);
+			mView.findViewById(R.id.btMore).setVisibility(View.VISIBLE);
 			break;
 		case Const.cmd_LoadSDFile_Finish:
 			// SysEng.getInstance().addHandlerEvent(

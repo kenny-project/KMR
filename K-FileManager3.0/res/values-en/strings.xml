@@ -10,12 +10,12 @@
     <string name="setting_file_ico_button">默认文件设置</string>
     <string name="setting_file_ico_button_desc">更新不同文件图标以满足您的定制风格</string>
     <string name="msg_favor_backup">Backup</string>
-    <string name="apk_manager_title">安装包管理</string>
+    <string name="apk_manager_title">APK Management</string>
     <string name="msg_favor_download">MyDownload</string>
     <string name="msg_folder_empty">这里什么都没有</string>
     <string name="KuaiPanPage_btTransfer">传输</string>
     <string name="CheckUpdateTitle">Check Software Update</string>
-    <string name="KuaiPanPage_btUpDownLoad">上传</string>
+    <string name="KuaiPanPage_btUpDownLoad">UpLoad</string>
     <string name="CreateKPFileDialog_title">NewFolder</string>
     <string name="msg_favor_favor">Favor</string>
     <string name="msg_favor_audio">Music</string>
@@ -253,11 +253,6 @@
     <string name="RenameDialog_Title">Rename</string>
     <string name="EditTxtActivity_Name">K-TextEditor</string>
     <string name="GalleryActivity_Name">K-PictureViewer</string>
-    <string name="FavoriteType">FavoriteType.xml</string>
-    <string name="NetConfig">NetConfig.kf</string>
-    <string name="FTPClientConfig">NetClientConfig.kf</string>
-    <string name="webside">		http://joke.km530.com/m/KM530.aspx</string>
-    <string name="websidedata">		http://joke.km530.com/</string>
     <string name="labeUserName">User:</string>
     <string name="labePassWord">PassWord:</string>
     <string name="labeShareFolder">ShareFolder:</string>

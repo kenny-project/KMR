@@ -9,25 +9,23 @@ import android.view.KeyEvent;
 import com.actionbarsherlock.app.ActionBar;
 import com.framework.page.AbsFragmentPage;
 import com.kenny.KFileManager.R;
-import com.kenny.file.manager.FileManager;
-import com.kenny.file.tools.SaveData;
-import com.kenny.file.util.Const;
 import com.slidingmenu.lib.SlidingMenu;
 import com.slidingmenu.lib.app.SlidingFragmentActivity;
 
 public class LocalFragmentActivity extends SlidingFragmentActivity 
 
 {
+
+	private static String mPath;
+	private SlidingMenu sm;
+	private Fragment mContent;
+	
 	public static void actionSettingPage(Activity m_act,String path)
 	{
 		Intent intent = new Intent(m_act, LocalFragmentActivity.class);
 		m_act.startActivity(intent);
 		mPath=path;
 	}
-	private static String mPath;
-	private SlidingMenu sm;
-	private Fragment mContent;
-
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
@@ -63,9 +61,7 @@ public class LocalFragmentActivity extends SlidingFragmentActivity
 					savedInstanceState, "mContent");
 		if (mContent == null)// 添加默认的fragment
 		{
-			LocalPage localPage = new LocalPage(SaveData.Read(this,
-					Const.strDefaultPath, mPath));
-			localPage.setLocalManage(new FileManager());
+			LocalPage localPage = new LocalPage(mPath);
 			mContent = localPage;
 			localPage.setTitle("SDcard");
 		}

@@ -1,5 +1,6 @@
 package com.kenny.file.dialog;
 
+import java.io.File;
 import java.util.ArrayList;
 import com.kenny.KFileManager.R;
 import com.kenny.file.bean.AppBean;
@@ -9,6 +10,7 @@ import com.kenny.file.util.SDFile;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.pm.ApplicationInfo;
 import android.os.Handler;
 import android.os.Message;
 import android.widget.Toast;
@@ -84,17 +86,30 @@ public class AppBackUpDialog implements Runnable
 				for (int i = 0; i < appList.size() && mProgress; i++)
 				{
 					AppBean tmpInfo = appList.get(i);
-					 int result = SDFile.BackAppFile(tmpInfo.getFilePath(),
-					 Const.szBackupPath,
-					 tmpInfo.getAppName() + tmpInfo.getVersionName());
 
+					int tFlags = tmpInfo.getFlags()
+							& ApplicationInfo.FLAG_SYSTEM;
+					int result=0;
+					//flag: :1:系统 0:用户 直接读取手机内存里面的数据
+					if(tFlags==0)
+					{
+					result = SDFile.BackAppFile(tmpInfo.getFilePath(),
+							Const.szBackupPath+"user"+File.separator,
+							tmpInfo.getAppName() + tmpInfo.getVersionName());
+					}
+					else
+					{
+						result = SDFile.BackAppFile(tmpInfo.getFilePath(),
+								Const.szBackupPath+"system"+File.separator,
+								tmpInfo.getAppName() + tmpInfo.getVersionName());						
+					}
 					// int result = SDFile.BackAppFile(
 					// tmpInfo.getFilePath(),
 					// Const.szBackupPath,
 					// MD5Calculator.calculateMD5(tmpInfo.getPackageName()
 					// + "_" + tmpInfo.getVersionName()));
-//					int result = SDFile.BackAppFile(tmpInfo.getFilePath(),
-//							Const.szBackupPath, tmpInfo.getPackageName());
+					// int result = SDFile.BackAppFile(tmpInfo.getFilePath(),
+					// Const.szBackupPath, tmpInfo.getPackageName());
 					mProgressDialog.incrementProgressBy(1);
 					if (result >= 1)
 					{
@@ -139,13 +154,12 @@ public class AppBackUpDialog implements Runnable
 				szContent += "备份成功数量：" + msg.arg2 + "个\n";
 				szContent += "快速入口:收藏->整理箱->Backup";
 				szContent += "存放位置:\n";
-				szContent += Const.szBackupPath+"\n";
-				
+				szContent += Const.szBackupPath + "\n";
+
 				KDialog.ShowDialog(m_context, "软件备份", szContent, null, null,
 						m_context.getString(R.string.submit), null);
 				return;
-			}
-			else if (msg.what == 101)// 备份失败
+			} else if (msg.what == 101)// 备份失败
 			{
 				String message = "备份" + (String) msg.obj + "软件包失败";
 				Toast.makeText(m_context, message, Toast.LENGTH_SHORT).show();

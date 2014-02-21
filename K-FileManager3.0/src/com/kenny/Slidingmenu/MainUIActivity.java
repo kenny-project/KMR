@@ -426,6 +426,10 @@ public class MainUIActivity extends SlidingFragmentActivity implements
 
 	public void Init()
 	{
+		com.framework.util.Const.SW = getWindow().getWindowManager().getDefaultDisplay()
+				.getWidth();
+		com.framework.util.Const.SH = getWindow().getWindowManager().getDefaultDisplay()
+				.getHeight();
 //		BaiduInit();
 		UMInit();
 		new InitEvent(this).run();

@@ -41,8 +41,6 @@ import com.kenny.file.bean.FileBean;
 import com.kenny.file.db.Dao;
 import com.kenny.file.dialog.KDialog;
 import com.kenny.file.interfaces.INotifyDataSetChanged;
-import com.kenny.file.manager.FileManager;
-import com.kenny.file.page.KMainPage;
 import com.kenny.file.sort.FileSort;
 import com.kenny.file.tools.SaveData;
 import com.kenny.file.tools.T;
@@ -450,7 +448,7 @@ public class FavoriteFilePage extends ContentFragment implements
 		{
 			FileBean tmpInfo = mTempList.get(i);
 
-			if (tmpInfo.isChecked())
+			if (tmpInfo.isChecked()&&tmpInfo.getFileEnds().equalsIgnoreCase("apk"))
 			{
 				mInstallFiles.add(tmpInfo);
 			}

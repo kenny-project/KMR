@@ -184,6 +184,7 @@ public class SearchResultPage extends SlidingFragmentActivity implements
 		{
 			public void onClick(View v)
 			{
+				param.setSearchValue(etValue.getText().toString());
 				new SearchFileDialog().Show(m_act, FileManager.getInstance()
 						.getCurrentPath(), param, SearchResultPage.this);
 			}
