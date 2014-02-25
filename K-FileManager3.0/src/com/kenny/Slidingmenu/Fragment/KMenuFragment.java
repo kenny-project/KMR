@@ -33,7 +33,6 @@ import com.kenny.file.bean.FileBean;
 import com.kenny.file.bean.KMenuGroupBean;
 import com.kenny.file.bean.KMenuItemBean;
 import com.kenny.file.db.Dao;
-import com.kenny.file.page.SpecifyLocalFilePage;
 import com.kenny.file.sort.FileSort;
 import com.kenny.file.tools.SaveData;
 import com.kenny.file.tools.T;
@@ -281,15 +280,6 @@ public class KMenuFragment extends AbsFragmentPage implements
 		}
 		return false;
 	}
-
-	/**
-	 *  跳转到指定本地数据页面
-	 */
-	private ContentFragment onSpecifyLocalFavoriteClick(String path)
-	{
-		return new SpecifyLocalFilePage(m_act, path);
-	}
-
 	/**
 	 * 进入到我的收藏夹
 	 */

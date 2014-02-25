@@ -12,7 +12,8 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.kenny.KFileManager.R;
-import com.kenny.file.manager.FileManager;
+import com.kenny.file.interfaces.INotifyDataSetChanged;
+import com.kenny.file.manager.SDFileTools;
 
 public class CreateFileDialog
 {
@@ -21,11 +22,8 @@ public class CreateFileDialog
     * java.io.File.separator是JAVA给我们提供的一个File类中的静态成员，它会根据系统的不同来创建分隔符
     * mNewFolderName正是我们要创建的新文件的名称，从EditText组件上得到的
     */
-   // private static int mChecked = 1;
-   
-   public static void Show(final Context context, final String mCurrentFilePath)
+   public static void Show(final Context context, final String mCurrentFilePath,final INotifyDataSetChanged notif)
    {
-      // mChecked = 1;
       LayoutInflater mLI = (LayoutInflater) context
 	  .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
       final LinearLayout mLL = (LinearLayout) mLI.inflate(
@@ -54,13 +52,13 @@ public class CreateFileDialog
 		    {
 		       if (mrbCreateFile.isChecked())
 		       {
-		          FileManager.getInstance().CreateFile(
-		                mCurrentFilePath, mNewFolderName, "txt");
+		    	   SDFileTools.CreateFile(context,
+		                mCurrentFilePath, mNewFolderName, "txt",notif);
 		       }
 		       else
 		       {
-		          FileManager.getInstance().CreateFolder(
-		                mCurrentFilePath, mNewFolderName);
+		    	   SDFileTools.CreateFolder(context,
+		                mCurrentFilePath, mNewFolderName,notif);
 		       }
 		    }
 		    else

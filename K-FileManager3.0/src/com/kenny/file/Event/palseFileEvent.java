@@ -21,9 +21,11 @@ import com.framework.log.P;
 import com.framework.syseng.SysEng;
 import com.kenny.KFileManager.R;
 import com.kenny.file.bean.FileBean;
+import com.kenny.file.interfaces.INotifyDataSetChanged;
 import com.kenny.file.manager.IManager;
 import com.kenny.file.tools.FileOperation;
 import com.kenny.file.tools.T;
+import com.kenny.file.util.Const;
 import com.kenny.file.util.SDFile;
 
 public class palseFileEvent extends AbsEvent
@@ -36,10 +38,10 @@ public class palseFileEvent extends AbsEvent
 	private boolean bflag = false;// 标记是否全部粘贴
 	private boolean bCut = false;
 	private int nDialogResult = 1;
-	private IManager notif;
+	private INotifyDataSetChanged notif;
 
 	public palseFileEvent(Context context, String mCurrentPath,
-			List<FileBean> mFileList, boolean bCut, IManager notif)// bCut:true:剪切:
+			List<FileBean> mFileList, boolean bCut, INotifyDataSetChanged notif)// bCut:true:剪切:
 	{
 		mContext = context;
 		this.notif = notif;
@@ -185,7 +187,8 @@ public class palseFileEvent extends AbsEvent
 			}
 			if (notif != null)
 			{
-				notif.Refresh();
+				notif.NotifyDataSetChanged(
+						Const.cmd_PalseFileEvent_Finish, null);
 			} 
 //			else //by wmh 2013-2-21
 //			{

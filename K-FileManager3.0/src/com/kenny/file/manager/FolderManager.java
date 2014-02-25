@@ -83,6 +83,10 @@ public class FolderManager
 	// }
 	public void setFilePath(String mCurrentPath)
 	{
+		if(mCurrentPath==null||mCurrentPath.length()==0)
+		{
+			mCurrentPath=Const.getSDCard();
+		}
 		this.mCurrentPath = mCurrentPath;
 		mFileList.clear();
 		File mFile = new File(mCurrentPath);

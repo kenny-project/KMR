@@ -68,6 +68,11 @@ public class FileAdapter extends BaseAdapter
 	public void notifyDataSetChanged()
 	{
 		bShowLogo = true;
+		if(mFileList.size()>0)
+		{
+			FileBean bean=mFileList.get(0);
+			setCurrentPath(bean.getFile().getParent());
+		}
 		super.notifyDataSetChanged();
 	}
 
@@ -229,6 +234,20 @@ public class FileAdapter extends BaseAdapter
 		}
 		return convertView;
 	}
+	private String CurrentPath;
+	/**
+	 * 当前列表路径
+	 * @return
+	 */
+	public String getCurrentPath()
+	{
+		return CurrentPath;
+	}
+
+	public void setCurrentPath(String currentPath)
+	{
+		CurrentPath = currentPath;
+	}
 
 	public View getListView(int position, View convertView, ViewGroup viewgroup)
 	{
@@ -300,7 +319,7 @@ public class FileAdapter extends BaseAdapter
 				viewHolder.mIV.setImageDrawable(temp.getFileIco(mContext));
 				if (temp.getNickName() == null)
 				{
-					if (FileManager.getInstance().getCurrentPath()
+					if (getCurrentPath()!=null && getCurrentPath()
 							.equals(Const.getSDCard()))
 					{
 						String nickname = mFolderType.BinarySearch(temp
@@ -368,9 +387,8 @@ public class FileAdapter extends BaseAdapter
 
 	protected class KImageCallback implements ImageCallback
 	{
-		ViewHolder viewHolder;
-		FileBean bean;
-
+	private	ViewHolder viewHolder;
+	private	FileBean bean;
 		public KImageCallback(FileBean bean, ViewHolder viewHolder)
 		{
 			this.viewHolder = viewHolder;

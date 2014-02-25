@@ -30,7 +30,14 @@ public class Const
 
 	public static final int cmd_DelFileEvent_Finish = cmd_LoadSDFile_Start + 2001;
 	public static final int cmd_CutFileEvent_Finish = cmd_LoadSDFile_Start + 2002;
-
+	public static final int cmd_CreateFileEvent_Finish = cmd_LoadSDFile_Start + 2003;
+	public static final int cmd_CreateFolderEvent_Finish = cmd_LoadSDFile_Start + 2004;
+	public static final int cmd_RenameFileEvent_Finish = cmd_LoadSDFile_Start + 2005;
+	public static final int cmd_ZipFileEvent_Finish = cmd_LoadSDFile_Start + 2006;
+	public static final int cmd_PalseFileEvent_Finish = cmd_LoadSDFile_Start + 2007;
+	
+	public static final int cmd_APP_UnInstallEvent_Finish = cmd_LoadSDFile_Start + 4001;//卸载应用成功
+	
 	public static final int cmd_Local_ListSort_Finish = cmd_LoadSDFile_Start + 3001;// 文件显示排序完成
 
 	public static final int cmd_Local_List_Refresh = cmd_LoadSDFile_Start + 3002;// 刷新列表

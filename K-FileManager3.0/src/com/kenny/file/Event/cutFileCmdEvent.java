@@ -24,8 +24,6 @@ import com.framework.syseng.SysEng;
 import com.kenny.KFileManager.R;
 import com.kenny.file.bean.FileBean;
 import com.kenny.file.interfaces.INotifyDataSetChanged;
-import com.kenny.file.manager.FileManager;
-import com.kenny.file.manager.IManager;
 import com.kenny.file.tools.FileOperation;
 import com.kenny.file.tools.LinuxFileCommand;
 import com.kenny.file.util.Const;
@@ -39,21 +37,10 @@ public class cutFileCmdEvent extends AbsEvent {
 	private String mCurrentPath;// 需要粘贴的位置
 	private boolean bflag = false;// 标记是否全部粘贴
 	private int nDialogResult = 1;
-	private IManager notif;
-	private INotifyDataSetChanged notifySetChanged = null;
+	private INotifyDataSetChanged notif = null;
 	
 	public cutFileCmdEvent(Context context, String mCurrentPath,
-			List<FileBean> mFileList, INotifyDataSetChanged notifySetChanged)// bCut:true:剪切:
-	{
-		mContext = context;
-		this.notifySetChanged = notifySetChanged;
-		this.mCurrentPath = mCurrentPath;
-		this.mFileList = mFileList;
-		ShowDialog(mFileList.size());
-	}
-	
-	public cutFileCmdEvent(Context context, String mCurrentPath,
-			List<FileBean> mFileList, IManager notif)// bCut:true:剪切:
+			List<FileBean> mFileList, INotifyDataSetChanged notif)// bCut:true:剪切:
 	{
 		mContext = context;
 		this.notif = notif;
@@ -168,15 +155,10 @@ public class cutFileCmdEvent extends AbsEvent {
 				Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show();
 				mProgressDialog.dismiss();
 			}
-			if (notifySetChanged != null)
+			if (notif != null)
 			{
-				notifySetChanged.NotifyDataSetChanged(
+				notif.NotifyDataSetChanged(
 						Const.cmd_CutFileEvent_Finish, null);
-			}
-			if (notif != null) {
-				notif.Refresh();
-			} else {
-				FileManager.getInstance().Refresh();
 			}
 		}
 	};

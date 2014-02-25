@@ -42,6 +42,7 @@ import com.framework.log.P;
 import com.framework.syseng.SysEng;
 import com.kenny.KFileManager.R;
 import com.kenny.file.Adapter.FileAdapter;
+import com.kenny.file.Application.KFileManagerApp;
 import com.kenny.file.Event.InstallEvent;
 import com.kenny.file.Event.copyFileEvent;
 import com.kenny.file.Event.cutFileEvent;
@@ -94,7 +95,7 @@ public class LocalPage extends ContentFragment implements
 
 		m_lvMain = (ViewGroup) mView.findViewById(R.id.lvMain);
 
-		localManage = FileManager.getInstance();
+		localManage = new FileManager();
 		localManage.setContext(getActivity());
 		localManage.setRootPath(mStrPath);
 		localManage.setFilePath(mStrPath, Const.cmd_Local_List_Go);
@@ -117,7 +118,7 @@ public class LocalPage extends ContentFragment implements
 				Rect rect = new Rect();
 				mView.findViewById(R.id.lyTools2).getGlobalVisibleRect(rect);
 				LocalAddressDialog.ShowDialog(m_act,
-						localManage.getCurrentPath(), rect.bottom);
+						localManage.getCurrentPath(),localManage);
 			}
 		});
 		mFileList = localManage.getFileList();
@@ -437,7 +438,7 @@ public class LocalPage extends ContentFragment implements
 		case R.id.btMore:
 			break;
 		case R.id.btFileCreate:
-			CreateFileDialog.Show(m_act, localManage.getCurrentPath());
+			CreateFileDialog.Show(m_act, localManage.getCurrentPath(),this);
 			break;
 		// KDialog.ShowFileTypeArray(m_act, "类别", mFileType, listener);
 		case R.id.btListSort:// 排序
@@ -458,17 +459,17 @@ public class LocalPage extends ContentFragment implements
 			break;
 		case R.id.btNew:
 			// MobclickAgent.onEvent(m_act, "localEvent","create");
-			CreateFileDialog.Show(m_act, localManage.getCurrentPath());
+			CreateFileDialog.Show(m_act, localManage.getCurrentPath(),LocalPage.this);
 			break;
 		case R.id.btCopy:
 			// MobclickAgent.onEvent(m_act, "localEvent","copy");
 			SysEng.getInstance().addHandlerEvent(
-					new copyFileEvent(m_act, localManage.getFileList(), null));
+					new copyFileEvent(m_act,localManage.getFileList(),LocalPage.this));
 			break;
 		case R.id.btCut:
 			// MobclickAgent.onEvent(m_act, "localEvent","cut");
 			SysEng.getInstance().addHandlerEvent(
-					new cutFileEvent(m_act, localManage.getFileList(), null));
+					new cutFileEvent(m_act, localManage.getFileList(), LocalPage.this));
 			break;
 		case R.id.btDelete:
 			// MobclickAgent.onEvent(m_act, "localEvent","del");
@@ -507,7 +508,6 @@ public class LocalPage extends ContentFragment implements
 		for (int i = 0; i < mFileList.size(); i++)
 		{
 			FileBean tmpInfo = mFileList.get(i);
-
 			if (!tmpInfo.isDirectory()&&tmpInfo.isChecked()&&tmpInfo.getFileEnds().equalsIgnoreCase("apk"))
 			{
 				mInstallFiles.add(tmpInfo);
@@ -551,7 +551,7 @@ public class LocalPage extends ContentFragment implements
 									{
 										SysEng.getInstance().addEvent(
 												new delFileEvent(m_act,
-														mDelFiles));
+														mDelFiles,LocalPage.this));
 									}
 								})
 						.setNegativeButton(m_act.getString(R.string.cancel),
@@ -621,7 +621,7 @@ public class LocalPage extends ContentFragment implements
 			FileBean temp = mFileList.get(position);
 			if (!temp.isBackUp())
 			{
-				new PopLocalMenu().ShowFile(m_act, temp, 0);
+				new PopLocalMenu().ShowFile(m_act, temp, 0,this);
 			}
 		} else
 		{
@@ -641,6 +641,15 @@ public class LocalPage extends ContentFragment implements
 		mStrPath=localManage.getCurrentPath();
 		switch (cmd)
 		{
+		case Const.cmd_CreateFileEvent_Finish:
+		case Const.cmd_CreateFolderEvent_Finish:
+		case Const.cmd_DelFileEvent_Finish:
+		case Const.cmd_CutFileEvent_Finish:
+		case Const.cmd_RenameFileEvent_Finish:
+		case Const.cmd_ZipFileEvent_Finish:
+		case Const.cmd_PalseFileEvent_Finish:
+			localManage.Refresh();
+			break;
 		case Const.cmd_Local_List_Selected://List选中执行的操作
 			if(value instanceof FileBean)
 			{
@@ -679,6 +688,7 @@ public class LocalPage extends ContentFragment implements
 			mPath.setText(localManage.getCurrentPath());
 			setTitle(new File(localManage.getCurrentPath()).getName());
 			fileAdapter.Clear();
+			 ((KFileManagerApp)m_act.getApplication()).setCurrentPath(localManage.getCurrentPath());
 			// lyBTools.setVisibility(View.GONE);
 			fileAdapter.notifyDataSetChanged();
 			if (fileAdapter.getCount() <= 0)
@@ -713,7 +723,7 @@ public class LocalPage extends ContentFragment implements
 		switch (item.getItemId())
 		{
 		case R.id.muCreateFile:
-			CreateFileDialog.Show(m_act, localManage.getCurrentPath());
+			CreateFileDialog.Show(m_act, localManage.getCurrentPath(),this);
 			break;
 		case R.id.muSearch:
 			ShowSearchDialog();

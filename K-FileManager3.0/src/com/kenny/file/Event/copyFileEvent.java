@@ -12,8 +12,6 @@ import com.kenny.KFileManager.R;
 import com.kenny.file.bean.FileBean;
 import com.kenny.file.dialog.FolderListDialog;
 import com.kenny.file.interfaces.INotifyDataSetChanged;
-import com.kenny.file.manager.FileManager;
-import com.kenny.file.manager.IManager;
 
 /**
  * 复制文件
@@ -22,21 +20,19 @@ import com.kenny.file.manager.IManager;
  * */
 public class copyFileEvent extends AbsEvent implements INotifyDataSetChanged
 {
-
 	private Context context;
 	private List<FileBean> mFileList = new ArrayList<FileBean>();
-	private IManager notif=null;
-	private String CurrentPath;
+	private INotifyDataSetChanged notif=null;
 	/**
 	 * FileManager.getInstance().getCurrentPath()
 	 * @param context
 	 * @param CurrentPath
 	 * @param file
 	 */
-	public copyFileEvent(Context context,String CurrentPath, FileBean file)
+	public copyFileEvent(Context context,FileBean file,INotifyDataSetChanged notif)
 	{
 		this.context = context;
-		this.CurrentPath=CurrentPath;
+		this.notif=notif;
 		mFileList.clear();
 		mFileList.add(file);
 	}
@@ -46,11 +42,11 @@ public class copyFileEvent extends AbsEvent implements INotifyDataSetChanged
 	 * @param CurrentPath
 	 * @param file
 	 */
-	public copyFileEvent(Context context, List<FileBean> list, IManager notif)
+	public copyFileEvent(Context context,List<FileBean> list, INotifyDataSetChanged notif)
 	{
 		this.context = context;
-		mFileList.clear();
 		this.notif=notif;
+		mFileList.clear();
 		for (int i = 0; i < list.size(); i++)
 		{
 			FileBean temp = list.get(i);
@@ -66,7 +62,8 @@ public class copyFileEvent extends AbsEvent implements INotifyDataSetChanged
 	{
 		if (mFileList.size() > 0)
 		{
-			new FolderListDialog().ShowDialog(context, CurrentPath,mFileList, this);
+			String currentPath=mFileList.get(0).getFile().getParent();
+			new FolderListDialog().ShowDialog(context, currentPath,mFileList, this);
 		}
 		else
 		{

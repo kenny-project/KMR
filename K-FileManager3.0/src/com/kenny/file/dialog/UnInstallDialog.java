@@ -19,6 +19,7 @@ import com.kenny.file.bean.AppBean;
 import com.kenny.file.interfaces.INotifyDataSetChanged;
 import com.kenny.file.tools.ShellCommand;
 import com.kenny.file.tools.ShellCommand.CommandResult;
+import com.kenny.file.util.Const;
 
 public class UnInstallDialog extends AbsEvent {
 	private Activity m_context;
@@ -26,14 +27,10 @@ public class UnInstallDialog extends AbsEvent {
 	private boolean mProgress = false;
 	private ArrayList<AppBean> appList;
 	private INotifyDataSetChanged mNotifyDataSetChanged;
-	private boolean isAllHideDialog = false;// 全部显示备份对话框
-	private boolean bBackApp = true; // 是否备份
 	private ShellCommand mShellCommand = null;
 
 	public void ShowDialog(Activity context, ArrayList<AppBean> appList,
 			INotifyDataSetChanged notifyDataSetChanged) {
-		isAllHideDialog = false;
-		bBackApp = true;
 		mProgress = true;
 		this.appList = appList;
 		mNotifyDataSetChanged = notifyDataSetChanged;
@@ -75,7 +72,7 @@ public class UnInstallDialog extends AbsEvent {
 			myHandler.sendMessage(msg);
 		}
 		Message msg = new Message();
-		msg.what = 100;
+		msg.what = Const.cmd_APP_UnInstallEvent_Finish;
 		if (mProgress) {
 			msg.obj = "卸载完成";
 		} else {
@@ -154,42 +151,15 @@ public class UnInstallDialog extends AbsEvent {
 		myHandler.sendMessage(msg);
 		return false;
 	}
-
-	// class MyPakcageInstallObserver extends IPackageInstallObserver.Stub {
-	// Context cxt;
-	// String appName;
-	// String filename;
-	// String pkname;
-	//
-	// public MyPakcageInstallObserver(Context c, String appName,
-	// String filename,String packagename) {
-	// this.cxt = c;
-	// this.appName = appName;
-	// this.filename = filename;
-	// this.pkname = packagename;
-	// }
-	//
-	// @Override
-	// public void packageInstalled(String packageName, int returnCode) {
-	// Log.i(TAG, "returnCode = " + returnCode);// 返回1代表安装成功
-	// if (returnCode == 1) {
-	// //TODO
-	// }
-	// Intent it = new Intent();
-	// it.setAction(CustomAction.INSTALL_ACTION);
-	// it.putExtra("install_returnCode", returnCode);
-	// it.putExtra("install_packageName", packageName);
-	// it.putExtra("install_appName", appName); cxt.sendBroadcast(it);
-	// }
-	// }
+	
 	Handler myHandler = new Handler() {
 		public void handleMessage(Message msg) {
 			int status = 0;
-			if (msg.what == 99)// 备份完成
+			if (msg.what == 99)//
 			{
 				Toast.makeText(m_context, (String) msg.obj, Toast.LENGTH_SHORT)
 						.show();
-			} else if (msg.what == 100)// 备份完成
+			} else if (msg.what == Const.cmd_APP_UnInstallEvent_Finish)// 卸载完成
 			{
 				mProgressDialog.dismiss();
 				// String message = msg.obj.toString();

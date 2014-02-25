@@ -20,18 +20,18 @@ import com.kenny.file.tools.SaveData;
 import com.kenny.file.util.Const;
 import com.kenny.file.util.Theme;
 
-public class FileManager implements IManager
+public class SDFileTools 
 {
 	private String mCurrentPath = ""; // 当前目录路径信息
-	private List<FileBean> mFileList = null;
-	private static FileManager m_LocalManage = new FileManager();
+	
+	private static SDFileTools m_LocalManage = new SDFileTools();
 	private Context context = null;
 	private INotifyDataSetChanged m_notifyData = null;
 	private String mRootPath = ""; // 当前根结点
 
 	public void setRootPath(String path)
 	{
-		mRootPath = new File(path).getAbsolutePath();
+		mRootPath=new File(path).getAbsolutePath();
 	}
 
 	public void setNotifyData(INotifyDataSetChanged m_notifyData)
@@ -55,44 +55,9 @@ public class FileManager implements IManager
 			return mCurrentPath;
 		}
 	}
-
-	public FileManager()
-	{
-		mFileList = new ArrayList<FileBean>();
-	}
-
-	/**
-	 * 获得当前类实倒，单态模式
-	 * 
-	 * @return
-	 */
-	// public static FileManager getInstance()
-	// {
-	// return m_LocalManage;
-	// }
-
-	/**
-	 * 退回上一层
-	 */
-	public boolean Back()
-	{
-		File mCurrentFile = new File(mCurrentPath);
-		if (!mCurrentFile.getAbsolutePath().equals(mRootPath)
-				&& mCurrentFile.getAbsolutePath().length() > 1)
-		{
-			String temp = mCurrentFile.getParent();
-			setFilePath(temp, Const.cmd_Local_List_Go);
-			return true;
-		} else
-		{
-			return false;
-		}
-	}
-
 	/**
 	 * 刷新列表
 	 */
-	@Override
 	public void Refresh()
 	{
 		setFilePath(mCurrentPath, Const.cmd_Local_List_Refresh);
@@ -103,22 +68,20 @@ public class FileManager implements IManager
 	 * 
 	 * @param bHidden
 	 */
-	@Override
-	public void setFilePath(String mCurrentPath)
+	public static List<FileBean> setFilePath(String mCurrentPath)
 	{
-		setFilePath(mCurrentPath, Const.cmd_Local_List_Go);
+		return setFilePath(mCurrentPath, Const.cmd_Local_List_Go);
 	}
 
-	@Override
-	public void setFilePath(String mCurrentPath, int type)
+	public static List<FileBean> setFilePath(String mCurrentPath, int type)
 	{
+		List<FileBean> mFileList = new ArrayList<FileBean>();;
 		if (mCurrentPath.length() <= 0)
 		{
 			setFilePath(Const.getSDCard(), type);
-			return;
+			return mFileList;
 		}
 		P.v("setFilePath:start");
-		this.mCurrentPath = mCurrentPath;
 		mFileList.clear();
 		File mFile = new File(mCurrentPath);
 		File[] mFiles = mFile.listFiles();// 遍历出该文件夹路径下的所有文件/文件夹
@@ -187,29 +150,7 @@ public class FileManager implements IManager
 			// mFileList.addAll(TempFileList);
 			// }
 		}
-		if (!mCurrentPath.equals(mRootPath))
-		{
-			String back = mFile.getParent();
-			if (back != null)
-			{
-				File temp = new File(back);
-				mFileList.add(0, new FileBean(temp, "..", back, true));
-			}
-		}
-		if (m_notifyData != null)
-		{
-			m_notifyData.NotifyDataSetChanged(type, this);
-		}
 		P.v("setFilePath:end");
-	}
-
-	/**
-	 * 获得当前路径的文件列表
-	 * 
-	 * @return
-	 */
-	public List<FileBean> getFileList()
-	{
 		return mFileList;
 	}
 
@@ -221,7 +162,7 @@ public class FileManager implements IManager
 	 * @param Extension
 	 * @return
 	 */
-	public int CreateFile(String path, String filenName, String Extension)
+	public static int CreateFile(Context context,String path, String filenName, String Ext,INotifyDataSetChanged notif)
 	{
 		try
 		{
@@ -233,7 +174,7 @@ public class FileManager implements IManager
 				return 0;
 			}
 			File mCreateFile = new File(path + java.io.File.separator
-					+ filenName.trim() + "." + Extension);
+					+ filenName.trim() + "." + Ext);
 			if (mCreateFile.exists())
 			{
 				Toast.makeText(
@@ -243,10 +184,12 @@ public class FileManager implements IManager
 				return 2;
 			}
 			mCreateFile.createNewFile();
-			Refresh();
+			if(notif!=null)
+				notif.NotifyDataSetChanged(Const.cmd_CreateFileEvent_Finish, null);
 			return 1;
 			// initFileListInfo(mCurrentFilePath);wmh更新
-		} catch (Exception e)
+		}
+		catch (Exception e)
 		{
 			String msg = context.getString(R.string.msg_failed_create)
 					+ "!error:" + e.getMessage();
@@ -263,7 +206,7 @@ public class FileManager implements IManager
 	 * @param Extension
 	 * @return
 	 */
-	public int CreateFolder(String path, String folerName)
+	public static int CreateFolder(Context context,String path, String folerName,INotifyDataSetChanged notif)
 	{
 		if (folerName == null || folerName.length() <= 0)
 		{
@@ -285,7 +228,8 @@ public class FileManager implements IManager
 		}
 		if (mCreateFile.mkdirs())
 		{
-			Refresh();
+			if(notif!=null)
+				notif.NotifyDataSetChanged(Const.cmd_CreateFolderEvent_Finish, null);
 			return 1;
 		} else
 		{

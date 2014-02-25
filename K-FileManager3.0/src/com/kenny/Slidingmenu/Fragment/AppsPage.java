@@ -32,6 +32,7 @@ import com.kenny.file.dialog.UnInstallDialog;
 import com.kenny.file.interfaces.INotifyDataSetChanged;
 import com.kenny.file.menu.PopAppDialog;
 import com.kenny.file.tools.ApkTools;
+import com.kenny.file.util.Const;
 
 public class AppsPage extends ContentFragment implements OnItemClickListener,
 		OnClickListener, OnItemLongClickListener, INotifyDataSetChanged
@@ -45,7 +46,7 @@ public class AppsPage extends ContentFragment implements OnItemClickListener,
 	private static final int SystemAppFlag = 1; // 系统应用列表内容:
 	private int AFlag = UserAppFlag; // 列表内容:
 	private Button btSelectAll, btSelectVisible, btUnInstall, btBackUp;
-//	private Button btUserApp, btSystemApp;
+	// private Button btUserApp, btSystemApp;
 
 	private OnScrollListener m_AppOnScrollListener = new OnScrollListener()
 	{
@@ -99,7 +100,6 @@ public class AppsPage extends ContentFragment implements OnItemClickListener,
 		m_Appslist.setOnItemLongClickListener(this);
 		appAdapter = new AppAdapter(m_act, 1, mNowList);
 		m_Appslist.setAdapter(appAdapter);
-
 
 		btSelectVisible = (Button) mView.findViewById(R.id.btSelectVisible);
 		btSelectVisible.setOnClickListener(this);
@@ -170,10 +170,9 @@ public class AppsPage extends ContentFragment implements OnItemClickListener,
 			btUnInstall.setVisibility(View.VISIBLE);
 			btBackUp.setVisibility(View.VISIBLE);
 		}
-		SysEng.getInstance().addEvent(new LoadAppsEvent(m_act, flag, this));
+//		SysEng.getInstance().addEvent(new LoadAppsEvent(m_act, flag, this));
 		appAdapter.setShowLogo(true);
 		appAdapter.notifyDataSetChanged();
-
 	}
 
 	/**
@@ -280,7 +279,15 @@ public class AppsPage extends ContentFragment implements OnItemClickListener,
 
 	public void NotifyDataSetChanged(final int cmd, final Object value)
 	{
-
+//		switch (cmd)
+//		{
+//		case Const.cmd_APP_UnInstallEvent_Finish:
+//			SysEng.getInstance()
+//					.addEvent(new LoadAppsEvent(m_act, AFlag, this));
+//			return;
+//		default:
+//			break;
+//		}
 		if (value != null)
 		{
 			SysEng.getInstance().addHandlerEvent(new AbsEvent()
@@ -302,6 +309,8 @@ public class AppsPage extends ContentFragment implements OnItemClickListener,
 	{
 		// TODO Auto-generated method stub
 		setTitle(getTitle());
+		SysEng.getInstance()
+		.addEvent(new LoadAppsEvent(m_act, AFlag, this));
 		super.onResume();
 	}
 
