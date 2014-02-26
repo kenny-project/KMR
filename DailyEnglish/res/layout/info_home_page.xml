@@ -122,7 +122,7 @@
             android:layout_height="fill_parent"
             android:background="@color/HomeItemBG"
             android:orientation="vertical" >
-        </com.kenny.activity.V6Setting>
+        </com.kenny.activity.Setting>
     </FrameLayout>
 
     <LinearLayout
@@ -168,9 +168,6 @@
             android:text="@string/info_home_bilingualinfo_title"
             android:textColor="#787878"
             android:textSize="12sp" />
-
-        
-
         <Button
             android:id="@+id/btSetting"
             android:layout_width="fill_parent"
