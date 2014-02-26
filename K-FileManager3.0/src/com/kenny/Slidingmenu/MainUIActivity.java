@@ -21,8 +21,8 @@ import android.widget.TextView;
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
+import com.baidu.mobstat.StatService;
 import com.framework.page.AbsFragmentPage;
-import com.framework.syseng.SysEng;
 import com.kenny.KFileManager.R;
 import com.kenny.Slidingmenu.Fragment.KMenuFragment;
 import com.kenny.Slidingmenu.Fragment.LocalPage;
@@ -94,7 +94,7 @@ public class MainUIActivity extends SlidingFragmentActivity implements
 				}
 			});
 
-			c = ((TextView) m.findViewById(R.id.ab_title));
+			abtitle = ((TextView) m.findViewById(R.id.ab_title));
 			// b = ((BreadcrumbView)m.findViewById(2131427420));
 			e = ((ActionListView) m.findViewById(R.id.action_list));
 			ActionBar.LayoutParams localLayoutParams = new ActionBar.LayoutParams(
@@ -149,13 +149,7 @@ public class MainUIActivity extends SlidingFragmentActivity implements
 				});
 		
 	}
-	@Override
-	public void setTitle(CharSequence title)
-	{
-		// TODO Auto-generated method stub
-		getSupportActionBar().setTitle(title);
-		super.setTitle(title);
-	}
+	
 	@Override
 	protected void onResume()
 	{
@@ -164,7 +158,7 @@ public class MainUIActivity extends SlidingFragmentActivity implements
 		/**
 		 * 此处调用baidu基本统计代码
 		 */
-		// StatService.onResume(this);
+		 StatService.onResume(this);
 	}
 
 	@Override
@@ -175,7 +169,7 @@ public class MainUIActivity extends SlidingFragmentActivity implements
 		/**
 		 * 此处调用baidu基本统计代码
 		 */
-		// StatService.onPause(this);
+		 StatService.onPause(this);
 	}
 
 	@Override
@@ -363,7 +357,7 @@ public class MainUIActivity extends SlidingFragmentActivity implements
 	// }
 
 	private LinearLayout m;
-	private TextView c;
+	private TextView abtitle;
 	private ImageView d;
 	private ActionListView e;
 
@@ -374,7 +368,7 @@ public class MainUIActivity extends SlidingFragmentActivity implements
 				R.layout.custom_actionbar_layout, null));
 
 		d = ((ImageView) m.findViewById(R.id.icon));
-		c = ((TextView) m.findViewById(R.id.ab_title));
+		abtitle = ((TextView) m.findViewById(R.id.ab_title));
 		// b = ((BreadcrumbView)m.findViewById(2131427420));
 		e = ((ActionListView) m.findViewById(R.id.action_list));
 		ActionBar.LayoutParams localLayoutParams = new ActionBar.LayoutParams(
@@ -408,11 +402,19 @@ public class MainUIActivity extends SlidingFragmentActivity implements
 	{
 		setTitle(getString(paramInt));
 	}
-
-	public void setTitle(String paramString)
+	@Override
+	public void setTitle(CharSequence title)
 	{
-		this.c.setText(paramString);
+		// TODO Auto-generated method stub
+		if(abtitle!=null)
+		abtitle.setText(title);
+		getSupportActionBar().setTitle(title);
+		super.setTitle(title);
 	}
+//	public void setTitle(String paramString)
+//	{
+//		this.abtitle.setText(paramString);
+//	}
 
 	public void setTitleIcon(int paramInt)
 	{
