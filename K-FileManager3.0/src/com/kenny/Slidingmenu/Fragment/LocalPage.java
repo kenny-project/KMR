@@ -76,12 +76,23 @@ public class LocalPage extends ContentFragment implements
 	private int nStyle = 0, nSortMode = 0; // false:listView true:gridView
 	private Button btMenuListSort, btMenuListMode, btMenuShowOrHide,
 			btMenuSetting;
-	
 	private String mStrPath;
-
+	public LocalPage()
+	{
+		super();
+		mStrPath = Const.getSDCard();		
+	}
 	public LocalPage(String path)
 	{
-		mStrPath = new File(path).getAbsolutePath();
+		super();
+		if(path==null||path.length()==0)
+		{
+			mStrPath = Const.getSDCard();
+		}
+		else
+		{
+			mStrPath = new File(path).getAbsolutePath();
+		}
 	}
 	/**
 	 * The Fragment's UI is just a simple text view showing its instance number.

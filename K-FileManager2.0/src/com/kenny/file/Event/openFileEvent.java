@@ -11,7 +11,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.framework.event.AbsEvent;
-import com.kenny.KFileManager.R;
+import com.kenny.KFileManager.t.R;
 import com.kenny.file.dialog.SimpleArrayDialog;
 import com.kenny.file.interfaces.INotifyDataSetChanged;
 import com.kenny.file.tools.MIMEType;

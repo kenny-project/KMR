@@ -8,7 +8,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 
-import com.kenny.KFileManager.R;
+import com.kenny.KFileManager.t.R;
 import com.kenny.file.commui.KString;
 
 /**

@@ -5,7 +5,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.widget.Toast;
 
-import com.kenny.KFileManager.R;
+import com.kenny.KFileManager.t.R;
 
 public class NetConst
 {

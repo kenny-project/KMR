@@ -18,7 +18,7 @@ import android.widget.TextView;
 
 import com.framework.event.AbsEvent;
 import com.framework.syseng.SysEng;
-import com.kenny.KFileManager.R;
+import com.kenny.KFileManager.t.R;
 import com.kenny.file.Application.KFileManagerApp;
 import com.kenny.file.Image.ImageLoader;
 import com.kenny.file.bean.FileBean;

@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.kenny.KFileManager.R;
+import com.kenny.KFileManager.t.R;
 import com.kenny.file.tools.SaveData;
 import com.kenny.file.util.Const;
 

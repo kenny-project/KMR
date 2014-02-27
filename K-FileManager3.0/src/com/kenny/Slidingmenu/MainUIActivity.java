@@ -147,7 +147,6 @@ public class MainUIActivity extends SlidingFragmentActivity implements
 						mContent.onResume();
 					}
 				});
-		
 	}
 	
 	@Override
@@ -254,6 +253,11 @@ public class MainUIActivity extends SlidingFragmentActivity implements
 
 	public void switchContent(String key, final Fragment fragment)
 	{
+		
+//		if(mContent!=null)
+//		{
+//		removeFragment(mContent);
+//		}
 		mContent = fragment;
 		FragmentTransaction transaction = getSupportFragmentManager()
 				.beginTransaction();
@@ -263,7 +267,7 @@ public class MainUIActivity extends SlidingFragmentActivity implements
 //		{
 //			transaction.addToBackStack(key);
 //		}
-		transaction.addToBackStack(null);
+		//transaction.addToBackStack(null);
 		transaction.commit();
 		h.postDelayed(new Runnable()
 		{

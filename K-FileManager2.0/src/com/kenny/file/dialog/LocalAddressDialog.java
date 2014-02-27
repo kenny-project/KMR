@@ -21,7 +21,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.framework.syseng.SysEng;
-import com.kenny.KFileManager.R;
+import com.kenny.KFileManager.t.R;
 import com.kenny.file.Adapter.AddressAdapter;
 import com.kenny.file.Adapter.FavorFileAdapter;
 import com.kenny.file.Event.openDefFileEvent;

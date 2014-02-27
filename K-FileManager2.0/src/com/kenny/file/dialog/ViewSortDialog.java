@@ -6,7 +6,7 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 
 import com.framework.log.P;
-import com.kenny.KFileManager.R;
+import com.kenny.KFileManager.t.R;
 import com.kenny.file.interfaces.INotifyDataSetChanged;
 import com.kenny.file.util.Const;
 import com.kenny.file.util.Theme;

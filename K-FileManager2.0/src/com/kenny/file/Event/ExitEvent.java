@@ -6,7 +6,7 @@ import android.content.DialogInterface;
 
 import com.framework.event.AbsEvent;
 import com.framework.util.CommLayer;
-import com.kenny.KFileManager.R;
+import com.kenny.KFileManager.t.R;
 
 /**
  * @author aimery 初始化event

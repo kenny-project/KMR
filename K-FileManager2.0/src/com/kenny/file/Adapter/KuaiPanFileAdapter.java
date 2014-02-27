@@ -15,7 +15,7 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.kenny.KFileManager.R;
+import com.kenny.KFileManager.t.R;
 import com.kenny.file.interfaces.ImageCallback;
 import com.kenny.file.util.Res;
 import com.kuaipan.client.model.KuaipanFile;

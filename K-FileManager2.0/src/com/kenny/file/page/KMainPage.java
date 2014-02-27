@@ -16,7 +16,7 @@ import android.view.View;
 import com.framework.log.P;
 import com.framework.page.AbsPage;
 import com.framework.page.MultiItemPage;
-import com.kenny.KFileManager.R;
+import com.kenny.KFileManager.t.R;
 import com.kenny.file.tools.T;
 import com.kenny.file.util.Theme;
 

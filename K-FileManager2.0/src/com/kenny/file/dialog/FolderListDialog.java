@@ -20,7 +20,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.kenny.KFileManager.R;
+import com.kenny.KFileManager.t.R;
 import com.kenny.file.Adapter.FolderAdapter;
 import com.kenny.file.bean.FileBean;
 import com.kenny.file.interfaces.INotifyDataSetChanged;

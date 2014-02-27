@@ -9,7 +9,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 
-import com.kenny.KFileManager.R;
+import com.kenny.KFileManager.t.R;
 import com.kenny.file.Parser.FileTypeParser;
 import com.kenny.file.bean.FileEnd;
 import com.kenny.file.bean.FileTypeBean;

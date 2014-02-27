@@ -27,7 +27,7 @@ import com.framework.log.P;
 import com.framework.page.AbsPage;
 import com.framework.page.MultiItemPage;
 import com.framework.syseng.SysEng;
-import com.kenny.KFileManager.R;
+import com.kenny.KFileManager.t.R;
 import com.kenny.file.Event.ExitEvent;
 import com.kenny.file.Event.LoadSDFolderEvent;
 import com.kenny.file.Parser.FavoriteGroupParser;
@@ -156,6 +156,7 @@ public class FavoritePage extends MultiItemPage implements MenuAble,
 					FavoritePage.this);
 			SysEng.getInstance().addThreadEvent(mLoadSDFileEvent);
 		}
+		Refresh();
 	}
 
 	public void onLoad()

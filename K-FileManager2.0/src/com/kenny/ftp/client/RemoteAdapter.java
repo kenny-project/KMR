@@ -3,7 +3,9 @@ package com.kenny.ftp.client;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.commons.net.ftp.FTPFile;
-import com.kenny.KFileManager.R;
+
+import com.kenny.KFileManager.t.R;
+
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

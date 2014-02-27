@@ -1,6 +1,6 @@
 package com.kenny.file.dialog;
 
-import com.kenny.KFileManager.R;
+import com.kenny.KFileManager.t.R;
 import com.kenny.file.tools.T;
 import com.umeng.analytics.MobclickAgent;
 

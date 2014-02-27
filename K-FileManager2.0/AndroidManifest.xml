@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.kenny.KFileManager"
+    package="com.kenny.KFileManager.t"
     android:installLocation="internalOnly"
-    android:versionCode="86"
-    android:versionName="2.2.1" 
+    android:versionCode="88"
+    android:versionName="2.2.2" 
     >
     <uses-sdk
         android:minSdkVersion="5"

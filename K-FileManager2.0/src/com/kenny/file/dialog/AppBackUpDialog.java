@@ -1,7 +1,8 @@
 package com.kenny.file.dialog;
 
 import java.util.ArrayList;
-import com.kenny.KFileManager.R;
+
+import com.kenny.KFileManager.t.R;
 import com.kenny.file.bean.AppBean;
 import com.kenny.file.util.Const;
 import com.kenny.file.util.SDFile;

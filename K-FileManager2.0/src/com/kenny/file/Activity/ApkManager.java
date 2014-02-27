@@ -44,7 +44,7 @@ import com.framework.event.AbsEvent;
 import com.framework.event.ParamEvent;
 import com.framework.log.P;
 import com.framework.syseng.SysEng;
-import com.kenny.KFileManager.R;
+import com.kenny.KFileManager.t.R;
 import com.kenny.file.Adapter.FavorFileAdapter;
 import com.kenny.file.Event.openDefFileEvent;
 import com.kenny.file.bean.FGroupInfo;

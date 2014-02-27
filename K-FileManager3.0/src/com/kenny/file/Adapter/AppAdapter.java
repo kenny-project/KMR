@@ -61,7 +61,7 @@ public class AppAdapter extends ArrayAdapter<AppBean> {
 			bSelect = true;
 		}
 		// mpkgSizeObserver = PkgSizeObserver.getHandler(mContext);
-		mLogoImage = ImageLoader.GetObject(mContext);
+		mLogoImage = ImageLoader.getInstance(mContext);
 		mApp = Res.getInstance(mContext).getDefFileIco("apk");
 		mHandler = new Handler();
 	}

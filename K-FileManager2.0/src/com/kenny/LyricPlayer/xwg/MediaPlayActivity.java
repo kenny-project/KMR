@@ -19,7 +19,7 @@ import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 import com.framework.log.P;
-import com.kenny.KFileManager.R;
+import com.kenny.KFileManager.t.R;
 import com.kenny.LyricPlayer.xwg.MediaPlayerService.LyricPlayerListener;
 import com.kenny.LyricPlayer.xwg.MediaPlayerService.MediaInfoProvider;
 import com.kenny.file.tools.T;

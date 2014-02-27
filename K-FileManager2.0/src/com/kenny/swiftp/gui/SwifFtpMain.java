@@ -45,7 +45,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.framework.log.P;
-import com.kenny.KFileManager.R;
+import com.kenny.KFileManager.t.R;
 import com.kenny.file.tools.NetTools;
 import com.kenny.file.tools.StorageUtil;
 import com.kenny.file.util.Const;

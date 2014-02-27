@@ -69,7 +69,7 @@ public class AppFileAdapter extends BaseExpandableListAdapter
 			bSelect = true;
 		}
 		mInflater = LayoutInflater.from(context);
-		mLogoImage = ImageLoader.GetObject(mContext);
+		mLogoImage = ImageLoader.getInstance(mContext);
 		mApp = Res.getInstance(mContext).getDefFileIco("apk");
 		mHandler = new Handler();
 	}

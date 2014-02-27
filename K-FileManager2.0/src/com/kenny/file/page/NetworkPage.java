@@ -29,7 +29,7 @@ import com.framework.log.P;
 import com.framework.page.MultiItemPage;
 import com.framework.syseng.SysEng;
 import com.framework.util.Const;
-import com.kenny.KFileManager.R;
+import com.kenny.KFileManager.t.R;
 import com.kenny.file.Adapter.NetAdapter;
 import com.kenny.file.Event.ExitEvent;
 import com.kenny.file.Event.delNetClientEvent;

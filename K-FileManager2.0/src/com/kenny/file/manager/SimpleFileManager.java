@@ -8,7 +8,7 @@ import java.util.List;
 import android.content.Context;
 import android.widget.Toast;
 
-import com.kenny.KFileManager.R;
+import com.kenny.KFileManager.t.R;
 import com.kenny.file.bean.FileBean;
 import com.kenny.file.sort.FileSort;
 import com.kenny.file.util.Const;

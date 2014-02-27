@@ -7,7 +7,7 @@ import java.io.IOException;
 
 import org.apache.http.protocol.HTTP;
 
-import com.kenny.KFileManager.R;
+import com.kenny.KFileManager.t.R;
 
 import android.app.Activity;
 import android.app.AlertDialog;

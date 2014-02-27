@@ -5,7 +5,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
-import com.kenny.KFileManager.R;
+import com.kenny.KFileManager.t.R;
 
 public class MVisibleAinm extends Animation {
 	private View mV;

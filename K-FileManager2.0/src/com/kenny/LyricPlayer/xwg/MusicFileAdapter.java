@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.kenny.KFileManager.R;
+import com.kenny.KFileManager.t.R;
 
 public class MusicFileAdapter extends BaseAdapter
 

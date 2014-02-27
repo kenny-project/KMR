@@ -20,7 +20,7 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import com.framework.syseng.SysEng;
-import com.kenny.KFileManager.R;
+import com.kenny.KFileManager.t.R;
 import com.kenny.file.Adapter.FavorDialogAdapter;
 import com.kenny.file.Event.openDefFileEvent;
 import com.kenny.file.bean.FileBean;

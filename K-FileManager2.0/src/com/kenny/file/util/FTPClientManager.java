@@ -11,7 +11,7 @@ import org.xml.sax.helpers.DefaultHandler;
 import android.app.Activity;
 import android.content.Context;
 
-import com.kenny.KFileManager.R;
+import com.kenny.KFileManager.t.R;
 import com.kenny.file.bean.NetClientBean;
 import com.kenny.file.interfaces.INotifyDataSetChanged;
 import com.kenny.file.net.KHttpPost;

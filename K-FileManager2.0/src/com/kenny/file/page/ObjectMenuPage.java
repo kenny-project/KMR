@@ -8,7 +8,7 @@ import android.view.View;
 import com.framework.event.NextPageEvent;
 import com.framework.page.MultiItemPage;
 import com.framework.syseng.SysEng;
-import com.kenny.KFileManager.R;
+import com.kenny.KFileManager.t.R;
 import com.kenny.file.Activity.SettingPage;
 import com.kenny.file.Event.ExitEvent;
 import com.kenny.file.dialog.AboutDialog;

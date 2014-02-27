@@ -43,7 +43,7 @@ public class GridImageAdapter extends BaseAdapter
 	      this.mFileList = mFileList;
 	      Resources resources = c.getResources();
 	      btnDrawable = resources.getDrawable(R.drawable.bg);
-	      mLogoImage = ImageLoader.GetObject(mContext);
+	      mLogoImage = ImageLoader.getInstance(mContext);
 	      mImage = Res.getInstance(mContext).getDefFileIco("jpg");
         }
         

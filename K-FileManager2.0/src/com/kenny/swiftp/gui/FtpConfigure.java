@@ -34,7 +34,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
-import com.kenny.KFileManager.R;
+import com.kenny.KFileManager.t.R;
 
 public class FtpConfigure extends Activity implements OnClickListener
 {

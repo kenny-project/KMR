@@ -12,7 +12,7 @@ import android.content.pm.PackageInfo;
 import com.framework.event.AbsEvent;
 import com.framework.log.P;
 import com.framework.syseng.SysEng;
-import com.kenny.KFileManager.R;
+import com.kenny.KFileManager.t.R;
 import com.kenny.file.bean.AppBean;
 import com.kenny.file.interfaces.INotifyDataSetChanged;
 import com.kenny.file.sort.FileSort;

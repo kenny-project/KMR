@@ -28,7 +28,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
-import com.kenny.KFileManager.R;
+import com.kenny.KFileManager.t.R;
 import com.kenny.ppareit.swiftp.FTPServerService;
 
 public class SwifFTPNotification{

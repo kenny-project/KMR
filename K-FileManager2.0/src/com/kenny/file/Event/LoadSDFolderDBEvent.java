@@ -21,7 +21,7 @@ import com.framework.event.AbsEvent;
 import com.framework.event.ParamEvent;
 import com.framework.log.P;
 import com.framework.syseng.SysEng;
-import com.kenny.KFileManager.R;
+import com.kenny.KFileManager.t.R;
 import com.kenny.file.bean.FGroupInfo;
 import com.kenny.file.bean.FavorBean;
 import com.kenny.file.bean.FileEnd;

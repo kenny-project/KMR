@@ -30,7 +30,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
-import com.kenny.KFileManager.R;
+import com.kenny.KFileManager.t.R;
 import com.kenny.file.Adapter.FileRelevanceAdapter;
 import com.kenny.file.Parser.FileTypeParser;
 import com.kenny.file.bean.FileTypeBean;

@@ -10,7 +10,7 @@ import android.content.DialogInterface;
 import android.widget.Toast;
 
 import com.framework.syseng.SysEng;
-import com.kenny.KFileManager.R;
+import com.kenny.KFileManager.t.R;
 import com.kenny.file.Event.FavoriteFileEvent;
 import com.kenny.file.Event.copyFileEvent;
 import com.kenny.file.Event.cutFileEvent;

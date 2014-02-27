@@ -2,7 +2,7 @@ package com.kenny.file.Adapter;
 
 import java.util.List;
 
-import com.kenny.KFileManager.R;
+import com.kenny.KFileManager.t.R;
 import com.kenny.file.bean.TreeElement;
 
 import android.content.Context;

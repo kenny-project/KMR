@@ -1,5 +1,6 @@
 package com.framework.debugreport;
-import com.kenny.KFileManager.R;
+import com.kenny.KFileManager.t.R;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;

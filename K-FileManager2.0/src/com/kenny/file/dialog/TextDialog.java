@@ -6,7 +6,7 @@ import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 
-import com.kenny.KFileManager.R;
+import com.kenny.KFileManager.t.R;
 public class TextDialog
 {
    public void showDialog(final Activity m_act,String title,String content)

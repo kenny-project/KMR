@@ -19,7 +19,7 @@ import com.framework.log.P;
 import com.framework.syseng.SysEng;
 import com.framework.util.CommLayer;
 import com.framework.util.Const;
-import com.kenny.KFileManager.R;
+import com.kenny.KFileManager.t.R;
 import com.kenny.file.Event.InitEvent;
 import com.kenny.file.page.KMainPage;
 import com.umeng.analytics.MobclickAgent;

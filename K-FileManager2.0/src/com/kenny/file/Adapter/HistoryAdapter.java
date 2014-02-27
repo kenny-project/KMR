@@ -10,7 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.kenny.KFileManager.R;
+import com.kenny.KFileManager.t.R;
 import com.kenny.file.Image.ImageLoader;
 import com.kenny.file.bean.FileBean;
 import com.kenny.file.bean.HistoryBean;

@@ -69,7 +69,7 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 
 import com.framework.log.P;
-import com.kenny.KFileManager.R;
+import com.kenny.KFileManager.t.R;
 
 /**
  * 工具类
@@ -548,8 +548,7 @@ public class T
 					}
 					else
 					{
-					totalsize = totalsize / 1024.0;
-					szLength = myformat.format(totalsize) + "G";
+						szLength = myformat.format(totalsize) + "G";
 					}
 				} else
 				{

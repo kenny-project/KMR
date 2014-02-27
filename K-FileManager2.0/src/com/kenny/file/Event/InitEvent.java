@@ -14,7 +14,7 @@ import android.util.Log;
 
 import com.framework.event.AbsEvent;
 import com.framework.log.P;
-import com.kenny.KFileManager.R;
+import com.kenny.KFileManager.t.R;
 import com.kenny.file.dialog.KDialog;
 import com.kenny.file.dialog.SetSDCardRootPathDialog;
 import com.kenny.file.tools.SaveData;

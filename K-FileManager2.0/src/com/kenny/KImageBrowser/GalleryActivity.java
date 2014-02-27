@@ -28,7 +28,7 @@ import android.widget.Toast;
 
 import com.framework.log.P;
 import com.framework.util.Const;
-import com.kenny.KFileManager.R;
+import com.kenny.KFileManager.t.R;
 import com.kenny.file.bean.FileBean;
 import com.kenny.file.manager.FileManager;
 import com.kenny.file.tools.T;

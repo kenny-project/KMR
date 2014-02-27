@@ -34,7 +34,7 @@ public class FileRelevanceAdapter extends BaseAdapter {
 			List<ResolveInfo> mFileList) {
 		mContext = context;
 		this.mFileList = mFileList;
-		mLogoImage = ImageLoader.GetObject(mContext);
+		mLogoImage = ImageLoader.getInstance(mContext);
 		pManager = mContext.getPackageManager();
 	}
 

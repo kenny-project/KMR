@@ -206,7 +206,7 @@ public class KMenuFragment extends AbsFragmentPage implements
 			}
 			LoadSDFolderEvent mLoadSDFileEvent = new LoadSDFolderEvent(m_act,
 					false, result, null);
-			SysEng.getInstance().addThreadEvent(mLoadSDFileEvent);
+			SysEng.getInstance().addEvent(mLoadSDFileEvent);
 		} catch (Exception e)
 		{
 			e.printStackTrace();

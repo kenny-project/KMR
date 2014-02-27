@@ -7,7 +7,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 
-import com.kenny.KFileManager.R;
+import com.kenny.KFileManager.t.R;
 import com.kenny.file.tools.SaveData;
 import com.kenny.file.util.Const;
 public class SetSDCardRootPathDialog

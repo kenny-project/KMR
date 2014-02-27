@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import com.framework.log.P;
 import com.framework.syseng.SysEng;
-import com.kenny.KFileManager.R;
+import com.kenny.KFileManager.t.R;
 import com.kenny.file.Event.LoadSearchFileEvent;
 import com.kenny.file.bean.ScarchParam;
 import com.kenny.file.interfaces.INotifyDataSetChanged;
