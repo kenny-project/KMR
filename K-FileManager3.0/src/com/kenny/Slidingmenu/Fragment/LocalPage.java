@@ -263,7 +263,7 @@ public class LocalPage extends ContentFragment implements
 		sdCardFilter.addDataScheme("file");
 		this.m_act.registerReceiver(sdcardReceiver, sdCardFilter);// 注册监听函数
 		setTitle(new File(mStrPath).getName());
-		m_lvMain.setBackgroundColor(Theme.getBackgroundColor());
+		m_lvMain.setBackgroundResource(Theme.getBackgroundResource());
 		if (nSortMode != Theme.getSortMode())
 		{
 			nSortMode = Theme.getSortMode();

@@ -1,17 +1,32 @@
 package com.kenny.file.util;
 
-import com.kenny.KFileManager.R;
-import com.kenny.file.tools.SaveData;
-
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
+
+import com.kenny.KFileManager.R;
+import com.kenny.file.tools.SaveData;
 
 public class Theme
 {
    private static String StyleType = "styleType";
    private static int ThemeMode;// 应用程序主题
-   private static int nListSelectedBackgroundColor;
+   private static int BGSelectedResID;
+   /**
+    * 获得背景色值
+    */
+   private static int BGResID = Color.WHITE;
+   /**
+    * 获得文字色值
+    */
+   private static int TextColor = 0xff000000;
+   /**
+    * 文字字体大小
+    */
+   private static int TextFontSize;
+   
+   private static int nStyleType = 0;// 0:list 1:grid 
+   private static int nSortMode = 10;// 0:list 1:grid  大于等于10 正序 小于10为倒序 
    /**
     * 显示工具栏,TAB栏
     */
@@ -38,21 +53,7 @@ public class Theme
       Theme.bToolsVisible = bToolsVisible;
    }
    
-   /**
-    * 获得背景色值
-    */
-   private static int BackgroundColor = Color.WHITE;
-   /**
-    * 获得文字色值
-    */
-   private static int TextColor = 0xff000000;
-   /**
-    * 文字字体大小
-    */
-   private static int TextFontSize;
-   
-   private static int nStyleType = 0;// 0:list 1:grid 
-   private static int nSortMode = 10;// 0:list 1:grid  大于等于10 正序 小于10为倒序 
+
    
    public static int getSortMode()
    {
@@ -99,17 +100,17 @@ public class Theme
    /**
     * 获得背景色值
     */
-   public static int getBackgroundColor()
+   public static int getBackgroundResource()
    {
-      return BackgroundColor;
+      return BGResID;
    }
    
    /**
     * 获得列表选中后的背影色
     */
-   public static int getListSelectedBackgroundColor()
+   public static int getSelBackgroundResource()
    {
-      return nListSelectedBackgroundColor;
+      return BGSelectedResID;
    }
    
    public static int getThemeMode()
@@ -135,13 +136,15 @@ public class Theme
       ThemeMode(ThemeMode);
    }
    
+   private static Context m_ctx;
    /**
     * 初始化
     * 
     * @param inActivity
     */
-   public static void Init(Activity inActivity)
+   public static void Init(Context inActivity)
    {
+	   m_ctx=inActivity.getApplicationContext();
       TextFontSize = SaveData.Read(inActivity, "HCFontSize", 21);
       setThemeMode(SaveData.Read(inActivity, "ThemeMode", 0));// 显示主题
       setStyleMode(SaveData.Read(inActivity, StyleType, 0));
@@ -189,50 +192,78 @@ public class Theme
    // 主题模式切换
    private static void ThemeMode(int ThemeMode)
    {
-      BackgroundColor = Color.WHITE;
-      TextColor = 0xff000000;
+//      BackgroundColor = Color.WHITE;
+//      TextColor = 0xff000000;
       switch (ThemeMode)
       {
       case 0:// 默认
-         BackgroundColor = 0xffe7f3f7;
-         nListSelectedBackgroundColor=0xffc6dfc6;
+    	 TextColor=R.color._0TextColor;
+         BGResID = R.color._0BackgroundColor;
+         BGSelectedResID=R.color._0SelBackgroundColor;
          break;
       case 1:// 黑色
-         TextColor = 0xffc6c3c6;
-         BackgroundColor = Color.BLACK;
-         
-//         @drawable/abs__item_background_holo_dark
+     	 TextColor=R.color._1TextColor;
+         BGResID = R.color._1BackgroundColor;
+         BGSelectedResID=R.color._1SelBackgroundColor;
+         //@drawable/abs__item_background_holo_dark
          //nListSelectedBackgroundColor=R.drawable.abs__item_background_holo_dark;
          break;
       case 2:// 纸浆色
-         BackgroundColor = 0xffe7dfce;
-         nListSelectedBackgroundColor=0xffc6dfc6;
+//         BackgroundColor = 0xffe7dfce;
+//         SelBackgroundColor=0xffc6dfc6;
+     	 TextColor=R.color._2TextColor;
+         BGResID = R.color._2BackgroundColor;
+         BGSelectedResID=R.color._2SelBackgroundColor;
+
          break;
       case 3:// 豆沙绿
-         BackgroundColor = 0xffc6dfc6;
-         nListSelectedBackgroundColor=0xffe7dfce;
+//         BackgroundColor = 0xffc6dfc6;
+//         SelBackgroundColor=0xffe7dfce;
+     	 TextColor=R.color._3TextColor;
+         BGResID = R.color._3BackgroundColor;
+         BGSelectedResID=R.color._3SelBackgroundColor;
+
          break;
       case 4:// 粉红色
-         BackgroundColor = 0xffefc7c6;
-         nListSelectedBackgroundColor=0xffc6dfc6;
+//         BackgroundColor = 0xffefc7c6;
+//         SelBackgroundColor=0xffc6dfc6;
+     	 TextColor=R.color._4TextColor;
+         BGResID = R.color._4BackgroundColor;
+         BGSelectedResID=R.color._4SelBackgroundColor;
+
          break;
       case 5:// 黄色
-         BackgroundColor = 0xffefd79c;
-         nListSelectedBackgroundColor=0xffc6dfc6;
+//         BackgroundColor = 0xffefd79c;
+//         SelBackgroundColor=0xffc6dfc6;
+     	 TextColor=R.color._5TextColor;
+         BGResID = R.color._5BackgroundColor;
+         BGSelectedResID=R.color._5SelBackgroundColor;
+
          break;
       case 6:// 蓝色
-         BackgroundColor = 0xffc6cfe7;
-         nListSelectedBackgroundColor=0xffc6dfc6;
+//         BackgroundColor = 0xffc6cfe7;
+//         SelBackgroundColor=0xffc6dfc6;
+     	 TextColor=R.color._6TextColor;
+         BGResID = R.color._6BackgroundColor;
+         BGSelectedResID=R.color._6SelBackgroundColor;
+
          break;
       case 7:// 米黄色
-         BackgroundColor = 0xffe7ebd6;
-         nListSelectedBackgroundColor=0xffc6dfc6;
+//         BackgroundColor = 0xffe7ebd6;
+//         SelBackgroundColor=0xffc6dfc6;
+     	 TextColor=R.color._7TextColor;
+         BGResID = R.color._7BackgroundColor;
+         BGSelectedResID=R.color._7SelBackgroundColor;
+
          break;
       default:
-         BackgroundColor = 0xfff0f0f0;
-         nListSelectedBackgroundColor=0xffc6dfc6;
+//         BackgroundColor = 0xfff0f0f0;
+//         SelBackgroundColor=0xffc6dfc6;
+     	 TextColor=R.color._0TextColor;
+         BGResID = R.color._0BackgroundColor;
+         BGSelectedResID=R.color._0SelBackgroundColor;
          break;
       }
-     // nListSelectedBackgroundColor=R.drawable.abs__item_background_holo_dark;
+      TextColor=m_ctx.getResources().getColor(TextColor);
    }
 }

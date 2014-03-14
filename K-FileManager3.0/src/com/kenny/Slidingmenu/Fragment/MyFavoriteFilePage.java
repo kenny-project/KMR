@@ -97,7 +97,7 @@ public class MyFavoriteFilePage extends ContentFragment implements
 		setContentView(R.layout.favoritempanel, inflater);
 //		mView.findViewById(R.id.icEmptyPannal).setVisibility(View.GONE);
 		m_lvMain = mView.findViewById(R.id.lvMain);
-		m_lvMain.setBackgroundColor(Theme.getBackgroundColor());
+		m_lvMain.setBackgroundColor(Theme.getBackgroundResource());
 		mView.findViewById(R.id.lyBTools).setVisibility(View.GONE);
 		mView.findViewById(R.id.btSelectAll).setVisibility(View.GONE);
 		mView.findViewById(R.id.btInstall).setVisibility(View.GONE);
@@ -124,7 +124,7 @@ public class MyFavoriteFilePage extends ContentFragment implements
 	public void onResume()
 	{
 		super.onResume();
-		m_lvMain.setBackgroundColor(Theme.getBackgroundColor());
+		m_lvMain.setBackgroundColor(Theme.getBackgroundResource());
 	}
 
 

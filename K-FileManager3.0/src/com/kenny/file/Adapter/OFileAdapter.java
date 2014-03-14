@@ -248,10 +248,10 @@ public class OFileAdapter extends BaseAdapter
 			if (temp.isChecked())
 			{
 				convertView.setBackgroundColor(Theme
-						.getListSelectedBackgroundColor());
+						.getSelBackgroundResource());
 			} else
 			{
-				convertView.setBackgroundColor(Theme.getBackgroundColor());
+				convertView.setBackgroundColor(Theme.getBackgroundResource());
 			}
 			viewHolder.mCB.setOnClickListener(new OnKCheckedChangeListener(
 					convertView, temp));
@@ -357,13 +357,13 @@ public class OFileAdapter extends BaseAdapter
 			tmpInfo.setChecked(isselect);
 			if (isselect)
 			{
-				convertView.setBackgroundColor(Theme
-						.getListSelectedBackgroundColor());
+				convertView.setBackgroundResource(Theme
+						.getSelBackgroundResource());
 				convertView.setVisibility(View.VISIBLE);
 				mSelectList.put(tmpInfo.getFileName(), tmpInfo);
 			} else
 			{
-				convertView.setBackgroundColor(Theme.getBackgroundColor());
+				convertView.setBackgroundResource(Theme.getBackgroundResource());
 				convertView.setVisibility(View.GONE);
 				mSelectList.remove(tmpInfo.getFileName());
 			}

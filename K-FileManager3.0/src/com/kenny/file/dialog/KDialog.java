@@ -122,8 +122,7 @@ public class KDialog
 						if (cmd == 1)
 						{
 							tvFileSize.setText(T.FileSizeToString((Long) value));
-						}
-						else
+						} else
 						{
 							tvFileCount.setText(String.format(m_ctx
 									.getString(R.string.msg_total_documents),
@@ -139,12 +138,13 @@ public class KDialog
 
 		TextView tvFileTotalSpace = (TextView) textEntryView
 				.findViewById(R.id.tvFileTotalSpace);
-		tvFileTotalSpace
-				.setText(T.FileSizeToString(StorageUtil.getTotalSpace(file)));
+		tvFileTotalSpace.setText(T.FileSizeToString(StorageUtil
+				.getTotalSpace(file)));
 		TextView tvFileFreeSpace = (TextView) textEntryView
 				.findViewById(R.id.tvFileFreeSpace);
 
-		tvFileFreeSpace.setText(T.FileSizeToString(StorageUtil.getFreeSpace(file)));
+		tvFileFreeSpace.setText(T.FileSizeToString(StorageUtil
+				.getFreeSpace(file)));
 
 		String yes = m_ctx.getString(R.string.yes);
 		String no = m_ctx.getString(R.string.no);

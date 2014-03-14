@@ -91,7 +91,7 @@ public class FavoriteGroupParser extends DefaultHandler
     {
         try
         {
-        		lists.clear();
+        	lists.clear();
             SAXParserFactory factory = SAXParserFactory.newInstance();
             SAXParser parser = factory.newSAXParser();
             XMLReader xmlReader = parser.getXMLReader();

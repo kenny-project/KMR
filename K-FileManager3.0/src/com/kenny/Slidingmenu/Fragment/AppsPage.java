@@ -32,7 +32,7 @@ import com.kenny.file.dialog.UnInstallDialog;
 import com.kenny.file.interfaces.INotifyDataSetChanged;
 import com.kenny.file.menu.PopAppDialog;
 import com.kenny.file.tools.ApkTools;
-import com.kenny.file.util.Const;
+import com.kenny.file.util.Theme;
 
 public class AppsPage extends ContentFragment implements OnItemClickListener,
 		OnClickListener, OnItemLongClickListener, INotifyDataSetChanged
@@ -95,6 +95,7 @@ public class AppsPage extends ContentFragment implements OnItemClickListener,
 		setContentView(R.layout.appspage, inflater);
 		// 应用
 		m_Appslist = (ListView) mView.findViewById(R.id.lvLocallist);
+		m_Appslist.setBackgroundResource(Theme.getBackgroundResource());
 		m_Appslist.setOnScrollListener(m_AppOnScrollListener);
 		m_Appslist.setOnItemClickListener(this);
 		m_Appslist.setOnItemLongClickListener(this);
@@ -307,10 +308,10 @@ public class AppsPage extends ContentFragment implements OnItemClickListener,
 	@Override
 	public void onResume()
 	{
-		// TODO Auto-generated method stub
 		setTitle(getTitle());
 		SysEng.getInstance()
 		.addEvent(new LoadAppsEvent(m_act, AFlag, this));
+		m_Appslist.setBackgroundResource(Theme.getBackgroundResource());
 		super.onResume();
 	}
 

@@ -63,7 +63,6 @@ public class KMenuFragment extends AbsFragmentPage implements
 	{
 		setContentView(R.layout.kmenu, inflater);
 		Init();
-
 		mView.findViewById(R.id.btn_search).setOnClickListener(this);
 		mView.findViewById(R.id.btn_setting).setOnClickListener(this);
 		lvEList = (ExpandableListView) mView.findViewById(R.id.lvEList);
@@ -101,13 +100,13 @@ public class KMenuFragment extends AbsFragmentPage implements
 		File mFile = new File("/mnt/");
 		File[] mFiles = mFile.listFiles();// 遍历出该文件夹路径下的所有文件/文件夹
 		List<KMenuItemBean> Roots = new ArrayList<KMenuItemBean>();
-		Roots.add(new KMenuItemBean(0, "手机", Const.Root,
+		Roots.add(new KMenuItemBean(0, "手机",KMenuItemBean.TYPE_LOCALFILE, Const.Root,
 				R.drawable.ic_textedit_save));
 		for (int i = 0; i < mFiles.length; i++)
 		{
 			if (mFiles[i].canWrite())
 			{
-				Roots.add(new KMenuItemBean(i + 1, mFiles[i].getName(),
+				Roots.add(new KMenuItemBean(i + 1, mFiles[i].getName(),KMenuItemBean.TYPE_LOCALFILE,
 						mFiles[i].getAbsolutePath(),
 						R.drawable.ic_textedit_save));
 				Log.d("wmh", mFiles[i].getAbsolutePath());
@@ -123,45 +122,45 @@ public class KMenuFragment extends AbsFragmentPage implements
 		groupbean.setID(LocalPage);
 		groupbean.setTitle("目录");
 		groupbean.AddAllDictBean(getSDCardList());
-		// groupbean.AddDictBean(new KMenuItemBean(-1, "搜索", Const.Root,
-		// R.drawable.audio_prev_nor));
+		groupbean.AddDictBean(new KMenuItemBean(-1, "存储",KMenuItemBean.TYPE_LOCAL_STATUS, Const.Root,
+		 R.drawable.audio_prev_nor));
 		mGroupBeans.add(groupbean);
 		groupbean = new KMenuGroupBean();
 		groupbean.setTitle("分类");
 		groupbean.setID(Favorite);
-		groupbean.AddDictBean(new KMenuItemBean(1, "音乐", mFavoriteGroupList
+		groupbean.AddDictBean(new KMenuItemBean(1, "音乐",KMenuItemBean.TYPE_CLASSIFY_FILE, mFavoriteGroupList
 				.get(1), R.drawable.ic_category_music));
-		groupbean.AddDictBean(new KMenuItemBean(2, "图片", mFavoriteGroupList
+		groupbean.AddDictBean(new KMenuItemBean(2, "图片",KMenuItemBean.TYPE_CLASSIFY_FILE, mFavoriteGroupList
 				.get(2), R.drawable.ic_category_picture));
-		groupbean.AddDictBean(new KMenuItemBean(3, "视频", mFavoriteGroupList
+		groupbean.AddDictBean(new KMenuItemBean(3, "视频",KMenuItemBean.TYPE_CLASSIFY_FILE, mFavoriteGroupList
 				.get(3), R.drawable.ic_category_video));
-		groupbean.AddDictBean(new KMenuItemBean(4, "文档", mFavoriteGroupList
+		groupbean.AddDictBean(new KMenuItemBean(4, "文档",KMenuItemBean.TYPE_CLASSIFY_FILE, mFavoriteGroupList
 				.get(4), R.drawable.ic_category_document));
-		groupbean.AddDictBean(new KMenuItemBean(6, "压缩包", mFavoriteGroupList
+		groupbean.AddDictBean(new KMenuItemBean(6, "压缩包",KMenuItemBean.TYPE_CLASSIFY_FILE, mFavoriteGroupList
 				.get(6), R.drawable.ic_category_zip));
-		groupbean.AddDictBean(new KMenuItemBean(7, "安装包", mFavoriteGroupList
+		groupbean.AddDictBean(new KMenuItemBean(7, "安装包",KMenuItemBean.TYPE_CLASSIFY_FILE, mFavoriteGroupList
 				.get(7), R.drawable.ic_root_explorer));
-		groupbean.AddDictBean(new KMenuItemBean(-1, "整理箱", Const.szAppPath,
+		groupbean.AddDictBean(new KMenuItemBean(-1, "整理箱",KMenuItemBean.TYPE_LOCALFILE, Const.szAppPath,
 				R.drawable.ic_category_favorite));
-		groupbean.AddDictBean(new KMenuItemBean(-1, "下载", Const.szDownLoadPath,
+		groupbean.AddDictBean(new KMenuItemBean(-1, "下载",KMenuItemBean.TYPE_LOCALFILE, Const.szDownLoadPath,
 				R.drawable.ic_category_favorite));
-		groupbean.AddDictBean(new KMenuItemBean(0, "收藏夹", mFavoriteGroupList
+		groupbean.AddDictBean(new KMenuItemBean(0, "收藏夹",KMenuItemBean.TYPE_FAVORITE_FILE, mFavoriteGroupList
 				.get(8), R.drawable.ic_category_favorite));
 		mGroupBeans.add(groupbean);
 		groupbean = new KMenuGroupBean();
 		groupbean.setTitle("应用");
 		groupbean.setID(appsPage);
-		groupbean.AddDictBean(new KMenuItemBean(1, "用户安装", 0,
+		groupbean.AddDictBean(new KMenuItemBean(1, "用户安装",KMenuItemBean.TYPE_APPLICATION_PAGE, 0,
 				R.drawable.ic_user_app_explorer));
-		groupbean.AddDictBean(new KMenuItemBean(2, "系统应用", 1,
+		groupbean.AddDictBean(new KMenuItemBean(2, "系统应用",KMenuItemBean.TYPE_APPLICATION_PAGE, 1,
 				R.drawable.ic_system_app_explorer));
 		mGroupBeans.add(groupbean);
 		groupbean = new KMenuGroupBean();
 		groupbean.setTitle("高级");
 		groupbean.setID(tools);
-		groupbean.AddDictBean(new KMenuItemBean(1, "FTP服务器", 1,
+		groupbean.AddDictBean(new KMenuItemBean(1, "FTP服务器",KMenuItemBean.TYPE_FTP_PAGE, 1,
 				R.drawable.ic_sys_ftp));
-		groupbean.AddDictBean(new KMenuItemBean(2, "金山网盘", 2,
+		groupbean.AddDictBean(new KMenuItemBean(2, "金山网盘",KMenuItemBean.TYPE_KUAIPAN_PAGE, 2,
 				R.drawable.ic_cloud_disk));
 		mGroupBeans.add(groupbean);
 		// groupbean = new KMenuGroupBean();
@@ -225,54 +224,34 @@ public class KMenuFragment extends AbsFragmentPage implements
 				.getID();
 		ContentFragment newContent = null;
 		Intent intent;
-		switch (GroupID)
+		switch(bean.getType())
 		{
-		case LocalPage:
-		// if (bean.getID() == -1)
-		// {
-		// newContent = new SearchResultPage(this);
-		// } else
-//		{
+		case KMenuItemBean.TYPE_LOCALFILE:
 			newContent = new LocalPage((String) bean.getObj());
-//		}
 			break;
-		case Favorite:
-			if (bean.getID() == 0)
-			{
-				newContent = onMyFavoriteClick((FGroupInfo) bean.getObj());
-			} else if (bean.getID() == -1)
-			{
-				// newContent = newContent = new LocalPage(
-				// (String)
-				// bean.getObj());onSpecifyLocalFavoriteClick(Const.szAppPath);
-				newContent = new LocalPage((String) bean.getObj());
-			} else
-			{
-				newContent = new FavoriteFilePage(getActivity(),
-						(FGroupInfo) bean.getObj());
-			}
+		case KMenuItemBean.TYPE_LOCAL_STATUS:
+			newContent=new DiskInfoFragment();
 			break;
-		case appsPage:
+		case KMenuItemBean.TYPE_CLASSIFY_FILE:
+			newContent = new FavoriteFilePage(getActivity(),
+					(FGroupInfo) bean.getObj());
+			break;
+		case KMenuItemBean.TYPE_FAVORITE_FILE:
+			newContent = onMyFavoriteClick((FGroupInfo) bean.getObj());
+			break;
+		case KMenuItemBean.TYPE_APPLICATION_PAGE:
 			newContent = new AppsPage((Integer) bean.getObj());
 			break;
-		case tools:
-			int type = (Integer) bean.getObj();
-			switch (type)
-			{
-			case 1:
-				intent = new Intent(m_act, SwifFtpMain.class);
-				m_act.startActivity(intent);
-				break;
-			case 2:
-				intent = new Intent(m_act, KuaiPanPage.class);
-				m_act.startActivity(intent);
-				break;
-			}
+		case KMenuItemBean.TYPE_FTP_PAGE:
+			intent = new Intent(m_act, SwifFtpMain.class);
+			m_act.startActivity(intent);
 			break;
-		case setting:
-			SettingPage.actionSettingPage(m_act);
+		case KMenuItemBean.TYPE_KUAIPAN_PAGE:
+			intent = new Intent(m_act, KuaiPanPage.class);
+			m_act.startActivity(intent);
 			break;
 		}
+//		SettingPage.actionSettingPage(m_act);
 		if (newContent != null)
 		{
 			newContent.setTitle(bean.getTitle());

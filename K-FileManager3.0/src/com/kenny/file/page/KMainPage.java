@@ -16,6 +16,7 @@ import com.framework.page.AbsPage;
 import com.framework.page.MultiItemPage;
 import com.kenny.KFileManager.R;
 import com.kenny.Slidingmenu.Fragment.AppsPage;
+import com.kenny.Slidingmenu.Fragment.DiskInfoFragment;
 import com.kenny.Slidingmenu.Fragment.SearchResultPage;
 import com.kenny.file.util.Theme;
 
@@ -32,7 +33,7 @@ public class KMainPage extends AbsPage
 	private AppsPage m_AppsPage = null;
 	//	private TaskPage m_TaskPage = null;
 //	private NetworkPage m_ToolsPage = null;
-	private FavoritePage m_FavoritePage = null;
+	private DiskInfoFragment m_FavoritePage = null;
 	private SearchResultPage m_SearchPage = null;
 	/**
 	 * 本地

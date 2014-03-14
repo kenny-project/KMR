@@ -73,9 +73,9 @@ public class FavorDialogAdapter extends OFileAdapter
 		{
 			if (temp.isChecked()) {
 				convertView.setBackgroundColor(Theme
-						.getListSelectedBackgroundColor());
+						.getSelBackgroundResource());
 			} else {
-				convertView.setBackgroundColor(Theme.getBackgroundColor());
+				convertView.setBackgroundColor(Theme.getBackgroundResource());
 			}
 			viewHolder.mCB.setChecked(dao.isHasHistory(nFlag, temp.getFile().getPath()));
 			viewHolder.mCB

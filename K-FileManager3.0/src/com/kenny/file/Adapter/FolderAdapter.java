@@ -78,7 +78,7 @@ public class FolderAdapter extends BaseAdapter
       FileBean temp = mFileList.get(position);
       viewHolder.mTV.setTextColor(Theme.getTextColor());
       viewHolder.mTD.setTextColor(Theme.getTextColor());
-      convertView.setBackgroundColor(Theme.getBackgroundColor());
+      convertView.setBackgroundColor(Theme.getBackgroundResource());
       if (temp.getFileName().equals(".."))
       {
          viewHolder.mIV.setImageDrawable(Res.getInstance(mContext).getBackUp());

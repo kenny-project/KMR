@@ -156,24 +156,17 @@ public class FileAdapter extends BaseAdapter
 			viewHolder.mBackground = (ImageView) convertView
 					.findViewById(R.id.rlBackground);
 
-			viewHolder.ThemeMode = Theme.getThemeMode();
-			viewHolder.mTV.setTextColor(Theme.getTextColor());
-			viewHolder.mTD.setTextColor(Theme.getTextColor());
-			viewHolder.mBackground.setBackgroundColor(Theme
-					.getListSelectedBackgroundColor());
-			convertView.setBackgroundColor(Theme.getBackgroundColor());
-
 		} else
 		{
 			viewHolder = (ViewHolder) convertView.getTag();
-			if (viewHolder.ThemeMode != Theme.getThemeMode())
-			{
-				viewHolder.mTV.setTextColor(Theme.getTextColor());
-				viewHolder.mTD.setTextColor(Theme.getTextColor());
-				viewHolder.mBackground.setBackgroundColor(Theme
-						.getListSelectedBackgroundColor());
-				convertView.setBackgroundColor(Theme.getBackgroundColor());
-			}
+		}
+		if (viewHolder.ThemeMode != Theme.getThemeMode())
+		{
+			viewHolder.mTV.setTextColor(Theme.getTextColor());
+			viewHolder.mTD.setTextColor(Theme.getTextColor());
+			viewHolder.mBackground.setBackgroundResource(Theme
+					.getSelBackgroundResource());
+			convertView.setBackgroundResource(Theme.getBackgroundResource());
 		}
 		FileBean temp = mFileList.get(position);
 
@@ -233,9 +226,7 @@ public class FileAdapter extends BaseAdapter
 		}
 		return convertView;
 	}
-
 	private String CurrentPath;
-
 	/**
 	 * 当前列表路径
 	 * 
@@ -271,25 +262,21 @@ public class FileAdapter extends BaseAdapter
 
 			viewHolder.mCB = (CheckBox) convertView
 					.findViewById(R.id.cbChecked);
-			viewHolder.ThemeMode = Theme.getThemeMode();
-			viewHolder.mTV.setTextColor(Theme.getTextColor());
-			viewHolder.mTD.setTextColor(Theme.getTextColor());
-			viewHolder.mBackground.setBackgroundColor(Theme
-					.getListSelectedBackgroundColor());
-			convertView.setBackgroundColor(Theme.getBackgroundColor());
 			convertView.setTag(viewHolder);
 		} else
 		{
 			viewHolder = (ViewHolder) convertView.getTag();
-			if (viewHolder.ThemeMode != Theme.getThemeMode())
-			{
-				viewHolder.mTV.setTextColor(Theme.getTextColor());
-				viewHolder.mTD.setTextColor(Theme.getTextColor());
-				viewHolder.mBackground.setBackgroundColor(Theme
-						.getListSelectedBackgroundColor());
-				convertView.setBackgroundColor(Theme.getBackgroundColor());
-			}
 		}
+		if (viewHolder.ThemeMode != Theme.getThemeMode())
+		{
+			viewHolder.mTV.setTextColor(Theme.getTextColor());
+			viewHolder.mTD.setTextColor(Theme.getTextColor());
+			viewHolder.mBackground.setBackgroundResource(Theme
+					.getSelBackgroundResource());
+			convertView.setBackgroundResource(Theme.getBackgroundResource());
+			viewHolder.ThemeMode = Theme.getThemeMode();
+		}
+		
 		FileBean temp = mFileList.get(position);
 
 		if (temp.getFileName().equals(".."))

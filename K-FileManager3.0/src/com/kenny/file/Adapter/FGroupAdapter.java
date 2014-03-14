@@ -107,7 +107,8 @@ public class FGroupAdapter extends BaseAdapter implements OnClickListener
 			viewHolder.mDV.setText(T.FileSizeToString(temp.getSize()));
 			viewHolder.mTV.setText(temp.getTitle()+"("+temp.getCount()+")");
 			//viewHolder.mCB.setChecked(temp.isChecked());
-			Bitmap bitMap = temp.getLogo(mContext);
+//			Bitmap bitMap = temp.getLogo(mContext);
+			Bitmap bitMap=null;
 			if (bitMap != null)
 			{
 				viewHolder.mIV.setImageBitmap(bitMap);
