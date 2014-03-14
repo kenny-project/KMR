@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="_0TextColor">#ff000000</color>
+    <color name="_0BackgroundColor">#ffe7f3f7</color>
+    <color name="_0SelBackgroundColor">#ffc6dfc6</color>
+    <color name="_0BackgroundLine">#ffe7f3f7</color>
+    
+    <color name="_1TextColor">#ffcccccc</color>
+    <color name="_1BackgroundColor">#ff222222</color><!-- 454545 -->
+    <color name="_1SelBackgroundColor">#ff393939</color>
+    
+    <color name="_2TextColor">#ff000000</color>
+    <color name="_2BackgroundColor">#ffe7dfce</color>
+    <color name="_2SelBackgroundColor">#ffc6dfc6</color>
+    
+    <color name="_3TextColor">#ff000000</color>
+    <color name="_3BackgroundColor">#FFc6dfc6</color>
+    <color name="_3SelBackgroundColor">#ffe7dfce</color>
+    
+    <color name="_4TextColor">#ff000000</color>
+    <color name="_4BackgroundColor">#FFefc7c6</color>
+    <color name="_4SelBackgroundColor">#ffc6dfc6</color>
+    
+    <color name="_5TextColor">#ff000000</color>
+    <color name="_5BackgroundColor">#FFefd79c</color>
+    <color name="_5SelBackgroundColor">#ffc6dfc6</color>
+    
+    
+    <color name="_6TextColor">#ff000000</color>
+    <color name="_6BackgroundColor">#FFc6cfe7</color>
+    <color name="_6SelBackgroundColor">#ffc6dfc6</color>
+    
+    <color name="_7TextColor">#ff000000</color>
+    <color name="_7BackgroundColor">#FFe7ebd6</color>
+    <color name="_7SelBackgroundColor">#ffc6dfc6</color>
+
+</resources>
