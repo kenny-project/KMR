@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/lvMain"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/nav_list_item_bg"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginBottom="2dip"
+        android:layout_marginLeft="5dip"
+        android:layout_marginRight="5dip"
+        android:layout_marginTop="2dip"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dip"
+            android:background="#00000000"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/ItemLogo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dip"
+                android:layout_marginRight="2dip"
+                android:scaleType="center"
+                android:src="@drawable/phone_icon"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/ItemTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="3dp"
+                android:paddingRight="2dp"
+                android:singleLine="true"
+                android:text="@string/lable_Internal"
+                android:textColor="@color/favorpage_status_textColor"
+                android:textSize="15dip" >
+            </TextView>
+<!-- 
+            <TextView
+                android:id="@+id/ItemAvailable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="396.5M"
+                android:textColor="@color/favorpage_status_textColor"
+                android:textSize="12dip"
+                android:visibility="gone" >
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="/"
+                android:textColor="@color/favorpage_status_textColor"
+                android:textSize="12dip"
+                android:visibility="gone" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/ItemTotalSize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="16.3G"
+                android:textColor="@color/favorpage_status_textColor"
+                android:textSize="12dip"
+                android:visibility="gone" >
+            </TextView>
+             -->
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dip"
+            android:layout_marginTop="4dip"
+            android:background="#00000000"
+            android:orientation="horizontal" >
+
+            <ProgressBar
+                android:id="@+id/ItemProgress"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="20dip"
+                android:progressDrawable="@drawable/progressbar_style" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="#00000000"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/ItemAvailable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:text="-1"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" >
+                </TextView>
+                <TextView
+                    android:id="@+id/ItemTotalSize"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:text="-1"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" >
+                </TextView>
+            </LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
+</LinearLayout>

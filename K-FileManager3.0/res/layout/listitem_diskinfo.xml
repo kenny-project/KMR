@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/nav_list_item_bg" >
+
+    <ImageView
+        android:id="@+id/image_list_childs"
+        android:layout_width="48dip"
+        android:layout_height="48dip"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="3dip"
+        android:layout_marginLeft="5dip"
+        android:layout_marginRight="5dip"
+        android:layout_marginTop="3dip"
+        android:background="#00000000"
+        android:scaleType="fitCenter" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="2dip"
+        android:layout_toLeftOf="@id/tvDesc"
+        android:layout_toRightOf="@id/image_list_childs"
+        android:background="#00000000"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:singleLine="true"
+            android:text="title"
+            android:textColor="@color/white"
+            android:textSize="20sp" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/tvFlags"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:singleLine="true"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:visibility="gone" >
+        </TextView>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dip"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:singleLine="false"
+        android:text="desc"
+        android:textColor="@color/white"
+        android:textSize="14sp" >
+    </TextView>
+
+</RelativeLayout>

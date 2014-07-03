@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/list_bg" >
+
+    <RelativeLayout
+        android:id="@+id/Head"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/search_top_bg"
+        android:orientation="vertical"
+        android:paddingBottom="1dip" >
+        <Button
+            android:id="@+id/btBackPage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dip"
+            android:background="@drawable/tab_left_bg"
+            android:textColor="#ffffff"
+            android:textSize="16dip" />
+
+        <TextView
+            style="@style/main_tools_tab_style_normal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="#00000000"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="@string/Baidu_Title"
+            android:textColor="@color/headTextColor"
+            android:textSize="22dip" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/lyTools2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Head"
+        android:background="#FFe0e2e6"
+        android:padding="2dip" >
+
+        <TextView
+            android:id="@+id/mCurrentPath"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1.0"
+            android:autoText="false"
+            android:background="@drawable/file_manager_browser_path"
+            android:editable="false"
+            android:ellipsize="start"
+            android:maxEms="10"
+            android:minEms="10"
+            android:singleLine="true"
+            android:textColor="#737373"
+            android:textSize="17dip" />
+
+        <TextView
+            android:id="@+id/tvKuaiPanSpace"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5dip"
+            android:background="@drawable/file_manager_browser_path"
+            android:text="00.00M/00.00G"
+            android:textColor="#737373"
+            android:textSize="16dp" />
+    </LinearLayout>
+
+    <!-- android:layout_below="@id/lyTools2" -->
+
+    <ListView
+        android:id="@+id/lvLocallist"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/lyTools2"
+        android:background="@color/list_bg"
+        android:cacheColorHint="#00000000"
+        android:divider="@drawable/list_line"
+        android:dividerHeight="2dip"
+        android:fastScrollEnabled="true" />
+    <!-- android:layout_below="@id/lyTools2" -->
+
+    <ListView
+        android:id="@+id/lvDownLoadlist"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/lyTools2"
+        android:layout_weight="1"
+        android:background="@color/list_bg"
+        android:cacheColorHint="#00000000"
+        android:divider="@drawable/list_line"
+        android:dividerHeight="2dip"
+        android:fastScrollEnabled="true" />
+
+ 
+
+    <LinearLayout
+        android:id="@+id/lyBTools"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:paddingBottom="2dip"
+        android:paddingTop="5dip"
+        android:background="@drawable/toolbar_backgroud"
+        android:gravity="fill"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btSelectAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:drawableTop="@drawable/menu_selall"
+            android:text="@string/btSelectAll"
+            android:textColor="@color/ContentTitleText"
+            android:textSize="13sp" />
+        
+        <Button
+            android:id="@+id/btUpDownLoad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:drawableTop="@drawable/menu_new_normal"
+            android:text="@string/KuaiPanPage_btUpDownLoad"
+            android:textColor="@color/ContentTitleText"
+            android:textSize="13dp"
+            />
+        <Button
+            android:id="@+id/btNew"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="1dip"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:drawableTop="@drawable/menu_new_normal"
+            android:text="@string/btNew"
+            android:textColor="@color/ContentTitleText"
+            android:textSize="13dip" />
+
+
+
+        <Button
+            android:id="@+id/btDownLoad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:drawableTop="@drawable/menu_download"
+            android:text="@string/btDownLoad"
+            android:textColor="@color/ContentTitleText"
+            android:textSize="13dp"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:drawableTop="@drawable/menu_delete"
+            android:text="@string/btDelete"
+            android:textColor="@color/ContentTitleText"
+            android:textSize="13dip" />
+
+        <Button
+            android:id="@+id/btTransfer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:drawableTop="@drawable/menu_back"
+            android:text="@string/KuaiPanPage_btTransfer"
+            android:textColor="@color/ContentTitleText"
+            android:textSize="13dp"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:drawableTop="@drawable/menu_back"
+            android:text="@string/btBack"
+            android:textColor="@color/ContentTitleText"
+            android:textSize="13sp" 
+            android:visibility="gone"/>
+    </LinearLayout>
+   <RelativeLayout
+        android:id="@+id/rlError"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/lyTools2"
+        android:layout_above="@id/lyBTools"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="@color/list_bg"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:background="@color/list_bg"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/list_kuaipan_logo" />
+            <TextView
+                android:id="@+id/tvError_msg"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal"
+                android:paddingTop="10dip"
+                android:text=""
+                android:textColor="@color/TLTitleText"
+                android:textSize="18dip" >
+            </TextView>
+
+            <Button
+                android:id="@+id/btError"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingTop="10dip"
+                android:layout_marginLeft="45dip"
+                android:layout_marginRight="45dip"
+                android:layout_marginTop="1dip"
+                android:background="@drawable/btn_special_default_select"
+                android:gravity="center_horizontal"
+                android:textSize="20dp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/pbLoading"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/lyTools2"
+        android:layout_above="@id/lyBTools"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="@color/list_bg"
+        android:orientation="horizontal"
+        android:visibility="gone" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:background="@color/list_bg"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/list_kuaipan_logo" />
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:progressDrawable="@drawable/progressbar_style"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/lyLoading_msg_pannel"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="#00000000"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/tvMessage"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:text="正在获取列表..."
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

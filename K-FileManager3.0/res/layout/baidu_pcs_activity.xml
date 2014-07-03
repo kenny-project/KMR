@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+         />
+
+    <Button
+        android:id="@+id/btnaccesstoken"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:text="Login" />
+
+    <Button
+        android:id="@+id/btnquota"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/btnmkdir"
+        android:layout_below="@+id/btnaccesstoken"
+        android:text="Quota" />
+
+    <Button
+        android:id="@+id/btnlist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btnquota"
+        android:layout_alignBottom="@+id/btnquota"
+        android:layout_alignLeft="@+id/btndownload"
+        android:layout_alignParentRight="true"
+        android:text="List" />
+
+    <Button
+        android:id="@+id/btnsearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/btnquota"
+        android:layout_below="@+id/btnquota"
+        android:text="Search" />
+
+    <Button
+        android:id="@+id/btnmeta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btnsearch"
+        android:layout_alignBottom="@+id/btnsearch"
+        android:layout_alignLeft="@+id/btnlist"
+        android:layout_alignParentRight="true"
+        android:text="Meta" />
+
+    <Button
+        android:id="@+id/btnthumbnail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btnmeta"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/btnmeta"
+        android:text="Thumbnail" />
+
+    <Button
+        android:id="@+id/btnmkdir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btnthumbnail"
+        android:layout_alignBottom="@+id/btnthumbnail"
+        android:layout_alignParentLeft="true"
+        android:text="Make Folder" />
+
+    <Button
+        android:id="@+id/btndownload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/btnthumbnail"
+        android:text="Download Files" />
+
+    <Button
+        android:id="@+id/btnmove"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btndownload"
+        android:layout_alignBottom="@+id/btndownload"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/btndelete"
+        android:text="Move" />
+
+    <Button
+        android:id="@+id/btndelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/btnmkdir"
+        android:layout_below="@+id/btnmove"
+        android:text="Delete Files" />
+
+    <Button
+        android:id="@+id/btnupload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btndelete"
+        android:layout_alignBottom="@+id/btndelete"
+        android:layout_alignLeft="@+id/btndownload"
+        android:layout_alignParentRight="true"
+        android:text="Upload" />
+
+    <Button
+        android:id="@+id/btndiff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/btndelete"
+        android:layout_below="@+id/btndelete"
+        android:text="Diff" />
+
+    <Button
+        android:id="@+id/btncopy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btnupload"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/btnupload"
+        android:text="Copy" />
+        <Button
+        android:id="@+id/btncloudmatch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/btndiff"
+        android:layout_below="@+id/btndiff"
+        android:text="cloudmatch" />
+
+    <Button
+        android:id="@+id/btncloudmatchupload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/btncloudmatch"
+        android:layout_below="@+id/btncloudmatch"
+        android:text="cloudmatchupload" />
+
+    <Button
+        android:id="@+id/btnlogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/imageView1"
+        android:layout_alignLeft="@+id/btnrename"
+        android:layout_alignParentRight="true"
+        android:text="Logout" />
+
+    <Button
+        android:id="@+id/btnrename"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnlogout"
+        android:layout_alignLeft="@+id/btncopy"
+        android:layout_alignParentRight="true"
+        android:text="rename" />
+
+    <Button
+        android:id="@+id/btnclouddownload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btndownload"
+        android:layout_alignBottom="@+id/btndownload"
+        android:layout_toLeftOf="@+id/btndownload"
+        android:layout_toRightOf="@+id/btnmove"
+        android:text="CloudDownload" />
+
+    <Button
+        android:id="@+id/btnclouddownloadlist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btnclouddownload"
+        android:layout_alignRight="@+id/btnclouddownload"
+        android:layout_below="@+id/btnclouddownload"
+        android:text="CloudDownloadList" />
+
+    <Button
+        android:id="@+id/btnclouddowntask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btnclouddownloadlist"
+        android:layout_below="@+id/btndelete"
+        android:layout_toLeftOf="@+id/btncopy"
+        android:text="queryclouddowntask" />
+
+    <Button
+        android:id="@+id/btnclouddowncancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btnclouddowntask"
+        android:layout_below="@+id/btndiff"
+        android:layout_toLeftOf="@+id/btnrename"
+        android:text="CancelClouddowntask" />
+
+</RelativeLayout>
