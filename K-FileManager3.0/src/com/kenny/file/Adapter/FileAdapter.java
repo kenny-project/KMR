@@ -1,5 +1,6 @@
 package com.kenny.file.Adapter;
 
+import java.io.File;
 import java.util.Hashtable;
 import java.util.List;
 
@@ -23,7 +24,6 @@ import com.kenny.file.Image.ImageLoader;
 import com.kenny.file.bean.FileBean;
 import com.kenny.file.interfaces.INotifyDataSetChanged;
 import com.kenny.file.interfaces.ImageCallback;
-import com.kenny.file.manager.FileManager;
 import com.kenny.file.util.Const;
 import com.kenny.file.util.FolderTypeUtil;
 import com.kenny.file.util.Res;
@@ -61,13 +61,18 @@ public class FileAdapter extends BaseAdapter
 		this.mFileList = mFileList;
 		go_back = context.getString(R.string.back_previous);
 		im_go_back = Res.getInstance(mContext).getBackUp();
-		mLogoImage = ImageLoader.GetObject(mContext);
+		mLogoImage = ImageLoader.getInstance(mContext);
 		mFolderType = ((KFileManagerApp) mContext).getFolderType();
 	}
 
 	public void notifyDataSetChanged()
 	{
 		bShowLogo = true;
+//		if (mFileList.size() > 0)
+//		{
+//			FileBean bean = mFileList.get(mFileList.size()-1);
+//			setCurrentFile(bean.getFile().getParent());
+//		}
 		super.notifyDataSetChanged();
 	}
 
@@ -152,24 +157,17 @@ public class FileAdapter extends BaseAdapter
 			viewHolder.mBackground = (ImageView) convertView
 					.findViewById(R.id.rlBackground);
 
-			viewHolder.ThemeMode = Theme.getThemeMode();
-			viewHolder.mTV.setTextColor(Theme.getTextColor());
-			viewHolder.mTD.setTextColor(Theme.getTextColor());
-			viewHolder.mBackground.setBackgroundColor(Theme
-					.getListSelectedBackgroundColor());
-			convertView.setBackgroundColor(Theme.getBackgroundColor());
-
 		} else
 		{
 			viewHolder = (ViewHolder) convertView.getTag();
-			if (viewHolder.ThemeMode != Theme.getThemeMode())
-			{
-				viewHolder.mTV.setTextColor(Theme.getTextColor());
-				viewHolder.mTD.setTextColor(Theme.getTextColor());
-				viewHolder.mBackground.setBackgroundColor(Theme
-						.getListSelectedBackgroundColor());
-				convertView.setBackgroundColor(Theme.getBackgroundColor());
-			}
+		}
+		if (viewHolder.ThemeMode != Theme.getThemeMode())
+		{
+			viewHolder.mTV.setTextColor(Theme.getTextColor());
+			viewHolder.mTD.setTextColor(Theme.getTextColor());
+			viewHolder.mBackground.setBackgroundResource(Theme
+					.getSelBackgroundResource());
+			convertView.setBackgroundResource(Theme.getBackgroundResource());
 		}
 		FileBean temp = mFileList.get(position);
 
@@ -187,7 +185,6 @@ public class FileAdapter extends BaseAdapter
 					viewHolder.mBackground, temp));
 			if (temp.isChecked())
 			{
-
 				viewHolder.mBackground.setVisibility(View.VISIBLE);
 			} else
 			{
@@ -204,6 +201,7 @@ public class FileAdapter extends BaseAdapter
 				Drawable draw = null;
 				if (bShowLogo)
 				{
+					viewHolder.mIV.setTag(temp.getFilePath());
 					String fileEnds = temp.getFileEnds();
 					if (fileEnds.equals("jpg") || fileEnds.equals("gif")
 							|| fileEnds.equals("png")
@@ -230,6 +228,26 @@ public class FileAdapter extends BaseAdapter
 		return convertView;
 	}
 
+	private File mCurrentFile=null;
+
+	/**
+	 * 当前列表路径
+	 * 
+	 * @return
+	 */
+	public File getCurrentFile()
+	{
+		return mCurrentFile;
+	}
+
+	public void setCurrentFile(File currentPath)
+	{
+		mCurrentFile = currentPath;
+	}
+	public void setCurrentFile(String currentPath)
+	{
+		mCurrentFile =new File(currentPath);
+	}
 	public View getListView(int position, View convertView, ViewGroup viewgroup)
 	{
 		ViewHolder viewHolder = null;
@@ -247,28 +265,24 @@ public class FileAdapter extends BaseAdapter
 					.findViewById(R.id.rlBackground);
 			// LayoutParams params=viewHolder.mBackground.getLayoutParams();
 			// params.height=convertView.getHeight();
-			
+
 			viewHolder.mCB = (CheckBox) convertView
 					.findViewById(R.id.cbChecked);
-			viewHolder.ThemeMode = Theme.getThemeMode();
-			viewHolder.mTV.setTextColor(Theme.getTextColor());
-			viewHolder.mTD.setTextColor(Theme.getTextColor());
-			viewHolder.mBackground.setBackgroundColor(Theme
-					.getListSelectedBackgroundColor());
-			convertView.setBackgroundColor(Theme.getBackgroundColor());
 			convertView.setTag(viewHolder);
 		} else
 		{
 			viewHolder = (ViewHolder) convertView.getTag();
-			if (viewHolder.ThemeMode != Theme.getThemeMode())
-			{
-				viewHolder.mTV.setTextColor(Theme.getTextColor());
-				viewHolder.mTD.setTextColor(Theme.getTextColor());
-				viewHolder.mBackground.setBackgroundColor(Theme
-						.getListSelectedBackgroundColor());
-				convertView.setBackgroundColor(Theme.getBackgroundColor());
-			}
 		}
+		if (viewHolder.ThemeMode != Theme.getThemeMode())
+		{
+			viewHolder.mTV.setTextColor(Theme.getTextColor());
+			viewHolder.mTD.setTextColor(Theme.getTextColor());
+			viewHolder.mBackground.setBackgroundResource(Theme
+					.getSelBackgroundResource());
+			convertView.setBackgroundResource(Theme.getBackgroundResource());
+			viewHolder.ThemeMode = Theme.getThemeMode();
+		}
+
 		FileBean temp = mFileList.get(position);
 
 		if (temp.getFileName().equals(".."))
@@ -298,10 +312,11 @@ public class FileAdapter extends BaseAdapter
 			if (temp.isDirectory())
 			{
 				viewHolder.mIV.setImageDrawable(temp.getFileIco(mContext));
-				if (temp.getNickName() == null)
+				
+				if (temp.getNickName() == null && getCurrentFile() != null)
 				{
-					if (FileManager.getInstance().getCurrentPath()
-							.equals(Const.getSDCard()))
+					String parentPath=getCurrentFile().getParent();
+					if (parentPath!=null&&parentPath.equals("/mnt"))
 					{
 						String nickname = mFolderType.BinarySearch(temp
 								.getFile().getName());
@@ -318,16 +333,18 @@ public class FileAdapter extends BaseAdapter
 								Log.v("wmh", "FA:" + temp.getFileName());
 							}
 						}
-					} else
-					{
-						temp.setNickName("");
 					}
+					// else
+					// {
+					// temp.setNickName("");
+					// }
 				}
 			} else
 			{
 				Drawable draw = null;
 				if (bShowLogo)
 				{
+					viewHolder.mIV.setTag(temp.getFilePath());
 					String fileEnds = temp.getFileEnds();
 					if (fileEnds.equals("jpg") || fileEnds.equals("gif")
 							|| fileEnds.equals("png")
@@ -368,32 +385,49 @@ public class FileAdapter extends BaseAdapter
 
 	protected class KImageCallback implements ImageCallback
 	{
-		ViewHolder viewHolder;
-		FileBean bean;
+		private ViewHolder viewHolder;
+		private FileBean bean;
 
 		public KImageCallback(FileBean bean, ViewHolder viewHolder)
 		{
 			this.viewHolder = viewHolder;
 			this.bean = bean;
 		}
+
 		private boolean isRefurbish = false;
-		public void imageLoaded(Drawable imageDrawable, String imageUrl)
+
+		public void imageLoaded(final Drawable imageDrawable,
+				final String imageUrl)
 		{
-//			viewHolder.mTD.setText(Html.fromHtml(bean.getDesc()));
-//			viewHolder.mIV.setImageDrawable(imageDrawable);
-			if (false==isRefurbish)
+			// viewHolder.mTD.setText(Html.fromHtml(bean.getDesc()));
+			// viewHolder.mIV.setImageDrawable(imageDrawable);
+			String url = (String) viewHolder.mIV.getTag();
+			if (url.equals(imageUrl))
 			{
-				isRefurbish = true;
 				SysEng.getInstance().addHandlerEvent(new AbsEvent()
 				{
 					@Override
 					public void ok()
 					{
-						isRefurbish = false;
-						notifyDataSetChanged();
+						viewHolder.mTD.setText(bean.getDesc());
+						viewHolder.mIV.setImageDrawable(imageDrawable);
 					}
-				}, 500);
+				});
 			}
+			// 定时刷新
+			// if (false == isRefurbish)
+			// {
+			// isRefurbish = true;
+			// SysEng.getInstance().addHandlerEvent(new AbsEvent()
+			// {
+			// @Override
+			// public void ok()
+			// {
+			// isRefurbish = false;
+			// notifyDataSetChanged();
+			// }
+			// }, 500);
+			// }
 		}
 	}
 

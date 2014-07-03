@@ -3,16 +3,17 @@ package com.kenny.file.Event;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.widget.Toast;
+
 import com.framework.event.AbsEvent;
 import com.framework.syseng.SysEng;
 import com.kenny.KFileManager.R;
 import com.kenny.file.bean.FileBean;
 import com.kenny.file.db.Dao;
-import com.kenny.file.manager.FileManager;
 
 /**
  * @author kenny 初始化event
@@ -30,7 +31,9 @@ public class FavoriteFileEvent extends AbsEvent {
 		flag = 0;
 		ShowDialog(list);
 	}
-
+	public FavoriteFileEvent(Context context, FileBean fileBean) {
+		this(context, fileBean,0);
+	}
 	public FavoriteFileEvent(Context context, FileBean fileBean, int flag) {
 		this.flag = flag;
 		this.list = new ArrayList<FileBean>();

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/index_ad"
+        android:layout_width="fill_parent"
+        android:layout_height="150dp" >
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/ad_page"
+            android:layout_width="fill_parent"
+            android:layout_height="150dp" >
+        </android.support.v4.view.ViewPager>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/lyTools3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dip"
+        android:background="#ffe2ebf0" >
+
+        <Button
+            android:id="@+id/btChineseGameGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/bg_adv_chinese_bg"
+            android:paddingBottom="15dip"
+            android:paddingTop="15dip"
+            android:text="中文游戏"
+            android:textColor="@color/whites"
+            android:textSize="18dip" />
+
+        <ImageView
+            android:layout_width="1px"
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="5dip"
+            android:layout_marginTop="5dip"
+            android:background="@color/head_tab_line_color" />
+
+        <Button
+            android:id="@+id/btCrackGameGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/bg_adv_bt_bg"
+            android:paddingBottom="15dip"
+            android:paddingTop="15dip"
+            android:text="修改游戏"
+            android:textColor="@color/whites"
+            android:textSize="18dip" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lyTools3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffe2ebf0" >
+
+        <Button
+            android:id="@+id/btBigGameGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/bg_adv_essential_bg"
+            android:paddingBottom="15dip"
+            android:paddingTop="15dip"
+            android:text="大型游戏"
+            android:textColor="@color/whites"
+            android:textSize="18dip" />
+
+        <ImageView
+            android:layout_width="1px"
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="5dip"
+            android:layout_marginTop="5dip"
+            android:background="@color/head_tab_line_color" />
+
+        <Button
+            android:id="@+id/btMobileNetGameGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/bg_adv_large_bg"
+            android:paddingBottom="15dip"
+            android:paddingTop="15dip"
+            android:text="手机网游"
+            android:textColor="@color/whites"
+            android:textSize="18dip" />
+    </LinearLayout>
+</LinearLayout>

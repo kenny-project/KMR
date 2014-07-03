@@ -182,7 +182,7 @@ public class SettingPage extends SlidingFragmentActivity implements OnClickListe
 				Const.getSDCard());
 		tvSetDefaultPath.setText(mStrDefaultPath);
 
-		mStrSDRootPath = SaveData.Read(m_act, Const.strSDRootPath,
+		mStrSDRootPath = SaveData.Read(m_act, Const.strDefSDRootPath,
 				Const.getSDCard());
 		tvSetSDRootPath.setText(mStrSDRootPath);
 		super.onResume();
@@ -208,7 +208,7 @@ public class SettingPage extends SlidingFragmentActivity implements OnClickListe
 		case R.id.btSetSDPath:
 			mStrSDRootPath = ((KFileManagerApp)m_act.getApplication()).getCurrentPath();
 			Const.setSDCard(mStrSDRootPath);
-			SaveData.Write(m_act, Const.strSDRootPath, mStrSDRootPath);// 输入自动化
+			SaveData.Write(m_act, Const.strDefSDRootPath, mStrSDRootPath);// 输入自动化
 			tvSetSDRootPath.setText(mStrSDRootPath);
 			Toast.makeText(m_act, "设置成功", Toast.LENGTH_SHORT).show();
 			break;

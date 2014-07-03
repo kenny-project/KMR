@@ -31,7 +31,7 @@ public class FileManager implements IManager
 
 	public void setRootPath(String path)
 	{
-		mRootPath=new File(path).getAbsolutePath();
+		mRootPath = new File(path).getAbsolutePath();
 	}
 
 	public void setNotifyData(INotifyDataSetChanged m_notifyData)
@@ -66,18 +66,19 @@ public class FileManager implements IManager
 	 * 
 	 * @return
 	 */
-//	public static FileManager getInstance()
-//	{
-//		return m_LocalManage;
-//	}
+	// public static FileManager getInstance()
+	// {
+	// return m_LocalManage;
+	// }
 
 	/**
 	 * 退回上一层
 	 */
 	public boolean Back()
 	{
-		File mCurrentFile=new File(mCurrentPath);
-		if (!mCurrentFile.getAbsolutePath().equals(mRootPath)&&mCurrentFile.getAbsolutePath().length()>1)
+		File mCurrentFile = new File(mCurrentPath);
+		if (!mCurrentFile.getAbsolutePath().equals(mRootPath)
+				&& mCurrentFile.getAbsolutePath().length() > 1)
 		{
 			String temp = mCurrentFile.getParent();
 			setFilePath(temp, Const.cmd_Local_List_Go);
@@ -91,6 +92,7 @@ public class FileManager implements IManager
 	/**
 	 * 刷新列表
 	 */
+	@Override
 	public void Refresh()
 	{
 		setFilePath(mCurrentPath, Const.cmd_Local_List_Refresh);
@@ -101,11 +103,13 @@ public class FileManager implements IManager
 	 * 
 	 * @param bHidden
 	 */
+	@Override
 	public void setFilePath(String mCurrentPath)
 	{
 		setFilePath(mCurrentPath, Const.cmd_Local_List_Go);
 	}
 
+	@Override
 	public void setFilePath(String mCurrentPath, int type)
 	{
 		if (mCurrentPath.length() <= 0)
@@ -186,10 +190,10 @@ public class FileManager implements IManager
 		if (!mCurrentPath.equals(mRootPath))
 		{
 			String back = mFile.getParent();
-			if(back!=null)
+			if (back != null)
 			{
-			File temp = new File(back);
-			mFileList.add(0, new FileBean(temp, "..", back, true));
+				File temp = new File(back);
+				mFileList.add(0, new FileBean(temp, "..", back, true));
 			}
 		}
 		if (m_notifyData != null)

@@ -28,7 +28,7 @@ public class HistoryAdapter extends BaseAdapter
       mContext = context;
       this.mFileList = mFileList;
       go_back = context.getString(R.string.back_previous);
-      mLogoImage = ImageLoader.GetObject(mContext);
+      mLogoImage = ImageLoader.getInstance(mContext);
    }
    
    public int getCount()

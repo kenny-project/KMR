@@ -72,7 +72,7 @@ public class openFileSelectDialog implements OnItemClickListener,
 		LayoutInflater factory = LayoutInflater.from(context);
 		alertView = factory.inflate(R.layout.alert_dialog_folder_list, null);
 		alertDialog.setContentView(alertView);
-
+		alertView.findViewById(R.id.lyMain).setBackgroundResource(Theme.getBackgroundResource());
 		mCurrentPath = (TextView) alertView.findViewById(R.id.mCurrentPath);
 		Button btOK = (Button) alertView.findViewById(R.id.btOK);
 		btOK.setOnClickListener(this);
@@ -87,13 +87,13 @@ public class openFileSelectDialog implements OnItemClickListener,
 		m_locallist.setAdapter(fileAdapter);
 		m_locallist.setOnScrollListener(m_localOnScrollListener);
 		m_locallist.setOnItemClickListener(this);
-		TextView tview = new TextView(getContext());
-		tview.setHeight(150);
-		tview.setWidth(-1);
-		tview.setVisibility(View.VISIBLE);
-		tview.setBackgroundColor(color.green);
-		ListHeaderView headerView = new ListHeaderView(getContext(), tview);
-		m_locallist.addFooterView(headerView, null, false);
+//		TextView tview = new TextView(getContext());
+//		tview.setHeight(150);
+//		tview.setWidth(-1);
+//		tview.setVisibility(View.VISIBLE);
+//		tview.setBackgroundColor(color.green);
+//		ListHeaderView headerView = new ListHeaderView(getContext(), tview);
+//		m_locallist.addFooterView(headerView, null, false);
 		localManage.setNotifyData(this);
 
 		localManage.setFilePath(localManage.getCurrentPath(),
@@ -103,7 +103,7 @@ public class openFileSelectDialog implements OnItemClickListener,
 		WindowManager m = alertDialog.getWindow().getWindowManager();
 		Display d = m.getDefaultDisplay(); // 为获取屏幕宽、高
 		LayoutParams p = alertDialog.getWindow().getAttributes(); // 获取对话框当前的参数值
-		p.height = (int) (d.getHeight() * 0.8); // 高度设置为屏幕的1.0
+		p.height = (int) (d.getHeight() * 0.9); // 高度设置为屏幕的1.0
 		p.width = (int) (d.getWidth() * 1); // 宽度设置为屏幕的0.8
 		//d.getSize(outSize)
 		p.alpha = 1.0f; // 设置本身透明度

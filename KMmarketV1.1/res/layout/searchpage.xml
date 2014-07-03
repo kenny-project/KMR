@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/toptab_noline_bg"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:gravity="center"
+            android:orientation="horizontal" >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="@string/search_text_top"
+                android:textColor="@color/search_titlecolor"
+                android:textSize="20sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/toptab_head_line" />
+
+    <LinearLayout
+        android:id="@+id/lyTools2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/toptab_bg" >
+
+        <EditText
+            android:id="@+id/etSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="5dip"
+            android:layout_marginLeft="5dip"
+            android:layout_marginRight="5dip"
+            android:layout_marginTop="5dip"
+            android:layout_weight="1"
+            android:background="@drawable/edit_bg"
+            android:hint="输入搜索内容"
+            android:paddingLeft="5dip"
+            android:singleLine="true"
+            android:textColor="@color/toptab_TextColor_normal"
+            android:textSize="20dip" />
+
+        <ImageButton
+            android:id="@+id/btSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="3dip"
+            android:layout_marginLeft="3dip"
+            android:layout_marginRight="5dip"
+            android:layout_marginTop="3dip"
+            android:background="@drawable/bt_search_bg"
+            android:paddingBottom="5dip"
+            android:paddingLeft="10dip"
+            android:paddingRight="10dip"
+            android:paddingTop="5dip"
+            android:src="@drawable/bt_search_ico" />
+    </LinearLayout>
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/toptab_head_line" />
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1" 
+        android:background="@color/whites">
+        <LinearLayout
+            android:id="@+id/lyKeyPanel"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/whites"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/search_text_top"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="搜索热词榜"
+                android:textColor="#26b440"
+                android:textSize="15dp" />
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="2dp"
+                android:background="#26b400" />
+
+            <ListView
+                android:id="@+id/search_ls"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/whites" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/lySoftListPanel"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/whites"
+            android:visibility="gone"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="搜索结果"
+                android:textColor="#26b440"
+                android:textSize="15dp" />
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="2dp"
+                android:background="#26b400" />
+            <ListView
+                android:id="@+id/searchResult_ls"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/whites" />
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>

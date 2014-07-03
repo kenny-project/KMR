@@ -55,6 +55,7 @@
     <string name="btAllFileTitle">全部</string>
     <string name="btFolderTitle">文件夹</string>
     <string name="KuaiPan_Title">金山快盘</string>
+    <string name="Baidu_Title">百度云盘</string>
     <string name="KuaiPan_use_Title">金山快盘使用说明</string>
     <string name="KuaiPan_use_Content">金山快盘使用说明</string>
     <string name="btShare">分享链接</string>

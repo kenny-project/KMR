@@ -105,6 +105,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@drawable/toolbar_backgroud"
+        android:paddingTop="5dip"
         android:gravity="fill"
         android:orientation="horizontal" >
 

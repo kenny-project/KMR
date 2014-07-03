@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/lyTools"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/toptab_bg_nor" >
+
+        <!-- android:background="#ffdadee0" -->
+
+        <Button
+            android:id="@+id/btSoftGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="@drawable/toptab_bg"
+            android:paddingBottom="10dip"
+            android:paddingTop="10dip"
+            android:text="软件"
+            android:textColor="@color/toptab_TextColor_normal"
+            android:textSize="18dip" />
+
+        <ImageView
+            android:layout_width="1px"
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="5dip"
+            android:layout_marginTop="5dip"
+            android:background="@color/head_tab_line_color" />
+
+        <Button
+            android:id="@+id/btGameGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="@drawable/toptab_bg"
+            android:text="游戏"
+            android:textColor="@color/toptab_TextColor_normal"
+            android:textSize="18dip" />
+
+        <ImageView
+            android:layout_width="1px"
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="5dip"
+            android:layout_marginTop="5dip"
+            android:background="@color/head_tab_line_color" />
+
+        <Button
+            android:id="@+id/btSubjectGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="@drawable/toptab_bg"
+            android:text="专题"
+            android:textColor="@color/toptab_TextColor_normal"
+            android:textSize="18dip" />
+
+        <ImageView
+            android:layout_width="1px"
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="5dip"
+            android:layout_marginTop="5dip"
+            android:background="@color/head_tab_line_color" />
+
+        <Button
+            android:id="@+id/btInstalledNecessaryGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="@drawable/toptab_bg"
+            android:text="装机必备"
+            android:textColor="@color/toptab_TextColor_normal"
+            android:textSize="18dip" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/toptab_head_line" />
+
+    <ListView
+        android:id="@+id/index_ls"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:divider="@null"
+        android:dividerHeight="0dp" />
+
+</LinearLayout>

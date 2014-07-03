@@ -54,26 +54,18 @@ public class FavorFileAdapter extends OFileAdapter {
 					.findViewById(R.id.cbChecked);
 			viewHolder.mBackground = (ImageView) convertView
 					.findViewById(R.id.rlBackground);
-
+		} else {
+			viewHolder = (FavViewHolder) convertView.getTag();
+		}
+		
+		if (viewHolder.ThemeMode != Theme.getThemeMode()) {
 			viewHolder.ThemeMode = Theme.getThemeMode();
 			viewHolder.mTV.setTextColor(Theme.getTextColor());
 			viewHolder.mTD.setTextColor(Theme.getTextColor());
 			viewHolder.mPath.setTextColor(Theme.getTextColor());
-			viewHolder.mBackground.setBackgroundColor(Theme
-					.getListSelectedBackgroundColor());
-			convertView.setBackgroundColor(Theme.getBackgroundColor());
-
-		} else {
-			viewHolder = (FavViewHolder) convertView.getTag();
-
-			if (viewHolder.ThemeMode != Theme.getThemeMode()) {
-				viewHolder.mTV.setTextColor(Theme.getTextColor());
-				viewHolder.mTD.setTextColor(Theme.getTextColor());
-				viewHolder.mPath.setTextColor(Theme.getTextColor());
-				viewHolder.mBackground.setBackgroundColor(Theme
-						.getListSelectedBackgroundColor());
-				convertView.setBackgroundColor(Theme.getBackgroundColor());
-			}
+			viewHolder.mBackground.setBackgroundResource(Theme
+					.getSelBackgroundResource());
+			convertView.setBackgroundResource(Theme.getBackgroundResource());
 		}
 		FileBean temp = mFileList.get(position);
 
@@ -85,8 +77,6 @@ public class FavorFileAdapter extends OFileAdapter {
 			viewHolder.mCB.setVisibility(View.GONE);
 			viewHolder.mPath.setVisibility(View.GONE);
 			viewHolder.mBackground.setVisibility(View.GONE);
-			convertView.setBackgroundColor(Theme.getBackgroundColor());
-			viewHolder.mBackground.setVisibility(View.GONE);
 		}
 		else if (temp.getFileName().equals("ALL")) 
 		{
@@ -96,8 +86,6 @@ public class FavorFileAdapter extends OFileAdapter {
 			viewHolder.mTD.setVisibility(View.GONE);
 			viewHolder.mCB.setVisibility(View.GONE);
 			viewHolder.mPath.setVisibility(View.GONE);
-			viewHolder.mBackground.setVisibility(View.GONE);
-			convertView.setBackgroundColor(Theme.getBackgroundColor());
 			viewHolder.mBackground.setVisibility(View.GONE);
 		}
 		else 

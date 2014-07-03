@@ -49,8 +49,6 @@ import com.kenny.file.bean.FileEnd;
 import com.kenny.file.bean.ScarchParam;
 import com.kenny.file.dialog.SearchFileDialog;
 import com.kenny.file.interfaces.INotifyDataSetChanged;
-import com.kenny.file.manager.FileManager;
-import com.kenny.file.manager.IManager;
 import com.kenny.file.sort.FileEndSort;
 import com.kenny.file.tools.T;
 import com.kenny.file.util.Const;
@@ -58,7 +56,7 @@ import com.slidingmenu.lib.SlidingMenu;
 import com.slidingmenu.lib.app.SlidingFragmentActivity;
 
 public class SearchResultPage extends SlidingFragmentActivity implements
-		OnItemClickListener, INotifyDataSetChanged, OnClickListener, IManager
+		OnItemClickListener, INotifyDataSetChanged, OnClickListener
 {
 	private Button btnBack, btSearch, btSearchMode;
 	private EditText etValue;
@@ -70,7 +68,7 @@ public class SearchResultPage extends SlidingFragmentActivity implements
 	private ArrayList<FGroupInfo> mGroupList = new ArrayList<FGroupInfo>(); // 正在运行程序列表
 	private Activity m_act;
 	private SlidingMenu sm;
-	private static MainUIActivity m_MainUIActivity;
+//	private static MainUIActivity m_MainUIActivity;
 
 	public static void actionSettingPage(Activity m_act)
 	{
@@ -79,10 +77,10 @@ public class SearchResultPage extends SlidingFragmentActivity implements
 		// newContent.switchFragment(newContent);
 
 		// public Intent(Context packageContext, Class<?> cls)
-		if (m_act instanceof MainUIActivity)
-		{
-			m_MainUIActivity = (MainUIActivity) m_act;
-		}
+//		if (m_act instanceof MainUIActivity)
+//		{
+//			m_MainUIActivity = (MainUIActivity) m_act;
+//		}
 		Intent intent = new Intent(m_act, SearchResultPage.class);
 		m_act.startActivity(intent);
 	}
@@ -673,12 +671,5 @@ public class SearchResultPage extends SlidingFragmentActivity implements
 			}
 			fileAdapter.notifyDataSetChanged();
 		}
-	}
-
-	@Override
-	public void Refresh()
-	{
-		// TODO Auto-generated method stub
-		fileAdapter.notifyDataSetChanged();
 	}
 }

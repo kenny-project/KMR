@@ -66,12 +66,12 @@ public class HistoryAlertDialog implements OnClickListener,
    {
       switch(v.getId())
       {
-      case R.id.btRoot:
-         FileManager.getInstance().setFilePath(Const.Root);
-         break;
-      case R.id.btSDCard:
-         FileManager.getInstance().setFilePath(Const.getSDCard());
-         break;
+//      case R.id.btRoot:
+//         FileManager.getInstance().setFilePath(Const.Root);
+//         break;
+//      case R.id.btSDCard:
+//         FileManager.getInstance().setFilePath(Const.getSDCard());
+//         break;
       case R.id.btClearHistory:
 //         KHistoryManage.GetHandler().Clear();
 //         KHistoryManage.GetHandler().SaveFile();

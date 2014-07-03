@@ -1,0 +1,21 @@
+<resources>
+    <style name="loading_small" parent="@android:style/Widget.ProgressBar.Small">
+		<item name="android:indeterminateDrawable">@drawable/pullprogressbar_style</item>
+		<item name="android:layout_width">21dip</item> 
+		<item name="android:layout_height">21dip</item>
+		<item name="android:layout_gravity">center_vertical</item>
+	</style>
+  <style name="AppTheme" parent="android:Theme.Light" />
+  
+  <style name="roomRatingBar" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/ratingbar_drawable</item>
+        <item name="android:minHeight">20dp</item>
+        <item name="android:maxHeight">20dp</item>
+    </style>
+  <style name="feedbackRatingBar" parent="@android:style/Widget.RatingBar">
+        <item name="android:minHeight">73dip</item>
+        <item name="android:maxHeight">73dip</item>
+        <item name="android:progressDrawable">@drawable/ratingbar_big_drawable</item>
+    </style>
+    <!-- <item name="android:progressDrawable">@drawable/ratingbar_drawable</item> -->    
+</resources>

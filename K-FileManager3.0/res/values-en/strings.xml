@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	
+	 <string name="Baidu_Title">百度云盘</string>
 	<string name="app_name">K-FileExplorer</string>
     <string name="RARActivity_Name">K-RARManager</string>
     <string name="ZIPActivity_Name">K-ZIPManager</string>

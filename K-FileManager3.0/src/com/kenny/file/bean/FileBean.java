@@ -9,18 +9,41 @@ import android.graphics.drawable.Drawable;
 
 import com.kenny.file.util.Res;
 
-public class FileBean {
+public class FileBean
+{
 	private static DecimalFormat myformat = new DecimalFormat("#####0.00");
-	protected String FileName; // 文件名
-	private String fileEnds = null; // 文件扩展名
-	private String FolderPath = null;// 文件夹路径
-	protected String FilePath = ""; // 文件路径
+	protected String FileName; //文件名
+	private String fileEnds = null; //文件扩展名
+	private String FolderPath = null;//文件夹路径
+	protected String FilePath = ""; //文件路径
 	private boolean isBackUp; //
 	protected File mFile;
 	private boolean check = false; // 是否选择
-	private int ItemFolderCount = 0; //文件夹下个数
+	private int ItemFolderCount = 0; // 文件夹下个数
 	private int ItemFileCount = 0; // 文件下个数
-	private String Nickname=null;
+	private String Nickname = null;
+	private boolean directory; // true:目录
+	private SoftReference<Drawable> mFileIco = null; // 文件内容生成图标
+	private Drawable mDefFileIco = null; // 文件模认图标
+	protected Long length = 0l; // 文件大小
+	protected String mDesc;// 详细信息
+	private String szLength = null;
+	public static final int APK_UNINSTALL=0x1002;//未安装
+	public static final int APK_LOW_VERCODE=0x1002;//低版本
+	public static final int APK_HIGH_VERCODE=0x1002;//高版本
+	public static final int APK_NOW_VERCODE=0x1002;//当前版本
+	private int nFlag;//状态字
+	
+	public int getNFlag()
+	{
+		return nFlag;
+	}
+
+	public void setNFlag(int nFlag)
+	{
+		this.nFlag = nFlag;
+	}
+
 	public int getItemFileCount()
 	{
 		return ItemFileCount;
@@ -34,7 +57,7 @@ public class FileBean {
 	public void setNickName(String nickname)
 	{
 		Nickname = nickname;
-		mDesc=null;
+		mDesc = null;
 	}
 
 	public void setItemFileCount(int itemFileCount)
@@ -42,13 +65,10 @@ public class FileBean {
 		ItemFileCount = itemFileCount;
 	}
 
-	private boolean directory; // true:目录
-	private SoftReference<Drawable> mFileIco = null; // 文件内容生成图标
-	private Drawable mDefFileIco = null; // 文件模认图标
-	protected Long length = 0l; // 文件大小
-	protected String mDesc;// 详细信息
 
-	public FileBean() {
+
+	public FileBean()
+	{
 		directory = false;
 		this.isBackUp = false;
 	}
@@ -56,13 +76,16 @@ public class FileBean {
 	public FileBean(File mFile, String fileName)// throws Exception
 	{
 		this.mFile = mFile;
-		if (mFile != null) {
+		if (mFile != null)
+		{
 			directory = mFile.isDirectory();
 			FilePath = mFile.getPath();
 			length = mFile.length();
-			if (fileName == null) {
+			if (fileName == null)
+			{
 				FileName = mFile.getName();
-			} else {
+			} else
+			{
 				FileName = fileName;
 			}
 			this.isBackUp = false;
@@ -73,19 +96,22 @@ public class FileBean {
 		// }
 	}
 
-	public FileBean(File mFile, String fileName, String filePath) {
+	public FileBean(File mFile, String fileName, String filePath)
+	{
 		this(mFile, fileName, filePath, false);
 	}
 
 	public FileBean(File mFile, String fileName, String filePath,
-			boolean isBackUp) {
+			boolean isBackUp)
+	{
 		this.mFile = mFile;
 		FilePath = filePath;
 		FileName = fileName;
 		this.isBackUp = isBackUp;
 	}
 
-	public void setBackUp(boolean isBackUp) {
+	public void setBackUp(boolean isBackUp)
+	{
 		this.isBackUp = isBackUp;
 	}
 
@@ -94,47 +120,62 @@ public class FileBean {
 	 * 
 	 * @return
 	 */
-	public boolean exists() {
-		if (mFile != null) {
+	public boolean exists()
+	{
+		if (mFile != null)
+		{
 			return mFile.exists();
-		} else {
+		} else
+		{
 			return false;
 		}
 	}
 
-	public int getItemFolderCount() {
+	public int getItemFolderCount()
+	{
 		return ItemFolderCount;
 	}
 
-	public void setItemFolderCount(int itemCount) {
+	public void setItemFolderCount(int itemCount)
+	{
 		this.ItemFolderCount = itemCount;
 	}
 
-	private String szLength = null;
 
-	public int getIntLength() {
+
+	public int getIntLength()
+	{
 		return length.intValue();
 	}
 
-	public Long getLongLength() {
+	public Long getLongLength()
+	{
 		return length;
 	}
 
-	public String getLength() {
-		if (szLength == null) {
+	public String getLength()
+	{
+		if (szLength == null)
+		{
 			double totalsize = length;
-			if (totalsize > 1024) {
+			if (totalsize > 1024)
+			{
 				totalsize = totalsize / 1024.0;
-				if (totalsize > 1024) {
+				if (totalsize > 1024)
+				{
 					totalsize = totalsize / 1024.0;
 					szLength = myformat.format(totalsize) + "M";
-				} else {
+				} else
+				{
 					szLength = myformat.format(totalsize) + "K";
 				}
-			} else {
-				if (totalsize == 0) {
+			} else
+			{
+				if (totalsize == 0)
+				{
 					return "0.00B";
-				} else {
+				} else
+				{
 					szLength = myformat.format(totalsize) + "B";
 				}
 			}
@@ -142,45 +183,55 @@ public class FileBean {
 		return szLength;
 	}
 
-	public void setLength(Long length) {
+	public void setLength(Long length)
+	{
 		this.length = length;
 	}
 
-	public boolean isChecked() {
+	public boolean isChecked()
+	{
 		return check;
 	}
 
-	public void setChecked(boolean check) {
+	public void setChecked(boolean check)
+	{
 		this.check = check;
 	}
 
-	public void setDirectory(boolean directory) {
+	public void setDirectory(boolean directory)
+	{
 		this.directory = directory;
 	}
 
-	public boolean isDirectory() {
+	public boolean isDirectory()
+	{
 		return directory;
 	}
 
-	public File getFile() {
-		if (mFile == null) {
+	public File getFile()
+	{
+		if (mFile == null)
+		{
 			mFile = new File(FilePath);
 		}
 		return mFile;
 	}
 
-	public boolean isBackUp() {
+	public boolean isBackUp()
+	{
 		return isBackUp;
 	}
 
-	public String getFileName() {
+	public String getFileName()
+	{
 		return FileName;
 	}
 
-	public String getFileEnds() {
-		if (fileEnds == null) 
+	public String getFileEnds()
+	{
+		if (fileEnds == null)
 		{
-			if (FilePath == null) 
+			if (FilePath == null)
 			{
 				FilePath = FileName;
 			}
@@ -190,7 +241,8 @@ public class FileBean {
 		return fileEnds;
 	}
 
-	public void setFileName(String fileName) {
+	public void setFileName(String fileName)
+	{
 		FileName = fileName;
 	}
 
@@ -199,15 +251,18 @@ public class FileBean {
 	 * 
 	 * @return
 	 */
-	public String getFolderPath() {
+	public String getFolderPath()
+	{
 
-		if (FolderPath == null) {
+		if (FolderPath == null)
+		{
 			FolderPath = FilePath.substring(0, FilePath.lastIndexOf("/") + 1);// 取出文件后缀名并转成小写
 		}
 		return FolderPath;
 	}
 
-	public void setFolderPath(String folderPath) {
+	public void setFolderPath(String folderPath)
+	{
 		FolderPath = folderPath;
 	}
 
@@ -216,78 +271,88 @@ public class FileBean {
 	 * 
 	 * @return
 	 */
-	public String getFilePath() {
+	public String getFilePath()
+	{
 		return FilePath;
 	}
 
-	public void setFilePath(String filePath) {
-		if (filePath != null) {
+	public void setFilePath(String filePath)
+	{
+		if (filePath != null)
+		{
 			FilePath = filePath;
 		}
 	}
 
-	public void setFileIco(SoftReference<Drawable> mFileIco) {
+	public void setFileIco(SoftReference<Drawable> mFileIco)
+	{
 		this.mFileIco = mFileIco;
 	}
 
-	public Drawable getFileIco(Context mContext) {
-		if (mFileIco != null) {
+	public Drawable getFileIco(Context mContext)
+	{
+		if (mFileIco != null)
+		{
 			Drawable temp = mFileIco.get();
-			if (temp != null) {
+			if (temp != null)
+			{
 				return temp;
 			}
 		}
-		if (mDefFileIco == null) {
+		if (mDefFileIco == null)
+		{
 			mDefFileIco = Init(mContext);
 		}
 		return mDefFileIco;
 	}
 
-	public String getDesc() {
-		if (mDesc != null) 
+	public String getDesc()
+	{
+		if (mDesc != null)
 		{
 			return mDesc;
-			
-		}
-		else 
+
+		} else
 		{
-			if (isDirectory()) 
+			if (isDirectory())
 			{
-				if(getNickName()!=null)
+				if (getNickName() != null)
 				{
-					mDesc = getItemFolderCount()+ "文件夹  "+getItemFileCount()+ "文件  "+getNickName();
-				}
-				else
+					mDesc = getItemFolderCount() + "文件夹  " + getItemFileCount()
+							+ "文件  " + getNickName();
+				} else
 				{
-					mDesc = getItemFolderCount()+ "文件夹  "+getItemFileCount()+ "文件";
+					mDesc = getItemFolderCount() + "文件夹  " + getItemFileCount()
+							+ "文件";
 				}
-			}
-			else 
+			} else
 			{
-				if(getNickName()!=null)
+				if (getNickName() != null)
 				{
-					mDesc =getNickName()+" "+getLength();
-				}
-				else
+					mDesc = getNickName() + " " + getLength();
+				} else
 				{
-					mDesc =getLength();
+					mDesc = getLength();
 				}
 			}
 		}
 		return mDesc;
 	}
+
 	public void Clear()
 	{
-		mDesc=null;
+		mDesc = null;
 	}
-	private Drawable Init(Context mContext) 
+
+	private Drawable Init(Context mContext)
 	{
 		Res mRes = Res.getInstance(mContext);
-		if (isDirectory()) {
-			//getDesc();
+		if (isDirectory())
+		{
 			return mRes.getFolder();
-		} else {
-			mDesc = getLength();//+"   文件类型:"+getFileEnds();
+		} else
+		{
+			mDesc = getLength();// +"   文件类型:"+getFileEnds();
 			return mRes.getDefFileIco(getFileEnds());
 		}
 	}

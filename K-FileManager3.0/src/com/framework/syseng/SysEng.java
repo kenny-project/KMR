@@ -101,26 +101,44 @@ public class SysEng extends Thread
     * 
     * @param event
     */
-   public void addThreadEvent(AbsEvent event)
-   {
-      synchronized (vec)
-      {
-         try
-         {
-	  Thread thread = new Thread(event);
-	  thread.setPriority(MIN_PRIORITY);
-	  thread.start();
-	  // vec.add(event);
-	  // vec.notify();
-	  P.v("event", "add event unblock " + event.getClass().getName());
-         }
-         catch (Exception e)
-         {
-	  e.printStackTrace();
-         }
-      }
-   }
-   
+	public void addThreadEvent(AbsEvent event)
+	{
+		synchronized (vec)
+		{
+			try
+			{
+				Thread thread = new Thread(event);
+				thread.setPriority(MIN_PRIORITY);
+				thread.start();
+				P.v("event", "add event unblock " + event.getClass().getName());
+			} catch (Exception e)
+			{
+				e.printStackTrace();
+			}
+		}
+	}
+	 /**
+	    * 加入多线程函数
+	    * 
+	    * @param event
+	    */
+		public void addThreadEvent(AbsEvent event,int priority)
+		{
+			synchronized (vec)
+			{
+				try
+				{
+					Thread thread = new Thread(event);
+					thread.setPriority(priority);
+					thread.start();
+					P.v("event", "add event unblock " + event.getClass().getName());
+				} catch (Exception e)
+				{
+					e.printStackTrace();
+				}
+			}
+		}
+	
    /**
     * 延时执行的事�? * @param event �?��执行的event
     * 

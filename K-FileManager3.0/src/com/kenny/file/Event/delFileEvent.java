@@ -30,24 +30,24 @@ public class delFileEvent extends AbsEvent
 	private Context m_context;
 	private ProgressDialog mProgressDialog;
 	private boolean mProgress = false;
-	private INotifyDataSetChanged notifySetChanged = null;
+	private INotifyDataSetChanged notify = null;
 
 	public delFileEvent(Context context, List<FileBean> list,
-			INotifyDataSetChanged notifySetChanged)
+			INotifyDataSetChanged notify)
 	{
 		this.list = list;
-		this.notifySetChanged = notifySetChanged;
+		this.notify = notify;
 		this.m_context = context;
 		ShowDialog(list);
 	}
 
 	public delFileEvent(Context context, FileBean fileBean,
-			INotifyDataSetChanged notifySetChanged)
+			INotifyDataSetChanged notify)
 	{
 		this.list = new ArrayList<FileBean>();
 		list.add(fileBean);
 		this.m_context = context;
-		this.notifySetChanged = notifySetChanged;
+		this.notify = notify;
 		ShowDialog(list);
 	}
 
@@ -117,10 +117,9 @@ public class delFileEvent extends AbsEvent
 			@Override
 			public void ok()
 			{
-				FileManager.getInstance().Refresh();
-				if (notifySetChanged != null)
+				if (notify != null)
 				{
-					notifySetChanged.NotifyDataSetChanged(
+					notify.NotifyDataSetChanged(
 							Const.cmd_DelFileEvent_Finish, null);
 				}
 				mProgressDialog.dismiss();

@@ -2,27 +2,33 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.kenny.KFileManager"
     android:installLocation="internalOnly"
-    android:versionCode="281"
-    android:versionName="3.0" 
-    >
+    android:versionCode="287"
+    android:versionName="3.2.2" >
+
     <uses-sdk
         android:minSdkVersion="7"
         android:targetSdkVersion="14" />
     <!-- 必须申明的权限 -->
-	<uses-permission android:name="android.permission.INTERNET"></uses-permission>
-	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
-	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
-	<uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
-	<uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES"></uses-permission>
-	<!-- 获取基站需要的权限 -->
-	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-	<!-- 可选的权限 -->
-	<!-- 启用错误分析功能，须添加该权限 -->
-	<uses-permission android:name="android.permission.READ_LOGS"></uses-permission>
-	<!-- 可选的权限 -->
-	<!-- 使用GPS获取用户精确定位信息 -->
-	<!-- <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>-->
-	
+    <uses-permission android:name="android.permission.INTERNET" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" >
+    </uses-permission>
+    <!-- 获取基站需要的权限 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- 可选的权限 -->
+    <!-- 启用错误分析功能，须添加该权限 -->
+    <uses-permission android:name="android.permission.READ_LOGS" >
+    </uses-permission>
+    <!-- 可选的权限 -->
+    <!-- 使用GPS获取用户精确定位信息 -->
+    <!-- <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission> -->
+
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" /> <!-- 创建快捷方式 -->
@@ -49,56 +55,76 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
+        android:name="com.kenny.file.Application.KFileManagerApp"
         android:debuggable="true"
+        android:hardwareAccelerated="true"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
-        android:name="com.kenny.file.Application.KFileManagerApp"
-        android:theme="@style/Theme.Sherlock.Light.DarkActionBar" 
         android:sharedUserId="android.uid.system"
-        android:hardwareAccelerated="true"
-         >
-        <meta-data android:name="BaiduMobAd_CHANNEL" android:value="baidu Market" />
-		<!-- 您从百度网站获取的APP KEY-->
-		<meta-data android:name="BaiduMobAd_STAT_ID" android:value="d76832ba61" />
-		<!-- 是否开启错误日志统计，默认为false -->
-		<meta-data android:name="BaiduMobAd_EXCEPTION_LOG" android:value="false" />
-		<!-- 日志发送策略，可选值：APP_START、ONCE_A_DAY、SET_TIME_INTERVAL，默认为APP_START -->
-		<meta-data android:name="BaiduMobAd_SEND_STRATEGY" android:value="ONCE_A_DAY" />
-		<!-- 日志发送策略 为SET_TIME_INTERVAL时，需设定时间间隔。取值为1-24的整数，默认为1 -->
-		<!-- <meta-data android:name="BaiduMobAd_TIME_INTERVAL" android:value="10" /> -->
-		<!-- 日志仅在wifi网络下发送，默认为false -->
-		<meta-data android:name="BaiduMobAd_ONLY_WIFI" android:value="false" />
-　　		<!-- 是否获取基站位置信息，默认为获取基站位置 -->
-		<meta-data android:name="BaiduMobAd_CELL_LOCATION" android:value="false" />
+        android:theme="@style/Theme.Sherlock.Light.DarkActionBar" >
+        <meta-data
+            android:name="BaiduMobAd_CHANNEL"
+            android:value="baidu Market" />
+        <!-- 您从百度网站获取的APP KEY -->
+        <meta-data
+            android:name="BaiduMobAd_STAT_ID"
+            android:value="d76832ba61" />
+        <!-- 是否开启错误日志统计，默认为false -->
+        <meta-data
+            android:name="BaiduMobAd_EXCEPTION_LOG"
+            android:value="false" />
+        <!-- 日志发送策略，可选值：APP_START、ONCE_A_DAY、SET_TIME_INTERVAL，默认为APP_START -->
+        <meta-data
+            android:name="BaiduMobAd_SEND_STRATEGY"
+            android:value="ONCE_A_DAY" />
+        <!-- 日志发送策略 为SET_TIME_INTERVAL时，需设定时间间隔。取值为1-24的整数，默认为1 -->
+        <!-- <meta-data android:name="BaiduMobAd_TIME_INTERVAL" android:value="10" /> -->
+        <!-- 日志仅在wifi网络下发送，默认为false -->
+        <meta-data
+            android:name="BaiduMobAd_ONLY_WIFI"
+            android:value="false" />
+
+
+
+　　		
+        
+
+        
+
+        <!-- 是否获取基站位置信息，默认为获取基站位置 -->
+        <meta-data
+            android:name="BaiduMobAd_CELL_LOCATION"
+            android:value="false" />
         <meta-data
             android:name="UMENG_CHANNEL"
             android:value="googlemarekt" />
-        <!-- 
+        <!--
         	android:theme="@style/Theme.Sherlock.Light.DarkActionBar"
             android:uiOptions="splitActionBarWhenNarrow"
             android:uiOptions="splitActionBarWhenNarrow"
-             -->
-            <activity android:name="com.kenny.Slidingmenu.MainUIActivity" 
+        -->
+        <activity
+            android:name="com.kenny.Slidingmenu.MainUIActivity"
             android:configChanges="keyboardHidden|orientation"
             android:launchMode="singleTask"
-            
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden"
-            >
+            android:windowSoftInputMode="stateHidden" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <service
             android:name="com.umeng.common.net.DownloadingService"
             android:exported="true"
             android:process=":DownloadingService" >
         </service>
-        
 
-        
-        <activity android:name="com.kenny.file.Activity.FileRelevanceManager" android:theme="@android:style/Theme.Black.NoTitleBar"/>
+        <activity
+            android:name="com.kenny.file.Activity.FileRelevanceManager"
+            android:theme="@android:style/Theme.Black.NoTitleBar" />
         <activity
             android:name="com.umeng.fb.ui.SendFeedback"
             android:windowSoftInputMode="adjustResize" />
@@ -113,25 +139,23 @@
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Black.NoTitleBar"
             android:windowSoftInputMode="stateHidden" >
+
             <!-- android:windowSoftInputMode="adjustResize" -->
-<!--              <intent-filter>
+            <!--
+                  <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             -->
         </activity>
-                 <activity
+        <activity
             android:name="com.kenny.file.Activity.ApkManager"
             android:configChanges="keyboard|keyboardHidden|orientation"
-            android:theme="@android:style/Theme.Black.NoTitleBar" 
-            />
-           
-           <activity
+            android:theme="@android:style/Theme.Black.NoTitleBar" />
+        <activity
             android:name="com.kuaipan.client.KuaiPanPage"
             android:configChanges="keyboard|keyboardHidden|orientation"
-            android:theme="@android:style/Theme.Black.NoTitleBar" 
-            />
-                         
+            android:theme="@android:style/Theme.Black.NoTitleBar" />
         <activity
             android:name="com.framework.debugreport.BugReportActivity"
             android:configChanges="orientation|keyboardHidden"
@@ -150,12 +174,13 @@
             android:name="com.kenny.Zip.ZIPFileActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/ZIPActivity_Name"
-            
             android:theme="@android:style/Theme.Black.NoTitleBar" >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data android:scheme="file" />
                 <data android:mimeType="*/*" />
                 <data android:host="*" />
@@ -163,23 +188,26 @@
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data android:scheme="content" />
                 <data android:host="*" />
                 <data android:pathPattern=".*\\.zip" />
             </intent-filter>
         </activity>
- <activity
+        <activity
             android:name="com.kenny.RAR.RARFileActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/ZIPActivity_Name"
-            
             android:theme="@android:style/Theme.Black.NoTitleBar" >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data android:scheme="file" />
                 <data android:mimeType="*/*" />
                 <data android:host="*" />
@@ -187,8 +215,10 @@
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data android:scheme="content" />
                 <data android:host="*" />
                 <data android:pathPattern=".*\\.rar" />
@@ -233,15 +263,16 @@
 
         <!-- android:process="MediaPlayActivity" -->
         <!-- android:process=":MediaPlayActivity" -->
-        
+
         <activity
+            android:name="com.kenny.LyricPlayer.xwg.MediaPlayActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/EditTxtActivity_Name"
-            android:name="com.kenny.LyricPlayer.xwg.MediaPlayActivity"
             android:launchMode="singleTask"
             android:theme="@android:style/Theme.Black.NoTitleBar" >
-            <intent-filter >
+            <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
@@ -252,27 +283,22 @@
                 <data android:pathPattern=".*\\.wav" />
                 <data android:pathPattern=".*\\.amr" />
             </intent-filter>
-
         </activity>
-        
-                <activity
+        <activity
             android:name="com.kenny.Slidingmenu.Fragment.LocalFragmentActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation"
-            />
+            android:configChanges="keyboard|keyboardHidden|orientation" />
         <activity
             android:name="com.kenny.Slidingmenu.Fragment.SettingPage"
-            android:configChanges="keyboard|keyboardHidden|orientation"
-            />
-       <activity
+            android:configChanges="keyboard|keyboardHidden|orientation" />
+        <activity
             android:name="com.kenny.Slidingmenu.Fragment.SearchResultPage"
-            android:configChanges="keyboard|keyboardHidden|orientation"
-            />
+            android:configChanges="keyboard|keyboardHidden|orientation" />
+
         <service
-            android:enabled="true"
-            android:exported="true"
             android:name="com.kenny.LyricPlayer.xwg.MediaPlayerService"
-             >
-            <intent-filter >
+            android:enabled="true"
+            android:exported="true" >
+            <intent-filter>
                 <action android:name="LyricPlayer.xwg.musicplaybackservice" />
                 <action android:name="KMediaPlayer.action.PLAY_PAUSE" />
                 <action android:name="KMediaPlayer.action.PAUSE" />
@@ -283,17 +309,17 @@
         </service>
 
         <receiver android:name="com.kenny.LyricPlayer.xwg.MediaButtonReceiver" >
-            <intent-filter >
+            <intent-filter>
                 <action android:name="android.intent.action.MEDIA_BUTTON" />
             </intent-filter>
         </receiver>
         <receiver android:name="com.kenny.LyricPlayer.xwg.MusicIntentReceiver" >
-            <intent-filter >
+            <intent-filter>
                 <action android:name="android.media.AUDIO_BECOMING_NOISY" />
             </intent-filter>
         </receiver>
         <receiver android:name="com.kenny.LyricPlayer.xwg.PhoneStateReceiver" >
-            <intent-filter >
+            <intent-filter>
                 <action android:name="android.intent.action.PHONE_STATE" />
             </intent-filter>
         </receiver>
@@ -305,8 +331,10 @@
             android:label="@string/GalleryActivity_Name" >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data android:scheme="file" />
                 <data android:mimeType="*/*" />
                 <data android:host="*" />
@@ -330,8 +358,10 @@
             android:theme="@android:style/Theme.Black.NoTitleBar" />
         <activity android:name="com.kenny.swiftp.gui.FtpConfigure" />
         <activity android:name="com.kenny.swiftp.gui.ServerPreferenceActivity" />
+
         <service android:name="com.kenny.ppareit.swiftp.FTPServerService" />
         <!-- SwiFtp -->
+
 
         <!-- add feedback Activity -->
         <activity
@@ -342,7 +372,8 @@
             android:name="com.feedback.ui.FeedbackConversation"
             android:configChanges="keyboard" />
         <!-- Widget actions are registered here -->
-        <!--  <receiver
+        <!--
+        <receiver
             android:name="com.kenny.swiftp.WidgetProvider"
             android:label="@string/swiftp_name" >
             <intent-filter>
@@ -356,7 +387,7 @@
         </receiver>
         -->
         <!-- 注意！！ 这句必须要加，否则接收不到BroadCast -->
-<!-- 
+        <!--
         <receiver
             android:name="com.kenny.file.Receiver.PackageReceiver"
             android:label="@string/app_name" >
@@ -367,17 +398,30 @@
                 <data android:scheme="package" />
             </intent-filter>
         </receiver> 
- -->
+        -->
         <meta-data
             android:name="UMENG_APPKEY"
             android:value="4efabba8527015532c000076" />
-		<activity android:name="com.umeng.fb.ConversationActivity"  android:theme="@android:style/Theme.Black.NoTitleBar"/>
-		<activity android:name="com.umeng.fb.ContactActivity"  android:theme="@android:style/Theme.Black.NoTitleBar"/>
-		<service
-    android:name="com.umeng.common.net.DownloadingService"
-    android:exported="true"
-    android:process=":DownloadingService" >
-	</service>
+
+        <activity
+            android:name="com.umeng.fb.ConversationActivity"
+            android:theme="@android:style/Theme.Black.NoTitleBar" />
+        <activity
+            android:name="com.umeng.fb.ContactActivity"
+            android:theme="@android:style/Theme.Black.NoTitleBar" />
+
+        <service
+            android:name="com.umeng.common.net.DownloadingService"
+            android:exported="true"
+            android:process=":DownloadingService" >
+        </service>
+        <!-- baidu yun api -->
+        
+         <activity
+            android:name="com.baiduyun.client.BaiduPage"
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
+        </activity>
+        <!--end  baiduyun -->
         <!-- kuaipan start -->
         <!-- 金山快盘UI,请不要设置成singleTask(除了TAuthView) -->
         <activity
@@ -389,10 +433,13 @@
             android:launchMode="singleTask" >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data android:scheme="auth" />
             </intent-filter>
         </activity>
     </application>
+
 </manifest>

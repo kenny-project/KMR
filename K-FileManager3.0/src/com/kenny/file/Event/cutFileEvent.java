@@ -22,15 +22,15 @@ public class cutFileEvent extends AbsEvent implements INotifyDataSetChanged
 {
 	private Context context;
 	private List<FileBean> mFileList = new ArrayList<FileBean>();
-
-	public cutFileEvent(Context context, FileBean file)
+	public cutFileEvent(Context context, FileBean file,INotifyDataSetChanged notif)
 	{
 		this.context = context;
+		this.notif=notif;
 		mFileList.clear();
 		mFileList.add(file);
 	}
-	private IManager notif=null;
-	public cutFileEvent(Context context, List<FileBean> list,IManager notif)
+	private INotifyDataSetChanged notif=null;
+	public cutFileEvent(Context context, List<FileBean> list,INotifyDataSetChanged notif)
 	{
 		this.context = context;
 		this.notif=notif;
@@ -50,8 +50,8 @@ public class cutFileEvent extends AbsEvent implements INotifyDataSetChanged
 	{
 		if (mFileList.size() > 0)
 		{
-			new FolderListDialog().ShowDialog(context, FileManager.getInstance()
-					.getCurrentPath(),mFileList, this);
+			String currentPath=mFileList.get(0).getFile().getParent();
+			new FolderListDialog().ShowDialog(context, currentPath,mFileList, this);
 		} else
 		{
 			Toast.makeText(

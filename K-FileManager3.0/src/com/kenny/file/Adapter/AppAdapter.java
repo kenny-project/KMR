@@ -23,6 +23,7 @@ import com.kenny.file.bean.AppBean;
 import com.kenny.file.interfaces.INotifyDataSetChanged;
 import com.kenny.file.interfaces.ImageCallback;
 import com.kenny.file.util.Res;
+import com.kenny.file.util.Theme;
 
 /**
  * 自定义ArrayAdapter
@@ -61,7 +62,7 @@ public class AppAdapter extends ArrayAdapter<AppBean> {
 			bSelect = true;
 		}
 		// mpkgSizeObserver = PkgSizeObserver.getHandler(mContext);
-		mLogoImage = ImageLoader.GetObject(mContext);
+		mLogoImage = ImageLoader.getInstance(mContext);
 		mApp = Res.getInstance(mContext).getDefFileIco("apk");
 		mHandler = new Handler();
 	}
@@ -113,6 +114,16 @@ public class AppAdapter extends ArrayAdapter<AppBean> {
 		} else {
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
+		
+		if (viewHolder.ThemeMode != Theme.getThemeMode())
+		{
+			viewHolder.mTV.setTextColor(Theme.getTextColor());
+			viewHolder.mDV.setTextColor(Theme.getTextColor());
+//			convertView.setBackgroundResource(Theme
+//					.getSelBackgroundResource());
+			convertView.setBackgroundResource(Theme.getBackgroundResource());
+			viewHolder.ThemeMode = Theme.getThemeMode();
+		}
 		AppBean temp = getItem(position);
 		if (temp != null) {
 			// viewHolder.mDV.setText("大小:" + temp.getSTotalsize());
@@ -123,6 +134,7 @@ public class AppAdapter extends ArrayAdapter<AppBean> {
 			} else {
 				viewHolder.mISDV.setVisibility(View.GONE);
 			}
+			
 			//viewHolder.mDV.setText(temp.getVersionName());
 			viewHolder.mDV.setText("包名:"+temp.getPackageName()+"\n版本:"+temp.getVersionName());
 			viewHolder.mTV.setText(temp.getAppName());
@@ -178,12 +190,13 @@ public class AppAdapter extends ArrayAdapter<AppBean> {
 		}
 	}
 
-	class ViewHolder {
-		ImageView mISDV; // 图标
-		ImageView mIV; // 图标
-		TextView mTV; // Title
-		TextView mDV; // Desc
-		CheckBox mCB; // 选择
+	public class ViewHolder {
+		public int ThemeMode = -1;// 当前样式
+		public ImageView mISDV; // 图标
+		public ImageView mIV; // 图标
+		public TextView mTV; // Title
+		public TextView mDV; // Desc
+		public CheckBox mCB; // 选择
 	}
 
 	class OnKCheckedChangeListener implements OnCheckedChangeListener,

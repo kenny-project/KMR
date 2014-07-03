@@ -1,31 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- 友盟-->
+    <!-- 友盟 -->
     <color name="umeng_fb_color_btn_pressed">#1495F7</color>
     <color name="umeng_fb_color_btn_normal">#333333</color>
-    
     <color name="favorpage_status_textColor">#ff00133E</color>
     <color name="setting_group_BG">#ff191919</color>
     <color name="setting_group_TextColor">#ffbebebe</color>
     <color name="navmenu_divider">#ff565656</color>
     <color name="navmenu_background">#ff454545</color>
     <color name="navmenu_kmenu_background">#ff323232</color>
-    
     <color name="no_back">#00000000</color>
     <color name="title">#ff2e2e2e</color>
     <color name="desc">#ff949494</color>
     <color name="ProgressBG">#C8c8c8</color>
     <color name="Progress">#f8f8f8</color>
     <color name="Secondary">#ffe7f3f7</color>
-    
     <color name="AboutBG">#f8f8f8</color>
     <color name="SideButtonBG">#000000</color>
     <color name="back_ground">#d7d7d7</color>
-    
     <color name="MusicFileAdapter_SelectItem">#ff07c2f1</color> <!-- 系统设置栏颜色 -->
     <color name="MusicFileAdapter_NormalItem">#ffd7d7d7</color> <!-- 系统设置栏颜色 -->
-    
+
     <color name="ContentText">#000000</color>
     <color name="ContentBack">#F8F8F8</color>
     <color name="ContentToolBG">#3888e0</color>
@@ -62,13 +58,13 @@
     <color name="tab_TextColor_selected">#000000</color> <!-- 功具条控制背影颜色 -->
     <color name="tab_TextColor_normal">#FFFFFFFF</color> <!-- 功具条控制背影颜色 -->
 
-	<color name="btSetting_Selecter_Pressed">#ffe7f3f7</color> <!-- 系统配置背景信息 -->
-	<color name="btSetting_Selecter_bg">#f9f9f9</color> <!-- 系统配置背景信息 -->
+    <color name="btSetting_Selecter_Pressed">#ffe7f3f7</color> <!-- 系统配置背景信息 -->
+    <color name="btSetting_Selecter_bg">#f9f9f9</color> <!-- 系统配置背景信息 -->
 
     <color name="Setting_BG">#f9f9f9</color> <!-- 系统配置背景信息 -->
     <color name="Setting_Button_TextColor">#000000</color> <!-- 系统配置背景信息 -->
     <color name="Setting_line_Color">#ffe7f3f7</color> <!-- 系统配置背景信息 -->
-    
+
     <color name="Setting_Button_Desc_TextColor">#aaaaaa</color> <!-- 系统配置背景信息 -->
 
     <color name="btSetting_focusebg">#000000</color> <!-- 系统设置栏颜色 -->
@@ -77,7 +73,6 @@
 
     <color name="list_bg">#ffe7f3f7</color>
     <color name="list_ctrl_bg">#ffcfd8db</color>
-    
     <color name="list_item_TextColer">#ff313439</color>
     <color name="white">#ffffffff</color>
     <color name="black">#ff000000</color>

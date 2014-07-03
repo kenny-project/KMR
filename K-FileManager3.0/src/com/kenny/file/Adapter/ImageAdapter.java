@@ -34,7 +34,7 @@ public class ImageAdapter extends BaseAdapter
 		this.mFileList = mFileList;
 		
 		mImage = Res.getInstance(context).getDefFileIco("jpg");
-		mLogoImage = ImageLoader.GetObject(mContext);
+		mLogoImage = ImageLoader.getInstance(mContext);
 	}
 
 	public int getCount()

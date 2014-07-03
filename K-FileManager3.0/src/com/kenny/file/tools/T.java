@@ -44,6 +44,7 @@ import android.graphics.Canvas;
 import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
 import android.graphics.Matrix;
+import android.graphics.NinePatch;
 import android.graphics.Paint;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.PorterDuffXfermode;
@@ -51,6 +52,7 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.NinePatchDrawable;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
@@ -115,7 +117,7 @@ public class T
 				}
 				if (process != null)
 				{
-				process.destroy();
+					process.destroy();
 				}
 			} catch (Exception e)
 			{
@@ -544,12 +546,11 @@ public class T
 					if (totalsize > 1000)
 					{
 						totalsize = totalsize / 1024.0;
-						szLength = myformat.format(totalsize) + "T";						
-					}
-					else
+						szLength = myformat.format(totalsize) + "T";
+					} else
 					{
-					totalsize = totalsize / 1024.0;
-					szLength = myformat.format(totalsize) + "G";
+						// totalsize = totalsize / 1024.0;
+						szLength = myformat.format(totalsize) + "G";
 					}
 				} else
 				{
@@ -843,7 +844,7 @@ public class T
 	 *            需要转换的byte[]
 	 * @return Bitmap
 	 * */
-	public static Bitmap Bytes2Bimap(byte[] b)
+	public static Bitmap Bytes2Bitmap(byte[] b)
 	{
 		if (b.length != 0)
 		{
@@ -878,35 +879,71 @@ public class T
 			return null;
 		}
 	}
-	// 初始化运行程序所需要的文件
-		public static boolean ResourceAssetsFile(Context context,String SPath, String szFileName)
+
+	// 读取数据文件
+	public static Drawable ReadAssetsDrawable(Context context,
+			String szFileName)
+	{
+		try
 		{
-			String mPath = "/data/data/" + context.getPackageName() + "/files/"+SPath;
-			File fileName;
-			try
+			byte[] data = T.ReadResourceAssetsFile(context, szFileName);
+			if (data != null)
 			{
-				new File(mPath).mkdirs();
-				mPath += szFileName;
-				fileName = new File(mPath);
-				if (fileName.exists())
+				Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0,
+						data.length);
+				byte[] chunk = bitmap.getNinePatchChunk();
+				boolean result = NinePatch.isNinePatchChunk(chunk);
+				if (result)
 				{
-					fileName.delete();
+					return new NinePatchDrawable(bitmap, chunk, new Rect(),
+							null);
 				}
-				fileName.createNewFile();
-				AssetManager am = context.getAssets();
-				InputStream inputStream = am.open(SPath+szFileName);
-				copyFile(inputStream, mPath);
-				return true;
-			} catch (Exception e)
-			{
-				e.printStackTrace();
-				fileName = new File(mPath);
-				fileName.delete();
-				return false;
+				else
+				{
+					return new BitmapDrawable(bitmap);
+				}
 			}
+
+		} catch (Exception e)
+		{
+			e.printStackTrace();
 		}
+		return null;
+	}
+
+	// 初始化运行程序所需要的文件
+	public static boolean ResourceAssetsFile(Context context, String SPath,
+			String szFileName)
+	{
+		String mPath = "/data/data/" + context.getPackageName() + "/files/"
+				+ SPath;
+		File fileName;
+		try
+		{
+			new File(mPath).mkdirs();
+			mPath += szFileName;
+			fileName = new File(mPath);
+			if (fileName.exists())
+			{
+				fileName.delete();
+			}
+			fileName.createNewFile();
+			AssetManager am = context.getAssets();
+			InputStream inputStream = am.open(SPath + szFileName);
+			copyFile(inputStream, mPath);
+			return true;
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+			fileName = new File(mPath);
+			fileName.delete();
+			return false;
+		}
+	}
+
 	/**
 	 * 将assets文件保存到应用软件空间中
+	 * 
 	 * @param context
 	 * @param szFileName
 	 * @return
@@ -1019,23 +1056,26 @@ public class T
 		}
 		return "";
 	}
+
 	// 初始化运行程序所需要的文件
 	public static Drawable DrawableSDCardFile(Context context, String szFileName)
 	{
 		try
 		{
-			String mPath = "/data/data/" + context.getPackageName() + "/files/"+szFileName;
+			String mPath = "/data/data/" + context.getPackageName() + "/files/"
+					+ szFileName;
 			FileInputStream inputStream = new FileInputStream(mPath);// context.openFileInput(szFileName);
 			return Drawable.createFromStream(inputStream, szFileName);
-		}
-		catch (Exception e)
+		} catch (Exception e)
 		{
 			e.printStackTrace();
 			return null;
 		}
 	}
+
 	/**
 	 * 加载手机空间的文件
+	 * 
 	 * @param context
 	 * @param szFileName
 	 * @return
@@ -1044,18 +1084,20 @@ public class T
 	{
 		try
 		{
-			String mPath = "/data/data/" + context.getPackageName() + "/files/"+szFileName;
+			String mPath = "/data/data/" + context.getPackageName() + "/files/"
+					+ szFileName;
 			FileInputStream inputStream = new FileInputStream(mPath);// context.openFileInput(szFileName);
 			return Drawable.createFromStream(inputStream, szFileName);
-		}
-		catch (Exception e)
+		} catch (Exception e)
 		{
 			e.printStackTrace();
 			return null;
 		}
 	}
+
 	/**
 	 * 加载手机空间的文件
+	 * 
 	 * @param context
 	 * @param szFileName
 	 * @return
@@ -1064,11 +1106,11 @@ public class T
 	{
 		try
 		{
-			String mPath = "/data/data/" + context.getPackageName() + "/files/"+szFileName;
+			String mPath = "/data/data/" + context.getPackageName() + "/files/"
+					+ szFileName;
 			FileInputStream inputStream = new FileInputStream(mPath);// context.openFileInput(szFileName);
 			return Drawable.createFromStream(inputStream, szFileName);
-		}
-		catch (Exception e)
+		} catch (Exception e)
 		{
 			e.printStackTrace();
 			return null;
@@ -1270,5 +1312,4 @@ public class T
 		return false;
 	}
 
-	
 }

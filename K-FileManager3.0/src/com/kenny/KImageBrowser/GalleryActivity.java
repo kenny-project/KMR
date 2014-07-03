@@ -31,6 +31,7 @@ import com.framework.util.Const;
 import com.kenny.KFileManager.R;
 import com.kenny.file.bean.FileBean;
 import com.kenny.file.manager.FileManager;
+import com.kenny.file.manager.SDFileTools;
 import com.kenny.file.tools.T;
 import com.kenny.file.util.SDFile;
 
@@ -99,8 +100,7 @@ public class GalleryActivity extends Activity implements OnItemClickListener,
 		{
 			String temp = path.substring(0, path.lastIndexOf('/'));
 			Log.v("tag", temp);
-			FileManager.getInstance().setFilePath(
-					path.substring(0, path.lastIndexOf('/')));
+
 			LoadImageList();
 			SwitchFlag(1);
 		} else
@@ -134,10 +134,10 @@ public class GalleryActivity extends Activity implements OnItemClickListener,
 			ivImage.setImageMatrix(matrix);
 			mTouchListener.setMatrix(matrix);
 			SwitchFlag(2);
-		}
-		else
+		} else
 		{
-			Toast.makeText(this, mFileBean.getFilePath()+"加载失败!",Toast.LENGTH_LONG).show();
+			Toast.makeText(this, mFileBean.getFilePath() + "加载失败!",
+					Toast.LENGTH_LONG).show();
 		}
 	}
 
@@ -181,11 +181,12 @@ public class GalleryActivity extends Activity implements OnItemClickListener,
 	private void LoadImageList()
 	{
 		mImageList.clear();
-		List<FileBean> mFileList = FileManager.getInstance().getFileList();
+		List<FileBean> mFileList = SDFileTools.setFilePath(path.substring(0,
+				path.lastIndexOf('/')));
+
 		for (int i = 0; i < mFileList.size(); i++)
 		{
 			FileBean bean = mFileList.get(i);
-
 			String fileEnds = bean.getFileEnds();
 			if (fileEnds.equals("jpg") || fileEnds.equals("gif")
 					|| fileEnds.equals("png") || fileEnds.equals("jpeg")

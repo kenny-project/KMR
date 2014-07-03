@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.kenny.KFileManager.R;
 import com.kenny.Zip.ZIP;
+import com.kenny.file.interfaces.INotifyDataSetChanged;
 import com.kenny.file.manager.FileManager;
 import com.kenny.file.util.Const;
 
@@ -24,7 +25,8 @@ public class ZipDialog
 	private static Collection<File> resFileList = new ArrayList<File>();
 
 	/** 调用弹出重命名框的方法 */
-	public void Show(final Context context, final File file)
+	public void Show(final Context context, final File file,
+			final INotifyDataSetChanged notify)
 	{
 		LayoutInflater mLI = LayoutInflater.from(context);
 		LinearLayout mLL = (LinearLayout) mLI.inflate(R.layout.rename_dialog,
@@ -52,7 +54,10 @@ public class ZipDialog
 					try
 					{
 						ZIP.zipFile(file, new File(newFilePath), Const.AppName);
-						FileManager.getInstance().Refresh();
+
+						if (notify != null)
+							notify.NotifyDataSetChanged(
+									Const.cmd_ZipFileEvent_Finish, null);
 					} catch (IOException e)
 					{
 						// TODO Auto-generated catch block
@@ -67,15 +72,18 @@ public class ZipDialog
 		AlertDialog renameDialog = new AlertDialog.Builder(context).create();
 		renameDialog.setTitle(R.string.ZipDialog_Title);
 		renameDialog.setView(mLL);
-		renameDialog.setButton(context.getResources().getString(R.string.ok), listener);
-		renameDialog.setButton2(context.getResources().getString(R.string.cancel), new DialogInterface.OnClickListener()
-		{
+		renameDialog.setButton(context.getResources().getString(R.string.ok),
+				listener);
+		renameDialog.setButton2(
+				context.getResources().getString(R.string.cancel),
+				new DialogInterface.OnClickListener()
+				{
 
-			public void onClick(DialogInterface dialog, int which)
-			{
+					public void onClick(DialogInterface dialog, int which)
+					{
 
-			}
-		});
+					}
+				});
 		renameDialog.show();
 	}
 

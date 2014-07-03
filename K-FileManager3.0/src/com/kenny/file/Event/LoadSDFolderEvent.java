@@ -3,8 +3,6 @@ package com.kenny.file.Event;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Enumeration;
-import java.util.Hashtable;
 import java.util.List;
 
 import android.app.Activity;
@@ -13,7 +11,6 @@ import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.os.Handler;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
@@ -25,22 +22,18 @@ import com.framework.log.P;
 import com.framework.syseng.SysEng;
 import com.kenny.KFileManager.R;
 import com.kenny.file.bean.FGroupInfo;
-import com.kenny.file.bean.FavorBean;
 import com.kenny.file.bean.FileEnd;
-import com.kenny.file.db.Dao;
 import com.kenny.file.interfaces.INotifyDataSetChanged;
 import com.kenny.file.sort.FileEndSort;
 import com.kenny.file.tools.SaveData;
 import com.kenny.file.util.Const;
 
 /**
- * @author aimery 初始化event
+ * @author wmh 初始化event
  * */
 public class LoadSDFolderEvent extends AbsEvent implements OnCancelListener
 {
-
 	private Activity act;
-	// private Dao dao;
 	private INotifyDataSetChanged m_NotifyDataSetChanged = null;
 	private boolean isShow;
 	private boolean mProgress = false;

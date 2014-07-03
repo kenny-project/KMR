@@ -66,7 +66,7 @@ public class TaskAdapter extends BaseAdapter
 		{
 			bSelect = true;
 		}
-		mLogoImage = ImageLoader.GetObject(mContext);
+		mLogoImage = ImageLoader.getInstance(mContext);
 		mApp = Res.getInstance(mContext).getDefFileIco("apk");
 		// processMemoryUtil = new ProcessMemoryUtil();
 	}

@@ -1,14 +1,8 @@
 package com.kenny.file.Activity;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.kenny.KFileManager.R;
-import com.kenny.file.Adapter.ImageAdapter;
-import com.kenny.file.bean.FileBean;
-import com.kenny.file.manager.FileManager;
-import com.kenny.file.util.SDFile;
-import com.umeng.analytics.MobclickAgent;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
@@ -24,6 +18,13 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.GridView;
 import android.widget.ImageView;
+
+import com.kenny.KFileManager.R;
+import com.kenny.file.Adapter.ImageAdapter;
+import com.kenny.file.bean.FileBean;
+import com.kenny.file.manager.SDFileTools;
+import com.kenny.file.util.SDFile;
+import com.umeng.analytics.MobclickAgent;
 
 public class ImageListActivity extends Activity implements
 		OnItemLongClickListener, OnTouchListener
@@ -77,7 +78,7 @@ public class ImageListActivity extends Activity implements
 	private void LoadImageList()
 	{
 		mImageList.clear();
-		List<FileBean> mFileList = FileManager.getInstance().getFileList();
+		List<FileBean> mFileList = SDFileTools.setFilePath(new File(mPath).getParent());
 		for (int i = 0; i < mFileList.size(); i++)
 		{
 			FileBean bean = mFileList.get(i);

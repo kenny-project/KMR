@@ -13,9 +13,7 @@ import com.slidingmenu.lib.SlidingMenu;
 import com.slidingmenu.lib.app.SlidingFragmentActivity;
 
 public class LocalFragmentActivity extends SlidingFragmentActivity 
-
 {
-
 	private static String mPath;
 	private SlidingMenu sm;
 	private Fragment mContent;

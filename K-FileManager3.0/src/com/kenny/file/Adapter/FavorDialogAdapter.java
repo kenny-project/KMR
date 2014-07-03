@@ -47,6 +47,7 @@ public class FavorDialogAdapter extends OFileAdapter
 	}
 	public class FavViewHolder extends ViewHolder {
 		public TextView mPath; // 路径
+		public int ThemeMode = -1;// 当前样式
 	}
 
 	public View getListView(int position, View convertView, ViewGroup viewgroup) {
@@ -72,10 +73,19 @@ public class FavorDialogAdapter extends OFileAdapter
 		FileBean temp = mFileList.get(position);
 		{
 			if (temp.isChecked()) {
-				convertView.setBackgroundColor(Theme
-						.getListSelectedBackgroundColor());
+				convertView.setBackgroundResource(Theme
+						.getSelBackgroundResource());
 			} else {
-				convertView.setBackgroundColor(Theme.getBackgroundColor());
+				convertView.setBackgroundResource(Theme.getBackgroundResource());
+			}
+			if (viewHolder.ThemeMode != Theme.getThemeMode()) {
+				viewHolder.ThemeMode = Theme.getThemeMode();
+				viewHolder.mTV.setTextColor(Theme.getTextColor());
+				viewHolder.mTD.setTextColor(Theme.getTextColor());
+				viewHolder.mPath.setTextColor(Theme.getTextColor());
+//				viewHolder.mBackground.setBackgroundResource(Theme
+//						.getSelBackgroundResource());
+//				convertView.setBackgroundResource(Theme.getBackgroundResource());
 			}
 			viewHolder.mCB.setChecked(dao.isHasHistory(nFlag, temp.getFile().getPath()));
 			viewHolder.mCB

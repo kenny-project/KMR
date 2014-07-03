@@ -23,11 +23,11 @@ import android.widget.TextView;
 import com.framework.syseng.SysEng;
 import com.kenny.KFileManager.R;
 import com.kenny.file.Adapter.AddressAdapter;
-import com.kenny.file.Adapter.FavorFileAdapter;
 import com.kenny.file.Event.openDefFileEvent;
 import com.kenny.file.bean.FileBean;
 import com.kenny.file.db.Dao;
 import com.kenny.file.manager.FileManager;
+import com.kenny.file.manager.IManager;
 
 public class LocalAddressDialog extends Dialog implements OnClickListener,
 		android.view.View.OnClickListener, OnItemClickListener {
@@ -37,14 +37,16 @@ public class LocalAddressDialog extends Dialog implements OnClickListener,
 	private Activity context;
 	private TextView tvTitle;
 	private String path;//当前路径地址
-	public LocalAddressDialog(Activity context,int id) {
+	private IManager iManager;
+	private LocalAddressDialog(Activity context,int id) {
 		super(context,id);
 		this.context = context;
 	}
 
-	public static void ShowDialog(Activity context,String path,int y) {
+	public static void ShowDialog(Activity context,String path,IManager iManager) {
 		LocalAddressDialog alertDialog = new LocalAddressDialog(context,R.style.NobackDialog);
 		alertDialog.path=path;
+		alertDialog.iManager=iManager;
 //		Window win = alertDialog.getWindow();
 //		LayoutParams params = new LayoutParams();
 //		params.y = y;//设置y坐标
@@ -136,7 +138,8 @@ public class LocalAddressDialog extends Dialog implements OnClickListener,
 			SysEng.getInstance().addHandlerEvent(
 					new openDefFileEvent(getContext(), mFile.getPath()));
 		} else {
-			FileManager.getInstance().setFilePath(mFile.getPath());
+			if(iManager!=null)
+				iManager.setFilePath(mFile.getPath());
 		}
 		dismiss();
 	}

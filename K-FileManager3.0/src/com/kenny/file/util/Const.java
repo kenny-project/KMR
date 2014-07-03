@@ -30,6 +30,13 @@ public class Const
 
 	public static final int cmd_DelFileEvent_Finish = cmd_LoadSDFile_Start + 2001;
 	public static final int cmd_CutFileEvent_Finish = cmd_LoadSDFile_Start + 2002;
+	public static final int cmd_CreateFileEvent_Finish = cmd_LoadSDFile_Start + 2003;
+	public static final int cmd_CreateFolderEvent_Finish = cmd_LoadSDFile_Start + 2004;
+	public static final int cmd_RenameFileEvent_Finish = cmd_LoadSDFile_Start + 2005;
+	public static final int cmd_ZipFileEvent_Finish = cmd_LoadSDFile_Start + 2006;
+	public static final int cmd_PalseFileEvent_Finish = cmd_LoadSDFile_Start + 2007;
+
+	public static final int cmd_APP_UnInstallEvent_Finish = cmd_LoadSDFile_Start + 4001;// 卸载应用成功
 
 	public static final int cmd_Local_ListSort_Finish = cmd_LoadSDFile_Start + 3001;// 文件显示排序完成
 
@@ -42,6 +49,7 @@ public class Const
 
 	public static final String AppName = "K-FileManager";
 	public static final String Root = File.separator;
+
 	private static String SDCard = android.os.Environment
 			.getExternalStorageDirectory().getAbsolutePath();
 	public static String szAppPath = SDCard + File.separator + AppName
@@ -53,7 +61,9 @@ public class Const
 	public static String szAppTempPath = szAppPath + "Temp" + File.separator;
 
 	public static String szZipPath = szAppTempPath + "Zip" + File.separator;
-	public static String szKuaiPanPath = szAppTempPath + "kuaipan";// +
+	public static String szKuaiPanPath = szAppTempPath + "kuaipan";
+	public static String szBaiduYunPath = szAppTempPath + "BaiduYun";
+	// +
 																	// File.separator;
 
 	// public static String szMusic=szAppPath+"Music"+File.separator;
@@ -82,16 +92,16 @@ public class Const
 	}
 
 	/**
-	 * 设置界面相关参数
+	 * 设置默认SD卡的路径
 	 */
-	public static String strSDRootPath = "DefaultSDRootPath";// 设置默认SD卡的路径
-	public static String strDefaultPath = "DefaultPath";// 默认打开路径
+	public static final String strDefSDRootPath = "DefaultSDRootPath";// 设置默认SD卡的路径
+	public static final String strDefaultPath = "DefaultPath";// 默认打开路径
 	// public static String strLastPathEnable = "LastPathEnable";//最后一次打开的路径
 	// public static String strLastPath = "LastPath";//最后一次打开的路径
-	public static String strToolsVisible = "strToolsVisible";// 工具栏是否显示
-	public static String strTabVisible = "strTabVisible"; // 显示TAB栏
-	public static String strShowHideFile = "strShowHideFile"; // 显示掩藏文件
-	public static String strSensorEnable = "AutoSensor";// 动态切换屏幕
+	public static final String strToolsVisible = "strToolsVisible";// 工具栏是否显示
+	public static final String strTabVisible = "strTabVisible"; // 显示TAB栏
+	public static final String strShowHideFile = "strShowHideFile"; // 显示掩藏文件
+	public static final String strSensorEnable = "AutoSensor";// 动态切换屏幕
 
-	public static String strEditKuaiPanDialogValue = "AutoSensor";// 昵称名称
+	public static final String strEditKuaiPanDialogValue = "AutoSensor";// 昵称名称
 }

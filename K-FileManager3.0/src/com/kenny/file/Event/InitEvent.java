@@ -15,6 +15,7 @@ import android.util.Log;
 import com.framework.event.AbsEvent;
 import com.framework.log.P;
 import com.kenny.KFileManager.R;
+import com.kenny.file.bean.KMenuItemBean;
 import com.kenny.file.dialog.KDialog;
 import com.kenny.file.dialog.SetSDCardRootPathDialog;
 import com.kenny.file.tools.SaveData;
@@ -22,7 +23,6 @@ import com.kenny.file.tools.T;
 import com.kenny.file.util.Config;
 import com.kenny.file.util.Const;
 import com.kenny.file.util.KCommand;
-import com.kenny.file.util.NetConst;
 import com.kenny.file.util.Res;
 import com.kenny.file.util.SDFile;
 import com.kenny.file.util.Theme;
@@ -42,6 +42,8 @@ public class InitEvent extends AbsEvent
 
 	public void ok()
 	{
+	
+		
 		int oldVersionCode = SaveData.Read(ctx, "versionCode", -1);// 显示主题
 		int versionCode = T.GetVersionCode(ctx);
 		if (versionCode != oldVersionCode)
@@ -49,52 +51,72 @@ public class InitEvent extends AbsEvent
 			SaveData.Write(ctx, "versionCode", versionCode);// 赋值初始化
 			RestorationInit(ctx);
 			Res.getInstance(ctx).setFirstRun(true);
-		}
-		else
+		} else
 		{
 			Res.getInstance(ctx).setFirstRun(false);
 		}
+		SDCardRootPath();
+		P.Init(ctx);
+		// NetConst.SetContext(ctx);
+		Theme.Init(ctx);
+		Config.Init(ctx);
+	}
+
+	/**
+	 * 获取手机目录
+	 * 
+	 * @return
+	 */
+	private List<String> getSDCardList()
+	{
+		File mFile = new File("/mnt/");
+		File[] mFiles = mFile.listFiles();// 遍历出该文件夹路径下的所有文件/文件夹
+		List<String> Roots = new ArrayList<String>();
+		for (int i = 0; i < mFiles.length; i++)
+		{
+			if (mFiles[i].canWrite())
+			{
+				Roots.add(mFiles[i].getAbsolutePath());
+			}
+		}
+		return Roots;
+	}
+
+	/**
+	 * 获得SD卡的多个SD卡的遍历
+	 */
+	private void SDCardRootPath()
+	{
 		String SDRoot = android.os.Environment.getExternalStorageDirectory()
 				.getAbsolutePath();
-		String path = SaveData.Read(ctx, Const.strDefaultPath, "");
-		if(path.length()<=0)
-		{
-			SaveData.Write(ctx, Const.strDefaultPath, SDRoot);
-		}
 
-		String mStrSDRootPath = SaveData.Read(ctx, Const.strSDRootPath, "");
-		if(mStrSDRootPath.length()<=0)
+		String mStrSDRootPath = SaveData.Read(ctx, Const.strDefSDRootPath, "");
+		if (mStrSDRootPath.length() <= 0)
 		{
-			File mFile = new File("/mnt/");
-			File[] mFiles = mFile.listFiles();// 遍历出该文件夹路径下的所有文件/文件夹
-			List<File> Roots=new ArrayList<File>();
-			for(int i=0;i<mFiles.length;i++)
+			List<String> list = getSDCardList();
+			if (list.size() > 0)
 			{
-				if(mFiles[i].canWrite())
-				{
-					Roots.add(mFiles[i]);
-					Log.d("wmh", mFiles[i].getAbsolutePath());
-				}
-			}
-			if(Roots.size()>1&&false)
+				Const.setSDCard(list.get(0));
+			} else
 			{
-				new SetSDCardRootPathDialog().ShowDialog(ctx, Roots);
+				Const.setSDCard(SDRoot);
 			}
-			Const.setSDCard(SDRoot);	
-		}
-		else
+		} else
 		{
 			Const.setSDCard(mStrSDRootPath);
 		}
-		P.Init(ctx);
-		//NetConst.SetContext(ctx);
-		Theme.Init(ctx);
-		Config.Init(ctx);
+		
+		String path = SaveData.Read(ctx, Const.strDefaultPath, "");
+		if (path.length() <= 0)
+		{
+			SaveData.Write(ctx, Const.strDefaultPath, Const.getSDCard());
+		}
 	}
 
 	// 恢复初始化/系统初始化
 	private static boolean RestorationInit(Context context)
 	{
+		Theme.setContext(context);
 		Theme.setSensorOrientation(false);
 		Theme.setToolsVisible(true);
 		Theme.setTaskVisible(true);

@@ -1,8 +1,5 @@
 package com.kenny.Slidingmenu;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -22,7 +19,6 @@ import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.framework.page.AbsFragmentPage;
-import com.framework.syseng.SysEng;
 import com.kenny.KFileManager.R;
 import com.kenny.Slidingmenu.Fragment.KMenuFragment;
 import com.kenny.Slidingmenu.Fragment.LocalPage;
@@ -46,13 +42,52 @@ import com.umeng.update.UmengUpdateAgent;
  * @author wmh
  * 
  */
-public class MainUIActivity extends SlidingFragmentActivity implements
-		OnBackStackChangedListener
+public class MainUIActivity extends SlidingFragmentActivity
+// implements
+// OnBackStackChangedListener
 {
-	private Fragment mContent;
+	private Fragment mFragment;
 	private KMenuFragment mKMenuFragment;
 	private SlidingMenu sm;
 
+	public void Init()
+	{
+		com.framework.util.Const.SW = getWindow().getWindowManager()
+				.getDefaultDisplay().getWidth();
+		com.framework.util.Const.SH = getWindow().getWindowManager()
+				.getDefaultDisplay().getHeight();
+		// BaiduInit();
+		UMInit();
+		new InitEvent(this).run();
+		// SysEng.getInstance().addHandlerEvent();
+		// Resources resources = getResources();//获得res资源对象
+		// Configuration config = resources.getConfiguration();//获得设置对象
+		// DisplayMetrics dm = resources
+		// .getDisplayMetrics();//获得屏幕参数：主要是分辨率，像素等。
+		// config.locale = Locale.SIMPLIFIED_CHINESE; //简体中文
+		// resources.updateConfiguration(config, dm);
+		// try {
+		// zypushInit();
+		// } catch (Exception e) {
+		// e.printStackTrace();
+		// }
+	}
+
+	private void UMInit()
+	{
+		// 友盟统计数据
+		MobclickAgent.setDebugMode(false);
+		MobclickAgent.updateOnlineConfig(this);// 在线参数配置
+		MobclickAgent.onError(this);
+		MobclickAgent.setSessionContinueMillis(10 * 60 * 1000);
+		MobclickAgent.setAutoLocation(true);// collect location info,
+		MobclickAgent
+				.setDefaultReportPolicy(this, ReportPolicy.BATCH_AT_LAUNCH);
+
+		UmengUpdateAgent.update(this);
+		UmengUpdateAgent.setUpdateAutoPopup(false);
+		UmengUpdateAgent.setUpdateOnlyWifi(false);
+	}
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
@@ -94,7 +129,7 @@ public class MainUIActivity extends SlidingFragmentActivity implements
 				}
 			});
 
-			c = ((TextView) m.findViewById(R.id.ab_title));
+			abtitle = ((TextView) m.findViewById(R.id.ab_title));
 			// b = ((BreadcrumbView)m.findViewById(2131427420));
 			e = ((ActionListView) m.findViewById(R.id.action_list));
 			ActionBar.LayoutParams localLayoutParams = new ActionBar.LayoutParams(
@@ -108,8 +143,7 @@ public class MainUIActivity extends SlidingFragmentActivity implements
 			bar.setDisplayHomeAsUpEnabled(false);
 			// 注销掉
 			// k();
-		} 
-		else
+		} else
 		{
 			// add a dummy view
 			View v = new View(this);
@@ -120,17 +154,17 @@ public class MainUIActivity extends SlidingFragmentActivity implements
 
 		// set the Above View Fragment
 		if (savedInstanceState != null)
-			mContent = getSupportFragmentManager().getFragment(
+			mFragment = getSupportFragmentManager().getFragment(
 					savedInstanceState, "mContent");
-		if (mContent == null)// 添加默认的fragment
+		if (mFragment == null)// 添加默认的fragment
 		{
 			LocalPage localPage = new LocalPage(SaveData.Read(this,
 					Const.strDefaultPath, Const.getSDCard()));
-			mContent = localPage;
+			mFragment = localPage;
 			localPage.setTitle("SDcard");
 		}
 		getSupportFragmentManager().beginTransaction()
-				.replace(R.id.content_frame, mContent).commit();
+				.replace(R.id.content_frame, mFragment).commit();
 
 		mKMenuFragment = new KMenuFragment();
 		// set the Behind View Fragment KMenuFragment
@@ -142,20 +176,13 @@ public class MainUIActivity extends SlidingFragmentActivity implements
 					@Override
 					public void onBackStackChanged()
 					{
-						mContent = getSupportFragmentManager()
+						mFragment = getSupportFragmentManager()
 								.findFragmentById(R.id.content_frame);
-						mContent.onResume();
+						mFragment.onResume();
 					}
 				});
-		
 	}
-	@Override
-	public void setTitle(CharSequence title)
-	{
-		// TODO Auto-generated method stub
-		getSupportActionBar().setTitle(title);
-		super.setTitle(title);
-	}
+
 	@Override
 	protected void onResume()
 	{
@@ -182,14 +209,14 @@ public class MainUIActivity extends SlidingFragmentActivity implements
 	public void onConfigurationChanged(Configuration newConfig)
 	{
 		super.onConfigurationChanged(newConfig);
-		if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT)
-		{
-			System.out.println("现在是竖屏");
-		}
-		if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE)
-		{
-			System.out.println("现在是横屏");
-		}
+		// if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT)
+		// {
+		// System.out.println("现在是竖屏");
+		// }
+		// if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE)
+		// {
+		// System.out.println("现在是横屏");
+		// }
 		super.onConfigurationChanged(newConfig);
 		// Const.SW = getWindow().getWindowManager().getDefaultDisplay()
 		// .getWidth();
@@ -202,9 +229,9 @@ public class MainUIActivity extends SlidingFragmentActivity implements
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu)
 	{
-		if (mContent != null && mContent instanceof AbsFragmentPage)
+		if (mFragment != null && mFragment instanceof AbsFragmentPage)
 		{
-			return ((AbsFragmentPage) mContent).onCreateOptionsMenu(
+			return ((AbsFragmentPage) mFragment).onCreateOptionsMenu(
 					getSupportMenuInflater(), menu);
 		} else
 		{
@@ -231,9 +258,9 @@ public class MainUIActivity extends SlidingFragmentActivity implements
 	public boolean onOptionsItemSelected(MenuItem item)
 	{
 		boolean result = false;
-		if (mContent != null && mContent instanceof AbsFragmentPage)
+		if (mFragment != null && mFragment instanceof AbsFragmentPage)
 		{
-			result = ((AbsFragmentPage) mContent).onOptionsItemSelected(item);
+			result = ((AbsFragmentPage) mFragment).onOptionsItemSelected(item);
 		}
 		if (result)
 		{
@@ -248,7 +275,8 @@ public class MainUIActivity extends SlidingFragmentActivity implements
 	public void onSaveInstanceState(Bundle outState)
 	{
 		super.onSaveInstanceState(outState);
-		getSupportFragmentManager().putFragment(outState, "mContent", mContent);
+		getSupportFragmentManager()
+				.putFragment(outState, "mContent", mFragment);
 	}
 
 	private Handler h = new Handler();
@@ -260,16 +288,21 @@ public class MainUIActivity extends SlidingFragmentActivity implements
 
 	public void switchContent(String key, final Fragment fragment)
 	{
-		mContent = fragment;
+
+		// if(mContent!=null)
+		// {
+		// removeFragment(mContent);
+		// }
+		mFragment = fragment;
 		FragmentTransaction transaction = getSupportFragmentManager()
 				.beginTransaction();
-//		transaction.add(R.id.content_frame, fragment);
+		// transaction.add(R.id.content_frame, fragment);
 		transaction.replace(R.id.content_frame, fragment);
-//		if (key != null)
-//		{
-//			transaction.addToBackStack(key);
-//		}
-		transaction.addToBackStack(null);
+		// if (key != null)
+		// {
+		// transaction.addToBackStack(key);
+		// }
+		// transaction.addToBackStack(null);
 		transaction.commit();
 		h.postDelayed(new Runnable()
 		{
@@ -305,9 +338,9 @@ public class MainUIActivity extends SlidingFragmentActivity implements
 		if (getSlidingMenu().isMenuShowing())
 		{
 			result = mKMenuFragment.onKeyDown(keyCode, event);
-		} else if (mContent != null && mContent instanceof AbsFragmentPage)
+		} else if (mFragment != null && mFragment instanceof AbsFragmentPage)
 		{
-			result = ((AbsFragmentPage) mContent).onKeyDown(keyCode, event);
+			result = ((AbsFragmentPage) mFragment).onKeyDown(keyCode, event);
 		}
 		if (!result)
 		{
@@ -363,29 +396,29 @@ public class MainUIActivity extends SlidingFragmentActivity implements
 	// }
 
 	private LinearLayout m;
-	private TextView c;
+	private TextView abtitle;
 	private ImageView d;
 	private ActionListView e;
 
 	// private BreadcrumbView b;
-	private void k()
-	{
-		m = ((LinearLayout) LayoutInflater.from(this).inflate(
-				R.layout.custom_actionbar_layout, null));
-
-		d = ((ImageView) m.findViewById(R.id.icon));
-		c = ((TextView) m.findViewById(R.id.ab_title));
-		// b = ((BreadcrumbView)m.findViewById(2131427420));
-		e = ((ActionListView) m.findViewById(R.id.action_list));
-		ActionBar.LayoutParams localLayoutParams = new ActionBar.LayoutParams(
-				-1, -2);
-		getSupportActionBar().setCustomView(m, localLayoutParams);
-		getSupportActionBar().setDisplayShowHomeEnabled(false);
-		getSupportActionBar().setDisplayShowTitleEnabled(false);
-		getSupportActionBar().setDisplayUseLogoEnabled(false);
-		getSupportActionBar().setDisplayShowCustomEnabled(true);
-		getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-	}
+	// private void k()
+	// {
+	// m = ((LinearLayout) LayoutInflater.from(this).inflate(
+	// R.layout.custom_actionbar_layout, null));
+	//
+	// d = ((ImageView) m.findViewById(R.id.icon));
+	// abtitle = ((TextView) m.findViewById(R.id.ab_title));
+	// // b = ((BreadcrumbView)m.findViewById(2131427420));
+	// e = ((ActionListView) m.findViewById(R.id.action_list));
+	// ActionBar.LayoutParams localLayoutParams = new ActionBar.LayoutParams(
+	// -1, -2);
+	// getSupportActionBar().setCustomView(m, localLayoutParams);
+	// getSupportActionBar().setDisplayShowHomeEnabled(false);
+	// getSupportActionBar().setDisplayShowTitleEnabled(false);
+	// getSupportActionBar().setDisplayUseLogoEnabled(false);
+	// getSupportActionBar().setDisplayShowCustomEnabled(true);
+	// getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+	// }
 
 	// public BreadcrumbView getCreadcrumbView()
 	// {
@@ -409,10 +442,20 @@ public class MainUIActivity extends SlidingFragmentActivity implements
 		setTitle(getString(paramInt));
 	}
 
-	public void setTitle(String paramString)
+	@Override
+	public void setTitle(CharSequence title)
 	{
-		this.c.setText(paramString);
+		// TODO Auto-generated method stub
+		if (abtitle != null)
+			abtitle.setText(title);
+		getSupportActionBar().setTitle(title);
+		super.setTitle(title);
 	}
+
+	// public void setTitle(String paramString)
+	// {
+	// this.abtitle.setText(paramString);
+	// }
 
 	public void setTitleIcon(int paramInt)
 	{
@@ -424,28 +467,6 @@ public class MainUIActivity extends SlidingFragmentActivity implements
 		this.d.setImageDrawable(paramDrawable);
 	}
 
-	public void Init()
-	{
-		com.framework.util.Const.SW = getWindow().getWindowManager().getDefaultDisplay()
-				.getWidth();
-		com.framework.util.Const.SH = getWindow().getWindowManager().getDefaultDisplay()
-				.getHeight();
-//		BaiduInit();
-		UMInit();
-		new InitEvent(this).run();
-//		SysEng.getInstance().addHandlerEvent();
-		// Resources resources = getResources();//获得res资源对象
-		// Configuration config = resources.getConfiguration();//获得设置对象
-		// DisplayMetrics dm = resources
-		// .getDisplayMetrics();//获得屏幕参数：主要是分辨率，像素等。
-		// config.locale = Locale.SIMPLIFIED_CHINESE; //简体中文
-		// resources.updateConfiguration(config, dm);
-		// try {
-		// zypushInit();
-		// } catch (Exception e) {
-		// e.printStackTrace();
-		// }
-	}
 
 	// public void zypushInit() {
 	//
@@ -552,187 +573,170 @@ public class MainUIActivity extends SlidingFragmentActivity implements
 	// RECEIVER_MESSAGE_ACTION);
 	// Tool.registReceiver(registBean);
 	// }
+	//
+	// /**
+	// * 卸载广播接收器
+	// */
+	// private void unRegistReceiver()
+	// {
+	// if (mReceiver != null)
+	// unregisterReceiver(mReceiver);
+	// }
+	//
+	// /**
+	// * 广播接收器
+	// */
+	// private BroadcastReceiver mReceiver = new BroadcastReceiver()
+	// {
+	//
+	// @Override
+	// public void onReceive(Context context, Intent intent)
+	// {
+	// String action = intent.getAction();
+	// // if (RECEIVER_MESSAGE_ACTION.equals(action)) {
+	// // Bundle bundle = intent.getExtras();
+	// // String key = bundle.getString("key");
+	// // if (Consts.MESSAGE_KEY_CONNECT.equals(key)) {
+	// // // 连接结果
+	// // int value = bundle.getInt("value");
+	// // switch (value) {
+	// // case Consts.RESULT_Y:
+	// // appendContent("成功与服务器建立连接");
+	// // break;
+	// // case Consts.RESULT_N:
+	// // appendContent("连接失败");
+	// // if(dialog != null){
+	// // dialog.dismiss();
+	// // }
+	// // break;
+	// // }
+	// // } else if (Consts.MESSAGE_KEY_LOGIN.equals(key)) {
+	// // // 登陆结果
+	// // int value = bundle.getInt("value");
+	// // switch (value) {
+	// // case Consts.RESULT_Y:
+	// // result = true;
+	// // setBooleanShared(context, "login_state", true);
+	// // connectState.setText("连接成功");
+	// // appendContent("登录成功");
+	// // packageName.setText(""+getPackageName());
+	// // connectBt.setVisibility(View.GONE);
+	// // disconnectBt.setVisibility(View.VISIBLE);
+	// // if(dialog != null){
+	// // dialog.dismiss();
+	// // }
+	// // break;
+	// // case Consts.RESULT_N:
+	// // appendContent("登录失败");
+	// // connectState.setText("未连接");
+	// // if(dialog != null){
+	// // dialog.dismiss();
+	// // }
+	// // break;
+	// // }
+	// // } else if(Consts.MESSAGE_KEY_SETALIAS.equals(key)){
+	// // if(dialog != null){
+	// // dialog.dismiss();
+	// // }
+	// // int value = bundle.getInt("value");
+	// // switch (value) {
+	// // case Consts.RESULT_Y:
+	// // appendContent("别名设置成功");
+	// // break;
+	// // case Consts.RESULT_N:
+	// // appendContent("别名设置失败");
+	// // break;
+	// // default:
+	// // break;
+	// // }
+	// // }else if (Consts.MESSAGE_KEY_SETTAGS.equals(key)) {
+	// // int value = bundle.getInt("value");
+	// // switch (value) {
+	// // case Consts.RESULT_Y:
+	// // appendContent("标签设置成功");
+	// // break;
+	// // case Consts.RESULT_N:
+	// // appendContent("标签设置失败");
+	// // break;
+	// // default:
+	// // break;
+	// // }
+	// // }else if (Consts.MESSAGE_KEY_CUSTOM.equals(key)) {
+	// // // 接收自定义推送信息
+	// // String value = bundle.getString("value");
+	// // appendContent("推送消息是：  "+value);
+	// //
+	// // }else if(Consts.MESSAGE_KEY_NOTIFICATION.equals(key)){
+	// // //如需在工程中展示通知标题和内容，请设置是否展示通知内容
+	// // String title = bundle.getString(Consts.NOTIFICATION_TITLE);
+	// // String content = bundle.getString(Consts.NOTIFICATION_CONTENT);
+	// // }else if(Consts.MESSAGE_KEY_PUSHSTATECHANGED.equals(key)){
+	// // //客户端与服务端的状态
+	// // int value = bundle.getInt("value");
+	// // switch (value) {
+	// // case Consts.PUSH_CONNECTSTATE_CONNECTING: //通道连接
+	// // connectState.setText("连接成功");
+	// // if(dialog != null){
+	// // dialog.dismiss();
+	// // }
+	// // result = true;
+	// // setBooleanShared(context, "login_state", true);
+	// // break;
+	// //
+	// // case Consts.PUSH_CONNECTSTATE_DISCONNECT: //通道断开
+	// // if(dialog != null){
+	// // dialog.dismiss();
+	// // }
+	// // result = false;
+	// // setBooleanShared(context, "login_state", false);
+	// // connectState.setText("未连接");
+	// // disconnectBt.setVisibility(View.GONE);
+	// // connectBt.setVisibility(View.VISIBLE);
+	// // break;
+	// // }
+	// // }else if(Consts.ACTION_RECEIVER_VERSION.equals(key)){
+	// // int value = bundle.getInt("value");
+	// // switch (value) {
+	// // case Consts.VERSION_LATEST:
+	// // break;
+	// // case Consts.VERSION_OLD_PERMIT:
+	// // break;
+	// // case Consts.VERSION_OLD_REFUSE:
+	// // break;
+	// // default:
+	// // break;
+	// // }
+	// // }else if(Consts.MESSAGE_BACK_FLAG.equals(key)){ //接收通知或自定义消息的ID值
+	// //
+	// // }
+	//
+	// // }
+	// }
+	// };
 
-	/**
-	 * 卸载广播接收器
-	 */
-	private void unRegistReceiver()
-	{
-		if (mReceiver != null)
-			unregisterReceiver(mReceiver);
-	}
+	// private void BaiduInit()
+	// {
+	// // //设置AppKey与AppChannel
+	// // StatService.setAppKey("abc1234");
+	// // StatService.setAppChannel("Baidu Market");
+	// //
+	// // //进行错误分析
+	// // //setOn函数与manifest.xml中的配置BaiduMobAd_EXCEPTION_LOG是等效的，推荐使用配置文件。
+	// // StatService.setOn(this,StatService.EXCEPTION_LOG);
+	// //
+	// // //设置发送延迟
+	// // StatService.setLogSenderDelayed(10);
+	// //
+	// // //设置发送策略
+	// // //setSendLogStrategy函数与配置文件中的BaiduMobAd_SEND_STRATEGY等是等效的，推荐使用配置文件。
+	// // StatService.setSendLogStrategy(this,SendStrategyEnum.APP_START,
+	// // 1,false);
+	// }
 
-	/**
-	 * 广播接收器
-	 */
-	private BroadcastReceiver mReceiver = new BroadcastReceiver()
-	{
-
-		@Override
-		public void onReceive(Context context, Intent intent)
-		{
-			String action = intent.getAction();
-			// if (RECEIVER_MESSAGE_ACTION.equals(action)) {
-			// Bundle bundle = intent.getExtras();
-			// String key = bundle.getString("key");
-			// if (Consts.MESSAGE_KEY_CONNECT.equals(key)) {
-			// // 连接结果
-			// int value = bundle.getInt("value");
-			// switch (value) {
-			// case Consts.RESULT_Y:
-			// appendContent("成功与服务器建立连接");
-			// break;
-			// case Consts.RESULT_N:
-			// appendContent("连接失败");
-			// if(dialog != null){
-			// dialog.dismiss();
-			// }
-			// break;
-			// }
-			// } else if (Consts.MESSAGE_KEY_LOGIN.equals(key)) {
-			// // 登陆结果
-			// int value = bundle.getInt("value");
-			// switch (value) {
-			// case Consts.RESULT_Y:
-			// result = true;
-			// setBooleanShared(context, "login_state", true);
-			// connectState.setText("连接成功");
-			// appendContent("登录成功");
-			// packageName.setText(""+getPackageName());
-			// connectBt.setVisibility(View.GONE);
-			// disconnectBt.setVisibility(View.VISIBLE);
-			// if(dialog != null){
-			// dialog.dismiss();
-			// }
-			// break;
-			// case Consts.RESULT_N:
-			// appendContent("登录失败");
-			// connectState.setText("未连接");
-			// if(dialog != null){
-			// dialog.dismiss();
-			// }
-			// break;
-			// }
-			// } else if(Consts.MESSAGE_KEY_SETALIAS.equals(key)){
-			// if(dialog != null){
-			// dialog.dismiss();
-			// }
-			// int value = bundle.getInt("value");
-			// switch (value) {
-			// case Consts.RESULT_Y:
-			// appendContent("别名设置成功");
-			// break;
-			// case Consts.RESULT_N:
-			// appendContent("别名设置失败");
-			// break;
-			// default:
-			// break;
-			// }
-			// }else if (Consts.MESSAGE_KEY_SETTAGS.equals(key)) {
-			// int value = bundle.getInt("value");
-			// switch (value) {
-			// case Consts.RESULT_Y:
-			// appendContent("标签设置成功");
-			// break;
-			// case Consts.RESULT_N:
-			// appendContent("标签设置失败");
-			// break;
-			// default:
-			// break;
-			// }
-			// }else if (Consts.MESSAGE_KEY_CUSTOM.equals(key)) {
-			// // 接收自定义推送信息
-			// String value = bundle.getString("value");
-			// appendContent("推送消息是：  "+value);
-			//
-			// }else if(Consts.MESSAGE_KEY_NOTIFICATION.equals(key)){
-			// //如需在工程中展示通知标题和内容，请设置是否展示通知内容
-			// String title = bundle.getString(Consts.NOTIFICATION_TITLE);
-			// String content = bundle.getString(Consts.NOTIFICATION_CONTENT);
-			// }else if(Consts.MESSAGE_KEY_PUSHSTATECHANGED.equals(key)){
-			// //客户端与服务端的状态
-			// int value = bundle.getInt("value");
-			// switch (value) {
-			// case Consts.PUSH_CONNECTSTATE_CONNECTING: //通道连接
-			// connectState.setText("连接成功");
-			// if(dialog != null){
-			// dialog.dismiss();
-			// }
-			// result = true;
-			// setBooleanShared(context, "login_state", true);
-			// break;
-			//
-			// case Consts.PUSH_CONNECTSTATE_DISCONNECT: //通道断开
-			// if(dialog != null){
-			// dialog.dismiss();
-			// }
-			// result = false;
-			// setBooleanShared(context, "login_state", false);
-			// connectState.setText("未连接");
-			// disconnectBt.setVisibility(View.GONE);
-			// connectBt.setVisibility(View.VISIBLE);
-			// break;
-			// }
-			// }else if(Consts.ACTION_RECEIVER_VERSION.equals(key)){
-			// int value = bundle.getInt("value");
-			// switch (value) {
-			// case Consts.VERSION_LATEST:
-			// break;
-			// case Consts.VERSION_OLD_PERMIT:
-			// break;
-			// case Consts.VERSION_OLD_REFUSE:
-			// break;
-			// default:
-			// break;
-			// }
-			// }else if(Consts.MESSAGE_BACK_FLAG.equals(key)){ //接收通知或自定义消息的ID值
-			//
-			// }
-
-			// }
-		}
-	};
-
-	private void UMInit()
-	{
-		// 友盟统计数据
-		MobclickAgent.setDebugMode(false);
-		MobclickAgent.updateOnlineConfig(this);// 在线参数配置
-		MobclickAgent.onError(this);
-		MobclickAgent.setSessionContinueMillis(10 * 60 * 1000);
-		MobclickAgent.setAutoLocation(true);// collect location info,
-		MobclickAgent
-				.setDefaultReportPolicy(this, ReportPolicy.BATCH_AT_LAUNCH);
-
-		UmengUpdateAgent.update(this);
-		UmengUpdateAgent.setUpdateAutoPopup(false);
-		UmengUpdateAgent.setUpdateOnlyWifi(false);
-	}
-
-	private void BaiduInit()
-	{
-		// //设置AppKey与AppChannel
-		// StatService.setAppKey("abc1234");
-		// StatService.setAppChannel("Baidu Market");
-		//
-		// //进行错误分析
-		// //setOn函数与manifest.xml中的配置BaiduMobAd_EXCEPTION_LOG是等效的，推荐使用配置文件。
-		// StatService.setOn(this,StatService.EXCEPTION_LOG);
-		//
-		// //设置发送延迟
-		// StatService.setLogSenderDelayed(10);
-		//
-		// //设置发送策略
-		// //setSendLogStrategy函数与配置文件中的BaiduMobAd_SEND_STRATEGY等是等效的，推荐使用配置文件。
-		// StatService.setSendLogStrategy(this,SendStrategyEnum.APP_START,
-		// 1,false);
-	}
-
-	@Override
-	public void onBackStackChanged()
-	{
-		// TODO Auto-generated method stub
-
-	}
+	// @Override
+	// public void onBackStackChanged()
+	// {
+	// // TODO Auto-generated method stub
+	// }
 
 }

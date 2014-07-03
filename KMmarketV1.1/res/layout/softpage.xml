@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/gray" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/toptab_noline_bg"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:id="@+id/soft_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/btback" />
+
+                <TextView
+                    android:id="@+id/soft_title_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:text="@string/soft_text_top"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/toptab_head_line" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="45dip"
+            android:background="#00000000"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/soft_tab1_recommand"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@drawable/toptab_bg_soft"
+                android:paddingBottom="10dip"
+                android:paddingTop="10dip"
+                android:text="@string/soft_text_tab1"
+                android:textColor="@color/toptab_TextColor_normal"
+                android:textSize="18dip" />
+
+            <ImageView
+                android:layout_width="1px"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dip"
+                android:layout_marginTop="3dip"
+                android:background="#ffdadee0" />
+
+            <Button
+                android:id="@+id/soft_tab1_news"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@drawable/toptab_bg_soft"
+                android:paddingBottom="10dip"
+                android:paddingTop="10dip"
+                android:text="@string/soft_text_tab2"
+                android:textColor="@color/toptab_TextColor_normal"
+                android:textSize="18dip" />
+
+            <ImageView
+                android:layout_width="1dip"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dip"
+                android:layout_marginTop="3dip"
+                android:background="#ffdadee0" />
+
+            <Button
+                android:id="@+id/soft_tab1_rank"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@drawable/toptab_bg_soft"
+                android:paddingBottom="10dip"
+                android:paddingTop="10dip"
+                android:text="@string/soft_text_tab3"
+                android:textColor="@color/toptab_TextColor_normal"
+                android:textSize="18dip" />
+
+            <ImageView
+                android:layout_width="1dip"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dip"
+                android:layout_marginTop="8dip"
+                android:background="#ffdadee0" />
+
+            <Button
+                android:id="@+id/soft_tab1_class"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@drawable/toptab_bg_soft"
+                android:paddingBottom="10dip"
+                android:paddingTop="10dip"
+                android:text="@string/soft_text_tab4"
+                android:textColor="@color/toptab_TextColor_normal"
+                android:textSize="18dip" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/toptab_head_line"
+            android:visibility="gone" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpagerLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/gray" >
+        </android.support.v4.view.ViewPager>
+    </LinearLayout>
+
+</RelativeLayout>

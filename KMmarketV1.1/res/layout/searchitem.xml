@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/whites"
+     >
+
+    <RelativeLayout
+        android:id="@+id/search_item_lay"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/search_item_image1"
+            android:layout_width="38dip"
+            android:layout_height="38dip"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/listitem_hotword_logo_topthree"
+            android:text="1"
+            android:textColor="@color/main_button_text_color_fan" />
+        <TextView
+            android:id="@+id/search_item_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="21dip"
+            android:layout_toRightOf="@+id/search_item_image1"
+            android:singleLine="true"
+            android:text="sdafadsfds"
+            android:textColor="@color/black"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/search_item_text_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:text="20"
+            android:textColor="@color/black"
+            android:textSize="13dp" />
+
+        <ImageView
+            android:id="@+id/search_item_image2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="14dp"
+            android:layout_toLeftOf="@+id/search_item_text_num"
+            android:background="@drawable/search_image1" />
+    </RelativeLayout>
+
+</RelativeLayout>

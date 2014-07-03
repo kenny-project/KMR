@@ -53,7 +53,6 @@ public class FavoriteFilePage extends ContentFragment implements
 		INotifyDataSetChanged, OnItemClickListener, OnClickListener,
 		OnItemLongClickListener
 {
-
 	private ListView mListView;
 	private Button btBack, btInstall, btArrange, btDelete, btSelectAll;
 	private View lyBTools;
@@ -124,7 +123,7 @@ public class FavoriteFilePage extends ContentFragment implements
 		m_lvMain = mView.findViewById(R.id.lvMain);
 		mView.findViewById(R.id.icEmptyPannal).setVisibility(View.GONE);
 
-		m_lvMain.setBackgroundColor(Theme.getBackgroundColor());
+		m_lvMain.setBackgroundColor(Theme.getBackgroundResource());
 		mListView = (ListView) mView.findViewById(R.id.lvLocallist);
 		mListView.setOnItemClickListener(this);
 		mListView.setOnScrollListener(mListViewOnScrollListener);
@@ -171,7 +170,8 @@ public class FavoriteFilePage extends ContentFragment implements
 	@Override
 	public void onResume()
 	{
-		m_lvMain.setBackgroundColor(Theme.getBackgroundColor());
+		m_lvMain.setBackgroundColor(Theme.getBackgroundResource());
+//		m_lvMain.setBackgroundResource(Theme.getBackgroundResource());
 		setTitle(getTitle());
 		super.onResume();
 	}

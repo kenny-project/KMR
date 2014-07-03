@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffffff"
+    android:orientation="vertical" >
+
+    <ListView
+        android:id="@+id/feedback_ls"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/tbScore1" />
+
+    <RatingBar
+        android:id="@+id/tbScore1"
+        style="@style/feedbackRatingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/feedback_message_edit"
+        android:clickable="false"
+        android:focusable="false"
+        android:numStars="5"
+        android:rating="3.5" />
+
+    <LinearLayout
+        android:id="@+id/feedback_scro_lin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/feedback_message_edit"
+        android:orientation="horizontal"
+        android:visibility="gone" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:id="@+id/feedback_list_log11"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/star_select" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:id="@+id/feedback_list_log12"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/star_select" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:id="@+id/feedback_list_log13"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/star_select" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:id="@+id/feedback_list_log14"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/star_select" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:id="@+id/feedback_list_log15"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/star_select" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/feedback_message_edit"
+        android:layout_width="253dp"
+        android:layout_height="86dp"
+        android:layout_above="@+id/feedback_send_button"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:ems="10"
+        android:maxHeight="86dp"
+        android:maxWidth="253dp"
+        android:saveEnabled="true" >
+
+        <requestFocus />
+    </EditText>
+
+    <LinearLayout
+        android:id="@+id/feedback_send_button"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/bottomtab" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="发送"
+                android:textColor="@color/whites"
+                android:textSize="18dip" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

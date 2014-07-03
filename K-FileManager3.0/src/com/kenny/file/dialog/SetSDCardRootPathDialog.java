@@ -27,7 +27,7 @@ public class SetSDCardRootPathDialog
                     public void onClick(DialogInterface dialog, int which)
                     {
                     	File file=Roots.get(which);
-                    	SaveData.Write(context, Const.strSDRootPath, file.getAbsolutePath());
+                    	SaveData.Write(context, Const.strDefSDRootPath, file.getAbsolutePath());
                     	Const.setSDCard(file.getAbsolutePath());
                         dialog.cancel();
                     }

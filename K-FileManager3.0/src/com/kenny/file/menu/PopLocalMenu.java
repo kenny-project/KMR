@@ -21,6 +21,7 @@ import com.kenny.file.commui.KString;
 import com.kenny.file.dialog.KDialog;
 import com.kenny.file.dialog.RenameDialog;
 import com.kenny.file.dialog.ZipDialog;
+import com.kenny.file.interfaces.INotifyDataSetChanged;
 import com.kenny.file.page.KMainPage;
 import com.kenny.file.tools.T;
 import com.kenny.file.util.FT;
@@ -34,29 +35,32 @@ import com.kenny.file.util.FT;
 public class PopLocalMenu extends PopMenu
 {
 
-	private int nFlag;
-
+	private Context context;
+	private FileBean file;
+	private INotifyDataSetChanged notif;
 	/**
 	 * 长按文件或文件夹时弹出的带ListView效果的功能菜单 nFlag: 0:local,1:favor 2:kuaipan
 	 * */
-	public void ShowFile(final Context context, final FileBean file, int nFlag)
+	public void ShowFile(final Context context, final FileBean file, int nFlag,final INotifyDataSetChanged notif)
 	{
 		this.context = context;
 		this.file = file;
-		this.nFlag = nFlag;
+		this.notif=notif;
 		if (file.isDirectory())
 		{
 			ShowFile(context, 0, context.getString(R.string.msg_please_operate));
 		} else
 		{
-			String fileEnds = FT.getExName(file.getFileName());
+			String fileEnds=file.getFileEnds();
+//			String fileEnds = FT.getExName(file.getFileName());
 			if (fileEnds.equals("jpg") || fileEnds.equals("gif")
 					|| fileEnds.equals("png") || fileEnds.equals("jpeg")
 					|| fileEnds.equals("bmp"))
 			{
 				ShowFile(context, 3,
 						context.getString(R.string.msg_please_operate));
-			} else if (fileEnds.equals("mp3"))
+			}
+			else if (fileEnds.equals("mp3"))
 			{
 				ShowFile(context, 1,
 						context.getString(R.string.msg_please_operate));
@@ -80,7 +84,7 @@ public class PopLocalMenu extends PopMenu
 									int which)
 							{
 								SysEng.getInstance().addEvent(
-										new delFileEvent(context, file));
+										new delFileEvent(context, file,notif));
 							}
 						})
 				.setNegativeButton(context.getString(R.string.cancel), null)
@@ -88,8 +92,6 @@ public class PopLocalMenu extends PopMenu
 	}
 
 	/** 长按文件或文件夹时弹出的带ListView效果的功能菜单 */
-	private Context context;
-	private FileBean file;
 
 	@Override
 	protected void OnItemClickListener(int pos, KString key)
@@ -112,7 +114,7 @@ public class PopLocalMenu extends PopMenu
 			if (file.getFile().canRead())
 			{
 				SysEng.getInstance().addHandlerEvent(
-						new copyFileEvent(context, file));
+						new copyFileEvent(context, file,notif));
 			} else
 			{
 				Toast.makeText(context,
@@ -124,7 +126,7 @@ public class PopLocalMenu extends PopMenu
 			if (file.getFile().canRead())
 			{
 				SysEng.getInstance().addHandlerEvent(
-						new cutFileEvent(context, file));
+						new cutFileEvent(context, file,notif));
 
 			} else
 			{
@@ -136,7 +138,7 @@ public class PopLocalMenu extends PopMenu
 		case rename:
 			if (file.getFile().canWrite())
 			{
-				RenameDialog.Show(context, file.getFile());
+				RenameDialog.Show(context, file.getFile(),notif);
 			} else
 			{
 				Toast.makeText(context,
@@ -158,12 +160,12 @@ public class PopLocalMenu extends PopMenu
 			break;
 		case favor:
 			SysEng.getInstance().addEvent(
-					new FavoriteFileEvent(context, file, 0));
+					new FavoriteFileEvent(context, file));
 			break;
 		case zip:
 			if (file.getFile().canRead())
 			{
-				new ZipDialog().Show(context, file.getFile());
+				new ZipDialog().Show(context, file.getFile(),notif);
 			}
 			else
 			{
