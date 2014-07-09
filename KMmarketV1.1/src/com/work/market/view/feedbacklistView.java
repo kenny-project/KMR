@@ -79,7 +79,7 @@ public class feedbacklistView extends ObjectView {
 		pd.setMessage(m_MainActivity.getText(R.string.pd_loading));
 		pd.setCancelable(true);
 		moreView = m_MainActivity.getLayoutInflater().inflate(
-				R.layout.xlistview_feedback_footer, null);// Ìí¼Ólist ½ø¶È
+				R.layout.xlistview_feedback_footer, null);// ï¿½ï¿½ï¿½list ï¿½ï¿½ï¿½
 		mfootProgressBar = (ProgressBar) moreView
 				.findViewById(R.id.xlistview_footer_progressbar);
 		mFootTextView = (TextView) moreView
@@ -102,7 +102,7 @@ public class feedbacklistView extends ObjectView {
 				// TODO Auto-generated method stub
 				if (scrollState == OnScrollListener.SCROLL_STATE_IDLE
 						|| scrollState == OnScrollListener.SCROLL_STATE_FLING) {
-					// ÅÐ¶ÏÊÇ·ñ¹ö¶¯µ½µ×²¿
+					// ï¿½Ð¶ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×²ï¿½
 					if (lv1.getLastVisiblePosition() == lv1.getCount() - 1
 							&& !mEnablePullLoad) {
 						if (m_now_page < m_Max_page) {
@@ -277,10 +277,10 @@ public class feedbacklistView extends ObjectView {
 			mNetTask.cancel(true);
 		}
 		mNetTask = new NetTask(num, apd, Data, url);
-		mNetTask.execute(null);// m_ad_layout.setVisibility
+		mNetTask.execute("");// m_ad_layout.setVisibility
 	}
 
-	// Í¼Æ¬´¦Àí
+	// Í¼Æ¬ï¿½ï¿½ï¿½ï¿½
 	class NetTask extends AsyncTask<Object, Integer, String> {
 
 		private int m_num = 0;
@@ -324,7 +324,7 @@ public class feedbacklistView extends ObjectView {
 			if (!pd.isShowing() && m_showlog)
 				return;
 
-			if (result == null) {// Ê§°Ü ´¦Àí
+			if (result == null) {// Ê§ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 				pd.dismiss();
 				String dialogstring = m_MainActivity
 						.getString(R.string.net_faile);
@@ -347,9 +347,9 @@ public class feedbacklistView extends ObjectView {
 						for (int i = 0; i < jsonObj1.length(); i++) 
 						{
 							JSONObject tempJson = jsonObj1.optJSONObject(i);
-							// String id = tempJson.getString("id");//±êÌâ
-							String title = tempJson.getString("desc");// ±êÌâ
-							String desc = tempJson.getString("score");// packageÂë
+							// String id = tempJson.getString("id");//ï¿½ï¿½ï¿½ï¿½
+							String title = tempJson.getString("desc");// ï¿½ï¿½ï¿½ï¿½
+							String desc = tempJson.getString("score");// packageï¿½ï¿½
 							adaptersoft.title.add(title);
 							adaptersoft.score.add(desc);
 						}
@@ -364,17 +364,17 @@ public class feedbacklistView extends ObjectView {
 					pd.dismiss();
 				} else if (m_num == 1) {
 					if (result.indexOf("1") >= 0) {
-						String dialogstring = "ÆÀÂÛ·¢ËÍ³É¹¦";
+						String dialogstring = "ï¿½ï¿½ï¿½Û·ï¿½ï¿½Í³É¹ï¿½";
 						Toast.makeText(mContext, dialogstring,
 								Toast.LENGTH_LONG).show();
-						String title = m_send_message.getText().toString();// ±êÌâ
-						String desc = T.GetIMEI(mContext);// packageÂë
+						String title = m_send_message.getText().toString();// ï¿½ï¿½ï¿½ï¿½
+						String desc = T.GetIMEI(mContext);// packageï¿½ï¿½
 						adaptersoft.title.add(title);
 						adaptersoft.score.add(desc);
 						adaptersoft.notifyDataSetChanged();
 
 					} else {
-						String dialogstring = "ÆÀÂÛ·¢ËÍÊ§°Ü";
+						String dialogstring = "ï¿½ï¿½ï¿½Û·ï¿½ï¿½ï¿½Ê§ï¿½ï¿½";
 						Toast.makeText(mContext, dialogstring,
 								Toast.LENGTH_LONG).show();
 					}
@@ -438,7 +438,7 @@ public class feedbacklistView extends ObjectView {
 		InputMethodManager imm = (InputMethodManager) mContext
 				.getSystemService(Context.INPUT_METHOD_SERVICE);
 		// imm.hideSoftInputFromWindow(myEditText.getWindowToken(), 0);
-		// if (imm.isActive()) //Ò»Ö±ÊÇtrue
+		// if (imm.isActive()) //Ò»Ö±ï¿½ï¿½true
 		// imm.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT,
 		// InputMethodManager.HIDE_NOT_ALWAYS);
 		if (m_send_message.isFocusable()) {

@@ -41,7 +41,7 @@ import com.work.market.net.HttpUtil;
 import com.work.market.server.DownLoadService;
 
 /**
- * ×°»ú±Ø±¸
+ * ×°ï¿½ï¿½Ø±ï¿½
  * 
  * @author WangMinghui
  * 
@@ -77,7 +77,7 @@ public class MustSoftlistView extends ObjectView implements INotifyDataSetChange
 		pd.setMessage(context.getText(R.string.pd_loading));
 		pd.setCancelable(true);
 		moreView =LayoutInflater.from(context).inflate(
-				R.layout.xlistview_footer, null);// Ìí¼Ólist ½ø¶È
+				R.layout.xlistview_footer, null);// ï¿½ï¿½ï¿½list ï¿½ï¿½ï¿½
 		mfootProgressBar = (ProgressBar) moreView
 				.findViewById(R.id.xlistview_footer_progressbar);
 		mFootTextView = (TextView) moreView
@@ -168,10 +168,10 @@ public class MustSoftlistView extends ObjectView implements INotifyDataSetChange
 			mNetTask.cancel(true);
 		}
 		mNetTask = new NetTask1(num, url, apd);
-		mNetTask.execute(null);// m_ad_layout.setVisibility
+		mNetTask.execute("");// m_ad_layout.setVisibility
 	}
 
-	// Í¼Æ¬´¦Àí
+	// Í¼Æ¬ï¿½ï¿½ï¿½ï¿½
 	class NetTask1 extends AsyncTask<Object, Integer, String> {
 
 		private int m_num = 0;
@@ -195,7 +195,7 @@ public class MustSoftlistView extends ObjectView implements INotifyDataSetChange
 													// SharedUtil.getUserKey(mContext));
 				return json;
 			} else if (m_num == 1) {
-				String filename = Common.getmymd5(m_url) + ".jpg";
+				String filename = Common.getMd5Code(m_url) + ".jpg";
 				String data = HttpUtil.GetPhoto5(m_url, filename);//
 				return data;
 			}
@@ -213,7 +213,7 @@ public class MustSoftlistView extends ObjectView implements INotifyDataSetChange
 			if (!pd.isShowing() && m_showlog)
 				return;
 
-			if (result == null) {// Ê§°Ü ´¦Àí
+			if (result == null) {// Ê§ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 				pd.dismiss();
 				if (mEnablePullLoad) {
 					removeLoadMore();
@@ -239,20 +239,20 @@ public class MustSoftlistView extends ObjectView implements INotifyDataSetChange
 								tj=j;
 								JSONObject tempJson = appListArray.optJSONObject(j);
 								AppListBean tempAppListBean = new AppListBean();
-								tempAppListBean.setId(tempJson.getString("id"));// ±êÌâ
+								tempAppListBean.setId(tempJson.getString("id"));// ï¿½ï¿½ï¿½ï¿½
 								tempAppListBean.setTitle(tempJson
 										.getString("title"));//
-								tempAppListBean.setPn(tempJson.getString("pn"));// packageÂë
-								tempAppListBean.setLogourl(tempJson
-										.getString("logo"));// Í¼Æ¬µØÖ·
+								tempAppListBean.setPn(tempJson.getString("pn"));// packageï¿½ï¿½
+								tempAppListBean.setLogo(tempJson
+										.getString("logo"));// Í¼Æ¬ï¿½ï¿½Ö·
 								tempAppListBean.setSize(Common
-										.getLength(tempJson.getString("size")));// ÎÄ¼þ´óÐ¡(×Ö½Ú)score
+										.getLength(tempJson.getString("size")));// ï¿½Ä¼ï¿½ï¿½ï¿½Ð¡(ï¿½Ö½ï¿½)score
 								tempAppListBean.setScore(tempJson
-										.getString("score"));// ÎÄ¼þ´óÐ¡(×Ö½Ú)
+										.getString("score"));// ï¿½Ä¼ï¿½ï¿½ï¿½Ð¡(ï¿½Ö½ï¿½)
 								tempAppListBean.setAppurl(tempJson
-										.getString("apkurl"));// ÏÂÔØµØÖ·
+										.getString("apkurl"));// ï¿½ï¿½ï¿½Øµï¿½Ö·
 								tempAppListBean.setDowntiems(tempJson
-										.getString("dc"));// ÏÂÔØ´ÎÊý
+										.getString("dc"));// ï¿½ï¿½ï¿½Ø´ï¿½ï¿½ï¿½
 								tempAppListBean.setAppFileExt(tempJson.getString("ext"));
 								mList.add(tempAppListBean);
 							}
@@ -308,7 +308,7 @@ public class MustSoftlistView extends ObjectView implements INotifyDataSetChange
 		@Override
 		public void NotifyDataSetChanged(int cmd, Object value, int arg1, int arg2)
 		{
-			if (cmd == Downloader.CHANGER_STATUS)//×´Ì¬ÐÅÏ¢
+			if (cmd == Downloader.CHANGER_STATUS)//×´Ì¬ï¿½ï¿½Ï¢
 			{
 				SysEng.getInstance().addHandlerEvent(new AbsEvent()
 				{

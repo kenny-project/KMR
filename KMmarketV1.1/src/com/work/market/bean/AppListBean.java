@@ -1,100 +1,186 @@
 package com.work.market.bean;
 
+import java.io.InputStream;
+
+import org.apache.http.util.EncodingUtils;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import com.byfen.app.KApp;
+import com.work.market.net.Common;
 import com.work.market.net.DictBean;
 import com.work.market.net.Downloader;
 import com.work.market.server.DownLoadService;
 
 /**
- * AppListÁÐ±íµÄÊôÐÔ
+ * AppListåˆ—è¡¨çš„å±žæ€§
  * 
  * @author kenny
  * 
  */
 public class AppListBean {
 
-	private DictBean downloading = null;
+	
 	protected int id = 1;// id
-	protected String title = "test";// Ãû³Æ
-	protected String pn = "com.kenny.test";// °üÃû
-	protected String logo = "";// Í¼±êµØÖ·
-	protected String size = "11K"; // ÎÄ¼þ´óÐ¡
-	protected float score = 4;// Èí¼þÆÀ·Ö
-	protected String dc = "0";// ÏÂÔØ´ÎÊý
-	protected String appurl = "";// °üµØÖ·
-	protected String vername = "";// °æ±¾ºÅ
-	protected int vercode = 0;// °æ±¾Ãû³Æ
-	protected Bitmap image = null;
+	protected String title = "";// åç§°
+	private String lang;
+	private int type;
+	private String en_name;// è‹±æ–‡åç§°
+	protected String pn = "com.kenny.test";// åŒ…å
+	protected String logo = "";// å›¾æ ‡åœ°å€
+	protected String size = "11K"; // æ–‡ä»¶å¤§å°
+	protected float score = 4;// è½¯ä»¶è¯„åˆ†
+	protected String dc = "0";// ä¸‹è½½æ¬¡æ•°
+	protected String appurl = "";// åŒ…åœ°å€
+	protected String vername = "";// ç‰ˆæœ¬å·
+	protected int vercode = 0;// ç‰ˆæœ¬åç§°
+	
 	protected int downprogress = 0;
-//	protected int downing = 0;// 0---ÎÞ×´Ì¬ 1----µÈ´ýÏÂÔØ 2-----ÏÂÔØÖÐ 3---ÔÝÍ£ÖÐ
+	// protected int downing = 0;// 0---æ— çŠ¶æ€ 1----ç­‰å¾…ä¸‹è½½ 2-----ä¸‹è½½ä¸­ 3---æš‚åœä¸­
 	protected int Percentage = 0;
-	protected String AppFileExt = "*";// ÎÄ¼þ±£´æÂ·¾¶
-	protected String desc = "";// ÏêÇé
-	protected boolean bSpread=false;
-	private boolean bExplainVisible=false;//ÏÔÊ¾ÕÛµþ
-	public int getPercentage(){
+	protected String AppFileExt = "*";// æ–‡ä»¶ä¿å­˜è·¯å¾„
+
+	protected boolean bSpread = false;
+
+
+	protected String Desc = "";// ç®€ä»‹
+	private String EditorComments;// ç¼–è¾‘ç‚¹è¯„
+	private String UpdateDesc;// æ›´æ–°è¯´æ˜Ž
+	private String TagDesc;// æ›´æ–°è¯´æ˜Ž
+
+	private String update_time;
+	private String dev_name;
+	private String[]imgs;
+	private String []other_download;
+	//ä¸éœ€è¦å®žä¾‹åŒ–ä»£ç 
+	private Bitmap imgLogo = null;
+	private DictBean downloading = null;
+	private boolean bExplainVisible = false;// æ˜¾ç¤ºæŠ˜å 
+	
+	public String[] getImgs() {
+		return imgs;
+	}
+
+	public String[] getOther_download() {
+		return other_download;
+	}
+
+	public void setOther_download(String[] other_download) {
+		this.other_download = other_download;
+	}
+
+	public void setImgs(String[] imgs) {
+		this.imgs = imgs;
+	}
+
+	public String getDev_name() {
+		return dev_name;
+	}
+
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
+	}
+
+	public void setDev_name(String dev_name) {
+		this.dev_name = dev_name;
+	}
+
+	public String getUpdate_time() {
+		return update_time;
+	}
+
+	public void setUpdate_time(String times) {
+		if (times.indexOf(" ") > 0) {
+			int x = times.indexOf(" ");
+			this.update_time = times.substring(0, x);
+		} else {
+			this.update_time = times;
+		}
+	}
+
+	public String getEn_name() {
+		return en_name;
+	}
+
+	public void setEn_name(String en_name) {
+		this.en_name = en_name;
+	}
+
+	public int getPercentage() {
 		return Percentage;
 	}
-	
-	public boolean isbExplainVisible()
-	{
+
+	public String getLang() {
+		return lang;
+	}
+
+	public void setLang(String lang) {
+		if (lang.equals("cn")) {
+			this.lang = "ä¸­æ–‡";
+		} else {
+			this.lang = "è‹±æ–‡";
+		}
+	}
+
+	public boolean isbExplainVisible() {
 		return bExplainVisible;
 	}
 
-	public void setbExplainVisible(boolean bExplainVisible)
-	{
+	public void setbExplainVisible(boolean bExplainVisible) {
 		this.bExplainVisible = bExplainVisible;
 	}
 
-	public String getDesc()
-	{
-		return desc;
+	public String getDesc() {
+		return Desc;
 	}
 
-	public void setDesc(String desc)
-	{
-		this.desc = desc;
+	public void setDesc(String desc) {
+		this.Desc = desc;
 	}
 
-	public boolean iSpread()
-	{
+	public boolean iSpread() {
 		return bSpread;
 	}
-	public void setSpread(boolean bSpread)
-	{
+
+	public void setSpread(boolean bSpread) {
 		this.bSpread = bSpread;
 	}
-	// -1:Î´Öª´íÎó 2:ÒÑ¾­Æô¶¯ 1:Æô¶¯³É¹¦ -2:´´½¨ÎÄ¼þ»òÍøÂçÊ§°Ü
-	public int Start(Context mContext) 
-	{
-		downloading=getDownloading() ;
-		if(downloading==null)
-		{
-			downloading=new DictBean(mContext, getId(), getAppurl(),AppFileExt);
+
+	// -1:æœªçŸ¥é”™è¯¯ 2:å·²ç»å¯åŠ¨ 1:å¯åŠ¨æˆåŠŸ -2:åˆ›å»ºæ–‡ä»¶æˆ–ç½‘ç»œå¤±è´¥
+	public int Start(Context mContext) {
+		downloading = getDownloading();
+		if (downloading == null) {
+			downloading = new DictBean(mContext, getId(), getAppurl(),
+					AppFileExt);
 		}
-		if(downloading.isdownloading())
-		{
-			//Toast.makeText(context, text, duration)
+		if (downloading.isdownloading()) {
+			// Toast.makeText(context, text, duration)
 		}
-//		P.v("getAppurl()"+getAppurl()+",AppFileExt="+AppFileExt);
-		//downloading.setHandler(mHandler);
+		// P.v("getAppurl()"+getAppurl()+",AppFileExt="+AppFileExt);
+		// downloading.setHandler(mHandler);
 		downloading.setState(Downloader.WAIT);
-		KApp app=((KApp)mContext.getApplicationContext());
+		KApp app = ((KApp) mContext.getApplicationContext());
 		app.getDownLoadService().addDLEvent(this);
 		return 1;
 	}
-	public void Delete()
-	{
-		
+
+	public void Delete() {
+
 	}
-	public DictBean getDictBean()
-	{
-		return downloading;	
+
+	public DictBean getDictBean() {
+		return downloading;
 	}
 
 	public String getAppFileExt() {
@@ -105,19 +191,16 @@ public class AppListBean {
 		AppFileExt = appFileExt;
 	}
 
-	public String getFileName()
-	{
-		if (downloading != null) 
-		{
+	public String getFileName() {
+		if (downloading != null) {
 			return downloading.getFileName();
 		}
 		return null;
 	}
-	public DictBean getDownloading() 
-	{
-		if (downloading == null) 
-		{
-			downloading=DownLoadService.getDictBean(getId());
+
+	public DictBean getDownloading() {
+		if (downloading == null) {
+			downloading = DownLoadService.getDictBean(getId());
 		}
 		return downloading;
 	}
@@ -129,28 +212,27 @@ public class AppListBean {
 	public void setPercentage(int downingsize) {
 		this.Percentage = downingsize;
 	}
-	public Bitmap getLogo() {
-		return image;
+	public Bitmap getImgLogo() {
+		return imgLogo;
 	}
 
-	public void setLogo(Bitmap logo) {
-		this.image =logo;
-	}
-	
-	public void setLogo(Drawable logo) {
-		this.image =((BitmapDrawable) logo).getBitmap();
+
+	public void setImgLogo(Bitmap logo) {
+		this.imgLogo = logo;
 	}
 
-	public AppListBean() {
-
+	public void setImgLogo(Drawable logo) {
+		this.imgLogo = ((BitmapDrawable) logo).getBitmap();
 	}
 
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public void setId(String id) {
 		this.id = Integer.valueOf(id);
 	}
@@ -171,11 +253,11 @@ public class AppListBean {
 		this.pn = pn;
 	}
 
-	public String getLogourl() {
+	public String getLogo() {
 		return logo;
 	}
 
-	public void setLogourl(String logourl) {
+	public void setLogo(String logourl) {
 		this.logo = logourl;
 	}
 
@@ -184,7 +266,7 @@ public class AppListBean {
 	}
 
 	public void setSize(String size) {
-		this.size = size;
+		this.size = Common.getLength(size);
 	}
 
 	public String getVername() {
@@ -234,18 +316,42 @@ public class AppListBean {
 	private String strDC = null;
 
 	public String getDowntiems() {
-//		if (strDC == null) {
-//			if (dc > 10000) {
-//				dc = dc / 10000;
-//				strDC = dc + "Íò";
-//			} else {
-//				strDC = String.valueOf(dc);
-//			}
-//		}
+		// if (strDC == null) {
+		// if (dc > 10000) {
+		// dc = dc / 10000;
+		// strDC = dc + "ä¸‡";
+		// } else {
+		// strDC = String.valueOf(dc);
+		// }
+		// }
 		return dc;
 	}
 
 	public void setDowntiems(String dc) {
 		this.dc = dc;
+	}
+
+	public String getEditorComments() {
+		return EditorComments;
+	}
+
+	public void setEditorComments(String editorComments) {
+		EditorComments = editorComments;
+	}
+
+	public String getUpdateDesc() {
+		return UpdateDesc;
+	}
+
+	public void setUpdateDesc(String updateDesc) {
+		UpdateDesc = updateDesc;
+	}
+
+	public String getTagDesc() {
+		return TagDesc;
+	}
+
+	public void setTagDesc(String tagDesc) {
+		TagDesc = tagDesc;
 	}
 }

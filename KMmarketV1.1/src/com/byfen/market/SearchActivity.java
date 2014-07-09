@@ -74,26 +74,26 @@ public class SearchActivity extends Activity implements INotifyDataSetChanged
 	private View lySoftListPanel;
 	private View lyKeyPanel;
 	private KApp app;
-	//..................Æô¶¯·þÎñ..................
+	//..................ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½..................
 	
-		//..................½áÊø·þÎñ
+		//..................ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	/**
-	 * ½øÈëÒ³Ãæ
+	 * ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½
 	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
-		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);// ÊúÆÁ
-		// ¼ÓÔØÒ³Ãæ
+		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);// ï¿½ï¿½ï¿½ï¿½
+		// ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½
 		setContentView(R.layout.searchpage);
-		// Òì³£´¦Àí
+		// ï¿½ì³£ï¿½ï¿½ï¿½ï¿½
 		m_Context = this;
 		 app=((KApp)getApplicationContext());
 	
-		moreView = getLayoutInflater().inflate(R.layout.xlistview_footer, null);// Ìí¼Ólist
-																				// ½ø¶È
+		moreView = getLayoutInflater().inflate(R.layout.xlistview_footer, null);// ï¿½ï¿½ï¿½list
+																				// ï¿½ï¿½ï¿½
 		mfootProgressBar = (ProgressBar) moreView
 				.findViewById(R.id.xlistview_footer_progressbar);
 		mFootTextView = (TextView) moreView
@@ -120,7 +120,7 @@ public class SearchActivity extends Activity implements INotifyDataSetChanged
 				}
 				else
 				{
-					Toast.makeText(m_Context, "ÊäÈë²»ÄÜÎª¿Õ", Toast.LENGTH_LONG)
+					Toast.makeText(m_Context, "ï¿½ï¿½ï¿½ë²»ï¿½ï¿½Îªï¿½ï¿½", Toast.LENGTH_LONG)
 							.show();
 				}
 			}
@@ -170,7 +170,7 @@ public class SearchActivity extends Activity implements INotifyDataSetChanged
 				if (scrollState == OnScrollListener.SCROLL_STATE_IDLE
 						|| scrollState == OnScrollListener.SCROLL_STATE_FLING)
 				{
-					// ÅÐ¶ÏÊÇ·ñ¹ö¶¯µ½µ×²¿
+					// ï¿½Ð¶ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×²ï¿½
 					if (mSearchResultList.getLastVisiblePosition() == mSearchResultList
 							.getCount() - 1 && !mEnablePullLoad)
 					{
@@ -281,10 +281,10 @@ public class SearchActivity extends Activity implements INotifyDataSetChanged
 			mNetTask.cancel(true);
 		}
 		mNetTask = new NetTask();
-		mNetTask.execute(null);// m_ad_layout.setVisibility
+		mNetTask.execute("");// m_ad_layout.setVisibility
 	}
 
-	// Í¼Æ¬´¦Àí
+	// Í¼Æ¬ï¿½ï¿½ï¿½ï¿½
 	class NetTask extends AsyncTask<Object, Integer, String>
 	{
 		protected String doInBackground(Object... params)
@@ -307,7 +307,7 @@ public class SearchActivity extends Activity implements INotifyDataSetChanged
 			if (!pd.isShowing()) return;
 
 			if (result == null)
-			{// Ê§°Ü ´¦Àí
+			{// Ê§ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 				pd.dismiss();
 				String dialogstring = getString(R.string.net_faile);
 				Toast.makeText(m_Context, dialogstring, Toast.LENGTH_LONG)
@@ -351,12 +351,12 @@ public class SearchActivity extends Activity implements INotifyDataSetChanged
 			mNetTask1.cancel(true);
 		}
 		mNetTask1 = new NetTask1(apd, url);
-		mNetTask1.execute(null);
+		mNetTask1.execute("");
 		// m_ad_layout.setVisibility
 		// moreView.setVisibility(View.VISIBLE);
 	}
 
-	// Í¼Æ¬´¦Àí
+	// Í¼Æ¬ï¿½ï¿½ï¿½ï¿½
 	class NetTask1 extends AsyncTask<Object, Integer, String>
 	{
 		private boolean m_showlog = false;
@@ -390,7 +390,7 @@ public class SearchActivity extends Activity implements INotifyDataSetChanged
 			if (!pd.isShowing() && m_showlog) return;
 
 			if (result == null)
-			{// Ê§°Ü ´¦Àí
+			{// Ê§ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 				pd.dismiss();
 				if (mEnablePullLoad)
 				{
@@ -418,20 +418,20 @@ public class SearchActivity extends Activity implements INotifyDataSetChanged
 					for (int i = 0; i < jsonObj1.length(); i++)
 					{
 						JSONObject tempJson = jsonObj1.optJSONObject(i);
-						String id = tempJson.getString("id");// ±êÌâ
-						String title = tempJson.getString("title");// ±êÌâ
-						String pn = tempJson.getString("pn");// packageÂë
-						String logo = tempJson.getString("logo");// Í¼Æ¬µØÖ·
-						String size = tempJson.getString("size");// ÎÄ¼þ´óÐ¡(×Ö½Ú)score
-						String score = tempJson.getString("score");// ÎÄ¼þ´óÐ¡(×Ö½Ú)
-						String apkurl = tempJson.getString("apkurl");// ÏÂÔØµØÖ·
-						String dc = tempJson.getString("dc");// ÏÂÔØ´ÎÊý
+						String id = tempJson.getString("id");// ï¿½ï¿½ï¿½ï¿½
+						String title = tempJson.getString("title");// ï¿½ï¿½ï¿½ï¿½
+						String pn = tempJson.getString("pn");// packageï¿½ï¿½
+						String logo = tempJson.getString("logo");// Í¼Æ¬ï¿½ï¿½Ö·
+						String size = tempJson.getString("size");// ï¿½Ä¼ï¿½ï¿½ï¿½Ð¡(ï¿½Ö½ï¿½)score
+						String score = tempJson.getString("score");// ï¿½Ä¼ï¿½ï¿½ï¿½Ð¡(ï¿½Ö½ï¿½)
+						String apkurl = tempJson.getString("apkurl");// ï¿½ï¿½ï¿½Øµï¿½Ö·
+						String dc = tempJson.getString("dc");// ï¿½ï¿½ï¿½Ø´ï¿½ï¿½ï¿½
 						
 						AppListBean tempAppListBean = new AppListBean();
 						tempAppListBean.setId(id);
 						tempAppListBean.setTitle(title);
 						tempAppListBean.setPn(pn);
-						tempAppListBean.setLogourl(logo);
+						tempAppListBean.setLogo(logo);
 						tempAppListBean.setSize(Common.getLength(size));
 						tempAppListBean.setScore(score);
 						tempAppListBean.setAppurl(apkurl);
@@ -456,7 +456,7 @@ public class SearchActivity extends Activity implements INotifyDataSetChanged
 				}
 				else
 				{
-					Toast.makeText(lyKeyPanel.getContext(), "Î´²éµ½ÏàÓ¦µÄ½á¹û", Toast.LENGTH_LONG).show();
+					Toast.makeText(lyKeyPanel.getContext(), "Î´ï¿½éµ½ï¿½ï¿½Ó¦ï¿½Ä½ï¿½ï¿½", Toast.LENGTH_LONG).show();
 				}
 				pd.dismiss();
 			}
@@ -473,9 +473,9 @@ public class SearchActivity extends Activity implements INotifyDataSetChanged
 				if (lySoftListPanel.getVisibility() == View.GONE)
 				{
 					new AlertDialog.Builder(this)
-							.setTitle("ÌáÊ¾")
-							.setMessage("ÊÇ·ñÒªÍË³öÈí¼þ£¿")
-							.setPositiveButton("È·¶¨",
+							.setTitle("ï¿½ï¿½Ê¾")
+							.setMessage("ï¿½Ç·ï¿½Òªï¿½Ë³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")
+							.setPositiveButton("È·ï¿½ï¿½",
 									new DialogInterface.OnClickListener()
 									{
 										public void onClick(
@@ -491,7 +491,7 @@ public class SearchActivity extends Activity implements INotifyDataSetChanged
 											finish();
 										}
 									})
-							.setNegativeButton("È¡Ïû",
+							.setNegativeButton("È¡ï¿½ï¿½",
 									new DialogInterface.OnClickListener()
 									{
 										public void onClick(
@@ -538,7 +538,7 @@ public class SearchActivity extends Activity implements INotifyDataSetChanged
 		InputMethodManager imm = (InputMethodManager) m_Context
 				.getSystemService(Context.INPUT_METHOD_SERVICE);
 		// imm.hideSoftInputFromWindow(myEditText.getWindowToken(), 0);
-		// if (imm.isActive()) //Ò»Ö±ÊÇtrue
+		// if (imm.isActive()) //Ò»Ö±ï¿½ï¿½true
 		// imm.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT,
 		// InputMethodManager.HIDE_NOT_ALWAYS);
 		if (m_EditText.isFocusable())
@@ -549,7 +549,7 @@ public class SearchActivity extends Activity implements INotifyDataSetChanged
 	@Override
 	public void NotifyDataSetChanged(int cmd, Object value, int arg1, int arg2)
 	{
-		if (cmd == Downloader.CHANGER_STATUS)//×´Ì¬ÐÅÏ¢
+		if (cmd == Downloader.CHANGER_STATUS)//×´Ì¬ï¿½ï¿½Ï¢
 		{
 			SysEng.getInstance().addHandlerEvent(new AbsEvent()
 			{

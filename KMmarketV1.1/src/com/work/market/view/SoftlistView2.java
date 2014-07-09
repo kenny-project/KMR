@@ -71,7 +71,7 @@ public class SoftlistView2 extends LinearLayout
 		pd.setMessage(m_MainActivity.getText(R.string.pd_loading));
 		pd.setCancelable(true);
 		moreView = m_MainActivity.getLayoutInflater().inflate(
-				R.layout.xlistview_footer, null);// Ìí¼Ólist ½ø¶È
+				R.layout.xlistview_footer, null);// ï¿½ï¿½ï¿½list ï¿½ï¿½ï¿½
 		mfootProgressBar = (ProgressBar) moreView
 				.findViewById(R.id.xlistview_footer_progressbar);
 		mFootTextView = (TextView) moreView
@@ -171,10 +171,10 @@ public class SoftlistView2 extends LinearLayout
 			mNetTask.cancel(true);
 		}
 		mNetTask = new NetTask1( url, apd);
-		mNetTask.execute(null);
+		mNetTask.execute("");
 	}
 
-	// Í¼Æ¬´¦Àí
+	// 
 	class NetTask1 extends AsyncTask<Object, Integer, String>
 	{
 		private boolean m_showlog = false;
@@ -206,7 +206,7 @@ public class SoftlistView2 extends LinearLayout
 			if (!pd.isShowing() && m_showlog) return;
 
 			if (result == null)
-			{// Ê§°Ü ´¦Àí
+			{// Ê§ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 				pd.dismiss();
 				if (mEnablePullLoad)
 				{
@@ -229,15 +229,15 @@ public class SoftlistView2 extends LinearLayout
 					{
 						JSONObject tempJson = jsonObj1.optJSONObject(i);
 						AppListBean tempAppListBean = new AppListBean();
-						tempAppListBean.setId(tempJson.getString("id"));// ±êÌâ
+						tempAppListBean.setId(tempJson.getString("id"));// ï¿½ï¿½ï¿½ï¿½
 						tempAppListBean.setTitle(tempJson.getString("title"));//
-						tempAppListBean.setPn(tempJson.getString("pn"));// packageÂë
-						tempAppListBean.setLogourl(tempJson.getString("logo"));// Í¼Æ¬µØÖ·
+						tempAppListBean.setPn(tempJson.getString("pn"));// packageï¿½ï¿½
+						tempAppListBean.setLogo(tempJson.getString("logo"));// Í¼Æ¬ï¿½ï¿½Ö·
 						tempAppListBean.setSize(Common.getLength(tempJson
-								.getString("size")));// ÎÄ¼þ´óÐ¡(×Ö½Ú)score
-						tempAppListBean.setScore(tempJson.getString("score"));// ÎÄ¼þ´óÐ¡(×Ö½Ú)
-						tempAppListBean.setAppurl(tempJson.getString("apkurl"));// ÏÂÔØµØÖ·
-						tempAppListBean.setDowntiems(tempJson.getString("dc"));// ÏÂÔØ´ÎÊý
+								.getString("size")));// ï¿½Ä¼ï¿½ï¿½ï¿½Ð¡(ï¿½Ö½ï¿½)score
+						tempAppListBean.setScore(tempJson.getString("score"));// ï¿½Ä¼ï¿½ï¿½ï¿½Ð¡(ï¿½Ö½ï¿½)
+						tempAppListBean.setAppurl(tempJson.getString("apkurl"));// ï¿½ï¿½ï¿½Øµï¿½Ö·
+						tempAppListBean.setDowntiems(tempJson.getString("dc"));// ï¿½ï¿½ï¿½Ø´ï¿½ï¿½ï¿½
 						tempAppListBean
 								.setAppFileExt(tempJson.getString("ext"));
 						mList.add(tempAppListBean);

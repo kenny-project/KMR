@@ -19,7 +19,7 @@ import com.work.market.bean.AppListBean;
 import com.work.market.net.DictBean;
 import com.work.market.net.Downloader;
 /**
- * Í¨ÓÃÁÐ±í
+ * Í¨ï¿½ï¿½ï¿½Ð±ï¿½
  * @author WangMinghui
  *
  */
@@ -70,7 +70,7 @@ public class SoftListAdapter extends ObjectListAdapter{
 //		} else {
 //			viewHolder.logImage.setImageResource(R.drawable.deflogo);
 //		}
-		imageLoader.displayImage(bean.getLogourl(),
+		imageLoader.displayImage(bean.getLogo(),
 				viewHolder.logImage, options);
 		viewHolder.mytitle.setText(bean.getTitle());
 		viewHolder.tbScore.setRating(bean.getScore());
@@ -84,69 +84,69 @@ public class SoftListAdapter extends ObjectListAdapter{
 			switch (Downing) {
 			case Downloader.INIT:
 				viewHolder.mydownimage.setImageResource(R.drawable.list_down);
-				viewHolder.mydowntext.setText("ÏÂÔØ");
+				viewHolder.mydowntext.setText("ï¿½ï¿½ï¿½ï¿½");
 				break;
-			case Downloader.UPDATE://¸üÐÂ
+			case Downloader.UPDATE://ï¿½ï¿½ï¿½ï¿½
 				viewHolder.mydownimage.setImageResource(R.drawable.list_pause);
-				viewHolder.mydowntext.setText("¸üÐÂ");
+				viewHolder.mydowntext.setText("ï¿½ï¿½ï¿½ï¿½");
 				break;
 			case Downloader.INIT_SERVER:
 				viewHolder.mydownimage.setImageResource(R.drawable.list_pause);
-				viewHolder.mydowntext.setText("³õÊ¼»¯");
+				viewHolder.mydowntext.setText("ï¿½ï¿½Ê¼ï¿½ï¿½");
 			case Downloader.DOWNLOADING:
 				viewHolder.mydownimage.setImageResource(R.drawable.list_pause);
 				//viewHolder.mydowntext.setText(downing.getCompeletePercentage()+"%");
-				viewHolder.mydowntext.setText("ÏÂÔØÖÐ");
+				viewHolder.mydowntext.setText("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 				break;
 			case Downloader.WAIT:
 				viewHolder.mydownimage.setImageResource(R.drawable.list_pause);
-				viewHolder.mydowntext.setText("µÈ´ý");
+				viewHolder.mydowntext.setText("ï¿½È´ï¿½");
 				break;
-			case Downloader.PAUSE:// ÔÝÍ£ÖÐ
+			case Downloader.PAUSE:// ï¿½ï¿½Í£ï¿½ï¿½
 				viewHolder.mydownimage.setImageResource(R.drawable.list_down);
-				viewHolder.mydowntext.setText("¼ÌÐø");
+				viewHolder.mydowntext.setText("ï¿½ï¿½ï¿½ï¿½");
 				break;
-			case Downloader.FINISH:// ÏÂÔØÍê³É
+			case Downloader.FINISH:// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				PackageInfo packages;
 				try
 				{
 					packages = mcontext.getPackageManager().getPackageInfo(bean.getPn(),1);
 					if(packages.versionCode<bean.getVercode())
-					{//ÔËÐÐ
+					{//ï¿½ï¿½ï¿½ï¿½
 						viewHolder.mydownimage.setImageResource(R.drawable.list_pause);
-						viewHolder.mydowntext.setText("¸üÐÂ");
+						viewHolder.mydowntext.setText("ï¿½ï¿½ï¿½ï¿½");
 						downing.setState(Downloader.UPDATE);
 					}
 					else
 					 if(packages.versionCode==bean.getVercode())
-					{//ÔËÐÐ
+					{//ï¿½ï¿½ï¿½ï¿½
 						viewHolder.mydownimage.setImageResource(R.drawable.list_open);
-						viewHolder.mydowntext.setText("ÔËÐÐ");
+						viewHolder.mydowntext.setText("ï¿½ï¿½ï¿½ï¿½");
 					}
 					else
-					{//°²×°
+					{//ï¿½ï¿½×°
 						viewHolder.mydownimage.setImageResource(R.drawable.list_install);
-						viewHolder.mydowntext.setText("°²×°");
+						viewHolder.mydowntext.setText("ï¿½ï¿½×°");
 					}
 				}
 				catch (Exception e)
 				{
 					//e.printStackTrace();
 					viewHolder.mydownimage.setImageResource(R.drawable.list_install);
-					viewHolder.mydowntext.setText("°²×°");
+					viewHolder.mydowntext.setText("ï¿½ï¿½×°");
 				}
 				break;
 			default:
 				if (Downing >= Downloader.ERROR) {
 					viewHolder.mydownimage
 							.setImageResource(R.drawable.list_down);
-					viewHolder.mydowntext.setText("ÖØÊÔ");
+					viewHolder.mydowntext.setText("ï¿½ï¿½ï¿½ï¿½");
 				}
 				break;
 			}
 		} else {
 			viewHolder.mydownimage.setImageResource(R.drawable.list_down);
-			viewHolder.mydowntext.setText("ÏÂÔØ");
+			viewHolder.mydowntext.setText("ï¿½ï¿½ï¿½ï¿½");
 		}
 		viewHolder.mydownLinearLayout.setOnClickListener(new OnKClickListener(
 				viewHolder, bean));

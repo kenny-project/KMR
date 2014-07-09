@@ -44,11 +44,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 /**
  * 
- *     ÏêÇéÒ³
+ *     ï¿½ï¿½ï¿½ï¿½Ò³
  *    
  * @author caoliang      
  * @version 1.0    
- * @created 2012-12-19 ÏÂÎç8:59:44
+ * @created 2012-12-19 ï¿½ï¿½ï¿½ï¿½8:59:44
  */
 public class DetailActivity extends Activity{
 	//view
@@ -71,12 +71,12 @@ public class DetailActivity extends Activity{
 		public void handleMessage(Message message) {
 			switch (message.what) {
 			case 0:
-				Toast.makeText(DetailActivity.this, "·¢ËÍ³É¹¦", Toast.LENGTH_SHORT).show();
+				Toast.makeText(DetailActivity.this, "ï¿½ï¿½ï¿½Í³É¹ï¿½", Toast.LENGTH_SHORT).show();
 				break;
 			case 1:
 				break;
 			case 2:
-				Toast.makeText(DetailActivity.this, "·¢ËÍÊ§°Ü", Toast.LENGTH_SHORT).show();
+				Toast.makeText(DetailActivity.this, "ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½", Toast.LENGTH_SHORT).show();
 				break;
 			default:
 				break;
@@ -99,43 +99,43 @@ public class DetailActivity extends Activity{
 	ImageView mDownloadImage;
 	ProgressDialog mProgressDialog = null;
 	LinearLayout mDownliadLiner;
-	//ÏÂÔØ·þÎñ
+	//ï¿½ï¿½ï¿½Ø·ï¿½ï¿½ï¿½
 //	private DownloadService downLoadService;
-	//Á¬½ÓÏÂÔØ·þÎñ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø·ï¿½ï¿½ï¿½
 	private ServiceConnection serviceConnection = new ServiceConnection()
 	{
-		//  Á¬½Ó·þÎñÊ§°Üºó£¬¸Ã·½·¨±»µ÷ÓÃ
+		//  ï¿½ï¿½ï¿½Ó·ï¿½ï¿½ï¿½Ê§ï¿½Üºó£¬¸Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		@Override
 		public void onServiceDisconnected(ComponentName name)
 		{
 		//	downLoadService = null;
 			Toast.makeText(DetailActivity.this, "Service Failed.", Toast.LENGTH_LONG).show();
 		}
-		//  ³É¹¦Á¬½Ó·þÎñºó£¬¸Ã·½·¨±»µ÷ÓÃ¡£ÔÚ¸Ã·½·¨ÖÐ¿ÉÒÔ»ñµÃdownLoadService¶ÔÏó
+		//  ï¿½É¹ï¿½ï¿½ï¿½ï¿½Ó·ï¿½ï¿½ï¿½ó£¬¸Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¡ï¿½ï¿½Ú¸Ã·ï¿½ï¿½ï¿½ï¿½Ð¿ï¿½ï¿½Ô»ï¿½ï¿½downLoadServiceï¿½ï¿½ï¿½ï¿½
 		@Override
 		public void onServiceConnected(ComponentName name, IBinder service)
 		{
-			//  »ñµÃdownLoadService¶ÔÏó
+			//  ï¿½ï¿½ï¿½downLoadServiceï¿½ï¿½ï¿½ï¿½
 	//		downLoadService = ((DownloadService.DownLoadServiceBinder) service).getService();
 			Toast.makeText(DetailActivity.this, "Service Connected.", Toast.LENGTH_LONG).show();
 		}
 	}; 
 	/**
-	 * ½øÈëÒ³Ãæ
+	 * ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½
 	* @param savedInstanceState    
 	* @see android.app.Activity#onCreate(android.os.Bundle)
 	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		//¼ÓÔØÒ³Ãæ
+		//ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
-		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);//ÊúÆÁ
-		setContentView(R.layout.product);
-		//Òì²½´¦Àí
+		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);//ï¿½ï¿½ï¿½ï¿½
+		setContentView(R.layout.product_activity);
+		//ï¿½ì²½ï¿½ï¿½ï¿½ï¿½
 //		 CrashHandler crashHandler = CrashHandler.getInstance();  
 //	        crashHandler.init(getApplicationContext());  
-	        //´´½¨¹ã²¥ÊµÀý
+	        //ï¿½ï¿½ï¿½ï¿½ï¿½ã²¥Êµï¿½ï¿½
 //		 receiver = new mServiceUIReceiver();
 //    	 IntentFilter filter = new IntentFilter();
 //         filter.addAction("android.intent.action.recommend");
@@ -143,12 +143,12 @@ public class DetailActivity extends Activity{
 //         UI();
 	}
 	/**
-	 * ÏêÇéÒ³µÄÍ¼Æ¬ÏÔÊ¾Êý¾Ý
+	 * ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½Í¼Æ¬ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½
 	 *     
 	 *    
 	 * @author caoliang      
 	 * @version 1.0    
-	 * @created 2012-12-22 ÏÂÎç11:03:59
+	 * @created 2012-12-22 ï¿½ï¿½ï¿½ï¿½11:03:59
 	 */
 	 private class ImageAdapter extends BaseAdapter{
 	        private Context mContext;
@@ -220,8 +220,8 @@ public class DetailActivity extends Activity{
 			finish();
 		}
 		/**
-		 * ÏÔÊ¾Ó¦ÓÃÊÇ·ñÏÂÔØ²¢µã»÷ÏÂÔØºó½øÈëÏÂÔØ·þÎñ
-		 * ÃèÊö
+		 * ï¿½ï¿½Ê¾Ó¦ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½Ø²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Øºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø·ï¿½ï¿½ï¿½
+		 * ï¿½ï¿½ï¿½ï¿½
 		 */
 		public void appDownload(){
 //			boolean isDownload = false;
@@ -233,19 +233,19 @@ public class DetailActivity extends Activity{
 //				isAtDownload = true;
 //		}
 //		if(isAtDownload){
-//			mDownload.setText("È¡Ïû");
+//			mDownload.setText("È¡ï¿½ï¿½");
 //			mDownloadImage.setImageResource(R.drawable.cancel2_click);
 //		}else{
-//			mDownload.setText("ÏÂÔØ");
+//			mDownload.setText("ï¿½ï¿½ï¿½ï¿½");
 //			mDownloadImage.setImageResource(R.drawable.download_click);
 //		}
 //		if(isDownload){
 //			mDownloadImage.setImageResource(R.drawable.download_canel);
-//			mDownload.setText("ÏÂÔØ");
+//			mDownload.setText("ï¿½ï¿½ï¿½ï¿½");
 //		}else{
 //			mDownliadLiner.setOnClickListener(new OnClickListener() {
 //				/**
-//				 * ÏÂÔØ»òÕßÈ¡Ïû
+//				 * ï¿½ï¿½ï¿½Ø»ï¿½ï¿½ï¿½È¡ï¿½ï¿½
 //				* @param v    
 //				* @see android.view.View.OnClickListener#onClick(android.view.View)
 //				 */
@@ -253,9 +253,9 @@ public class DetailActivity extends Activity{
 //				public void onClick(View v) {
 //					if(mNetWork.getIsNetworkAvailable()){
 //						mDownloadImage.setImageResource(R.drawable.cancel2_click);
-//						mDownload.setText("È¡Ïû");
+//						mDownload.setText("È¡ï¿½ï¿½");
 //						if(!DownloadService.downloadList.contains(app.getId())){
-//							Toast.makeText(DetailActivity.this, "ÏÂÔØ"+Double.valueOf(app.getDownloadIntegral()*0.001).floatValue()+"Ôª"+"+¼¤»î"+Double.valueOf(app.getOpenIntegral()*0.001).floatValue()+"Ôª"+"£¬È«²¿Íê³É¿É»ñµÃ"+Double.valueOf((app.getDownloadIntegral()+app.getOpenIntegral())*0.001).floatValue()+"Ôª", Toast.LENGTH_LONG).show();
+//							Toast.makeText(DetailActivity.this, "ï¿½ï¿½ï¿½ï¿½"+Double.valueOf(app.getDownloadIntegral()*0.001).floatValue()+"Ôª"+"+ï¿½ï¿½ï¿½ï¿½"+Double.valueOf(app.getOpenIntegral()*0.001).floatValue()+"Ôª"+"ï¿½ï¿½È«ï¿½ï¿½ï¿½ï¿½É¿É»ï¿½ï¿½"+Double.valueOf((app.getDownloadIntegral()+app.getOpenIntegral())*0.001).floatValue()+"Ôª", Toast.LENGTH_LONG).show();
 //						}
 //						Intent serviceIntent = new Intent(DetailActivity.this,DownloadService.class);
 //						serviceIntent.putExtra("url", app.getFileName());
@@ -267,7 +267,7 @@ public class DetailActivity extends Activity{
 //						DetailActivity.this.bindService(serviceIntent, serviceConnection, Context.BIND_AUTO_CREATE);
 //						DetailActivity.this.startService(serviceIntent);
 //					}else{
-//						Toast.makeText(DetailActivity.this, "ÍøÂçÁ¬½Ó³ö´í£¡", 1).show();
+//						Toast.makeText(DetailActivity.this, "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó³ï¿½ï¿½?", 1).show();
 //					}
 //				}
 //			});
@@ -294,11 +294,11 @@ public class DetailActivity extends Activity{
 		 }
 		/**
 		 * 
-		 *   ÄÚ²¿¹ã²¥  
+		 *   ï¿½Ú²ï¿½ï¿½ã²¥  
 		 *    
 		 * @author caoliang      
 		 * @version 1.0    
-		 * @created 2012-12-22 ÏÂÎç11:06:51
+		 * @created 2012-12-22 ï¿½ï¿½ï¿½ï¿½11:06:51
 		 */
 		private class mServiceUIReceiver extends BroadcastReceiver{
 	          @Override
@@ -317,12 +317,12 @@ public class DetailActivity extends Activity{
 		
 		
 	    /**
-	     * ·ÖÏí·½Ê½µÄÏÔÊ¾Êý¾Ý
+	     * ï¿½ï¿½ï¿½?Ê½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½
 	     *     
 	     *    
 	     * @author caoliang      
 	     * @version 1.0    
-	     * @created 2012-12-22 ÏÂÎç11:07:28
+	     * @created 2012-12-22 ï¿½ï¿½ï¿½ï¿½11:07:28
 	     */
 		class ShareAdapter extends BaseAdapter{
 			private Context mContext;

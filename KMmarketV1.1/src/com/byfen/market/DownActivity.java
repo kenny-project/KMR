@@ -2,7 +2,6 @@ package com.byfen.market;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ComponentName;
@@ -18,7 +17,6 @@ import android.os.Parcelable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -28,7 +26,6 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-
 import com.byfen.app.KApp;
 import com.framework.log.P;
 import com.work.Interface.INotifyDataSetChanged;
@@ -36,26 +33,23 @@ import com.work.market.adapter.DownLoadedAdapter;
 import com.work.market.adapter.DownLoadingAdapter;
 import com.work.market.bean.AppListBean;
 import com.work.market.server.DownLoadService;
-
 /**
- * œ¬‘ÿΩÁ√Ê
+ * ‰∏ãËΩΩÁïåÈù¢
  * 
  * @author kenny
  */
-
 public class DownActivity extends Activity implements OnClickListener,
-		INotifyDataSetChanged
+		INotifyDataSetChanged, OnItemLongClickListener
 {
-	private LinearLayout m_left_button;
-	private LinearLayout m_right_button;
+	private View m_left_button;
+	private View m_right_button;
 	public DownLoadingAdapter mDownLoadingadapter;
 	public DownLoadedAdapter mDownloadedadapter;
 	private ListView lvDownLoading, lvDownLoaded;
-	// private IntentFilter mIntentFilter; // œ˚œ¢¥¶¿Ì
 	public List<AppListBean> downingList = new ArrayList<AppListBean>();
 	private Context mContext;
 	private ViewPager myViewPager;
-	private MyPagerAdapter mAbsPageAdapter = new MyPagerAdapter();
+	private SwitchPagerAdapter mPagerAdapter = new SwitchPagerAdapter();
 	private static final int DownLoading = 0, DownLoaded = 1;
 	private int mPageIndex = DownLoading;
 	private KApp app;
@@ -101,9 +95,9 @@ public class DownActivity extends Activity implements OnClickListener,
 		}
 	}
 
-	// ..................Ω· ¯∑˛ŒÒ
+	// ..................ÁªìÊùüÊúçÂä°
 	/**
-	 * Ω¯»Î“≥√Ê
+	 * ËøõÂÖ•È°µÈù¢
 	 * 
 	 * @param savedInstanceState
 	 * @see android.app.ActivityGroup#onCreate(android.os.Bundle)
@@ -113,10 +107,10 @@ public class DownActivity extends Activity implements OnClickListener,
 	{
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
-		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);//  ˙∆¡
-		// º”‘ÿ“≥√Ê
+		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);// Á´ñÂ±è
+		// Âä†ËΩΩÈ°µÈù¢
 		setContentView(R.layout.down_activity);
-		// “Ï≥£¥¶¿Ì
+		// ÂºÇÂ∏∏Â§ÑÁêÜ
 		mContext = this;
 		app = ((KApp) getApplicationContext());
 
@@ -143,59 +137,10 @@ public class DownActivity extends Activity implements OnClickListener,
 			lvDownLoaded.setAdapter(mDownloadedadapter);
 		}
 
-		lvDownLoaded.setOnItemLongClickListener(new OnItemLongClickListener()
-		{
-			@Override
-			public boolean onItemLongClick(AdapterView<?> parent, View view,
-					final int position, long id)
-			{
-				// Ã· æ”√ªß «∑Ò…æ≥˝œ˚œ¢
-				new AlertDialog.Builder(mContext)
-						.setTitle("Ã· æ")
-						.setMessage(" «∑Ò“™…æ≥˝µ±«∞∞≤◊∞∞¸£ø")
-						.setPositiveButton("»∑∂®",
-								new DialogInterface.OnClickListener()
-								{
-									@Override
-									public void onClick(DialogInterface dialog,
-											int arg1)
-									{
-										dialog.dismiss();
-										if (mPlaybackService != null) mPlaybackService
-												.DelDownLoaded(position);
-									}
-								})
-						.setNegativeButton("»°œ˚",
-								new DialogInterface.OnClickListener()
-								{
-									@Override
-									public void onClick(DialogInterface dialog,
-											int arg1)
-									{
-										dialog.dismiss();
-									}
-								}).show();
-				return false;
-			}
-		});
-		lvDownLoaded.setOnItemClickListener(new OnItemClickListener()
-		{
-
-			public void onItemClick(AdapterView<?> parent, View view, int pos,
-					long id)
-			{
-				Intent seta = new Intent(mContext, productActivity.class);
-				Bundle bundle = new Bundle();
-				AppListBean bean = (AppListBean) parent.getItemAtPosition(pos);
-				bundle.putString("title", bean.getTitle());
-				bundle.putString("pn", bean.getPn());
-				bundle.putInt("id", bean.getId());
-				seta.putExtras(bundle);
-				startActivity(seta);
-			}
-		});
+		lvDownLoaded.setOnItemLongClickListener(this);
+		lvDownLoaded.setOnItemClickListener(lvDownLoadedOnItemClickListener);
 		myViewPager = (ViewPager) findViewById(R.id.viewpagerLayout);
-		myViewPager.setAdapter(mAbsPageAdapter);
+		myViewPager.setAdapter(mPagerAdapter);
 		myViewPager.setCurrentItem(DownLoading);
 		myViewPager.setOnPageChangeListener(new OnPageChangeListener()
 		{
@@ -268,38 +213,8 @@ public class DownActivity extends Activity implements OnClickListener,
 		super.onPause();
 		app.setINotifyChanged(null);
 	}
-
-	public boolean onKeyDown(int keyCode, KeyEvent event)
-	{
-		if (event.getAction() == KeyEvent.ACTION_DOWN)
-		{
-			if (keyCode == KeyEvent.KEYCODE_BACK)
-			{
-				new AlertDialog.Builder(this)
-						.setTitle("Ã· æ")
-						.setMessage(" «∑Ò“™ÕÀ≥ˆ»Ìº˛£ø")
-						.setPositiveButton("»∑∂®",
-								new DialogInterface.OnClickListener()
-								{
-									public void onClick(
-											DialogInterface dialoginterface,
-											int i)
-									{
-										Intent serviceIntent = new Intent(
-												DownActivity.this,
-												DownLoadService.class);
-										serviceIntent
-												.putExtra("type", "finish");
-										startService(serviceIntent);
-										finish();
-									}
-								}).setNegativeButton("»°œ˚", null).show();
-			}
-		}
-		return true;
-	}
-
-	private class MyPagerAdapter extends PagerAdapter
+	
+	private class SwitchPagerAdapter extends PagerAdapter
 	{
 		public void destroyItem(View arg0, int arg1, Object arg2)
 		{
@@ -355,7 +270,6 @@ public class DownActivity extends Activity implements OnClickListener,
 	}
 
 	private boolean bRefresh = false;
-
 	@Override
 	public void NotifyDataSetChanged(int cmd, Object value, int arg1, int arg2)
 	{
@@ -368,13 +282,59 @@ public class DownActivity extends Activity implements OnClickListener,
 				@Override
 				public void run()
 				{
-					
 					mDownLoadingadapter.notifyDataSetChanged();
 					bRefresh = false;
 				}
 			});
 //		}
 	}
-
 	Handler handler = new Handler();
+
+	@Override
+	public boolean onItemLongClick(AdapterView<?> arg0, View arg1, final int arg2,
+			long arg3) {
+		// ÊèêÁ§∫Áî®Êà∑ÊòØÂê¶Âà†Èô§Ê∂àÊÅØ
+		new AlertDialog.Builder(mContext)
+				.setTitle("ÊèêÁ§∫")
+				.setMessage("ÊòØÂê¶Ë¶ÅÂà†Èô§ÂΩìÂâçÂÆâË£ÖÂåÖÔºü")
+				.setPositiveButton("Á°ÆÂÆö",
+						new DialogInterface.OnClickListener()
+						{
+							@Override
+							public void onClick(DialogInterface dialog,
+									int arg1)
+							{
+								dialog.dismiss();
+								if (mPlaybackService != null) mPlaybackService
+										.DelDownLoaded(arg2);
+							}
+						})
+				.setNegativeButton("ÂèñÊ∂à",
+						new DialogInterface.OnClickListener()
+						{
+							@Override
+							public void onClick(DialogInterface dialog,
+									int arg1)
+							{
+								dialog.dismiss();
+							}
+						}).show();
+		return false;
+	}
+	OnItemClickListener lvDownLoadedOnItemClickListener=new OnItemClickListener()
+	{
+
+		public void onItemClick(AdapterView<?> parent, View view, int pos,
+				long id)
+		{
+			Intent seta = new Intent(mContext, productActivity.class);
+			Bundle bundle = new Bundle();
+			AppListBean bean = (AppListBean) parent.getItemAtPosition(pos);
+			bundle.putString("title", bean.getTitle());
+			bundle.putString("pn", bean.getPn());
+			bundle.putInt("id", bean.getId());
+			seta.putExtras(bundle);
+			startActivity(seta);
+		}
+	};
 }

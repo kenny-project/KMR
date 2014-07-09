@@ -30,10 +30,10 @@ import android.widget.RemoteViews;
 import android.widget.Toast;
 
 import com.byfen.market.InstallApkActivity;
-import com.byfen.market.MainActivity;
 import com.byfen.market.R;
 import com.framework.syseng.AbsEvent;
 import com.framework.syseng.SysEng;
+import com.kenny.Slidingmenu.MainUIActivity;
 import com.work.Interface.INotifyDataSetChanged;
 import com.work.market.adapter.DownLoadedAdapter;
 import com.work.market.adapter.DownLoadingAdapter;
@@ -50,10 +50,10 @@ import com.work.market.util.HttpUrlConst;
 
 /**
  * 
- * ÏÂÔØµÄservice
+ * ä¸‹è½½çš„service
  * 
  * @version 1.0
- * @created 2012-12-19 ÏÂÎç9:50:59
+ * @created 2012-12-19 ä¸‹åˆ9:50:59
  */
 public class DownLoadService extends Service implements Runnable,
 		INotifyDataSetChanged
@@ -65,13 +65,13 @@ public class DownLoadService extends Service implements Runnable,
 	public static boolean downing = false;
 	private boolean isrun = true;
 	private Context mContext;
-	// ÕıÔÚÏÂÔØ apkÁĞ±í
+	// æ­£åœ¨ä¸‹è½½ apkåˆ—è¡¨
 	private Vector<AppListBean> mRunList = new Vector<AppListBean>();
-	// ¼ÓÔØµ½ÏÂÔØ¶ÓÁĞµÄ apkÁĞ±í
+	// åŠ è½½åˆ°ä¸‹è½½é˜Ÿåˆ—çš„ apkåˆ—è¡¨
 	private Vector<AppListBean> downloadingList = new Vector<AppListBean>();
-	// ÏÂÔØÍê³É apkÁĞ±í
+	// ä¸‹è½½å®Œæˆ apkåˆ—è¡¨
 	private Vector<AppListBean> downloadFinishList = new Vector<AppListBean>();
-	// ¸üĞÂÁĞ±í
+	// æ›´æ–°åˆ—è¡¨
 	private Vector<AppListBean> updateList = new Vector<AppListBean>();
 	private DownLoadingAdapter mDownLoadingAddapter;
 	private DownLoadedAdapter mDownloadedadapter;
@@ -146,7 +146,7 @@ public class DownLoadService extends Service implements Runnable,
 	}
 
 	/**
-	 * »ñÈ¡ĞèÒª¸üĞÂµÄÈí¼ş
+	 * è·å–éœ€è¦æ›´æ–°çš„è½¯ä»¶
 	 * 
 	 * @param con
 	 */
@@ -161,7 +161,7 @@ public class DownLoadService extends Service implements Runnable,
 	}
 
 	/**
-	 * ³õÊ¼»¯ÒÑ¾­ÏÂÔØµÄÁĞ±í
+	 * åˆå§‹åŒ–å·²ç»ä¸‹è½½çš„åˆ—è¡¨
 	 * 
 	 * @param con
 	 */
@@ -186,7 +186,7 @@ public class DownLoadService extends Service implements Runnable,
 				temp.setId(model.getId());
 				temp.setTitle(model.getTitle());
 				temp.setPn(model.getPn());
-				temp.setLogourl(model.getlogurl());
+				temp.setLogo(model.getlogurl());
 				temp.setSize(model.getsize());
 				temp.setAppurl(model.getappurl());
 				temp.setVercode(model.getversioncode());
@@ -207,7 +207,7 @@ public class DownLoadService extends Service implements Runnable,
 	}
 
 	/**
-	 * ³õÊ¼»¯ÒÑ¾­ÏÂÔØµÄÁĞ±í
+	 * åˆå§‹åŒ–å·²ç»ä¸‹è½½çš„åˆ—è¡¨
 	 * 
 	 * @param con
 	 */
@@ -229,7 +229,7 @@ public class DownLoadService extends Service implements Runnable,
 				temp.setId(model.getId());
 				temp.setTitle(model.getTitle());
 				temp.setPn(model.getPn());
-				temp.setLogourl(model.getlogurl());
+				temp.setLogo(model.getlogurl());
 				temp.setSize(model.getsize());
 				temp.setAppurl(model.getappurl());
 				temp.setVercode(model.getversioncode());
@@ -298,7 +298,7 @@ public class DownLoadService extends Service implements Runnable,
 	}
 
 	/**
-	 * É¾³ıÖ¸¶¨µÄID
+	 * åˆ é™¤æŒ‡å®šçš„ID
 	 * 
 	 * @param id
 	 * @return
@@ -360,7 +360,7 @@ public class DownLoadService extends Service implements Runnable,
 	}
 
 	/**
-	 * ³õÊ¼»¯ÏîÄ¿
+	 * åˆå§‹åŒ–é¡¹ç›®
 	 */
 	@Override
 	public void onCreate()
@@ -388,7 +388,7 @@ public class DownLoadService extends Service implements Runnable,
 		}
 	}
 
-	// ¼ì²éSD¿¨ÊÇ·ñ´æÔÚ true:´æÔÚ
+	// æ£€æŸ¥SDå¡æ˜¯å¦å­˜åœ¨ true:å­˜åœ¨
 	public static boolean checkSDCard()
 	{
 		if (Environment.getExternalStorageState().equals(
@@ -414,7 +414,7 @@ public class DownLoadService extends Service implements Runnable,
 				jsonObject.put("id", bean.getId());
 				jsonObject.put("title", bean.getTitle());
 				jsonObject.put("pn", bean.getPn());
-				jsonObject.put("logo", bean.getLogourl());
+				jsonObject.put("logo", bean.getLogo());
 				jsonObject.put("size", bean.getSize());
 				jsonObject.put("score", bean.getScore());
 				jsonObject.put("dc", bean.getDowntiems());
@@ -437,7 +437,7 @@ public class DownLoadService extends Service implements Runnable,
 	}
 
 	/**
-	 * ¸Ãº¯Êı,Ö»ÄÜÔÚUIÖ÷Ïß³ÌÖĞµ÷ÓÃ
+	 * è¯¥å‡½æ•°,åªèƒ½åœ¨UIä¸»çº¿ç¨‹ä¸­è°ƒç”¨
 	 */
 	public void start()
 	{
@@ -539,7 +539,7 @@ public class DownLoadService extends Service implements Runnable,
 				}
 				if (mRunEvent != null)
 				{
-					ShowDownLoadingNotification("ÕıÔÚÏÂÔØ" + mRunEvent.getTitle(),
+					ShowDownLoadingNotification("æ­£åœ¨ä¸‹è½½" + mRunEvent.getTitle(),
 							mRunEvent);
 					download(mRunEvent);
 					if(mRunList.size()>0)
@@ -560,12 +560,12 @@ public class DownLoadService extends Service implements Runnable,
 
 	/**
 	 * 
-	 * ¿ªÊ¼ÏÂÔØ
+	 * å¼€å§‹ä¸‹è½½
 	 * 
 	 * @param path
-	 *            ÏÂÔØurl
+	 *            ä¸‹è½½url
 	 * @param savedir
-	 *            ÏÂÔØ´æ·ÅµÄÂ·¾¶
+	 *            ä¸‹è½½å­˜æ”¾çš„è·¯å¾„
 	 */
 	private void download(final AppListBean bean)
 	{
@@ -624,7 +624,7 @@ public class DownLoadService extends Service implements Runnable,
 		{
 			ErrorMsg(what, value, arg1, arg2);
 		}
-		else if (what == Downloader.CHANGER_STATUS)// ×´Ì¬ĞÅÏ¢
+		else if (what == Downloader.CHANGER_STATUS)// çŠ¶æ€ä¿¡æ¯
 		{
 			if (arg1 == Downloader.WAIT)
 			{
@@ -634,7 +634,7 @@ public class DownLoadService extends Service implements Runnable,
 								.getString(R.string.toast_msg_add_download_queue),
 						0);
 			}
-			else if (arg1 == Downloader.FINISH)// ÏÂÔØ³É¹¦
+			else if (arg1 == Downloader.FINISH)// ä¸‹è½½æˆåŠŸ
 			{
 				makeText(
 						DownLoadService.this,
@@ -643,7 +643,7 @@ public class DownLoadService extends Service implements Runnable,
 						0);
 			}
 		}
-		if (what == Downloader.DOWNLOADING_STATUS)// ×´Ì¬ĞÅÏ¢
+		if (what == Downloader.DOWNLOADING_STATUS)// çŠ¶æ€ä¿¡æ¯
 		{
 			SysEng.getInstance().addHandlerEvent(new AbsEvent()
 			{
@@ -744,10 +744,10 @@ public class DownLoadService extends Service implements Runnable,
 	NotificationProvider mNotificationProvider = new NotificationProvider()
 	{
 		public Notification createNotification(Context context, String title,
-				String path)// ÏÂÔØÍê³É
+				String path)// ä¸‹è½½å®Œæˆ
 		{
 			Notification notification = new Notification(R.drawable.deflogo,
-					title + "ÏÂÔØÍê³É", System.currentTimeMillis());
+					title + "ä¸‹è½½å®Œæˆ", System.currentTimeMillis());
 
 			notification.flags = Notification.FLAG_AUTO_CANCEL;
 			// The PendingIntent to launch our activity if the user selects
@@ -761,15 +761,15 @@ public class DownLoadService extends Service implements Runnable,
 			// contentIntent.
 			// Set the info for the views that show in the notification
 			// panel.
-			notification.setLatestEventInfo(context, title + "ÏÂÔØÍê³É",
-					"ÏÂÔØÍê³É,µã»÷°²×°", contentIntent);
+			notification.setLatestEventInfo(context, title + "ä¸‹è½½å®Œæˆ",
+					"ä¸‹è½½å®Œæˆ,ç‚¹å‡»å®‰è£…", contentIntent);
 			notification.flags = notification.flags
 					| Notification.FLAG_AUTO_CANCEL;
 			return notification;
 		}
 
 		public Notification createNotification(Context context, String desc,
-				AppListBean appBean)// ÕıÔÚÏÂÔØ
+				AppListBean appBean)// æ­£åœ¨ä¸‹è½½
 		{
 			Notification notification = new Notification(R.drawable.deflogo,
 					getTitle(), System.currentTimeMillis());
@@ -779,20 +779,20 @@ public class DownLoadService extends Service implements Runnable,
 			DownloadInfo info = null;
 			DictBean bean = appBean.getDictBean();
 			if (bean != null) info = bean.getDownloadInfo();
-			// Ê¹ÓÃnotification.xmlÎÄ¼ş×÷VIEW
+			// ä½¿ç”¨notification.xmlæ–‡ä»¶ä½œVIEW
 			if (info != null)
 			{
 				notification.contentView.setImageViewBitmap(
-						R.id.content_view_image, appBean.getLogo());
+						R.id.content_view_image, appBean.getImgLogo());
 				// Log.v("wmh",
 				// "info.getEndPos()="+info.getEndPos()+",info.getStartPos()="+info.getStartPos());
 				notification.contentView.setTextViewText(
-						R.id.content_view_Title, appBean.getTitle() + "ÒÑÏÂÔØ "
+						R.id.content_view_Title, appBean.getTitle() + "å·²ä¸‹è½½ "
 								+ info.getCompeletePercentage() + "%");
 				notification.contentView.setProgressBar(
 						R.id.content_view_progress, 100,
 						info.getCompeletePercentage(), false);
-				Intent intent = new Intent(context, MainActivity.class);
+				Intent intent = new Intent(context, MainUIActivity.class);
 				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				// intent.setData(Uri.fromFile(new File(provider.getUrl())));
 				PendingIntent contentIntent = PendingIntent.getActivity(
@@ -823,7 +823,7 @@ public class DownLoadService extends Service implements Runnable,
 			// Set the info for the views that show in the notification
 			// panel.
 
-			// notification.setLatestEventInfo(context, "ÏÂÔØ¹ÜÀíÆ÷", desc,
+			// notification.setLatestEventInfo(context, "ä¸‹è½½ç®¡ç†å™¨", desc,
 			// contentIntent);
 			notification.flags = notification.flags
 					| Notification.FLAG_ONGOING_EVENT;
@@ -837,7 +837,7 @@ public class DownLoadService extends Service implements Runnable,
 	{
 		try
 		{
-			// startForeground Service ·şÎñ
+			// startForeground Service æœåŠ¡
 			// startForeground(bean.getId(),
 			// mNotificationProvider.createNotification(context,bean));
 			Notification notif = mNotificationProvider.createNotification(
@@ -885,13 +885,13 @@ public class DownLoadService extends Service implements Runnable,
 			else
 			{
 				mDownLoadingNotify.contentView.setTextViewText(
-						R.id.content_view_Title, mRunEvent.getTitle() + "ÒÑÏÂÔØ "
+						R.id.content_view_Title, mRunEvent.getTitle() + "å·²ä¸‹è½½ "
 								+ info.getCompeletePercentage() + "%");
 				mDownLoadingNotify.contentView.setProgressBar(
 						R.id.content_view_progress, 100,
 						info.getCompeletePercentage(), false);
 				mDownLoadingNotify.contentView.setImageViewBitmap(
-						R.id.content_view_image, appBean.getLogo());
+						R.id.content_view_image, appBean.getImgLogo());
 			}
 			startForeground(NOTIFICATION, mDownLoadingNotify);
 		}
@@ -899,7 +899,7 @@ public class DownLoadService extends Service implements Runnable,
 	}
 
 	/**
-	 * ²é¿´¸üĞÂÓ¦ÓÃÁĞ±í
+	 * æŸ¥çœ‹æ›´æ–°åº”ç”¨åˆ—è¡¨
 	 * 
 	 * @author WangMinghui
 	 * 

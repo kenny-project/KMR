@@ -86,9 +86,9 @@ public class classlistView extends ObjectView
 				bundle.putString("title", dialogstring);
 				bundle.putString("type", adaptersoft.id.get(pos));//id
 				bundle.putString("kind", m_type);
-				bundle.putInt("is_modify", -1);//ÊÇ·ñÎªÐÞ¸Ä×´Ì¬ 0:Î´ÐÞ¸Ä,1:ÐÞ¸ÄÆÆ½â°æ,²»´«ÎªËùÓÐ 
-				bundle.putString("lang", "all");//ÓïÑÔ,'cn':ÖÐÎÄ,'en':Ó¢ÎÄ,²»´«ÎªËùÓÐ
-				bundle.putInt("min_file_size", -1);//ÎÄ¼þ×îÐ¡,ÀýÈç min_file_size=10,±íÊ¾ÎÄ¼þ´óÐ¡²»ÉÙÓÚ10mb,-1:²»ÏÞÖÆ
+				bundle.putInt("is_modify", -1);//ï¿½Ç·ï¿½Îªï¿½Þ¸ï¿½×´Ì¬ 0:Î´ï¿½Þ¸ï¿½,1:ï¿½Þ¸ï¿½ï¿½Æ½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ 
+				bundle.putString("lang", "all");//ï¿½ï¿½ï¿½ï¿½,'cn':ï¿½ï¿½ï¿½ï¿½,'en':Ó¢ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½
+				bundle.putInt("min_file_size", -1);//ï¿½Ä¼ï¿½ï¿½ï¿½Ð¡,ï¿½ï¿½ï¿½ï¿½ min_file_size=10,ï¿½ï¿½Ê¾ï¿½Ä¼ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½10mb,-1:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				bundle.putString(
 						"url",
 						"http://api.byfen.com/list/type?type="
@@ -168,32 +168,6 @@ public class classlistView extends ObjectView
 				final TextView mytext = (TextView) view
 						.findViewById(R.id.class_item_text);// @+id/zhaongjiang_item1_text1
 				mytext.setText(title.get(position));
-
-//				final RelativeLayout myRelativeLayout = (RelativeLayout) view
-//						.findViewById(R.id.class_item_lay);
-//				myRelativeLayout.setOnClickListener(new View.OnClickListener()
-//				{
-//					@Override
-//					public void onClick(View v)
-//					{
-//						//
-//						Intent seta = new Intent(mContext,
-//								SoftActivity.class);
-//						Bundle bundle = new Bundle();
-//						String dialogstring = title.get(position);
-//						bundle.putString("title", dialogstring);
-//						bundle.putString("id", id.get(position));
-//						bundle.putString("type", m_type);
-//						bundle.putBoolean("classvisible", false);
-//						bundle.putString(
-//								"url",
-//								"http://api.byfen.com/list/type?type="
-//										+ id.get(position) + "&");
-//						seta.putExtras(bundle);
-//						m_MainActivity.startActivity(seta);
-//					}
-//				});
-
 			}
 
 			return view;
@@ -209,10 +183,10 @@ public class classlistView extends ObjectView
 			mNetTask.cancel(true);
 		}
 		mNetTask = new NetTask(num, apd, url);
-		mNetTask.execute(null);// m_ad_layout.setVisibility
+		mNetTask.execute("");// m_ad_layout.setVisibility
 	}
 
-	// Í¼Æ¬´¦Àí
+	// Í¼Æ¬ï¿½ï¿½ï¿½ï¿½
 	class NetTask extends AsyncTask<Object, Integer, String>
 	{
 
@@ -243,7 +217,7 @@ public class classlistView extends ObjectView
 			}
 			else if (m_num == 1)
 			{
-				String filename = Common.getmymd5(m_url) + ".jpg";
+				String filename = Common.getMd5Code(m_url) + ".jpg";
 				String data = HttpUtil.GetPhoto5(m_url, filename);//
 				return data;
 			}
@@ -263,7 +237,7 @@ public class classlistView extends ObjectView
 			if (!pd.isShowing() && m_showlog) return;
 
 			if (result == null)
-			{// Ê§°Ü ´¦Àí
+			{// Ê§ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 				pd.dismiss();
 				String dialogstring = m_MainActivity
 						.getString(R.string.net_faile);
@@ -282,9 +256,9 @@ public class classlistView extends ObjectView
 						for (int i = 0; i < jsonObj1.length(); i++)
 						{
 							JSONObject tempJson = jsonObj1.optJSONObject(i);
-							// String id = tempJson.getString("id");//±êÌâ
-							String id = tempJson.getString("id");// ±êÌâ
-							String value = tempJson.getString("value");// packageÂë
+							// String id = tempJson.getString("id");//ï¿½ï¿½ï¿½ï¿½
+							String id = tempJson.getString("id");// ï¿½ï¿½ï¿½ï¿½
+							String value = tempJson.getString("value");// packageï¿½ï¿½
 							adaptersoft.title.add(value);
 							adaptersoft.id.add(id);
 
@@ -305,7 +279,7 @@ public class classlistView extends ObjectView
 
 	public Bitmap Getphontnames(String url)
 	{
-		String filename = Common.getmymd5(url) + ".jpg";
+		String filename = Common.getMd5Code(url) + ".jpg";
 
 		String path = Environment.getExternalStorageDirectory().toString()
 				+ "/baifen/img/" + filename;

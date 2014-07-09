@@ -7,7 +7,6 @@ import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
@@ -15,7 +14,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
@@ -32,7 +30,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.Window;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
@@ -46,6 +44,7 @@ import com.byfen.market.bean.BanBean;
 import com.byfen.market.event.InitEvent;
 import com.framework.syseng.AbsEvent;
 import com.framework.syseng.SysEng;
+import com.kenny.Slidingmenu.Fragment.ContentFragment;
 import com.work.Image.ImageLoader;
 import com.work.Image.SDFile;
 import com.work.Image.SaveData;
@@ -60,7 +59,7 @@ import com.work.market.server.DownLoadService;
 import com.work.market.server.KHomeBanItemParser;
 import com.work.market.util.AnimationUtil;
 
-public class HomeActivity extends Activity implements OnClickListener,INotifyDataSetChanged
+public class HomeActivity extends ContentFragment implements OnClickListener,INotifyDataSetChanged
 {
 	private Button m_soft;
 	private Button m_game;
@@ -70,15 +69,14 @@ public class HomeActivity extends Activity implements OnClickListener,INotifyDat
 	private View mVHeadListView;
 	public ObjectListAdapter adapter;
 	private ListView index_ls;
-	// ¶¯»­¹ã¸æ
+	// åŠ¨ç”»å¹¿å‘Š
 	private ArrayList<View> m_ad_pageViews;
 	private ViewPager m_ad_viewPager;
 	private int m_ad_indexNum = 0;
 	private KApp app ;
 	private Handler m_ad_Handler = new Handler();
-	// ..................Æô¶¯·şÎñ..................
-
-	// ×Ô¶¯ÇĞ»»ÏÂÒ»Ò³
+	// ..................å¯åŠ¨æœåŠ¡..................
+	// è‡ªåŠ¨åˆ‡æ¢ä¸‹ä¸€é¡µ
 	private Runnable m_ad_autoRunnable = new Runnable()
 	{
 		@Override
@@ -86,7 +84,7 @@ public class HomeActivity extends Activity implements OnClickListener,INotifyDat
 		{
 			m_ad_indexNum++;
 			m_ad_indexNum = m_ad_indexNum % m_ad_pageViews.size();
-			// ÏòºóÇĞ»»¶¯»­
+			// å‘ååˆ‡æ¢åŠ¨ç”»
 			if (m_ad_indexNum > 0)
 			{
 				final View v1 = m_ad_pageViews.get(m_ad_indexNum - 1);
@@ -102,7 +100,7 @@ public class HomeActivity extends Activity implements OnClickListener,INotifyDat
 						v1.clearAnimation();
 					}
 				}, 200);
-				// ÇĞ»»µ½µÚÒ»Ò³¶¯»­
+				// åˆ‡æ¢åˆ°ç¬¬ä¸€é¡µåŠ¨ç”»
 			}
 			else
 			{
@@ -125,53 +123,55 @@ public class HomeActivity extends Activity implements OnClickListener,INotifyDat
 		}
 	};
 
-	private IntentFilter mIntentFilter; // ÏûÏ¢´¦Àí
-	// ÍøÂç
+	private IntentFilter mIntentFilter; // æ¶ˆæ¯å¤„ç†
+	// ç½‘ç»œ
 
 	private NetTask mNetTask;
 	// private NetTask1 mNetTask1;
 	private ImageLoader mLogoImage;
-	private ArrayList<BanBean> mBanList = new ArrayList<BanBean>();// Ê×Ò³Í¼Æ¬ÍÆ¼ö
+	private ArrayList<BanBean> mBanList = new ArrayList<BanBean>();// é¦–é¡µå›¾ç‰‡æ¨è
 	private Context m_Context;
 	private AdapterService mService;
 	private static final String BanFileName = "ban.xml";
 	private static final String BanFileDay = "Ban_ListDay";
 
 	/**
-	 * ½øÈëÒ³Ãæ
+	 * è¿›å…¥é¡µé¢
 	 * 
 	 */
 	@Override
-	protected void onCreate(Bundle savedInstanceState)
+	public void onCreate(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		requestWindowFeature(Window.FEATURE_NO_TITLE);
-		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);// ÊúÆÁ
-		// ¼ÓÔØÒ³Ãæ
-		setContentView(R.layout.index);
-		app = ((KApp) getApplicationContext());
+//		requestWindowFeature(Window.FEATURE_NO_TITLE);
+//		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);// ç«–å±
+		// åŠ è½½é¡µé¢
+		setContentView(R.layout.home_activity,inflater);
+		app = ((KApp) getActivity().getApplicationContext());
 		app.setINotifyChanged(this);
 
-		// Òì³£´¦Àí
-		m_Context = this;
+		// å¼‚å¸¸å¤„ç†
+		m_Context = getActivity();
 		mLogoImage = ImageLoader.GetObject(m_Context);
 		mBanList = new ArrayList<BanBean>();
 		mIntentFilter = new IntentFilter();
 		mIntentFilter.addAction("com.android.my.action");
-
-		m_soft = (Button) findViewById(R.id.btSoftGroup);
+		
+		mView.findViewById(R.id.btDownLoad).setOnClickListener(this);
+		m_soft = (Button) mView.findViewById(R.id.btSoftGroup);
 		m_soft.setOnClickListener(this);
 
-		m_game = (Button) findViewById(R.id.btGameGroup);
+		m_game = (Button) mView.findViewById(R.id.btGameGroup);
 		m_game.setOnClickListener(this);
-		m_special = (Button) findViewById(R.id.btSubjectGroup);
+		m_special = (Button) mView.findViewById(R.id.btSubjectGroup);
 		m_special.setOnClickListener(this);
-		m_wallpaper = (Button) findViewById(R.id.btInstalledNecessaryGroup);
+		m_wallpaper = (Button) mView.findViewById(R.id.btInstalledNecessaryGroup);
 		m_wallpaper.setOnClickListener(this);
 
 		// head
-		mVHeadListView = getLayoutInflater().inflate(R.layout.list_head_index,
-				null);// Ìí¼Ólist
+		mVHeadListView =getActivity().getLayoutInflater().inflate(R.layout.list_head_index,
+				null);// æ·»åŠ list
 
 		mVHeadListView.findViewById(R.id.btBigGameGroup).setOnClickListener(
 				this);
@@ -185,13 +185,13 @@ public class HomeActivity extends Activity implements OnClickListener,INotifyDat
 		m_ad_viewPager = (ViewPager) mVHeadListView.findViewById(R.id.ad_page);
 
 		// foot
-		mVFooterListView = getLayoutInflater().inflate(
-				R.layout.xlistview_footer, null);// Ìí¼Ólist
+		mVFooterListView = getActivity().getLayoutInflater().inflate(
+				R.layout.xlistview_footer, null);// æ·»åŠ list
 
-		index_ls = (ListView) findViewById(R.id.index_ls);
+		index_ls = (ListView) mView.findViewById(R.id.index_ls);
 		index_ls.addHeaderView(mVHeadListView);
 		index_ls.addFooterView(mVFooterListView, null, false);
-		mService = new AdapterService(getParent(), mVFooterListView);
+		mService = new AdapterService(getActivity(), mVFooterListView);
 		adapter = mService.InitData(0, 1);
 		index_ls.setAdapter(adapter);
 		adinitData();
@@ -203,18 +203,19 @@ public class HomeActivity extends Activity implements OnClickListener,INotifyDat
 			{
 				if(pos>0)pos--;
 				AppListBean bean = (AppListBean)adapter.getItem(pos);
-				Intent seta = new Intent(HomeActivity.this, productActivity.class);
+				Intent seta = new Intent(getActivity(), productActivity.class);
 				Bundle bundle = new Bundle();
 				bundle.putString("title", bean.getTitle());
+				bundle.putString("logo_url", bean.getLogo());
 				bundle.putInt("id", bean.getId());
 				seta.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
 						| Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
 				seta.putExtras(bundle);
-				HomeActivity.this.startActivity(seta);
+				getActivity().startActivity(seta);
 			}
 		});
 		BanInit();
-		new InitEvent(this).ok();
+		new InitEvent(getActivity()).ok();
 	}
 
 	public void BanInit()
@@ -237,7 +238,7 @@ public class HomeActivity extends Activity implements OnClickListener,INotifyDat
 			SetadData();
 			Calendar c = Calendar.getInstance();
 			int day = c.get(Calendar.DAY_OF_MONTH);
-			int oldDay = SaveData.Read(this, BanFileDay, 1);
+			int oldDay = SaveData.Read(getActivity(), BanFileDay, 1);
 			if (day != oldDay)
 			{
 				upData(false);
@@ -252,112 +253,129 @@ public class HomeActivity extends Activity implements OnClickListener,INotifyDat
 	@Override
 	public void onClick(View v)
 	{
+		Intent seta;
+		Bundle bundle;
 		switch (v.getId())
 		{
+		case R.id.btDownLoad:
+			seta = new Intent(getActivity(), DownActivity.class);
+			bundle = new Bundle();
+			bundle.putInt("pagetype", SoftActivity.PAGETYPE_SECOND_GROUP);
+			bundle.putString("url", "");
+			bundle.putString("title", "ä¿®æ”¹æ¸¸æˆ");
+			bundle.putString("kind", "game");
+			bundle.putString("type", "0");
+			bundle.putString("id", "1");
+			bundle.putInt("is_modify", 1);//æ˜¯å¦ä¸ºä¿®æ”¹çŠ¶æ€ 0:æœªä¿®æ”¹,1:ä¿®æ”¹ç ´è§£ç‰ˆ,ä¸ä¼ ä¸ºæ‰€æœ‰
+			bundle.putString("lang", "all");//è¯­è¨€,'cn':ä¸­æ–‡,'en':è‹±æ–‡,ä¸ä¼ ä¸ºæ‰€æœ‰
+			bundle.putInt("min_file_size", -1);//æ–‡ä»¶æœ€å°,ä¾‹å¦‚ min_file_size=10,è¡¨ç¤ºæ–‡ä»¶å¤§å°ä¸å°‘äº10mb,-1:ä¸é™åˆ¶
+			seta.putExtras(bundle);
+			startActivity(seta);
+			break;
 		case R.id.btSoftGroup:
-			Intent seta = new Intent(HomeActivity.this, SoftActivity.class);
-			Bundle bundle = new Bundle();
+			seta = new Intent(getActivity(), SoftActivity.class);
+			bundle = new Bundle();
 			bundle.putInt("pagetype", SoftActivity.PAGETYPE_FIRST_GROUP);
-			bundle.putString("title", "Èí¼ş");
+			bundle.putString("title", "è½¯ä»¶");
 			bundle.putString("url", "");
 			bundle.putString("kind", "soft");
 			bundle.putString("type", "0");
 			bundle.putString("id", "1");
-			bundle.putInt("is_modify", -1);//ÊÇ·ñÎªĞŞ¸Ä×´Ì¬ 0:Î´ĞŞ¸Ä,1:ĞŞ¸ÄÆÆ½â°æ,²»´«ÎªËùÓĞ 
-			bundle.putString("lang", "all");//ÓïÑÔ,'cn':ÖĞÎÄ,'en':Ó¢ÎÄ,²»´«ÎªËùÓĞ
-			bundle.putInt("min_file_size", -1);//ÎÄ¼ş×îĞ¡,ÀıÈç min_file_size=10,±íÊ¾ÎÄ¼ş´óĞ¡²»ÉÙÓÚ10mb,-1:²»ÏŞÖÆ
+			bundle.putInt("is_modify", -1);//æ˜¯å¦ä¸ºä¿®æ”¹çŠ¶æ€ 0:æœªä¿®æ”¹,1:ä¿®æ”¹ç ´è§£ç‰ˆ,ä¸ä¼ ä¸ºæ‰€æœ‰ 
+			bundle.putString("lang", "all");//è¯­è¨€,'cn':ä¸­æ–‡,'en':è‹±æ–‡,ä¸ä¼ ä¸ºæ‰€æœ‰
+			bundle.putInt("min_file_size", -1);//æ–‡ä»¶æœ€å°,ä¾‹å¦‚ min_file_size=10,è¡¨ç¤ºæ–‡ä»¶å¤§å°ä¸å°‘äº10mb,-1:ä¸é™åˆ¶
 			seta.putExtras(bundle);
 			startActivity(seta);
 			break;
 		case R.id.btGameGroup:
-			seta = new Intent(HomeActivity.this, SoftActivity.class);
+			seta = new Intent(getActivity(), SoftActivity.class);
 			bundle = new Bundle();
 			bundle.putInt("pagetype", SoftActivity.PAGETYPE_FIRST_GROUP);
 			bundle.putString("url", "");
-			bundle.putString("title", "ÓÎÏ·");
+			bundle.putString("title", "æ¸¸æˆ");
 			bundle.putString("kind", "game");
 			bundle.putString("type", "0");
 			bundle.putString("id", "1");
-			bundle.putInt("is_modify", -1);//ÊÇ·ñÎªĞŞ¸Ä×´Ì¬ 0:Î´ĞŞ¸Ä,1:ĞŞ¸ÄÆÆ½â°æ,²»´«ÎªËùÓĞ 
-			bundle.putString("lang", "all");//ÓïÑÔ,'cn':ÖĞÎÄ,'en':Ó¢ÎÄ,²»´«ÎªËùÓĞ
-			bundle.putInt("min_file_size", -1);//ÎÄ¼ş×îĞ¡,ÀıÈç min_file_size=10,±íÊ¾ÎÄ¼ş´óĞ¡²»ÉÙÓÚ10mb,-1:²»ÏŞÖÆ
+			bundle.putInt("is_modify", -1);//æ˜¯å¦ä¸ºä¿®æ”¹çŠ¶æ€ 0:æœªä¿®æ”¹,1:ä¿®æ”¹ç ´è§£ç‰ˆ,ä¸ä¼ ä¸ºæ‰€æœ‰ 
+			bundle.putString("lang", "all");//è¯­è¨€,'cn':ä¸­æ–‡,'en':è‹±æ–‡,ä¸ä¼ ä¸ºæ‰€æœ‰
+			bundle.putInt("min_file_size", -1);//æ–‡ä»¶æœ€å°,ä¾‹å¦‚ min_file_size=10,è¡¨ç¤ºæ–‡ä»¶å¤§å°ä¸å°‘äº10mb,-1:ä¸é™åˆ¶
 			seta.putExtras(bundle);
 			startActivity(seta);
 			break;
 		case R.id.btSubjectGroup:
-			Intent seta0 = new Intent(HomeActivity.this, SpecialActivity.class);
+			Intent seta0 = new Intent(getActivity(), SpecialActivity.class);
 			this.startActivity(seta0);
 			break;
 		case R.id.btInstalledNecessaryGroup:// bizhi
-			Intent seta2 = new Intent(HomeActivity.this,
+			Intent seta2 = new Intent(getActivity(),
 			InstalledNecessaryGroupActivity.class);
 			Bundle bundle2 = new Bundle();
-			String dialogstring2 = "×°»ú±Ø±¸";// http://api.byfen.com/list/must
+			String dialogstring2 = "è£…æœºå¿…å¤‡";// http://api.byfen.com/list/must
 			bundle2.putString("title", dialogstring2);
 			bundle2.putString("url", "http://api.byfen.com/list/must?");
 			seta2.putExtras(bundle2);
 			startActivity(seta2);
 			break;
 		case R.id.btBigGameGroup:
-			seta = new Intent(HomeActivity.this, SoftActivity.class);
+			seta = new Intent(getActivity(), SoftActivity.class);
 			bundle = new Bundle();
 			bundle.putInt("pagetype", SoftActivity.PAGETYPE_SECOND_GROUP);
 			bundle.putString("url", "");
-			bundle.putString("title", "´óĞÍÓÎÏ·");
+			bundle.putString("title", "å¤§å‹æ¸¸æˆ");
 			bundle.putString("kind", "game");//game|soft
 			bundle.putString("type", "0");
 			bundle.putString("id", "1");
-			bundle.putInt("is_modify", -1);//ÊÇ·ñÎªĞŞ¸Ä×´Ì¬ 0:Î´ĞŞ¸Ä,1:ĞŞ¸ÄÆÆ½â°æ,²»´«ÎªËùÓĞ 
-			bundle.putString("lang", "all");//ÓïÑÔ,'cn':ÖĞÎÄ,'en':Ó¢ÎÄ,²»´«ÎªËùÓĞ
-			bundle.putInt("min_file_size", 60);//ÎÄ¼ş×îĞ¡,ÀıÈç min_file_size=10,±íÊ¾ÎÄ¼ş´óĞ¡²»ÉÙÓÚ10mb,-1:²»ÏŞÖÆ
+			bundle.putInt("is_modify", -1);//æ˜¯å¦ä¸ºä¿®æ”¹çŠ¶æ€ 0:æœªä¿®æ”¹,1:ä¿®æ”¹ç ´è§£ç‰ˆ,ä¸ä¼ ä¸ºæ‰€æœ‰ 
+			bundle.putString("lang", "all");//è¯­è¨€,'cn':ä¸­æ–‡,'en':è‹±æ–‡,ä¸ä¼ ä¸ºæ‰€æœ‰
+			bundle.putInt("min_file_size", 60);//æ–‡ä»¶æœ€å°,ä¾‹å¦‚ min_file_size=10,è¡¨ç¤ºæ–‡ä»¶å¤§å°ä¸å°‘äº10mb,-1:ä¸é™åˆ¶
 			seta.putExtras(bundle);
 			startActivity(seta);
 			
 			break;
 		case R.id.btCrackGameGroup:
 
-			seta = new Intent(HomeActivity.this, SoftActivity.class);
+			seta = new Intent(getActivity(), SoftActivity.class);
 			bundle = new Bundle();
 			bundle.putInt("pagetype", SoftActivity.PAGETYPE_SECOND_GROUP);
 			bundle.putString("url", "");
-			bundle.putString("title", "ĞŞ¸ÄÓÎÏ·");
+			bundle.putString("title", "ä¿®æ”¹æ¸¸æˆ");
 			bundle.putString("kind", "game");
 			bundle.putString("type", "0");
 			bundle.putString("id", "1");
-			bundle.putInt("is_modify", 1);//ÊÇ·ñÎªĞŞ¸Ä×´Ì¬ 0:Î´ĞŞ¸Ä,1:ĞŞ¸ÄÆÆ½â°æ,²»´«ÎªËùÓĞ
-			bundle.putString("lang", "all");//ÓïÑÔ,'cn':ÖĞÎÄ,'en':Ó¢ÎÄ,²»´«ÎªËùÓĞ
-			bundle.putInt("min_file_size", -1);//ÎÄ¼ş×îĞ¡,ÀıÈç min_file_size=10,±íÊ¾ÎÄ¼ş´óĞ¡²»ÉÙÓÚ10mb,-1:²»ÏŞÖÆ
+			bundle.putInt("is_modify", 1);//æ˜¯å¦ä¸ºä¿®æ”¹çŠ¶æ€ 0:æœªä¿®æ”¹,1:ä¿®æ”¹ç ´è§£ç‰ˆ,ä¸ä¼ ä¸ºæ‰€æœ‰
+			bundle.putString("lang", "all");//è¯­è¨€,'cn':ä¸­æ–‡,'en':è‹±æ–‡,ä¸ä¼ ä¸ºæ‰€æœ‰
+			bundle.putInt("min_file_size", -1);//æ–‡ä»¶æœ€å°,ä¾‹å¦‚ min_file_size=10,è¡¨ç¤ºæ–‡ä»¶å¤§å°ä¸å°‘äº10mb,-1:ä¸é™åˆ¶
 			seta.putExtras(bundle);
 			startActivity(seta);
 			break;
 		case R.id.btMobileNetGameGroup:
-			seta = new Intent(HomeActivity.this, SoftActivity.class);
+			seta = new Intent(getActivity(), SoftActivity.class);
 			bundle = new Bundle();
 			bundle.putInt("pagetype", SoftActivity.PAGETYPE_SECOND_GROUP);
 			bundle.putString("url", "");
-			bundle.putString("title", "ÊÖ»úÍøÓÎ");
+			bundle.putString("title", "æ‰‹æœºç½‘æ¸¸");
 			bundle.putString("kind", "game");
 			bundle.putString("type", "40");
 			bundle.putString("id", "1");
-			bundle.putInt("is_modify", -1);//ÊÇ·ñÎªĞŞ¸Ä×´Ì¬ 0:Î´ĞŞ¸Ä,1:ĞŞ¸ÄÆÆ½â°æ,²»´«ÎªËùÓĞ
-			bundle.putString("lang", "all");//ÓïÑÔ,'cn':ÖĞÎÄ,'en':Ó¢ÎÄ,²»´«ÎªËùÓĞ
-			bundle.putInt("min_file_size", -1);//ÎÄ¼ş×îĞ¡,ÀıÈç min_file_size=10,±íÊ¾ÎÄ¼ş´óĞ¡²»ÉÙÓÚ10mb,-1:²»ÏŞÖÆ
+			bundle.putInt("is_modify", -1);//æ˜¯å¦ä¸ºä¿®æ”¹çŠ¶æ€ 0:æœªä¿®æ”¹,1:ä¿®æ”¹ç ´è§£ç‰ˆ,ä¸ä¼ ä¸ºæ‰€æœ‰
+			bundle.putString("lang", "all");//è¯­è¨€,'cn':ä¸­æ–‡,'en':è‹±æ–‡,ä¸ä¼ ä¸ºæ‰€æœ‰
+			bundle.putInt("min_file_size", -1);//æ–‡ä»¶æœ€å°,ä¾‹å¦‚ min_file_size=10,è¡¨ç¤ºæ–‡ä»¶å¤§å°ä¸å°‘äº10mb,-1:ä¸é™åˆ¶
 			
 			seta.putExtras(bundle);
 			startActivity(seta);
 			break;
 		case R.id.btChineseGameGroup:
-			seta = new Intent(HomeActivity.this, SoftActivity.class);
+			seta = new Intent(getActivity(), SoftActivity.class);
 			bundle = new Bundle();
 			bundle.putInt("pagetype", SoftActivity.PAGETYPE_SECOND_GROUP);
-			bundle.putString("title", "ÖĞÎÄÓÎÏ·");
+			bundle.putString("title", "ä¸­æ–‡æ¸¸æˆ");
 			bundle.putString("url", "");
 			bundle.putString("kind", "game");
 			bundle.putString("type", "0");
 			bundle.putString("id", "1");
-			bundle.putInt("is_modify", -1);//ÊÇ·ñÎªĞŞ¸Ä×´Ì¬ 0:Î´ĞŞ¸Ä,1:ĞŞ¸ÄÆÆ½â°æ,²»´«ÎªËùÓĞ
-			bundle.putString("lang", "cn");//ÓïÑÔ,'cn':ÖĞÎÄ,'en':Ó¢ÎÄ,²»´«ÎªËùÓĞ
-			bundle.putInt("min_file_size", -1);//ÎÄ¼ş×îĞ¡,ÀıÈç min_file_size=10,±íÊ¾ÎÄ¼ş´óĞ¡²»ÉÙÓÚ10mb,-1:²»ÏŞÖÆ
+			bundle.putInt("is_modify", -1);//æ˜¯å¦ä¸ºä¿®æ”¹çŠ¶æ€ 0:æœªä¿®æ”¹,1:ä¿®æ”¹ç ´è§£ç‰ˆ,ä¸ä¼ ä¸ºæ‰€æœ‰
+			bundle.putString("lang", "cn");//è¯­è¨€,'cn':ä¸­æ–‡,'en':è‹±æ–‡,ä¸ä¼ ä¸ºæ‰€æœ‰
+			bundle.putInt("min_file_size", -1);//æ–‡ä»¶æœ€å°,ä¾‹å¦‚ min_file_size=10,è¡¨ç¤ºæ–‡ä»¶å¤§å°ä¸å°‘äº10mb,-1:ä¸é™åˆ¶
 			seta.putExtras(bundle);
 			startActivity(seta);
 			break;
@@ -367,18 +385,18 @@ public class HomeActivity extends Activity implements OnClickListener,INotifyDat
 	}
 
 	/**
-	 * Ë¢ĞÂÉÌµêUI£¬·ÅÈëÊı¾İ
+	 * åˆ·æ–°å•†åº—UIï¼Œæ”¾å…¥æ•°æ®
 	 */
 	private void adinitData()
 	{
 
 		m_ad_indexNum = 0;
 		m_ad_pageViews = new ArrayList<View>();
-		// ³õÊ¼»¯ÒªÇĞ»»µÄÒ³Ãæ ·ÅÈëÒ»¸ölistÖĞ±£´æ
+		// åˆå§‹åŒ–è¦åˆ‡æ¢çš„é¡µé¢ æ”¾å…¥ä¸€ä¸ªlistä¸­ä¿å­˜
 		for (int i = 0; i < 1; i++)
 		{
-			LayoutInflater inflater = getLayoutInflater();
-			// °ó¶¨UI
+			LayoutInflater inflater =getActivity().getLayoutInflater();
+			// ç»‘å®šUI
 			View v = inflater.inflate(R.layout.ad_item, null);
 			ImageView adimage = (ImageView) v.findViewById(R.id.myadimage);
 			m_ad_pageViews.add(v);
@@ -396,12 +414,12 @@ public class HomeActivity extends Activity implements OnClickListener,INotifyDat
 			return;
 		}
 		Log.i("TAG", "--=-=-=-=-=-==-=--aaa---" + m_ad_indexNum);
-		// ÑÓÊ±5Ãëºó Ö´ĞĞautoRunnable
+		// å»¶æ—¶5ç§’å æ‰§è¡ŒautoRunnable
 		m_ad_Handler.postDelayed(m_ad_autoRunnable, 5000);
 	}
 
 	/**
-	 * UIÏÔÊ¾ĞèÒªµÄÊÊÅäÆ÷
+	 * UIæ˜¾ç¤ºéœ€è¦çš„é€‚é…å™¨
 	 * 
 	 * @author zhou
 	 * 
@@ -462,7 +480,7 @@ public class HomeActivity extends Activity implements OnClickListener,INotifyDat
 	}
 
 	/**
-	 * ÇĞ»»page
+	 * åˆ‡æ¢page
 	 * 
 	 * @author zhou
 	 * 
@@ -483,7 +501,7 @@ public class HomeActivity extends Activity implements OnClickListener,INotifyDat
 		@Override
 		public void onPageSelected(int arg0)
 		{
-			// ÉèÖÃµ±Ç°Ò³
+			// è®¾ç½®å½“å‰é¡µ
 			m_ad_indexNum = arg0;
 		}
 	}
@@ -504,22 +522,22 @@ public class HomeActivity extends Activity implements OnClickListener,INotifyDat
 		}
 	};
 
-	@Override
-	protected void onResume()
+	//@Override
+	public void onResume()
 	{
 		// TODO Auto-generated method stub
 		super.onResume();
-		registerReceiver(mReceiver, mIntentFilter);
+		getActivity().registerReceiver(mReceiver, mIntentFilter);
 		adapter.notifyDataSetChanged();
 		app.setINotifyChanged(this);
 	}
 
-	@Override
-	protected void onPause()
+	//@Override
+	public void onPause()
 	{
 		// TODO Auto-generated method stub
 		super.onPause();
-		unregisterReceiver(mReceiver);
+		getActivity().unregisterReceiver(mReceiver);
 		app.setINotifyChanged(null);
 	}
 
@@ -530,10 +548,10 @@ public class HomeActivity extends Activity implements OnClickListener,INotifyDat
 			mNetTask.cancel(true);
 		}
 		mNetTask = new NetTask(ashowdialg);
-		mNetTask.execute(null);
+		mNetTask.execute("");
 	}
 
-	// Í¼Æ¬´¦Àí
+	// å›¾ç‰‡å¤„ç†
 	class NetTask extends AsyncTask<Object, Integer, String>
 	{
 		private boolean m_showlog = false;
@@ -544,8 +562,8 @@ public class HomeActivity extends Activity implements OnClickListener,INotifyDat
 			m_showlog = ashowlog;
 			if (m_showlog)
 			{
-				pd = new ProgressDialog(HomeActivity.this);
-				pd.setMessage(HomeActivity.this.getText(R.string.pd_loading));
+				pd = new ProgressDialog(getActivity());
+				pd.setMessage(getActivity().getText(R.string.pd_loading));
 				pd.setCancelable(false);
 			}
 		}
@@ -567,7 +585,7 @@ public class HomeActivity extends Activity implements OnClickListener,INotifyDat
 		protected void onPostExecute(String result)
 		{
 			if (result == null)
-			{// Ê§°Ü ´¦Àí
+			{// å¤±è´¥ å¤„ç†
 				if (pd != null) pd.dismiss();
 				String dialogstring = getString(R.string.net_faile);
 				Toast.makeText(m_Context, dialogstring, Toast.LENGTH_LONG)
@@ -590,7 +608,7 @@ public class HomeActivity extends Activity implements OnClickListener,INotifyDat
 
 	public Bitmap Getphontnames(String url)
 	{
-		String filename = Common.getmymd5(url);
+		String filename = Common.getMd5Code(url);
 
 		String path = Environment.getExternalStorageDirectory().toString()
 				+ "/baifen/img/" + filename;
@@ -641,16 +659,16 @@ public class HomeActivity extends Activity implements OnClickListener,INotifyDat
 	}
 
 	private void SetadData()
-	{// ¸üĞÂÊ×Ò³Í¼Æ¬ÍÆ¼ö
+	{// æ›´æ–°é¦–é¡µå›¾ç‰‡æ¨è
 		m_ad_Handler.removeCallbacks(m_ad_autoRunnable);
 		m_ad_indexNum = 0;
 		m_ad_pageViews.clear();
-		// ³õÊ¼»¯ÒªÇĞ»»µÄÒ³Ãæ ·ÅÈëÒ»¸ölistÖĞ±£´æ
+		// åˆå§‹åŒ–è¦åˆ‡æ¢çš„é¡µé¢ æ”¾å…¥ä¸€ä¸ªlistä¸­ä¿å­˜
 		for (int i = 0; i < mBanList.size(); i++)
 		{
-			LayoutInflater inflater = getLayoutInflater();
+			LayoutInflater inflater = getActivity().getLayoutInflater();
 			final BanBean bean = mBanList.get(i);
-			// °ó¶¨UI
+			// ç»‘å®šUI
 			View v = inflater.inflate(R.layout.ad_item, null);
 			final ImageView adimage = (ImageView) v
 					.findViewById(R.id.myadimage);
@@ -684,20 +702,20 @@ public class HomeActivity extends Activity implements OnClickListener,INotifyDat
 				@Override
 				public void onClick(View v)
 				{
-					// µã»÷´¦Àí
+					// ç‚¹å‡»å¤„ç†
 					if (bean.getType().equals("app"))
 					{
-						Intent seta = new Intent(HomeActivity.this,
+						Intent seta = new Intent(getActivity(),
 								productActivity.class);
 						Bundle bundle = new Bundle();
 						bundle.putString("title", bean.getTitle());
 						bundle.putInt("id", bean.getId());
 						seta.putExtras(bundle);
-						HomeActivity.this.startActivity(seta);
+						getActivity().startActivity(seta);
 					}
 					else if (bean.getType().equals("theme"))
 					{
-						Intent seta = new Intent(HomeActivity.this,
+						Intent seta = new Intent(getActivity(),
 								specialitemActivity2.class);
 						Bundle bundle = new Bundle();
 						bundle.putString("title", bean.getTitle());
@@ -756,10 +774,10 @@ public class HomeActivity extends Activity implements OnClickListener,INotifyDat
 		{
 			if (keyCode == KeyEvent.KEYCODE_BACK)
 			{
-				new AlertDialog.Builder(this)
-						.setTitle("ÌáÊ¾")
-						.setMessage("ÊÇ·ñÒªÍË³öÈí¼ş£¿")
-						.setPositiveButton("È·¶¨",
+				new AlertDialog.Builder(getActivity())
+						.setTitle("æç¤º")
+						.setMessage("æ˜¯å¦è¦é€€å‡ºè½¯ä»¶ï¼Ÿ")
+						.setPositiveButton("ç¡®å®š",
 								new DialogInterface.OnClickListener()
 								{
 									public void onClick(
@@ -767,15 +785,15 @@ public class HomeActivity extends Activity implements OnClickListener,INotifyDat
 											int i)
 									{
 										Intent serviceIntent = new Intent(
-												HomeActivity.this,
+												getActivity(),
 												DownLoadService.class);
 										serviceIntent
 												.putExtra("type", "finish");
-										startService(serviceIntent);
+										getActivity().startService(serviceIntent);
 										finish();
 									}
 								})
-						.setNegativeButton("È¡Ïû",
+						.setNegativeButton("å–æ¶ˆ",
 								new DialogInterface.OnClickListener()
 								{
 									public void onClick(
@@ -799,7 +817,7 @@ public class HomeActivity extends Activity implements OnClickListener,INotifyDat
 	public void NotifyDataSetChanged(int cmd, Object value, int arg1, int arg2)
 	{
 		//Log.v("wmh", "NotifyDataSetChanged:cmd="+cmd);
-		if (cmd == Downloader.CHANGER_STATUS)//×´Ì¬ĞÅÏ¢
+		if (cmd == Downloader.CHANGER_STATUS)//çŠ¶æ€ä¿¡æ¯
 		{
 			SysEng.getInstance().addHandlerEvent(new AbsEvent()
 			{

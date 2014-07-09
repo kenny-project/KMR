@@ -2,18 +2,13 @@ package com.work.market.net;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.security.MessageDigest;
 import java.text.DecimalFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
-import org.json.JSONException;
+import android.os.Environment;
 
 import com.work.market.util.MD5Calculator;
-
-
-import android.os.Environment;
 
 public class Common {
 	private static DecimalFormat myformat = new DecimalFormat("#####0.00");
@@ -24,14 +19,14 @@ public class Common {
 	public static String    type_url ="";
 	public static int       new_num = 0;
 	
-	//ÅĞ¶ÏÊÖ»ú¸ñÊ½ÊÇ·ñÕıÈ·
+	//åˆ¤æ–­æ‰‹æœºæ ¼å¼æ˜¯å¦æ­£ç¡®
 		public static boolean isMobileNO(String mobiles) {
 			Pattern p = Pattern.compile("^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$");
 			Matcher m = p.matcher(mobiles);
 			return m.matches();
 			}
 			
-		//ÅĞ¶Ïemail¸ñÊ½ÊÇ·ñÕıÈ·
+		//åˆ¤æ–­emailæ ¼å¼æ˜¯å¦æ­£ç¡®
 			public static boolean isEmail(String email) {
 			String str = "^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$";
 			Pattern p = Pattern.compile(str);
@@ -48,8 +43,8 @@ public class Common {
 				return isNum.matches(); 
 			} 
 			
-			
-			public static String getmymd5(String aDta) {
+			//å¯¹æ•°æ®è¿›è¡ŒMD5ç¼–ç 
+			public static String getMd5Code(String aDta) {
 				 
 				return MD5Calculator.calculateMD5(aDta);
 //		 		MessageDigest md5 = null; 
@@ -77,7 +72,7 @@ public class Common {
 		 	}
 			
 /**
- * ¼ì²ésd¿¨
+ * æ£€æŸ¥sdå¡
  * @return
  */
 	public static boolean sdCardCheck() {
@@ -120,7 +115,7 @@ public class Common {
 	    try {  
 	    xmString = new String(sb.toString().getBytes("UTF-8"));  
 	    xmlUTF8 = URLEncoder.encode(xmString, "UTF-8");  
-	    System.out.println("utf-8 ±àÂë£º" + xmlUTF8) ;  
+	    System.out.println("utf-8 ç¼–ç ï¼š" + xmlUTF8) ;  
 	    } catch (UnsupportedEncodingException e) {  
 	    // TODO Auto-generated catch block  
 	    e.printStackTrace();  

@@ -65,7 +65,7 @@ public class SpecialActivity extends Activity implements OnClickListener, OnItem
 	private Button m_command_button;
 	private Button m_news_button;
 
-	private IntentFilter mIntentFilter; // ÏûÏ¢´¦Àí
+	private IntentFilter mIntentFilter; // ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½
 	
 
 	private ProgressDialog pd;
@@ -93,7 +93,7 @@ public class SpecialActivity extends Activity implements OnClickListener, OnItem
 	private MyPagerAdapter mAbsPageAdapter = new MyPagerAdapter();
 	private ArrayList<View> mListViews = new ArrayList<View>();
 	/**
-	 * ½øÈëÒ³Ãæ
+	 * ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½
 	 * 
 	 * @param savedInstanceState
 	 * @see android.app.ActivityGroup#onCreate(android.os.Bundle)
@@ -102,11 +102,11 @@ public class SpecialActivity extends Activity implements OnClickListener, OnItem
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		// ¼ÓÔØÒ³Ãæ
+		// ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
-		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);// ÊúÆÁ
+		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);// ï¿½ï¿½ï¿½ï¿½
 		setContentView(R.layout.special);
-		// Òì³£´¦Àí
+		// ï¿½ì³£ï¿½ï¿½ï¿½ï¿½
 		mIntentFilter = new IntentFilter();
 		mIntentFilter.addAction("com.android.my.action");
 		mIntentFilter.addAction("com.android.my.action.sticky");
@@ -118,8 +118,8 @@ public class SpecialActivity extends Activity implements OnClickListener, OnItem
 		m_back = (LinearLayout) findViewById(R.id.special_back);
 		m_back.setOnClickListener(this);
 
-		moreView = getLayoutInflater().inflate(R.layout.xlistview_footer, null);// Ìí¼Ólist
-																				// ½ø¶È
+		moreView = getLayoutInflater().inflate(R.layout.xlistview_footer, null);// ï¿½ï¿½ï¿½list
+																				// ï¿½ï¿½ï¿½
 		mfootProgressBar = (ProgressBar) moreView
 				.findViewById(R.id.xlistview_footer_progressbar);
 		mfootProgressBar.setVisibility(View.INVISIBLE);
@@ -170,7 +170,7 @@ public class SpecialActivity extends Activity implements OnClickListener, OnItem
 			public void onPageSelected(int arg0)
 			{
 				// P.v("king", "onPageSelected - " + arg0);
-				// activity´Ó1µ½2»¬¶¯£¬2±»¼ÓÔØºóµôÓÃ´Ë·½·¨
+				// activityï¿½ï¿½1ï¿½ï¿½2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½2ï¿½ï¿½ï¿½ï¿½ï¿½Øºï¿½ï¿½ï¿½Ã´Ë·ï¿½ï¿½ï¿½
 				// View v = mListViews.get(arg0);
 				SwitchPage(arg0);
 			}
@@ -179,7 +179,7 @@ public class SpecialActivity extends Activity implements OnClickListener, OnItem
 			{
 				// P.v("king", "onPageScrolled:arg0=" + arg0);//+",arg1=" +
 				// arg1+",arg2=" + arg2);
-				// ´Ó1µ½2»¬¶¯£¬ÔÚ1»¬¶¯Ç°µ÷ÓÃ
+				// ï¿½ï¿½1ï¿½ï¿½2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½1ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½
 			}
 
 			public void onPageScrollStateChanged(int arg0)
@@ -259,7 +259,7 @@ public class SpecialActivity extends Activity implements OnClickListener, OnItem
 			if (scrollState == OnScrollListener.SCROLL_STATE_IDLE
 					|| scrollState == OnScrollListener.SCROLL_STATE_FLING)
 			{
-				// ÅÐ¶ÏÊÇ·ñ¹ö¶¯µ½µ×²¿
+				// ï¿½Ð¶ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×²ï¿½
 				if (view.getLastVisiblePosition() == view.getCount() - 1
 						&& !mEnablePullLoad)
 				{
@@ -295,7 +295,7 @@ public class SpecialActivity extends Activity implements OnClickListener, OnItem
 		private LayoutInflater inflater;
 		public Context mcontext;
 		private ArrayList<AppThemeBean> List = new ArrayList<AppThemeBean>();
-		protected boolean bShowLogo = true; // ÊÇ·ñÆô¶¯¼ÓÔØºóÌ¨Í¼Æ¬
+		protected boolean bShowLogo = true; // ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Øºï¿½Ì¨Í¼Æ¬
 		private ImageLoader mLogoImage;
 		public MyAdapter(Context context)
 		{
@@ -388,7 +388,7 @@ public class SpecialActivity extends Activity implements OnClickListener, OnItem
 
 			final TextView mytext2 = (TextView) view
 					.findViewById(R.id.special_item_descripte_text);// @+id/special_item_descripte_text
-			mytext2.setText(bean.getCount()+"¸öÓ¦ÓÃ");
+			mytext2.setText(bean.getCount()+"ï¿½ï¿½Ó¦ï¿½ï¿½");
 			return view;
 		}
 
@@ -431,10 +431,10 @@ public class SpecialActivity extends Activity implements OnClickListener, OnItem
 			mNetTask.cancel(true);
 		}
 		mNetTask = new NetTask(num, apd, url);
-		mNetTask.execute(null);// m_ad_layout.setVisibility
+		mNetTask.execute("");// m_ad_layout.setVisibility
 	}
 
-	// Í¼Æ¬´¦Àí
+	// Í¼Æ¬ï¿½ï¿½ï¿½ï¿½
 	class NetTask extends AsyncTask<Object, Integer, String>
 	{
 
@@ -463,7 +463,7 @@ public class SpecialActivity extends Activity implements OnClickListener, OnItem
 			}
 			else if (m_num == 1)
 			{
-				String filename = Common.getmymd5(m_url) + ".jpg";
+				String filename = Common.getMd5Code(m_url) + ".jpg";
 				String data = HttpUtil.GetPhoto5(m_url, filename);//
 				return data;
 			}
@@ -483,7 +483,7 @@ public class SpecialActivity extends Activity implements OnClickListener, OnItem
 			if (!pd.isShowing() && m_showlog) return;
 
 			if (result == null)
-			{// Ê§°Ü ´¦Àí
+			{// Ê§ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 				pd.dismiss();
 				String dialogstring = getString(R.string.net_faile);
 				Toast.makeText(m_Context, dialogstring, Toast.LENGTH_LONG)
@@ -543,10 +543,10 @@ public class SpecialActivity extends Activity implements OnClickListener, OnItem
 			mNetTask1.cancel(true);
 		}
 		mNetTask1 = new NetTask1(num, apd, url);
-		mNetTask1.execute(null);// m_ad_layout.setVisibility
+		mNetTask1.execute("");// m_ad_layout.setVisibility
 	}
 
-	// Í¼Æ¬´¦Àí
+	// Í¼Æ¬ï¿½ï¿½ï¿½ï¿½
 	class NetTask1 extends AsyncTask<Object, Integer, String>
 	{
 
@@ -574,7 +574,7 @@ public class SpecialActivity extends Activity implements OnClickListener, OnItem
 			}
 			else if (m_num == 1)
 			{
-				String filename = Common.getmymd5(m_url) + ".jpg";
+				String filename = Common.getMd5Code(m_url) + ".jpg";
 				String data = HttpUtil.GetPhoto5(m_url, filename);//
 				return data;
 			}
@@ -594,7 +594,7 @@ public class SpecialActivity extends Activity implements OnClickListener, OnItem
 			if (!pd.isShowing() && m_showlog) return;
 
 			if (result == null)
-			{// Ê§°Ü ´¦Àí
+			{// Ê§ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 				pd.dismiss();
 				String dialogstring = getString(R.string.net_faile);
 				Toast.makeText(m_Context, dialogstring, Toast.LENGTH_LONG)
@@ -645,7 +645,7 @@ public class SpecialActivity extends Activity implements OnClickListener, OnItem
 
 	public Bitmap Getphontnames(String url)
 	{
-		String filename = Common.getmymd5(url) + ".jpg";
+		String filename = Common.getMd5Code(url) + ".jpg";
 
 		String path = Environment.getExternalStorageDirectory().toString()
 				+ "/baifen/img/" + filename;

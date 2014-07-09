@@ -5,8 +5,35 @@
 		<item name="android:layout_height">21dip</item>
 		<item name="android:layout_gravity">center_vertical</item>
 	</style>
+	<style name="Theme.Astro" parent="@style/Theme.Sherlock.Light.DarkActionBar">
+        <item name="android:typeface">normal</item>
+        <item name="android:actionBarStyle">@style/Widget.Sherlock.ActionBar</item>
+        <item name="android:actionBarSize">48.0dip</item>
+        <item name="android:dialogTheme">@style/Theme.Sherlock.Dialog</item>
+        <item name="android:actionBarWidgetTheme">@style/Theme.Sherlock.Light.DarkActionBar</item>
+        <item name="actionBarStyle">@style/Widget.Sherlock.ActionBar</item>
+        <item name="actionBarWidgetTheme">@style/Theme.Sherlock.Light.DarkActionBar</item>
+        <item name="actionBarSize">48.0dip</item>
+    </style>
+        <style name="navItemTitleTextAppearance">
+        <item name="android:textSize">18.0sp</item>
+        <item name="android:textColor">#ffcccccc</item>
+    </style>
+        <style name="navPinnedHeaderTextAppearance">
+        <item name="android:textSize">12.0sp</item>
+        <item name="android:textColor">#ff969696</item>
+    </style>
+
+    <style name="scrollstyle" parent="@android:style/Theme">
+        <item name="android:scrollbarThumbVertical">@drawable/scroll_bar</item>
+    </style>
   <style name="AppTheme" parent="android:Theme.Light" />
-  
+      <style name="Theme.Astro.Navigation" parent="@style/Theme.Astro">
+        <item name="android:textSize">20.0sp</item>
+        <item name="android:textColor">#ffffffff</item>
+        <item name="android:divider">#ffff0000</item>
+       <!--  <item name="headerSeperatorColor">@color/gray1</item> -->
+    </style>
   <style name="roomRatingBar" parent="@android:style/Widget.RatingBar">
         <item name="android:progressDrawable">@drawable/ratingbar_drawable</item>
         <item name="android:minHeight">20dp</item>

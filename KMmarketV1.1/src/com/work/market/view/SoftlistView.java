@@ -58,7 +58,7 @@ public class SoftlistView extends ObjectView implements RefreshListener,INotifyD
 	private TextView mFootTextView;
 	private View moreView;
 	private List<AppListBean> mList = new ArrayList<AppListBean>();
-	private boolean bRefreshLoading=false;//ÏÂÀ­Ë¢ÐÂ
+	private boolean bRefreshLoading=false;//ï¿½ï¿½ï¿½ï¿½Ë¢ï¿½ï¿½
 	private NLPullRefreshView mPullRefreshView ;
 	private KApp app ;
 	public SoftlistView(Context context)
@@ -109,7 +109,7 @@ public class SoftlistView extends ObjectView implements RefreshListener,INotifyD
 		lv1.setOnScrollListener(m_localOnScrollListener);
 	}
 	/**
-	 * ÊäÈëÒª·ÃÎÊµÄÍøÖ·
+	 * ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½Ö·
 	 * @param aUrl
 	 */
 	public void SetUrl(String aUrl)
@@ -187,7 +187,7 @@ public class SoftlistView extends ObjectView implements RefreshListener,INotifyD
 			if (scrollState == OnScrollListener.SCROLL_STATE_IDLE
 					|| scrollState == OnScrollListener.SCROLL_STATE_FLING)
 			{
-				// ÅÐ¶ÏÊÇ·ñ¹ö¶¯µ½µ×²¿
+				// ï¿½Ð¶ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×²ï¿½
 				if (lv1.getLastVisiblePosition() == lv1.getCount() - 1
 						&& !mEnablePullLoad)
 				{
@@ -237,10 +237,10 @@ public class SoftlistView extends ObjectView implements RefreshListener,INotifyD
 			mNetTask.cancel(true);
 		}
 		mNetTask = new NetTask1(url);
-		mNetTask.execute(null);
+		mNetTask.execute("");
 	}
 
-	// Í¼Æ¬´¦Àí
+	// Í¼Æ¬ï¿½ï¿½ï¿½ï¿½
 	private class NetTask1 extends AsyncTask<Object, Integer, String>
 	{
 
@@ -253,11 +253,11 @@ public class SoftlistView extends ObjectView implements RefreshListener,INotifyD
 
 		protected String doInBackground(Object... params)
 		{
-			Log.v("wmh", "doInBackground£ºstart");
+			Log.v("wmh", "doInBackgroundï¿½ï¿½start");
 			String url = m_url + "page=" + m_list_page + "&per_page="
 					+ m_everytime_num;
 			String json = HttpUtil.doGet(url);
-			Log.v("wmh", "doInBackground£ºEndsoftlistViewurl" + url);
+			Log.v("wmh", "doInBackgroundï¿½ï¿½EndsoftlistViewurl" + url);
 			return json;
 		}
 
@@ -272,7 +272,7 @@ public class SoftlistView extends ObjectView implements RefreshListener,INotifyD
 		{
 			Log.v("wmh", "onPostExecute");
 			if (result == null)
-			{// Ê§°Ü ´¦Àí
+			{// Ê§ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 				mProgressDialog.dismiss();
 				if (mEnablePullLoad)
 				{
@@ -301,15 +301,15 @@ public class SoftlistView extends ObjectView implements RefreshListener,INotifyD
 					{
 						JSONObject tempJson = jsonObj1.optJSONObject(i);
 						AppListBean tempAppListBean = new AppListBean();
-						tempAppListBean.setId(tempJson.getString("id"));// ±êÌâ
-						tempAppListBean.setTitle(tempJson.getString("title"));// ±êÌâ
-						tempAppListBean.setPn(tempJson.getString("pn"));// packageÂë
-						tempAppListBean.setLogourl(tempJson.getString("logo"));// Í¼Æ¬µØÖ·
+						tempAppListBean.setId(tempJson.getString("id"));// ï¿½ï¿½ï¿½ï¿½
+						tempAppListBean.setTitle(tempJson.getString("title"));// ï¿½ï¿½ï¿½ï¿½
+						tempAppListBean.setPn(tempJson.getString("pn"));// packageï¿½ï¿½
+						tempAppListBean.setLogo(tempJson.getString("logo"));// Í¼Æ¬ï¿½ï¿½Ö·
 						tempAppListBean.setSize(Common.getLength(tempJson
-								.getString("size")));// ÎÄ¼þ´óÐ¡(×Ö½Ú)score
-						tempAppListBean.setScore(tempJson.getString("score"));// ÎÄ¼þ´óÐ¡(×Ö½Ú)
-						tempAppListBean.setAppurl(tempJson.getString("apkurl"));// ÏÂÔØµØÖ·
-						tempAppListBean.setDowntiems(tempJson.getString("dc"));// ÏÂÔØ´ÎÊý
+								.getString("size")));// ï¿½Ä¼ï¿½ï¿½ï¿½Ð¡(ï¿½Ö½ï¿½)score
+						tempAppListBean.setScore(tempJson.getString("score"));// ï¿½Ä¼ï¿½ï¿½ï¿½Ð¡(ï¿½Ö½ï¿½)
+						tempAppListBean.setAppurl(tempJson.getString("apkurl"));// ï¿½ï¿½ï¿½Øµï¿½Ö·
+						tempAppListBean.setDowntiems(tempJson.getString("dc"));// ï¿½ï¿½ï¿½Ø´ï¿½ï¿½ï¿½
 						tempAppListBean
 								.setAppFileExt(tempJson.getString("ext"));
 						mList.add(tempAppListBean);
@@ -340,12 +340,12 @@ public class SoftlistView extends ObjectView implements RefreshListener,INotifyD
 	}
 	private List<AppListBean> mTempRefreshList = new ArrayList<AppListBean>();
 	/**
-	 * ÏÂÀ­Ë¢ÐÂ¹¦ÄÜ
+	 * ï¿½ï¿½ï¿½ï¿½Ë¢ï¿½Â¹ï¿½ï¿½ï¿½
 	 */
 	@Override
 	public void onRefresh(NLPullRefreshView view)
 	{
-			// ÕâÀï½øÐÐÍøÂç²Ù×÷/Êý¾Ý¿â²Ù×÷/ÎÄ¼þ²Ù×÷
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½/ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½/ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
 			m_now_page = 1;
 			m_list_page = m_now_page;
 			new Thread()
@@ -383,22 +383,22 @@ public class SoftlistView extends ObjectView implements RefreshListener,INotifyD
 										.optJSONObject(i);
 								AppListBean tempAppListBean = new AppListBean();
 								tempAppListBean.setId(tempJson
-										.getString("id"));// ±êÌâ
+										.getString("id"));// ï¿½ï¿½ï¿½ï¿½
 								tempAppListBean.setTitle(tempJson
-										.getString("title"));// ±êÌâ
+										.getString("title"));// ï¿½ï¿½ï¿½ï¿½
 								tempAppListBean.setPn(tempJson
-										.getString("pn"));// packageÂë
-								tempAppListBean.setLogourl(tempJson
-										.getString("logo"));// Í¼Æ¬µØÖ·
+										.getString("pn"));// packageï¿½ï¿½
+								tempAppListBean.setLogo(tempJson
+										.getString("logo"));// Í¼Æ¬ï¿½ï¿½Ö·
 								tempAppListBean.setSize(Common
 										.getLength(tempJson
-												.getString("size")));// ÎÄ¼þ´óÐ¡(×Ö½Ú)score
+												.getString("size")));// ï¿½Ä¼ï¿½ï¿½ï¿½Ð¡(ï¿½Ö½ï¿½)score
 								tempAppListBean.setScore(tempJson
-										.getString("score"));// ÎÄ¼þ´óÐ¡(×Ö½Ú)
+										.getString("score"));// ï¿½Ä¼ï¿½ï¿½ï¿½Ð¡(ï¿½Ö½ï¿½)
 								tempAppListBean.setAppurl(tempJson
-										.getString("apkurl"));// ÏÂÔØµØÖ·
+										.getString("apkurl"));// ï¿½ï¿½ï¿½Øµï¿½Ö·
 								tempAppListBean.setDowntiems(tempJson
-										.getString("dc"));// ÏÂÔØ´ÎÊý
+										.getString("dc"));// ï¿½ï¿½ï¿½Ø´ï¿½ï¿½ï¿½
 								tempAppListBean.setAppFileExt(tempJson
 										.getString("ext"));
 								mTempRefreshList.add(tempAppListBean);
@@ -428,7 +428,7 @@ public class SoftlistView extends ObjectView implements RefreshListener,INotifyD
 	public void NotifyDataSetChanged(int cmd, Object value, int arg1, int arg2)
 	{
 		Log.v("wmh","softList.NotifyDataSetChanged:"+cmd);
-		if (cmd == Downloader.CHANGER_STATUS)//×´Ì¬ÐÅÏ¢
+		if (cmd == Downloader.CHANGER_STATUS)//×´Ì¬ï¿½ï¿½Ï¢
 		{
 			SysEng.getInstance().addHandlerEvent(new AbsEvent()
 			{

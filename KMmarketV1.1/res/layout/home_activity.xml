@@ -75,6 +75,15 @@
             android:text="装机必备"
             android:textColor="@color/toptab_TextColor_normal"
             android:textSize="18dip" />
+        <Button
+            android:id="@+id/btDownLoad"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="@drawable/toptab_bg"
+            android:text="下载"
+            android:textColor="@color/toptab_TextColor_normal"
+            android:textSize="18dip" />
     </LinearLayout>
 
     <ImageView

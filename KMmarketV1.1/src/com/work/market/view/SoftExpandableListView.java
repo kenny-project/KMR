@@ -72,7 +72,7 @@ public class SoftExpandableListView extends LinearLayout {
 		pd.setMessage(m_MainActivity.getText(R.string.pd_loading));
 		pd.setCancelable(true);
 		moreView = m_MainActivity.getLayoutInflater().inflate(
-				R.layout.xlistview_footer, null);// Ìí¼Ólist ½ø¶È
+				R.layout.xlistview_footer, null);// ï¿½ï¿½ï¿½list ï¿½ï¿½ï¿½
 		mfootProgressBar = (ProgressBar) moreView
 				.findViewById(R.id.xlistview_footer_progressbar);
 		mFootTextView = (TextView) moreView
@@ -136,10 +136,10 @@ public class SoftExpandableListView extends LinearLayout {
 			mNetTask.cancel(true);
 		}
 		mNetTask = new NetTask1(num, url, apd);
-		mNetTask.execute(null);// m_ad_layout.setVisibility
+		mNetTask.execute("");// m_ad_layout.setVisibility
 	}
 
-	// Í¼Æ¬´¦Àí
+	// Í¼Æ¬ï¿½ï¿½ï¿½ï¿½
 	class NetTask1 extends AsyncTask<Object, Integer, String> {
 
 		private int m_num = 0;
@@ -163,7 +163,7 @@ public class SoftExpandableListView extends LinearLayout {
 													// SharedUtil.getUserKey(mContext));
 				return json;
 			} else if (m_num == 1) {
-				String filename = Common.getmymd5(m_url) + ".jpg";
+				String filename = Common.getMd5Code(m_url) + ".jpg";
 				String data = HttpUtil.GetPhoto5(m_url, filename);//
 				return data;
 			}
@@ -181,7 +181,7 @@ public class SoftExpandableListView extends LinearLayout {
 			if (!pd.isShowing() && m_showlog)
 				return;
 
-			if (result == null) {// Ê§°Ü ´¦Àí
+			if (result == null) {// Ê§ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 				pd.dismiss();
 				if (mEnablePullLoad) {
 					removeLoadMore();
@@ -201,14 +201,14 @@ public class SoftExpandableListView extends LinearLayout {
 								.getJSONArray("child_list");
 						for (int i = 0; i < jsonObj1.length(); i++) {
 							JSONObject tempJson = jsonObj1.optJSONObject(i);
-							String id = tempJson.getString("id");// ±êÌâ
-							String title = tempJson.getString("title");// ±êÌâ
-							String pn = tempJson.getString("pn");// packageÂë
-							String logo = tempJson.getString("logo");// Í¼Æ¬µØÖ·
-							String size = tempJson.getString("size");// ÎÄ¼þ´óÐ¡(×Ö½Ú)score
-							String score = tempJson.getString("score");// ÎÄ¼þ´óÐ¡(×Ö½Ú)
-							String apkurl = tempJson.getString("apkurl");// ÏÂÔØµØÖ·
-							String dc = tempJson.getString("dc");// ÏÂÔØ´ÎÊý
+							String id = tempJson.getString("id");// ï¿½ï¿½ï¿½ï¿½
+							String title = tempJson.getString("title");// ï¿½ï¿½ï¿½ï¿½
+							String pn = tempJson.getString("pn");// packageï¿½ï¿½
+							String logo = tempJson.getString("logo");// Í¼Æ¬ï¿½ï¿½Ö·
+							String size = tempJson.getString("size");// ï¿½Ä¼ï¿½ï¿½ï¿½Ð¡(ï¿½Ö½ï¿½)score
+							String score = tempJson.getString("score");// ï¿½Ä¼ï¿½ï¿½ï¿½Ð¡(ï¿½Ö½ï¿½)
+							String apkurl = tempJson.getString("apkurl");// ï¿½ï¿½ï¿½Øµï¿½Ö·
+							String dc = tempJson.getString("dc");// ï¿½ï¿½ï¿½Ø´ï¿½ï¿½ï¿½
 
 							// private List<AppListBean> mList = new
 							// ArrayList<AppListBean>();
@@ -216,7 +216,7 @@ public class SoftExpandableListView extends LinearLayout {
 							tempAppListBean.setId(id);
 							tempAppListBean.setTitle(title);
 							tempAppListBean.setPn(pn);
-							tempAppListBean.setLogourl(logo);
+							tempAppListBean.setLogo(logo);
 							tempAppListBean.setSize(Common.getLength(size));
 							tempAppListBean.setScore(score);
 							tempAppListBean.setAppurl(apkurl);
@@ -272,7 +272,7 @@ public class SoftExpandableListView extends LinearLayout {
 	}
 
 	public Bitmap Getphontnames(String url) {
-		String filename = Common.getmymd5(url) + ".jpg";
+		String filename = Common.getMd5Code(url) + ".jpg";
 
 		String path = Environment.getExternalStorageDirectory().toString()
 				+ "/baifen/img/" + filename;

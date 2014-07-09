@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
-
+   <color name="navmenu_divider">#ff565656</color>
+    <color name="navmenu_background">#ff454545</color>
+    <color name="navmenu_kmenu_background">#ff323232</color>
     <color name="umeng_fb_color_btn_pressed">#1495F7</color>
     <color name="umeng_fb_color_btn_normal">#333333</color>
     <color name="transparent">#00000000</color>

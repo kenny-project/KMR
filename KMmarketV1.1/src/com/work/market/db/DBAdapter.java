@@ -10,7 +10,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 /**
- * Êý¾Ý¿â¹¤¾ßÀà
+ * ï¿½ï¿½Ý¿â¹¤ï¿½ï¿½ï¿½ï¿½
  * @author zhou
  *
  */
@@ -23,7 +23,7 @@ public class DBAdapter {
 	private SQLiteDatabase db;
 	
 	/**
-	 * ´´½¨Êý¾Ý¿â
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½
 	 * @param context
 	 * @return
 	 */
@@ -36,7 +36,7 @@ public class DBAdapter {
 	}
 	
 	/**
-	 * ¹Ø±ÕÊý¾Ý¿â
+	 * ï¿½Ø±ï¿½ï¿½ï¿½Ý¿ï¿½
 	 */
 	public static void close() {
 		if(dbAdapter != null) {
@@ -61,7 +61,7 @@ public class DBAdapter {
 
 	
 	/**
-	 * Message ²åÈë
+	 * Message ï¿½ï¿½ï¿½ï¿½
 	 */
 	public boolean insertMessage(int messageId, String messagepn, String messageTitle, String userKey) {
 //		if(!queryMessageById(messageId, userKey)) {
@@ -76,7 +76,7 @@ public class DBAdapter {
 	}
 	
 	/**
-	 * Ìí¼ÓÒÑ¾­ÏÂÔØµÄÈí¼þ
+	 * ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½ï¿½
 	 * @param id
 	 * @param title
 	 * @param pn
@@ -85,7 +85,7 @@ public class DBAdapter {
 	 * @param appurl
 	 * @param version
 	 * @param appfileext
-	 * @param userKey µ÷ÓÃKey
+	 * @param userKey ï¿½ï¿½ï¿½ï¿½Key
 	 * @return
 	 */
 	public boolean insertfinish(AppListBean bean,String userKey) 
@@ -95,7 +95,7 @@ public class DBAdapter {
 			initialValues.put(ShanpaiDBHelper.DISCOUNT_ID,bean.getId());
 			initialValues.put(ShanpaiDBHelper.DISCOUNT_TITLE,bean.getTitle());
 			initialValues.put(ShanpaiDBHelper.DISCOUNT_PN,bean.getPn());
-			initialValues.put(ShanpaiDBHelper.DISCOUNT_LOGO, bean.getLogourl());
+			initialValues.put(ShanpaiDBHelper.DISCOUNT_LOGO, bean.getLogo());
 			initialValues.put(ShanpaiDBHelper.DISCOUNT_SIZE, bean.getSize());
 			initialValues.put(ShanpaiDBHelper.DISCOUNT_APPURL,bean.getAppurl());
 			initialValues.put(ShanpaiDBHelper.DISCOUNT_VERSION,bean.getVercode());
@@ -109,7 +109,7 @@ public class DBAdapter {
 	}
 	
 	/**
-	 * Message ²éÑ¯ËùÓÐÒÑ¾­ÏÂÔØµÄÈí¼þ
+	 * Message ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½ï¿½
 	 */
 	public ArrayList<DBdatafinishModel> queryAllFinish(String userKey) {
 		ArrayList<DBdatafinishModel> result = new ArrayList<DBdatafinishModel>();
@@ -141,7 +141,7 @@ public class DBAdapter {
 	}
 	
 	/**
-	 * Message Í¨¹ýidÉ¾³ý
+	 * Message Í¨ï¿½ï¿½idÉ¾ï¿½ï¿½
 	 */
 	public boolean deleteFinishById(int Id, String userKey) {
 		return db.delete(ShanpaiDBHelper.TABLE_FINISH, ShanpaiDBHelper.DISCOUNT_ID + "='" + Id + 
@@ -149,21 +149,21 @@ public class DBAdapter {
 	}
 	
 	/**
-	 * Message É¾³ýËùÓÐ
+	 * Message É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	public boolean deleteAllFinish(String userKey) {
 		return db.delete(ShanpaiDBHelper.TABLE_FINISH, ShanpaiDBHelper.MESSAGE_USERKEY + "='" + userKey + "'", null) > 0;
 	}
 	
 	/**
-	 * Message Í¨¹ýidÉ¾³ý
+	 * Message Í¨ï¿½ï¿½idÉ¾ï¿½ï¿½
 	 */
 	public boolean deleteMessageById(String messageId, String userKey) 
 	{
 		return deleteMessageById(String.valueOf(messageId), userKey);
 	}
 	/**
-	 * Message Í¨¹ýidÉ¾³ý
+	 * Message Í¨ï¿½ï¿½idÉ¾ï¿½ï¿½
 	 */
 	public boolean deleteMessageById(int messageId, String userKey) {
 		boolean result= db.delete(ShanpaiDBHelper.TABLE_MESSAGE, ShanpaiDBHelper.MESSAGE_ID + "='" + messageId + 
@@ -172,14 +172,14 @@ public class DBAdapter {
 	}
 	
 	/**
-	 * Message É¾³ýËùÓÐ
+	 * Message É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	public boolean deleteAllMessage(String userKey) {
 		return db.delete(ShanpaiDBHelper.TABLE_MESSAGE, ShanpaiDBHelper.MESSAGE_USERKEY + "='" + userKey + "'", null) > 0;
 	}
 	
 	/**
-	 * Message Í¨¹ýid²éÑ¯
+	 * Message Í¨ï¿½ï¿½idï¿½ï¿½Ñ¯
 	 */
 	public boolean queryMessageById(String messageId, String userKey) {
 		boolean result = false;
@@ -197,7 +197,7 @@ public class DBAdapter {
 	}
 	
 	/**
-	 * Message ²éÑ¯ËùÓÐ
+	 * Message ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½
 	 */
 	public ArrayList<DBdataModel> queryAllMessage(String userKey) {
 		ArrayList<DBdataModel> result = new ArrayList<DBdataModel>();
@@ -218,7 +218,7 @@ public class DBAdapter {
 		return result;
 	}
 	/**
-	 * Photo ²åÈë
+	 * Photo ï¿½ï¿½ï¿½ï¿½
 	 */
 	public boolean insertPhoto(String photoPath, String photoKey, String photoT, String photoUrl, String photoTime) {
 		ContentValues initialValues = new ContentValues();
@@ -231,21 +231,21 @@ public class DBAdapter {
 	}
 	
 	/**
-	 * Photo Í¨¹ýidÉ¾³ý
+	 * Photo Í¨ï¿½ï¿½idÉ¾ï¿½ï¿½
 	 */
 	public boolean deletePhotoBy_Id(String _id) {
 		return db.delete(ShanpaiDBHelper.TABLE_PHOTO, "_id='" + _id + "'", null) > 0;
 	}
 	
 	/**
-	 * Photo É¾³ýËùÓÐ
+	 * Photo É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	public boolean deleteAllPhoto() {
 		return db.delete(ShanpaiDBHelper.TABLE_PHOTO, null, null) > 0;
 	}
 	
 	/**
-	 * Photo Í¨¹ýid²éÑ¯
+	 * Photo Í¨ï¿½ï¿½idï¿½ï¿½Ñ¯
 	 */
 //	public PhotoModel queryMessageBy_Id(String _id) {
 //		PhotoModel model = null;
@@ -270,7 +270,7 @@ public class DBAdapter {
 //	}
 	
 //	/**
-//	 * Photo ²éÑ¯ËùÓÐ
+//	 * Photo ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½
 //	 */
 //	public ArrayList<PhotoModel> queryAllPhoto() {
 //		ArrayList<PhotoModel> result = new ArrayList<PhotoModel>();
@@ -297,7 +297,7 @@ public class DBAdapter {
 	
 	
 //	/**
-//	 * Discount Ìí¼ÓÓÅ»ÝÈ¯
+//	 * Discount ï¿½ï¿½ï¿½ï¿½Å»ï¿½È¯
 //	 */
 //	public boolean addDiscount(boolean unUse, String discountId, String discountImg, String discountName, 
 //			String discountInfo, String discountHelp, String userKey, String time, String price, int one) {
@@ -312,7 +312,7 @@ public class DBAdapter {
 //	}
 	
 //	/**
-//	 * Discount Ê¹ÓÃÓÅ»ÝÈ¯
+//	 * Discount Ê¹ï¿½ï¿½ï¿½Å»ï¿½È¯
 //	 */
 //	public boolean useDiscount(String discountId, String userKey) {
 //		DiscountModel model = queryDiscountById(true, discountId, userKey);
@@ -328,7 +328,7 @@ public class DBAdapter {
 //	}
 	
 //	/**
-//	 * Discount É¾³ýµ¥ÕÅÓÅ»ÝÈ¯
+//	 * Discount É¾ï¿½ï¿½ï¿½ï¿½ï¿½Å»ï¿½È¯
 //	 */
 //	public boolean deleteDiscountOneById(boolean unUse, String discountId, String userKey) {
 //		DiscountModel model = queryDiscountById(unUse, discountId, userKey);
@@ -345,7 +345,7 @@ public class DBAdapter {
 //	}
 	
 //	/**
-//	 * Discount Í¨¹ýidÉ¾³ýÓÅ»ÝÈ¯ÐÅÏ¢
+//	 * Discount Í¨ï¿½ï¿½idÉ¾ï¿½ï¿½ï¿½Å»ï¿½È¯ï¿½ï¿½Ï¢
 //	 */
 //	public boolean deleteDiscountById(boolean unUse, String discountId, String userKey) {
 //		String table = null;
@@ -360,7 +360,7 @@ public class DBAdapter {
 //	}
 //	
 //	/**
-//	 * Discount Í¨¹ýid²éÑ¯ÓÅ»ÝÈ¯ÐÅÏ¢
+//	 * Discount Í¨ï¿½ï¿½idï¿½ï¿½Ñ¯ï¿½Å»ï¿½È¯ï¿½ï¿½Ï¢
 //	 */
 //	public DiscountModel queryDiscountById(boolean unUse, String discountId, String userKey) {
 //		String table = null;
@@ -397,7 +397,7 @@ public class DBAdapter {
 //	}
 //	
 //	/**
-//	 * Discount ²éÑ¯ËùÓÐÓÅ»ÝÈ¯ÐÅÏ¢
+//	 * Discount ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½Å»ï¿½È¯ï¿½ï¿½Ï¢
 //	 */
 //	public ArrayList<DiscountModel> queryAllDiscount(boolean unUse, String userKey) {
 //		String table = null;
@@ -434,7 +434,7 @@ public class DBAdapter {
 //	}
 //	
 //	/**
-//	 * Discount É¾³ýËùÓÐÓÅ»ÝÈ¯ÐÅÏ¢
+//	 * Discount É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å»ï¿½È¯ï¿½ï¿½Ï¢
 //	 */
 //	public boolean deleteAllDiscount(boolean unUse, String userKey) {
 //		String table = null;
@@ -447,7 +447,7 @@ public class DBAdapter {
 //	}
 //	
 //	/**
-//	 * Discount ²åÈëÓÅ»ÝÈ¯
+//	 * Discount ï¿½ï¿½ï¿½ï¿½ï¿½Å»ï¿½È¯
 //	 */
 //	private boolean insertDiscount(boolean unUse, String discountId, String discountImg, String discountName, 
 //			String discountInfo, String discountHelp, String userKey, String time, String price, int one) {
@@ -473,7 +473,7 @@ public class DBAdapter {
 //	}
 //	
 //	/**
-//	 * Discount ¸üÐÂÓÅ»ÝÈ¯
+//	 * Discount ï¿½ï¿½ï¿½ï¿½ï¿½Å»ï¿½È¯
 //	 */
 //	private boolean updateDiscount(boolean unUse, String discountId, int num, String userKey) {
 //		String table = null;

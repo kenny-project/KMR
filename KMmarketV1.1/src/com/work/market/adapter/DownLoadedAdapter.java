@@ -78,8 +78,8 @@ public class DownLoadedAdapter extends ObjectListAdapter
 			viewHolder.lySecndPanel.setVisibility(View.GONE);
 		}
 		Drawable draw = null;
-		viewHolder.logImage.setTag(bean.getLogourl());
-		draw = mLogoImage.loadNetDrawable(bShowLogo, bean.getLogourl(),
+		viewHolder.logImage.setTag(bean.getLogo());
+		draw = mLogoImage.loadNetDrawable(bShowLogo, bean.getLogo(),
 				new KImageCallback(viewHolder.logImage));
 		if (draw != null)
 		{
@@ -87,7 +87,7 @@ public class DownLoadedAdapter extends ObjectListAdapter
 		}
 		else
 		{
-			viewHolder.logImage.setTag(bean.getLogourl());
+			viewHolder.logImage.setTag(bean.getLogo());
 			viewHolder.logImage.setImageResource(R.drawable.deflogo);
 		}
 		viewHolder.mytitle.setText(bean.getTitle());
@@ -100,43 +100,43 @@ public class DownLoadedAdapter extends ObjectListAdapter
 			{
 			case Downloader.INIT:
 				viewHolder.mydownimage.setImageResource(R.drawable.list_down);
-				viewHolder.mydowntext.setText("ÏÂÔØ");
+				viewHolder.mydowntext.setText("ï¿½ï¿½ï¿½ï¿½");
 				break;
-			case Downloader.UPDATE:// ¸üÐÂ
+			case Downloader.UPDATE:// ï¿½ï¿½ï¿½ï¿½
 				viewHolder.mydownimage.setImageResource(R.drawable.list_pause);
-				viewHolder.mydowntext.setText("¸üÐÂ");
+				viewHolder.mydowntext.setText("ï¿½ï¿½ï¿½ï¿½");
 				break;
 			case Downloader.INIT_SERVER:
 				viewHolder.mydownimage.setImageResource(R.drawable.list_pause);
-				viewHolder.mydowntext.setText("³õÊ¼»¯");
+				viewHolder.mydowntext.setText("ï¿½ï¿½Ê¼ï¿½ï¿½");
 			case Downloader.DOWNLOADING:
 				viewHolder.mydownimage.setImageResource(R.drawable.list_pause);
 				break;
 			case Downloader.WAIT:
 				viewHolder.mydownimage.setImageResource(R.drawable.list_pause);
-				viewHolder.mydowntext.setText("µÈ´ý");
+				viewHolder.mydowntext.setText("ï¿½È´ï¿½");
 				break;
-			case Downloader.PAUSE:// ÔÝÍ£ÖÐ
+			case Downloader.PAUSE:// ï¿½ï¿½Í£ï¿½ï¿½
 				viewHolder.mydownimage.setImageResource(R.drawable.list_down);
-				viewHolder.mydowntext.setText("¼ÌÐø");
+				viewHolder.mydowntext.setText("ï¿½ï¿½ï¿½ï¿½");
 				break;
-			case Downloader.FINISH:// ÏÂÔØÍê³É
+			case Downloader.FINISH:// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				PackageInfo packages;
 				try
 				{
 					packages = mcontext.getPackageManager().getPackageInfo(
 							bean.getPn(), 1);
 					if (packages.versionCode == bean.getVercode())
-					{// ÔËÐÐ
+					{// ï¿½ï¿½ï¿½ï¿½
 						viewHolder.mydownimage
 								.setImageResource(R.drawable.list_open);
-						viewHolder.mydowntext.setText("ÔËÐÐ");
+						viewHolder.mydowntext.setText("ï¿½ï¿½ï¿½ï¿½");
 					}
 					else
-					{// °²×°
+					{// ï¿½ï¿½×°
 						viewHolder.mydownimage
 								.setImageResource(R.drawable.list_install);
-						viewHolder.mydowntext.setText("°²×°");
+						viewHolder.mydowntext.setText("ï¿½ï¿½×°");
 					}
 				}
 				catch (NameNotFoundException e)
@@ -144,7 +144,7 @@ public class DownLoadedAdapter extends ObjectListAdapter
 					//e.printStackTrace();
 					viewHolder.mydownimage
 							.setImageResource(R.drawable.list_install);
-					viewHolder.mydowntext.setText("°²×°");
+					viewHolder.mydowntext.setText("ï¿½ï¿½×°");
 				}
 				break;
 			default:
@@ -152,7 +152,7 @@ public class DownLoadedAdapter extends ObjectListAdapter
 				{
 					viewHolder.mydownimage
 							.setImageResource(R.drawable.list_down);
-					viewHolder.mydowntext.setText("ÖØÊÔ");
+					viewHolder.mydowntext.setText("ï¿½ï¿½ï¿½ï¿½");
 				}
 				break;
 			}
@@ -160,7 +160,7 @@ public class DownLoadedAdapter extends ObjectListAdapter
 		else
 		{
 			viewHolder.mydownimage.setImageResource(R.drawable.list_down);
-			viewHolder.mydowntext.setText("ÏÂÔØ");
+			viewHolder.mydowntext.setText("ï¿½ï¿½ï¿½ï¿½");
 		}
 		viewHolder.mydownLinearLayout.setOnClickListener(new OnKClickListener(
 				viewHolder, bean));

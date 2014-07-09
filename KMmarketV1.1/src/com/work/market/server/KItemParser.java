@@ -67,8 +67,8 @@ public class KItemParser
 				bean.setId(tempJson.getString("id"));
 				bean.setTitle( tempJson.getString("title"));
 				bean.setPn(tempJson.getString("pn"));
-				bean.setLogourl(tempJson.getString("logo"));
-				bean.setSize(Common.getLength(tempJson.getString("size")));
+				bean.setLogo(tempJson.getString("logo"));
+				bean.setSize(tempJson.getString("size"));
 				bean.setScore(tempJson.getString("score"));
 				bean.setAppurl(tempJson.getString("apkurl"));
 				bean.setDowntiems(tempJson.getString("dc"));

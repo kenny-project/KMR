@@ -89,12 +89,12 @@ public class DownLoadingAdapter extends ObjectListAdapter
 			viewHolder.lySecndPanel.setVisibility(View.GONE);
 		}
 		Drawable draw = null;
-		viewHolder.logImage.setTag(bean.getLogourl());
-		draw = mLogoImage.loadNetDrawable(bShowLogo, bean.getLogourl(),
+		viewHolder.logImage.setTag(bean.getLogo());
+		draw = mLogoImage.loadNetDrawable(bShowLogo, bean.getLogo(),
 				new KImageCallback(viewHolder.logImage));
 		if (draw != null)
 		{
-			bean.setLogo(draw);
+			bean.setImgLogo(draw);
 			viewHolder.logImage.setImageDrawable(draw);
 		}
 		else
@@ -109,21 +109,21 @@ public class DownLoadingAdapter extends ObjectListAdapter
 			switch (Downing) {
 			case Downloader.INIT:
 				viewHolder.mydownimage.setImageResource(R.drawable.list_down);
-				viewHolder.mydowntext.setText("ÏÂÔØ");
+				viewHolder.mydowntext.setText("ï¿½ï¿½ï¿½ï¿½");
 				viewHolder.mysize.setText(bean.getSize());
 				viewHolder.down_item_percentage.setText("");
 				viewHolder.down_item_Rate.setText("");
 				break;
-			case Downloader.UPDATE:// ¸üÐÂ
+			case Downloader.UPDATE:// ï¿½ï¿½ï¿½ï¿½
 				viewHolder.mydownimage.setImageResource(R.drawable.list_pause);
-				viewHolder.mydowntext.setText("¸üÐÂ");
+				viewHolder.mydowntext.setText("ï¿½ï¿½ï¿½ï¿½");
 				viewHolder.mysize.setText(bean.getSize());
 				viewHolder.down_item_percentage.setText("");
 				viewHolder.down_item_Rate.setText("");
 				break;
 			case Downloader.INIT_SERVER:
 				viewHolder.mydownimage.setImageResource(R.drawable.list_pause);
-				viewHolder.mydowntext.setText("³õÊ¼»¯");
+				viewHolder.mydowntext.setText("ï¿½ï¿½Ê¼ï¿½ï¿½");
 				viewHolder.mysize.setText(bean.getSize());
 				viewHolder.down_item_percentage.setText("");
 				viewHolder.down_item_Rate.setText("");
@@ -133,7 +133,7 @@ public class DownLoadingAdapter extends ObjectListAdapter
 				viewHolder.down_item_Rate.setText(downing.getStrRate());
 				viewHolder.myProgressBar.setProgress(downing.getCompeletePercentage());
 				viewHolder.down_item_percentage.setText(downing.getCompeletePercentage() + "%");
-				viewHolder.mydowntext.setText("ÔÝÍ£");
+				viewHolder.mydowntext.setText("ï¿½ï¿½Í£");
 				break;
 			case Downloader.WAIT:
 				viewHolder.mydownimage.setImageResource(R.drawable.list_pause);
@@ -141,44 +141,44 @@ public class DownLoadingAdapter extends ObjectListAdapter
 				viewHolder.mysize.setText(bean.getSize());
 				viewHolder.down_item_percentage.setText("");
 				viewHolder.down_item_Rate.setText("");
-				viewHolder.mydowntext.setText("µÈ´ý");
+				viewHolder.mydowntext.setText("ï¿½È´ï¿½");
 				break;
-			case Downloader.PAUSE:// ÔÝÍ£ÖÐ
+			case Downloader.PAUSE:// ï¿½ï¿½Í£ï¿½ï¿½
 				viewHolder.mydownimage.setImageResource(R.drawable.list_down);
-				viewHolder.mydowntext.setText("¼ÌÐø");
+				viewHolder.mydowntext.setText("ï¿½ï¿½ï¿½ï¿½");
 				viewHolder.mysize.setText(Common.getLength(Integer.toString(downing.getCompeleteSize())) + "/" + bean.getSize());
 				viewHolder.down_item_Rate.setText("");
 				viewHolder.myProgressBar.setProgress(downing.getCompeletePercentage());
 				viewHolder.down_item_percentage.setText(downing.getCompeletePercentage() + "%");
 				break;
-			case Downloader.FINISH:// ÏÂÔØÍê³É
+			case Downloader.FINISH:// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				PackageInfo packages;
 				try
 				{
 					packages = mcontext.getPackageManager().getPackageInfo(bean.getPn(),1);
 					if(packages.versionCode==bean.getVercode())
-					{//ÔËÐÐ
+					{//ï¿½ï¿½ï¿½ï¿½
 						viewHolder.mydownimage.setImageResource(R.drawable.list_open);
-						viewHolder.mydowntext.setText("ÔËÐÐ");
+						viewHolder.mydowntext.setText("ï¿½ï¿½ï¿½ï¿½");
 					}
 					else
-					{//°²×°
+					{//ï¿½ï¿½×°
 						viewHolder.mydownimage.setImageResource(R.drawable.list_install);
-						viewHolder.mydowntext.setText("°²×°");
+						viewHolder.mydowntext.setText("ï¿½ï¿½×°");
 					}
 				}
 				catch (NameNotFoundException e)
 				{
 					//e.printStackTrace();
 					viewHolder.mydownimage.setImageResource(R.drawable.list_install);
-					viewHolder.mydowntext.setText("°²×°");
+					viewHolder.mydowntext.setText("ï¿½ï¿½×°");
 				}
 				break;
 			default:
 				if (Downing >= Downloader.ERROR) {
 					viewHolder.mydownimage
 							.setImageResource(R.drawable.list_down);
-					viewHolder.mydowntext.setText("ÖØÊÔ");
+					viewHolder.mydowntext.setText("ï¿½ï¿½ï¿½ï¿½");
 					viewHolder.myProgressBar.setProgress(0);
 					viewHolder.mysize.setText(bean.getSize());
 					viewHolder.down_item_percentage.setText("");
@@ -188,7 +188,7 @@ public class DownLoadingAdapter extends ObjectListAdapter
 			}
 		} else {
 			viewHolder.mydownimage.setImageResource(R.drawable.list_down);
-			viewHolder.mydowntext.setText("ÏÂÔØ");
+			viewHolder.mydowntext.setText("ï¿½ï¿½ï¿½ï¿½");
 		}
 		viewHolder.mydownLinearLayout.setOnClickListener(new OnKClickListener(
 				 viewHolder,bean));

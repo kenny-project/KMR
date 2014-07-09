@@ -1,12 +1,18 @@
 <resources>
 
-        <string name="pull_to_refresh_pull_label">下拉可以刷新</string>
+    <string name="pull_to_refresh_pull_label">下拉可以刷新</string>
     <string name="pull_to_refresh_release_label">松开可以刷新</string>
     <string name="pull_to_refresh_refreshing_label">加载中...</string>
     <string name="pull_to_refresh_update">最近更新：</string>
     <string name="app_name">百分网</string>
-            <string name="toast_msg_delete_success">删除成功！</string>
-            <string name="error_net_dic_file_size">SD卡空间不足,无法完成下载</string>
+    <string name="no">否</string>
+    <string name="errorcode">错误代码</string>
+    <string name="yes">是</string>
+    <string name="done">确定</string>
+    <string name="msg_you_want_quit">您确定要退出吗？</string>
+    <string name="dlg_press_again_to_exit_the_program">再按一次退出程序</string>
+    <string name="toast_msg_delete_success">删除成功！</string>
+    <string name="error_net_dic_file_size">SD卡空间不足,无法完成下载</string>
     <string name="toast_msg_add_success">添加成功！</string>
     <string name="toast_msg_operate_fail">操作失败！</string>
     <string name="toast_msg_add_download_queue">已加入到下载队列中</string>
@@ -30,8 +36,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_main">MainActivity</string>
-
-     <string name="table_text_index1">推荐</string>
+    <string name="table_text_index1">推荐</string>
     <string name="table_text_index2">搜索</string>
     <string name="table_text_index3">下载</string>
     <string name="table_text_index4">更新</string>
@@ -52,7 +57,6 @@
     <string name="more_text_top">更多</string>
     <string name="more_text_list1">关于</string>
     <string name="more_Feebback">反馈</string>
-    
     <string name="soft_text_top">软件</string>
     <string name="soft_text_tab1">推荐</string>
     <string name="soft_text_tab2">最新</string>
@@ -65,7 +69,6 @@
     <string name="spical_text_top">专题</string>
     <string name="spical_text_tab1">推荐专题</string>
     <string name="spical_text_tab2">最新专题</string>
-    
     <string name="pd_loading">正在加载......</string>
     <string name="net_faile">网络请求失败</string>
     <string name="soft_down_times">次下载</string>
@@ -76,4 +79,5 @@
     <string name="product_about_tab2">相关</string>
     <string name="xlistview_footer_hint_normal">查看更多</string>
     <string name="xlistview_footer_hint_ready">松开载入更多</string>
+
 </resources>

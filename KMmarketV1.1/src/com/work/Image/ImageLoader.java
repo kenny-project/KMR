@@ -25,7 +25,7 @@ import com.work.Interface.ImageCallback;
 import com.work.market.net.Common;
 import com.work.market.net.HttpUtil;
 
-//ÏÂÔØÍøÂçÍ¼±ê²¢¶ÁÈ¡±¾µØÍ¼
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ê²¢ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½Í¼
 public class ImageLoader extends Thread {
 	private static ImageLoader m_object = new ImageLoader();
 	private Map<String, SoftReference<Drawable>> imageCache = new HashMap<String, SoftReference<Drawable>>();
@@ -43,7 +43,7 @@ public class ImageLoader extends Thread {
 	}
 
 	/**
-	 * Çå³ýÈ«²¿Êý¾Ý
+	 * ï¿½ï¿½ï¿½È«ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	public void RemoveAll() {
 		imageCache.clear();
@@ -53,7 +53,7 @@ public class ImageLoader extends Thread {
 		Drawable image = null;
 		// final String path = fileBean.getFilePath();
 		// final String fileEnds = fileBean.getFileEnds();
-		if (imageCache.containsKey(packageName))// ´ÓÁÐ±íÖÐ»ñÈ¡Êý¾Ý
+		if (imageCache.containsKey(packageName))// ï¿½ï¿½ï¿½Ð±ï¿½ï¿½Ð»ï¿½È¡ï¿½ï¿½ï¿½
 		{
 			SoftReference<Drawable> softReference = imageCache.get(packageName);
 			if (softReference != null) {
@@ -92,7 +92,7 @@ public class ImageLoader extends Thread {
 	public Drawable loadNetDrawable(boolean bShowLogo,final String url,
 			final ImageCallback callback) {
 		Drawable image = null;
-		if (imageCache.containsKey(url))// ´ÓÁÐ±íÖÐ»ñÈ¡Êý¾Ý
+		if (imageCache.containsKey(url))// ï¿½ï¿½ï¿½Ð±ï¿½ï¿½Ð»ï¿½È¡ï¿½ï¿½ï¿½
 		{
 			SoftReference<Drawable> softReference = imageCache.get(url);
 			if (softReference != null) {
@@ -184,7 +184,7 @@ public class ImageLoader extends Thread {
 
 	public Bitmap Getphontnames(String url) 
 	{
-		String filename = Common.getmymd5(url);
+		String filename = Common.getMd5Code(url);
 
 		String path = Environment.getExternalStorageDirectory().toString()
 				+ "/baifen/img/" + filename;
@@ -202,17 +202,17 @@ public class ImageLoader extends Thread {
 		}
 	}
 
-	Bitmap drawableToBitmap(Drawable drawable) // drawable ×ª»»?bitmap
+	Bitmap drawableToBitmap(Drawable drawable) // drawable ×ªï¿½ï¿½?bitmap
 	{
-		int width = drawable.getIntrinsicWidth(); // ?drawable µÄ³¤?
+		int width = drawable.getIntrinsicWidth(); // ?drawable ï¿½Ä³ï¿½?
 		int height = drawable.getIntrinsicHeight();
 		Bitmap.Config config = drawable.getOpacity() != PixelFormat.OPAQUE ? Bitmap.Config.ARGB_8888
-				: Bitmap.Config.RGB_565; // ?drawable µÄÑÕÉ«¸ñ?
-		Bitmap bitmap = Bitmap.createBitmap(width, height, config); // ½¨Á¢¶ÔÓ¦
+				: Bitmap.Config.RGB_565; // ?drawable ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½?
+		Bitmap bitmap = Bitmap.createBitmap(width, height, config); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦
 		// bitmap
-		Canvas canvas = new Canvas(bitmap); // ½¨Á¢¶ÔÓ¦ bitmap µÄ»­?
+		Canvas canvas = new Canvas(bitmap); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ bitmap ï¿½Ä»ï¿½?
 		drawable.setBounds(0, 0, width, height);
-		drawable.draw(canvas); // ?drawable ÄÚÈÝ»­µ½»­²¼?
+		drawable.draw(canvas); // ?drawable ï¿½ï¿½ï¿½Ý»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?
 		return bitmap;
 	}
 
@@ -225,7 +225,7 @@ public class ImageLoader extends Thread {
 		public void ok() {
 			Message msg = new Message();
 			msg.what = 0;
-			if (imageCache.containsKey(path))// ´ÓÁÐ±íÖÐ»ñÈ¡Êý¾Ý
+			if (imageCache.containsKey(path))// ï¿½ï¿½ï¿½Ð±ï¿½ï¿½Ð»ï¿½È¡ï¿½ï¿½ï¿½
 			{
 				SoftReference<Drawable> softReference = imageCache.get(path);
 				if (softReference != null) {
@@ -238,7 +238,7 @@ public class ImageLoader extends Thread {
 			}
 			Bitmap tempbitmap = Getphontnames(path);
 			if (tempbitmap == null) {
-				String filename = Common.getmymd5(path);
+				String filename = Common.getMd5Code(path);
 				String data = HttpUtil.GetPhoto5(path, filename);//
 				tempbitmap = Getphontnames(path);
 			}

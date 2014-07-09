@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.view.Window;
 
+import com.kenny.Slidingmenu.MainUIActivity;
 import com.work.market.net.Common;
 
 /**
@@ -38,7 +39,7 @@ public class LoadingActivity extends Activity {
 	}
 
 	private void toMain() {
-		Intent seta = new Intent(LoadingActivity.this, MainActivity.class);
+		Intent seta = new Intent(LoadingActivity.this, MainUIActivity.class);
 		startActivity(seta);
 		this.finish();
 	}

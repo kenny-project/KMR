@@ -58,9 +58,9 @@ public class KUpdateItemParser
 					bean.setTitle(tempJson2.getString("title"));
 					bean.setPn(tempJson2.getString("pn"));
 					bean.setDesc(tempJson2.getString("desc"));
-					bean.setLogourl(tempJson2.getString("logo"));
-					bean.setSize(Common.getLength(tempJson2
-							.getString("size")));
+					bean.setLogo(tempJson2.getString("logo"));
+					bean.setSize(tempJson2
+							.getString("size"));
 					bean.setVercode(tempJson2.getString("vercode"));
 					bean.setScore(tempJson2.getString("score"));
 					bean.setAppurl(tempJson2.getString("apkurl"));
