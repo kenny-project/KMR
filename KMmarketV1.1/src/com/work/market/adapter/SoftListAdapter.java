@@ -19,7 +19,7 @@ import com.work.market.bean.AppListBean;
 import com.work.market.net.DictBean;
 import com.work.market.net.Downloader;
 /**
- * ͨ���б�
+ * 通用列表
  * @author WangMinghui
  *
  */
@@ -84,69 +84,69 @@ public class SoftListAdapter extends ObjectListAdapter{
 			switch (Downing) {
 			case Downloader.INIT:
 				viewHolder.mydownimage.setImageResource(R.drawable.list_down);
-				viewHolder.mydowntext.setText("����");
+				viewHolder.mydowntext.setText("下载");
 				break;
-			case Downloader.UPDATE://����
+			case Downloader.UPDATE://更新
 				viewHolder.mydownimage.setImageResource(R.drawable.list_pause);
-				viewHolder.mydowntext.setText("����");
+				viewHolder.mydowntext.setText("更新");
 				break;
 			case Downloader.INIT_SERVER:
 				viewHolder.mydownimage.setImageResource(R.drawable.list_pause);
-				viewHolder.mydowntext.setText("��ʼ��");
+				viewHolder.mydowntext.setText("初始化");
 			case Downloader.DOWNLOADING:
 				viewHolder.mydownimage.setImageResource(R.drawable.list_pause);
 				//viewHolder.mydowntext.setText(downing.getCompeletePercentage()+"%");
-				viewHolder.mydowntext.setText("������");
+				viewHolder.mydowntext.setText("下载中");
 				break;
 			case Downloader.WAIT:
 				viewHolder.mydownimage.setImageResource(R.drawable.list_pause);
-				viewHolder.mydowntext.setText("�ȴ�");
+				viewHolder.mydowntext.setText("等待");
 				break;
-			case Downloader.PAUSE:// ��ͣ��
+			case Downloader.PAUSE:// 暂停中
 				viewHolder.mydownimage.setImageResource(R.drawable.list_down);
-				viewHolder.mydowntext.setText("����");
+				viewHolder.mydowntext.setText("继续");
 				break;
-			case Downloader.FINISH:// �������
+			case Downloader.FINISH:// 下载完成
 				PackageInfo packages;
 				try
 				{
 					packages = mcontext.getPackageManager().getPackageInfo(bean.getPn(),1);
 					if(packages.versionCode<bean.getVercode())
-					{//����
+					{//运行
 						viewHolder.mydownimage.setImageResource(R.drawable.list_pause);
-						viewHolder.mydowntext.setText("����");
+						viewHolder.mydowntext.setText("更新");
 						downing.setState(Downloader.UPDATE);
 					}
 					else
 					 if(packages.versionCode==bean.getVercode())
-					{//����
+					{//运行
 						viewHolder.mydownimage.setImageResource(R.drawable.list_open);
-						viewHolder.mydowntext.setText("����");
+						viewHolder.mydowntext.setText("运行");
 					}
 					else
-					{//��װ
+					{//安装
 						viewHolder.mydownimage.setImageResource(R.drawable.list_install);
-						viewHolder.mydowntext.setText("��װ");
+						viewHolder.mydowntext.setText("安装");
 					}
 				}
 				catch (Exception e)
 				{
 					//e.printStackTrace();
 					viewHolder.mydownimage.setImageResource(R.drawable.list_install);
-					viewHolder.mydowntext.setText("��װ");
+					viewHolder.mydowntext.setText("安装");
 				}
 				break;
 			default:
 				if (Downing >= Downloader.ERROR) {
 					viewHolder.mydownimage
 							.setImageResource(R.drawable.list_down);
-					viewHolder.mydowntext.setText("����");
+					viewHolder.mydowntext.setText("重试");
 				}
 				break;
 			}
 		} else {
 			viewHolder.mydownimage.setImageResource(R.drawable.list_down);
-			viewHolder.mydowntext.setText("����");
+			viewHolder.mydowntext.setText("下载");
 		}
 		viewHolder.mydownLinearLayout.setOnClickListener(new OnKClickListener(
 				viewHolder, bean));

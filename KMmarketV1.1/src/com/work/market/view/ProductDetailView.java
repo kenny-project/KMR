@@ -3,13 +3,7 @@ package com.work.market.view;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.InputStream;
 import java.util.ArrayList;
-
-import org.apache.http.util.EncodingUtils;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -22,13 +16,10 @@ import android.os.AsyncTask;
 import android.os.Environment;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
-import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.Gallery;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -41,6 +32,7 @@ import com.framework.syseng.AbsEvent;
 import com.framework.syseng.SysEng;
 import com.kenny.file.tools.ApkTools;
 import com.work.Interface.INotifyDataSetChanged;
+import com.work.market.adapter.ImageAdapter;
 import com.work.market.bean.AppListBean;
 import com.work.market.db.DBAdapter;
 import com.work.market.net.Common;
@@ -58,7 +50,7 @@ public class ProductDetailView extends ObjectView implements
 	private NetTask mNetTask;
 	private AppListBean bean;
 	private String m_url;
-	private ArrayList<String> m_list_url;
+	private ArrayList<String> m_list_url = new ArrayList<String>();
 	private TextView m_product_version;
 	private TextView m_product_class;
 	private TextView m_product_time;//
@@ -66,21 +58,14 @@ public class ProductDetailView extends ObjectView implements
 	private TextView m_product_size;//
 	private TextView m_product_times;//
 	private TextView m_product_language;//
-	// private TextView m_product_new_description;//
 
 	private LinearLayout m_down_button;
 	private ImageView m_Favorite_button;
 	private ViewGroup detail_desc_panels;
-	// private String mtime = "";//
-	// private String dev_name = "";//
-	// private String mdesc = "";//
-	// private String mLang = "中文";//
 	private ImageAdapter mImageAdapter;
-	private ArrayList<Bitmap> m_list_bitmap;
+	// private ArrayList<Bitmap> m_list_bitmap;
 	private CustomGallery mGallery;
 	private TextView m_down_text;
-	private String m_product_type = "";
-	// private int m_product_type_num = 0;
 	private String descHead = "test简介";
 	private KApp app;
 
@@ -104,8 +89,7 @@ public class ProductDetailView extends ObjectView implements
 		pd.setMessage(m_MainActivity.getText(R.string.pd_loading));
 		pd.setCancelable(true);
 		bean = new AppListBean();
-		m_list_bitmap = new ArrayList<Bitmap>();
-		mImageAdapter = new ImageAdapter(mContext);
+		mImageAdapter = new ImageAdapter(mContext, m_list_url);
 		// m_product_image = (ImageView)
 		// findViewById(R.id.detail_soft_icon_img);
 
@@ -131,7 +115,7 @@ public class ProductDetailView extends ObjectView implements
 		mGallery = (CustomGallery) findViewById(R.id.detail_soft_gallery);
 		mGallery.setmPager(mPager);
 		mGallery.setAdapter(mImageAdapter);
-		m_list_url = new ArrayList<String>();
+		// m_list_url = new ArrayList<String>();
 	}
 
 	public void SetID(int id) {
@@ -196,52 +180,45 @@ public class ProductDetailView extends ObjectView implements
 			} else {
 				if (m_num == 0) {
 					try {
-						AppListBean group2 = JSON.parseObject(result,
-								AppListBean.class);
-						group2 = null;
-						JSONObject jsresult = new JSONObject(result);//
+						bean = JSON.parseObject(result, AppListBean.class);
+						String[] imgUrls = bean.getImgs();
+						if (imgUrls != null) {
 
-						bean.setId(jsresult.getString("id"));
-						bean.setTitle(jsresult.getString("title"));
-						bean.setDev_name(jsresult.getString("dev_name"));
-						bean.setEn_name(jsresult.getString("en_name"));
-						bean.setPn(jsresult.getString("pn"));
-						bean.setUpdate_time(jsresult.getString("update_time"));
-						bean.setType(jsresult.getInt("type"));
-						bean.setLogo(jsresult.getString("logo"));
-						bean.setSize(jsresult.getString("size"));
-						bean.setScore(jsresult.getString("score"));
-						bean.setLang(jsresult.getString("lang"));
-						bean.setDesc(jsresult.getString("desc"));
-						bean.setAppurl(jsresult.getString("apkurl"));
-						bean.setDowntiems(jsresult.getString("dc"));
-						bean.setVername(jsresult.getString("last_update_ver"));
-						bean.setAppFileExt(jsresult.getString("ext"));
-						JSONArray jsonObj1 = jsresult.getJSONArray("imgs");
-						for (int i = 0; i < jsonObj1.length(); i++) {
-							String temps = jsonObj1.getString(i);
-							m_list_url.add(temps);
+							for (int i = 0; i < imgUrls.length; i++) {
+								m_list_url.add(imgUrls[i]);
+							}
 						}
-					} catch (JSONException e) {
+						mImageAdapter.notifyDataSetChanged();
+						// group2 = null;
+						// JSONObject jsresult = new JSONObject(result);//
+						//
+						// bean.setId(jsresult.getString("id"));
+						// bean.setTitle(jsresult.getString("title"));
+						// bean.setDev_name(jsresult.getString("dev_name"));
+						// bean.setEn_name(jsresult.getString("en_name"));
+						// bean.setPn(jsresult.getString("pn"));
+						// bean.setUpdate_time(jsresult.getString("update_time"));
+						// bean.setType(jsresult.getInt("type"));
+						// bean.setLogo(jsresult.getString("logo"));
+						// bean.setSize(jsresult.getString("size"));
+						// bean.setScore(jsresult.getString("score"));
+						// bean.setLang(jsresult.getString("lang"));
+						// bean.setDesc(jsresult.getString("desc"));
+						// bean.setAppurl(jsresult.getString("apkurl"));
+						// bean.setDowntiems(jsresult.getString("dc"));
+						// bean.setVername(jsresult.getString("last_update_ver"));
+						// bean.setAppFileExt(jsresult.getString("ext"));
+						// JSONArray jsonObj1 = jsresult.getJSONArray("imgs");
+						// for (int i = 0; i < jsonObj1.length(); i++) {
+						// String temps = jsonObj1.getString(i);
+						// m_list_url.add(temps);
+						// }
+					} catch (Exception e) {
 						e.printStackTrace();
 					}
 					SetAllData();
 					pd.dismiss();
-					if (m_list_url.size() > 0) {
-						int num = m_list_url.size();
-
-						for (int i = 0; i < num; i++) {
-							Bitmap tempbitmap = Getphontnames(m_list_url.get(0));
-							if (tempbitmap != null) {
-								m_list_bitmap.add(tempbitmap);
-								m_list_url.remove(0);
-							} else {
-								upDatasoft(1, false, m_list_url.get(0));
-								return;
-							}
-						}
-						mImageAdapter.notifyDataSetChanged();
-					}
+	
 					boolean isFavorite = DBAdapter.createDBAdapter(mContext)
 							.queryMessageById(String.valueOf(bean.getId()),
 									Common.user_key);
@@ -252,22 +229,6 @@ public class ProductDetailView extends ObjectView implements
 					} else {
 						m_Favorite_button
 								.setImageResource(R.drawable.detail_unfavorite);
-					}
-				} else if (m_num == 1) {
-					if (m_list_url.size() > 0) {
-						int num = m_list_url.size();
-
-						for (int i = 0; i < num; i++) {
-							Bitmap tempbitmap = Getphontnames(m_list_url.get(0));
-							if (tempbitmap != null) {
-								m_list_bitmap.add(tempbitmap);
-								m_list_url.remove(0);
-							} else {
-								upDatasoft(1, false, m_list_url.get(0));
-								return;
-							}
-						}
-						mImageAdapter.notifyDataSetChanged();
 					}
 				}
 			}
@@ -321,63 +282,6 @@ public class ProductDetailView extends ObjectView implements
 			m_product_times.setText("下载：" + bean.getDowntiems());
 			m_product_language.setText("语言：" + bean.getLang());
 
-		}
-	}
-
-	/**
-	 * 
-	 * 
-	 * 
-	 * @author caoliang
-	 * @version 1.0
-	 * @created 2012-12-22 11:03:59
-	 */
-	private class ImageAdapter extends BaseAdapter {
-		private Context mContext;
-		private int mHeight = 0, mWidth = 0;
-
-		public ImageAdapter(Context c) {
-			this.mContext = c;
-			mWidth = dip2px(c, 150);
-			mHeight = dip2px(c, 250);
-		}
-
-		@Override
-		public int getCount() {
-			return m_list_bitmap.size();
-		}
-
-		@Override
-		public Object getItem(int position) {
-			return position;
-		}
-
-		@Override
-		public long getItemId(int position) {
-			return position;
-		}
-
-		public int dip2px(Context context, float dipValue) {
-			final float scale = context.getResources().getDisplayMetrics().density;
-			return (int) (dipValue * scale + 0.5f);
-		}
-
-		@Override
-		public View getView(int position, View convertView, ViewGroup parent) {
-			// TODO Auto-generated method stub
-			DisplayMetrics displaysMetrics = new DisplayMetrics();
-			((Activity) mContext).getWindowManager().getDefaultDisplay()
-					.getMetrics(displaysMetrics);
-			ImageView i = new ImageView(m_MainActivity);
-			i.setScaleType(ImageView.ScaleType.FIT_CENTER);
-			if (m_list_bitmap.get(position).getHeight() > m_list_bitmap.get(
-					position).getWidth()) {
-				i.setLayoutParams(new Gallery.LayoutParams(mWidth, mHeight));
-			} else {
-				i.setLayoutParams(new Gallery.LayoutParams(mHeight, mWidth));
-			}
-			i.setImageBitmap(m_list_bitmap.get(position));
-			return i;
 		}
 	}
 

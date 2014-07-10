@@ -18,9 +18,10 @@
             <com.work.market.view.CustomGallery
                 android:id="@+id/detail_soft_gallery"
                 android:layout_width="fill_parent"
-                android:layout_height="200dip"
-                android:layout_marginTop="5dip"
-                android:background="#ffffffff" />
+                android:layout_height="300dip"
+                android:layout_marginTop="2dip"
+                android:spacing="2dip"
+                android:background="@color/gray" />
 
             <LinearLayout
                 android:layout_width="fill_parent"
