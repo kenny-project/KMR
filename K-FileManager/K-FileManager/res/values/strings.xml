@@ -108,7 +108,6 @@
     <string name="m_ClearCache">清空缓存</string>
     <string name="m_Logout">注销</string>
     <string name="KuaiPanLoginPageTitle">金山快盘</string>
-    <string name="KuaiPan_Title">金山快盘</string>
     <string name="search">搜索</string>
     <string name="SearchResult_Title">搜索结果</string>
     <string name="SearchFileDialog_Title">高级搜索</string>
