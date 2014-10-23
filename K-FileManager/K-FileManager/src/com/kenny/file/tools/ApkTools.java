@@ -209,12 +209,12 @@ public class ApkTools
 				return infoData;
 			}
 
-		} catch (Exception e)
+		}
+		catch (Exception e)
 		{
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		return null;
-
 	}
 
 	/**

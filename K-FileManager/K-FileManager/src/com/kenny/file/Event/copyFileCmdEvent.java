@@ -2,7 +2,6 @@ package com.kenny.file.Event;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
 
@@ -18,10 +17,8 @@ import com.framework.event.AbsEvent;
 import com.framework.log.P;
 import com.kenny.KFileManager.R;
 import com.kenny.file.bean.FileBean;
-import com.kenny.file.manager.FileManager;
 import com.kenny.file.manager.IManager;
 import com.kenny.file.tools.LinuxFileCommand;
-import com.kenny.file.tools.T;
 
 public class copyFileCmdEvent extends AbsEvent
 {

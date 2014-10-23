@@ -82,14 +82,6 @@
         <meta-data
             android:name="BaiduMobAd_ONLY_WIFI"
             android:value="false" />
-
-
-
-　　		
-        
-
-        
-
         <!-- 是否获取基站位置信息，默认为获取基站位置 -->
         <meta-data
             android:name="BaiduMobAd_CELL_LOCATION"

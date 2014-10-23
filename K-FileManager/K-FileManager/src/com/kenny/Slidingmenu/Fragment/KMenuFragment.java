@@ -223,8 +223,8 @@ public class KMenuFragment extends AbsFragmentPage implements
 	{
 		KMenuItemBean bean = (KMenuItemBean) adapter.getChild(groupPosition,
 				childPosition);
-		int GroupID = ((KMenuGroupBean) adapter.getGroup(groupPosition))
-				.getID();
+//		int GroupID = ((KMenuGroupBean) adapter.getGroup(groupPosition))
+//				.getID();
 		ContentFragment newContent = null;
 		Intent intent;
 		switch(bean.getType())

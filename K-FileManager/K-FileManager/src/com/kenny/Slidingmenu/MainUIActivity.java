@@ -18,7 +18,9 @@ import android.widget.TextView;
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
+import com.framework.debugreport.DebugUncaughtExceptionHandler;
 import com.framework.page.AbsFragmentPage;
+import com.framework.syseng.SysEng;
 import com.kenny.KFileManager.R;
 import com.kenny.Slidingmenu.Fragment.KMenuFragment;
 import com.kenny.Slidingmenu.Fragment.LocalPage;
@@ -46,10 +48,11 @@ public class MainUIActivity extends SlidingFragmentActivity
 // implements
 // OnBackStackChangedListener
 {
-	private Fragment mFragment;
-	private KMenuFragment mKMenuFragment;
-	private SlidingMenu sm;
+	private Fragment mFragment=null;
+	private KMenuFragment mKMenuFragment=null;
+	private SlidingMenu slidingMenu=null;
 
+	@SuppressWarnings("deprecation")
 	public void Init()
 	{
 		com.framework.util.Const.SW = getWindow().getWindowManager()
@@ -92,45 +95,42 @@ public class MainUIActivity extends SlidingFragmentActivity
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
+		SysEng.getInstance();
 		setContentView(R.layout.responsive_content_frame);
+		DebugUncaughtExceptionHandler.LogWirte("MainUIActivity.onCreate");
 		Init();
 		// check if the content frame contains the menu frame
 		if (findViewById(R.id.menu_frame) == null)
 		{
 			setBehindContentView(R.layout.menu_frame);
 			// show home as up so we can toggle
-			sm = getSlidingMenu();
-			sm.setShadowWidthRes(R.dimen.shadow_width);
-			sm.setShadowDrawable(R.drawable.shadow);
-			sm.setBehindOffsetRes(R.dimen.slidingmenu_offset);
-			sm.setFadeDegree(0.35f);
-			sm.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
-			// sm.setSlidingEnabled(true);
-			// ActionBar bar=getSupportActionBar();
-			// bar.setDisplayHomeAsUpEnabled(true);// by wmh
-			// bar.setDisplayUseLogoEnabled(false);
-			// bar.setDisplayShowTitleEnabled(false);
+			slidingMenu = getSlidingMenu();
+			slidingMenu.setShadowWidthRes(R.dimen.shadow_width);
+			slidingMenu.setShadowDrawable(R.drawable.shadow);
+			slidingMenu.setBehindOffsetRes(R.dimen.slidingmenu_offset);
+			slidingMenu.setFadeDegree(0.35f);
+			slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
 
 			m = ((LinearLayout) LayoutInflater.from(this).inflate(
 					R.layout.custom_actionbar_layout, null));
-			d = ((ImageView) m.findViewById(R.id.icon));
-			d.setOnClickListener(new OnClickListener()
+			ivIcon = ((ImageView) m.findViewById(R.id.icon));
+			ivIcon.setOnClickListener(new OnClickListener()
 			{
 				@Override
 				public void onClick(View v)
 				{
-					if (!sm.isMenuShowing())
+					if (!slidingMenu.isMenuShowing())
 					{
-						sm.showMenu();
-					} else
+						slidingMenu.showMenu();
+					} 
+					else
 					{
-						sm.showContent();
+						slidingMenu.showContent();
 					}
 				}
 			});
 
 			abtitle = ((TextView) m.findViewById(R.id.ab_title));
-			// b = ((BreadcrumbView)m.findViewById(2131427420));
 			e = ((ActionListView) m.findViewById(R.id.action_list));
 			ActionBar.LayoutParams localLayoutParams = new ActionBar.LayoutParams(
 					-1, -2);
@@ -153,9 +153,9 @@ public class MainUIActivity extends SlidingFragmentActivity
 		}
 
 		// set the Above View Fragment
-		if (savedInstanceState != null)
-			mFragment = getSupportFragmentManager().getFragment(
-					savedInstanceState, "mContent");
+//		if (savedInstanceState != null)
+//			mFragment = getSupportFragmentManager().getFragment(
+//					savedInstanceState, "mContent");
 		if (mFragment == null)// 添加默认的fragment
 		{
 			LocalPage localPage = new LocalPage(SaveData.Read(this,
@@ -211,11 +211,11 @@ public class MainUIActivity extends SlidingFragmentActivity
 		super.onConfigurationChanged(newConfig);
 		// if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT)
 		// {
-		// System.out.println("现在是竖屏");
+		// 		System.out.println("现在是竖屏");
 		// }
 		// if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE)
 		// {
-		// System.out.println("现在是横屏");
+		// 		System.out.println("现在是横屏");
 		// }
 		super.onConfigurationChanged(newConfig);
 		// Const.SW = getWindow().getWindowManager().getDefaultDisplay()
@@ -270,16 +270,16 @@ public class MainUIActivity extends SlidingFragmentActivity
 			return true;
 		}
 	}
+//onRestoreInstanceState
+//	@Override
+//	public void onSaveInstanceState(Bundle outState)
+//	{
+//		super.onSaveInstanceState(outState);
+//		getSupportFragmentManager()
+//				.putFragment(outState, "mContent", mFragment);
+//	}
 
-	@Override
-	public void onSaveInstanceState(Bundle outState)
-	{
-		super.onSaveInstanceState(outState);
-		getSupportFragmentManager()
-				.putFragment(outState, "mContent", mFragment);
-	}
-
-	private Handler h = new Handler();
+	private Handler handler = new Handler();
 
 	public void switchContent(final Fragment fragment)
 	{
@@ -291,7 +291,7 @@ public class MainUIActivity extends SlidingFragmentActivity
 
 		// if(mContent!=null)
 		// {
-		// removeFragment(mContent);
+		// 		removeFragment(mContent);
 		// }
 		mFragment = fragment;
 		FragmentTransaction transaction = getSupportFragmentManager()
@@ -304,7 +304,7 @@ public class MainUIActivity extends SlidingFragmentActivity
 		// }
 		// transaction.addToBackStack(null);
 		transaction.commit();
-		h.postDelayed(new Runnable()
+		handler.postDelayed(new Runnable()
 		{
 			public void run()
 			{
@@ -397,7 +397,7 @@ public class MainUIActivity extends SlidingFragmentActivity
 
 	private LinearLayout m;
 	private TextView abtitle;
-	private ImageView d;
+	private ImageView ivIcon;
 	private ActionListView e;
 
 	// private BreadcrumbView b;
@@ -459,14 +459,16 @@ public class MainUIActivity extends SlidingFragmentActivity
 
 	public void setTitleIcon(int paramInt)
 	{
-		this.d.setImageDrawable(getResources().getDrawable(paramInt));
+		this.ivIcon.setImageDrawable(getResources().getDrawable(paramInt));
 	}
 
 	public void setTitleIcon(Drawable paramDrawable)
 	{
-		this.d.setImageDrawable(paramDrawable);
+		this.ivIcon.setImageDrawable(paramDrawable);
 	}
 
+	
+	
 
 	// public void zypushInit() {
 	//

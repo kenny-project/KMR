@@ -170,7 +170,7 @@ public class FavoriteFilePage extends ContentFragment implements
 	@Override
 	public void onResume()
 	{
-		m_lvMain.setBackgroundColor(Theme.getBackgroundResource());
+		m_lvMain.setBackgroundResource(Theme.getBackgroundResource());
 //		m_lvMain.setBackgroundResource(Theme.getBackgroundResource());
 		setTitle(getTitle());
 		super.onResume();

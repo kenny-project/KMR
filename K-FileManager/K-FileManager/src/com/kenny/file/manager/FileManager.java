@@ -62,16 +62,6 @@ public class FileManager implements IManager
 	}
 
 	/**
-	 * 获得当前类实倒，单态模式
-	 * 
-	 * @return
-	 */
-	// public static FileManager getInstance()
-	// {
-	// return m_LocalManage;
-	// }
-
-	/**
 	 * 退回上一层
 	 */
 	public boolean Back()
