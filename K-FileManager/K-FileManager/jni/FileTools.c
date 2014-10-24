@@ -1,6 +1,7 @@
 #include <jni.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdint.h>
 #include <string.h>
 #include <dirent.h>
 #include <time.h>
@@ -10,7 +11,11 @@
 #include <sys/stat.h>
 #include <dirent.h>
 #include <android/log.h>
-
+#include "android/log.h"
+//#ifdef __cplusplus
+//extern "C" {
+//#endif
+#define LOGD(...) __android_log_print(ANDROID_LOG_DEBUG, "NDK", __VA_ARGS__)
 /**
  * File_Create_Dir--创建文件目录
  * 返回0--成功
@@ -71,23 +76,31 @@ unsigned short File_Delete(char* name) {
 	}
 	return remove(name);
 }
-unsigned short File_GetSizes(char* fileFolder, unsigned long* FileSize,int *FileCount) {
+unsigned short File_GetSizes(char* fileFolder, unsigned long* FileSize,
+		long *FileCount) {
 	FILE* fp = NULL;
 	DIR *pDir = NULL;
 	struct dirent *dmsg;
-	char szFileName[1024];
-	char szFolderName[1024];
+	char* szFileName=NULL;
+	char* szFolderName=NULL;
 	int result = 0;
-	strcpy(szFolderName, fileFolder);
-	strcat(szFolderName, "/%s");
+	int nfileFolderSize=strlen(fileFolder);
+	//LOGD("fdsa");
+	//__android_log_print(ANDROID_LOG_INFO, "NDK", "%s", fileFolder);
+	//
 	if ((pDir = opendir(fileFolder)) != NULL) {
+		szFolderName=malloc(nfileFolderSize+5);
+		szFileName=malloc(nfileFolderSize+512);
+		strcpy(szFolderName, fileFolder);
+		strcat(szFolderName, "/%s");
 		// 遍历目录并删除文件
 		while ((dmsg = readdir(pDir)) != NULL) {
-			if (!strcmp(dmsg->d_name, ".") || !strcmp(dmsg->d_name, ".."))
+			if (!strcmp(dmsg->d_name, ".") || !strcmp(dmsg->d_name, "..")) {
 				continue;
+			}
 			if (dmsg->d_type == DT_DIR) {
 				sprintf(szFileName, szFolderName, dmsg->d_name);
-				File_GetSizes(szFileName, FileSize,FileCount);
+				File_GetSizes(szFileName, FileSize, FileCount);
 				continue;
 			} else {
 				sprintf(szFileName, szFolderName, dmsg->d_name);
@@ -96,20 +109,30 @@ unsigned short File_GetSizes(char* fileFolder, unsigned long* FileSize,int *File
 					continue;
 				fseek(fp, 0L, SEEK_END);
 				*FileSize += ftell(fp);
-				*FileCount++;
+				*FileCount += 1;
 				fclose(fp);
 			}
+			//free(dmsg);
 		}
-	}
-	else
-	{
-		fp = fopen(szFileName, "r");
-		if (fp == NULL)
-			continue;
+		closedir(pDir);
+//		free(pDir);
+	} else {
+		fp = fopen(fileFolder, "r");
+		if (fp == NULL) {
+			return -1;
+		}
 		fseek(fp, 0L, SEEK_END);
-		*FileSize = ftell(fp);
-		*FileCount=1;
+		*FileSize += ftell(fp);
+		*FileCount += 1;
 		fclose(fp);
+	}
+	if(szFileName!=NULL)
+	{
+		free(szFileName);
+	}
+	if(szFolderName!=NULL)
+	{
+		free(szFolderName);
 	}
 	return 1;
 }
@@ -152,3 +175,6 @@ int File_DeleteFiles(char* fileFolder) {
 	}
 	return 1;
 }
+//#ifdef __cplusplus
+//}
+//#endif

@@ -530,7 +530,7 @@ public class T
 		return length;
 	}
 
-	public static String FileSizeToString(Long length)
+	public static String FileSizeToString(double length)
 	{
 		String szLength;
 		double totalsize = length;

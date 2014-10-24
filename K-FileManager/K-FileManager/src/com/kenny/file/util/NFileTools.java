@@ -1,5 +1,7 @@
 package com.kenny.file.util;
 
+import com.kenny.file.bean.FileDetailsBean;
+
 
 //NDK相应的接口
 public class NFileTools
@@ -14,7 +16,7 @@ public class NFileTools
 	}
 
     public native int deleteFiles(String folderPath);
-    public native int getFileSizes(String folderPath);
+    public native FileDetailsBean getFileSizes(String folderPath);
     
     static {
     	System.loadLibrary("FileTools");

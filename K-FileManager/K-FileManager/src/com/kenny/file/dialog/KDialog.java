@@ -8,6 +8,7 @@ import android.app.AlertDialog.Builder;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.nfc.tech.IsoDep;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -119,19 +120,24 @@ public class KDialog
 
 					public void NotifyDataSetChanged(int cmd, Object value)
 					{
-						if (cmd == 1)
+						if (value instanceof Long)
 						{
-							tvFileSize.setText(T.FileSizeToString((Long) value));
-						} else
-						{
-							tvFileCount.setText(String.format(m_ctx
-									.getString(R.string.msg_total_documents),
-									value));// "共"
-							// +
-							// ((Long)
-							// value).toString()
-							// + "个文件");
+							Long nValue = (Long) value;
+							if (cmd == 1)
+							{
+								tvFileSize.setText(T.FileSizeToString(nValue.doubleValue()));
+							} else
+							{
+								tvFileCount.setText(String.format(m_ctx
+										.getString(R.string.msg_total_documents),
+										nValue.intValue()));// "共"
+								// +
+								// ((Long)
+								// value).toString()
+								// + "个文件");
+							}
 						}
+						
 					}
 				});
 		SysEng.getInstance().addEvent(FolderSize);

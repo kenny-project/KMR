@@ -15,10 +15,27 @@ JNIEXPORT jint JNICALL Java_com_kenny_file_util_NFileTools_deleteFiles(JNIEnv *e
 	(*env)->ReleaseStringUTFChars(env, fileFolder, file_folder);
 	return result;
 }
-JNIEXPORT jlong JNICALL Java_com_kenny_file_util_NFileTools_getFileSizes(JNIEnv *env, jclass obj, jstring fileFolder)
+JNIEXPORT jobject JNICALL Java_com_kenny_file_util_NFileTools_getFileSizes(JNIEnv *env, jclass obj, jstring fileFolder)
 {
 	const char *file_folder = (*env)->GetStringUTFChars(env, fileFolder, 0);
-	unsigned long result=File_GetSizes(file_folder);
-	(*env)->ReleaseStringUTFChars(env, fileFolder, file_folder);
-	return result;
+	unsigned long fileSize=0l,fileCount=0l;
+	unsigned short result=File_GetSizes(file_folder,&fileSize,&fileCount);
+    // 获取Java中的实例类
+    jclass poiObjClass = (*env)->FindClass(env, "com/kenny/file/bean/FileDetailsBean");
+    if(NULL == poiObjClass) {
+    	return NULL;
+    }
+    jfieldID jfTotalFileSize = (*env)->GetFieldID(env, poiObjClass, "TotalFileSize", "J");// 经度
+    if(NULL == jfTotalFileSize) {
+    	return NULL;
+    }
+
+    jfieldID jfTotalFileCount = (*env)->GetFieldID(env, poiObjClass, "TotalFileCount", "J");// 经度
+    if(NULL == jfTotalFileCount) {
+    	return NULL;
+    }
+    jobject poiObj = (*env)->AllocObject(env, poiObjClass);
+    (*env)->SetLongField(env, poiObj, jfTotalFileSize,fileSize);
+    (*env)->SetLongField(env, poiObj, jfTotalFileCount,fileCount);
+	return poiObj;
 }
