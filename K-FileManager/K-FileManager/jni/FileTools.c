@@ -84,18 +84,18 @@ unsigned short File_GetSizes(char* fileFolder, unsigned long* FileSize,
 	char* szFileName=NULL;
 	char* szFolderName=NULL;
 	int result = 0;
+	FILE *fpWFile=NULL;
 	int nfileFolderSize=strlen(fileFolder);
 	//LOGD("fdsa");
 	//__android_log_print(ANDROID_LOG_INFO, "NDK", "%s", fileFolder);
-	//
 	if ((pDir = opendir(fileFolder)) != NULL) {
-		szFolderName=malloc(nfileFolderSize+5);
+		szFolderName=malloc(nfileFolderSize+10);
 		szFileName=malloc(nfileFolderSize+512);
 		strcpy(szFolderName, fileFolder);
 		strcat(szFolderName, "/%s");
 		// 遍历目录并删除文件
 		while ((dmsg = readdir(pDir)) != NULL) {
-			if (!strcmp(dmsg->d_name, ".") || !strcmp(dmsg->d_name, "..")) {
+			if (strcmp(dmsg->d_name, ".") == 0 || 0 == strcmp(dmsg->d_name, "..")) {
 				continue;
 			}
 			if (dmsg->d_type == DT_DIR) {
@@ -111,6 +111,13 @@ unsigned short File_GetSizes(char* fileFolder, unsigned long* FileSize,
 				*FileSize += ftell(fp);
 				*FileCount += 1;
 				fclose(fp);
+
+//				fpWFile = fopen("/mnt/sdcard/testNdk.txt", "at+");
+//				fwrite(szFileName,1,strlen(szFileName),fpWFile);
+//				fputs("\n",fpWFile);
+//
+//				fclose(fpWFile);
+
 			}
 			//free(dmsg);
 		}
@@ -125,6 +132,10 @@ unsigned short File_GetSizes(char* fileFolder, unsigned long* FileSize,
 		*FileSize += ftell(fp);
 		*FileCount += 1;
 		fclose(fp);
+//		fpWFile = fopen("/mnt/sdcard/testNdk.txt", "at+");
+//		fwrite(szFileName,1,strlen(szFileName),fpWFile);
+//		fputs("\n",fpWFile);
+//		fclose(fpWFile);
 	}
 	if(szFileName!=NULL)
 	{
@@ -141,9 +152,13 @@ unsigned short File_GetSizes(char* fileFolder, unsigned long* FileSize,
 int File_DeleteFiles(char* fileFolder) {
 	DIR *pDir = NULL;
 	struct dirent *dmsg;
-	char szFileName[1024];
-	char szFolderName[1024];
+	char *szFileName=NULL;
+	char *szFolderName=NULL;
 	int result = 0;
+	int nfileFolderSize=strlen(fileFolder);
+	szFolderName=malloc(nfileFolderSize+10);
+	szFileName=malloc(nfileFolderSize+512);
+
 	strcpy(szFolderName, fileFolder);
 	strcat(szFolderName, "/%s");
 

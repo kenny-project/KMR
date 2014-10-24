@@ -103,7 +103,7 @@ public class LoadSDFolderBGEvent extends AbsEvent
 		Init();
 		SendMessage(Const.cmd_LoadSDFile_Init, null);
 		P.debug("refreshSDCardList:start");
-		ReadSDFolderList("/mnt/");// Const.getSDCard() by wmh 2013-11-6
+		ReadSDFolderList("/mnt/",0);// Const.getSDCard() by wmh 2013-11-6
 		P.debug("refreshSDCardList:end listItem.size=" + listItem.size());
 		for (FileEnd end : listItem)
 		{
@@ -113,9 +113,6 @@ public class LoadSDFolderBGEvent extends AbsEvent
 					end.groupInfo.getCount());
 			SaveData.Write(act, "FavGroupPaths_" + end.groupInfo.getId(),
 					end.groupInfo.getPaths());
-			// P.debug("FavGroupSize_" + end.groupInfo.getId() +
-			// ":FavGroupCount_"
-			// + end.groupInfo.getId() + end.groupInfo.getCount());
 		}
 		SaveData.Write(act, "FavoriteInit", true);
 		P.debug("LoadSDFileEvent:end");
@@ -129,8 +126,12 @@ public class LoadSDFolderBGEvent extends AbsEvent
 		public int Progress;
 	}
 
-	private void ReadSDFolderList(String strPath)
+	private void ReadSDFolderList(String strPath,int Level)
 	{
+		if (Level >= 6)
+		{
+			return;
+		}
 		File dir = new File(strPath);
 		File[] files = dir.listFiles();
 		if (files == null)
@@ -148,11 +149,10 @@ public class LoadSDFolderBGEvent extends AbsEvent
 					continue;
 				} else
 				{
-					ReadSDFolderList(file.getAbsolutePath());
+					ReadSDFolderList(file.getAbsolutePath(),Level+1);
 				}
 			} else
 			{
-				// mLFstate.Progress++;
 				String strFileName = file.getName();
 				int lastIndex = strFileName.lastIndexOf(".") + 1;
 				if (lastIndex > 0 && strFileName.length() - lastIndex > 1)

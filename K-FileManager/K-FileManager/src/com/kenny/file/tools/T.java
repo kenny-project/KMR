@@ -72,6 +72,7 @@ import android.view.inputmethod.InputMethodManager;
 
 import com.framework.log.P;
 import com.kenny.KFileManager.R;
+import com.kenny.file.bean.FileDetailsBean;
 
 /**
  * 工具类
@@ -476,6 +477,40 @@ public class T
 	 * @param strPath
 	 * @return
 	 */
+	public static boolean FileDetails(String strPath,FileDetailsBean bean)
+	{
+		File dir = new File(strPath);
+		if (!dir.isDirectory())
+		{
+			bean.TotalFileCount++;
+			bean.TotalFileSize += dir.length();
+			return true;
+		}
+		File[] files = dir.listFiles();
+		if (files == null)
+			return true;
+		bean.TotalFileCount += (long) (files.length);
+		for (int i = 0; i < files.length; i++)
+		{
+			File file = files[i];
+			if (file.isDirectory())
+			{
+				bean.TotalFileCount--;
+				FileDetails(file.getAbsolutePath(),bean);
+			}
+			else
+			{
+				bean.TotalFileSize += file.length();
+			}
+		}
+		return true;
+	}
+	/**
+	 * 获得文件总数
+	 * 
+	 * @param strPath
+	 * @return
+	 */
 	public static Long FileCount(String strPath)
 	{
 		File dir = new File(strPath);
@@ -493,6 +528,7 @@ public class T
 			File file = files[i];
 			if (file.isDirectory())
 			{
+				count--;
 				count += FileCount(file.getAbsolutePath());
 			}
 		}

@@ -53,14 +53,15 @@ public class GetFolderSizeEvent extends AbsEvent
 				});
 			}
 		});
-		P.debug("T.FileSize start");
-		final Long length = T.FileSize(folderPath);
-		P.debug("T.FileSize end");
-		final Long count = T.FileCount(folderPath);
-		P.debug("T.NFileTools start");
-		final FileDetailsBean bean=NFileTools.GetInstance().getFileSizes(folderPath) ;
-		P.debug("T.NFileTools start");
-		P.debug("length="+length+"count="+count+"TotalFileSize"+bean.TotalFileSize+"TotalFileCount="+bean.TotalFileCount);
+		final FileDetailsBean bean=new FileDetailsBean();
+		P.debug("T.FileDetails start");
+		T.FileDetails(folderPath,bean);
+		P.debug("T.FileDetails end");
+//		final Long count = T.FileCount(folderPath);
+//		P.debug("T.NFileTools start");
+//		final FileDetailsBean bean=NFileTools.GetInstance().getFileSizes(folderPath) ;
+//		P.debug("T.NFileTools start");
+//		P.debug("length="+length+"count="+count+"TotalFileSize"+bean.TotalFileSize+"TotalFileCount="+bean.TotalFileCount);
 		SysEng.getInstance().addHandlerEvent(new AbsEvent()
 		{
 

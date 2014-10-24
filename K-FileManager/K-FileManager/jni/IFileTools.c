@@ -34,6 +34,7 @@ JNIEXPORT jobject JNICALL Java_com_kenny_file_util_NFileTools_getFileSizes(JNIEn
     if(NULL == jfTotalFileCount) {
     	return NULL;
     }
+    __android_log_print(ANDROID_LOG_INFO, "NDK", "%ld,%ld", fileSize,fileCount);
     jobject poiObj = (*env)->AllocObject(env, poiObjClass);
     (*env)->SetLongField(env, poiObj, jfTotalFileSize,fileSize);
     (*env)->SetLongField(env, poiObj, jfTotalFileCount,fileCount);
