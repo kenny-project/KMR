@@ -6,22 +6,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Hashtable;
 
-import com.kenny.file.tools.LinuxFileCommand;
-import com.kenny.file.tools.SaveData;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
-import android.content.pm.PackageManager.NameNotFoundException;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.os.PowerManager;
-import android.os.PowerManager.WakeLock;
-import android.telephony.TelephonyManager;
-import android.text.format.Time;
-import android.view.WindowManager;
 import android.widget.Toast;
+
+import com.kenny.file.tools.SaveData;
 
 public class KCommand
 {

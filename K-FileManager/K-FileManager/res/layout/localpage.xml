@@ -54,7 +54,7 @@
             android:layout_marginLeft="5dip"
             android:gravity="center_vertical"
             android:visibility="gone" />
-
+<!-- 
         <Button
             android:id="@+id/btListSort"
             android:layout_width="wrap_content"
@@ -67,6 +67,7 @@
             android:textColor="#737373"
             android:textSize="16dip"
             android:visibility="gone" />
+             -->
     </LinearLayout>
 
     <LinearLayout
@@ -276,6 +277,9 @@
 
         <include
             android:id="@+id/main_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            
             android:layout_alignParentBottom="true"
             android:layout_marginRight="10dip"
             layout="@layout/menu_local_pannal" />

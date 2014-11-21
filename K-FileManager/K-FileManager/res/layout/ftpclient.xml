@@ -163,7 +163,7 @@
                 android:cacheColorHint="#00000000" />
 
             <LinearLayout
-                android:id="@+id/lyBTools"
+                android:id="@+id/lyBTools2"
                 android:layout_width="fill_parent"
                 android:layout_height="70dip"
                 android:layout_alignParentBottom="true"
@@ -246,7 +246,6 @@
                         android:src="@color/Setting_Button_TextColor" />
 
                     <TextView
-                        android:id="@+id/DictionarySettingsTextView"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/Setting_BG"
@@ -280,7 +279,6 @@
                             android:src="@color/Setting_Button_TextColor" />
 
                         <TextView
-                            android:id="@+id/DictionarySettingsTextView"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:background="@color/Setting_BG"
@@ -307,7 +305,6 @@
                             android:src="@color/Setting_Button_TextColor" />
 
                         <TextView
-                            android:id="@+id/DictionarySettingsTextView"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:background="#00000000"

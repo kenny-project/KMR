@@ -90,7 +90,7 @@
             android:textSize="17dp" />
 
         <Button
-            android:id="@+id/btListSort"
+            android:id="@id/btListSort"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -279,6 +279,8 @@
 
         <include
             android:id="@+id/main_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginRight="10dip"
             layout="@layout/menu_local_pannal" />
     </RelativeLayout>

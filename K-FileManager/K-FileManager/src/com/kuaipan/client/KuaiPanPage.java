@@ -461,9 +461,9 @@ public class KuaiPanPage extends Activity implements OnItemClickListener,
 		case R.id.btBackPage:
 			finish();
 			break;
-		case R.id.btRefresh:
-			Refresh();
-			break;
+//		case R.id.btRefresh:
+//			Refresh();
+//			break;
 		case R.id.btNew:
 			CreateKPFileDialog.Show(KuaiPanPage.this, cli, this);
 			break;

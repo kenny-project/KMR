@@ -15,8 +15,11 @@ public class NFileTools
 		return mFileTools;
 	}
 
-    public native int deleteFiles(String folderPath);
-    public native FileDetailsBean getFileSizes(String folderPath);
+	
+	public static native boolean isDirectory(String folderPath);
+    public static native int deleteFiles(String folderPath);
+    public static native long getFileSize(String folderPath);
+    public static native FileDetailsBean getFileSizes(String folderPath);
     
     static {
     	System.loadLibrary("FileTools");

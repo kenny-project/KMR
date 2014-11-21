@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.kenny.KFileManager"
     android:installLocation="internalOnly"
-    android:versionCode="287"
-    android:versionName="3.5.2" >
+    android:versionCode="288"
+    android:versionName="3.5.141118" >
 
     <uses-sdk
         android:minSdkVersion="7"
@@ -53,7 +53,9 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <!-- write sdcard for storing apk -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+  	<!-- 在SDCard中创建与删除文件权限 -->
+  	<uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
     <application
         android:name="com.kenny.file.Application.KFileManagerApp"
         android:hardwareAccelerated="true"

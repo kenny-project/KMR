@@ -651,12 +651,16 @@ public class FavoriteFilePage extends ContentFragment implements
 					"FavGroupPaths_" + mNowGItem.getId(), "");
 			mStrFolderpaths = strPaths.split("\n");
 			LoadFolderInit();
+			mListView.setSelection(0);
+//			mFileAdapter.notifyDataSetChanged();
 		}
 		mTempList.addAll(mFolderList);
 		if (mFileAdapter == null)
 		{
 			mFileAdapter = new FavorFileAdapter(m_act, 1, mTempList);
 			mListView.setAdapter(mFileAdapter);
+			mListView.setSelection(0);
+			mFileAdapter.notifyDataSetChanged();
 		}
 		lyBTools.setVisibility(View.GONE);
 		btInstall.setVisibility(View.GONE);
@@ -731,7 +735,9 @@ public class FavoriteFilePage extends ContentFragment implements
 		}
 		if (mFileAdapter != null)
 		{
-			mFileAdapter.notifyDataSetChanged();
+//			mListView.clearFocus();
+//			mListView.setSelection(0);
+			mFileAdapter.notifyDataSetInvalidated();
 		}
 	}
 

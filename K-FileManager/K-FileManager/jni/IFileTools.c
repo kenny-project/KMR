@@ -15,6 +15,31 @@ JNIEXPORT jint JNICALL Java_com_kenny_file_util_NFileTools_deleteFiles(JNIEnv *e
 	(*env)->ReleaseStringUTFChars(env, fileFolder, file_folder);
 	return result;
 }
+JNIEXPORT jboolean JNICALL Java_com_kenny_file_util_NFileTools_isDirectory(JNIEnv *env, jclass obj, jstring fileFolder)
+{
+	const char *file_folder = (*env)->GetStringUTFChars(env, fileFolder, 0);
+	jboolean result=File_IsDirectory(file_folder)!=0;
+	(*env)->ReleaseStringUTFChars(env, fileFolder, file_folder);
+
+	return result;
+}
+JNIEXPORT jlong JNICALL Java_com_kenny_file_util_NFileTools_getFileSize(JNIEnv *env, jclass obj, jstring filePath)
+{
+	unsigned long result;
+	if(filePath!=NULL)
+	{
+		const char *file_folder = (*env)->GetStringUTFChars(env, filePath, 0);
+		result=File_getFileSize(file_folder);
+	}
+	else
+	{
+		 result=File_getFileSize(NULL);
+		 //__android_log_print(ANDROID_LOG_INFO, "NDK", "getFileSize File is NULL %ld",result);
+	}
+//	(*env)->ReleaseStringUTFChars(env, filePath, file_folder);
+	return result;
+}
+
 JNIEXPORT jobject JNICALL Java_com_kenny_file_util_NFileTools_getFileSizes(JNIEnv *env, jclass obj, jstring fileFolder)
 {
 	const char *file_folder = (*env)->GetStringUTFChars(env, fileFolder, 0);

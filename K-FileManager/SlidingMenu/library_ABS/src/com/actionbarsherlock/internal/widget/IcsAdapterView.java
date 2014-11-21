@@ -16,6 +16,7 @@
 
 package com.actionbarsherlock.internal.widget;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.DataSetObserver;
 import android.os.Parcelable;
@@ -693,7 +694,8 @@ public abstract class IcsAdapterView<T extends Adapter> extends ViewGroup {
      * we have an empty view, display it.  In all the other cases, make sure that the listview
      * is VISIBLE and that the empty view is GONE (if it's not null).
      */
-    private void updateEmptyStatus(boolean empty) {
+    @SuppressLint("WrongCall")
+	private void updateEmptyStatus(boolean empty) {
         if (isInFilterMode()) {
             empty = false;
         }
@@ -711,7 +713,8 @@ public abstract class IcsAdapterView<T extends Adapter> extends ViewGroup {
             // Force one here to make sure that the state of the list matches
             // the state of the adapter.
             if (mDataChanged) {
-                this.onLayout(false, getLeft(), getTop(), getRight(), getBottom());
+//            	this.onLayout(changed, left, top, right, bottom)
+            	this.onLayout(false, getLeft(), getTop(), getRight(), getBottom());
             }
         } else {
             if (mEmptyView != null) mEmptyView.setVisibility(View.GONE);

@@ -109,19 +109,7 @@
                     android:textSize="13dip"
                     android:visibility="gone" />
 
-                <Button
-                    android:id="@+id/btDelete"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginRight="1dip"
-                    android:layout_weight="1"
-                    android:background="#00000000"
-                    android:drawableTop="@drawable/menu_uninstall"
-                    android:text="删除"
-                    android:textColor="@color/ContentTitleText"
-                    android:textSize="13dip"
-                    android:visibility="gone" />
+
             </LinearLayout>
         </LinearLayout>
     </FrameLayout>

@@ -93,7 +93,6 @@
                 android:src="@color/Setting_Button_TextColor" />
 
             <TextView
-                android:id="@+id/DictionarySettingsTextView"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/Setting_BG"
@@ -127,7 +126,6 @@
                     android:src="@color/Setting_Button_TextColor" />
 
                 <TextView
-                    android:id="@+id/DictionarySettingsTextView"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/Setting_BG"
@@ -154,7 +152,6 @@
                     android:src="@color/Setting_Button_TextColor" />
 
                 <TextView
-                    android:id="@+id/DictionarySettingsTextView"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:background="#00000000"

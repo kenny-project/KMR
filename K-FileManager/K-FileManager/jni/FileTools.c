@@ -37,6 +37,38 @@ unsigned short File_ISExist(char* path) {
 	}
 	return access(path, 0);
 }
+/**
+ * 获取对应文件的路径
+ *  ENOENT         参数file_name指定的文件不存在
+    ENOTDIR        路径中的目录存在但却非真正的目录
+    ELOOP          欲打开的文件有过多符号连接问题，上限为16符号连接
+    EFAULT         参数buf为无效指针，指向无法存在的内存空间
+    EACCESS        存取文件时被拒绝
+    ENOMEM         核心内存不足
+    ENAMETOOLONG   参数file_name的路径名称太长
+ */
+struct stat mStat;//状态
+struct stat File_stat(char* path)
+{
+    int result=stat(path, &mStat);
+    return mStat;
+}
+int File_IsDirectory(char* path)
+{
+	if(path!=NULL)
+	{
+		mStat=File_stat(path);
+	}
+	return S_ISDIR (mStat.st_mode);
+}
+long File_getFileSize(char* path)
+{
+	if(path!=NULL)
+	{
+		mStat=File_stat(path);
+	}
+	return mStat.st_size;
+}
 
 /**
  * File_GetSize--得到文件长度

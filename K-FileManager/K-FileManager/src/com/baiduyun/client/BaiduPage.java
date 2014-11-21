@@ -457,9 +457,9 @@ public class BaiduPage extends Activity implements OnItemClickListener,
 		case R.id.btBackPage:
 			finish();
 			break;
-		case R.id.btRefresh:
-			Refresh();
-			break;
+//		case R.id.btRefresh:
+//			Refresh();
+//			break;
 		case R.id.btNew:
 			new CreateBaiduFileDialog().Show(BaiduPage.this, cli, this);
 			break;

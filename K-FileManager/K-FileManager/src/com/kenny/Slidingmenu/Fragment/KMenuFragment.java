@@ -27,7 +27,7 @@ import com.framework.syseng.SysEng;
 import com.kenny.KFileManager.R;
 import com.kenny.file.Adapter.KMenuAdapter;
 import com.kenny.file.Event.ExitEvent;
-import com.kenny.file.Event.LoadSDFolderBGEvent;
+import com.kenny.file.Event.LoadSDFolderBGEventV2;
 import com.kenny.file.Parser.FavoriteGroupParser;
 import com.kenny.file.bean.FGroupInfo;
 import com.kenny.file.bean.FileBean;
@@ -54,7 +54,6 @@ public class KMenuFragment extends AbsFragmentPage implements
 	public static final int NetWork = -1;// 2
 	public static final int Favorite = 2;
 	public static final int appsPage = 3;
-	// public static final int task = 4;
 	public static final int tools = 4;
 	public static final int setting = 5;
 
@@ -206,9 +205,11 @@ public class KMenuFragment extends AbsFragmentPage implements
 				temp.setCount(count);
 				temp.setSize(size);
 			}
-			LoadSDFolderBGEvent mLoadSDFileEvent = new LoadSDFolderBGEvent(m_act,
+//			LoadSDFolderBGEvent mLoadSDFileEvent = new LoadSDFolderBGEvent(m_act,
+//					result, null);
+			LoadSDFolderBGEventV2 mLoadSDFileEvent = new LoadSDFolderBGEventV2(m_act,
 					result, null);
-			SysEng.getInstance().addThreadEvent(mLoadSDFileEvent,Thread.MAX_PRIORITY);
+			SysEng.getInstance().addThreadEvent(mLoadSDFileEvent,Thread.MIN_PRIORITY);
 		} catch (Exception e)
 		{
 			e.printStackTrace();
