@@ -10,7 +10,7 @@
     android:paddingRight="@dimen/list_padding" -->
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:focusable="true"
         android:orientation="horizontal"
         android:paddingBottom="5.0dip"
@@ -18,6 +18,7 @@
 
         <ImageButton
             android:id="@+id/ib_btn_home"
+            android:layout_gravity="center_vertical"
             android:layout_width="@dimen/navigation_button_size"
             android:layout_height="@dimen/navigation_button_size"
             android:layout_marginLeft="10.0dip"
@@ -32,11 +33,13 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
+            android:layout_marginLeft="5dp"
             android:text="@string/app_name"
             android:textAppearance="@style/navItemTitleTextAppearance" />
 
         <ImageButton
             android:id="@+id/btn_search"
+            android:layout_gravity="center_vertical"
             android:layout_width="@dimen/navigation_button_size"
             android:layout_height="@dimen/navigation_button_size"
             android:layout_marginLeft="10.0dip"
@@ -56,6 +59,7 @@
             android:background="@drawable/nav_list_item_bg"
             android:focusable="true"
             android:scaleType="fitCenter"
+            android:layout_gravity="center_vertical"
             android:src="@drawable/ic_settings" />
     </LinearLayout>
 

@@ -43,7 +43,6 @@ public class FileAdapter extends BaseAdapter
 	protected INotifyDataSetChanged notify;
 	private FolderTypeUtil mFolderType;
 	protected Drawable im_go_back;
-
 	/**
 	 * // 窗体标记:1:ListView 2:GridView
 	 * 
@@ -68,11 +67,6 @@ public class FileAdapter extends BaseAdapter
 	public void notifyDataSetChanged()
 	{
 		bShowLogo = true;
-//		if (mFileList.size() > 0)
-//		{
-//			FileBean bean = mFileList.get(mFileList.size()-1);
-//			setCurrentFile(bean.getFile().getParent());
-//		}
 		super.notifyDataSetChanged();
 	}
 

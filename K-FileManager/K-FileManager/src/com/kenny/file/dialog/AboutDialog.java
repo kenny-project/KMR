@@ -21,7 +21,7 @@ public class AboutDialog
       AlertDialog.Builder builer = new Builder(m_act);
       String title = m_act.getString(R.string.aboutTitle);
       builer.setTitle(title);
-      String content = m_act.getTitle() +" V "+ GetVersionName(m_act)
+      String content = m_act.getString(R.string.app_name) +" V "+ GetVersionName(m_act)
 	  + m_act.getString(R.string.aboutContent);
       builer.setMessage(content);
       // 当点确定按钮时从服务器上下载 新的apk 然后安装

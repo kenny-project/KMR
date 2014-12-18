@@ -162,8 +162,8 @@ public class KMenuFragment extends AbsFragmentPage implements
 				R.drawable.ic_sys_ftp));
 		groupbean.AddDictBean(new KMenuItemBean(2, "金山快盘",KMenuItemBean.TYPE_KUAIPAN_PAGE, 2,
 				R.drawable.ic_cloud_disk));
-		groupbean.AddDictBean(new KMenuItemBean(2, "百度云盘",KMenuItemBean.TYPE_BAIDUYUNPAN_PAGE, 2,
-				R.drawable.ic_cloud_disk));
+//		groupbean.AddDictBean(new KMenuItemBean(2, "百度云盘",KMenuItemBean.TYPE_BAIDUYUNPAN_PAGE, 2,
+//				R.drawable.ic_cloud_disk));
 		mGroupBeans.add(groupbean);
 		// groupbean = new KMenuGroupBean();
 		// groupbean.setTitle("设置");

@@ -87,10 +87,26 @@ public class ApkTools
 		}
 
 	}
-
+	public static AppInfoData getApplicationInfo(Context ctx, File apkFile)
+	{
+//		return getFanSheApplicationInfo(ctx,apkFile);
+		AppInfoData infoData = new AppInfoData();
+        PackageManager pm = ctx.getPackageManager();     
+        PackageInfo info = pm.getPackageArchiveInfo(apkFile.getAbsolutePath(), PackageManager.GET_ACTIVITIES);     
+        if(info != null)
+        {
+            ApplicationInfo appInfo = info.applicationInfo;
+            appInfo.publicSourceDir = apkFile.getAbsolutePath();
+            infoData.Appname = pm.getApplicationLabel(appInfo).toString();
+            infoData.Apppackage = appInfo.packageName;  //得到安装包名称   
+            infoData.Appversion=info.versionName;       //得到版本信息
+            infoData.setAppIcon( pm.getApplicationIcon(appInfo));//得到图标信息
+        }
+        return infoData;
+	}
 	// 通过反射机制
 	// 取得apk安装包的信息
-	public static AppInfoData getApplicationInfo(Context ctx, File apkFile)
+	public static AppInfoData getFanSheApplicationInfo(Context ctx, File apkFile)
 	{
 		// System.out.println(apkFile.getPath());
 		AppInfoData infoData = new AppInfoData();
@@ -101,7 +117,6 @@ public class ApkTools
 			if (!apkFile.exists())// ||
 									// !apkFile.getName().toLowerCase().endsWith(".apk"))
 			{
-
 				return null;
 			}
 			// 反射得到pkgParserCls对象并实例化,有参数
@@ -111,10 +126,10 @@ public class ApkTools
 
 			Class<?>[] typeArgs =
 			{ String.class };
-			Constructor<?> pkgParserCt = pkgParserCls.getConstructor(typeArgs);
+			Constructor<?> pkgParserCt = pkgParserCls.getConstructor();//by wmh getConstructor(typeArgs)
 			Object[] valueArgs =
 			{ apkFile.getPath() };
-			Object pkgParser = pkgParserCt.newInstance(valueArgs);
+			Object pkgParser = pkgParserCt.newInstance();//newInstance(valueArgs)
 
 			// 从pkgParserCls类得到parsePackage方法
 			DisplayMetrics metrics = new DisplayMetrics();
@@ -212,7 +227,7 @@ public class ApkTools
 		}
 		catch (Exception e)
 		{
-			//e.printStackTrace();
+			e.printStackTrace();
 		}
 		return null;
 	}

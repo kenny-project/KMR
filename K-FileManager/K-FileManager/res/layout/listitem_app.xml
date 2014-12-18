@@ -11,7 +11,6 @@
         android:layout_marginLeft="15dip"
         android:layout_marginRight="3dip"
         android:layout_marginTop="2dip" >
-
         <ImageView
             android:id="@+id/image_list_childs"
             android:layout_width="48dip"

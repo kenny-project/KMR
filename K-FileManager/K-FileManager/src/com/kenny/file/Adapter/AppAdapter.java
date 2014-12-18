@@ -136,7 +136,7 @@ public class AppAdapter extends ArrayAdapter<AppBean> {
 			}
 			
 			//viewHolder.mDV.setText(temp.getVersionName());
-			viewHolder.mDV.setText("包名:"+temp.getPackageName()+"\n版本:"+temp.getVersionName());
+			viewHolder.mDV.setText(temp.getPackageName()+"\nver:"+temp.getVersionName());
 			viewHolder.mTV.setText(temp.getAppName());
 			viewHolder.mCB.setChecked(temp.isChecked());
 			viewHolder.mCB

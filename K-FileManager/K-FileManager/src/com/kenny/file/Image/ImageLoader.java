@@ -183,8 +183,6 @@ public class ImageLoader extends Thread
 				if (vec.size() > 0)
 				{
 					LoadFileIcoEvent event = vec.remove(0);
-					// P.v("event", "[exce start]<" + event.getClass().getName()
-					// + ">");
 					try
 					{
 						event.ok();
@@ -192,15 +190,12 @@ public class ImageLoader extends Thread
 					{
 						e.printStackTrace();
 					}
-					// P.v("event", "[exce end]<" + event.getClass().getName()
-					// + ">");
 				}
 			}
 		} catch (Exception e)
 		{
 			e.printStackTrace();
 			m_object = null;
-			// P.v("event", "run " + e.toString());
 		}
 	}
 

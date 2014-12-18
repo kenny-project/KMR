@@ -235,7 +235,7 @@
     <string name="Main_ToolsPage_Title">工具</string>
     <!-- main_tools bt_title end -->
 
-    <string name="aboutContent">\n本软件是由个人开发者独立完成的，几乎占用了周末和晚上的休息时间，很用心的想给大家提供一些方便，没有盈利的目的。希望能够为大家使用手机提供很大方便。此外，我们一定会再接再厉，将软件功能，性能以及界面全方面完善.目前还有很多地方需要改善,请大家多提宝贵意见。\n如果发现软件有广告或恶意操作请及时与我联系。  \nQQ群号:138904799</string>
+    <string name="aboutContent">\n本软件是由个人开发者独立完成，占用了部分的休息时间。\n希望能够大家提供方便。目前还有很多地方需要改善，请大家多多包含多提宝贵意见。\n如果发现软件有广告或恶意操作请及时与我联系。  \nQQ群号:138904799</string>
     <string name="edit_search_hint">请输入搜索关键字</string>
     <string name="CreateFileDialog_title">新建</string>
     <string name="hint_createfile">请输入要文件名称</string>

@@ -24,7 +24,6 @@ import com.kenny.file.dialog.ZipDialog;
 import com.kenny.file.interfaces.INotifyDataSetChanged;
 import com.kenny.file.page.KMainPage;
 import com.kenny.file.tools.T;
-import com.kenny.file.util.FT;
 
 /**
  * 文件对话框菜单
